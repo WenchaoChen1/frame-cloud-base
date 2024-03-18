@@ -233,6 +233,11 @@
         <artifactId>gstdev-cloud-starter-data-commons</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
+    <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
 
 
       <!-- Apache related dependencies -->
