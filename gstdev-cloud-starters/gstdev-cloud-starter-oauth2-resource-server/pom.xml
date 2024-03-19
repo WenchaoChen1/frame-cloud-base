@@ -5,7 +5,6 @@
   <modelVersion>4.0.0</modelVersion>
   <name>GstDev Cloud :: Starter :: Oauth2 :: Resources :: Server</name>
   <description>${project.name}</description>
-
   <artifactId>gstdev-cloud-starter-oauth2-resource-server</artifactId>
 
   <parent>
