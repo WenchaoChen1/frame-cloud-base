@@ -7,7 +7,7 @@
 
   <groupId>com.gstdev.cloud</groupId>
   <artifactId>gstdev-cloud-project</artifactId>
-  <version>2022.0.2-SNAPSHOT</version>
+  <version>2024.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <developers>

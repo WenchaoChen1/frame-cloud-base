@@ -12,7 +12,7 @@
   <parent>
     <groupId>com.gstdev.cloud</groupId>
     <artifactId>gstdev-cloud-plugin-storage</artifactId>
-    <version>2022.0.2-SNAPSHOT</version>
+    <version>2024.0.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 

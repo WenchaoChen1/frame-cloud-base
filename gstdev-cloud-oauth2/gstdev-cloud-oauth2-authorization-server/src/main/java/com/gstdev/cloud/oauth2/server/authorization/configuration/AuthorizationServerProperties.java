@@ -31,7 +31,8 @@ public class AuthorizationServerProperties {
 
   private String jwkSetEndpoint = OAuth2Constants.DEFAULT_JWK_SET_ENDPOINT;
 
-  private String jksPath = OAuth2Constants.DEFAULT_JKS_PATH;
+  private String jksJksPath = OAuth2Constants.DEFAULT_JKS_JKS_PATH;
+  private String jksCerPath = OAuth2Constants.DEFAULT_JKS_CER_PATH;
 
   private String jksAlias = OAuth2Constants.DEFAULT_JKS_ALIAS;
 

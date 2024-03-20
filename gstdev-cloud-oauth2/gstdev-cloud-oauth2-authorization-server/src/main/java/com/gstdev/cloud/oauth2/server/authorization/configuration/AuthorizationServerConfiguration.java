@@ -280,7 +280,7 @@ public class AuthorizationServerConfiguration {
 
   @Bean
   public JWKSource<SecurityContext> jwkSource() throws Exception {
-    String path = authorizationServerProperties.getJksPath();
+    String path = authorizationServerProperties.getJksJksPath();
     String alias = authorizationServerProperties.getJksAlias();
     String pass = authorizationServerProperties.getJksPass();
 
