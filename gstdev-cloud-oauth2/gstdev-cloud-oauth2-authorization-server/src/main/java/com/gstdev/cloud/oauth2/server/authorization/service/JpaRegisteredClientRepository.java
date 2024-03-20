@@ -9,10 +9,11 @@
 
 package com.gstdev.cloud.oauth2.server.authorization.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gstdev.cloud.oauth2.server.authorization.domain.OAuth2RegisteredClient;
 import com.gstdev.cloud.oauth2.server.authorization.domain.dto.OAuth2ClientDTO;
 import com.gstdev.cloud.oauth2.server.authorization.mapstruct.OAuth2ClientMapper;
-import com.gstdev.cloud.oauth2.server.authorization.repository.OAuth2ClientRepository;
+import com.gstdev.cloud.oauth2.server.authorization.repository.OAuth2RegisteredClientRepository;
 import com.gstdev.cloud.web.exception.BadRequestException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,38 +22,43 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.jackson2.SecurityJackson2Modules;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
+import org.springframework.security.oauth2.server.authorization.jackson2.OAuth2AuthorizationServerJackson2Module;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Slf4j
 //@Service
 //@AllArgsConstructor
-@AutoConfigureAfter(OAuth2ClientRepository.class)
+@AutoConfigureAfter(OAuth2RegisteredClientRepository.class)
 public class JpaRegisteredClientRepository implements OAuth2ClientService {
 
 //  private final OAuth2ClientRepository oAuth2ClientRepository;
-
   @Resource
   private OAuth2ClientMapper oAuth2ClientMapper;
-
-
   @Autowired
   private PasswordEncoder passwordEncoder;
-  @Autowired
-  private OAuth2ClientRepository oAuth2ClientRepository;
+
+  private final OAuth2RegisteredClientRepository oAuth2RegisteredClientRepository;
+
+  public JpaRegisteredClientRepository(OAuth2RegisteredClientRepository oAuth2RegisteredClientRepository) {
+    Assert.notNull(oAuth2RegisteredClientRepository, "clientRepository cannot be null");
+    this.oAuth2RegisteredClientRepository = oAuth2RegisteredClientRepository;
+  }
+
 
   @PostConstruct
   public void initaa() {
@@ -92,41 +98,39 @@ public class JpaRegisteredClientRepository implements OAuth2ClientService {
   @Override
   public void save(RegisteredClient registeredClient) {
     Assert.notNull(registeredClient, "registeredClient cannot be null");
-    this.oAuth2ClientRepository.save(OAuth2RegisteredClient.fromRegisteredClient(registeredClient));
+    this.oAuth2RegisteredClientRepository.save(OAuth2RegisteredClient.fromRegisteredClient(registeredClient));
   }
 
   @Override
   public void saveClient(OAuth2ClientDTO client) {
     OAuth2RegisteredClient oAuth2Client = client.toClient();
     oAuth2Client.setClientIdIssuedAt(Instant.now());
-    this.oAuth2ClientRepository.save(oAuth2Client);
+    this.oAuth2RegisteredClientRepository.save(oAuth2Client);
   }
 
   @Transactional(rollbackFor = Exception.class)
   @Override
   public void update(OAuth2ClientDTO client) {
     String id = client.getId();
-    OAuth2RegisteredClient flush = this.oAuth2ClientRepository.findById(id).orElseThrow(() -> new BadRequestException("不存在"));
+    OAuth2RegisteredClient flush = this.oAuth2RegisteredClientRepository.findById(id).orElseThrow(() -> new BadRequestException("不存在"));
     OAuth2RegisteredClient source = client.toClient();
     // 忽略密码更新
     source.setClientSecret(null);
     oAuth2ClientMapper.merge(source, flush);
-    this.oAuth2ClientRepository.saveAndFlush(flush);
+    this.oAuth2RegisteredClientRepository.saveAndFlush(flush);
   }
 
 
   @Override
   public RegisteredClient findById(String id) {
     Assert.hasText(id, "id cannot be empty");
-    return Optional.ofNullable(this.oAuth2ClientRepository.searchOAuth2ClientById(id))
-      .map(OAuth2RegisteredClient::toRegisteredClient)
-      .orElse(null);
+    return this.oAuth2RegisteredClientRepository.findById(id).map(OAuth2RegisteredClient::toRegisteredClient).orElse(null);
   }
 
   @Override
   public RegisteredClient findByClientId(String clientId) {
     Assert.hasText(clientId, "clientId cannot be empty");
-    return this.oAuth2ClientRepository.findByClientId(clientId).map(OAuth2RegisteredClient::toRegisteredClient).orElse(null);
+    return this.oAuth2RegisteredClientRepository.findByClientId(clientId).map(OAuth2RegisteredClient::toRegisteredClient).orElse(null);
   }
 
   /**
@@ -137,17 +141,17 @@ public class JpaRegisteredClientRepository implements OAuth2ClientService {
    */
   @Override
   public Page<OAuth2RegisteredClient> page(Pageable pageable) {
-    return this.oAuth2ClientRepository.findAll(pageable);
+    return this.oAuth2RegisteredClientRepository.findAll(pageable);
   }
 
-  @Override
-  public OAuth2RegisteredClient findClientById(String id) {
-    return this.oAuth2ClientRepository.searchOAuth2ClientById(id);
-  }
+//  @Override
+//  public OAuth2RegisteredClient findClientById(String id) {
+//    return this.oAuth2RegisteredClientRepository.searchOAuth2ClientById(id);
+//  }
 
   @Override
   public void removeByClientId(String id) {
-    this.oAuth2ClientRepository.deleteById(id);
+    this.oAuth2RegisteredClientRepository.deleteById(id);
   }
 
   /**
@@ -256,4 +260,109 @@ public class JpaRegisteredClientRepository implements OAuth2ClientService {
       .clientSettings(clientSettings)
       .build();
   }
+
+
+//
+//  private RegisteredClient toObject(Client client) {
+//    Set<String> clientAuthenticationMethods = StringUtils.commaDelimitedListToSet(
+//      client.getClientAuthenticationMethods());
+//    Set<String> authorizationGrantTypes = StringUtils.commaDelimitedListToSet(
+//      client.getAuthorizationGrantTypes());
+//    Set<String> redirectUris = StringUtils.commaDelimitedListToSet(
+//      client.getRedirectUris());
+//    Set<String> postLogoutRedirectUris = StringUtils.commaDelimitedListToSet(
+//      client.getPostLogoutRedirectUris());
+//    Set<String> clientScopes = StringUtils.commaDelimitedListToSet(
+//      client.getScopes());
+//
+//    RegisteredClient.Builder builder = RegisteredClient.withId(client.getId())
+//      .clientId(client.getClientId())
+//      .clientIdIssuedAt(client.getClientIdIssuedAt())
+//      .clientSecret(client.getClientSecret())
+//      .clientSecretExpiresAt(client.getClientSecretExpiresAt())
+//      .clientName(client.getClientName())
+//      .clientAuthenticationMethods(authenticationMethods ->
+//        clientAuthenticationMethods.forEach(authenticationMethod ->
+//          authenticationMethods.add(resolveClientAuthenticationMethod(authenticationMethod))))
+//      .authorizationGrantTypes((grantTypes) ->
+//        authorizationGrantTypes.forEach(grantType ->
+//          grantTypes.add(resolveAuthorizationGrantType(grantType))))
+//      .redirectUris((uris) -> uris.addAll(redirectUris))
+//      .postLogoutRedirectUris((uris) -> uris.addAll(postLogoutRedirectUris))
+//      .scopes((scopes) -> scopes.addAll(clientScopes));
+//
+//    Map<String, Object> clientSettingsMap = parseMap(client.getClientSettings());
+//    builder.clientSettings(ClientSettings.withSettings(clientSettingsMap).build());
+//
+//    Map<String, Object> tokenSettingsMap = parseMap(client.getTokenSettings());
+//    builder.tokenSettings(TokenSettings.withSettings(tokenSettingsMap).build());
+//
+//    return builder.build();
+//  }
+//
+//  private OAuth2RegisteredClient toEntity(RegisteredClient registeredClient) {
+//    List<String> clientAuthenticationMethods = new ArrayList<>(registeredClient.getClientAuthenticationMethods().size());
+//    registeredClient.getClientAuthenticationMethods().forEach(clientAuthenticationMethod ->
+//      clientAuthenticationMethods.add(clientAuthenticationMethod.getValue()));
+//
+//    List<String> authorizationGrantTypes = new ArrayList<>(registeredClient.getAuthorizationGrantTypes().size());
+//    registeredClient.getAuthorizationGrantTypes().forEach(authorizationGrantType ->
+//      authorizationGrantTypes.add(authorizationGrantType.getValue()));
+//
+//    OAuth2RegisteredClient entity = new OAuth2RegisteredClient();
+//    entity.setId(registeredClient.getId());
+//    entity.setClientId(registeredClient.getClientId());
+//    entity.setClientIdIssuedAt(registeredClient.getClientIdIssuedAt());
+//    entity.setClientSecret(registeredClient.getClientSecret());
+//    entity.setClientSecretExpiresAt(registeredClient.getClientSecretExpiresAt());
+//    entity.setClientName(registeredClient.getClientName());
+//    entity.setClientAuthenticationMethods(StringUtils.collectionToCommaDelimitedString(clientAuthenticationMethods));
+//    entity.setAuthorizationGrantTypes(StringUtils.collectionToCommaDelimitedString(authorizationGrantTypes));
+//    entity.setRedirectUris(StringUtils.collectionToCommaDelimitedString(registeredClient.getRedirectUris()));
+//    entity.setPostLogoutRedirectUris(StringUtils.collectionToCommaDelimitedString(registeredClient.getPostLogoutRedirectUris()));
+//    entity.setScopes(StringUtils.collectionToCommaDelimitedString(registeredClient.getScopes()));
+//    entity.setClientSettings(writeMap(registeredClient.getClientSettings().getSettings()));
+//    entity.setTokenSettings(writeMap(registeredClient.getTokenSettings().getSettings()));
+//
+//    return entity;
+//  }
+//
+//  private Map<String, Object> parseMap(String data) {
+//    try {
+//      return this.objectMapper.readValue(data, new TypeReference<Map<String, Object>>() {
+//      });
+//    } catch (Exception ex) {
+//      throw new IllegalArgumentException(ex.getMessage(), ex);
+//    }
+//  }
+//
+//  private String writeMap(Map<String, Object> data) {
+//    try {
+//      return this.objectMapper.writeValueAsString(data);
+//    } catch (Exception ex) {
+//      throw new IllegalArgumentException(ex.getMessage(), ex);
+//    }
+//  }
+//
+//  private static AuthorizationGrantType resolveAuthorizationGrantType(String authorizationGrantType) {
+//    if (AuthorizationGrantType.AUTHORIZATION_CODE.getValue().equals(authorizationGrantType)) {
+//      return AuthorizationGrantType.AUTHORIZATION_CODE;
+//    } else if (AuthorizationGrantType.CLIENT_CREDENTIALS.getValue().equals(authorizationGrantType)) {
+//      return AuthorizationGrantType.CLIENT_CREDENTIALS;
+//    } else if (AuthorizationGrantType.REFRESH_TOKEN.getValue().equals(authorizationGrantType)) {
+//      return AuthorizationGrantType.REFRESH_TOKEN;
+//    }
+//    return new AuthorizationGrantType(authorizationGrantType);              // Custom authorization grant type
+//  }
+//
+//  private static ClientAuthenticationMethod resolveClientAuthenticationMethod(String clientAuthenticationMethod) {
+//    if (ClientAuthenticationMethod.CLIENT_SECRET_BASIC.getValue().equals(clientAuthenticationMethod)) {
+//      return ClientAuthenticationMethod.CLIENT_SECRET_BASIC;
+//    } else if (ClientAuthenticationMethod.CLIENT_SECRET_POST.getValue().equals(clientAuthenticationMethod)) {
+//      return ClientAuthenticationMethod.CLIENT_SECRET_POST;
+//    } else if (ClientAuthenticationMethod.NONE.getValue().equals(clientAuthenticationMethod)) {
+//      return ClientAuthenticationMethod.NONE;
+//    }
+//    return new ClientAuthenticationMethod(clientAuthenticationMethod);      // Custom client authentication method
+//  }
 }
