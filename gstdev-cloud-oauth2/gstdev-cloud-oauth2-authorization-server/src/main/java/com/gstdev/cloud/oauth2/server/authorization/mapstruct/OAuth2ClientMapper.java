@@ -9,7 +9,7 @@
 
 package com.gstdev.cloud.oauth2.server.authorization.mapstruct;
 
-import com.gstdev.cloud.oauth2.server.authorization.domain.OAuth2Client;
+import com.gstdev.cloud.oauth2.server.authorization.domain.OAuth2RegisteredClient;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
@@ -25,5 +25,5 @@ public interface OAuth2ClientMapper {
      * @param target 目标
      */
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void merge(OAuth2Client source, @MappingTarget OAuth2Client target);
+    void merge(OAuth2RegisteredClient source, @MappingTarget OAuth2RegisteredClient target);
 }

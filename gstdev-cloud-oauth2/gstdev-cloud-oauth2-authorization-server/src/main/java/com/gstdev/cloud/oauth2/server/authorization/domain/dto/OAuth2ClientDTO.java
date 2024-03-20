@@ -36,9 +36,9 @@ public class OAuth2ClientDTO {
      *
      * @return the o auth 2 client
      */
-    public OAuth2Client toClient() {
+    public OAuth2RegisteredClient toClient() {
 
-        OAuth2Client oAuth2Client = new OAuth2Client();
+        OAuth2RegisteredClient oAuth2Client = new OAuth2RegisteredClient();
 
         final String clientId = StringUtils.hasText(this.clientId) ? this.clientId : UUID.randomUUID().toString();
         oAuth2Client.setClientId(clientId);

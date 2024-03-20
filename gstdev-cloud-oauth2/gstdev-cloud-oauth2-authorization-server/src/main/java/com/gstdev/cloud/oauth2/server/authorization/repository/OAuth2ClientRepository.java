@@ -9,7 +9,7 @@
 
 package com.gstdev.cloud.oauth2.server.authorization.repository;
 
-import com.gstdev.cloud.oauth2.server.authorization.domain.OAuth2Client;
+import com.gstdev.cloud.oauth2.server.authorization.domain.OAuth2RegisteredClient;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface OAuth2ClientRepository extends JpaRepository<OAuth2Client, String> {
+public interface OAuth2ClientRepository extends JpaRepository<OAuth2RegisteredClient, String> {
   /**
    * Find by client id optional.
    *
@@ -30,7 +30,7 @@ public interface OAuth2ClientRepository extends JpaRepository<OAuth2Client, Stri
     "scopes",
     "clientSettings",
     "tokenSettings"})
-  Optional<OAuth2Client> findByClientId(String clientId);
+  Optional<OAuth2RegisteredClient> findByClientId(String clientId);
 
   /**
    * Find client by id o auth 2 client.
@@ -44,5 +44,5 @@ public interface OAuth2ClientRepository extends JpaRepository<OAuth2Client, Stri
     "scopes",
     "clientSettings",
     "tokenSettings"})
-  OAuth2Client searchOAuth2ClientById(String id);
+  OAuth2RegisteredClient searchOAuth2ClientById(String id);
 }

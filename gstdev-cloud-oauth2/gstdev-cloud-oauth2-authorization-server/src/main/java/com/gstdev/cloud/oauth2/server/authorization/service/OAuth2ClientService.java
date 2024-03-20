@@ -9,7 +9,7 @@
 
 package com.gstdev.cloud.oauth2.server.authorization.service;
 
-import com.gstdev.cloud.oauth2.server.authorization.domain.OAuth2Client;
+import com.gstdev.cloud.oauth2.server.authorization.domain.OAuth2RegisteredClient;
 import com.gstdev.cloud.oauth2.server.authorization.domain.dto.OAuth2ClientDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,7 +37,7 @@ public interface OAuth2ClientService extends RegisteredClientRepository {
    * @param pageable the pageable
    * @return the page
    */
-  Page<OAuth2Client> page(Pageable pageable);
+  Page<OAuth2RegisteredClient> page(Pageable pageable);
 
   /**
    * Find client by id o auth 2 client.
@@ -45,7 +45,7 @@ public interface OAuth2ClientService extends RegisteredClientRepository {
    * @param id the id
    * @return the o auth 2 client
    */
-  OAuth2Client  findClientById(String id);
+  OAuth2RegisteredClient findClientById(String id);
 
   /**
    * Remove by client id.
