@@ -19,5 +19,6 @@
   <modules>
     <module>gstdev-cloud-plugin-swagger</module>
     <module>gstdev-cloud-plugin-storage</module>
+      <module>gstdev-cloud-plugin-openapi</module>
   </modules>
 </project>

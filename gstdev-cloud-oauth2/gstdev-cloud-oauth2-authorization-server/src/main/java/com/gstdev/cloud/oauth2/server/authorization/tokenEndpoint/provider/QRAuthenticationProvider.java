@@ -7,7 +7,7 @@
 //
 // ====================================================
 
-package com.gstdev.cloud.oauth2.server.authorization.provider;
+package com.gstdev.cloud.oauth2.server.authorization.tokenEndpoint.provider;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.security.authentication.AuthenticationProvider;

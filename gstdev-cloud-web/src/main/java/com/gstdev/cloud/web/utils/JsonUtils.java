@@ -40,11 +40,11 @@ public class JsonUtils {
     try {
       return getInstance().readValue(json, clazz);
     } catch (JsonParseException e) {
-      log.error("[Riching Cloud] |- JsonUtils toObject parse json error! {}", e.getMessage());
+      log.error("[GstDev Cloud] |- JsonUtils toObject parse json error! {}", e.getMessage());
     } catch (JsonMappingException e) {
-      log.error("[Riching Cloud] |- JsonUtils toObject mapping to object error! {}", e.getMessage());
+      log.error("[GstDev Cloud] |- JsonUtils toObject mapping to object error! {}", e.getMessage());
     } catch (IOException e) {
-      log.error("[Riching Cloud] |- JsonUtils toObject read content error! {}", e.getMessage());
+      log.error("[GstDev Cloud] |- JsonUtils toObject read content error! {}", e.getMessage());
     }
 
     return null;
@@ -54,11 +54,11 @@ public class JsonUtils {
     try {
       return getInstance().writeValueAsString(entity);
     } catch (JsonParseException e) {
-      log.error("[Riching Cloud] |- JsonUtils toJson parse json error! {}", e.getMessage());
+      log.error("[GstDev Cloud] |- JsonUtils toJson parse json error! {}", e.getMessage());
     } catch (JsonMappingException e) {
-      log.error("[Riching Cloud] |- JsonUtils toJson mapping to object error! {}", e.getMessage());
+      log.error("[GstDev Cloud] |- JsonUtils toJson mapping to object error! {}", e.getMessage());
     } catch (IOException e) {
-      log.error("[Riching Cloud] |- JsonUtils toJson read content error! {}", e.getMessage());
+      log.error("[GstDev Cloud] |- JsonUtils toJson read content error! {}", e.getMessage());
     }
 
     return null;
@@ -69,11 +69,11 @@ public class JsonUtils {
     try {
       return getInstance().readValue(json, javaType);
     } catch (JsonParseException e) {
-      log.error("[Riching Cloud] |- JsonUtils toList parse json error! {}", e.getMessage());
+      log.error("[GstDev Cloud] |- JsonUtils toList parse json error! {}", e.getMessage());
     } catch (JsonMappingException e) {
-      log.error("[Riching Cloud] |- JsonUtils toList mapping to object error! {}", e.getMessage());
+      log.error("[GstDev Cloud] |- JsonUtils toList mapping to object error! {}", e.getMessage());
     } catch (IOException e) {
-      log.error("[Riching Cloud] |- JsonUtils toList read content error! {}", e.getMessage());
+      log.error("[GstDev Cloud] |- JsonUtils toList read content error! {}", e.getMessage());
     }
 
     return null;
@@ -83,11 +83,11 @@ public class JsonUtils {
     try {
       return getInstance().readValue(json, typeReference);
     } catch (JsonParseException e) {
-      log.error("[Riching Cloud] |- JsonUtils toCollection parse json error! {}", e.getMessage());
+      log.error("[GstDev Cloud] |- JsonUtils toCollection parse json error! {}", e.getMessage());
     } catch (JsonMappingException e) {
-      log.error("[Riching Cloud] |- JsonUtils toCollection mapping to object error! {}", e.getMessage());
+      log.error("[GstDev Cloud] |- JsonUtils toCollection mapping to object error! {}", e.getMessage());
     } catch (IOException e) {
-      log.error("[Riching Cloud] |- JsonUtils toCollection read content error! {}", e.getMessage());
+      log.error("[GstDev Cloud] |- JsonUtils toCollection read content error! {}", e.getMessage());
     }
 
     return null;

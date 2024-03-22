@@ -38,13 +38,13 @@ public class TrackMethodAnnotationAspect {
     String name = joinPoint.getSignature().getName();
     String type = joinPoint.getSignature().getDeclaringTypeName();
 
-    log.info("[Riching Cloud] |- Entering in the method {}, in class {}, running on port {}", name, type, port);
+    log.info("[GstDev Cloud] |- Entering in the method {}, in class {}, running on port {}", name, type, port);
 
     watch.start();
     Object returnObject = joinPoint.proceed();
     watch.stop();
 
-    log.info("[Riching Cloud] |- Method {} in class {} took {} milliseconds to execute.", name, type, watch.getTotalTimeMillis());
+    log.info("[GstDev Cloud] |- Method {} in class {} took {} milliseconds to execute.", name, type, watch.getTotalTimeMillis());
 
     return returnObject;
   }

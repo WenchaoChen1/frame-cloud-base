@@ -23,5 +23,6 @@
     <module>gstdev-cloud-starter-swagger</module>
     <module>gstdev-cloud-starter-storage</module>
     <module>gstdev-cloud-starter-oauth2-resource-server</module>
+    <module>gstdev-cloud-starter-openapi</module>
   </modules>
 </project>

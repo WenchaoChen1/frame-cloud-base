@@ -11,7 +11,7 @@ package com.gstdev.cloud.web.utils;
 
 import org.apache.commons.lang3.StringUtils;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 public class IpUtils {
 

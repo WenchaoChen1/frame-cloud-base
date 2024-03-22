@@ -19,8 +19,7 @@
     <!-- GstdevCloud related dependencies -->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-swagger</artifactId>
-      <version>${gstdev-cloud.version}</version>
+      <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
     </dependency>
     <!-- Apache commons related dependencies -->
     <dependency>

@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.server.authorization.domain;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
 

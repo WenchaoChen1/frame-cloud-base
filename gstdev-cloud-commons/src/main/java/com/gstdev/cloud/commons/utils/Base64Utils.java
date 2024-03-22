@@ -9,7 +9,7 @@
 //
 //package com.gstdev.cloud.commons.utils;
 //
-//import javax.imageio.ImageIO;
+//import jakarta.imageio.ImageIO;
 //import java.awt.image.BufferedImage;
 //import java.io.ByteArrayInputStream;
 //import java.io.ByteArrayOutputStream;

@@ -8,7 +8,7 @@
 //
 // ====================================================
 
-package com.gstdev.cloud.oauth2.server.authorization.token;
+package com.gstdev.cloud.oauth2.server.authorization.tokenEndpoint.token;
 
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;

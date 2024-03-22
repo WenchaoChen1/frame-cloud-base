@@ -16,7 +16,7 @@ import lombok.ToString;
 import org.hibernate.Hibernate;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 

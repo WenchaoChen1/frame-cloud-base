@@ -8,8 +8,7 @@
 // ====================================================
 
 package com.gstdev.cloud.plugin.storage.core.model;
-
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -18,32 +17,32 @@ import lombok.Data;
 @Data
 public class StoreConfig {
 
-  @ApiModelProperty("存储类型")
+  @Schema(description = "存储类型")
   private Integer storageType;
-  @ApiModelProperty("绑定域名")
+  @Schema(description = "绑定域名")
   private String domain;
-  @ApiModelProperty("EndPoint")
+  @Schema(description = "EndPoint")
   private String endPoint;
-  @ApiModelProperty("AccessKeyId")
+  @Schema(description = "AccessKeyId")
   private String accessKeyId;
-  @ApiModelProperty("AccessKeySecret")
+  @Schema(description = "AccessKeySecret")
   private String accessKeySecret;
-  @ApiModelProperty("腾讯云AppId")
+  @Schema(description = "腾讯云AppId")
   private Integer appId;
-  @ApiModelProperty("腾讯云COS所属地区")
+  @Schema(description = "腾讯云COS所属地区")
   private String region;
-  @ApiModelProperty("默认标识，0:不启用，1:启用")
+  @Schema(description = "默认标识，0:不启用，1:启用")
   private Integer defaultFlag;
-  @ApiModelProperty("租户ID")
+  @Schema(description = "租户ID")
   private Long tenantId;
-  @ApiModelProperty("bucket权限控制")
+  @Schema(description = "bucket权限控制")
   private String accessControl;
-  @ApiModelProperty("bucket前缀")
+  @Schema(description = "bucket前缀")
   private String bucketPrefix;
-  @ApiModelProperty("存储编码")
+  @Schema(description = "存储编码")
   private String storageCode;
-  @ApiModelProperty("文件名前缀策略")
+  @Schema(description = "文件名前缀策略")
   private String prefixStrategy;
-  @ApiModelProperty("自动创建bucket，0:不启用，1:启用")
+  @Schema(description = "自动创建bucket，0:不启用，1:启用")
   private Integer createBucketFlag;
 }

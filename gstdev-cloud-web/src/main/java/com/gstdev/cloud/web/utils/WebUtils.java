@@ -14,10 +14,10 @@ import org.springframework.http.MediaType;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
@@ -44,7 +44,7 @@ public class WebUtils {
       response.getWriter().flush();
       response.getWriter().close();
     } catch (IOException e) {
-      log.error("[Riching Cloud] |- Render response to Json error!");
+      log.error("[GstDev Cloud] |- Render response to Json error!");
     }
   }
 

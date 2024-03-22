@@ -80,74 +80,74 @@ public class RedisUtils {
     return redisTemplate.getExpire(key, TimeUnit.SECONDS);
   }
 
-  /**
-   * 查找匹配key
-   *
-   * @param pattern key
-   * @return /
-   */
-  public List<String> scan(String pattern) {
-    ScanOptions options = ScanOptions.scanOptions().match(pattern).build();
-    RedisConnectionFactory factory = redisTemplate.getConnectionFactory();
-    RedisConnection rc = Objects.requireNonNull(factory).getConnection();
-    Cursor<byte[]> cursor = rc.scan(options);
+//  /**
+//   * 查找匹配key
+//   *
+//   * @param pattern key
+//   * @return /
+//   */
+//  public List<String> scan(String pattern) {
+//    ScanOptions options = ScanOptions.scanOptions().match(pattern).build();
+//    RedisConnectionFactory factory = redisTemplate.getConnectionFactory();
+//    RedisConnection rc = Objects.requireNonNull(factory).getConnection();
+//    Cursor<byte[]> cursor = rc.scan(options);
+//
+//    List<String> result = new ArrayList<>();
+//    while (cursor.hasNext()) {
+//      result.add(new String(cursor.next()));
+//    }
+//
+//    try {
+//      RedisConnectionUtils.releaseConnection(rc, factory, false);
+//    } catch (Exception e) {
+//      log.error(e.getMessage(), e);
+//    }
+//
+//    return result;
+//  }
 
-    List<String> result = new ArrayList<>();
-    while (cursor.hasNext()) {
-      result.add(new String(cursor.next()));
-    }
-
-    try {
-      RedisConnectionUtils.releaseConnection(rc, factory, false);
-    } catch (Exception e) {
-      log.error(e.getMessage(), e);
-    }
-
-    return result;
-  }
-
-  /**
-   * 分页查询 key
-   *
-   * @param patternKey key
-   * @param page       页码
-   * @param size       每页数目
-   * @return /
-   */
-  public List<String> findKeysForPage(String patternKey, int page, int size) {
-    ScanOptions options = ScanOptions.scanOptions().match(patternKey).build();
-    RedisConnectionFactory factory = redisTemplate.getConnectionFactory();
-    RedisConnection rc = Objects.requireNonNull(factory).getConnection();
-    Cursor<byte[]> cursor = rc.scan(options);
-    List<String> result = new ArrayList<>(size);
-    int tmpIndex = 0;
-    int fromIndex = page * size;
-    int toIndex = page * size + size;
-
-    while (cursor.hasNext()) {
-      if (tmpIndex >= fromIndex && tmpIndex < toIndex) {
-        result.add(new String(cursor.next()));
-        tmpIndex++;
-        continue;
-      }
-
-      // 获取到满足条件的数据后,就可以退出了
-      if (tmpIndex >= toIndex) {
-        break;
-      }
-
-      tmpIndex++;
-      cursor.next();
-    }
-
-    try {
-      RedisConnectionUtils.releaseConnection(rc, factory, false);
-    } catch (Exception e) {
-      log.error(e.getMessage(), e);
-    }
-
-    return result;
-  }
+//  /**
+//   * 分页查询 key
+//   *
+//   * @param patternKey key
+//   * @param page       页码
+//   * @param size       每页数目
+//   * @return /
+//   */
+//  public List<String> findKeysForPage(String patternKey, int page, int size) {
+//    ScanOptions options = ScanOptions.scanOptions().match(patternKey).build();
+//    RedisConnectionFactory factory = redisTemplate.getConnectionFactory();
+//    RedisConnection rc = Objects.requireNonNull(factory).getConnection();
+//    Cursor<byte[]> cursor = rc.scan(options);
+//    List<String> result = new ArrayList<>(size);
+//    int tmpIndex = 0;
+//    int fromIndex = page * size;
+//    int toIndex = page * size + size;
+//
+//    while (cursor.hasNext()) {
+//      if (tmpIndex >= fromIndex && tmpIndex < toIndex) {
+//        result.add(new String(cursor.next()));
+//        tmpIndex++;
+//        continue;
+//      }
+//
+//      // 获取到满足条件的数据后,就可以退出了
+//      if (tmpIndex >= toIndex) {
+//        break;
+//      }
+//
+//      tmpIndex++;
+//      cursor.next();
+//    }
+//
+//    try {
+//      RedisConnectionUtils.releaseConnection(rc, factory, false);
+//    } catch (Exception e) {
+//      log.error(e.getMessage(), e);
+//    }
+//
+//    return result;
+//  }
 
   /**
    * 判断key是否存在
@@ -167,7 +167,7 @@ public class RedisUtils {
   /**
    * 删除缓存
    *
-   * @param key 可以传一个值 或多个
+   * @param keys 可以传一个值 或多个
    */
   public void del(String... keys) {
     if (keys != null && keys.length > 0) {

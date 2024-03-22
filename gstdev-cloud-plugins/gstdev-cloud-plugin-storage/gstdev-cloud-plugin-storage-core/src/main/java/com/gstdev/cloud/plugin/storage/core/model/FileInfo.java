@@ -9,7 +9,7 @@
 
 package com.gstdev.cloud.plugin.storage.core.model;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -18,30 +18,30 @@ import lombok.Data;
 @Data
 public class FileInfo {
 
-  @ApiModelProperty("附件集UUID")
+  @Schema(description = "附件集UUID")
   private String attachmentUuid;
-  @ApiModelProperty("上传目录")
+  @Schema(description = "上传目录")
   private String directory;
-  @ApiModelProperty("文件地址")
+  @Schema(description = "文件地址")
   private String fileUrl;
-  @ApiModelProperty("文件类型")
+  @Schema(description = "文件类型")
   private String fileType;
-  @ApiModelProperty("文件名称")
+  @Schema(description = "文件名称")
   private String fileName;
-  @ApiModelProperty("文件大小")
+  @Schema(description = "文件大小")
   private Long fileSize;
-  @ApiModelProperty("文件目录")
+  @Schema(description = "文件目录")
   private String bucketName;
-  @ApiModelProperty("对象KEY")
+  @Schema(description = "对象KEY")
   private String fileKey;
-  @ApiModelProperty("租户Id")
+  @Schema(description = "租户Id")
   private Long tenantId;
-  @ApiModelProperty("文件MD5")
+  @Schema(description = "文件MD5")
   private String md5;
-  @ApiModelProperty("存储编码")
+  @Schema(description = "存储编码")
   private String storageCode;
-  @ApiModelProperty("来源类型")
+  @Schema(description = "来源类型")
   private String sourceType;
-  @ApiModelProperty("服务器编码")
+  @Schema(description = "服务器编码")
   private String serverCode;
 }

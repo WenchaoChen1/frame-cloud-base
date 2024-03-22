@@ -31,7 +31,7 @@ public class SpringContextHolder implements ApplicationContextAware, DisposableB
     if (addCallback) {
       SpringContextHolder.CALL_BACKS.add(callBack);
     } else {
-      log.warn("[Riching Cloud] |- CallBack: {} cannot be added, execute directly", callBack.getCallBackName());
+      log.warn("[GstDev Cloud] |- CallBack: {} cannot be added, execute directly", callBack.getCallBackName());
       callBack.executor();
     }
   }
@@ -72,7 +72,7 @@ public class SpringContextHolder implements ApplicationContextAware, DisposableB
 
   private static void assertContextInjected() {
     if (applicationContext == null) {
-      throw new IllegalStateException("[Riching Cloud] |- applicaitonContext cannot be injected, please define SpringContextHolder in applicationContext" + ".xml or register SpringContextHolder in SpringBoot start class.");
+      throw new IllegalStateException("[GstDev Cloud] |- applicaitonContext cannot be injected, please define SpringContextHolder in applicationContext" + ".xml or register SpringContextHolder in SpringBoot start class.");
     }
   }
 
@@ -89,7 +89,7 @@ public class SpringContextHolder implements ApplicationContextAware, DisposableB
   @Override
   public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
     if (SpringContextHolder.applicationContext != null) {
-      log.warn("[Riching Cloud] |- SpringContextHolder ApplicationContext is override, original ApplicationContext is: " + SpringContextHolder.applicationContext);
+      log.warn("[GstDev Cloud] |- SpringContextHolder ApplicationContext is override, original ApplicationContext is: " + SpringContextHolder.applicationContext);
     }
 
     SpringContextHolder.applicationContext = applicationContext;

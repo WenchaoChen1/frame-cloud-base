@@ -18,7 +18,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.oauth2.core.oidc.OidcScopes;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.*;

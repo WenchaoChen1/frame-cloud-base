@@ -64,7 +64,7 @@ public class SwaggerAutoConfiguration {
 
   @Bean
   public ViewResolver getViewResolver() {
-    log.info("[Riching Cloud] |- Swagger start.");
+    log.info("[GstDev Cloud] |- Swagger start.");
     InternalResourceViewResolver resolver = new InternalResourceViewResolver();
     resolver.setPrefix("/WEB-INF/");
     resolver.setSuffix(".html");

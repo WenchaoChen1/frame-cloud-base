@@ -1,7 +1,7 @@
 package com.gstdev.cloud.plugin.storage.core.service;
 
 import java.io.IOException;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 import com.gstdev.cloud.plugin.storage.core.model.StoreConfig;
 //import org.apache.commons.io.IOUtils;

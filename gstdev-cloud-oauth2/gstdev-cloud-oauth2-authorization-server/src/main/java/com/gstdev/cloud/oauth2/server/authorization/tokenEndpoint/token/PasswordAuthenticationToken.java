@@ -7,7 +7,7 @@
 //
 // ====================================================
 
-package com.gstdev.cloud.oauth2.server.authorization.token;
+package com.gstdev.cloud.oauth2.server.authorization.tokenEndpoint.token;
 
 import org.springframework.lang.Nullable;
 import org.springframework.security.core.Authentication;
