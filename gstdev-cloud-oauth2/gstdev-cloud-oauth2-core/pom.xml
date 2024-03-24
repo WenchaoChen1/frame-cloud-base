@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.gstdev.cloud</groupId>
+    <artifactId>gstdev-cloud-oauth2</artifactId>
+    <version>2024.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <groupId>com.gstdev.cloud</groupId>
+  <artifactId>gstdev-cloud-oauth2-core</artifactId>
+  <name>GstDev Cloud :: OAuth2 :: Core</name>
+  <!--  <description>${project.name}</description>-->
+  <packaging>jar</packaging>
+  <description>基于 Spring Authorization Server 的 Dante Cloud 基础核心组件模块</description>
+
+  <dependencies>
+
+    <!-- 添加spring security cas支持
+     这里需添加spring-security-cas依赖，
+     否则启动时报java.lang.ClassNotFoundException: org.springframework.security.cas.jackson2.CasJackson2Module错误。
+     -->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.security</groupId>-->
+<!--      <artifactId>spring-security-cas</artifactId>-->
+<!--    </dependency>-->
+    <!-- TODO-->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-cas</artifactId>
+      <exclusions>
+        <exclusion>
+          <artifactId>bcpkix-jdk15on</artifactId>
+          <groupId>org.bouncycastle</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-oauth2-jose</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-oauth2-resource-server</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>

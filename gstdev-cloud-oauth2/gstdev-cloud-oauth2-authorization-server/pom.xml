@@ -3,7 +3,7 @@
 
   <modelVersion>4.0.0</modelVersion>
   <name>GstDev Cloud :: OAuth2 :: Authorization Server</name>
-  <description>${project.name}</description>
+  <description>GstDev Cloud OAuth2 授权服务器必要组件配置模块</description>
   <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
   <packaging>jar</packaging>
 
@@ -15,11 +15,24 @@
   </parent>
 
   <dependencies>
-    <!-- SpringCloud related dependencies -->
+
     <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-openfeign</artifactId>
+      <groupId>com.gstdev.cloud</groupId>
+      <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>com.gstdev.cloud</groupId>
+      <artifactId>gstdev-cloud-oauth2-sdk-authorization</artifactId>
+    </dependency>
+
+
+
+<!--    &lt;!&ndash; SpringCloud related dependencies &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.cloud</groupId>-->
+<!--      <artifactId>spring-cloud-starter-openfeign</artifactId>-->
+<!--    </dependency>-->
     <!-- RichingCloud related dependencies -->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
@@ -29,37 +42,37 @@
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-data-jpa</artifactId>
     </dependency>
-    <!-- SpringBoot related dependencies -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-security</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-jdbc</artifactId>
-    </dependency>
-    <!-- Spring Security related dependencies -->
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-oauth2-authorization-server</artifactId>
-    </dependency>
+<!--    &lt;!&ndash; SpringBoot related dependencies &ndash;&gt;-->
 <!--    <dependency>-->
-<!--      <groupId>org.springframework.session</groupId>-->
-<!--      <artifactId>spring-session-core</artifactId>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-security</artifactId>-->
 <!--    </dependency>-->
 <!--    <dependency>-->
-<!--      <groupId>org.springframework.session</groupId>-->
-<!--      <artifactId>spring-session-data-redis</artifactId>-->
-<!--      <version>3.2.2</version> &lt;!&ndash; 版本号根据您的需求进行指定 &ndash;&gt;-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-jdbc</artifactId>-->
 <!--    </dependency>-->
+<!--    &lt;!&ndash; Spring Security related dependencies &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.security</groupId>-->
+<!--      <artifactId>spring-security-oauth2-authorization-server</artifactId>-->
+<!--    </dependency>-->
+<!--&lt;!&ndash;    <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;      <groupId>org.springframework.session</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;      <artifactId>spring-session-core</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;    </dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;    <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;      <groupId>org.springframework.session</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;      <artifactId>spring-session-data-redis</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;      <version>3.2.2</version> &lt;!&ndash; 版本号根据您的需求进行指定 &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    </dependency>&ndash;&gt;-->
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-config</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.springframework.session</groupId>
-      <artifactId>spring-session-data-redis</artifactId>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.session</groupId>-->
+<!--      <artifactId>spring-session-data-redis</artifactId>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-starter-data-redis</artifactId>

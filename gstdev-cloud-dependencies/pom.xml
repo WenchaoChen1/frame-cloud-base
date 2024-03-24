@@ -33,11 +33,11 @@
 
 
     <!--Spring 家族-->
-<!--    <spring-boot-admin.version>3.2.2</spring-boot-admin.version>-->
-<!--    <spring-boot-dependencies.version>3.2.4</spring-boot-dependencies.version>-->
-<!--    <spring-cloud-dependencies.version>2023.0.0</spring-cloud-dependencies.version>-->
-<!--    <spring-cloud-alibaba-dependencies.version>2023.0.0.0-RC1</spring-cloud-alibaba-dependencies.version>-->
-<!--    <spring-cloud-tencent-dependencies.version>1.13.1-2023.0.0</spring-cloud-tencent-dependencies.version>-->
+    <!--    <spring-boot-admin.version>3.2.2</spring-boot-admin.version>-->
+    <!--    <spring-boot-dependencies.version>3.2.4</spring-boot-dependencies.version>-->
+    <!--    <spring-cloud-dependencies.version>2023.0.0</spring-cloud-dependencies.version>-->
+    <!--    <spring-cloud-alibaba-dependencies.version>2023.0.0.0-RC1</spring-cloud-alibaba-dependencies.version>-->
+    <!--    <spring-cloud-tencent-dependencies.version>1.13.1-2023.0.0</spring-cloud-tencent-dependencies.version>-->
 
     <spring-security-oauth2-authorization-server.version>1.2.3</spring-security-oauth2-authorization-server.version>
     <spring-boot.version>3.2.4</spring-boot.version>
@@ -110,22 +110,13 @@
         <artifactId>spring-security-oauth2-authorization-server</artifactId>
         <version>${spring-security-oauth2-authorization-server.version}</version>
       </dependency>
-<!--      <dependency>-->
-<!--        <groupId>org.springframework.session</groupId>-->
-<!--        <artifactId>spring-session-core</artifactId>-->
-<!--        <version>3.0.0</version>-->
-<!--      </dependency>-->
-      <!-- 添加spring security cas支持
-       这里需添加spring-security-cas依赖，
-       否则启动时报java.lang.ClassNotFoundException: org.springframework.security.cas.jackson2.CasJackson2Module错误。
-       -->
-      <!-- TODO-->
-      <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-cas</artifactId>
-      </dependency>
+      <!--      <dependency>-->
+      <!--        <groupId>org.springframework.session</groupId>-->
+      <!--        <artifactId>spring-session-core</artifactId>-->
+      <!--        <version>3.0.0</version>-->
+      <!--      </dependency>-->
 
-      <!-- GstDevCloud related dependencies -->
+      <!-- [GstDev Cloud] related dependencies -->
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-commons</artifactId>
@@ -152,11 +143,7 @@
         <artifactId>gstdev-cloud-data-redis</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
+
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-service-oauth2</artifactId>
@@ -175,6 +162,33 @@
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-plugins</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+
+      <!-- [GstDev Cloud] oauth2 -->
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-oauth2-core</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-oauth2-sdk-authorization</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-oauth2-sdk-resource-authentication</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
 
@@ -265,11 +279,6 @@
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-starter-swagger</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
 
