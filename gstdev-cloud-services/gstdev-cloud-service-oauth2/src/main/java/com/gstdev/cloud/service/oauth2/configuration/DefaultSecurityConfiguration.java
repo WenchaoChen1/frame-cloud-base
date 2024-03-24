@@ -11,6 +11,7 @@ package com.gstdev.cloud.service.oauth2.configuration;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.convert.Convert;
+import com.gstdev.cloud.oauth2.server.authorization.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
 import com.gstdev.cloud.oauth2.server.authorization.handler.DefaultAccessDeniedHandler;
 import com.gstdev.cloud.oauth2.server.authorization.handler.DefaultAuthenticationEntryPoint;
 import jakarta.annotation.Resource;
@@ -69,16 +70,19 @@ public class DefaultSecurityConfiguration {
   public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http,
                                                         UrlBasedCorsConfigurationSource configurationSource,
                                                         //  BearerTokenResolver bearerTokenResolver,
-                                                        JwtDecoder jwtDecoder) {
+                                                        JwtDecoder jwtDecoder,
+                                                        OAuth2AuthorizeHttpRequestsConfigurerCustomer oauth2AuthorizeHttpRequestsConfigurerCustomer) {
     DefaultAccessDeniedHandler accessDeniedHandler = new DefaultAccessDeniedHandler();
     DefaultAuthenticationEntryPoint authenticationEntryPoint = new DefaultAuthenticationEntryPoint();
-    http.authorizeHttpRequests(authorizeRequests -> {
-        if (CollectionUtil.isNotEmpty(whiteListProperties.getWhitelist())) {
-          authorizeRequests.requestMatchers(Convert.toStrArray(whiteListProperties)).permitAll();
-        }
-        authorizeRequests.requestMatchers("/swagger-ui/**", "/swagger-resources/**", "/v3/**").permitAll();
-        authorizeRequests.anyRequest().authenticated();
-      })
+    http
+        .authorizeHttpRequests(oauth2AuthorizeHttpRequestsConfigurerCustomer)
+//      .authorizeHttpRequests(authorizeRequests -> {
+//        if (CollectionUtil.isNotEmpty(whiteListProperties.getWhitelist())) {
+//          authorizeRequests.requestMatchers(Convert.toStrArray(whiteListProperties)).permitAll();
+//        }
+//        authorizeRequests.requestMatchers("/swagger-ui/**", "/swagger-resources/**", "/v3/**").permitAll();
+//        authorizeRequests.anyRequest().authenticated();
+//      })
 //      .sessionManagement(sessionManager -> sessionManager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 //      .csrf().disable()
       // TODO 不知道做什么的

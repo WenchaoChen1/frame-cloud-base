@@ -15,6 +15,7 @@ import com.gstdev.cloud.oauth2.server.authorization.handler.DefaultAuthenticatio
 import com.gstdev.cloud.oauth2.server.authorization.handler.DefaultAuthenticationFailureHandler;
 import com.gstdev.cloud.oauth2.server.authorization.handler.DefaultAuthenticationSuccessHandler;
 import com.gstdev.cloud.oauth2.server.authorization.service.DefaultUserDetailsService;
+import com.gstdev.cloud.oauth2.server.authorization.utils.OAuth2ConfigurerUtils;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;
@@ -34,6 +35,7 @@ import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -76,10 +78,9 @@ import java.util.UUID;
 //@AutoConfigureAfter(RedisAutoConfiguration.class)
 @AutoConfigureAfter({RedisAutoConfiguration.class})
 @EnableConfigurationProperties(AuthorizationServerProperties.class)
+//@Import({OAuth2SessionConfiguration.class})
 public class AuthorizationServerConfiguration {
 
-
-////
 ////  @Bean
 ////  public OAuth2TokenCustomizer<JwtEncodingContext> buildCustomizer() {
 ////    DefaultOAuth2TokenCustomizer tokenCustomizer = new DefaultOAuth2TokenCustomizer();
@@ -89,12 +90,9 @@ public class AuthorizationServerConfiguration {
 ////  public JwtAuthenticationConverter jwtAuthenticationConverter() {
 ////    var converter = new JwtAuthenticationConverter();
 ////    var authorities = new JwtGrantedAuthoritiesConverter();
-////
 ////    authorities.setAuthoritiesClaimName("authorities");
 ////    authorities.setAuthorityPrefix("");
-////
 ////    converter.setJwtGrantedAuthoritiesConverter(authorities);
-////
 ////    return converter;
 ////  }
 ////
@@ -102,8 +100,6 @@ public class AuthorizationServerConfiguration {
 ////  public BearerTokenResolver bearerTokenResolver() {
 ////    return new DefaultBearerTokenResolver();
 ////  }
-////
-
 
 //
 //  /**
@@ -125,9 +121,8 @@ public class AuthorizationServerConfiguration {
   @Resource
   private AuthorizationServerProperties authorizationServerProperties;
 
-//  @Resource
+  //  @Resource
 //  private PasswordEncoder passwordEncoder;
-
   /**
    * 授权配置
    * // @Order 表示加载优先级；HIGHEST_PRECEDENCE为最高优先级
@@ -140,14 +135,22 @@ public class AuthorizationServerConfiguration {
   @Order(Ordered.HIGHEST_PRECEDENCE)
   @SneakyThrows
   public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http,
+//                                                                    AuthorizationServerProperties authorizationServerProperties,
 //                                                                    AuthenticationManager authenticationManager,
                                                                     JwtDecoder jwtDecoder,
 //                                                                    BearerTokenResolver bearerTokenResolver,
 //                                                                    OAuth2TokenGenerator<?> tokenGenerator,
+//                                                                    OAuth2SessionManagementConfigurerCustomer oauth2sessionManagementConfigurerCustomer,
                                                                     OAuth2AuthorizationService authorizationService) {
+    log.debug("[GstDev Cloud] |- Bean [Authorization Server Security Filter Chain] Auto Configure.");
+
+
 
     //是一个便利 ( static) 实用程序方法，它将默认的 OAuth2 安全配置应用于HttpSecurity.
     OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
+
+//    SessionRegistry sessionRegistry = OAuth2ConfigurerUtils.getOptionalBean(http, SessionRegistry.class);
+
     //提供完全自定义 OAuth2 授权服务器安全配置的能力。它允许您指定要使用的核心组件 - 例如，RegisteredClientRepository、
     // OAuth2AuthorizationService、OAuth2TokenGenerator和其他。此外，它还允许您自定义协议端点的请求处理逻辑 -
     // 例如，授权端点、设备授权端点、设备验证端点、令牌端点、令牌内省端点等。
@@ -162,22 +165,27 @@ public class AuthorizationServerConfiguration {
 //    authorizationServerConfigurer.authorizationConsentService(authorizationConsentService);
 //    authorizationServerConfigurer.authorizationServerSettings(authorizationServerSettings);
 //    authorizationServerConfigurer.tokenGenerator(tokenGenerator);
-//    authorizationServerConfigurer.clientAuthentication(clientAuthentication -> {
-//      clientAuthentication.errorResponseHandler(errorResponseHandler);//（AuthenticationFailureHandler后处理器）用于处理失败的客户端身份验证并返回OAuth2Error响应。
-//    });
-//    authorizationServerConfigurer.authorizationEndpoint(authorizationEndpoint -> {
-//      authorizationEndpoint.errorResponseHandler(errorResponseHandler);
-//    });
-//    authorizationServerConfigurer.deviceAuthorizationEndpoint(deviceAuthorizationEndpoint -> {
-//    });
-//    authorizationServerConfigurer.deviceVerificationEndpoint(deviceVerificationEndpoint -> {
-//    });
+    authorizationServerConfigurer.clientAuthentication(clientAuthentication -> {
+      clientAuthentication.errorResponseHandler(errorResponseHandler);//（AuthenticationFailureHandler后处理器）用于处理失败的客户端身份验证并返回OAuth2Error响应。
+    });
+    authorizationServerConfigurer.authorizationEndpoint(authorizationEndpoint -> {
+      authorizationEndpoint.errorResponseHandler(errorResponseHandler);
+//      authorizationEndpoint.consentPage(authorizationServerProperties.getu);
+    });
+    authorizationServerConfigurer.deviceAuthorizationEndpoint(deviceAuthorizationEndpoint -> {
+      deviceAuthorizationEndpoint.errorResponseHandler(errorResponseHandler);
+      //      authorizationEndpoint.consentPage(authorizationServerProperties.getu);
+    });
+    authorizationServerConfigurer.deviceVerificationEndpoint(deviceVerificationEndpoint -> {
+      deviceVerificationEndpoint.errorResponseHandler(errorResponseHandler);
+      //      authorizationEndpoint.consentPage(authorizationServerProperties.getu);
+    });
 
 // TODO 保留这三行  可替换
 //    AuthenticationManager authenticationManager = http.getSharedObject(AuthenticationManager.class);
 //    @SuppressWarnings("unchecked")
 //    OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator = http.getSharedObject(OAuth2TokenGenerator.class);
-//    authorizationServerConfigurer.tokenEndpoint(tokenEndpoint -> {
+    authorizationServerConfigurer.tokenEndpoint(tokenEndpoint -> {
       // @formatter:off
 //      tokenEndpoint.accessTokenRequestConverters(
 //        authenticationConverters ->// <1>
@@ -188,15 +196,17 @@ public class AuthorizationServerConfiguration {
 //            )
 //          )
 //      );
-//      tokenEndpoint.accessTokenRequestConverter(
-//        new DelegatingAuthenticationConverter(Arrays.asList(
-//          new OAuth2AuthorizationCodeAuthenticationConverter(),
-//          new OAuth2RefreshTokenAuthenticationConverter(),
-//          new OAuth2ClientCredentialsAuthenticationConverter(),
-//          // 自定义授权模式转换器(Converter)
-//          new PasswordAuthenticationConverter()
-//        ))
-//      );
+//      AuthenticationConverter delegatingAuthenticationConverter = new DelegatingAuthenticationConverter(Arrays.asList(
+//        new OAuth2AuthorizationCodeAuthenticationConverter(),
+//        new OAuth2RefreshTokenAuthenticationConverter(),
+//        new OAuth2ClientCredentialsAuthenticationConverter(),
+//        //TODO 多加的
+//        new OAuth2DeviceCodeAuthenticationConverter()
+//        //自定义授权模式转换器(Converter)
+////        new PasswordAuthenticationConverter()
+////        new OAuth2PasswordAuthenticationConverter()
+//      ));
+//      tokenEndpoint.accessTokenRequestConverter(delegatingAuthenticationConverter);
 //
 //      // 自定义授权模式提供者(Provider)
 //      tokenEndpoint.authenticationProviders(authenticationProviders ->// <2>
@@ -209,14 +219,12 @@ public class AuthorizationServerConfiguration {
 //      );
 //      tokenEndpoint.accessTokenResponseHandler(successResponseHandler);// 自定义成功响应
       // @formatter:on
-//      tokenEndpoint.errorResponseHandler(errorResponseHandler);// 自定义失败响应
-//    });
-//
-//    authorizationServerConfigurer.tokenIntrospectionEndpoint(tokenIntrospectionEndpoint -> {
-//    });
-//    authorizationServerConfigurer.tokenRevocationEndpoint(tokenRevocationEndpoint -> {
-//      tokenRevocationEndpoint.errorResponseHandler(errorResponseHandler);
-//    });
+//      endpoint.accessTokenResponseHandler(new OAuth2AccessTokenResponseHandler(httpCryptoProcessor));
+//      tokenEndpoint.authenticationProviders(new OAuth2AuthorizationCodeAuthenticationProviderConsumer(http, sessionRegistry));
+      tokenEndpoint.errorResponseHandler(errorResponseHandler);// 自定义失败响应
+    });
+    authorizationServerConfigurer.tokenIntrospectionEndpoint(tokenIntrospectionEndpoint -> tokenIntrospectionEndpoint.errorResponseHandler(errorResponseHandler));
+    authorizationServerConfigurer.tokenRevocationEndpoint(tokenRevocationEndpoint -> tokenRevocationEndpoint.errorResponseHandler(errorResponseHandler));
 //    authorizationServerConfigurer.authorizationServerMetadataEndpoint(authorizationServerMetadataEndpoint -> {
 //    });
 //    authorizationServerConfigurer.oidc(oidc -> oidc
@@ -234,6 +242,7 @@ public class AuthorizationServerConfiguration {
 
 
     http
+//      .sessionManagement(oauth2sessionManagementConfigurerCustomer)
       //在未通过身份验证时重定向到登录页面
       //授权端点
       .exceptionHandling(exceptions -> {
@@ -296,7 +305,6 @@ public class AuthorizationServerConfiguration {
 
   @Bean
   public RegisteredClientRepository registeredClientRepository(JdbcTemplate jdbcTemplate) {
-
     // 操作数据库对象
 //        JdbcRegisteredClientRepository registeredClientRepository = new JdbcRegisteredClientRepository(jdbcTemplate);
     List<RegisteredClient> registeredClients = this.registryCloents();
@@ -308,10 +316,8 @@ public class AuthorizationServerConfiguration {
 //        log.info("Add client");
 //      }
     });
-
 //        // ---------- 3、返回客户端仓库
 //        return registeredClientRepository;
-//    return new InMemoryRegisteredClientRepository(oidcClient, createRegisteredClientAuthorizationCode(clientId_1), createRegisteredClient(clientId_2));
     return new InMemoryRegisteredClientRepository(registeredClients);
   }
 
@@ -369,10 +375,7 @@ public class AuthorizationServerConfiguration {
     return (jwkSelector, securityContext) -> jwkSelector.select(jwkSet);
   }
 
-
 //  private final OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer;
-//
-//
 //  @Bean
 //  OAuth2TokenGenerator<?> tokenGenerator(JWKSource<SecurityContext> jwkSource) {
 //    JwtGenerator jwtGenerator = new JwtGenerator(new NimbusJwtEncoder(jwkSource));
@@ -483,7 +486,6 @@ public class AuthorizationServerConfiguration {
           官方ISSUE： https://github.com/spring-projects/spring-authorization-server/issues/1099
          */
 //      String encodeSecret = passwordEncoder().encode(clientSecret);
-
 //     @formatter:off
     RegisteredClient codeRegisteredClient = RegisteredClient
       .withId(UUID.randomUUID().toString())
@@ -497,7 +499,6 @@ public class AuthorizationServerConfiguration {
       .redirectUri("http://www.baidu.com")
       .scope("project:read")
       .scope("project:write")
-
       .clientSettings(ClientSettings.builder()
         .requireAuthorizationConsent(false)
         .requireProofKey(false)
@@ -518,18 +519,14 @@ public class AuthorizationServerConfiguration {
       .clientId("credentials-client")
       .clientName("Credentials Client")
       .clientSecret(passwordEncoder().encode("black123"))
-
       .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-
       .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
       .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-
       .clientSettings(ClientSettings.builder()
         .requireAuthorizationConsent(false)
         .requireProofKey(false)
         .build()
       )
-
       .tokenSettings(TokenSettings.builder()
         .accessTokenTimeToLive(Duration.ofHours(720))
         .refreshTokenTimeToLive(Duration.ofHours(720))
@@ -544,12 +541,9 @@ public class AuthorizationServerConfiguration {
       .clientId("password-client")
       .clientName("Password Client")
       .clientSecret(passwordEncoder().encode("black123"))
-
       .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-
       .authorizationGrantType(AuthorizationGrantType.PASSWORD)
       .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-
       .clientSettings(ClientSettings.builder()
         .requireAuthorizationConsent(false)
         .requireProofKey(false)

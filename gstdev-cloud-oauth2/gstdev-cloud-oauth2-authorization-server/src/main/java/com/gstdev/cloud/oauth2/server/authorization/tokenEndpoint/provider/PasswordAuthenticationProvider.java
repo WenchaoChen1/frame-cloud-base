@@ -43,7 +43,7 @@ import java.util.Set;
 @Slf4j
 public class PasswordAuthenticationProvider implements AuthenticationProvider {
 
-  private final AuthenticationManager authenticationManager;
+//  private final AuthenticationManager authenticationManager;
   private final OAuth2AuthorizationService oAuth2AuthorizationService;
   private final OAuth2TokenGenerator<? extends OAuth2Token> oAuth2TokenGenerator;
 
@@ -54,12 +54,13 @@ public class PasswordAuthenticationProvider implements AuthenticationProvider {
    * @param oAuth2AuthorizationService  the authorization service
    * @param oAuth2TokenGenerator        the token generator
    */
-  public PasswordAuthenticationProvider(AuthenticationManager authenticationManager,
+  public PasswordAuthenticationProvider(
+//    AuthenticationManager authenticationManager,
                                         OAuth2AuthorizationService oAuth2AuthorizationService,
                                         OAuth2TokenGenerator<? extends OAuth2Token> oAuth2TokenGenerator) {
 //    Assert.notNull(authorizationService, "authorizationService cannot be null");
 //    Assert.notNull(tokenGenerator, "tokenGenerator cannot be null");
-    this.authenticationManager = authenticationManager;
+//    this.authenticationManager = authenticationManager;
     this.oAuth2AuthorizationService = oAuth2AuthorizationService;
     this.oAuth2TokenGenerator = oAuth2TokenGenerator;
   }
@@ -85,8 +86,8 @@ public class PasswordAuthenticationProvider implements AuthenticationProvider {
     Authentication usernamePasswordAuthentication = null;
     try {
       UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(username, password);
-      usernamePasswordAuthentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
-      log.debug("[GstDev Cloud] |- Resource Owner Password username and password authenticate success ：[{}]", usernamePasswordAuthentication);
+//      usernamePasswordAuthentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+//      log.debug("[GstDev Cloud] |- Resource Owner Password username and password authenticate success ：[{}]", usernamePasswordAuthentication);
     } catch (AccountStatusException | BadCredentialsException ase) {
       // 需要将其他类型的异常转换为 OAuth2AuthenticationException 才能被自定义异常捕获处理，逻辑源码 OAuth2TokenEndpointFilter#doFilterInternal
       OAuth2EndpointUtils.throwError(OAuth2ErrorCodes.INVALID_GRANT, ase.getMessage(), OAuth2EndpointUtils.ACCESS_TOKEN_REQUEST_ERROR_URI);
