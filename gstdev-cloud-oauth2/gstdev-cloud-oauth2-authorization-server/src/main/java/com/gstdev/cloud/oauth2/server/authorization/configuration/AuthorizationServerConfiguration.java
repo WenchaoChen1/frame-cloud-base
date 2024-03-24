@@ -14,7 +14,10 @@ import com.gstdev.cloud.oauth2.server.authorization.handler.DefaultAccessDeniedH
 import com.gstdev.cloud.oauth2.server.authorization.handler.DefaultAuthenticationEntryPoint;
 import com.gstdev.cloud.oauth2.server.authorization.handler.DefaultAuthenticationFailureHandler;
 import com.gstdev.cloud.oauth2.server.authorization.handler.DefaultAuthenticationSuccessHandler;
+import com.gstdev.cloud.oauth2.server.authorization.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.server.authorization.service.DefaultUserDetailsService;
+import com.gstdev.cloud.oauth2.server.authorization.tokenEndpoint.consumer.OAuth2AuthorizationCodeAuthenticationProviderConsumer;
+import com.gstdev.cloud.oauth2.server.authorization.tokenEndpoint.converter.OAuth2PasswordAuthenticationConverter;
 import com.gstdev.cloud.oauth2.server.authorization.utils.OAuth2ConfigurerUtils;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
@@ -28,6 +31,7 @@ import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
@@ -35,6 +39,7 @@ import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
@@ -57,7 +62,9 @@ import org.springframework.security.oauth2.server.authorization.config.annotatio
 import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
+import org.springframework.security.oauth2.server.authorization.web.authentication.*;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationConverter;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
 
@@ -67,6 +74,7 @@ import java.security.cert.CertificateFactory;
 import java.security.interfaces.RSAPublicKey;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -123,6 +131,7 @@ public class AuthorizationServerConfiguration {
 
   //  @Resource
 //  private PasswordEncoder passwordEncoder;
+
   /**
    * 授权配置
    * // @Order 表示加载优先级；HIGHEST_PRECEDENCE为最高优先级
@@ -138,12 +147,14 @@ public class AuthorizationServerConfiguration {
 //                                                                    AuthorizationServerProperties authorizationServerProperties,
 //                                                                    AuthenticationManager authenticationManager,
                                                                     JwtDecoder jwtDecoder,
+                                                                    PasswordEncoder passwordEncoder,
+                                                                    UserDetailsService userDetailsService,
+                                                                    OAuth2AuthenticationProperties oauth2AuthenticationProperties,
 //                                                                    BearerTokenResolver bearerTokenResolver,
 //                                                                    OAuth2TokenGenerator<?> tokenGenerator,
 //                                                                    OAuth2SessionManagementConfigurerCustomer oauth2sessionManagementConfigurerCustomer,
                                                                     OAuth2AuthorizationService authorizationService) {
     log.debug("[GstDev Cloud] |- Bean [Authorization Server Security Filter Chain] Auto Configure.");
-
 
 
     //是一个便利 ( static) 实用程序方法，它将默认的 OAuth2 安全配置应用于HttpSecurity.
@@ -186,27 +197,17 @@ public class AuthorizationServerConfiguration {
 //    @SuppressWarnings("unchecked")
 //    OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator = http.getSharedObject(OAuth2TokenGenerator.class);
     authorizationServerConfigurer.tokenEndpoint(tokenEndpoint -> {
-      // @formatter:off
-//      tokenEndpoint.accessTokenRequestConverters(
-//        authenticationConverters ->// <1>
-//          authenticationConverters.addAll(
-//            // 自定义授权模式转换器(Converter)
-//            List.of(
-//              new PasswordAuthenticationConverter()
-//            )
-//          )
-//      );
-//      AuthenticationConverter delegatingAuthenticationConverter = new DelegatingAuthenticationConverter(Arrays.asList(
-//        new OAuth2AuthorizationCodeAuthenticationConverter(),
-//        new OAuth2RefreshTokenAuthenticationConverter(),
-//        new OAuth2ClientCredentialsAuthenticationConverter(),
-//        //TODO 多加的
-//        new OAuth2DeviceCodeAuthenticationConverter()
-//        //自定义授权模式转换器(Converter)
-////        new PasswordAuthenticationConverter()
-////        new OAuth2PasswordAuthenticationConverter()
-//      ));
-//      tokenEndpoint.accessTokenRequestConverter(delegatingAuthenticationConverter);
+      AuthenticationConverter delegatingAuthenticationConverter = new DelegatingAuthenticationConverter(Arrays.asList(
+        new OAuth2AuthorizationCodeAuthenticationConverter(),
+        new OAuth2RefreshTokenAuthenticationConverter(),
+        new OAuth2ClientCredentialsAuthenticationConverter(),
+        //TODO 多加的
+        new OAuth2DeviceCodeAuthenticationConverter(),
+        //自定义授权模式转换器(Converter)
+//        new PasswordAuthenticationConverter()
+        new OAuth2PasswordAuthenticationConverter()
+      ));
+      tokenEndpoint.accessTokenRequestConverter(delegatingAuthenticationConverter);
 //
 //      // 自定义授权模式提供者(Provider)
 //      tokenEndpoint.authenticationProviders(authenticationProviders ->// <2>
@@ -219,8 +220,9 @@ public class AuthorizationServerConfiguration {
 //      );
 //      tokenEndpoint.accessTokenResponseHandler(successResponseHandler);// 自定义成功响应
       // @formatter:on
-//      endpoint.accessTokenResponseHandler(new OAuth2AccessTokenResponseHandler(httpCryptoProcessor));
+//      tokenEndpoint.accessTokenResponseHandler(new OAuth2AccessTokenResponseHandler(httpCryptoProcessor));
 //      tokenEndpoint.authenticationProviders(new OAuth2AuthorizationCodeAuthenticationProviderConsumer(http, sessionRegistry));
+      tokenEndpoint.authenticationProviders(new OAuth2AuthorizationCodeAuthenticationProviderConsumer(http));
       tokenEndpoint.errorResponseHandler(errorResponseHandler);// 自定义失败响应
     });
     authorizationServerConfigurer.tokenIntrospectionEndpoint(tokenIntrospectionEndpoint -> tokenIntrospectionEndpoint.errorResponseHandler(errorResponseHandler));
@@ -243,6 +245,8 @@ public class AuthorizationServerConfiguration {
 
     http
 //      .sessionManagement(oauth2sessionManagementConfigurerCustomer)
+//      .sessionManagement(sessionManager -> sessionManager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//      .sessionManagement(sessionManager -> sessionManager.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
       //在未通过身份验证时重定向到登录页面
       //授权端点
       .exceptionHandling(exceptions -> {
@@ -260,11 +264,13 @@ public class AuthorizationServerConfiguration {
 //        resourceServer.bearerTokenResolver(bearerTokenResolver);
 //        resourceServer.accessDeniedHandler(accessDeniedHandler);
 //        resourceServer.authenticationEntryPoint(authenticationEntryPoint);
-      });
+      })
+//      .apply(new OAuth2AuthenticationProviderConfigurer(sessionRegistry,passwordEncoder, userDetailsService, oauth2AuthenticationProperties));
+      .apply(new OAuth2AuthenticationProviderConfigurer(passwordEncoder, userDetailsService, oauth2AuthenticationProperties));
 //      .authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest().authenticated())
 //      .csrf(csrf -> csrf.ignoringRequestMatchers(endpointsMatcher))
 //      })
-//      .sessionManagement(sessionManager -> sessionManager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+
 
     return http.build();
   }

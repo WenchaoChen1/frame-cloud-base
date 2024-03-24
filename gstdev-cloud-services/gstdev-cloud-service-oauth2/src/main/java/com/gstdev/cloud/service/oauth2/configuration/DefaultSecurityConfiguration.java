@@ -24,6 +24,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
@@ -83,7 +84,7 @@ public class DefaultSecurityConfiguration {
 //        authorizeRequests.requestMatchers("/swagger-ui/**", "/swagger-resources/**", "/v3/**").permitAll();
 //        authorizeRequests.anyRequest().authenticated();
 //      })
-//      .sessionManagement(sessionManager -> sessionManager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//      .sessionManagement(sessionManager -> sessionManager.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
 //      .csrf().disable()
       // TODO 不知道做什么的
       .csrf(c -> c.disable())

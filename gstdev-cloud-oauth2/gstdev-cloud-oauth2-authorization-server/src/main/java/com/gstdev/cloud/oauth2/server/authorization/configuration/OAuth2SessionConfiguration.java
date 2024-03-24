@@ -8,16 +8,14 @@
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
 //import org.springframework.security.core.session.SessionRegistry;
-//import org.springframework.security.web.session.HttpSessionEventPublisher;
 //import org.springframework.session.FindByIndexNameSessionRepository;
 //import org.springframework.session.Session;
 //import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisIndexedHttpSession;
 //import org.springframework.session.security.SpringSessionBackedSessionRegistry;
-//
 //@Configuration(
 //  proxyBeanMethods = false
 //)
-////@EnableRedisIndexedHttpSession
+//@EnableRedisIndexedHttpSession
 //public class OAuth2SessionConfiguration {
 //  private static final Logger log = LoggerFactory.getLogger(OAuth2SessionConfiguration.class);
 //
@@ -29,13 +27,13 @@
 //    log.debug("[Herodotus] |- SDK [OAuth2 Session Sharing] Auto Configure.");
 //  }
 //
-////  @Bean
-////  @ConditionalOnMissingBean
-////  public <S extends Session> SessionRegistry sessionRegistry(FindByIndexNameSessionRepository<S> sessionRepository) {
-////    SpringSessionBackedSessionRegistry<S> springSessionBackedSessionRegistry = new SpringSessionBackedSessionRegistry(sessionRepository);
-////    log.trace("[Herodotus] |- Bean [Spring Session Backed Session Registry] Auto Configure.");
-////    return springSessionBackedSessionRegistry;
-////  }
+//  @Bean
+//  @ConditionalOnMissingBean
+//  public <S extends Session> SessionRegistry sessionRegistry(FindByIndexNameSessionRepository<S> sessionRepository) {
+//    SpringSessionBackedSessionRegistry<S> springSessionBackedSessionRegistry = new SpringSessionBackedSessionRegistry(sessionRepository);
+//    log.trace("[Herodotus] |- Bean [Spring Session Backed Session Registry] Auto Configure.");
+//    return springSessionBackedSessionRegistry;
+//  }
 //
 ////  @Bean
 ////  @ConditionalOnMissingBean
