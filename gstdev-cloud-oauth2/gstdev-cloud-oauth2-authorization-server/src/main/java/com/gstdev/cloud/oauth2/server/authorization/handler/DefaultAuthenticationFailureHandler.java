@@ -9,8 +9,8 @@
 
 package com.gstdev.cloud.oauth2.server.authorization.handler;
 
-import com.gstdev.cloud.web.domain.ErrorResponse;
-import com.gstdev.cloud.web.utils.WebUtils;
+import com.gstdev.cloud.commons.domain.ErrorResponse;
+import com.gstdev.cloud.commons.utils.WebUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,7 +19,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.oauth2.core.OAuth2Error;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 import java.io.IOException;

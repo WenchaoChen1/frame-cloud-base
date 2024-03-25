@@ -9,13 +9,13 @@
 
 package com.gstdev.cloud.oauth2.server.authorization.feign;
 
+import com.gstdev.cloud.commons.constant.DefaultConstants;
 import com.gstdev.cloud.commons.web.Result;
-import com.gstdev.cloud.oauth2.server.authorization.constant.OAuth2Constants;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.cloud.openfeign.FeignClient;
 
-@FeignClient(value = OAuth2Constants.DEFAULT_USER_DETAIL_URI)
+@FeignClient(value = DefaultConstants.DEFAULT_USER_DETAIL_URI)
 public interface RemoteUserDetailsService {
 
   @GetMapping("/system/users/userInfo")

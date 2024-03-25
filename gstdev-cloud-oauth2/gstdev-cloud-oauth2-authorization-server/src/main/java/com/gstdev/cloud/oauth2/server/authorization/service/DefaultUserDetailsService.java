@@ -10,24 +10,24 @@
 package com.gstdev.cloud.oauth2.server.authorization.service;
 
 import cn.hutool.core.util.ObjectUtil;
+import com.gstdev.cloud.oauth2.authentication.utils.OAuth2EndpointUtils;
+import com.gstdev.cloud.oauth2.core.service.EnhanceUserDetailsService;
 import com.gstdev.cloud.oauth2.server.authorization.model.UserAuth;
-import com.gstdev.cloud.oauth2.server.authorization.utils.OAuth2EndpointUtils;
+import jakarta.annotation.Resource;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.oauth2.core.OAuth2ErrorCodes;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 
-import jakarta.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-public class DefaultUserDetailsService implements UserDetailsService {
+public class DefaultUserDetailsService implements EnhanceUserDetailsService {
 
   @Resource
   private UserDetailService userDetailService;

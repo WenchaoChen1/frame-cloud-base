@@ -35,25 +35,25 @@
 //    String url = request.getRequestURI();
 //    String method = request.getMethod();
 //    if (WebUtils.isStaticResources(url)) {
-//      log.trace("[Herodotus] |- Is static resource : [{}], Passed!", url);
+//      log.trace("[GstDev Cloud] |- Is static resource : [{}], Passed!", url);
 //      return new AuthorizationDecision(true);
 //    } else if (WebUtils.isPathMatch(this.securityMatcherConfigurer.getPermitAllList(), url)) {
-//      log.trace("[Herodotus] |- Is white list resource : [{}], Passed!", url);
+//      log.trace("[GstDev Cloud] |- Is white list resource : [{}], Passed!", url);
 //      return new AuthorizationDecision(true);
 //    } else {
 //      String feignInnerFlag = HeaderUtils.getHerodotusFromIn(request);
 //      if (StringUtils.isNotBlank(feignInnerFlag)) {
-//        log.trace("[Herodotus] |- Is feign inner invoke : [{}], Passed!", url);
+//        log.trace("[GstDev Cloud] |- Is feign inner invoke : [{}], Passed!", url);
 //        return new AuthorizationDecision(true);
 //      } else if (WebUtils.isPathMatch(this.securityMatcherConfigurer.getHasAuthenticatedList(), url)) {
-//        log.trace("[Herodotus] |- Is has authenticated resource : [{}]", url);
+//        log.trace("[GstDev Cloud] |- Is has authenticated resource : [{}]", url);
 //        return new AuthorizationDecision(((Authentication)authentication.get()).isAuthenticated());
 //      } else {
 //        List<HerodotusConfigAttribute> configAttributes = this.findConfigAttribute(url, method, request);
 //        if (CollectionUtils.isEmpty(configAttributes)) {
-//          log.warn("[Herodotus] |- NO PRIVILEGES : [{}].", url);
+//          log.warn("[GstDev Cloud] |- NO PRIVILEGES : [{}].", url);
 //          if (!this.securityMatcherConfigurer.getAuthorizationProperties().getStrict() && ((Authentication)authentication.get()).isAuthenticated()) {
-//            log.debug("[Herodotus] |- Request is authenticated: [{}].", url);
+//            log.debug("[GstDev Cloud] |- Request is authenticated: [{}].", url);
 //            return new AuthorizationDecision(true);
 //          } else {
 //            return new AuthorizationDecision(false);
@@ -72,7 +72,7 @@
 //            decision = webExpressionAuthorizationManager.check(authentication, object);
 //          } while(!decision.isGranted());
 //
-//          log.debug("[Herodotus] |- Request [{}] is authorized!", object.getRequest().getRequestURI());
+//          log.debug("[GstDev Cloud] |- Request [{}] is authorized!", object.getRequest().getRequestURI());
 //          return decision;
 //        }
 //      }
@@ -80,10 +80,10 @@
 //  }
 //
 //  private List<HerodotusConfigAttribute> findConfigAttribute(String url, String method, HttpServletRequest request) {
-//    log.debug("[Herodotus] |- Current Request is : [{}] - [{}]", url, method);
+//    log.debug("[GstDev Cloud] |- Current Request is : [{}] - [{}]", url, method);
 //    List<HerodotusConfigAttribute> configAttributes = this.securityMetadataSourceStorage.getConfigAttribute(url, method);
 //    if (CollectionUtils.isNotEmpty(configAttributes)) {
-//      log.debug("[Herodotus] |- Get configAttributes from local storage for : [{}] - [{}]", url, method);
+//      log.debug("[GstDev Cloud] |- Get configAttributes from local storage for : [{}] - [{}]", url, method);
 //      return configAttributes;
 //    } else {
 //      LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> compatible = this.securityMetadataSourceStorage.getCompatible();
@@ -94,7 +94,7 @@
 //          Map.Entry<HerodotusRequest, List<HerodotusConfigAttribute>> entry = (Map.Entry)var6.next();
 //          HerodotusRequestMatcher requestMatcher = new HerodotusRequestMatcher((HerodotusRequest)entry.getKey());
 //          if (requestMatcher.matches(request)) {
-//            log.debug("[Herodotus] |- Request match the wildcard [{}] - [{}]", entry.getKey(), entry.getValue());
+//            log.debug("[GstDev Cloud] |- Request match the wildcard [{}] - [{}]", entry.getKey(), entry.getValue());
 //            return (List)entry.getValue();
 //          }
 //        }

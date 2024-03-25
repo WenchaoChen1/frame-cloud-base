@@ -23,7 +23,7 @@
 
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-oauth2-sdk-authorization</artifactId>
+      <artifactId>gstdev-cloud-oauth2-sdk-authentication</artifactId>
     </dependency>
 
 
@@ -94,10 +94,6 @@
       <artifactId>mapstruct-processor</artifactId>
     </dependency>
 
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-    </dependency>
 
 
   </dependencies>

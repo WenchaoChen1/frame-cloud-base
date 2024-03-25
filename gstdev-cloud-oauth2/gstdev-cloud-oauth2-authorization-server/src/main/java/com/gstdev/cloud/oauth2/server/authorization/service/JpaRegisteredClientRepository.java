@@ -9,12 +9,13 @@
 
 package com.gstdev.cloud.oauth2.server.authorization.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gstdev.cloud.commons.exception.BadRequestException;
 import com.gstdev.cloud.oauth2.server.authorization.domain.OAuth2RegisteredClient;
 import com.gstdev.cloud.oauth2.server.authorization.domain.dto.OAuth2ClientDTO;
 import com.gstdev.cloud.oauth2.server.authorization.mapstruct.OAuth2ClientMapper;
 import com.gstdev.cloud.oauth2.server.authorization.repository.OAuth2RegisteredClientRepository;
-import com.gstdev.cloud.web.exception.BadRequestException;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
@@ -22,23 +23,18 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.jackson2.SecurityJackson2Modules;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
-import org.springframework.security.oauth2.server.authorization.jackson2.OAuth2AuthorizationServerJackson2Module;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-import org.springframework.util.StringUtils;
 
-import jakarta.annotation.PostConstruct;
-import jakarta.annotation.Resource;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.*;
+import java.util.UUID;
 
 @Slf4j
 //@Service

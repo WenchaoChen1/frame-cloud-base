@@ -1,5 +1,6 @@
 package com.gstdev.cloud.oauth2.server.authorization.service;
 
+import com.gstdev.cloud.commons.utils.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.core.OAuth2AccessToken;
 import org.springframework.security.oauth2.core.OAuth2RefreshToken;
@@ -9,7 +10,6 @@ import org.springframework.security.oauth2.server.authorization.OAuth2Authorizat
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
 import org.springframework.util.Assert;
-import com.gstdev.cloud.commons.utils.RedisUtils;
 
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;

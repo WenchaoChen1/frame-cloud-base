@@ -9,9 +9,7 @@
 
 package com.gstdev.cloud.service.oauth2.configuration;
 
-import cn.hutool.core.collection.CollectionUtil;
-import cn.hutool.core.convert.Convert;
-import com.gstdev.cloud.oauth2.server.authorization.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
+import com.gstdev.cloud.oauth2.authorization.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
 import com.gstdev.cloud.oauth2.server.authorization.handler.DefaultAccessDeniedHandler;
 import com.gstdev.cloud.oauth2.server.authorization.handler.DefaultAuthenticationEntryPoint;
 import jakarta.annotation.Resource;
@@ -24,7 +22,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;

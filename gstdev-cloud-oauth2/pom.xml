@@ -19,7 +19,7 @@
     <module>gstdev-cloud-oauth2-authorization-server</module>
     <module>gstdev-cloud-oauth2-resource-server</module>
     <module>gstdev-cloud-oauth2-core</module>
-    <module>gstdev-cloud-oauth2-sdk-authorization</module>
-    <module>gstdev-cloud-oauth2-sdk-resource-authentication</module>
+    <module>gstdev-cloud-oauth2-sdk-authentication</module>
+    <module>gstdev-cloud-oauth2-sdk-resource-authorization</module>
   </modules>
 </project>

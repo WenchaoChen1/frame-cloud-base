@@ -50,7 +50,7 @@
 //  private void appendToCompatible(HerodotusRequest herodotusRequest, List<HerodotusConfigAttribute> configAttributes) {
 //    LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> compatible = this.getCompatible();
 //    compatible.put(herodotusRequest, configAttributes);
-//    log.trace("[Herodotus] |- Append [{}] to Compatible cache, current size is [{}]", herodotusRequest, compatible.size());
+//    log.trace("[GstDev Cloud] |- Append [{}] to Compatible cache, current size is [{}]", herodotusRequest, compatible.size());
 //    this.writeToCompatible(compatible);
 //  }
 //
@@ -99,7 +99,7 @@
 //        HerodotusRequestMatcher requestMatcher = new HerodotusRequestMatcher(matcher);
 //        if (requestMatcher.matches(item)) {
 //          result.remove(item);
-//          log.trace("[Herodotus] |- Pattern [{}] is conflict with [{}], so remove it.", item.getPattern(), matcher.getPattern());
+//          log.trace("[GstDev Cloud] |- Pattern [{}] is conflict with [{}], so remove it.", item.getPattern(), matcher.getPattern());
 //        }
 //      }
 //    }

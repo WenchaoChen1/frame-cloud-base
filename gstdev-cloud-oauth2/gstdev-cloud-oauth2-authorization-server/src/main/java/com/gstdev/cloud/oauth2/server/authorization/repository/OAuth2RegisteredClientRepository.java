@@ -10,7 +10,6 @@
 package com.gstdev.cloud.oauth2.server.authorization.repository;
 
 import com.gstdev.cloud.oauth2.server.authorization.domain.OAuth2RegisteredClient;
-import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

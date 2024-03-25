@@ -9,16 +9,16 @@
 
 package com.gstdev.cloud.oauth2.server.authorization.handler;
 
-import com.gstdev.cloud.web.domain.ErrorResponse;
-import com.gstdev.cloud.web.utils.WebUtils;
+import com.gstdev.cloud.commons.domain.ErrorResponse;
+import com.gstdev.cloud.commons.utils.WebUtils;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Slf4j

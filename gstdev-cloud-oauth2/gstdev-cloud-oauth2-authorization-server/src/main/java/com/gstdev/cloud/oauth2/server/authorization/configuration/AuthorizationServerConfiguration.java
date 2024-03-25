@@ -10,25 +10,26 @@
 package com.gstdev.cloud.oauth2.server.authorization.configuration;
 
 
+import com.gstdev.cloud.oauth2.authentication.configuration.OAuth2AuthenticationConfiguration;
+import com.gstdev.cloud.oauth2.authentication.configurer.OAuth2AuthenticationProviderConfigurer;
+import com.gstdev.cloud.oauth2.authentication.consumer.OAuth2AuthorizationCodeAuthenticationProviderConsumer;
+import com.gstdev.cloud.oauth2.authentication.converter.OAuth2PasswordAuthenticationConverter;
+import com.gstdev.cloud.oauth2.authentication.properties.OAuth2AuthenticationProperties;
+import com.gstdev.cloud.oauth2.authorization.configuration.OAuth2AuthorizationConfiguration;
 import com.gstdev.cloud.oauth2.server.authorization.handler.DefaultAccessDeniedHandler;
 import com.gstdev.cloud.oauth2.server.authorization.handler.DefaultAuthenticationEntryPoint;
 import com.gstdev.cloud.oauth2.server.authorization.handler.DefaultAuthenticationFailureHandler;
 import com.gstdev.cloud.oauth2.server.authorization.handler.DefaultAuthenticationSuccessHandler;
-import com.gstdev.cloud.oauth2.server.authorization.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.server.authorization.service.DefaultUserDetailsService;
-import com.gstdev.cloud.oauth2.server.authorization.tokenEndpoint.consumer.OAuth2AuthorizationCodeAuthenticationProviderConsumer;
-import com.gstdev.cloud.oauth2.server.authorization.tokenEndpoint.converter.OAuth2PasswordAuthenticationConverter;
-import com.gstdev.cloud.oauth2.server.authorization.utils.OAuth2ConfigurerUtils;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
-import jakarta.annotation.Resource;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -39,8 +40,6 @@ import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -81,12 +80,14 @@ import java.util.UUID;
 /**
  * <p>授权服务配置</p>
  */
+@AutoConfiguration
 @Slf4j
 @Configuration(proxyBeanMethods = false)
-//@AutoConfigureAfter(RedisAutoConfiguration.class)
 @AutoConfigureAfter({RedisAutoConfiguration.class})
-@EnableConfigurationProperties(AuthorizationServerProperties.class)
-//@Import({OAuth2SessionConfiguration.class})
+//@EnableConfigurationProperties(AuthorizationServerProperties.class)
+@Import({
+  OAuth2AuthorizationConfiguration.class, OAuth2AuthenticationConfiguration.class
+})
 public class AuthorizationServerConfiguration {
 
 ////  @Bean
@@ -126,8 +127,8 @@ public class AuthorizationServerConfiguration {
 
 //===========================aaa========================================================================================
 
-  @Resource
-  private AuthorizationServerProperties authorizationServerProperties;
+//  @Resource
+//  private AuthorizationServerProperties authorizationServerProperties;
 
   //  @Resource
 //  private PasswordEncoder passwordEncoder;
@@ -283,7 +284,7 @@ public class AuthorizationServerConfiguration {
    * @return
    */
   @Bean
-  public AuthorizationServerSettings authorizationServerSettings(AuthorizationServerProperties authorizationServerProperties) {
+  public AuthorizationServerSettings authorizationServerSettings(OAuth2AuthenticationProperties authorizationServerProperties) {
     // @formatter:off
     return AuthorizationServerSettings.builder()
 //      .issuer(authorizationServerProperties.getIssuerUri())
@@ -366,10 +367,10 @@ public class AuthorizationServerConfiguration {
    */
   @Bean
   @SneakyThrows
-  public JWKSource<SecurityContext> jwkSource() {
-    String path = authorizationServerProperties.getJksJksPath();
-    String alias = authorizationServerProperties.getJksAlias();
-    String pass = authorizationServerProperties.getJksPass();
+  public JWKSource<SecurityContext> jwkSource(OAuth2AuthenticationProperties oAuth2AuthenticationProperties) {
+    String path = oAuth2AuthenticationProperties.getAuthorizationServerSettings().getJksJksPath();
+    String alias = oAuth2AuthenticationProperties.getAuthorizationServerSettings().getJksAlias();
+    String pass = oAuth2AuthenticationProperties.getAuthorizationServerSettings().getJksPass();
 
     ClassPathResource resource = new ClassPathResource(path);
     KeyStore jks = KeyStore.getInstance("jks");
