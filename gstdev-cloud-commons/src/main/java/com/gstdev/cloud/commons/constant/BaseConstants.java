@@ -38,8 +38,8 @@ public interface BaseConstants {
   /* ---------- [GstDev Cloud] 自定义配置属性 ---------- */
 //    String PROPERTY_PREFIX_ACCESS = PROPERTY_PREFIX_BASE + ".access";
 //    String PROPERTY_PREFIX_API = PROPERTY_PREFIX_BASE + ".api";
-//    String PROPERTY_PREFIX_CACHE = PROPERTY_PREFIX_BASE + ".cache";
-//    String PROPERTY_PREFIX_CAPTCHA = PROPERTY_PREFIX_BASE + ".captcha";
+    String PROPERTY_PREFIX_CACHE = PROPERTY_PREFIX_BASE + ".cache";
+    String PROPERTY_PREFIX_CAPTCHA = PROPERTY_PREFIX_BASE + ".captcha";
 //    String PROPERTY_PREFIX_CLIENT = PROPERTY_PREFIX_BASE + ".client";
 //    String PROPERTY_PREFIX_CRYPTO = PROPERTY_PREFIX_BASE + ".crypto";
 //    String PROPERTY_PREFIX_DATA = PROPERTY_PREFIX_BASE + ".data";
@@ -70,9 +70,9 @@ public interface BaseConstants {
 //
 //    /* ---------- 通用缓存常量 ---------- */
 //
-//    String CACHE_PREFIX = "cache:";
-//    String CACHE_SIMPLE_BASE_PREFIX = CACHE_PREFIX + "simple:";
-//    String CACHE_TOKEN_BASE_PREFIX = CACHE_PREFIX + "token:";
+    String CACHE_PREFIX = "cache:";
+    String CACHE_SIMPLE_BASE_PREFIX = CACHE_PREFIX + "simple:";
+    String CACHE_TOKEN_BASE_PREFIX = CACHE_PREFIX + "token:";
 //
 //    String AREA_PREFIX = "data:";
 //

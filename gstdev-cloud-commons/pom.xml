@@ -82,7 +82,6 @@
     </dependency>
 
 
-
     <!-- SpringBoot related dependencies -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -103,9 +102,18 @@
       <scope>provided</scope>
     </dependency>
 
-      <dependency>
-          <groupId>org.springframework.security</groupId>
-          <artifactId>spring-security-web</artifactId>
-      </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.dromara.hutool</groupId>
+      <artifactId>hutool-all</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+    </dependency>
   </dependencies>
 </project>

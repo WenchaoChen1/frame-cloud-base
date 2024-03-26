@@ -17,7 +17,7 @@ import org.springframework.security.oauth2.server.authorization.authentication.O
  * <p>Description: Utility methods for the OAuth 2.0 AuthenticationProvider's. </p>
  *
  * @author : wenchao.chen
- * @date : 2022/3/31 15:01
+ * @date : 2024/3/31 15:01
  */
 
 // TODO NU

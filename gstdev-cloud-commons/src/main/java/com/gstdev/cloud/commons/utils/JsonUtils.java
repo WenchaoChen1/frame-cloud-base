@@ -12,7 +12,7 @@ package com.gstdev.cloud.commons.utils;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
-import com.gstdev.cloud.commons.constant.DateConstants;
+import com.gstdev.cloud.commons.constant.DefaultConstants;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -28,7 +28,7 @@ public class JsonUtils {
   public static ObjectMapper getInstance() {
     if (instance == null) {
       instance = new ObjectMapper();
-      instance.setDateFormat(new SimpleDateFormat(DateConstants.ISO8601_DATE_FORMAT));
+      instance.setDateFormat(new SimpleDateFormat(DefaultConstants.DATE_TIME_FORMAT));
       instance.configure(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS, true);
       instance.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }

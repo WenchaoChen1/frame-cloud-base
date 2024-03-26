@@ -1,5 +1,7 @@
 package com.gstdev.cloud.commons.constant;
 
+import org.dromara.hutool.core.date.DatePattern;
+
 /**
  * @program: frame-cloud-base
  * @description: 默认常量合集
@@ -52,4 +54,9 @@ public interface DefaultConstants {
 
 
   String DEFAULT_USER_DETAIL_URI = "";
+
+  /**
+   * 默认的时间日期格式
+   */
+  String DATE_TIME_FORMAT = DatePattern.NORM_DATETIME_PATTERN;
 }

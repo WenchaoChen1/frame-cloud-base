@@ -1,8 +1,8 @@
 package com.gstdev.cloud.oauth2.authentication.converter;
 
-//import cn.herodotus.engine.oauth2.authentication.utils.OAuth2EndpointUtils;
-//import cn.herodotus.engine.oauth2.core.definition.HerodotusGrantType;
-//import cn.herodotus.engine.rest.protect.crypto.processor.HttpCryptoProcessor;
+//import com.gstdev.cloud.oauth2.authentication.utils.OAuth2EndpointUtils;
+//import com.gstdev.cloud.oauth2.core.definition.HerodotusGrantType;
+//import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
 
 import com.gstdev.cloud.oauth2.authentication.utils.OAuth2EndpointUtils;
 import com.gstdev.cloud.oauth2.authentication.token.OAuth2PasswordAuthenticationToken;

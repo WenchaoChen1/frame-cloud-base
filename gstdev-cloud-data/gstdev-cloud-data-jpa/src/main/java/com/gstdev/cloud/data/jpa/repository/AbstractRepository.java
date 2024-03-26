@@ -9,10 +9,11 @@
 
 package com.gstdev.cloud.data.jpa.repository;
 
-import com.gstdev.cloud.data.commons.entity.AbstractEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface AbstractRepository<E extends AbstractEntity, ID> extends JpaRepository<E, ID>, JpaSpecificationExecutor<E> {
+import java.io.Serializable;
+
+public interface AbstractRepository<E extends Serializable, ID> extends JpaRepository<E, ID>, JpaSpecificationExecutor<E> {
 
 }

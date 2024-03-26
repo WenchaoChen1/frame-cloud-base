@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>gstdev-cloud-plugins</artifactId>
+    <groupId>com.gstdev.cloud</groupId>
+    <version>2024.0.1-SNAPSHOT</version>
+<!--    <relativePath>../pom.xml</relativePath>-->
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>gstdev-cloud-plugin-captcha</artifactId>
+  <name>GstDev Cloud :: Plugin :: Captcha</name>
+  <description>${project.name}</description>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>captcha-core</module>
+    <module>captcha-sdk-hutool</module>
+    <module>captcha-sdk-behavior</module>
+    <module>captcha-sdk-graphic</module>
+<!--    <module>captcha-spring-boot-starter</module>-->
+  </modules>
+</project>
