@@ -45,7 +45,7 @@ public class HerodotusCaffeineCacheManager extends CaffeineCacheManager {
             String key = StringUtils.replace(name, SymbolConstants.COLON, cacheProperties.getSeparator());
             if (instances.containsKey(key)) {
                 CacheSetting cacheSetting = instances.get(key);
-                log.debug("[Herodotus] |- CACHE - Caffeine cache [{}] is set to use INSTANCE config.", name);
+                log.debug("[GstDev Cloud] |- CACHE - Caffeine cache [{}] is set to use INSTANCE config.", name);
                 return Caffeine.newBuilder().expireAfterWrite(cacheSetting.getExpire()).build();
             }
         }

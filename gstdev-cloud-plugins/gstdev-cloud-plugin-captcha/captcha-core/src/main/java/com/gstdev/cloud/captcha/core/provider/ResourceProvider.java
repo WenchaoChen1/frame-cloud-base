@@ -68,7 +68,7 @@ public class ResourceProvider implements InitializingBean {
                 }
                 return images;
             } catch (IOException e) {
-                log.error("[Herodotus] |- Analysis the  location [{}] catch io error!", location, e);
+                log.error("[GstDev Cloud] |- Analysis the  location [{}] catch io error!", location, e);
             }
         }
 
@@ -81,14 +81,14 @@ public class ResourceProvider implements InitializingBean {
             return FontUtil.createFont(resource.getInputStream());
         } catch (IORuntimeException e) {
             // 虽然 java.awt.Font 抛出的是 IOException, 因为使用 Hutool FontUtil 将错误又包装了一次。所以出错时必须要拦截 IORuntimeException，否则会导致错误不被拦截直接抛出，应用启动失败。
-            log.warn("[Herodotus] |- Can not read font in the resources folder, maybe in docker.");
+            log.warn("[GstDev Cloud] |- Can not read font in the resources folder, maybe in docker.");
             // TODO: 2022-10-21 尝试在 docker alpine 下解决字体问题的多种方式之一。目前改用 debian，下面代码已经不再需要。暂留，确保确实没有问题后再做处理
             Font fontInfileSystem = getFontUnderDocker(resource.getFilename());
             if (ObjectUtils.isNotEmpty(fontInfileSystem)) {
                 return fontInfileSystem;
             }
         } catch (IOException e) {
-            log.error("[Herodotus] |- Resource object in resources folder catch io error!", e);
+            log.error("[GstDev Cloud] |- Resource object in resources folder catch io error!", e);
         }
 
         return null;
@@ -103,12 +103,12 @@ public class ResourceProvider implements InitializingBean {
                 System.out.println(file.getAbsolutePath());
                 try {
                     Font font = FontUtil.createFont(file);
-                    log.debug("[Herodotus] |- Read font [{}] under the DOCKER.", font.getFontName());
+                    log.debug("[GstDev Cloud] |- Read font [{}] under the DOCKER.", font.getFontName());
                     return font;
                 } catch (IORuntimeException e) {
-                    log.error("[Herodotus] |- Read font under the DOCKER catch error.");
+                    log.error("[GstDev Cloud] |- Read font under the DOCKER catch error.");
                 } catch (NullPointerException e) {
-                    log.error("[Herodotus] |- Read font under the DOCKER catch null error.");
+                    log.error("[GstDev Cloud] |- Read font under the DOCKER catch null error.");
                 }
             }
         }
@@ -131,7 +131,7 @@ public class ResourceProvider implements InitializingBean {
                 }
                 return fonts;
             } catch (IOException e) {
-                log.error("[Herodotus] |- Analysis the  location [{}] catch io error!", location, e);
+                log.error("[GstDev Cloud] |- Analysis the  location [{}] catch io error!", location, e);
             }
         }
 
@@ -146,9 +146,9 @@ public class ResourceProvider implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
 
         String systemName = ManagementUtil.getOsInfo().getName();
-        log.debug("[Herodotus] |- Before captcha resource loading, check system. Current system is [{}]", systemName);
+        log.debug("[GstDev Cloud] |- Before captcha resource loading, check system. Current system is [{}]", systemName);
 
-        log.debug("[Herodotus] |- Captcha resource loading is BEGIN！");
+        log.debug("[GstDev Cloud] |- Captcha resource loading is BEGIN！");
 
         loadImages(jigsawOriginalImages, getCaptchaProperties().getJigsaw().getOriginalResource(), CaptchaResource.JIGSAW_ORIGINAL);
 
@@ -158,7 +158,7 @@ public class ResourceProvider implements InitializingBean {
 
         loadFonts();
 
-        log.debug("[Herodotus] |- Jigsaw captcha resource loading is END！");
+        log.debug("[GstDev Cloud] |- Jigsaw captcha resource loading is END！");
     }
 
     private void loadImages(Map<String, String> container, String location, CaptchaResource captchaResource) {
@@ -166,7 +166,7 @@ public class ResourceProvider implements InitializingBean {
 
         if (MapUtils.isNotEmpty(resource)) {
             container.putAll(resource);
-            log.debug("[Herodotus] |- {} load complete, total number is [{}]", captchaResource.getContent(), resource.size());
+            log.debug("[GstDev Cloud] |- {} load complete, total number is [{}]", captchaResource.getContent(), resource.size());
             imageIndexes.put(captchaResource.name(), resource.keySet().toArray(new String[0]));
         }
     }
@@ -174,7 +174,7 @@ public class ResourceProvider implements InitializingBean {
     private void loadFonts() {
         if (MapUtils.isEmpty(fonts)) {
             this.fonts = getFonts(FONT_RESOURCE);
-            log.debug("[Herodotus] |- Font load complete, total number is [{}]", fonts.size());
+            log.debug("[GstDev Cloud] |- Font load complete, total number is [{}]", fonts.size());
         }
     }
 

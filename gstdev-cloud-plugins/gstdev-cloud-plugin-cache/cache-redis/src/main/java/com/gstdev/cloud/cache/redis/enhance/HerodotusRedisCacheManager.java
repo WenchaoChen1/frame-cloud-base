@@ -59,7 +59,7 @@ public class HerodotusRedisCacheManager extends RedisCacheManager {
             String key = StringUtils.replace(name, SymbolConstants.COLON, cacheProperties.getSeparator());
             if (expires.containsKey(key)) {
                 CacheSetting cacheSetting = expires.get(key);
-                log.debug("[Herodotus] |- CACHE - Redis cache [{}] is setted to use CUSTEM exprie.", name);
+                log.debug("[GstDev Cloud] |- CACHE - Redis cache [{}] is setted to use CUSTEM exprie.", name);
                 cacheConfig = cacheConfig.entryTtl(cacheSetting.getExpire());
             }
         }

@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Import;
 import java.lang.annotation.*;
 
 /**
- * <p>Description: 开启 Herodotus Redis  </p>
+ * <p>Description: 开启 Redis  </p>
  *
  * @author : cc
  * @date : 2022/12/29 21:25
@@ -15,5 +15,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Import(CacheRedisConfiguration.class)
-public @interface EnableHerodotusRedis {
+public @interface EnableRedis {
 }

@@ -1,9 +1,9 @@
 //// ====================================================
 ////
-//// This file is part of the Riching Cloud Platform.
+//// This file is part of the GstDev Cloud Platform.
 ////
-//// Create by Riching Tech <support@richingtech.com>
-//// Copyright (c) 2020-2025 richingtech.com
+//// Create by GstDev Tech <support@gstdev.com>
+//// Copyright (c) 2020-2025 gstdev.com
 ////
 //// ====================================================
 //

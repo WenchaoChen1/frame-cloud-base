@@ -138,7 +138,7 @@ public class ResourceUtils {
             InputStream inputStream = resource.getInputStream();
             return FileCopyUtils.copyToByteArray(inputStream);
         } catch (IOException e) {
-            log.error("[Herodotus] |- Converter resource to byte[] error!", e);
+            log.error("[GstDev Cloud] |- Converter resource to byte[] error!", e);
             return null;
         }
     }

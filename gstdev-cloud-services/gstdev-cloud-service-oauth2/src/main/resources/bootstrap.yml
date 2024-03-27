@@ -1,9 +1,9 @@
 # ====================================================
 #
-# This file is part of the Riching Cloud Platform.
+# This file is part of the GstDev Cloud Platform.
 #
-# Create by Riching Cloud <support@richingcloud.com>
-# Copyright (c) 2020-2025 richingcloud.com
+# Create by GstDev Cloud <support@gstdev.com>
+# Copyright (c) 2020-2025 gstdev.com
 #
 # ====================================================
 
@@ -11,7 +11,7 @@ spring:
   application:
     name: @artifactId@
   profiles:
-    active: @profile.name@
+    active: @profile.name@`
   mvc:
     throw-exception-if-no-handler-found: true
   web:

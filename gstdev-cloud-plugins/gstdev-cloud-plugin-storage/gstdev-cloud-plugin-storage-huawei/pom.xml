@@ -18,7 +18,7 @@
 
 
   <dependencies>
-    <!-- Riching Cloud related dependencies -->
+    <!-- GstDev Cloud related dependencies -->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-starter-data-commons</artifactId>

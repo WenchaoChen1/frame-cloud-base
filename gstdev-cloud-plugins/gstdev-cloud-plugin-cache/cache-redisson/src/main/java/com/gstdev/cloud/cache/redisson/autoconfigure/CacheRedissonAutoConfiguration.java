@@ -50,7 +50,7 @@ public class CacheRedissonAutoConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Cache Redisson] Auto Configure.");
+        log.debug("[GstDev Cloud] |- SDK [Cache Redisson] Auto Configure.");
     }
 
     private File readConfigFile() {
@@ -59,7 +59,7 @@ public class CacheRedissonAutoConfiguration {
             try {
                 return ResourceUtils.getFile(configFile);
             } catch (IOException e) {
-                log.error("[Herodotus] |- Can not found the config file [{}], check whether the format is correct.", configFile);
+                log.error("[GstDev Cloud] |- Can not found the config file [{}], check whether the format is correct.", configFile);
             }
         }
 
@@ -75,7 +75,7 @@ public class CacheRedissonAutoConfiguration {
                 }
             }
         } catch (IOException e) {
-            log.error("[Herodotus] |- Redisson loading the config file error!");
+            log.error("[GstDev Cloud] |- Redisson loading the config file error!");
         }
 
         return null;
@@ -158,7 +158,7 @@ public class CacheRedissonAutoConfiguration {
 
         RedissonClient redissonClient = Redisson.create(config);
 
-        log.trace("[Herodotus] |- Bean [Redisson Client] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Redisson Client] Auto Configure.");
 
         return redissonClient;
     }

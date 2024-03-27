@@ -15,7 +15,7 @@
   </parent>
 
   <dependencies>
-    <!-- RichingCloud related dependencies -->
+    <!-- GstDevCloud related dependencies -->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-web</artifactId>

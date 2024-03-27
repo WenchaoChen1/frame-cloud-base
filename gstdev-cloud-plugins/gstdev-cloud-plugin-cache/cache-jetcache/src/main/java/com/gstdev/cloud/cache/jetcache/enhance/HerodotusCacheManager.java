@@ -41,7 +41,7 @@ public class HerodotusCacheManager extends JetCacheSpringCacheManager {
             String key = StringUtils.replace(name, SymbolConstants.COLON, cacheProperties.getSeparator());
             if (instances.containsKey(key)) {
                 CacheSetting cacheSetting = instances.get(key);
-                log.debug("[Herodotus] |- CACHE - Cache [{}] is set to use INSTANCE cache.", name);
+                log.debug("[GstDev Cloud] |- CACHE - Cache [{}] is set to use INSTANCE cache.", name);
                 return super.createJetCache(name, cacheSetting);
             }
         }

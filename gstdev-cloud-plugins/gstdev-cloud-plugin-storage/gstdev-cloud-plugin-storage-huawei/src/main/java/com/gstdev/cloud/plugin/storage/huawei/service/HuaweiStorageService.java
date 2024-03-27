@@ -1,27 +1,26 @@
 // ====================================================
 //
-// This file is part of the Riching Cloud Platform.
+// This file is part of the GstDev Cloud Platform.
 //
-// Create by Riching Tech <support@richingtech.com>
-// Copyright (c) 2020-2025 richingtech.com
+// Create by GstDev Tech <support@gstdev.com>
+// Copyright (c) 2020-2025 gstdev.com
 //
 // ====================================================
 
 package com.gstdev.cloud.plugin.storage.huawei.service;
 
-import com.obs.services.ObsClient;
-import com.obs.services.exception.ObsException;
-import com.obs.services.model.*;
 import com.gstdev.cloud.commons.exception.BadRequestException;
 import com.gstdev.cloud.plugin.storage.core.model.FileBucket;
 import com.gstdev.cloud.plugin.storage.core.model.FileObject;
 import com.gstdev.cloud.plugin.storage.core.service.AbstractFileService;
 import com.gstdev.cloud.plugin.storage.core.service.StorageService;
+import com.obs.services.ObsClient;
+import com.obs.services.exception.ObsException;
+import com.obs.services.model.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;

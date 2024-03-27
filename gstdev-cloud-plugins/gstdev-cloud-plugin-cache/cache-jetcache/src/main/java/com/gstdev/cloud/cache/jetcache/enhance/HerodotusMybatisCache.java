@@ -35,13 +35,13 @@
 //    public void putObject(Object key, Object value) {
 //        cache.put(key, value);
 //        counter.incrementAndGet();
-//        log.debug("[Herodotus] |- CACHE - Put data into Mybatis Cache, with key: [{}]", key);
+//        log.debug("[GstDev Cloud] |- CACHE - Put data into Mybatis Cache, with key: [{}]", key);
 //    }
 //
 //    @Override
 //    public Object getObject(Object key) {
 //        Object obj = cache.get(key);
-//        log.debug("[Herodotus] |- CACHE - Get data from Mybatis Cache, with key: [{}]", key);
+//        log.debug("[GstDev Cloud] |- CACHE - Get data from Mybatis Cache, with key: [{}]", key);
 //        return obj;
 //    }
 //
@@ -49,14 +49,14 @@
 //    public Object removeObject(Object key) {
 //        Object obj = cache.remove(key);
 //        counter.decrementAndGet();
-//        log.debug("[Herodotus] |- CACHE - Remove data from Mybatis Cache, with key: [{}]", key);
+//        log.debug("[GstDev Cloud] |- CACHE - Remove data from Mybatis Cache, with key: [{}]", key);
 //        return obj;
 //    }
 //
 //    @Override
 //    public void clear() {
 //        cache.close();
-//        log.debug("[Herodotus] |- CACHE - Clear Mybatis Cache.");
+//        log.debug("[GstDev Cloud] |- CACHE - Clear Mybatis Cache.");
 //    }
 //
 //    @Override

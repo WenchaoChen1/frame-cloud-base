@@ -43,14 +43,14 @@ public class CacheJetCacheAutoConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Cache JetCache] Auto Configure.");
+        log.debug("[GstDev Cloud] |- SDK [Cache JetCache] Auto Configure.");
     }
 
     @Bean
     public JetCacheCreateCacheFactory jetCacheCreateCacheFactory(@Qualifier("jcCacheManager") CacheManager cacheManager, CacheProperties cacheProperties) {
         JetCacheCreateCacheFactory factory = new JetCacheCreateCacheFactory(cacheManager, cacheProperties);
         JetCacheUtils.setJetCacheCreateCacheFactory(factory);
-        log.trace("[Herodotus] |- Bean [Jet Cache Create Cache Factory] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Jet Cache Create Cache Factory] Auto Configure.");
         return factory;
     }
 
@@ -60,7 +60,7 @@ public class CacheJetCacheAutoConfiguration {
     public HerodotusCacheManager herodotusCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory, CacheProperties cacheProperties) {
         HerodotusCacheManager herodotusCacheManager = new HerodotusCacheManager(jetCacheCreateCacheFactory, cacheProperties);
         herodotusCacheManager.setAllowNullValues(cacheProperties.getAllowNullValues());
-        log.trace("[Herodotus] |- Bean [Jet Cache Herodotus Cache Manager] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Jet Cache Herodotus Cache Manager] Auto Configure.");
         return herodotusCacheManager;
     }
 }

@@ -35,7 +35,7 @@ public class CacheRedisConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Cache Redis] Auto Configure.");
+        log.debug("[GstDev Cloud] |- SDK [Cache Redis] Auto Configure.");
     }
 
     private RedisSerializer<String> keySerializer() {
@@ -52,7 +52,7 @@ public class CacheRedisConfiguration {
 //    @Bean(name = "springSessionDefaultRedisSerializer")
     private RedisSerializer<Object> valueSerializer() {
         RedisSerializer<Object> redisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
-        log.trace("[Herodotus] |- Bean [Jackson2Json Redis Serializer] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Jackson2Json Redis Serializer] Auto Configure.");
         return redisSerializer;
     }
 
@@ -73,7 +73,7 @@ public class CacheRedisConfiguration {
         redisTemplate.setDefaultSerializer(valueSerializer());
         redisTemplate.afterPropertiesSet();
 
-        log.trace("[Herodotus] |- Bean [Redis Template] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Redis Template] Auto Configure.");
 
         return redisTemplate;
     }
@@ -84,7 +84,7 @@ public class CacheRedisConfiguration {
         StringRedisTemplate stringRedisTemplate = new StringRedisTemplate();
         stringRedisTemplate.setConnectionFactory(redisConnectionFactory);
         stringRedisTemplate.afterPropertiesSet();
-        log.trace("[Herodotus] |- Bean [String Redis Template] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [String Redis Template] Auto Configure.");
         return stringRedisTemplate;
     }
 
@@ -92,7 +92,7 @@ public class CacheRedisConfiguration {
     public RedisMessageListenerContainer redisMessageListenerContainer(RedisConnectionFactory connectionFactory) {
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
-        log.trace("[Herodotus] |- Bean [Redis Message Listener Container] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Redis Message Listener Container] Auto Configure.");
         return container;
     }
 
@@ -112,7 +112,7 @@ public class CacheRedisConfiguration {
         HerodotusRedisCacheManager herodotusRedisCacheManager = new HerodotusRedisCacheManager(redisCacheWriter, redisCacheConfiguration, cacheProperties);
         herodotusRedisCacheManager.setTransactionAware(false);
         herodotusRedisCacheManager.afterPropertiesSet();
-        log.trace("[Herodotus] |- Bean [Redis Cache Manager] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Redis Cache Manager] Auto Configure.");
         return herodotusRedisCacheManager;
     }
 
@@ -124,7 +124,7 @@ public class CacheRedisConfiguration {
 
         @PostConstruct
         public void postConstruct() {
-            log.debug("[Herodotus] |- SDK [Cache Redis Utils] Auto Configure.");
+            log.debug("[GstDev Cloud] |- SDK [Cache Redis Utils] Auto Configure.");
         }
     }
 }

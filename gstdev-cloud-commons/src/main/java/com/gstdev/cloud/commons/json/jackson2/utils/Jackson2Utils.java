@@ -45,7 +45,7 @@ public class Jackson2Utils {
         try {
             return getObjectMapper().writeValueAsString(domain);
         } catch (JsonProcessingException e) {
-            logger.error("[Herodotus] |- Jackson2 json processing error, when to json! {}", e.getMessage());
+            logger.error("[GstDev Cloud] |- Jackson2 json processing error, when to json! {}", e.getMessage());
             return null;
         }
     }
@@ -58,7 +58,7 @@ public class Jackson2Utils {
         try {
             return getObjectMapper().readValue(content, valueType);
         } catch (JsonProcessingException e) {
-            logger.error("[Herodotus] |- Jackson2 json processing error, when to object with value type! {}", e.getMessage());
+            logger.error("[GstDev Cloud] |- Jackson2 json processing error, when to object with value type! {}", e.getMessage());
             return null;
         }
     }
@@ -67,7 +67,7 @@ public class Jackson2Utils {
         try {
             return getObjectMapper().convertValue(content, valueType);
         } catch (IllegalArgumentException e) {
-            logger.error("[Herodotus] |- Jackson2 json processing error, when to object with value type! {}", e.getMessage());
+            logger.error("[GstDev Cloud] |- Jackson2 json processing error, when to object with value type! {}", e.getMessage());
             return null;
         }
     }
@@ -76,7 +76,7 @@ public class Jackson2Utils {
         try {
             return getObjectMapper().readValue(content, typeReference);
         } catch (JsonProcessingException e) {
-            logger.error("[Herodotus] |- Jackson2 json processing error, when to object with type reference! {}", e.getMessage());
+            logger.error("[GstDev Cloud] |- Jackson2 json processing error, when to object with type reference! {}", e.getMessage());
             return null;
         }
     }
@@ -85,7 +85,7 @@ public class Jackson2Utils {
         try {
             return getObjectMapper().readValue(content, javaType);
         } catch (JsonProcessingException e) {
-            logger.error("[Herodotus] |- Jackson2 json processing error, when to object with java type! {}", e.getMessage());
+            logger.error("[GstDev Cloud] |- Jackson2 json processing error, when to object with java type! {}", e.getMessage());
             return null;
         }
     }
@@ -123,7 +123,7 @@ public class Jackson2Utils {
         try {
             return getObjectMapper().readTree(content);
         } catch (JsonProcessingException e) {
-            logger.error("[Herodotus] |- Jackson2 json processing error, when to node with string! {}", e.getMessage());
+            logger.error("[GstDev Cloud] |- Jackson2 json processing error, when to node with string! {}", e.getMessage());
             return null;
         }
     }
@@ -132,7 +132,7 @@ public class Jackson2Utils {
         try {
             return getObjectMapper().readTree(jsonParser);
         } catch (IOException e) {
-            logger.error("[Herodotus] |- Jackson2 io error, when to node with json parser! {}", e.getMessage());
+            logger.error("[GstDev Cloud] |- Jackson2 io error, when to node with json parser! {}", e.getMessage());
             return null;
         }
     }
@@ -141,7 +141,7 @@ public class Jackson2Utils {
         try {
             return getObjectMapper().createParser(content);
         } catch (IOException e) {
-            logger.error("[Herodotus] |- Jackson2 io error, when create parser! {}", e.getMessage());
+            logger.error("[GstDev Cloud] |- Jackson2 io error, when create parser! {}", e.getMessage());
             return null;
         }
     }

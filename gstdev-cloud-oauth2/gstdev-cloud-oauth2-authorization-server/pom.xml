@@ -33,7 +33,7 @@
 <!--      <groupId>org.springframework.cloud</groupId>-->
 <!--      <artifactId>spring-cloud-starter-openfeign</artifactId>-->
 <!--    </dependency>-->
-    <!-- RichingCloud related dependencies -->
+    <!-- GstDevCloud related dependencies -->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-web</artifactId>

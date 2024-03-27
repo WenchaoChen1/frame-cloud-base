@@ -21,7 +21,7 @@
       <artifactId>gstdev-cloud-oauth2-sdk-resource-authorization</artifactId>
     </dependency>
 
-    <!-- RichingCloud related dependencies -->
+    <!-- GstDevCloud related dependencies -->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-data-commons</artifactId>

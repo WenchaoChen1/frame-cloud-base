@@ -151,7 +151,7 @@ public abstract class AbstractCountStampManager extends AbstractStampManager<Str
 
         long temp = index + 1L;
         int times = (int) temp;
-        log.debug("[Herodotus] |- {} has been recorded [{}] times.", function, times);
+        log.debug("[GstDev Cloud] |- {} has been recorded [{}] times.", function, times);
         return times;
     }
 
@@ -170,7 +170,7 @@ public abstract class AbstractCountStampManager extends AbstractStampManager<Str
         Long current = System.currentTimeMillis();
         long interval = current - begin;
 
-        log.debug("[Herodotus] |- {} operation interval [{}] millis.", function, interval);
+        log.debug("[GstDev Cloud] |- {} operation interval [{}] millis.", function, interval);
 
         Duration duration;
         if (!configuredDuration.isZero()) {
