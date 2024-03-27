@@ -36,7 +36,8 @@ public class ResourceServerAutoConfiguration {
 
     httpSecurity.csrf(AbstractHttpConfigurer::disable).cors(AbstractHttpConfigurer::disable);
 
-    httpSecurity.authorizeHttpRequests(oauth2AuthorizeHttpRequestsConfigurerCustomer)
+    httpSecurity
+      .authorizeHttpRequests(oauth2AuthorizeHttpRequestsConfigurerCustomer)
       .oauth2ResourceServer(resourceServer -> {
         resourceServer.jwt(jwt -> jwt.decoder(jwtDecoder));
 //                    resourceServer.bearerTokenResolver(bearerTokenResolver);

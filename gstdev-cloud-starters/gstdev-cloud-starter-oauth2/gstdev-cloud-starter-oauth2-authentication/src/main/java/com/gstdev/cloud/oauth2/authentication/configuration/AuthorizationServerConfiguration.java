@@ -26,7 +26,10 @@ import com.nimbusds.jose.proc.SecurityContext;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
@@ -76,8 +79,8 @@ import java.util.UUID;
  */
 @AutoConfiguration
 @Slf4j
-//@Configuration(proxyBeanMethods = false)
-//@AutoConfigureAfter({RedisAutoConfiguration.class})
+@Configuration(proxyBeanMethods = false)
+@AutoConfigureAfter({RedisAutoConfiguration.class})
 //@EnableConfigurationProperties(AuthorizationServerProperties.class)
 //@Import({OAuth2AuthorizationConfiguration.class, OAuth2AuthenticationConfiguration.class})
 public class AuthorizationServerConfiguration {

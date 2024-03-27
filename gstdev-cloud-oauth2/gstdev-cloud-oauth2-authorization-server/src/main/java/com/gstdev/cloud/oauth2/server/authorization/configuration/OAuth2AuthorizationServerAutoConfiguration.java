@@ -5,6 +5,7 @@ import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
 
@@ -27,6 +28,11 @@ public class OAuth2AuthorizationServerAutoConfiguration {
   public void postConstruct() {
     log.info("[GstDev Cloud] |- Module [OAuth2 Authorization Server Starter] Auto Configure.");
   }
-
+//  @Bean
+//  public AccountStatusEventManager accountStatusEventManager() {
+//    DefaultAccountStatusEventManager manager = new DefaultAccountStatusEventManager();
+//    log.trace("[Herodotus] |- Bean [Herodotus Account Status Event Manager] Auto Configure.");
+//    return manager;
+//  }
 
 }

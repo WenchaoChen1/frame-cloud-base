@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.web.servlet.resource.ResourceUrlProvider;
 
 /**
  * @program: frame-cloud-base
@@ -20,7 +21,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
  **/
 @AutoConfiguration
 @EnableConfigurationProperties({OAuth2AuthorizationProperties.class})
-@EnableMethodSecurity(proxyTargetClass = true)
+//@EnableMethodSecurity(proxyTargetClass = true)
 //@Import({
 //  SecurityGlobalExceptionHandler.class,
 //  OAuth2SessionConfiguration.class,

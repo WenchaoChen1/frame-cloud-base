@@ -35,11 +35,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * @date : 2023/10/28 14:22
  */
 @AutoConfiguration
-@EnableAsync
-@EnableAspectJAutoProxy(exposeProxy = true, proxyTargetClass = true)
-@Import({
-        OAuth2AuthorizationConfiguration.class
-})
+//@EnableAsync
+//@EnableAspectJAutoProxy(exposeProxy = true, proxyTargetClass = true)
+@Import({OAuth2AuthorizationConfiguration.class})
 //@ComponentScan(basePackageClasses = SecurityGlobalExceptionHandler.class)
 //@RemoteApplicationEventScan({
 //        "cn.herodotus.engine.oauth2.resource.autoconfigure.bus"

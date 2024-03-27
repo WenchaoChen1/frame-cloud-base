@@ -4,6 +4,7 @@ import com.gstdev.cloud.oauth2.authentication.properties.OAuth2AuthenticationPro
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,8 +14,8 @@ import org.springframework.context.annotation.Configuration;
  * @author: wenchao.chen
  * @create: 2024/03/25 14:34
  **/
-
-@Configuration(proxyBeanMethods = false)
+@AutoConfiguration
+//@Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties({OAuth2AuthenticationProperties.class})
 public class OAuth2AuthenticationConfiguration {
 
