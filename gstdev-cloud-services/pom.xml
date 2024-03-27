@@ -16,7 +16,7 @@
 
   <modules>
 <!--    <module>gstdev-cloud-service-notification</module>-->
-    <module>gstdev-cloud-service-oauth2</module>
+<!--    <module>gstdev-cloud-service-oauth2</module>-->
 <!--    <module>gstdev-cloud-service-storage</module>-->
   </modules>
 </project>

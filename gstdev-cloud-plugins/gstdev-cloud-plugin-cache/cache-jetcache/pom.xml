@@ -20,7 +20,10 @@
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>cache-caffeine</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>com.gstdev.cloud</groupId>
+      <artifactId>cache-redis</artifactId>
+    </dependency>
     <dependency>
       <groupId>com.alicp.jetcache</groupId>
       <artifactId>jetcache-starter-redis-lettuce</artifactId>
@@ -29,14 +32,14 @@
       <groupId>com.alicp.jetcache</groupId>
       <artifactId>jetcache-autoconfigure</artifactId>
     </dependency>
-    <dependency>
-      <groupId>com.alicp.jetcache</groupId>
-      <artifactId>jetcache-anno</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.alicp.jetcache</groupId>
-      <artifactId>jetcache-redis-lettuce</artifactId>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.alicp.jetcache</groupId>-->
+<!--      <artifactId>jetcache-anno</artifactId>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>com.alicp.jetcache</groupId>-->
+<!--      <artifactId>jetcache-redis-lettuce</artifactId>-->
+<!--    </dependency>-->
 
 <!--    <dependency>-->
 <!--      <groupId>org.mybatis</groupId>-->

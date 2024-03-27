@@ -1,23 +1,23 @@
-// ====================================================
+//// ====================================================
+////
+//// This file is part of the GstDev Cloud Platform.
+////
+//// Create by GstDev Cloud <support@gstdev.com>
+//// Copyright (c) 2022-2025 gstdev.com
+////
+//// ====================================================
+//package com.gstdev.cloud.oauth2.server.resource.configuration;
 //
-// This file is part of the GstDev Cloud Platform.
+//import lombok.Getter;
+//import lombok.Setter;
+//import org.springframework.boot.context.properties.ConfigurationProperties;
 //
-// Create by GstDev Cloud <support@gstdev.com>
-// Copyright (c) 2022-2025 gstdev.com
+//import java.util.ArrayList;
+//import java.util.List;
 //
-// ====================================================
-package com.gstdev.cloud.oauth2.server.resource.configuration;
-
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-
-import java.util.ArrayList;
-import java.util.List;
-
-@Getter
-@Setter
-@ConfigurationProperties(prefix = "gstdev.cloud.security.oauth2", ignoreUnknownFields = true)
-public class WhiteListProperties {
-  private List<String> whitelist = new ArrayList<>();
-}
+//@Getter
+//@Setter
+//@ConfigurationProperties(prefix = "gstdev.cloud.security.oauth2", ignoreUnknownFields = true)
+//public class WhiteListProperties {
+//  private List<String> whitelist = new ArrayList<>();
+//}

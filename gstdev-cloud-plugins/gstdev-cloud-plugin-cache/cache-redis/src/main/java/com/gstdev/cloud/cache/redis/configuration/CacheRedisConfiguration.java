@@ -118,7 +118,7 @@ public class CacheRedisConfiguration {
 
     @Configuration(proxyBeanMethods = false)
     @ComponentScan({
-            "cn.herodotus.engine.cache.redis.utils"
+            "com.gstdev.cloud.cache.redis.utils"
     })
     static class RedisUtilsConfiguration {
 

@@ -58,18 +58,6 @@
     <hutool.version>5.5.8</hutool.version>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     <caffeine.version>3.1.0</caffeine.version>
     <commons-lang3.version>3.12.0</commons-lang3.version>
     <hikaricp.version>5.0.1</hikaricp.version>
@@ -166,11 +154,6 @@
 
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-data-commons</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-data-redis</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
@@ -228,22 +211,22 @@
       <!-- =========================================== plugins-captcha =================================== -->
 
       <dependency>
-       <groupId>com.gstdev.cloud</groupId>
+        <groupId>com.gstdev.cloud</groupId>
         <artifactId>captcha-core</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
-       <groupId>com.gstdev.cloud</groupId>
+        <groupId>com.gstdev.cloud</groupId>
         <artifactId>captcha-sdk-behavior</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
-       <groupId>com.gstdev.cloud</groupId>
+        <groupId>com.gstdev.cloud</groupId>
         <artifactId>captcha-sdk-graphic</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
-       <groupId>com.gstdev.cloud</groupId>
+        <groupId>com.gstdev.cloud</groupId>
         <artifactId>captcha-sdk-hutool</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
@@ -315,19 +298,6 @@
       </dependency>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
       <!-- starters -->
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
@@ -379,6 +349,21 @@
         <artifactId>gstdev-cloud-starter-swagger</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
+<!--      <dependency>-->
+<!--        <groupId>com.gstdev.cloud</groupId>-->
+<!--        <artifactId>gstdev-cloud-starter-oauth2</artifactId>-->
+<!--        <version>${gstdev-cloud.version}</version>-->
+<!--      </dependency>-->
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-starter-oauth2-authentication</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-starter-oauth2-service-authorization</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
 
 
       <!-- =============================== 开源通用工具包 ======================= -->
@@ -393,8 +378,6 @@
         <artifactId>hutool-all</artifactId>
         <version>${dromara-hutool.version}</version>
       </dependency>
-
-
 
 
       <!-- =============================== 应用开发辅助工具组件 ======================= -->
