@@ -52,14 +52,14 @@
 //            OAuth2AuthenticatedPrincipal principal = getOpaque(bearer);
 //            if (ObjectUtils.isNotEmpty(principal)) {
 //                PrincipalDetails details = PrincipalUtils.toPrincipalDetails(principal);
-//                log.debug("[Herodotus] |- Resolve OPAQUE token to principal details [{}]", details);
+//                log.debug("[GstDev Cloud] |- Resolve OPAQUE token to principal details [{}]", details);
 //                return details;
 //            }
 //        } else {
 //            Jwt jwt = getJwt(bearer);
 //            if (ObjectUtils.isNotEmpty(jwt)) {
 //                PrincipalDetails details = PrincipalUtils.toPrincipalDetails(jwt);
-//                log.debug("[Herodotus] |- Resolve JWT token to principal details [{}]", details);
+//                log.debug("[GstDev Cloud] |- Resolve JWT token to principal details [{}]", details);
 //                return details;
 //            }
 //        }
@@ -71,9 +71,9 @@
 //        try {
 //            return this.jwtDecoder.decode(bearer.getToken());
 //        } catch (BadJwtException failed) {
-//            log.warn("[Herodotus] |- Failed to decode since the JWT was invalid");
+//            log.warn("[GstDev Cloud] |- Failed to decode since the JWT was invalid");
 //        } catch (JwtException failed) {
-//            log.warn("[Herodotus] |- Failed to decode JWT, catch exception", failed);
+//            log.warn("[GstDev Cloud] |- Failed to decode JWT, catch exception", failed);
 //        }
 //
 //        return null;
@@ -85,7 +85,7 @@
 //        } catch (BadOpaqueTokenException failed) {
 //            log.warn("Failed to introspect since the Opaque was invalid");
 //        } catch (OAuth2IntrospectionException failed) {
-//            log.warn("[Herodotus] |- Failed to introspect Opaque, catch exception", failed);
+//            log.warn("[GstDev Cloud] |- Failed to introspect Opaque, catch exception", failed);
 //        }
 //
 //        return null;

@@ -5,7 +5,7 @@
 ///**
 // * <p>Description: OAuth2 错误代码 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2023/5/1 11:51
 // */
 //public interface OAuth2ErrorCodes {

@@ -25,7 +25,7 @@
 ///**
 // * <p>Description: OAuth2 Session 共享配置 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2023/8/27 16:05
 // */
 //@Configuration(proxyBeanMethods = false)
@@ -36,14 +36,14 @@
 //
 //    @PostConstruct
 //    public void postConstruct() {
-//        log.debug("[Herodotus] |- SDK [OAuth2 Session Sharing] Auto Configure.");
+//        log.debug("[GstDev Cloud] |- SDK [OAuth2 Session Sharing] Auto Configure.");
 //    }
 //
 //    @Bean
 //    @ConditionalOnMissingBean
 //    public <S extends Session> SessionRegistry sessionRegistry(FindByIndexNameSessionRepository<S> sessionRepository) {
 //        SpringSessionBackedSessionRegistry<S> springSessionBackedSessionRegistry = new SpringSessionBackedSessionRegistry<>(sessionRepository);
-//        log.trace("[Herodotus] |- Bean [Spring Session Backed Session Registry] Auto Configure.");
+//        log.trace("[GstDev Cloud] |- Bean [Spring Session Backed Session Registry] Auto Configure.");
 //        return springSessionBackedSessionRegistry;
 //    }
 //
@@ -51,7 +51,7 @@
 //    @ConditionalOnMissingBean
 //    public OAuth2SessionManagementConfigurerCustomer sessionManagementConfigurerCustomer(SessionRegistry sessionRegistry) {
 //        OAuth2SessionManagementConfigurerCustomer OAuth2SessionManagementConfigurerCustomer = new OAuth2SessionManagementConfigurerCustomer(sessionRegistry);
-//        log.trace("[Herodotus] |- Bean [Session Management Configurer Customer] Auto Configure.");
+//        log.trace("[GstDev Cloud] |- Bean [Session Management Configurer Customer] Auto Configure.");
 //        return OAuth2SessionManagementConfigurerCustomer;
 //    }
 //

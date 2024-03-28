@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
  * {@code AuthenticationConverter} 类似于以前的 {@code AbstractTokenGranter}
  * 主要用途是从请求中获取参数，并拼装Token类
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2022/2/22 17:03
  */
 public class OAuth2PasswordAuthenticationConverter  implements AuthenticationConverter {

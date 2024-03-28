@@ -13,7 +13,7 @@
 ///**
 // * <p>Description: 权限对象 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2022/4/1 18:26
 // */
 //public class HerodotusPermission {

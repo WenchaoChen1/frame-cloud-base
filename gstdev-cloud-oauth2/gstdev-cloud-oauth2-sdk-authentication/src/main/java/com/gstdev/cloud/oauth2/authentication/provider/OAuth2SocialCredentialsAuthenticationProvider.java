@@ -47,7 +47,7 @@
 ///**
 // * <p>Description: 社会化认证 Provider </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2022/3/31 14:54
 // */
 //public class OAuth2SocialCredentialsAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
@@ -85,7 +85,7 @@
 //            }
 //            return userDetails;
 //        } catch (UsernameNotFoundException ex) {
-//            log.error("[Herodotus] |- User name can not found for：[{}]", source);
+//            log.error("[GstDev Cloud] |- User name can not found for：[{}]", source);
 //            throw ex;
 //        } catch (InternalAuthenticationServiceException ex) {
 //            throw ex;
@@ -141,7 +141,7 @@
 //
 //        this.authorizationService.save(authorization);
 //
-//        log.debug("[Herodotus] |- Social Credential returning OAuth2AccessTokenAuthenticationToken.");
+//        log.debug("[GstDev Cloud] |- Social Credential returning OAuth2AccessTokenAuthenticationToken.");
 //
 //        Map<String, Object> additionalParameters = idTokenAdditionalParameters(idToken);
 //
@@ -153,7 +153,7 @@
 //    @Override
 //    public boolean supports(Class<?> authentication) {
 //        boolean supports = OAuth2SocialCredentialsAuthenticationToken.class.isAssignableFrom(authentication);
-//        log.trace("[Herodotus] |- Resource Owner Password Authentication is supports! [{}]", supports);
+//        log.trace("[GstDev Cloud] |- Resource Owner Password Authentication is supports! [{}]", supports);
 //        return supports;
 //    }
 //

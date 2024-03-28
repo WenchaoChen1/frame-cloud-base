@@ -22,7 +22,7 @@
 ///**
 // * <p>Description: TODO </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2022/10/15 11:58
 // */
 //public class HerodotusOidcUserInfoMapper implements Function<OidcUserInfoAuthenticationContext, OidcUserInfo> {

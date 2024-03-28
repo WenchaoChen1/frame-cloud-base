@@ -24,7 +24,7 @@ import com.gstdev.cloud.commons.exception.PlatformRuntimeException;
 /**
  * <p>Description: Url 格式错误 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2022/3/6 12:49
  */
 public class UrlFormatIncorrectException extends PlatformRuntimeException {

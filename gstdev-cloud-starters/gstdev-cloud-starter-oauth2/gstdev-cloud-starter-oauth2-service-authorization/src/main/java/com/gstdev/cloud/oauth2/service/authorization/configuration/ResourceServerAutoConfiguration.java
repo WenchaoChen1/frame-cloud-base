@@ -14,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 /**
  * <p>Description: 资源服务器配置 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2022/1/21 23:56
  */
 @AutoConfiguration

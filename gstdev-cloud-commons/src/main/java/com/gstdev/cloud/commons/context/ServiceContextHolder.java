@@ -15,7 +15,7 @@ import org.springframework.context.ApplicationEvent;
 /**
  * <p>Description: 服务上下文信息工具类 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2022/1/14 17:28
  */
 public class ServiceContextHolder {

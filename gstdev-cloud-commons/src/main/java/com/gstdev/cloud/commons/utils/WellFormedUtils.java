@@ -115,7 +115,7 @@ public class WellFormedUtils {
             address = InetAddress.getLocalHost();
             return address.getHostAddress();
         } catch (UnknownHostException e) {
-            log.error("[Herodotus] |- Get host address error: {}", e.getLocalizedMessage());
+            log.error("[GstDev Cloud] |- Get host address error: {}", e.getLocalizedMessage());
             return null;
         }
     }
@@ -125,11 +125,11 @@ public class WellFormedUtils {
             return serviceUri;
         } else {
             if (StringUtils.isBlank(serviceName)) {
-                log.error("[Herodotus] |- Property [{} Service Name] is not set or property format is incorrect!", abbreviation);
+                log.error("[GstDev Cloud] |- Property [{} Service Name] is not set or property format is incorrect!", abbreviation);
                 throw new PropertyValueIsNotSetException();
             } else {
                 if (StringUtils.isBlank(gatewayServiceUri)) {
-                    log.error("[Herodotus] |- Property [gateway-service-uri] is not set or property format is incorrect!");
+                    log.error("[GstDev Cloud] |- Property [gateway-service-uri] is not set or property format is incorrect!");
                     throw new PropertyValueIsNotSetException();
                 } else {
                     return WellFormedUtils.url(gatewayServiceUri) + serviceName;
@@ -143,7 +143,7 @@ public class WellFormedUtils {
             return uri;
         } else {
             if (StringUtils.isBlank(issuerUri)) {
-                log.error("[Herodotus] |- Property [issuer-uri] is not set or property format is incorrect!");
+                log.error("[GstDev Cloud] |- Property [issuer-uri] is not set or property format is incorrect!");
                 throw new PropertyValueIsNotSetException();
             } else {
                 return issuerUri + endpoint;

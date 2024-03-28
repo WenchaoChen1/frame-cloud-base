@@ -32,14 +32,14 @@ public class OAuth2ResourceServerAutoConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Module [OAuth2 Resource Server Starter] Auto Configure.");
+        log.info("[GstDev Cloud] |- Module [OAuth2 Resource Server Starter] Auto Configure.");
     }
 
 //    @Bean
 //    @ConditionalOnMissingBean
 //    public RemoteSecurityMetadataSyncListener remoteSecurityMetadataSyncListener(SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer, ServiceMatcher serviceMatcher) {
 //        RemoteSecurityMetadataSyncListener listener = new RemoteSecurityMetadataSyncListener(securityMetadataSourceAnalyzer, serviceMatcher);
-//        log.trace("[Herodotus] |- Bean [Security Metadata Refresh Listener] Auto Configure.");
+//        log.trace("[GstDev Cloud] |- Bean [Security Metadata Refresh Listener] Auto Configure.");
 //        return listener;
 //    }
 //
@@ -47,7 +47,7 @@ public class OAuth2ResourceServerAutoConfiguration {
 //    @ConditionalOnMissingBean
 //    public RequestMappingScanEventManager requestMappingScanEventManager(SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer) {
 //        DefaultRequestMappingScanEventManager manager = new DefaultRequestMappingScanEventManager(securityMetadataSourceAnalyzer);
-//        log.trace("[Herodotus] |- Bean [Request Mapping Scan Manager] Auto Configure.");
+//        log.trace("[GstDev Cloud] |- Bean [Request Mapping Scan Manager] Auto Configure.");
 //        return manager;
 //    }
 }

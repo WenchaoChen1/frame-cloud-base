@@ -11,7 +11,7 @@
 ///**
 // * <p>Description: 社交登录用户信息详情 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2021/5/16 17:47
 // */
 //public interface SocialUserDetails {

@@ -29,7 +29,7 @@
 // * <p>
 // * An OAuth2TokenCustomizer<JwtEncodingContext> declared with a generic type of JwtEncodingContext (implements OAuth2TokenContext) provides the ability to customize the headers and claims of a Jwt.
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2022/2/23 22:17
 // */
 //public class HerodotusJwtTokenCustomizer extends AbstractTokenCustomizer implements OAuth2TokenCustomizer<JwtEncodingContext> {

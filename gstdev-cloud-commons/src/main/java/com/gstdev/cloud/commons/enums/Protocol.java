@@ -3,7 +3,7 @@ package com.gstdev.cloud.commons.enums;
 /**
  * <p>Description: Protocol枚举 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2021/6/12 14:48
  */
 public enum Protocol {

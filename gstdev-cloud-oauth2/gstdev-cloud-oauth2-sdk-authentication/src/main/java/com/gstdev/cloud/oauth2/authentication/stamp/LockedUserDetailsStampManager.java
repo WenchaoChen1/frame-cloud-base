@@ -16,7 +16,7 @@
 ///**
 // * <p>Description: 锁定账户签章管理 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2022/7/8 21:27
 // */
 //public class LockedUserDetailsStampManager extends AbstractStampManager<String, String> {

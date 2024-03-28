@@ -27,7 +27,7 @@
 ///**
 // * <p>Description: 自定义 UserDetails 序列化 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2022/2/17 21:01
 // */
 //public class HerodotusUserDeserializer extends JsonDeserializer<HerodotusUser> {

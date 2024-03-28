@@ -13,7 +13,7 @@
 ///**
 // * <p>Description: 用户错误状态信息 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2022/7/10 16:46
 // */
 //public class SignInErrorStatus extends AbstractEntity {

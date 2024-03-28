@@ -16,7 +16,7 @@
 ///**
 // * <p>Description: SessionManagementConfigurer 扩展配置 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2023/8/31 21:32
 // */
 //public class OAuth2SessionManagementConfigurerCustomer implements Customizer<SessionManagementConfigurer<HttpSecurity>> {

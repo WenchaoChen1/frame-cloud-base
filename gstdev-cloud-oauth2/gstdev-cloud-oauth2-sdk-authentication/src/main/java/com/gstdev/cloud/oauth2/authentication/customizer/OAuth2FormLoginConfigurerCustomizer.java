@@ -17,7 +17,7 @@
 ///**
 // * <p>Description: FormLoginConfigurer 扩展配置 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2023/9/1 8:45
 // */
 //public class OAuth2FormLoginConfigurerCustomizer implements Customizer<FormLoginConfigurer<HttpSecurity>> {

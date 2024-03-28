@@ -28,7 +28,7 @@
 ///**
 // * <p>Description: OAuth2 表单登录过滤器 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2022/4/12 11:08
 // */
 //public class OAuth2FormLoginAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
@@ -76,7 +76,7 @@
 //            byte[] byteKey = SymmetricUtils.getDecryptedSymmetricKey(key);
 //            username = SymmetricUtils.decrypt(username, byteKey);
 //            password = SymmetricUtils.decrypt(password, byteKey);
-//            log.debug("[Herodotus] |- Decrypt Username is : [{}], Password is : [{}]", username, password);
+//            log.debug("[GstDev Cloud] |- Decrypt Username is : [{}], Password is : [{}]", username, password);
 //        }
 //
 //        return new OAuth2FormLoginAuthenticationToken(username, password);

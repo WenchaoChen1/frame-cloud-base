@@ -33,7 +33,7 @@
 ///**
 // * <p> Description : 表单登录失败处理器 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2020/1/26 18:08
 // * @see SimpleUrlAuthenticationFailureHandler
 // */
@@ -73,7 +73,7 @@
 //            errorMessage = result.getMessage();
 //        } else {
 //            errorMessage = e.getClass().getSimpleName();
-//            log.warn("[Herodotus] |- Form Login Authentication Failure Handler,  Can not find the exception name [{}] in dictionary, please do optimize ", errorMessage);
+//            log.warn("[GstDev Cloud] |- Form Login Authentication Failure Handler,  Can not find the exception name [{}] in dictionary, please do optimize ", errorMessage);
 //        }
 //
 //        saveException(request, errorMessage);

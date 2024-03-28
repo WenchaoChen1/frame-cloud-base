@@ -5,7 +5,7 @@
 ///**
 // * <p>Description: 登录端点限制 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2022/7/7 14:06
 // */
 //public class AccountEndpointLimitedException extends AccountStatusException {

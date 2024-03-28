@@ -32,7 +32,7 @@
 ///**
 // * <p>Description: 认证失败处理器 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2022/2/19 20:48
 // */
 //public class OAuth2AuthenticationFailureResponseHandler implements AuthenticationFailureHandler {

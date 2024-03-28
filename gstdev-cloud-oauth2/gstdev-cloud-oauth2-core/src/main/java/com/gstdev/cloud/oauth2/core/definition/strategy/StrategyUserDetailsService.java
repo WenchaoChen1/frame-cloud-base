@@ -15,7 +15,7 @@
 ///**
 // * <p>Description: 系统用户服务策略定义 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2022/2/17 10:52
 // */
 //public interface StrategyUserDetailsService {

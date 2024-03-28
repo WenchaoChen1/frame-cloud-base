@@ -27,7 +27,7 @@
 ///**
 // * <p>Description: SecurityAttribute 本地存储 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2021/7/30 15:05
 // */
 //public class SecurityMetadataSourceStorage {
@@ -132,7 +132,7 @@
 //
 //        // 使用merge会让整个功能的设计更加复杂，暂时改为直接覆盖已有数据，后续视情况再做变更。
 //        compatible.put(herodotusRequest, configAttributes);
-//        log.trace("[Herodotus] |- Append [{}] to Compatible cache, current size is [{}]", herodotusRequest, compatible.size());
+//        log.trace("[GstDev Cloud] |- Append [{}] to Compatible cache, current size is [{}]", herodotusRequest, compatible.size());
 //        writeToCompatible(compatible);
 //    }
 //
@@ -221,7 +221,7 @@
 //                HerodotusRequestMatcher requestMatcher = new HerodotusRequestMatcher(matcher);
 //                if (requestMatcher.matches(item)) {
 //                    result.remove(item);
-//                    log.trace("[Herodotus] |- Pattern [{}] is conflict with [{}], so remove it.", item.getPattern(), matcher.getPattern());
+//                    log.trace("[GstDev Cloud] |- Pattern [{}] is conflict with [{}], so remove it.", item.getPattern(), matcher.getPattern());
 //                }
 //            }
 //        }

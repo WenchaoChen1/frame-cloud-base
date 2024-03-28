@@ -15,7 +15,7 @@
 ///**
 // * <p>Description: 系统范围服务策略定义 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2022/3/31 22:34
 // */
 //public interface StrategyPermissionDetailsService {

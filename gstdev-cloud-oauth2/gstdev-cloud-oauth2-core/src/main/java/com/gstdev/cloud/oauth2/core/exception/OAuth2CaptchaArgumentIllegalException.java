@@ -6,7 +6,7 @@
 ///**
 // * <p>Description: Oauth2 使用的验证码参数错误 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2021/12/24 12:02
 // */
 //public class OAuth2CaptchaArgumentIllegalException extends OAuth2CaptchaException {

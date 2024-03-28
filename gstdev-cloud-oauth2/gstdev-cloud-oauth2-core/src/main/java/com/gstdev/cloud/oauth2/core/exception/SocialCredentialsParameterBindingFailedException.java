@@ -5,7 +5,7 @@
 ///**
 // * <p>Description: 无法解析SocialType错误 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2021/5/16 9:37
 // */
 //public class SocialCredentialsParameterBindingFailedException extends AuthenticationException {

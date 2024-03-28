@@ -6,7 +6,7 @@
 ///**
 // * <p>Description: UsernameAlreadyExistsException </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2021/5/17 19:04
 // */
 //public class UsernameAlreadyExistsException extends PlatformAuthenticationException {

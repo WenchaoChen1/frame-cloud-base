@@ -25,7 +25,7 @@
 ///**
 // * <p>Description: SecurityMetadata异步处理Service </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2021/8/1 17:43
 // */
 //@Component
@@ -86,7 +86,7 @@
 //            appendToGroup(group, Category.getCategory(key.getPattern()), resources);
 //        });
 //
-//        log.debug("[Herodotus] |- Grouping security matcher by category.");
+//        log.debug("[GstDev Cloud] |- Grouping security matcher by category.");
 //        return group;
 //    }
 //
@@ -169,7 +169,7 @@
 //            appendToGroup(group, Category.getCategory(securityAttribute.getUrl()), resources);
 //        });
 //
-//        log.debug("[Herodotus] |- Grouping security metadata by category.");
+//        log.debug("[GstDev Cloud] |- Grouping security metadata by category.");
 //        return group;
 //    }
 //
@@ -184,7 +184,7 @@
 //     */
 //    public void processRequestMatchers() {
 //
-//        log.debug("[Herodotus] |- [3] Process local configured security metadata.");
+//        log.debug("[GstDev Cloud] |- [3] Process local configured security metadata.");
 //
 //        LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> requestMatchers = securityMatcherConfigurer.getPermitAllAttributes();
 //        if (MapUtils.isNotEmpty(requestMatchers)) {
@@ -224,14 +224,14 @@
 //
 //        // 拿到带有占位符的分组数据，并检测是否存在冲突的匹配规则，然后将结果存入本地存储
 //        LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> placeholders = grouping.get(Category.PLACEHOLDER);
-//        log.debug("[Herodotus] |- Store placeholder type security attributes.");
+//        log.debug("[GstDev Cloud] |- Store placeholder type security attributes.");
 //        securityMetadataSourceStorage.addToStorage(matchers, placeholders, false);
 //
 //        // 拿到全路径的分组数据，并检测是否存在冲突的匹配规则，然后将结果存入本地存储
 //        LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> fullPaths = grouping.get(Category.FULL_PATH);
-//        log.debug("[Herodotus] |- Store full path type security attributes.");
+//        log.debug("[GstDev Cloud] |- Store full path type security attributes.");
 //        securityMetadataSourceStorage.addToStorage(matchers, fullPaths, true);
 //
-//        log.debug("[Herodotus] |- [7] Security attributes process has FINISHED!");
+//        log.debug("[GstDev Cloud] |- [7] Security attributes process has FINISHED!");
 //    }
 //}

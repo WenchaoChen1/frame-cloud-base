@@ -7,7 +7,7 @@
 ///**
 // * <p> Description : 非法加密Key HerodotusException </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2020/1/28 17:32
 // */
 //public class IllegalSymmetricKeyException extends PlatformAuthenticationException {

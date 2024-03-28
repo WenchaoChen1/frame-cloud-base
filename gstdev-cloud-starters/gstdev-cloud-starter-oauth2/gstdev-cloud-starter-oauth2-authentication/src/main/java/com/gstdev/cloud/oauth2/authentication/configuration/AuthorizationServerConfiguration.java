@@ -58,6 +58,7 @@ import org.springframework.security.oauth2.server.authorization.config.annotatio
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OAuth2AuthorizationServerConfigurer;
 import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
+import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 import org.springframework.security.oauth2.server.authorization.web.authentication.*;
 import org.springframework.security.web.SecurityFilterChain;
@@ -546,6 +547,31 @@ public class AuthorizationServerConfiguration {
         .reuseRefreshTokens(true)
         .build()
       )
+      .build();
+
+
+    RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
+      .clientId("oauth2-client")
+      .clientSecret(passwordEncoder().encode("123456"))
+      // 客户端认证基于请求头
+      .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+      // 配置授权的支持方式
+      .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+      .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+      .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+      .redirectUri("https://www.baidu.com")
+      .scope("user")
+      .scope("admin")
+      // 客户端设置，设置用户需要确认授权
+      .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
+      // 添加tokenSettings，将accessTokenFormat改为REFERENCE即可获取Opaque Token
+      .tokenSettings(TokenSettings.builder().accessTokenFormat(OAuth2TokenFormat.REFERENCE)
+        // 令牌存活时间：2小时
+        .accessTokenTimeToLive(Duration.ofHours(2))
+        // 令牌可以刷新，重新获取
+        .reuseRefreshTokens(true)
+        // 刷新时间：30天（30天内当令牌过期时，可以用刷新令牌重新申请新令牌，不需要再认证）
+        .refreshTokenTimeToLive(Duration.ofDays(30)).build())
       .build();
     List<RegisteredClient> registryCloents = new ArrayList<>();
     registryCloents.add(createRegisteredClientAuthorizationCode("my_client"));

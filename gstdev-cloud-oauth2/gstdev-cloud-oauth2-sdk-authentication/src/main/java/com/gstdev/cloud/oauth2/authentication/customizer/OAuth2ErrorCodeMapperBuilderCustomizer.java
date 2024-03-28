@@ -17,7 +17,7 @@
 ///**
 // * <p>Description: OAuth2 Authentication 模块内置错误代码生成器 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2023/9/26 22:11
 // */
 //public class OAuth2ErrorCodeMapperBuilderCustomizer implements ErrorCodeMapperBuilderCustomizer, Ordered {

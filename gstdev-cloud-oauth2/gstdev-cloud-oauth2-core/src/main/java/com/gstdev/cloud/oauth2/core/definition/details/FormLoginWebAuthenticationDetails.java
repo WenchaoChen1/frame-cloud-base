@@ -17,7 +17,7 @@
 ///**
 // * <p>Description: 表单登录 Details 定义 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2022/4/12 10:32
 // */
 //public class FormLoginWebAuthenticationDetails extends WebAuthenticationDetails {

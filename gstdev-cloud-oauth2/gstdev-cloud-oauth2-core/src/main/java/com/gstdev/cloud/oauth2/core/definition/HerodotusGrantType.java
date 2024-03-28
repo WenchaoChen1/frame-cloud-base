@@ -6,7 +6,7 @@ import org.springframework.security.oauth2.core.AuthorizationGrantType;
 /**
  * <p>Description: 自定义 Grant Type 类型 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2022/2/25 9:53
  */
 public interface HerodotusGrantType {

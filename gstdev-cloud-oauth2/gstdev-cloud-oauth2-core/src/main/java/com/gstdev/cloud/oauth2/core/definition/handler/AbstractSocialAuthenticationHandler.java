@@ -22,7 +22,7 @@
 // * <p>
 // * 实现社交登录和手机号码登录的主要流程逻辑
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2021/5/16 17:38
 // */
 //public abstract class AbstractSocialAuthenticationHandler implements SocialAuthenticationHandler {

@@ -33,7 +33,7 @@
 // * <p>
 // * 扩展的OAuth2表单登录Provider，以支持表单登录的验证码
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2022/4/12 10:21
 // * @see DaoAuthenticationProvider
 // */
@@ -89,7 +89,7 @@
 //    public boolean supports(Class<?> authentication) {
 //        //返回true后才会执行上面的authenticate方法,这步能确保authentication能正确转换类型
 //        boolean supports = (OAuth2FormLoginAuthenticationToken.class.isAssignableFrom(authentication));
-//        log.trace("[Herodotus] |- Form Login Authentication is supports! [{}]", supports);
+//        log.trace("[GstDev Cloud] |- Form Login Authentication is supports! [{}]", supports);
 //        return supports;
 //    }
 //}

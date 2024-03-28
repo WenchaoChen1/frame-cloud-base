@@ -18,7 +18,7 @@
 ///**
 // * <p>Description: 自定义UserDetailsService接口，方便以后扩展 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2021/1/17 12:49
 // */
 //public interface EnhanceUserDetailsService extends UserDetailsService {

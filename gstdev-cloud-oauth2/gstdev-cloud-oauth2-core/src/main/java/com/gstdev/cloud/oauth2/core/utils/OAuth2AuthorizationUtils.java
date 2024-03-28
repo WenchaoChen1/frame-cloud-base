@@ -15,7 +15,7 @@
 ///**
 // * <p>Description: OAuth2 存储通用工具类 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2022/2/25 23:12
 // */
 //public class OAuth2AuthorizationUtils {

@@ -25,7 +25,7 @@
 ///**
 // * <p>Description:  Http与Servlet工具类. </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2020/3/4 11:39
 // */
 //public class WebUtils extends org.springframework.web.util.WebUtils {
@@ -100,7 +100,7 @@
 //            response.getWriter().flush();
 //            response.getWriter().close();
 //        } catch (IOException e) {
-//            log.error("[Herodotus] |- Render response to Json error!");
+//            log.error("[GstDev Cloud] |- Render response to Json error!");
 //        }
 //    }
 //}

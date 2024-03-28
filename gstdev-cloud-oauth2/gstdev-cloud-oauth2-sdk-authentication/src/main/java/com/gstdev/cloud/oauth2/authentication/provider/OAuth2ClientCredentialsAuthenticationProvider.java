@@ -40,7 +40,7 @@
 // * <p>
 // * 用于支持 客户端权限验证 以及 支持 Refresh_Token
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2022/3/31 14:57
 // */
 //public class OAuth2ClientCredentialsAuthenticationProvider extends AbstractAuthenticationProvider {
@@ -109,7 +109,7 @@
 //        if (org.apache.commons.collections4.CollectionUtils.isNotEmpty(authorities)) {
 //            FieldUtil.setFieldValue(clientPrincipal, "authorities", authorities);
 //            if (this.logger.isDebugEnabled()) {
-//                this.logger.debug("[Herodotus] |- Assign authorities to OAuth2ClientAuthenticationToken.");
+//                this.logger.debug("[GstDev Cloud] |- Assign authorities to OAuth2ClientAuthenticationToken.");
 //            }
 //        }
 //

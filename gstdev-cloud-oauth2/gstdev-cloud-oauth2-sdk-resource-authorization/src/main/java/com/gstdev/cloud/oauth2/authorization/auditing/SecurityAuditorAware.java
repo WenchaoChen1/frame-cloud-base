@@ -23,7 +23,7 @@
 ///**
 // * <p>Description: 基于 Security 的数据库审计用户信息获取 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2023/4/7 15:56
 // */
 //public class SecurityAuditorAware implements AuditorAware<String> {
@@ -43,7 +43,7 @@
 //                        Object object = bearerTokenAuthentication.getPrincipal();
 //                        if (object instanceof OAuth2IntrospectionAuthenticatedPrincipal principal) {
 //                            String username = principal.getName();
-//                            log.trace("[Herodotus] |- Current auditor is : [{}]", username);
+//                            log.trace("[GstDev Cloud] |- Current auditor is : [{}]", username);
 //                            return Optional.of(username);
 //                        }
 //                    }

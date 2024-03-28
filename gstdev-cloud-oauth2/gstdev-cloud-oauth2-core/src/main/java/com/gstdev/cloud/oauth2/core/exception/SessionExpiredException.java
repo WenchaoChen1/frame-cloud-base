@@ -5,7 +5,7 @@
 ///**
 // * <p>Description: 自定义 Session 已过期 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2022/7/28 13:37
 // */
 //public class SessionExpiredException extends AccountStatusException {

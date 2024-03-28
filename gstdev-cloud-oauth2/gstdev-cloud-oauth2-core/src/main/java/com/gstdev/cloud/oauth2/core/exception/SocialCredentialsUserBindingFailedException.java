@@ -3,7 +3,7 @@
 ///**
 // * <p>Description: 社交登录绑定用户出错 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2021/5/18 9:31
 // */
 //public class SocialCredentialsUserBindingFailedException extends PlatformAuthenticationException {

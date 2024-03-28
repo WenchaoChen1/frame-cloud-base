@@ -22,7 +22,7 @@
 // * <p>
 // * 扩展 SessionAuthenticationStrategy 以支持 {@link FindByIndexNameSessionRepository#PRINCIPAL_NAME_INDEX_NAME} 的设置。
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2023/9/5 14:01
 // */
 //public class HerodotusSessionAuthenticationStrategy extends RegisterSessionAuthenticationStrategy {

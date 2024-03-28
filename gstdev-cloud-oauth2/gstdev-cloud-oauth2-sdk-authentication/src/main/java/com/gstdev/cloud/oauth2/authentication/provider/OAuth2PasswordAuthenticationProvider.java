@@ -73,7 +73,7 @@ public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAut
       }
       return userDetails;
     } catch (UsernameNotFoundException ex) {
-      log.error("[Herodotus] |- User name can not found ：[{}]", username);
+      log.error("[GstDev Cloud] |- User name can not found ：[{}]", username);
       throw ex;
     } catch (InternalAuthenticationServiceException ex) {
       throw ex;
@@ -165,7 +165,7 @@ public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAut
 
     this.authorizationService.save(authorization);
 
-    log.debug("[Herodotus] |- Resource Owner Password returning OAuth2AccessTokenAuthenticationToken.");
+    log.debug("[GstDev Cloud] |- Resource Owner Password returning OAuth2AccessTokenAuthenticationToken.");
 
     Map<String, Object> additionalParameters = idTokenAdditionalParameters(idToken);
 
@@ -187,7 +187,7 @@ public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAut
   @Override
   public boolean supports(Class<?> authentication) {
     boolean supports = OAuth2PasswordAuthenticationToken.class.isAssignableFrom(authentication);
-    log.trace("[Herodotus] |- Resource Owner Password Authentication is supports! [{}]", supports);
+    log.trace("[GstDev Cloud] |- Resource Owner Password Authentication is supports! [{}]", supports);
     return supports;
   }
 

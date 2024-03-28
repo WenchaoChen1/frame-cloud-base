@@ -26,7 +26,7 @@
 // * <p>
 // * 用于替换 SAS 默认配置的 OAuth2ClientCredentialsAuthenticationProvider，以实现功能的扩展
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2023/9/1 14:29
 // */
 //public class OAuth2ClientCredentialsAuthenticationProviderConsumer implements Consumer<List<AuthenticationProvider>> {
@@ -49,7 +49,7 @@
 //        OAuth2AuthorizationService authorizationService = OAuth2ConfigurerUtils.getAuthorizationService(httpSecurity);
 //        OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator = OAuth2ConfigurerUtils.getTokenGenerator(httpSecurity);
 //        cn.herodotus.engine.oauth2.authentication.provider.OAuth2ClientCredentialsAuthenticationProvider provider = new cn.herodotus.engine.oauth2.authentication.provider.OAuth2ClientCredentialsAuthenticationProvider(authorizationService, tokenGenerator, clientDetailsService);
-//        log.debug("[Herodotus] |- Custom OAuth2ClientCredentialsAuthenticationProvider is in effect!");
+//        log.debug("[GstDev Cloud] |- Custom OAuth2ClientCredentialsAuthenticationProvider is in effect!");
 //        authenticationProviders.add(provider);
 //    }
 //}

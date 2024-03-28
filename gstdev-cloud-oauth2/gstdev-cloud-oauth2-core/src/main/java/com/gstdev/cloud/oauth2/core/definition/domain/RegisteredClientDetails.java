@@ -13,7 +13,7 @@
 ///**
 // * <p>Description: RegisteredClient 属性定义 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2023/5/12 23:10
 // */
 //public interface RegisteredClientDetails {

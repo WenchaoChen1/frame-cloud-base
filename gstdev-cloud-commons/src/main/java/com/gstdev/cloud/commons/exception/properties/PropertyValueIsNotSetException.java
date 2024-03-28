@@ -23,7 +23,7 @@ import com.gstdev.cloud.commons.exception.PlatformRuntimeException;
 /**
  * <p>Description: Property 属性值没有设置错误 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2022/3/6 13:57
  */
 public class PropertyValueIsNotSetException extends PlatformRuntimeException {

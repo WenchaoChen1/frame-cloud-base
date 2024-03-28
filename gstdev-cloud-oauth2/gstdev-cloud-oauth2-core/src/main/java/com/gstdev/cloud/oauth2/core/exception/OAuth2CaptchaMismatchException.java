@@ -6,7 +6,7 @@
 ///**
 // * <p>Description: Oauth2 使用的验证码不匹配错误 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2021/12/24 12:08
 // */
 //public class OAuth2CaptchaMismatchException extends OAuth2CaptchaException {

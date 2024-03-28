@@ -15,7 +15,7 @@
 ///**
 // * <p>Description: 社交登录处理器 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2021/4/4 17:34
 // */
 //public interface SocialAuthenticationHandler {

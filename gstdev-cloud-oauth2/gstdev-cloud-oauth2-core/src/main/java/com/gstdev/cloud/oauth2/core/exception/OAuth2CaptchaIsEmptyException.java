@@ -6,7 +6,7 @@
 ///**
 // * <p>Description: 验证码为空 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2021/12/24 18:08
 // */
 //public class OAuth2CaptchaIsEmptyException extends OAuth2CaptchaException {

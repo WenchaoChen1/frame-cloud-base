@@ -22,7 +22,7 @@
 ///**
 // * <p>Description: 身份信息工具类 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2022/12/31 12:07
 // */
 //public class PrincipalUtils {
