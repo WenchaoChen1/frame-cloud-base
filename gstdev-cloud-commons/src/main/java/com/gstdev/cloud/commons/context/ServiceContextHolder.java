@@ -1,11 +1,12 @@
 package com.gstdev.cloud.commons.context;
 
-import cn.herodotus.engine.assistant.core.enums.Architecture;
-import cn.herodotus.engine.assistant.core.enums.Protocol;
-import cn.herodotus.engine.assistant.core.enums.Target;
-import cn.herodotus.engine.assistant.core.utils.WellFormedUtils;
-import cn.herodotus.engine.assistant.definition.constants.DefaultConstants;
-import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
+
+import com.gstdev.cloud.commons.constant.DefaultConstants;
+import com.gstdev.cloud.commons.constant.SymbolConstants;
+import com.gstdev.cloud.commons.enums.Architecture;
+import com.gstdev.cloud.commons.enums.Protocol;
+import com.gstdev.cloud.commons.enums.Target;
+import com.gstdev.cloud.commons.utils.WellFormedUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationContext;

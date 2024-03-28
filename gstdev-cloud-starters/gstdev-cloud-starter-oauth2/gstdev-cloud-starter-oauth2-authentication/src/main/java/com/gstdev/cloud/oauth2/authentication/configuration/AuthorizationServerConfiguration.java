@@ -19,6 +19,7 @@ import com.gstdev.cloud.oauth2.authentication.handler.DefaultAuthenticationFailu
 import com.gstdev.cloud.oauth2.authentication.handler.DefaultAuthenticationSuccessHandler;
 import com.gstdev.cloud.oauth2.authentication.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.authentication.service.DefaultUserDetailsService;
+import com.gstdev.cloud.oauth2.authorization.customizer.OAuth2ResourceServerConfigurerCustomer;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;
@@ -140,18 +141,13 @@ public class AuthorizationServerConfiguration {
   @Order(Ordered.HIGHEST_PRECEDENCE)
   @SneakyThrows
   public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http,
-//                                                                    AuthorizationServerProperties authorizationServerProperties,
-//                                                                    AuthenticationManager authenticationManager,
                                                                     JwtDecoder jwtDecoder,
                                                                     PasswordEncoder passwordEncoder,
                                                                     UserDetailsService userDetailsService,
                                                                     OAuth2AuthenticationProperties oauth2AuthenticationProperties,
-//                                                                    BearerTokenResolver bearerTokenResolver,
-//                                                                    OAuth2TokenGenerator<?> tokenGenerator,
-//                                                                    OAuth2SessionManagementConfigurerCustomer oauth2sessionManagementConfigurerCustomer,
+                                                                    OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer,
                                                                     OAuth2AuthorizationService authorizationService) {
     log.debug("[GstDev Cloud] |- Bean [Authorization Server Security Filter Chain] Auto Configure.");
-
 
     //是一个便利 ( static) 实用程序方法，它将默认的 OAuth2 安全配置应用于HttpSecurity.
     OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
@@ -239,10 +235,10 @@ public class AuthorizationServerConfiguration {
     authorizationServerConfigurer.oidc(Customizer.withDefaults());
 
 
+//    RequestMatcher endpointsMatcher = authorizationServerConfigurer.getEndpointsMatcher();
+    // 仅拦截 OAuth2 Authorization Server 的相关 endpoint
+//    http.securityMatcher(endpointsMatcher)
     http
-//      .sessionManagement(oauth2sessionManagementConfigurerCustomer)
-//      .sessionManagement(sessionManager -> sessionManager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//      .sessionManagement(sessionManager -> sessionManager.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
       //在未通过身份验证时重定向到登录页面
       //授权端点
       .exceptionHandling(exceptions -> {
@@ -252,20 +248,26 @@ public class AuthorizationServerConfiguration {
 //        exceptions.accessDeniedHandler(accessDeniedHandler);
 //        exceptions.authenticationEntryPoint(authenticationEntryPoint);
       })
-      // 接受用户信息和/或客户端注册的访问令牌
-      .oauth2ResourceServer(resourceServer -> {
-        // TODO 尝试删除
-        resourceServer.jwt(jwt -> jwt.decoder(jwtDecoder));
-//        resourceServer.jwt(Customizer.withDefaults());
-//        resourceServer.bearerTokenResolver(bearerTokenResolver);
-//        resourceServer.accessDeniedHandler(accessDeniedHandler);
-//        resourceServer.authenticationEntryPoint(authenticationEntryPoint);
-      })
-//      .apply(new OAuth2AuthenticationProviderConfigurer(sessionRegistry,passwordEncoder, userDetailsService, oauth2AuthenticationProperties));
-      .apply(new OAuth2AuthenticationProviderConfigurer(passwordEncoder, userDetailsService, oauth2AuthenticationProperties));
-//      .authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest().authenticated())
+      // 开启请求认证
+//      .authorizeHttpRequests(authorizeRequests -> authorizeRequests.anyRequest().authenticated())
+      // 禁用对 OAuth2 Authorization Server 相关 endpoint 的 CSRF 防御
 //      .csrf(csrf -> csrf.ignoringRequestMatchers(endpointsMatcher))
+//      .formLogin(oauth2FormLoginConfigurerCustomizer)
+//      .sessionManagement(oauth2sessionManagementConfigurerCustomer)
+//      .addFilterBefore(new MultiTenantFilter(), AuthorizationFilter.class)
+      // 接受用户信息和/或客户端注册的访问令牌
+//      .oauth2ResourceServer(oauth2ResourceServerConfigurerCustomer)
+//      .oauth2ResourceServer(resourceServer -> {
+//        // TODO 尝试删除
+//        resourceServer.jwt(jwt -> jwt.decoder(jwtDecoder));
+////        resourceServer.jwt(Customizer.withDefaults());
+////        resourceServer.bearerTokenResolver(bearerTokenResolver);
+////        resourceServer.accessDeniedHandler(accessDeniedHandler);
+////        resourceServer.authenticationEntryPoint(authenticationEntryPoint);
 //      })
+//      .with(new OAuth2AuthenticationProviderConfigurer(sessionRegistry, passwordEncoder, userDetailsService, oauth2AuthenticationProperties), (configurer) -> {});
+      .with(new OAuth2AuthenticationProviderConfigurer(passwordEncoder, userDetailsService, oauth2AuthenticationProperties), (configurer) -> {
+      });
 
 
     return http.build();
@@ -403,16 +405,6 @@ public class AuthorizationServerConfiguration {
    *
    * @return
    */
-//  @Bean
-//  public UserDetailsService userDetailsService() {
-//    UserDetails userDetails = User.withDefaultPasswordEncoder()
-//      .username("admin")
-//      .password("123456")
-//      .roles("USER")
-//      .build();
-//
-//    return new InMemoryUserDetailsManager(userDetails);
-//  }
   @Bean
   public UserDetailsService userDetailsService() {
     return new DefaultUserDetailsService();
@@ -435,11 +427,6 @@ public class AuthorizationServerConfiguration {
     RSAPublicKey publicKey = (RSAPublicKey) certificate.getPublicKey();
     return NimbusJwtDecoder.withPublicKey(publicKey).build();
   }
-
-  //    @Bean
-//    public JwtDecoder jwtDecoder(JWKSource<SecurityContext> jwkSource) {
-//        return OAuth2AuthorizationServerConfiguration.jwtDecoder(jwkSource);
-//    }
 
   //-----------------------------封装---------------------------------------
 

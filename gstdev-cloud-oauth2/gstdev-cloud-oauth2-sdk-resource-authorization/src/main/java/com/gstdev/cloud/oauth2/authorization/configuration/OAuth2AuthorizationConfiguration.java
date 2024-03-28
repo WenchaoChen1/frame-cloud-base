@@ -1,6 +1,7 @@
 package com.gstdev.cloud.oauth2.authorization.configuration;
 
 import com.gstdev.cloud.oauth2.authorization.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
+import com.gstdev.cloud.oauth2.authorization.customizer.OAuth2ResourceServerConfigurerCustomer;
 import com.gstdev.cloud.oauth2.authorization.processor.SecurityMatcherConfigurer;
 import com.gstdev.cloud.oauth2.authorization.properties.OAuth2AuthorizationProperties;
 import jakarta.annotation.PostConstruct;
@@ -8,10 +9,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
-import org.springframework.web.servlet.resource.ResourceUrlProvider;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
 
 /**
  * @program: frame-cloud-base
@@ -77,13 +78,13 @@ public class OAuth2AuthorizationConfiguration {
 //    return securityMetadataSourceAnalyzer;
 //  }
 //
-//  @Bean
-//  @ConditionalOnMissingBean
-//  public OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer(OAuth2AuthorizationProperties authorizationProperties, JwtDecoder jwtDecoder, OAuth2ResourceServerProperties resourceServerProperties) {
-//    OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer = new OAuth2ResourceServerConfigurerCustomer(authorizationProperties, jwtDecoder, resourceServerProperties);
-//    log.trace("[GstDev Cloud] |- Bean [OAuth2 Resource Server Configurer Customer] Auto Configure.");
-//    return oauth2ResourceServerConfigurerCustomer;
-//  }
+  @Bean
+  @ConditionalOnMissingBean
+  public OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer(OAuth2AuthorizationProperties authorizationProperties, JwtDecoder jwtDecoder, OAuth2ResourceServerProperties resourceServerProperties) {
+    OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer = new OAuth2ResourceServerConfigurerCustomer(authorizationProperties, jwtDecoder, resourceServerProperties);
+    log.trace("[GstDev Cloud] |- Bean [OAuth2 Resource Server Configurer Customer] Auto Configure.");
+    return oauth2ResourceServerConfigurerCustomer;
+  }
 //
 //  @Bean
 //  @ConditionalOnMissingBean
