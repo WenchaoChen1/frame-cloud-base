@@ -69,6 +69,9 @@ public class OAuth2AuthorizationProperties {
   }
 
   public static class Jwk {
+//    keytool -genkey -alias gstdev-cloud -keyalg RSA -keysize 1024 -keystore gstdev-cloud.jks -validity 365 -keypass gstdev-cloud -storepass gstdev-cloud
+//    keytool -list -rfc --keystore gstdev-cloud.jks > gstdev-cloud.crt
+//    ren gstdev-cloud.crt gstdev-cloud.pub
 
     /**
      * 证书策略：standard OAuth2 标准证书模式；custom 自定义证书模式
@@ -77,19 +80,19 @@ public class OAuth2AuthorizationProperties {
     /**
      * jks证书文件路径
      */
-    private String jksKeyStore = "classpath*:certificate/herodotus-cloud.jks";
+    private String jksKeyStore = "classpath*:certificate/gstdev-cloud.jks";
     /**
      * jks证书密码
      */
-    private String jksKeyPassword = "Herodotus-Cloud";
+    private String jksKeyPassword = "gstdev-cloud";
     /**
      * jks证书密钥库密码
      */
-    private String jksStorePassword = "Herodotus-Cloud";
+    private String jksStorePassword = "gstdev-cloud";
     /**
      * jks证书别名
      */
-    private String jksKeyAlias = "herodotus-cloud";
+    private String jksKeyAlias = "gstdev-cloud";
 
     public Certificate getCertificate() {
       return certificate;
