@@ -10,6 +10,7 @@
 package com.gstdev.cloud.oauth2.authentication.configuration;
 
 
+import com.gstdev.cloud.commons.utils.ResourceUtils;
 import com.gstdev.cloud.oauth2.authentication.configurer.OAuth2AuthenticationProviderConfigurer;
 import com.gstdev.cloud.oauth2.authentication.consumer.OAuth2AuthorizationCodeAuthenticationProviderConsumer;
 import com.gstdev.cloud.oauth2.authentication.converter.OAuth2PasswordAuthenticationConverter;
@@ -18,14 +19,16 @@ import com.gstdev.cloud.oauth2.authentication.handler.DefaultAuthenticationEntry
 import com.gstdev.cloud.oauth2.authentication.handler.DefaultAuthenticationFailureHandler;
 import com.gstdev.cloud.oauth2.authentication.handler.DefaultAuthenticationSuccessHandler;
 import com.gstdev.cloud.oauth2.authentication.properties.OAuth2AuthenticationProperties;
-import com.gstdev.cloud.oauth2.authentication.service.DefaultUserDetailsService;
 import com.gstdev.cloud.oauth2.authorization.customizer.OAuth2ResourceServerConfigurerCustomer;
+import com.gstdev.cloud.oauth2.authorization.properties.OAuth2AuthorizationProperties;
+import com.gstdev.cloud.oauth2.core.enums.Certificate;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
@@ -33,7 +36,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.config.Customizer;
@@ -46,7 +49,6 @@ import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.core.oidc.OidcScopes;
 import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
-import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.server.authorization.InMemoryOAuth2AuthorizationConsentService;
 import org.springframework.security.oauth2.server.authorization.InMemoryOAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsentService;
@@ -61,14 +63,17 @@ import org.springframework.security.oauth2.server.authorization.settings.ClientS
 import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 import org.springframework.security.oauth2.server.authorization.web.authentication.*;
+import org.springframework.security.rsa.crypto.KeyStoreKeyFactory;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationConverter;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
 
-import java.security.KeyStore;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateFactory;
+import java.io.IOException;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.NoSuchAlgorithmException;
+import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -270,7 +275,6 @@ public class AuthorizationServerConfiguration {
       .with(new OAuth2AuthenticationProviderConfigurer(passwordEncoder, userDetailsService, oauth2AuthenticationProperties), (configurer) -> {
       });
 
-
     return http.build();
   }
 
@@ -303,16 +307,10 @@ public class AuthorizationServerConfiguration {
   }
 
   @Bean
-  public PasswordEncoder passwordEncoder() {
-    //    return new BCryptPasswordEncoder();
-    return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-  }
-
-  @Bean
-  public RegisteredClientRepository registeredClientRepository(JdbcTemplate jdbcTemplate) {
+  public RegisteredClientRepository registeredClientRepository(JdbcTemplate jdbcTemplate,PasswordEncoder passwordEncoder) {
     // 操作数据库对象
 //        JdbcRegisteredClientRepository registeredClientRepository = new JdbcRegisteredClientRepository(jdbcTemplate);
-    List<RegisteredClient> registeredClients = this.registryCloents();
+    List<RegisteredClient> registeredClients = this.registryCloents(passwordEncoder);
     registeredClients.forEach(registeredClient -> {
 //      // ---------- 1、检查当前客户端是否已注册
 //      if (registeredClientRepository.findByClientId(registeredClient.getClientId()) == null) {
@@ -357,28 +355,71 @@ public class AuthorizationServerConfiguration {
     return new InMemoryOAuth2AuthorizationConsentService();
   }
 
-  /**
-   * 加载jwk资源
-   * 用于生成令牌
-   *
-   * @return
-   */
+
+
   @Bean
-  @SneakyThrows
-  public JWKSource<SecurityContext> jwkSource(OAuth2AuthenticationProperties oAuth2AuthenticationProperties) {
-    String path = oAuth2AuthenticationProperties.getAuthorizationServerSettings().getJksJksPath();
-    String alias = oAuth2AuthenticationProperties.getAuthorizationServerSettings().getJksAlias();
-    String pass = oAuth2AuthenticationProperties.getAuthorizationServerSettings().getJksPass();
+  public JWKSource<SecurityContext> jwkSource(OAuth2AuthorizationProperties authorizationProperties) throws NoSuchAlgorithmException {
 
-    ClassPathResource resource = new ClassPathResource(path);
-    KeyStore jks = KeyStore.getInstance("jks");
-    char[] pin = pass.toCharArray();
-    jks.load(resource.getInputStream(), pin);
-    RSAKey rsaKey = RSAKey.load(jks, alias, pin);
+    OAuth2AuthorizationProperties.Jwk jwk = authorizationProperties.getJwk();
+
+    KeyPair keyPair = null;
+    if (jwk.getCertificate() == Certificate.CUSTOM) {
+      try {
+        Resource[] resource = ResourceUtils.getResources(jwk.getJksKeyStore());
+        if (ArrayUtils.isNotEmpty(resource)) {
+          KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(resource[0], jwk.getJksStorePassword().toCharArray());
+          keyPair = keyStoreKeyFactory.getKeyPair(jwk.getJksKeyAlias(), jwk.getJksKeyPassword().toCharArray());
+        }
+      } catch (IOException e) {
+        log.error("[Herodotus] |- Read custom certificate under resource folder error!", e);
+      }
+
+    } else {
+      KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+      keyPairGenerator.initialize(2048);
+      keyPair = keyPairGenerator.generateKeyPair();
+    }
+
+    RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
+    RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
+    RSAKey rsaKey = new RSAKey.Builder(publicKey)
+      .privateKey(privateKey)
+      .keyID(UUID.randomUUID().toString())
+      .build();
     JWKSet jwkSet = new JWKSet(rsaKey);
-
     return (jwkSelector, securityContext) -> jwkSelector.select(jwkSet);
   }
+
+  /**
+   * jwt 解码
+   */
+  @Bean
+  public JwtDecoder jwtDecoder(JWKSource<SecurityContext> jwkSource) {
+    return OAuth2AuthorizationServerConfiguration.jwtDecoder(jwkSource);
+  }
+
+//  /**
+//   * 加载jwk资源
+//   * 用于生成令牌
+//   *
+//   * @return
+//   */
+//  @Bean
+//  @SneakyThrows
+//  public JWKSource<SecurityContext> jwkSource(OAuth2AuthenticationProperties oAuth2AuthenticationProperties) {
+//    String path = oAuth2AuthenticationProperties.getAuthorizationServerSettings().getJksJksPath();
+//    String alias = oAuth2AuthenticationProperties.getAuthorizationServerSettings().getJksAlias();
+//    String pass = oAuth2AuthenticationProperties.getAuthorizationServerSettings().getJksPass();
+//
+//    ClassPathResource resource = new ClassPathResource(path);
+//    KeyStore jks = KeyStore.getInstance("jks");
+//    char[] pin = pass.toCharArray();
+//    jks.load(resource.getInputStream(), pin);
+//    RSAKey rsaKey = RSAKey.load(jks, alias, pin);
+//    JWKSet jwkSet = new JWKSet(rsaKey);
+//
+//    return (jwkSelector, securityContext) -> jwkSelector.select(jwkSet);
+//  }
 
 //  private final OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer;
 //  @Bean
@@ -397,44 +438,28 @@ public class AuthorizationServerConfiguration {
 //  public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
 //    return authenticationConfiguration.getAuthenticationManager();
 //  }
-
-
   //-------------------------------------------------------------------------web---------------------------------------
 
-  /**
-   * 用户
-   *
-   * @return
-   */
-  @Bean
-  public UserDetailsService userDetailsService() {
-    return new DefaultUserDetailsService();
-  }
-
-
-  /**
-   * jwt解码器
-   * 客户端认证授权后，需要访问user信息，解码器可以从令牌中解析出user信息
-   *
-   * @return
-   */
-  @SneakyThrows
-  @Bean
-  JwtDecoder jwtDecoder() {
-    CertificateFactory certificateFactory = CertificateFactory.getInstance("x.509");
-    // 读取cer公钥证书来配置解码器
-    ClassPathResource resource = new ClassPathResource("myjks.cer");
-    Certificate certificate = certificateFactory.generateCertificate(resource.getInputStream());
-    RSAPublicKey publicKey = (RSAPublicKey) certificate.getPublicKey();
-    return NimbusJwtDecoder.withPublicKey(publicKey).build();
-  }
+//  /**
+//   * jwt解码器
+//   * 客户端认证授权后，需要访问user信息，解码器可以从令牌中解析出user信息
+//   *
+//   * @return
+//   */
+//  @SneakyThrows
+//  @Bean
+//  JwtDecoder jwtDecoder() {
+//    CertificateFactory certificateFactory = CertificateFactory.getInstance("x.509");
+//    // 读取cer公钥证书来配置解码器
+//    ClassPathResource resource = new ClassPathResource("myjks.cer");
+//    Certificate certificate = certificateFactory.generateCertificate(resource.getInputStream());
+//    RSAPublicKey publicKey = (RSAPublicKey) certificate.getPublicKey();
+//    return NimbusJwtDecoder.withPublicKey(publicKey).build();
+//  }
 
   //-----------------------------封装---------------------------------------
 
-
-//  public class OAuth2RegistryCloent {
-
-  public List<RegisteredClient> registryCloents() {
+  public List<RegisteredClient> registryCloents(PasswordEncoder passwordEncoder) {
 
              /*
          客户端在数据库中记录的区别
@@ -481,7 +506,7 @@ public class AuthorizationServerConfiguration {
       .withId(UUID.randomUUID().toString())
       .clientId("code-client")
       .clientName("Code Client")
-      .clientSecret(passwordEncoder().encode("black123"))
+      .clientSecret(passwordEncoder.encode("black123"))
       .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
       .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
       .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
@@ -508,7 +533,7 @@ public class AuthorizationServerConfiguration {
       .withId(UUID.randomUUID().toString())
       .clientId("credentials-client")
       .clientName("Credentials Client")
-      .clientSecret(passwordEncoder().encode("black123"))
+      .clientSecret(passwordEncoder.encode("black123"))
       .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
       .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
       .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
@@ -530,7 +555,7 @@ public class AuthorizationServerConfiguration {
       .withId(UUID.randomUUID().toString())
       .clientId("password-client")
       .clientName("Password Client")
-      .clientSecret(passwordEncoder().encode("black123"))
+      .clientSecret(passwordEncoder.encode("black123"))
       .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
       .authorizationGrantType(AuthorizationGrantType.PASSWORD)
       .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
@@ -552,7 +577,7 @@ public class AuthorizationServerConfiguration {
 
     RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
       .clientId("oauth2-client")
-      .clientSecret(passwordEncoder().encode("123456"))
+      .clientSecret(passwordEncoder.encode("123456"))
       // 客户端认证基于请求头
       .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
       // 配置授权的支持方式
@@ -580,6 +605,7 @@ public class AuthorizationServerConfiguration {
     registryCloents.add(codeRegisteredClient);
     registryCloents.add(credentialsRegisteredClient);
     registryCloents.add(passwordRegisteredClient);
+    registryCloents.add(registeredClient);
 
     return registryCloents;
   }
