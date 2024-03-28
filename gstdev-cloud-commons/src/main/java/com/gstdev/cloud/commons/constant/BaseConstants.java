@@ -82,8 +82,8 @@ public interface BaseConstants {
 //    /**
 //     * Oauth2 模式类型
 //     */
-//    String PASSWORD = "password";
-//    String SOCIAL_CREDENTIALS = "social_credentials";
+    String PASSWORD = "password";
+    String SOCIAL_CREDENTIALS = "social_credentials";
 //
 //    String OPEN_API_SECURITY_SCHEME_BEARER_NAME = "HERODOTUS_AUTH";
 //
@@ -91,7 +91,7 @@ public interface BaseConstants {
 //    String BEARER_TOKEN = BEARER_TYPE + SymbolConstants.SPACE;
 //    String BASIC_TYPE = "Basic";
 //    String BASIC_TOKEN = BASIC_TYPE + SymbolConstants.SPACE;
-//    String AUTHORITIES = "authorities";
+    String AUTHORITIES = "authorities";
 //    String AVATAR = "avatar";
 //    String EMPLOYEE_ID = "employeeId";
 //    String LICENSE = "license";

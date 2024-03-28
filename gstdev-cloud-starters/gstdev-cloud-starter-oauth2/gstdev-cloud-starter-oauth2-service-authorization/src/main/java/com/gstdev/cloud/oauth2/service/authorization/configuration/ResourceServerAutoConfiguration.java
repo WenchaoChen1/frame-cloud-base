@@ -1,6 +1,7 @@
 package com.gstdev.cloud.oauth2.service.authorization.configuration;
 
 import com.gstdev.cloud.oauth2.authorization.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
+import com.gstdev.cloud.oauth2.authorization.customizer.OAuth2ResourceServerConfigurerCustomer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
@@ -8,7 +9,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 /**
@@ -28,8 +28,9 @@ public class ResourceServerAutoConfiguration {
     HttpSecurity httpSecurity,
 //            OAuth2SessionManagementConfigurerCustomer oauth2SessionManagementConfigurerCustomer,
 //            OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer,
-    JwtDecoder jwtDecoder,
-    OAuth2AuthorizeHttpRequestsConfigurerCustomer oauth2AuthorizeHttpRequestsConfigurerCustomer
+//    JwtDecoder jwtDecoder,
+    OAuth2AuthorizeHttpRequestsConfigurerCustomer oauth2AuthorizeHttpRequestsConfigurerCustomer,
+    OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer
   ) throws Exception {
 
     log.debug("[GstDev Cloud] |- Bean [Resource Server Security Filter Chain] Auto Configure.");
@@ -38,14 +39,14 @@ public class ResourceServerAutoConfiguration {
 
     httpSecurity
       .authorizeHttpRequests(oauth2AuthorizeHttpRequestsConfigurerCustomer)
-      .oauth2ResourceServer(resourceServer -> {
-        resourceServer.jwt(jwt -> jwt.decoder(jwtDecoder));
-//                    resourceServer.bearerTokenResolver(bearerTokenResolver);
-//        resourceServer.accessDeniedHandler(accessDeniedHandler);
-//        resourceServer.authenticationEntryPoint(authenticationEntryPoint);
-      });
+//      .oauth2ResourceServer(resourceServer -> {
+//        resourceServer.jwt(jwt -> jwt.decoder(jwtDecoder));
+////                    resourceServer.bearerTokenResolver(bearerTokenResolver);
+////        resourceServer.accessDeniedHandler(accessDeniedHandler);
+////        resourceServer.authenticationEntryPoint(authenticationEntryPoint);
+//      });
 //                .sessionManagement(oauth2SessionManagementConfigurerCustomer)
-//                .oauth2ResourceServer(oauth2ResourceServerConfigurerCustomer);
+      .oauth2ResourceServer(oauth2ResourceServerConfigurerCustomer);
 
     return httpSecurity.build();
   }

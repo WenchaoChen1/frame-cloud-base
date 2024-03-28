@@ -12,6 +12,7 @@ package com.gstdev.cloud.oauth2.authentication.configuration;
 import com.gstdev.cloud.oauth2.authentication.handler.DefaultAccessDeniedHandler;
 import com.gstdev.cloud.oauth2.authentication.handler.DefaultAuthenticationEntryPoint;
 import com.gstdev.cloud.oauth2.authorization.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
+import com.gstdev.cloud.oauth2.authorization.customizer.OAuth2ResourceServerConfigurerCustomer;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
@@ -64,7 +65,8 @@ public class DefaultSecurityConfiguration {
                                                         UrlBasedCorsConfigurationSource configurationSource,
                                                         //  BearerTokenResolver bearerTokenResolver,
                                                         JwtDecoder jwtDecoder,
-                                                        OAuth2AuthorizeHttpRequestsConfigurerCustomer oauth2AuthorizeHttpRequestsConfigurerCustomer) {
+                                                        OAuth2AuthorizeHttpRequestsConfigurerCustomer oauth2AuthorizeHttpRequestsConfigurerCustomer,
+                                                        OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer) {
     DefaultAccessDeniedHandler accessDeniedHandler = new DefaultAccessDeniedHandler();
     DefaultAuthenticationEntryPoint authenticationEntryPoint = new DefaultAuthenticationEntryPoint();
     http
@@ -85,12 +87,13 @@ public class DefaultSecurityConfiguration {
 //        handling.accessDeniedHandler(accessDeniedHandler);
 //        handling.authenticationEntryPoint(authenticationEntryPoint);
 //      })
-      .oauth2ResourceServer(resourceServer -> {
-        resourceServer.jwt(jwt -> jwt.decoder(jwtDecoder));
+      .oauth2ResourceServer(oauth2ResourceServerConfigurerCustomer)
+//      .oauth2ResourceServer(resourceServer -> {
+//        resourceServer.jwt(jwt -> jwt.decoder(jwtDecoder));
 //                    resourceServer.bearerTokenResolver(bearerTokenResolver);
 //        resourceServer.accessDeniedHandler(accessDeniedHandler);
 //        resourceServer.authenticationEntryPoint(authenticationEntryPoint);
-      })
+//      })
       //表单login处理重定向到登录页面
       //授权服务器过滤器链
       .formLogin(Customizer.withDefaults());

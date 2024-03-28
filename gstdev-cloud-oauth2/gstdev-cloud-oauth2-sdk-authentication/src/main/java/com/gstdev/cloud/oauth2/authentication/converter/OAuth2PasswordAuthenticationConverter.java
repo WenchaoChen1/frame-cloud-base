@@ -4,8 +4,8 @@ package com.gstdev.cloud.oauth2.authentication.converter;
 //import com.gstdev.cloud.oauth2.core.definition.HerodotusGrantType;
 //import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
 
-import com.gstdev.cloud.oauth2.authentication.utils.OAuth2EndpointUtils;
 import com.gstdev.cloud.oauth2.authentication.token.OAuth2PasswordAuthenticationToken;
+import com.gstdev.cloud.oauth2.authentication.utils.OAuth2EndpointUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,27 +22,42 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * <p>Description: 自定义密码模式认证转换器 </p>
+ * <p>
+ * {@code AuthenticationConverter} 类似于以前的 {@code AbstractTokenGranter}
+ * 主要用途是从请求中获取参数，并拼装Token类
+ *
+ * @author : gengwei.zheng
+ * @date : 2022/2/22 17:03
+ */
 public class OAuth2PasswordAuthenticationConverter  implements AuthenticationConverter {
-//public class OAuth2PasswordAuthenticationConverter extends AbstractAuthenticationConverter {
-//  public OAuth2PasswordAuthenticationConverter(HttpCryptoProcessor httpCryptoProcessor) {
+//  public OAuth2ResourceOwnerPasswordAuthenticationConverter(HttpCryptoProcessor httpCryptoProcessor) {
 //    super(httpCryptoProcessor);
 //  }
 //
 //  @Nullable
+//  @Override
 //  public Authentication convert(HttpServletRequest request) {
-//    String grantType = request.getParameter("grant_type");
+//    // grant_type (REQUIRED)
+//    String grantType = request.getParameter(OAuth2ParameterNames.GRANT_TYPE);
 //    if (!HerodotusGrantType.PASSWORD.getValue().equals(grantType)) {
 //      return null;
-//    } else {
-//      MultiValueMap<String, String> parameters = OAuth2EndpointUtils.getParameters(request);
-//      String scope = OAuth2EndpointUtils.checkOptionalParameter(parameters, "scope");
-//      OAuth2EndpointUtils.checkRequiredParameter(parameters, "username");
-//      OAuth2EndpointUtils.checkRequiredParameter(parameters, "password");
-//      return new OAuth2ResourceOwnerPasswordAuthenticationToken(this.getClientPrincipal(), this.getRequestedScopes(scope), this.getAdditionalParameters(request, parameters));
 //    }
+//
+//    MultiValueMap<String, String> parameters = OAuth2EndpointUtils.getParameters(request);
+//
+//    // scope (OPTIONAL)
+//    String scope = OAuth2EndpointUtils.checkOptionalParameter(parameters, OAuth2ParameterNames.SCOPE);
+//
+//    // username (REQUIRED)
+//    OAuth2EndpointUtils.checkRequiredParameter(parameters, OAuth2ParameterNames.USERNAME);
+//
+//    // password (REQUIRED)
+//    OAuth2EndpointUtils.checkRequiredParameter(parameters, OAuth2ParameterNames.PASSWORD);
+//
+//    return new OAuth2ResourceOwnerPasswordAuthenticationToken(getClientPrincipal(), getRequestedScopes(scope), getAdditionalParameters(request, parameters));
 //  }
-
-
 
 
   @Override

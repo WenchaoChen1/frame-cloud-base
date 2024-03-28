@@ -27,11 +27,14 @@ public class OAuth2AuthenticationProviderConfigurer extends AbstractHttpConfigur
   public void configure(HttpSecurity httpSecurity) throws Exception {
     OAuth2AuthorizationService authorizationService = OAuth2ConfigurerUtils.getAuthorizationService(httpSecurity);
     OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator = OAuth2ConfigurerUtils.getTokenGenerator(httpSecurity);
-    OAuth2PasswordAuthenticationProvider resourceOwnerPasswordAuthenticationProvider = new OAuth2PasswordAuthenticationProvider(authorizationService, tokenGenerator, this.userDetailsService, this.authenticationProperties);
+    OAuth2PasswordAuthenticationProvider resourceOwnerPasswordAuthenticationProvider =
+      new OAuth2PasswordAuthenticationProvider(authorizationService, tokenGenerator, this.userDetailsService, this.authenticationProperties);
     resourceOwnerPasswordAuthenticationProvider.setPasswordEncoder(this.passwordEncoder);
 //    resourceOwnerPasswordAuthenticationProvider.setSessionRegistry(this.sessionRegistry);
+
     httpSecurity.authenticationProvider(resourceOwnerPasswordAuthenticationProvider);
-//    OAuth2SocialCredentialsAuthenticationProvider socialCredentialsAuthenticationProvider = new OAuth2SocialCredentialsAuthenticationProvider(authorizationService, tokenGenerator, this.userDetailsService, this.authenticationProperties);
+//    OAuth2SocialCredentialsAuthenticationProvider socialCredentialsAuthenticationProvider =
+//        new OAuth2SocialCredentialsAuthenticationProvider(authorizationService, tokenGenerator, this.userDetailsService, this.authenticationProperties);
 //    socialCredentialsAuthenticationProvider.setSessionRegistry(this.sessionRegistry);
 //    httpSecurity.authenticationProvider(socialCredentialsAuthenticationProvider);
   }
