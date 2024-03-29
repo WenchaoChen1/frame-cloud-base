@@ -8,10 +8,10 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.configurer;
 //
-//import cn.herodotus.engine.captcha.core.processor.CaptchaRendererFactory;
-//import cn.herodotus.engine.oauth2.authentication.properties.OAuth2AuthenticationProperties;
-//import cn.herodotus.engine.oauth2.authentication.provider.OAuth2FormLoginAuthenticationProvider;
-//import cn.herodotus.engine.oauth2.authentication.response.OAuth2FormLoginAuthenticationFailureHandler;
+//import com.gstdev.cloud.captcha.core.processor.CaptchaRendererFactory;
+//import com.gstdev.cloud.oauth2.authentication.properties.OAuth2AuthenticationProperties;
+//import com.gstdev.cloud.oauth2.authentication.provider.OAuth2FormLoginAuthenticationProvider;
+//import com.gstdev.cloud.oauth2.authentication.response.OAuth2FormLoginAuthenticationFailureHandler;
 //import org.springframework.security.authentication.AuthenticationManager;
 //import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 //import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;

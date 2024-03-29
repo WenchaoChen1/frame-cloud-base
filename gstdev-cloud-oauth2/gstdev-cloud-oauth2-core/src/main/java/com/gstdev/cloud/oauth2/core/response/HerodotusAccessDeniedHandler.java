@@ -9,8 +9,8 @@
 package com.gstdev.cloud.oauth2.core.response;
 
 import com.gstdev.cloud.commons.domain.Result;
-import com.gstdev.cloud.commons.utils.WebUtils;
 import com.gstdev.cloud.oauth2.core.exception.SecurityGlobalExceptionHandler;
+import com.gstdev.cloud.oauth2.core.utils.WebUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

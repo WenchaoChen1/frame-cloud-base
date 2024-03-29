@@ -8,7 +8,7 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.core.definition.strategy;
 //
-//import cn.herodotus.engine.oauth2.core.definition.domain.HerodotusPermission;
+//import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusPermission;
 //
 //import java.util.List;
 //

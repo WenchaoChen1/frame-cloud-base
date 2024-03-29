@@ -8,8 +8,8 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.consumer;
 //
-//import cn.herodotus.engine.oauth2.authentication.utils.OAuth2ConfigurerUtils;
-//import cn.herodotus.engine.oauth2.core.definition.service.ClientDetailsService;
+//import com.gstdev.cloud.oauth2.authentication.utils.OAuth2ConfigurerUtils;
+//import com.gstdev.cloud.oauth2.core.definition.service.ClientDetailsService;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 //import org.springframework.security.authentication.AuthenticationProvider;

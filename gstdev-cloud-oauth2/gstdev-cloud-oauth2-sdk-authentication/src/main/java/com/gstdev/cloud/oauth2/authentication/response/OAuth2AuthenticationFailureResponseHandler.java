@@ -8,10 +8,10 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.response;
 //
-//import cn.herodotus.engine.assistant.definition.domain.Result;
-//import cn.herodotus.engine.oauth2.authentication.utils.OAuth2EndpointUtils;
-//import cn.herodotus.engine.oauth2.core.exception.SecurityGlobalExceptionHandler;
-//import cn.herodotus.engine.oauth2.core.utils.WebUtils;
+//import com.gstdev.cloud.assistant.definition.domain.Result;
+//import com.gstdev.cloud.oauth2.authentication.utils.OAuth2EndpointUtils;
+//import com.gstdev.cloud.oauth2.core.exception.SecurityGlobalExceptionHandler;
+//import com.gstdev.cloud.oauth2.core.utils.WebUtils;
 //import jakarta.servlet.ServletException;
 //import jakarta.servlet.http.HttpServletRequest;
 //import jakarta.servlet.http.HttpServletResponse;

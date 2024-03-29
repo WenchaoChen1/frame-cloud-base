@@ -8,8 +8,8 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.configurer;
 //
-//import cn.herodotus.engine.oauth2.authentication.properties.OAuth2AuthenticationProperties;
-//import cn.herodotus.engine.oauth2.core.definition.details.FormLoginWebAuthenticationDetails;
+//import com.gstdev.cloud.oauth2.authentication.properties.OAuth2AuthenticationProperties;
+//import com.gstdev.cloud.oauth2.core.definition.details.FormLoginWebAuthenticationDetails;
 //import jakarta.servlet.http.HttpServletRequest;
 //import org.springframework.security.authentication.AuthenticationDetailsSource;
 //

@@ -16,10 +16,10 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>captcha-core</module>
-    <module>captcha-sdk-hutool</module>
-    <module>captcha-sdk-behavior</module>
-    <module>captcha-sdk-graphic</module>
+    <module>gstdev-cloud-captcha-core</module>
+    <module>gstdev-cloud-captcha-sdk-hutool</module>
+    <module>gstdev-cloud-captcha-sdk-behavior</module>
+    <module>gstdev-cloud-captcha-sdk-graphic</module>
 <!--    <module>captcha-spring-boot-starter</module>-->
   </modules>
 </project>

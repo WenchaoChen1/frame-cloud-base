@@ -8,7 +8,7 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.core.utils;
 //
-//import cn.herodotus.engine.oauth2.core.definition.domain.HerodotusUser;
+//import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusUser;
 //import org.apache.commons.lang3.ObjectUtils;
 //import org.apache.commons.lang3.StringUtils;
 //import org.dromara.hutool.core.bean.BeanUtil;

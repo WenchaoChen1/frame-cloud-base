@@ -16,11 +16,11 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>cache-core</module>
-    <module>cache-redis</module>
-    <module>cache-caffeine</module>
-    <module>cache-jetcache</module>
-    <module>cache-redisson</module>
+    <module>gstdev-cloud-cache-core</module>
+    <module>gstdev-cloud-cache-redis</module>
+    <module>gstdev-cloud-cache-caffeine</module>
+    <module>gstdev-cloud-cache-jetcache</module>
+    <module>gstdev-cloud-cache-redisson</module>
   </modules>
 
 </project>

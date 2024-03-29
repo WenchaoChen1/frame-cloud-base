@@ -10,10 +10,13 @@
 package com.gstdev.cloud.oauth2.authentication.service;
 
 import cn.hutool.core.util.ObjectUtil;
+import com.gstdev.cloud.commons.domain.oauth2.AccessPrincipal;
 import com.gstdev.cloud.oauth2.authentication.model.UserAuth;
 import com.gstdev.cloud.oauth2.authentication.utils.OAuth2EndpointUtils;
-import com.gstdev.cloud.oauth2.core.service.EnhanceUserDetailsService;
+import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusUser;
+import com.gstdev.cloud.oauth2.core.definition.service.EnhanceUserDetailsService;
 import jakarta.annotation.Resource;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -54,5 +57,15 @@ public class DefaultUserDetailsService implements EnhanceUserDetailsService {
     }
 
     return authorities;
+  }
+
+  @Override
+  public UserDetails loadUserBySocial(String source, AccessPrincipal accessPrincipal) throws AuthenticationException {
+    return null;
+  }
+
+  @Override
+  public HerodotusUser loadHerodotusUserByUsername(String username) throws UsernameNotFoundException {
+    return null;
   }
 }

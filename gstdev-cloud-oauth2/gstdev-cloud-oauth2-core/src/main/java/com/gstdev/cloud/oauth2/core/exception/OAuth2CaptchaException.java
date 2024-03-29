@@ -1,9 +1,9 @@
 //package com.gstdev.cloud.oauth2.core.exception;
 //
-//import cn.herodotus.engine.assistant.definition.constants.ErrorCodes;
-//import cn.herodotus.engine.assistant.definition.domain.Feedback;
-//import cn.herodotus.engine.assistant.definition.domain.Result;
-//import cn.herodotus.engine.assistant.definition.exception.HerodotusException;
+//import com.gstdev.cloud.assistant.definition.constants.ErrorCodes;
+//import com.gstdev.cloud.assistant.definition.domain.Feedback;
+//import com.gstdev.cloud.assistant.definition.domain.Result;
+//import com.gstdev.cloud.assistant.definition.exception.HerodotusException;
 //import org.springframework.security.authentication.AccountStatusException;
 //import org.springframework.security.core.Authentication;
 //

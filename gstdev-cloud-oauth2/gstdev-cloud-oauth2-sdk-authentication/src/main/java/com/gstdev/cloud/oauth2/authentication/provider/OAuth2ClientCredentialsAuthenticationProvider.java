@@ -8,9 +8,9 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.provider;
 //
-//import cn.herodotus.engine.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
-//import cn.herodotus.engine.oauth2.core.definition.domain.HerodotusGrantedAuthority;
-//import cn.herodotus.engine.oauth2.core.definition.service.ClientDetailsService;
+//import com.gstdev.cloud.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
+//import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusGrantedAuthority;
+//import com.gstdev.cloud.oauth2.core.definition.service.ClientDetailsService;
 //import org.apache.commons.logging.Log;
 //import org.apache.commons.logging.LogFactory;
 //import org.dromara.hutool.core.reflect.FieldUtil;

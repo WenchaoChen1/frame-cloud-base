@@ -10,10 +10,8 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <groupId>com.gstdev.cloud</groupId>
   <artifactId>gstdev-cloud-oauth2-core</artifactId>
   <name>GstDev Cloud :: OAuth2 :: Core</name>
-  <!--  <description>${project.name}</description>-->
   <packaging>jar</packaging>
   <description>基于 Spring Authorization Server 的 Dante Cloud 基础核心组件模块</description>
 
@@ -57,7 +55,6 @@
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-collections4</artifactId>
-      <version>${commons-collections4.version}</version>
     </dependency>
 
     <dependency>

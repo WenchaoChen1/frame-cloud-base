@@ -8,7 +8,7 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authorization.configuration;
 //
-//import cn.herodotus.engine.oauth2.authorization.customizer.OAuth2SessionManagementConfigurerCustomer;
+//import com.gstdev.cloud.oauth2.authorization.customizer.OAuth2SessionManagementConfigurerCustomer;
 //import jakarta.annotation.PostConstruct;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;

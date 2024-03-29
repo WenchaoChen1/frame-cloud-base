@@ -8,11 +8,11 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authorization.processor;
 //
-//import cn.herodotus.engine.cache.jetcache.utils.JetCacheUtils;
-//import cn.herodotus.engine.oauth2.authorization.definition.HerodotusConfigAttribute;
-//import cn.herodotus.engine.oauth2.authorization.definition.HerodotusRequest;
-//import cn.herodotus.engine.oauth2.authorization.definition.HerodotusRequestMatcher;
-//import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
+//import com.gstdev.cloud.cache.jetcache.utils.JetCacheUtils;
+//import com.gstdev.cloud.oauth2.authorization.definition.HerodotusConfigAttribute;
+//import com.gstdev.cloud.oauth2.authorization.definition.HerodotusRequest;
+//import com.gstdev.cloud.oauth2.authorization.definition.HerodotusRequestMatcher;
+//import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
 //import com.alicp.jetcache.Cache;
 //import com.alicp.jetcache.anno.CacheType;
 //import org.apache.commons.collections4.MapUtils;

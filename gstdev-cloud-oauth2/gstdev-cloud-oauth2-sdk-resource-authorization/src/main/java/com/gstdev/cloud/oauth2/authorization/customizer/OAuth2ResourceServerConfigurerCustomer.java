@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.authorization.customizer;
 
-import com.gstdev.cloud.commons.enums.Target;
+import com.gstdev.cloud.commons.ass.core.enums.Target;
 import com.gstdev.cloud.oauth2.authorization.properties.OAuth2AuthorizationProperties;
 import com.gstdev.cloud.oauth2.core.response.HerodotusAccessDeniedHandler;
 import com.gstdev.cloud.oauth2.core.response.HerodotusAuthenticationEntryPoint;

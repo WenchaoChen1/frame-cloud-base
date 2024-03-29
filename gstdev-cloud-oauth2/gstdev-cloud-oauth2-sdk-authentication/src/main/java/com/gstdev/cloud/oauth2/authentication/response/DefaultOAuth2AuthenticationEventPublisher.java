@@ -8,9 +8,9 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.response;
 //
-//import cn.herodotus.engine.oauth2.core.constants.OAuth2ErrorKeys;
-//import cn.herodotus.engine.oauth2.core.exception.AccountEndpointLimitedException;
-//import cn.herodotus.engine.oauth2.core.exception.SessionExpiredException;
+//import com.gstdev.cloud.oauth2.core.constants.OAuth2ErrorKeys;
+//import com.gstdev.cloud.oauth2.core.exception.AccountEndpointLimitedException;
+//import com.gstdev.cloud.oauth2.core.exception.SessionExpiredException;
 //import org.springframework.context.ApplicationEventPublisher;
 //import org.springframework.security.authentication.*;
 //import org.springframework.security.core.Authentication;

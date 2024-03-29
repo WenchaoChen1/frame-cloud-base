@@ -10,7 +10,7 @@
 package com.gstdev.cloud.oauth2.authentication.handler;
 
 import com.gstdev.cloud.commons.domain.ErrorResponse;
-import com.gstdev.cloud.commons.utils.WebUtils;
+import com.gstdev.cloud.oauth2.core.utils.WebUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

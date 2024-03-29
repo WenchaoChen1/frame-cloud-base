@@ -1,7 +1,7 @@
 //package com.gstdev.cloud.oauth2.core.exception;
 //
-//import cn.herodotus.engine.assistant.definition.domain.Feedback;
-//import cn.herodotus.engine.captcha.core.constants.CaptchaErrorCodes;
+//import com.gstdev.cloud.assistant.definition.domain.Feedback;
+//import com.gstdev.cloud.captcha.core.constants.CaptchaErrorCodes;
 //
 ///**
 // * <p>Description: 验证码为空 </p>

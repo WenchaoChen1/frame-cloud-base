@@ -8,7 +8,7 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.dto;
 //
-//import cn.herodotus.engine.rest.core.definition.dto.BaseDto;
+//import com.gstdev.cloud.rest.core.definition.dto.BaseDto;
 //import io.swagger.v3.oas.annotations.media.Schema;
 //import jakarta.validation.constraints.NotBlank;
 //

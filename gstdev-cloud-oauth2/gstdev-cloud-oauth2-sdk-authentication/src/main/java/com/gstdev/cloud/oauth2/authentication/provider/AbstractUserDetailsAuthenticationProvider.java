@@ -1,9 +1,9 @@
 package com.gstdev.cloud.oauth2.authentication.provider;
 
 
-import com.gstdev.cloud.oauth2.authentication.utils.OAuth2EndpointUtils;
 import com.gstdev.cloud.oauth2.authentication.properties.OAuth2AuthenticationProperties;
-import com.gstdev.cloud.oauth2.core.service.EnhanceUserDetailsService;
+import com.gstdev.cloud.oauth2.authentication.utils.OAuth2EndpointUtils;
+import com.gstdev.cloud.oauth2.core.definition.service.EnhanceUserDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.MessageSourceAccessor;

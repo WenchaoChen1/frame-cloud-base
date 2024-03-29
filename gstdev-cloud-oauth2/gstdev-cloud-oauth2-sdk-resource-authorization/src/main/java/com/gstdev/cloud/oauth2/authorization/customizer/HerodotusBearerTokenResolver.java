@@ -8,9 +8,9 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authorization.customizer;
 //
-//import cn.herodotus.engine.assistant.core.support.BearerTokenResolver;
-//import cn.herodotus.engine.assistant.definition.domain.oauth2.PrincipalDetails;
-//import cn.herodotus.engine.oauth2.core.utils.PrincipalUtils;
+//import com.gstdev.cloud.assistant.core.support.BearerTokenResolver;
+//import com.gstdev.cloud.assistant.definition.domain.oauth2.PrincipalDetails;
+//import com.gstdev.cloud.oauth2.core.utils.PrincipalUtils;
 //import org.apache.commons.lang3.ObjectUtils;
 //import org.apache.commons.lang3.StringUtils;
 //import org.slf4j.Logger;

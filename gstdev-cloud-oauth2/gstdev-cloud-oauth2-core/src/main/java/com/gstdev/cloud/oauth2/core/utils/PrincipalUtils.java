@@ -8,9 +8,9 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.core.utils;
 //
-//import cn.herodotus.engine.assistant.definition.constants.BaseConstants;
-//import cn.herodotus.engine.assistant.definition.domain.oauth2.PrincipalDetails;
-//import cn.herodotus.engine.oauth2.core.definition.domain.HerodotusUser;
+//import com.gstdev.cloud.assistant.definition.constants.BaseConstants;
+//import com.gstdev.cloud.assistant.definition.domain.oauth2.PrincipalDetails;
+//import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusUser;
 //import org.apache.commons.collections4.CollectionUtils;
 //import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;
 //import org.springframework.security.oauth2.jwt.Jwt;

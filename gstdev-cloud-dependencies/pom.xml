@@ -49,15 +49,32 @@
 
     <!-- 应用开发辅助工具组件 -->
     <redisson.version>3.27.2</redisson.version>
-
+    <p6spy.version>3.9.1</p6spy.version>
 
     <!-- 阿里巴巴开源工具依赖 -->
     <jetcache.version>2.7.5</jetcache.version>
+    <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
     <!-- 国内开源通用组件 -->
     <dromara-hutool.version>6.0.0-M11</dromara-hutool.version>
-    <hutool.version>5.5.8</hutool.version>
 
 
+    <!--第三方starter-->
+    <mybatis-plus-boot-starter.version>3.5.5</mybatis-plus-boot-starter.version>
+    <mybatis-plus-generator.version>3.5.5</mybatis-plus-generator.version>
+    <mybatis.version>3.5.15</mybatis.version>
+    <velocity.version>2.3</velocity.version>
+    <!--Webjars 依赖-->
+    <animate.css.version>3.7.2</animate.css.version>
+    <bootstrap.version>5.3.3</bootstrap.version>
+    <font-awesome.version>6.5.1</font-awesome.version>
+    <jquery.version>3.7.1</jquery.version>
+    <jquery-backstretch.version>2.1.16</jquery-backstretch.version>
+    <mdi__font.version>7.3.67</mdi__font.version>
+    <quasar.version>2.14.0</quasar.version>
+    <uniform.version>2.1.2-1</uniform.version>
+    <vue.version>3.4.15</vue.version>
+    <!--厂商应用集成-->
+    <!--以下为特殊处理, 统一版本处理漏洞等-->
     <caffeine.version>3.1.0</caffeine.version>
     <commons-lang3.version>3.12.0</commons-lang3.version>
     <hikaricp.version>5.0.1</hikaricp.version>
@@ -73,7 +90,7 @@
 
     <gstdev-cloud.version>${project.version}</gstdev-cloud.version>
 
-
+    <hutool.version>5.5.8</hutool.version>
     <swagger.version>3.0.0</swagger.version>
     <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
     <minio.version>7.0.2</minio.version>
@@ -179,7 +196,7 @@
         <version>${gstdev-cloud.version}</version>
       </dependency>
 
-      <!-- [GstDev Cloud] oauth2 -->
+      <!--=========================================== oauth2 ===========================================-->
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
@@ -205,32 +222,52 @@
         <artifactId>gstdev-cloud-oauth2-sdk-resource-authorization</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
+      <!--=========================================== data ===========================================-->
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-data-core</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-data-sdk-jpa</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-data-sdk-mybatis-plus</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-data-sdk-tenant</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
 
+      <!--=========================================== plugins ===========================================-->
+      <!--=========================================== plugins-captcha ===================================-->
 
-      <!-- =========================================== plugins =========================================== -->
-      <!-- =========================================== plugins-captcha =================================== -->
-
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>captcha-core</artifactId>
+        <artifactId>gstdev-cloud-captcha-core</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>captcha-sdk-behavior</artifactId>
+        <artifactId>gstdev-cloud-captcha-sdk-behavior</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>captcha-sdk-graphic</artifactId>
+        <artifactId>gstdev-cloud-captcha-sdk-graphic</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>captcha-sdk-hutool</artifactId>
+        <artifactId>gstdev-cloud-captcha-sdk-hutool</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
-      <!-- =========================================== plugins-storage =================================== -->
+      <!--=========================================== plugins-storage ===================================-->
 
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
@@ -257,7 +294,7 @@
         <artifactId>gstdev-cloud-plugin-storage-aws</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
-      <!-- =========================================== plugins-openapi =================================== -->
+      <!--=========================================== plugins-openapi ===================================-->
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-plugin-swagger</artifactId>
@@ -269,31 +306,31 @@
         <version>${gstdev-cloud.version}</version>
       </dependency>
 
-      <!-- =========================================== plugins-cache =================================== -->
+      <!--=========================================== plugins-cache ===================================-->
 
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>cache-core</artifactId>
+        <artifactId>gstdev-cloud-cache-core</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>cache-jetcache</artifactId>
+        <artifactId>gstdev-cloud-cache-jetcache</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>cache-redis</artifactId>
+        <artifactId>gstdev-cloud-cache-redis</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>cache-caffeine</artifactId>
+        <artifactId>gstdev-cloud-cache-caffeine</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>cache-redisson</artifactId>
+        <artifactId>gstdev-cloud-cache-redisson</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
 
@@ -349,11 +386,11 @@
         <artifactId>gstdev-cloud-starter-swagger</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
-<!--      <dependency>-->
-<!--        <groupId>com.gstdev.cloud</groupId>-->
-<!--        <artifactId>gstdev-cloud-starter-oauth2</artifactId>-->
-<!--        <version>${gstdev-cloud.version}</version>-->
-<!--      </dependency>-->
+      <!--      <dependency>-->
+      <!--        <groupId>com.gstdev.cloud</groupId>-->
+      <!--        <artifactId>gstdev-cloud-starter-oauth2</artifactId>-->
+      <!--        <version>${gstdev-cloud.version}</version>-->
+      <!--      </dependency>-->
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-starter-oauth2-authentication</artifactId>
@@ -366,28 +403,20 @@
       </dependency>
 
 
-      <!-- =============================== 开源通用工具包 ======================= -->
-      <!-- =============================== 国内开源通用组件 ======================= -->
-      <dependency>
-        <groupId>com.madgag</groupId>
-        <artifactId>animated-gif-lib</artifactId>
-        <version>${animated-gif-lib.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.dromara.hutool</groupId>
-        <artifactId>hutool-all</artifactId>
-        <version>${dromara-hutool.version}</version>
-      </dependency>
+      <!--=============================== 开源通用工具包 =======================-->
 
-
-      <!-- =============================== 应用开发辅助工具组件 ======================= -->
+      <!--=============================== 应用开发辅助工具组件 =======================-->
       <dependency>
         <groupId>org.redisson</groupId>
         <artifactId>redisson</artifactId>
         <version>${redisson.version}</version>
       </dependency>
-
-      <!-- =============================== 阿里巴巴开源工具依赖 ======================= -->
+      <dependency>
+        <groupId>p6spy</groupId>
+        <artifactId>p6spy</artifactId>
+        <version>${p6spy.version}</version>
+      </dependency>
+      <!--=============================== 阿里巴巴开源工具依赖 =======================-->
 
       <dependency>
         <groupId>com.alicp.jetcache</groupId>
@@ -409,6 +438,104 @@
         <artifactId>jetcache-redis-lettuce</artifactId>
         <version>${jetcache.version}</version>
       </dependency>
+
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>transmittable-thread-local</artifactId>
+        <version>${transmittable-thread-local.version}</version>
+      </dependency>
+      <!--=============================== 开源通用工具包 =======================-->
+      <dependency>
+        <groupId>com.madgag</groupId>
+        <artifactId>animated-gif-lib</artifactId>
+        <version>${animated-gif-lib.version}</version>
+      </dependency>
+
+
+      <!--=============================== 国内开源通用组件 =======================-->
+
+      <dependency>
+        <groupId>org.dromara.hutool</groupId>
+        <artifactId>hutool-all</artifactId>
+        <version>${dromara-hutool.version}</version>
+      </dependency>
+
+      <!--=============================== 第三方starter =======================-->
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-core</artifactId>
+        <version>${mybatis-plus-boot-starter.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>${mybatis-plus-boot-starter.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-generator</artifactId>
+        <version>${mybatis-plus-generator.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis</artifactId>
+        <version>${mybatis.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.velocity</groupId>
+        <artifactId>velocity-engine-core</artifactId>
+        <version>${velocity.version}</version>
+      </dependency>
+      <!--=============================== Webjars 依赖 =======================-->
+      <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>animate.css</artifactId>
+        <version>${animate.css.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>bootstrap</artifactId>
+        <version>${bootstrap.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>font-awesome</artifactId>
+        <version>${font-awesome.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>jquery</artifactId>
+        <version>${jquery.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>jquery-backstretch</artifactId>
+        <version>${jquery-backstretch.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.webjars.npm</groupId>
+        <artifactId>mdi__font</artifactId>
+        <version>${mdi__font.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.webjars.npm</groupId>
+        <artifactId>quasar</artifactId>
+        <version>${quasar.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>uniform</artifactId>
+        <version>${uniform.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.webjars.npm</groupId>
+        <artifactId>vue</artifactId>
+        <version>${vue.version}</version>
+      </dependency>
+      <!--=============================== 厂商应用集成 =======================-->
+      <!--=============================== 以下为特殊处理, 统一版本处理漏洞等 =======================-->
+
+
       <!-- Apache related dependencies -->
       <dependency>
         <groupId>org.apache.poi</groupId>

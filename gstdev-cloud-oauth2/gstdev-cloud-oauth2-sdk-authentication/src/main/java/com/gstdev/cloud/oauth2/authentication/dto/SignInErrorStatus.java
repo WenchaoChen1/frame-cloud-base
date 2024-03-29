@@ -8,7 +8,7 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.dto;
 //
-//import cn.herodotus.engine.assistant.definition.domain.base.AbstractEntity;
+//import com.gstdev.cloud.assistant.definition.domain.base.AbstractEntity;
 //
 ///**
 // * <p>Description: 用户错误状态信息 </p>

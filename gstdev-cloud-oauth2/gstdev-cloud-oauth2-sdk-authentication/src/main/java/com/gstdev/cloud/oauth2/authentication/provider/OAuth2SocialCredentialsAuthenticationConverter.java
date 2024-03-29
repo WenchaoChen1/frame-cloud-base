@@ -8,11 +8,11 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.provider;
 //
-//import cn.herodotus.engine.assistant.core.enums.AccountType;
-//import cn.herodotus.engine.assistant.definition.constants.BaseConstants;
-//import cn.herodotus.engine.oauth2.authentication.utils.OAuth2EndpointUtils;
-//import cn.herodotus.engine.oauth2.core.definition.HerodotusGrantType;
-//import cn.herodotus.engine.rest.protect.crypto.processor.HttpCryptoProcessor;
+//import com.gstdev.cloud.assistant.core.enums.AccountType;
+//import com.gstdev.cloud.assistant.definition.constants.BaseConstants;
+//import com.gstdev.cloud.oauth2.authentication.utils.OAuth2EndpointUtils;
+//import com.gstdev.cloud.oauth2.core.definition.HerodotusGrantType;
+//import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
 //import jakarta.servlet.http.HttpServletRequest;
 //import org.apache.commons.lang3.ObjectUtils;
 //import org.springframework.security.core.Authentication;

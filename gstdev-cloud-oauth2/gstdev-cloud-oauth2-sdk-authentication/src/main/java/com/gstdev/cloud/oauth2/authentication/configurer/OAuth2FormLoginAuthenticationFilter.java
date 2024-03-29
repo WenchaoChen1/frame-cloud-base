@@ -8,8 +8,8 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.configurer;
 //
-//import cn.herodotus.engine.oauth2.authentication.provider.OAuth2FormLoginAuthenticationToken;
-//import cn.herodotus.engine.oauth2.core.utils.SymmetricUtils;
+//import com.gstdev.cloud.oauth2.authentication.provider.OAuth2FormLoginAuthenticationToken;
+//import com.gstdev.cloud.oauth2.core.utils.SymmetricUtils;
 //import jakarta.servlet.ServletException;
 //import jakarta.servlet.http.HttpServletRequest;
 //import jakarta.servlet.http.HttpServletResponse;

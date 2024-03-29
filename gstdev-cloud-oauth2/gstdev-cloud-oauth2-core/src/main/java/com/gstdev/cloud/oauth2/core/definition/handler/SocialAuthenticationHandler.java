@@ -8,8 +8,8 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.core.definition.handler;
 //
-//import cn.herodotus.engine.assistant.definition.domain.oauth2.AccessPrincipal;
-//import cn.herodotus.engine.oauth2.core.definition.domain.HerodotusUser;
+//import com.gstdev.cloud.assistant.definition.domain.oauth2.AccessPrincipal;
+//import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusUser;
 //import org.springframework.security.core.AuthenticationException;
 //
 ///**

@@ -10,7 +10,7 @@
 package com.gstdev.cloud.oauth2.authentication.configuration;
 
 
-import com.gstdev.cloud.commons.utils.ResourceUtils;
+import com.gstdev.cloud.commons.ass.core.utils.ResourceUtils;
 import com.gstdev.cloud.oauth2.authentication.configurer.OAuth2AuthenticationProviderConfigurer;
 import com.gstdev.cloud.oauth2.authentication.consumer.OAuth2AuthorizationCodeAuthenticationProviderConsumer;
 import com.gstdev.cloud.oauth2.authentication.converter.OAuth2PasswordAuthenticationConverter;

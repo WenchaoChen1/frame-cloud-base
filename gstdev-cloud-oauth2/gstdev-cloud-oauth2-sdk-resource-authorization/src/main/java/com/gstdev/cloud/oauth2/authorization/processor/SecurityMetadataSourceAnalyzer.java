@@ -8,11 +8,11 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authorization.processor;
 //
-//import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
-//import cn.herodotus.engine.oauth2.authorization.definition.HerodotusConfigAttribute;
-//import cn.herodotus.engine.oauth2.authorization.definition.HerodotusRequest;
-//import cn.herodotus.engine.oauth2.authorization.enums.Category;
-//import cn.herodotus.engine.oauth2.core.definition.domain.SecurityAttribute;
+//import com.gstdev.cloud.assistant.definition.constants.SymbolConstants;
+//import com.gstdev.cloud.oauth2.authorization.definition.HerodotusConfigAttribute;
+//import com.gstdev.cloud.oauth2.authorization.definition.HerodotusRequest;
+//import com.gstdev.cloud.oauth2.authorization.enums.Category;
+//import com.gstdev.cloud.oauth2.core.definition.domain.SecurityAttribute;
 //import org.apache.commons.collections4.MapUtils;
 //import org.apache.commons.lang3.StringUtils;
 //import org.slf4j.Logger;

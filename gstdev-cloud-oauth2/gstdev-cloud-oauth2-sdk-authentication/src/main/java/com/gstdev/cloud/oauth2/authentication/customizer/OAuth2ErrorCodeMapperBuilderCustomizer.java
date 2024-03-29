@@ -8,10 +8,10 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.customizer;
 //
-//import cn.herodotus.engine.assistant.definition.constants.ErrorCodeMapperBuilderOrdered;
-//import cn.herodotus.engine.assistant.definition.function.ErrorCodeMapperBuilderCustomizer;
-//import cn.herodotus.engine.assistant.definition.support.ErrorCodeMapperBuilder;
-//import cn.herodotus.engine.oauth2.core.constants.OAuth2ErrorCodes;
+//import com.gstdev.cloud.assistant.definition.constants.ErrorCodeMapperBuilderOrdered;
+//import com.gstdev.cloud.assistant.definition.function.ErrorCodeMapperBuilderCustomizer;
+//import com.gstdev.cloud.assistant.definition.support.ErrorCodeMapperBuilder;
+//import com.gstdev.cloud.oauth2.core.constants.OAuth2ErrorCodes;
 //import org.springframework.core.Ordered;
 //
 ///**

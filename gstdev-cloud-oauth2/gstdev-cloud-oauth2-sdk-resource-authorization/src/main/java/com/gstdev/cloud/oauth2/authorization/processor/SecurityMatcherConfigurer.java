@@ -1,13 +1,13 @@
 package com.gstdev.cloud.oauth2.authorization.processor;
 
 
-import com.gstdev.cloud.commons.utils.ListUtils;
-import com.gstdev.cloud.commons.utils.WebUtils;
+import com.gstdev.cloud.commons.ass.core.utils.type.ListUtils;
 import com.gstdev.cloud.oauth2.authorization.definition.HerodotusConfigAttribute;
 import com.gstdev.cloud.oauth2.authorization.definition.HerodotusRequest;
 import com.gstdev.cloud.oauth2.authorization.properties.OAuth2AuthorizationProperties;
 import com.gstdev.cloud.oauth2.core.constants.SecurityResources;
 import com.gstdev.cloud.oauth2.core.enums.PermissionExpression;
+import com.gstdev.cloud.oauth2.core.utils.WebUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;

@@ -8,13 +8,13 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.provider;
 //
-//import cn.herodotus.engine.assistant.definition.constants.BaseConstants;
-//import cn.herodotus.engine.assistant.definition.domain.oauth2.AccessPrincipal;
-//import cn.herodotus.engine.oauth2.authentication.properties.OAuth2AuthenticationProperties;
-//import cn.herodotus.engine.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
-//import cn.herodotus.engine.oauth2.core.definition.HerodotusGrantType;
-//import cn.herodotus.engine.oauth2.core.definition.service.EnhanceUserDetailsService;
-//import cn.herodotus.engine.oauth2.core.exception.SocialCredentialsParameterBindingFailedException;
+//import com.gstdev.cloud.assistant.definition.constants.BaseConstants;
+//import com.gstdev.cloud.assistant.definition.domain.oauth2.AccessPrincipal;
+//import com.gstdev.cloud.oauth2.authentication.properties.OAuth2AuthenticationProperties;
+//import com.gstdev.cloud.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
+//import com.gstdev.cloud.oauth2.core.definition.HerodotusGrantType;
+//import com.gstdev.cloud.oauth2.core.definition.service.EnhanceUserDetailsService;
+//import com.gstdev.cloud.oauth2.core.exception.SocialCredentialsParameterBindingFailedException;
 //import org.dromara.hutool.core.bean.BeanUtil;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;

@@ -8,7 +8,7 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.provider;
 //
-//import cn.herodotus.engine.oauth2.core.definition.HerodotusGrantType;
+//import com.gstdev.cloud.oauth2.core.definition.HerodotusGrantType;
 //import org.apache.commons.collections4.CollectionUtils;
 //import org.springframework.lang.Nullable;
 //import org.springframework.security.core.Authentication;

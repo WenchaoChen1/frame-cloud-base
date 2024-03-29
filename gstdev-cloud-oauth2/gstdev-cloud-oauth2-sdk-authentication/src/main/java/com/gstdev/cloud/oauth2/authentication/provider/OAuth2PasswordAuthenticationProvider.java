@@ -4,7 +4,7 @@ import com.gstdev.cloud.oauth2.authentication.properties.OAuth2AuthenticationPro
 import com.gstdev.cloud.oauth2.authentication.token.OAuth2PasswordAuthenticationToken;
 import com.gstdev.cloud.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
 import com.gstdev.cloud.oauth2.core.definition.HerodotusGrantType;
-import com.gstdev.cloud.oauth2.core.service.EnhanceUserDetailsService;
+import com.gstdev.cloud.oauth2.core.definition.service.EnhanceUserDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.BadCredentialsException;

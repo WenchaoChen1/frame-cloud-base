@@ -1,7 +1,7 @@
 //package com.gstdev.cloud.oauth2.core.exception;
 //
-//import cn.herodotus.engine.assistant.definition.domain.Feedback;
-//import cn.herodotus.engine.oauth2.core.constants.OAuth2ErrorCodes;
+//import com.gstdev.cloud.assistant.definition.domain.Feedback;
+//import com.gstdev.cloud.oauth2.core.constants.OAuth2ErrorCodes;
 //
 ///**
 // * <p>Description: UsernameAlreadyExistsException </p>
