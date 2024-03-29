@@ -4,6 +4,7 @@ import com.gstdev.cloud.commons.constant.ErrorCodes;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 
+import java.lang.reflect.Field;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -19,39 +20,53 @@ import java.util.Map;
  */
 public class ErrorCodeMapper {
 
-    private static volatile ErrorCodeMapper instance;
+  private static volatile ErrorCodeMapper instance;
 
-    private final Map<Feedback, Integer> dictionary;
+  private final Map<Feedback, Integer> dictionary;
+  // 初始化默认的错误代码映射关系
+  private ErrorCodeMapper() {
+    dictionary = new LinkedHashMap<>();
+//    {{
+//      put(ErrorCodes.OK, ErrorCodes.OK.getSequence());
+//      put(ErrorCodes.NO_CONTENT, ErrorCodes.NO_CONTENT.getSequence());
+//    }};
+    // 获取 ErrorCodes 接口中定义的所有常量并初始化字典
 
-    private ErrorCodeMapper() {
-        dictionary = new LinkedHashMap<>() {{
-            put(ErrorCodes.OK, ErrorCodes.OK.getSequence());
-            put(ErrorCodes.NO_CONTENT, ErrorCodes.NO_CONTENT.getSequence());
-        }};
+    Field[] fields = ErrorCodes.class.getDeclaredFields();
+    for (Field field : fields) {
+      try {
+        if (Feedback.class.isAssignableFrom(field.getType())) {
+          Feedback feedback = (Feedback) field.get(null);
+          dictionary.put(feedback, feedback.getSequence());
+        }
+      } catch (IllegalAccessException e) {
+        e.printStackTrace();
+      }
     }
+  }
 
-    public static ErrorCodeMapper getInstance() {
+  public static ErrorCodeMapper getInstance() {
+    if (ObjectUtils.isEmpty(instance)) {
+      synchronized (ErrorCodeMapper.class) {
         if (ObjectUtils.isEmpty(instance)) {
-            synchronized (ErrorCodeMapper.class) {
-                if (ObjectUtils.isEmpty(instance)) {
-                    instance = new ErrorCodeMapper();
-                }
-            }
+          instance = new ErrorCodeMapper();
         }
-        return instance;
+      }
     }
+    return instance;
+  }
 
-    private Integer getErrorCode(Feedback feedback) {
-        return dictionary.get(feedback);
-    }
+  private Integer getErrorCode(Feedback feedback) {
+    return dictionary.get(feedback);
+  }
 
-    public void append(Map<Feedback, Integer> indexes) {
-        if (MapUtils.isNotEmpty(indexes)) {
-            dictionary.putAll(indexes);
-        }
+  public void append(Map<Feedback, Integer> indexes) {
+    if (MapUtils.isNotEmpty(indexes)) {
+      dictionary.putAll(indexes);
     }
+  }
 
-    public static Integer get(Feedback feedback) {
-        return getInstance().getErrorCode(feedback);
-    }
+  public static Integer get(Feedback feedback) {
+    return getInstance().getErrorCode(feedback);
+  }
 }

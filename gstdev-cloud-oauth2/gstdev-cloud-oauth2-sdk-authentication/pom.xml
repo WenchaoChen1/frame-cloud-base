@@ -21,13 +21,12 @@
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-oauth2-core</artifactId>
     </dependency>
+
     <!-- Spring Security related dependencies -->
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-oauth2-authorization-server</artifactId>
     </dependency>
-
-
 
     <!--TODO-->
     <dependency>

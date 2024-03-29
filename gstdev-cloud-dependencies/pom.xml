@@ -222,6 +222,11 @@
         <artifactId>gstdev-cloud-oauth2-sdk-resource-authorization</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-oauth2-sdk-data-jpa</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
       <!--=========================================== data ===========================================-->
       <dependency>
         <groupId>com.gstdev.cloud</groupId>

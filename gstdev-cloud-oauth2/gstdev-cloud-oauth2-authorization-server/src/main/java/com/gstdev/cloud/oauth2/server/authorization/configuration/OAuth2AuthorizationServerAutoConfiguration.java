@@ -1,11 +1,11 @@
 package com.gstdev.cloud.oauth2.server.authorization.configuration;
 
 import com.gstdev.cloud.oauth2.authentication.configuration.OAuth2AuthenticationConfiguration;
+import com.gstdev.cloud.oauth2.data.jpa.configuration.OAuth2DataJpaConfiguration;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
 
@@ -18,7 +18,8 @@ import org.springframework.context.annotation.Import;
 
 @AutoConfiguration
 @Import({
-  OAuth2AuthenticationConfiguration.class
+  OAuth2AuthenticationConfiguration.class,
+  OAuth2DataJpaConfiguration.class
 })
 public class OAuth2AuthorizationServerAutoConfiguration {
 

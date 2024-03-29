@@ -71,6 +71,7 @@ public class OAuth2AuthorizationProperties {
   public static class Jwk {
 //    keytool -genkeypair -alias gstdev-cloud -keyalg RSA -keysize 2048 -keystore gstdev-cloud.jks -validity 3650 -keypass gstdev-cloud -storepass gstdev-cloud
 
+
 //    keytool -genkey -alias gstdev-cloud -keyalg RSA -keysize 1024 -keystore gstdev-cloud.jks -validity 365 -keypass gstdev-cloud -storepass gstdev-cloud
 //    keytool -list -rfc --keystore gstdev-cloud.jks > gstdev-cloud.crt
 //    ren gstdev-cloud.crt gstdev-cloud.pub

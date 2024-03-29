@@ -38,30 +38,15 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.core.AuthorizationGrantType;
-import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
-import org.springframework.security.oauth2.core.oidc.OidcScopes;
-import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
-import org.springframework.security.oauth2.server.authorization.InMemoryOAuth2AuthorizationConsentService;
-import org.springframework.security.oauth2.server.authorization.InMemoryOAuth2AuthorizationService;
-import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsentService;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
-import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository;
-import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
-import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OAuth2AuthorizationServerConfigurer;
 import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
-import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
-import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
-import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 import org.springframework.security.oauth2.server.authorization.web.authentication.*;
 import org.springframework.security.rsa.crypto.KeyStoreKeyFactory;
 import org.springframework.security.web.SecurityFilterChain;
@@ -72,13 +57,9 @@ import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
 import java.io.IOException;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
-import java.security.NoSuchAlgorithmException;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
-import java.time.Duration;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -287,78 +268,80 @@ public class AuthorizationServerConfiguration {
    */
   @Bean
   public AuthorizationServerSettings authorizationServerSettings(OAuth2AuthenticationProperties authorizationServerProperties) {
+    OAuth2AuthenticationProperties.AuthorizationServerSettings authorizationServerSettings = authorizationServerProperties.getAuthorizationServerSettings();
     // @formatter:off
     return AuthorizationServerSettings.builder()
-//      .issuer(authorizationServerProperties.getIssuerUri())
-//      .authorizationEndpoint(authorizationServerProperties.getAuthorizationEndpoint())
-//      // TODO +
-//      .deviceAuthorizationEndpoint(authorizationServerProperties.getDeviceAuthorizationEndpoint())
-//      .deviceVerificationEndpoint(authorizationServerProperties.getDeviceVerificationEndpoint())
-//      .tokenEndpoint(authorizationServerProperties.getTokenEndpoint())
-//      .tokenIntrospectionEndpoint(authorizationServerProperties.getTokenIntrospectionEndpoint())
-//      .tokenRevocationEndpoint(authorizationServerProperties.getTokenRevocationEndpoint())
-//      .jwkSetEndpoint(authorizationServerProperties.getJwkSetEndpoint())
-//      // TODO +
-//      .oidcLogoutEndpoint(authorizationServerProperties.getOidcLogoutEndpoint())
-//      .oidcUserInfoEndpoint(authorizationServerProperties.getOidcUserInfoEndpoint())
-//      .oidcClientRegistrationEndpoint(authorizationServerProperties.getOidcClientRegistrationEndpoint())
+      .issuer(authorizationServerSettings.getIssuerUri())
+      .authorizationEndpoint(authorizationServerSettings.getAuthorizationEndpoint())
+      // TODO +
+      .deviceAuthorizationEndpoint(authorizationServerSettings.getDeviceAuthorizationEndpoint())
+      .deviceVerificationEndpoint(authorizationServerSettings.getDeviceVerificationEndpoint())
+      .tokenEndpoint(authorizationServerSettings.getTokenEndpoint())
+      .tokenIntrospectionEndpoint(authorizationServerSettings.getTokenIntrospectionEndpoint())
+      .tokenRevocationEndpoint(authorizationServerSettings.getTokenRevocationEndpoint())
+      .jwkSetEndpoint(authorizationServerSettings.getJwkSetEndpoint())
+      // TODO +
+      .oidcLogoutEndpoint(authorizationServerSettings.getOidcLogoutEndpoint())
+      .oidcUserInfoEndpoint(authorizationServerSettings.getOidcUserInfoEndpoint())
+      .oidcClientRegistrationEndpoint(authorizationServerSettings.getOidcClientRegistrationEndpoint())
       .build();
     // @formatter:on
   }
 
-  @Bean
-  public RegisteredClientRepository registeredClientRepository(JdbcTemplate jdbcTemplate,PasswordEncoder passwordEncoder) {
-    // 操作数据库对象
-//        JdbcRegisteredClientRepository registeredClientRepository = new JdbcRegisteredClientRepository(jdbcTemplate);
-    List<RegisteredClient> registeredClients = this.registryCloents(passwordEncoder);
-    registeredClients.forEach(registeredClient -> {
-//      // ---------- 1、检查当前客户端是否已注册
-//      if (registeredClientRepository.findByClientId(registeredClient.getClientId()) == null) {
-//        // 2、数据库中没有 添加客户端
-//        registeredClientRepository.save(registeredClient);
-//        log.info("Add client");
-//      }
-    });
-//        // ---------- 3、返回客户端仓库
-//        return registeredClientRepository;
-    return new InMemoryRegisteredClientRepository(registeredClients);
-  }
+//  @Bean
+//  public RegisteredClientRepository registeredClientRepository(JdbcTemplate jdbcTemplate,PasswordEncoder passwordEncoder) {
+//    // 操作数据库对象
+////        JdbcRegisteredClientRepository registeredClientRepository = new JdbcRegisteredClientRepository(jdbcTemplate);
+//    List<RegisteredClient> registeredClients = this.registryCloents(passwordEncoder);
+//    registeredClients.forEach(registeredClient -> {
+////      // ---------- 1、检查当前客户端是否已注册
+////      if (registeredClientRepository.findByClientId(registeredClient.getClientId()) == null) {
+////        // 2、数据库中没有 添加客户端
+////        registeredClientRepository.save(registeredClient);
+////        log.info("Add client");
+////      }
+//    });
+////        // ---------- 3、返回客户端仓库
+////        return registeredClientRepository;
+//    return new InMemoryRegisteredClientRepository(registeredClients);
+//  }
+
+//  /**
+//   * 令牌的发放记录
+//   *
+//   * @param jdbcTemplate               操作数据库
+//   * @param registeredClientRepository 客户端仓库
+//   * @return 授权服务
+//   */
+//  @Bean
+//  public OAuth2AuthorizationService auth2AuthorizationService(JdbcTemplate jdbcTemplate,RegisteredClientRepository registeredClientRepository) {
+////        return new JdbcOAuth2AuthorizationService(jdbcTemplate, registeredClientRepository);
+//    return new InMemoryOAuth2AuthorizationService();
+//  }
+
+//  /**
+//   * 把资源拥有者授权确认操作保存到数据库
+//   * 资源拥有者（Resource Owner）对客户端的授权记录
+//   *
+//   * @param jdbcTemplate               操作数据库
+//   * @param registeredClientRepository 客户端仓库
+//   * @return
+//   */
+//  @Bean
+//  public OAuth2AuthorizationConsentService auth2AuthorizationConsentService(JdbcTemplate jdbcTemplate,RegisteredClientRepository registeredClientRepository) {
+////   return new JdbcOAuth2AuthorizationConsentService(jdbcTemplate, registeredClientRepository);
+//    return new InMemoryOAuth2AuthorizationConsentService();
+//  }
 
   /**
-   * 令牌的发放记录
+   * 加载jwk资源
+   * 用于生成令牌
    *
-   * @param jdbcTemplate               操作数据库
-   * @param registeredClientRepository 客户端仓库
-   * @return 授权服务
-   */
-  @Bean
-  public OAuth2AuthorizationService auth2AuthorizationService(
-    JdbcTemplate jdbcTemplate,
-    RegisteredClientRepository registeredClientRepository) {
-//        return new JdbcOAuth2AuthorizationService(jdbcTemplate, registeredClientRepository);
-    return new InMemoryOAuth2AuthorizationService();
-  }
-
-  /**
-   * 把资源拥有者授权确认操作保存到数据库
-   * 资源拥有者（Resource Owner）对客户端的授权记录
-   *
-   * @param jdbcTemplate               操作数据库
-   * @param registeredClientRepository 客户端仓库
    * @return
    */
   @Bean
-  public OAuth2AuthorizationConsentService auth2AuthorizationConsentService(
-//    JdbcTemplate jdbcTemplate,
-    RegisteredClientRepository registeredClientRepository) {
-//        return new JdbcOAuth2AuthorizationConsentService(jdbcTemplate, registeredClientRepository);
-    return new InMemoryOAuth2AuthorizationConsentService();
-  }
-
-
-
-  @Bean
-  public JWKSource<SecurityContext> jwkSource(OAuth2AuthorizationProperties authorizationProperties) throws NoSuchAlgorithmException {
+  @SneakyThrows
+  public JWKSource<SecurityContext> jwkSource(OAuth2AuthorizationProperties authorizationProperties) {
 
     OAuth2AuthorizationProperties.Jwk jwk = authorizationProperties.getJwk();
 
@@ -397,324 +380,5 @@ public class AuthorizationServerConfiguration {
   public JwtDecoder jwtDecoder(JWKSource<SecurityContext> jwkSource) {
     return OAuth2AuthorizationServerConfiguration.jwtDecoder(jwkSource);
   }
-
-//  /**
-//   * 加载jwk资源
-//   * 用于生成令牌
-//   *
-//   * @return
-//   */
-//  @Bean
-//  @SneakyThrows
-//  public JWKSource<SecurityContext> jwkSource(OAuth2AuthenticationProperties oAuth2AuthenticationProperties) {
-//    String path = oAuth2AuthenticationProperties.getAuthorizationServerSettings().getJksJksPath();
-//    String alias = oAuth2AuthenticationProperties.getAuthorizationServerSettings().getJksAlias();
-//    String pass = oAuth2AuthenticationProperties.getAuthorizationServerSettings().getJksPass();
-//
-//    ClassPathResource resource = new ClassPathResource(path);
-//    KeyStore jks = KeyStore.getInstance("jks");
-//    char[] pin = pass.toCharArray();
-//    jks.load(resource.getInputStream(), pin);
-//    RSAKey rsaKey = RSAKey.load(jks, alias, pin);
-//    JWKSet jwkSet = new JWKSet(rsaKey);
-//
-//    return (jwkSelector, securityContext) -> jwkSelector.select(jwkSet);
-//  }
-
-//  private final OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer;
-//  @Bean
-//  OAuth2TokenGenerator<?> tokenGenerator(JWKSource<SecurityContext> jwkSource) {
-//    JwtGenerator jwtGenerator = new JwtGenerator(new NimbusJwtEncoder(jwkSource));
-//    jwtGenerator.setJwtCustomizer(jwtCustomizer);
-//
-//    OAuth2AccessTokenGenerator accessTokenGenerator = new OAuth2AccessTokenGenerator();
-//    OAuth2RefreshTokenGenerator refreshTokenGenerator = new OAuth2RefreshTokenGenerator();
-//    return new DelegatingOAuth2TokenGenerator(
-//      jwtGenerator, accessTokenGenerator, refreshTokenGenerator);
-//  }
-//
-//
-//  @Bean
-//  public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-//    return authenticationConfiguration.getAuthenticationManager();
-//  }
-  //-------------------------------------------------------------------------web---------------------------------------
-
-//  /**
-//   * jwt解码器
-//   * 客户端认证授权后，需要访问user信息，解码器可以从令牌中解析出user信息
-//   *
-//   * @return
-//   */
-//  @SneakyThrows
-//  @Bean
-//  JwtDecoder jwtDecoder() {
-//    CertificateFactory certificateFactory = CertificateFactory.getInstance("x.509");
-//    // 读取cer公钥证书来配置解码器
-//    ClassPathResource resource = new ClassPathResource("myjks.cer");
-//    Certificate certificate = certificateFactory.generateCertificate(resource.getInputStream());
-//    RSAPublicKey publicKey = (RSAPublicKey) certificate.getPublicKey();
-//    return NimbusJwtDecoder.withPublicKey(publicKey).build();
-//  }
-
-  //-----------------------------封装---------------------------------------
-
-  public List<RegisteredClient> registryCloents(PasswordEncoder passwordEncoder) {
-
-             /*
-         客户端在数据库中记录的区别
-         ------------------------------------------
-         id：仅表示客户端在数据库中的这个记录
-         client_id：唯一标示客户端；请求token时，以此作为客户端的账号
-         client_name：客户端的名称，可以省略
-         client_secret：密码
-         */
-    //    /** 此处保留作为client入库代码案例
-//     RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
-//     .clientId("messaging-client")
-//     .clientSecret("secret")
-//     .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-//     .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-//     .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-//     .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-//     .redirectUri("http://127.0.0.1:8080/login/oauth2/code/messaging-client-oidc")
-//     .redirectUri("http://127.0.0.1:8080/authorized")
-//     .scope(OidcScopes.OPENID)
-//     .scope("message.read")
-//     .scope("message.write")
-//     .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
-//     .build();
-    RegisteredClient oidcClient = RegisteredClient.withId(UUID.randomUUID().toString())
-      .clientId("oidc-client")
-      .clientSecret("{noop}secret")
-      .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-      .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-      .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-      .redirectUri("http://127.0.0.1:8080/login/oauth2/code/oidc-client")
-      .postLogoutRedirectUri("http://127.0.0.1:8080/")
-      .scope(OidcScopes.OPENID)
-      .scope(OidcScopes.PROFILE)
-      .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
-      .build();
-        /*
-          如果使用明文，客户端认证时会自动升级加密方式，换句话说直接修改客户端密码，所以直接使用 bcrypt 加密避免不必要的麻烦
-          官方ISSUE： https://github.com/spring-projects/spring-authorization-server/issues/1099
-         */
-//      String encodeSecret = passwordEncoder().encode(clientSecret);
-//     @formatter:off
-    RegisteredClient codeRegisteredClient = RegisteredClient
-      .withId(UUID.randomUUID().toString())
-      .clientId("code-client")
-      .clientName("Code Client")
-      .clientSecret(passwordEncoder.encode("black123"))
-      .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-      .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-      .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-      .redirectUri("http://127.0.0.1:8080/authorized")
-      .redirectUri("http://www.baidu.com")
-      .scope("project:read")
-      .scope("project:write")
-      .clientSettings(ClientSettings.builder()
-        .requireAuthorizationConsent(false)
-        .requireProofKey(false)
-        .build()
-      )
-
-      .tokenSettings(TokenSettings.builder()
-        .accessTokenTimeToLive(Duration.ofHours(1))
-        .refreshTokenTimeToLive(Duration.ofHours(3))
-        .idTokenSignatureAlgorithm(SignatureAlgorithm.ES256)
-        .reuseRefreshTokens(true)
-        .build()
-      )
-      .build();
-
-    RegisteredClient credentialsRegisteredClient = RegisteredClient
-      .withId(UUID.randomUUID().toString())
-      .clientId("credentials-client")
-      .clientName("Credentials Client")
-      .clientSecret(passwordEncoder.encode("black123"))
-      .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-      .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-      .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-      .clientSettings(ClientSettings.builder()
-        .requireAuthorizationConsent(false)
-        .requireProofKey(false)
-        .build()
-      )
-      .tokenSettings(TokenSettings.builder()
-        .accessTokenTimeToLive(Duration.ofHours(720))
-        .refreshTokenTimeToLive(Duration.ofHours(720))
-        .idTokenSignatureAlgorithm(SignatureAlgorithm.ES256)
-        .reuseRefreshTokens(true)
-        .build()
-      )
-      .build();
-
-    RegisteredClient passwordRegisteredClient = RegisteredClient
-      .withId(UUID.randomUUID().toString())
-      .clientId("password-client")
-      .clientName("Password Client")
-      .clientSecret(passwordEncoder.encode("black123"))
-      .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-      .authorizationGrantType(AuthorizationGrantType.PASSWORD)
-      .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-      .clientSettings(ClientSettings.builder()
-        .requireAuthorizationConsent(false)
-        .requireProofKey(false)
-        .build()
-      )
-
-      .tokenSettings(TokenSettings.builder()
-        .accessTokenTimeToLive(Duration.ofHours(720))
-        .refreshTokenTimeToLive(Duration.ofHours(720))
-        .idTokenSignatureAlgorithm(SignatureAlgorithm.ES256)
-        .reuseRefreshTokens(true)
-        .build()
-      )
-      .build();
-
-
-    RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
-      .clientId("oauth2-client")
-      .clientSecret(passwordEncoder.encode("123456"))
-      // 客户端认证基于请求头
-      .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-      // 配置授权的支持方式
-      .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-      .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-      .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-      .redirectUri("https://www.baidu.com")
-      .scope("user")
-      .scope("admin")
-      // 客户端设置，设置用户需要确认授权
-      .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
-      // 添加tokenSettings，将accessTokenFormat改为REFERENCE即可获取Opaque Token
-      .tokenSettings(TokenSettings.builder().accessTokenFormat(OAuth2TokenFormat.REFERENCE)
-        // 令牌存活时间：2小时
-        .accessTokenTimeToLive(Duration.ofHours(2))
-        // 令牌可以刷新，重新获取
-        .reuseRefreshTokens(true)
-        // 刷新时间：30天（30天内当令牌过期时，可以用刷新令牌重新申请新令牌，不需要再认证）
-        .refreshTokenTimeToLive(Duration.ofDays(30)).build())
-      .build();
-    List<RegisteredClient> registryCloents = new ArrayList<>();
-    registryCloents.add(createRegisteredClientAuthorizationCode("my_client"));
-    registryCloents.add(createRegisteredClient("micro_service"));
-    registryCloents.add(oidcClient);
-    registryCloents.add(codeRegisteredClient);
-    registryCloents.add(credentialsRegisteredClient);
-    registryCloents.add(passwordRegisteredClient);
-    registryCloents.add(registeredClient);
-
-    return registryCloents;
-  }
-
-  /**
-   * 定义客户端（令牌申请方式：授权码模式）
-   *
-   * @param clientId 客户端ID
-   * @return
-   */
-  private RegisteredClient createRegisteredClientAuthorizationCode(final String clientId) {
-    // JWT（Json Web Token）的配置项：TTL、是否复用refrechToken等等
-    TokenSettings tokenSettings = TokenSettings.builder()
-      // 令牌存活时间：2小时
-      .accessTokenTimeToLive(Duration.ofHours(2))
-      // 令牌可以刷新，重新获取
-      .reuseRefreshTokens(true)
-      // 刷新时间：30天（30天内当令牌过期时，可以用刷新令牌重新申请新令牌，不需要再认证）
-      .refreshTokenTimeToLive(Duration.ofDays(30))
-      .build();
-    // 客户端相关配置
-    ClientSettings clientSettings = ClientSettings.builder()
-      // 是否需要用户授权确认
-      .requireAuthorizationConsent(false)
-      .build();
-
-    return RegisteredClient
-      // 客户端ID和密码
-      .withId(UUID.randomUUID().toString())
-      //.withId(id)
-      .clientId(clientId)
-      //.clientSecret("{noop}123456")
-      .clientSecret(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("123456"))
-      // 客户端名称：可省略
-      .clientName("my_client_name")
-      // 授权方法
-      .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-      // 授权模式
-      // ---- 【授权码模式】
-      .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-      // ---------- 刷新令牌（授权码模式）
-      .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-      /* 回调地址：
-       * 授权服务器向当前客户端响应时调用下面地址；
-       * 不在此列的地址将被拒统；
-       * 只能使用IP或域名，不能使用localhost
-       */
-      .redirectUri("http://127.0.0.1:8000/login/oauth2/code/myClient")
-      .redirectUri("http://127.0.0.1:8000")
-      // 授权范围（当前客户端的授权范围）
-      .scope("read")
-      .scope("write")
-      // JWT（Json Web Token）配置项
-      .tokenSettings(tokenSettings)
-      // 客户端配置项
-      .clientSettings(clientSettings)
-      .build();
-  }
-
-  /**
-   * 定义客户端（令牌申请方式：客户端模式）
-   *
-   * @param clientId 客户端ID
-   * @return
-   */
-  private RegisteredClient createRegisteredClient(final String clientId) {
-    // JWT（Json Web Token）的配置项：TTL、是否复用refrechToken等等
-    TokenSettings tokenSettings = TokenSettings.builder()
-      // 令牌存活时间：1年
-      .accessTokenTimeToLive(Duration.ofDays(365))
-      // 令牌不可以刷新
-      //.reuseRefreshTokens(false)
-      .build();
-    // 客户端相关配置
-    ClientSettings clientSettings = ClientSettings.builder()
-      // 是否需要用户授权确认
-      .requireAuthorizationConsent(false)
-      .build();
-
-    return RegisteredClient
-      // 客户端ID和密码
-      .withId(UUID.randomUUID().toString())
-      //.withId(id)
-      .clientId("micro_service")
-      //.clientSecret("{noop}123456")
-      .clientSecret(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("123456"))
-      // 客户端名称：可省略
-      .clientName("micro_service")
-      // 授权方法
-      .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-      // 授权模式
-      // ---- 【客户端模式】
-      .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-      /* 回调地址：
-       * 授权服务器向当前客户端响应时调用下面地址；
-       * 不在此列的地址将被拒统；
-       * 只能使用IP或域名，不能使用localhost
-       */
-      .redirectUri("http://127.0.0.1:8001")
-      .redirectUri("http://127.0.0.1:8002")
-      // 授权范围（当前客户端的角色）
-      .scope("all")
-      // JWT（Json Web Token）配置项
-      .tokenSettings(tokenSettings)
-      // 客户端配置项
-      .clientSettings(clientSettings)
-      .build();
-
-  }
-//  }
 }
 
