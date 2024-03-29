@@ -14,6 +14,7 @@ import com.gstdev.cloud.commons.ass.core.utils.ResourceUtils;
 import com.gstdev.cloud.oauth2.authentication.configurer.OAuth2AuthenticationProviderConfigurer;
 import com.gstdev.cloud.oauth2.authentication.consumer.OAuth2AuthorizationCodeAuthenticationProviderConsumer;
 import com.gstdev.cloud.oauth2.authentication.converter.OAuth2PasswordAuthenticationConverter;
+import com.gstdev.cloud.oauth2.authentication.customizer.OAuth2FormLoginConfigurerCustomizer;
 import com.gstdev.cloud.oauth2.authentication.handler.DefaultAccessDeniedHandler;
 import com.gstdev.cloud.oauth2.authentication.handler.DefaultAuthenticationEntryPoint;
 import com.gstdev.cloud.oauth2.authentication.handler.DefaultAuthenticationFailureHandler;
@@ -50,6 +51,7 @@ import org.springframework.security.oauth2.server.authorization.settings.Authori
 import org.springframework.security.oauth2.server.authorization.web.authentication.*;
 import org.springframework.security.rsa.crypto.KeyStoreKeyFactory;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.intercept.AuthorizationFilter;
 import org.springframework.security.web.authentication.AuthenticationConverter;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
@@ -127,13 +129,19 @@ public class AuthorizationServerConfiguration {
   @Bean
   @Order(Ordered.HIGHEST_PRECEDENCE)
   @SneakyThrows
-  public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http,
-                                                                    JwtDecoder jwtDecoder,
-                                                                    PasswordEncoder passwordEncoder,
-                                                                    UserDetailsService userDetailsService,
-                                                                    OAuth2AuthenticationProperties oauth2AuthenticationProperties,
-                                                                    OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer,
-                                                                    OAuth2AuthorizationService authorizationService) {
+  public SecurityFilterChain authorizationServerSecurityFilterChain(
+    HttpSecurity http,
+    PasswordEncoder passwordEncoder,
+    UserDetailsService userDetailsService,
+//    ClientDetailsService clientDetailsService,
+//    HttpCryptoProcessor httpCryptoProcessor,
+//    OidcClientRegistrationResponseHandler oidcClientRegistrationResponseHandler,
+    OAuth2AuthenticationProperties oauth2AuthenticationProperties,
+//    OAuth2DeviceVerificationResponseHandler oauth2DeviceVerificationResponseHandler,
+    OAuth2FormLoginConfigurerCustomizer oauth2FormLoginConfigurerCustomizer,
+//    OAuth2SessionManagementConfigurerCustomer oauth2sessionManagementConfigurerCustomer,
+    OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer
+  ) {
     log.debug("[GstDev Cloud] |- Bean [Authorization Server Security Filter Chain] Auto Configure.");
 
     //是一个便利 ( static) 实用程序方法，它将默认的 OAuth2 安全配置应用于HttpSecurity.
@@ -227,31 +235,23 @@ public class AuthorizationServerConfiguration {
 //    http.securityMatcher(endpointsMatcher)
     http
       //在未通过身份验证时重定向到登录页面
-      //授权端点
-      .exceptionHandling(exceptions -> {
-        exceptions.defaultAuthenticationEntryPointFor(
-          new LoginUrlAuthenticationEntryPoint("/login"),
-          new MediaTypeRequestMatcher(MediaType.TEXT_HTML));
-//        exceptions.accessDeniedHandler(accessDeniedHandler);
-//        exceptions.authenticationEntryPoint(authenticationEntryPoint);
-      })
+//      //授权端点
+//      .exceptionHandling(exceptions -> {
+//        exceptions.defaultAuthenticationEntryPointFor(
+//          new LoginUrlAuthenticationEntryPoint("/login"),
+//          new MediaTypeRequestMatcher(MediaType.TEXT_HTML));
+////        exceptions.accessDeniedHandler(accessDeniedHandler);
+////        exceptions.authenticationEntryPoint(authenticationEntryPoint);
+//      })
       // 开启请求认证
 //      .authorizeHttpRequests(authorizeRequests -> authorizeRequests.anyRequest().authenticated())
       // 禁用对 OAuth2 Authorization Server 相关 endpoint 的 CSRF 防御
 //      .csrf(csrf -> csrf.ignoringRequestMatchers(endpointsMatcher))
-//      .formLogin(oauth2FormLoginConfigurerCustomizer)
+      .formLogin(oauth2FormLoginConfigurerCustomizer)
 //      .sessionManagement(oauth2sessionManagementConfigurerCustomer)
 //      .addFilterBefore(new MultiTenantFilter(), AuthorizationFilter.class)
       // 接受用户信息和/或客户端注册的访问令牌
-//      .oauth2ResourceServer(oauth2ResourceServerConfigurerCustomer)
-//      .oauth2ResourceServer(resourceServer -> {
-//        // TODO 尝试删除
-//        resourceServer.jwt(jwt -> jwt.decoder(jwtDecoder));
-////        resourceServer.jwt(Customizer.withDefaults());
-////        resourceServer.bearerTokenResolver(bearerTokenResolver);
-////        resourceServer.accessDeniedHandler(accessDeniedHandler);
-////        resourceServer.authenticationEntryPoint(authenticationEntryPoint);
-//      })
+      .oauth2ResourceServer(oauth2ResourceServerConfigurerCustomer)
 //      .with(new OAuth2AuthenticationProviderConfigurer(sessionRegistry, passwordEncoder, userDetailsService, oauth2AuthenticationProperties), (configurer) -> {});
       .with(new OAuth2AuthenticationProviderConfigurer(passwordEncoder, userDetailsService, oauth2AuthenticationProperties), (configurer) -> {
       });
