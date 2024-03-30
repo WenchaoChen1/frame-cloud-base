@@ -16,12 +16,12 @@
   </parent>
 
   <modules>
+    <module>gstdev-cloud-oauth2-authorization-server-autoconfigure</module>
+    <module>gstdev-cloud-ouath2-resource-server-autoconfigure</module>
+    <module>gstdev-cloud-oauth2-core</module>
     <module>gstdev-cloud-oauth2-authorization-server</module>
     <module>gstdev-cloud-oauth2-resource-server</module>
-    <module>gstdev-cloud-oauth2-core</module>
-    <module>gstdev-cloud-oauth2-sdk-authentication</module>
-    <module>gstdev-cloud-oauth2-sdk-resource-authorization</module>
-    <module>gstdev-cloud-oauth2-sdk-data-jpa</module>
-<!--    <module>gstdev-cloud-oauth2-sdk-management</module>-->
+    <module>gstdev-cloud-oauth2-data-jpa</module>
+    <module>gstdev-cloud-oauth2-management</module>
   </modules>
 </project>

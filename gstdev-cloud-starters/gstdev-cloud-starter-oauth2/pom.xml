@@ -16,7 +16,7 @@
   </parent>
 
   <modules>
-    <module>gstdev-cloud-starter-oauth2-authentication</module>
-    <module>gstdev-cloud-starter-oauth2-service-authorization</module>
+    <module>gstdev-cloud-starter-oauth2-authorization-server</module>
+    <module>gstdev-cloud-starter-oauth2-resource-server</module>
   </modules>
 </project>

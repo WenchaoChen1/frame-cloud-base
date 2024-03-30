@@ -6,33 +6,30 @@
 
   <parent>
     <groupId>com.gstdev.cloud</groupId>
-    <artifactId>gstdev-cloud-oauth2</artifactId>
+    <artifactId>gstdev-cloud-starter-oauth2</artifactId>
     <version>2024.0.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
-
-  <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
-  <name>GstDev Cloud :: OAuth2 :: SDK :: Authentication</name>
-  <description>${project.name}</description>
   <packaging>jar</packaging>
+  <artifactId>gstdev-cloud-starter-oauth2-authorization-server</artifactId>
+  <name>GstDev Cloud :: Starter :: Oauth2 :: Authentication</name>
+  <description>${project.name}</description>
 
   <dependencies>
+    <!-- GstDevCloud related dependencies -->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-oauth2-core</artifactId>
+      <artifactId>gstdev-cloud-oauth2-authorization-server-autoconfigure</artifactId>
     </dependency>
-
-    <!-- Spring Security related dependencies -->
     <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-oauth2-authorization-server</artifactId>
+      <groupId>com.gstdev.cloud</groupId>
+      <artifactId>gstdev-cloud-starter-web</artifactId>
     </dependency>
-
-    <!--TODO-->
+    <!-- Lombok related dependencies -->
     <dependency>
-      <groupId>jakarta.servlet</groupId>
-      <artifactId>jakarta.servlet-api</artifactId>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>provided</scope>
     </dependency>
-
   </dependencies>
 </project>

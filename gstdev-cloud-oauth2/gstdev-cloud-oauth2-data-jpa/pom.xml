@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -11,28 +12,23 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
-  <name>GstDev Cloud :: OAuth2 :: SDK :: Authentication</name>
-  <description>${project.name}</description>
+  <artifactId>gstdev-cloud-oauth2-data-jpa</artifactId>
+  <name>GstDev Cloud :: OAuth2 :: Sdk :: data :: jpa</name>
   <packaging>jar</packaging>
+  <description>基于 JPA 的 Spring Authorization Server 数据存储核心组件模块</description>
 
   <dependencies>
+
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-oauth2-core</artifactId>
+      <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
     </dependency>
 
-    <!-- Spring Security related dependencies -->
     <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-oauth2-authorization-server</artifactId>
-    </dependency>
-
-    <!--TODO-->
-    <dependency>
-      <groupId>jakarta.servlet</groupId>
-      <artifactId>jakarta.servlet-api</artifactId>
+      <groupId>com.gstdev.cloud</groupId>
+      <artifactId>gstdev-cloud-data-core</artifactId>
     </dependency>
 
   </dependencies>
+
 </project>

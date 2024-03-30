@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>com.gstdev.cloud</groupId>
+    <artifactId>gstdev-cloud-starter-oauth2</artifactId>
+    <version>2024.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <packaging>jar</packaging>
+  <modelVersion>4.0.0</modelVersion>
+
+  <name>GstDev Cloud :: Starter :: Oauth2 :: Service Authorization</name>
+  <description>${project.name}</description>
+  <artifactId>gstdev-cloud-starter-oauth2-resource-server</artifactId>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.gstdev.cloud</groupId>
+      <artifactId>gstdev-cloud-ouath2-resource-server-autoconfigure</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>
