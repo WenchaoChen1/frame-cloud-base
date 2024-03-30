@@ -10,8 +10,8 @@
 //
 //import com.gstdev.cloud.assistant.definition.constants.BaseConstants;
 //import com.gstdev.cloud.assistant.definition.domain.oauth2.AccessPrincipal;
-//import com.gstdev.cloud.oauth2.authentication.properties.OAuth2AuthenticationProperties;
-//import com.gstdev.cloud.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
+//com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
+//com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2AuthenticationProviderUtils;
 //import com.gstdev.cloud.oauth2.core.definition.HerodotusGrantType;
 //import com.gstdev.cloud.oauth2.core.definition.service.EnhanceUserDetailsService;
 //import com.gstdev.cloud.oauth2.core.exception.SocialCredentialsParameterBindingFailedException;

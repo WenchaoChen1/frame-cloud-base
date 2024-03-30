@@ -10,7 +10,7 @@
 //
 //import com.gstdev.cloud.assistant.core.enums.AccountType;
 //import com.gstdev.cloud.assistant.definition.constants.BaseConstants;
-//import com.gstdev.cloud.oauth2.authentication.utils.OAuth2EndpointUtils;
+//com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2EndpointUtils;
 //import com.gstdev.cloud.oauth2.core.definition.HerodotusGrantType;
 //import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
 //import jakarta.servlet.http.HttpServletRequest;

@@ -1,7 +1,7 @@
 package com.gstdev.cloud.starter.ouath2.resource.server.configuration;
 
-import com.gstdev.cloud.oauth2.authorization.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
-import com.gstdev.cloud.oauth2.authorization.customizer.OAuth2ResourceServerConfigurerCustomer;
+import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
+import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

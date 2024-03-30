@@ -22,6 +22,6 @@
     <module>gstdev-cloud-oauth2-authorization-server</module>
     <module>gstdev-cloud-oauth2-resource-server</module>
     <module>gstdev-cloud-oauth2-data-jpa</module>
-    <module>gstdev-cloud-oauth2-management</module>
+<!--    <module>gstdev-cloud-oauth2-management</module>-->
   </modules>
 </project>

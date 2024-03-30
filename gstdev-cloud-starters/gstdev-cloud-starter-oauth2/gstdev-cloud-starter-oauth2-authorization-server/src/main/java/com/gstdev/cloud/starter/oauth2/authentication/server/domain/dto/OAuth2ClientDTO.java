@@ -1,6 +1,6 @@
 package com.gstdev.cloud.starter.oauth2.authentication.server.domain.dto;
 
-import com.gstdev.cloud.oauth2.authentication.domain.*;
+import com.gstdev.cloud.starter.oauth2.authentication.server.domain.*;
 import lombok.Data;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.oauth2.core.oidc.OidcScopes;

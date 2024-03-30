@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.authorization.server.converter;
 
-//import com.gstdev.cloud.oauth2.authentication.utils.OAuth2EndpointUtils;
+//com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2EndpointUtils;
 //import com.gstdev.cloud.oauth2.core.definition.HerodotusGrantType;
 //import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
 

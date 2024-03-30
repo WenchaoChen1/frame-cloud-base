@@ -9,7 +9,7 @@
 //package com.gstdev.cloud.oauth2.authentication.stamp;
 //
 //import com.gstdev.cloud.cache.jetcache.stamp.AbstractStampManager;
-//import com.gstdev.cloud.oauth2.authentication.properties.OAuth2AuthenticationProperties;
+//com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 //import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
 //import org.dromara.hutool.core.data.id.IdUtil;
 //

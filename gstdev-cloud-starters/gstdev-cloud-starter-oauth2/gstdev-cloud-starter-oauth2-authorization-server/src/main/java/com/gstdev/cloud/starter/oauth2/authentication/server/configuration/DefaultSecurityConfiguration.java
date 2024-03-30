@@ -9,14 +9,14 @@
 
 package com.gstdev.cloud.starter.oauth2.authentication.server.configuration;
 
-import com.gstdev.cloud.starter.oauth2.authentication.server.service.DefaultUserDetailsService;
 import com.gstdev.cloud.captcha.core.processor.CaptchaRendererFactory;
-import com.gstdev.cloud.oauth2.authentication.configurer.OAuth2FormLoginSecureConfigurer;
+import com.gstdev.cloud.oauth2.authorization.server.configurer.OAuth2FormLoginSecureConfigurer;
+import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
+import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
+import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
 import com.gstdev.cloud.starter.oauth2.authentication.server.handler.DefaultAccessDeniedHandler;
 import com.gstdev.cloud.starter.oauth2.authentication.server.handler.DefaultAuthenticationEntryPoint;
-import com.gstdev.cloud.oauth2.authentication.properties.OAuth2AuthenticationProperties;
-import com.gstdev.cloud.oauth2.authorization.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
-import com.gstdev.cloud.oauth2.authorization.customizer.OAuth2ResourceServerConfigurerCustomer;
+import com.gstdev.cloud.starter.oauth2.authentication.server.service.DefaultUserDetailsService;
 import lombok.SneakyThrows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,11 +27,9 @@ import org.springframework.core.annotation.Order;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;

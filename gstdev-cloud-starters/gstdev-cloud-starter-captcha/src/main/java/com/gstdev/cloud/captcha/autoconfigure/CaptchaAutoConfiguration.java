@@ -32,15 +32,6 @@ public class CaptchaAutoConfiguration {
     log.info("[GstDev Cloud] |- Module [Captcha Starter] Auto Configure.");
   }
 
-//  // TODO
-//  @Bean
-//  @ConditionalOnMissingBean
-//  public CaptchaProperties captchaProperties() {
-//    CaptchaProperties CaptchaProperties = new CaptchaProperties();
-//    log.trace("[GstDev Cloud] |- Bean [Captcha Properties] Auto Configure.");
-//    return CaptchaProperties;
-//  }
-
   @Bean
   @ConditionalOnMissingBean
   public ResourceProvider resourceProvider(CaptchaProperties captchaProperties) {

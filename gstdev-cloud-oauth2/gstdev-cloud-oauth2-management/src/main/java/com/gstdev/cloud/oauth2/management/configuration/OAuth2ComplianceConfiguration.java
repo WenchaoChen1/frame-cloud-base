@@ -1,8 +1,8 @@
 package com.gstdev.cloud.oauth2.management.configuration;
 
 import com.gstdev.cloud.message.core.logic.strategy.AccountStatusEventManager;
-import com.gstdev.cloud.oauth2.authentication.stamp.LockedUserDetailsStampManager;
-import com.gstdev.cloud.oauth2.authentication.stamp.SignInFailureLimitedStampManager;
+com.gstdev.cloud.oauth2.authorization.server.stamp.LockedUserDetailsStampManager;
+com.gstdev.cloud.oauth2.authorization.server.stamp.SignInFailureLimitedStampManager;
 import com.gstdev.cloud.oauth2.management.compliance.OAuth2AccountStatusManager;
 import com.gstdev.cloud.oauth2.management.compliance.annotation.ConditionalOnAutoUnlockUserAccount;
 import com.gstdev.cloud.oauth2.management.compliance.listener.AccountAutoEnableListener;

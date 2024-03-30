@@ -8,7 +8,7 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.consumer;
 //
-//import com.gstdev.cloud.oauth2.authentication.utils.OAuth2ConfigurerUtils;
+//com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2ConfigurerUtils;
 //import com.gstdev.cloud.oauth2.core.definition.service.ClientDetailsService;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;

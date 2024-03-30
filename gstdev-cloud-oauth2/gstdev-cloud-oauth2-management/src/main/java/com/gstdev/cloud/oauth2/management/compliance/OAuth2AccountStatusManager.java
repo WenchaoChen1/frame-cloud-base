@@ -3,7 +3,7 @@ package com.gstdev.cloud.oauth2.management.compliance;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.message.core.logic.strategy.AccountStatusEventManager;
 import com.gstdev.cloud.message.core.logic.domain.UserStatus;
-import com.gstdev.cloud.oauth2.authentication.stamp.LockedUserDetailsStampManager;
+com.gstdev.cloud.oauth2.authorization.server.stamp.LockedUserDetailsStampManager;
 import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusUser;
 import com.gstdev.cloud.oauth2.core.definition.service.EnhanceUserDetailsService;
 import org.apache.commons.lang3.ObjectUtils;

@@ -10,7 +10,7 @@
   </parent>
 
   <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>
-  <name>GstDev Cloud :: OAuth2 :: SDK :: Resource Server</name>
+  <name>GstDev Cloud :: OAuth2 :: Resource Server</name>
   <description>${project.name}</description>
   <packaging>jar</packaging>
 
