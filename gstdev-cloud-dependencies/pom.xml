@@ -209,30 +209,37 @@
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-oauth2-authorization-server-autoconfigure</artifactId>
+        <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-ouath2-resource-server-autoconfigure</artifactId>
+        <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-oauth2-core</artifactId>
+        <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
+        <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>
+        <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-oauth2-data-jpa</artifactId>
+        <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-oauth2-management</artifactId>
+        <version>${gstdev-cloud.version}</version>
       </dependency>
       <!--=========================================== data ===========================================-->
       <dependency>

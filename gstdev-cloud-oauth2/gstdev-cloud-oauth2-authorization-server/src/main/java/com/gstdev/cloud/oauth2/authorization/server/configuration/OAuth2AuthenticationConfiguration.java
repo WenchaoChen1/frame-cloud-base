@@ -1,4 +1,4 @@
-package com.gstdev.cloud.oauth2.authorization.server.autoconfiguration.configuration;
+package com.gstdev.cloud.oauth2.authorization.server.configuration;
 
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.authorization.server.customizer.OAuth2FormLoginConfigurerCustomizer;

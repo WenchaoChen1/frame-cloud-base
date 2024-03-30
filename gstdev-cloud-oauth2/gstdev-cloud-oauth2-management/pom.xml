@@ -21,17 +21,11 @@
   <dependencies>
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-oauth2-sdk-authentication</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-starter-captcha</artifactId>
     </dependency>
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-oauth2-sdk-data-jpa</artifactId>
-      <version>2024.0.1-SNAPSHOT</version>
-      <scope>compile</scope>
+      <artifactId>gstdev-cloud-oauth2-data-jpa</artifactId>
     </dependency>
     <!--    <dependency>-->
     <!--         <groupId>com.gstdev.cloud</groupId>-->
