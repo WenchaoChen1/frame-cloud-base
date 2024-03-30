@@ -10,7 +10,7 @@
   </parent>
 
   <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>
-  <name>GstDev Cloud :: OAuth2 :: SDK :: Resource Authentication</name>
+  <name>GstDev Cloud :: OAuth2 :: SDK :: Resource Server</name>
   <description>${project.name}</description>
   <packaging>jar</packaging>
 
@@ -20,6 +20,7 @@
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-oauth2-core</artifactId>
     </dependency>
+
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-cache-jetcache</artifactId>
@@ -29,7 +30,6 @@
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-config</artifactId>
     </dependency>
-
 
     <dependency>
       <groupId>jakarta.servlet</groupId>

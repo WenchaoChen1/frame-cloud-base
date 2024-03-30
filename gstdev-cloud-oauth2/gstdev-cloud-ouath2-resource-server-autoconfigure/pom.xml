@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <name>GstDev Cloud :: OAuth2 :: Resource Server</name>
+  <name>GstDev Cloud :: OAuth2 :: Resource Server Autoconfigure</name>
   <description>GstDev Cloud OAuth2 资源服务器必要组件模块</description>
 
   <artifactId>gstdev-cloud-ouath2-resource-server-autoconfigure</artifactId>

@@ -13,7 +13,7 @@
   </parent>
 
   <artifactId>gstdev-cloud-oauth2-data-jpa</artifactId>
-  <name>GstDev Cloud :: OAuth2 :: Sdk :: data :: jpa</name>
+  <name>GstDev Cloud :: OAuth2 :: data :: jpa</name>
   <packaging>jar</packaging>
   <description>基于 JPA 的 Spring Authorization Server 数据存储核心组件模块</description>
 

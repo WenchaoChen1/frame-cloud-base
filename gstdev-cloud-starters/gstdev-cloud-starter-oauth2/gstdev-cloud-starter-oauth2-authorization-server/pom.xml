@@ -12,7 +12,7 @@
   </parent>
   <packaging>jar</packaging>
   <artifactId>gstdev-cloud-starter-oauth2-authorization-server</artifactId>
-  <name>GstDev Cloud :: Starter :: Oauth2 :: Authentication</name>
+  <name>GstDev Cloud :: Starter :: Oauth2 :: Authentication Server</name>
   <description>${project.name}</description>
 
   <dependencies>

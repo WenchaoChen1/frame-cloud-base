@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.resource.server.autoconfigure.configuration;
 
 
-import com.gstdev.cloud.oauth2.resource.configuration.OAuth2AuthorizationConfiguration;
+import com.gstdev.cloud.oauth2.resource.server.configuration.OAuth2AuthorizationConfiguration;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

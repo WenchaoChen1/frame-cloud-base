@@ -32,9 +32,9 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
     <!--Maven Plugin 相关组件-->
-<!--    <archetype-packaging.verison>3.2.1</archetype-packaging.verison>-->
+    <!--    <archetype-packaging.verison>3.2.1</archetype-packaging.verison>-->
     <org.mapstruct-processor.version>1.5.5.Final</org.mapstruct-processor.version>
-<!--    <maven-gpg-plugin.version>3.2.0</maven-gpg-plugin.version>-->
+    <!--    <maven-gpg-plugin.version>3.2.0</maven-gpg-plugin.version>-->
     <lombok.version>1.18.24</lombok.version>
     <!--Spring 家族-->
     <!--    <spring-boot-admin.version>3.2.2</spring-boot-admin.version>-->
@@ -208,28 +208,31 @@
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>
-        <version>${gstdev-cloud.version}</version>
+        <artifactId>gstdev-cloud-oauth2-authorization-server-autoconfigure</artifactId>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-ouath2-resource-server-autoconfigure</artifactId>
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-oauth2-core</artifactId>
-        <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-oauth2-sdk-authentication</artifactId>
-        <version>${gstdev-cloud.version}</version>
+        <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-oauth2-sdk-resource-authorization</artifactId>
-        <version>${gstdev-cloud.version}</version>
+        <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-oauth2-sdk-data-jpa</artifactId>
-        <version>${gstdev-cloud.version}</version>
+        <artifactId>gstdev-cloud-oauth2-data-jpa</artifactId>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-oauth2-management</artifactId>
       </dependency>
       <!--=========================================== data ===========================================-->
       <dependency>
@@ -407,15 +410,14 @@
       <!--      </dependency>-->
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-oauth2-authentication</artifactId>
+        <artifactId>gstdev-cloud-starter-oauth2-authorization-server</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-oauth2-service-authorization</artifactId>
+        <artifactId>gstdev-cloud-starter-oauth2-resource-server</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
-
 
       <!--=============================== 开源通用工具包 =======================-->
 

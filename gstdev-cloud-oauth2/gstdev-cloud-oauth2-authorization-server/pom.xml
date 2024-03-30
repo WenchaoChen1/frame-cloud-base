@@ -12,7 +12,7 @@
   </parent>
 
   <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
-  <name>GstDev Cloud :: OAuth2 :: SDK :: Authentication</name>
+  <name>GstDev Cloud :: OAuth2 :: Authorization Server</name>
   <description>${project.name}</description>
   <packaging>jar</packaging>
 
