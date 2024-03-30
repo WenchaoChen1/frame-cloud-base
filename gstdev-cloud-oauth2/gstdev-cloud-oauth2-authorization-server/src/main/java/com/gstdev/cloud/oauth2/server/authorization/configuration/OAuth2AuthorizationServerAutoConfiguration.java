@@ -32,7 +32,7 @@ public class OAuth2AuthorizationServerAutoConfiguration {
 //  @Bean
 //  public AccountStatusEventManager accountStatusEventManager() {
 //    DefaultAccountStatusEventManager manager = new DefaultAccountStatusEventManager();
-//    log.trace("[GstDev Cloud] |- Bean [Herodotus Account Status Event Manager] Auto Configure.");
+//    log.trace("[GstDev Cloud] |- Bean [GstDev Cloud Account Status Event Manager] Auto Configure.");
 //    return manager;
 //  }
 

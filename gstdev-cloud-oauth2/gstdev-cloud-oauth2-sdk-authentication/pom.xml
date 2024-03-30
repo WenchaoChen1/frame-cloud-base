@@ -22,6 +22,7 @@
       <artifactId>gstdev-cloud-oauth2-core</artifactId>
     </dependency>
 
+
     <!-- Spring Security related dependencies -->
     <dependency>
       <groupId>org.springframework.security</groupId>

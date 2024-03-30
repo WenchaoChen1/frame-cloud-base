@@ -25,7 +25,7 @@ public class DatabaseApproachCondition implements Condition {
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
         String property = PropertyResolver.getProperty(conditionContext, DataConstants.ITEM_MULTI_TENANT_APPROACH);
         boolean result = StringUtils.isNotBlank(property) && StringUtils.equalsIgnoreCase(property, MultiTenantApproach.DATABASE.name());
-        log.debug("[Herodotus] |- Condition [Database Approach] value is [{}]", result);
+        log.debug("[GstDev Cloud] |- Condition [Database Approach] value is [{}]", result);
         return result;
     }
 }

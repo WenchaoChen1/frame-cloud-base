@@ -57,10 +57,10 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
     public void remove(OAuth2Authorization authorization) {
         Assert.notNull(authorization, "authorization cannot be null");
         this.herodotusAuthorizationService.deleteById(authorization.getId());
-        log.debug("[Herodotus] |- Jpa OAuth2 Authorization Service remove entity.");
+        log.debug("[GstDev Cloud] |- Jpa OAuth2 Authorization Service remove entity.");
         // TODO： 后期还是考虑改为异步任务的形式，先临时放在这里。
         this.herodotusAuthorizationService.clearHistoryToken();
-        log.debug("[Herodotus] |- Jpa OAuth2 Authorization Service clear history token.");
+        log.debug("[GstDev Cloud] |- Jpa OAuth2 Authorization Service clear history token.");
     }
 
     @Override
@@ -75,7 +75,7 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
 
     public int findAuthorizationCount(String registeredClientId, String principalName) {
         int count = this.herodotusAuthorizationService.findAuthorizationCount(registeredClientId, principalName);
-        log.debug("[Herodotus] |- Jpa OAuth2 Authorization Service findAuthorizationCount.");
+        log.debug("[GstDev Cloud] |- Jpa OAuth2 Authorization Service findAuthorizationCount.");
         return count;
     }
 

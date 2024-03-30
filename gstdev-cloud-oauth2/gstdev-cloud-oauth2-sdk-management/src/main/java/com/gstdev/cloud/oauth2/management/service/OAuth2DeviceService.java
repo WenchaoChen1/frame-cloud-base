@@ -60,7 +60,7 @@ public class OAuth2DeviceService extends BaseService<OAuth2Device, String> {
             registeredClientRepository.save(oauth2DeviceToRegisteredClientConverter.convert(device));
             return device;
         } else {
-            log.error("[Herodotus] |- OAuth2DeviceService saveOrUpdate error, rollback data!");
+            log.error("[GstDev Cloud] |- OAuth2DeviceService saveOrUpdate error, rollback data!");
             throw new NullPointerException("save or update OAuth2DeviceService failed");
         }
     }

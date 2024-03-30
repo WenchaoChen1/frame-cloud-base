@@ -39,12 +39,12 @@ public class HerodotusAuthorizationConsentService extends BaseService<HerodotusA
 
     public Optional<HerodotusAuthorizationConsent> findByRegisteredClientIdAndPrincipalName(String registeredClientId, String principalName) {
         Optional<HerodotusAuthorizationConsent> result = this.authorizationConsentRepository.findByRegisteredClientIdAndPrincipalName(registeredClientId, principalName);
-        log.trace("[Herodotus] |- HerodotusAuthorizationConsent Service findByRegisteredClientIdAndPrincipalName.");
+        log.trace("[GstDev Cloud] |- HerodotusAuthorizationConsent Service findByRegisteredClientIdAndPrincipalName.");
         return result;
     }
 
     public void deleteByRegisteredClientIdAndPrincipalName(String registeredClientId, String principalName) {
         this.authorizationConsentRepository.deleteByRegisteredClientIdAndPrincipalName(registeredClientId, principalName);
-        log.trace("[Herodotus] |- HerodotusAuthorizationConsent Service deleteByRegisteredClientIdAndPrincipalName.");
+        log.trace("[GstDev Cloud] |- HerodotusAuthorizationConsent Service deleteByRegisteredClientIdAndPrincipalName.");
     }
 }

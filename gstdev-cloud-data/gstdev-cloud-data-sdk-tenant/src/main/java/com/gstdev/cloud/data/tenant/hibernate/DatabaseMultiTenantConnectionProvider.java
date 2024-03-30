@@ -47,7 +47,7 @@ public class DatabaseMultiTenantConnectionProvider extends AbstractDataSourceBas
      */
     @Override
     protected DataSource selectAnyDataSource() {
-        log.debug("[Herodotus] |- Select any dataSource: " + defaultDataSource);
+        log.debug("[GstDev Cloud] |- Select any dataSource: " + defaultDataSource);
         return defaultDataSource;
     }
 
@@ -59,10 +59,10 @@ public class DatabaseMultiTenantConnectionProvider extends AbstractDataSourceBas
 
         DataSource currentDataSource = dataSources.get(tenantIdentifier);
         if (ObjectUtils.isNotEmpty(currentDataSource)) {
-            log.debug("[Herodotus] |- Found the multi tenant dataSource for id : [{}]", tenantIdentifier);
+            log.debug("[GstDev Cloud] |- Found the multi tenant dataSource for id : [{}]", tenantIdentifier);
             return currentDataSource;
         } else {
-            log.warn("[Herodotus] |- Cannot found the dataSource for tenant [{}], change to use default.", tenantIdentifier);
+            log.warn("[GstDev Cloud] |- Cannot found the dataSource for tenant [{}], change to use default.", tenantIdentifier);
             return defaultDataSource;
         }
     }

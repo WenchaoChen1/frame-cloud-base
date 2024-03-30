@@ -42,6 +42,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
@@ -74,49 +75,6 @@ import java.util.UUID;
 //@EnableConfigurationProperties(AuthorizationServerProperties.class)
 //@Import({OAuth2AuthorizationConfiguration.class, OAuth2AuthenticationConfiguration.class})
 public class AuthorizationServerConfiguration {
-
-////  @Bean
-////  public OAuth2TokenCustomizer<JwtEncodingContext> buildCustomizer() {
-////    DefaultOAuth2TokenCustomizer tokenCustomizer = new DefaultOAuth2TokenCustomizer();
-////    return tokenCustomizer;
-////  }
-////
-////  public JwtAuthenticationConverter jwtAuthenticationConverter() {
-////    var converter = new JwtAuthenticationConverter();
-////    var authorities = new JwtGrantedAuthoritiesConverter();
-////    authorities.setAuthoritiesClaimName("authorities");
-////    authorities.setAuthorityPrefix("");
-////    converter.setJwtGrantedAuthoritiesConverter(authorities);
-////    return converter;
-////  }
-////
-////  @Bean
-////  public BearerTokenResolver bearerTokenResolver() {
-////    return new DefaultBearerTokenResolver();
-////  }
-
-//
-//  /**
-//   * <p>授权服务器元信息配置</p>
-//   * <p>
-//   * 授权服务器本身也提供了一个配置工具来配置其元信息，大多数都使用默认配置即可，唯一需要配置的其实只有授权服务器的地址issuer
-//   * 在生产中这个地方应该配置为域名
-//   *
-//   * @return
-//   */
-////  @Bean
-////  public ProviderSettings providerSettings() {
-////    return ProviderSettings.builder().issuer("http://os.com:9000").build();
-////  }
-//
-
-//===========================aaa========================================================================================
-
-//  @Resource
-//  private AuthorizationServerProperties authorizationServerProperties;
-
-  //  @Resource
-//  private PasswordEncoder passwordEncoder;
 
   /**
    * 授权配置
@@ -354,7 +312,7 @@ public class AuthorizationServerConfiguration {
           keyPair = keyStoreKeyFactory.getKeyPair(jwk.getJksKeyAlias(), jwk.getJksKeyPassword().toCharArray());
         }
       } catch (IOException e) {
-        log.error("[Herodotus] |- Read custom certificate under resource folder error!", e);
+        log.error("[GstDev Cloud] |- Read custom certificate under resource folder error!", e);
       }
 
     } else {
@@ -380,5 +338,8 @@ public class AuthorizationServerConfiguration {
   public JwtDecoder jwtDecoder(JWKSource<SecurityContext> jwkSource) {
     return OAuth2AuthorizationServerConfiguration.jwtDecoder(jwkSource);
   }
+
+
+
 }
 

@@ -74,7 +74,7 @@ public class OAuth2ComplianceService extends BaseService<OAuth2Compliance, Strin
 
     public OAuth2Compliance save(String principalName, String clientId, String operation, HttpServletRequest request) {
         OAuth2Compliance compliance = toEntity(principalName, clientId, operation, request);
-        log.debug("[Herodotus] |- Sign in user is [{}]", compliance);
+        log.debug("[GstDev Cloud] |- Sign in user is [{}]", compliance);
         return super.save(compliance);
     }
 

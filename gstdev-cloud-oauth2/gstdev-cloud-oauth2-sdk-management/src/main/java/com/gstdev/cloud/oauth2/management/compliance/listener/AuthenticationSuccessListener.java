@@ -63,7 +63,7 @@ public class AuthenticationSuccessListener implements ApplicationListener<Authen
                     }
                 }
             } else {
-                log.warn("[Herodotus] |- Can not get request and user name, skip!");
+                log.warn("[GstDev Cloud] |- Can not get request and user name, skip!");
             }
         }
     }

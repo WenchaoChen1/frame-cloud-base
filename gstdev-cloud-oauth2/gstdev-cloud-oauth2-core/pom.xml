@@ -20,7 +20,18 @@
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-commons</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>com.gstdev.cloud</groupId>
+      <artifactId>gstdev-cloud-captcha-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.gstdev.cloud</groupId>
+      <artifactId>gstdev-cloud-cache-jetcache</artifactId>
+    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.gstdev.cloud</groupId>-->
+<!--      <artifactId>gstdev-cloud-starter-captcha</artifactId>-->
+<!--    </dependency>-->
     <!-- 添加spring security cas支持
      这里需添加spring-security-cas依赖，
      否则启动时报java.lang.ClassNotFoundException: org.springframework.security.cas.jackson2.CasJackson2Module错误。
@@ -51,7 +62,6 @@
       <artifactId>spring-security-oauth2-resource-server</artifactId>
     </dependency>
 
-
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-collections4</artifactId>
@@ -62,8 +72,6 @@
       <artifactId>spring-boot-configuration-processor</artifactId>
       <optional>true</optional>
     </dependency>
-
-
   </dependencies>
 
 </project>

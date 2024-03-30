@@ -45,7 +45,7 @@ public class OAuth2AccountStatusManager {
             return user.getUserId();
         }
 
-        log.warn("[Herodotus] |- Can not found the userid for [{}]", username);
+        log.warn("[GstDev Cloud] |- Can not found the userid for [{}]", username);
         return null;
     }
 
@@ -54,7 +54,7 @@ public class OAuth2AccountStatusManager {
         if (ObjectUtils.isNotEmpty(userId)) {
             accountStatusEventManager.postProcess(new UserStatus(userId, DataItemStatus.LOCKING.name()));
             lockedUserDetailsStampManager.put(userId, username);
-            log.info("[Herodotus] |- User count [{}] has been locked, and record into cache!", username);
+            log.info("[GstDev Cloud] |- User count [{}] has been locked, and record into cache!", username);
         }
     }
 
@@ -70,7 +70,7 @@ public class OAuth2AccountStatusManager {
             String value = lockedUserDetailsStampManager.get(userId);
             if (StringUtils.isNotEmpty(value)) {
                 this.lockedUserDetailsStampManager.delete(userId);
-                log.info("[Herodotus] |- User count [{}] locked info has been release!", username);
+                log.info("[GstDev Cloud] |- User count [{}] locked info has been release!", username);
             }
         }
     }

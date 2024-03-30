@@ -154,7 +154,7 @@ public class TestController {
 public class CaptchaStamp extends AbstractStampManager<String, String> {
     public CaptchaStamp() {
         super("sys:captcha");
-    }
+    }[redis.conf](..%2F..%2F..%2F..%2F..%2FOneDrive%20-%20Golden%20Section%2Fdocker%2Fredis%2Fredis-V7%2Fredis.conf)
 
     @Override
     public String nextStamp(String key) {

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @author : cc
  * @date : 2024/12/23 22:44
  */
-@Component
+//@Component
 public class LineCaptchaRenderer extends AbstractGraphicRenderer {
 
     @Override

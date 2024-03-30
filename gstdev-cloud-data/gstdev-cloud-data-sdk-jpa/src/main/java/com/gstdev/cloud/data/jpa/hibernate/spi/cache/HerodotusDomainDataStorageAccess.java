@@ -36,7 +36,7 @@ public class HerodotusDomainDataStorageAccess implements DomainDataStorageAccess
             int hashCode = queryKey.hashCode();
             String hashCodeString = String.valueOf(hashCode);
             String secureKey = SecureUtil.md5(hashCodeString);
-            log.trace("[Herodotus] |- SPI - Convert query key hashcode [{}] to secureKey [{}]", hashCode, secureKey);
+            log.trace("[GstDev Cloud] |- SPI - Convert query key hashcode [{}] to secureKey [{}]", hashCode, secureKey);
             return secureKey;
         }
         return String.valueOf(key);
@@ -44,7 +44,7 @@ public class HerodotusDomainDataStorageAccess implements DomainDataStorageAccess
 
     private String getTenantId() {
         String tenantId = TenantContextHolder.getTenantId();
-        log.trace("[Herodotus] |- SPI - Tenant identifier for jpa second level cache is : [{}]", tenantId);
+        log.trace("[GstDev Cloud] |- SPI - Tenant identifier for jpa second level cache is : [{}]", tenantId);
         return StringUtils.toRootLowerCase(tenantId);
     }
 
@@ -53,7 +53,7 @@ public class HerodotusDomainDataStorageAccess implements DomainDataStorageAccess
         String tenantId = getTenantId();
 
         String result = tenantId + SymbolConstants.COLON + original;
-        log.trace("[Herodotus] |- SPI - Current cache key is : [{}]", result);
+        log.trace("[GstDev Cloud] |- SPI - Current cache key is : [{}]", result);
         return result;
     }
 
@@ -70,7 +70,7 @@ public class HerodotusDomainDataStorageAccess implements DomainDataStorageAccess
     public boolean contains(Object key) {
         String wrapperKey = wrapper(key);
         Object value = this.get(wrapperKey);
-        log.trace("[Herodotus] |- SPI - check is key : [{}] exist.", wrapperKey);
+        log.trace("[GstDev Cloud] |- SPI - check is key : [{}] exist.", wrapperKey);
         return ObjectUtils.isNotEmpty(value);
     }
 
@@ -78,28 +78,28 @@ public class HerodotusDomainDataStorageAccess implements DomainDataStorageAccess
     public Object getFromCache(Object key, SharedSessionContractImplementor session) {
         String wrapperKey = wrapper(key);
         Object value = this.get(wrapperKey);
-        log.trace("[Herodotus] |- SPI - get from cache key is : [{}], value is : [{}]", wrapperKey, value);
+        log.trace("[GstDev Cloud] |- SPI - get from cache key is : [{}], value is : [{}]", wrapperKey, value);
         return value;
     }
 
     @Override
     public void putIntoCache(Object key, Object value, SharedSessionContractImplementor session) {
         String wrapperKey = wrapper(key);
-        log.trace("[Herodotus] |- SPI - put into cache key is : [{}], value is : [{}]", wrapperKey, value);
+        log.trace("[GstDev Cloud] |- SPI - put into cache key is : [{}], value is : [{}]", wrapperKey, value);
         cache.put(wrapperKey, value);
     }
 
     @Override
     public void removeFromCache(Object key, SharedSessionContractImplementor session) {
         String wrapperKey = wrapper(key);
-        log.trace("[Herodotus] |- SPI - remove from cache key is : [{}]", wrapperKey);
+        log.trace("[GstDev Cloud] |- SPI - remove from cache key is : [{}]", wrapperKey);
         cache.evict(wrapperKey);
     }
 
     @Override
     public void evictData(Object key) {
         String wrapperKey = wrapper(key);
-        log.trace("[Herodotus] |- SPI - evict key : [{}] from cache.", wrapperKey);
+        log.trace("[GstDev Cloud] |- SPI - evict key : [{}] from cache.", wrapperKey);
         cache.evict(wrapperKey);
     }
 

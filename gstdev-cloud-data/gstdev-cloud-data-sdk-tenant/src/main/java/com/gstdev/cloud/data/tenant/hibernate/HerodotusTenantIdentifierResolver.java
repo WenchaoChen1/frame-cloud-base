@@ -26,7 +26,7 @@ public class HerodotusTenantIdentifierResolver implements CurrentTenantIdentifie
     @Override
     public String resolveCurrentTenantIdentifier() {
         String currentTenantId = TenantContextHolder.getTenantId();
-        log.trace("[Herodotus] |- Resolve Current Tenant Identifier is : [{}]", currentTenantId);
+        log.trace("[GstDev Cloud] |- Resolve Current Tenant Identifier is : [{}]", currentTenantId);
         return currentTenantId;
     }
 
@@ -44,7 +44,7 @@ public class HerodotusTenantIdentifierResolver implements CurrentTenantIdentifie
 
     @Override
     public void customize(Map<String, Object> hibernateProperties) {
-        log.debug("[Herodotus] |- Apply hibernate properties [MULTI_TENANT_IDENTIFIER_RESOLVER]");
+        log.debug("[GstDev Cloud] |- Apply hibernate properties [MULTI_TENANT_IDENTIFIER_RESOLVER]");
         hibernateProperties.put(AvailableSettings.MULTI_TENANT_IDENTIFIER_RESOLVER, this);
     }
 }

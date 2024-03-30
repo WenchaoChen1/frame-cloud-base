@@ -351,7 +351,7 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
 
   }
 
-  public static void main(String[] args) {
-    System.out.println(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("123456"));
-  }
+//  public static void main(String[] args) {
+//    System.out.println(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("123456"));
+//  }
 }

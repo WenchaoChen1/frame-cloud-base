@@ -51,13 +51,13 @@ public class DatabaseApproachConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Database Approach] Auto Configure.");
+        log.debug("[GstDev Cloud] |- SDK [Database Approach] Auto Configure.");
     }
 
     @Bean
     public MultiTenantConnectionProvider multiTenantConnectionProvider(DataSource dataSource) {
         DatabaseMultiTenantConnectionProvider herodotusTenantConnectionProvider = new DatabaseMultiTenantConnectionProvider(dataSource);
-        log.debug("[Herodotus] |- Bean [Multi Tenant Connection Provider] Auto Configure.");
+        log.debug("[GstDev Cloud] |- Bean [Multi Tenant Connection Provider] Auto Configure.");
         return herodotusTenantConnectionProvider;
     }
 
@@ -90,7 +90,7 @@ public class DatabaseApproachConfiguration {
     @ConditionalOnClass({LocalContainerEntityManagerFactoryBean.class})
     public MultiTenantDataSourceFactory multiTenantDataSourceFactory() {
         MultiTenantDataSourceFactory multiTenantDataSourceFactory = new MultiTenantDataSourceFactory();
-        log.debug("[Herodotus] |- Bean [Multi Tenant DataSource Factory] Auto Configure.");
+        log.debug("[GstDev Cloud] |- Bean [Multi Tenant DataSource Factory] Auto Configure.");
         return multiTenantDataSourceFactory;
     }
 }

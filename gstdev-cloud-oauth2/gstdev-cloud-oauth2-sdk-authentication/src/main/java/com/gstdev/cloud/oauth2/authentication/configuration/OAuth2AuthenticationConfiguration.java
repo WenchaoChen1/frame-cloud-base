@@ -1,11 +1,14 @@
 package com.gstdev.cloud.oauth2.authentication.configuration;
 
+import com.gstdev.cloud.oauth2.authentication.customizer.OAuth2FormLoginConfigurerCustomizer;
 import com.gstdev.cloud.oauth2.authentication.properties.OAuth2AuthenticationProperties;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -40,13 +43,13 @@ public class OAuth2AuthenticationConfiguration {
 //    return manager;
 //  }
 //
-//  @Bean
-//  @ConditionalOnMissingBean
-//  public OAuth2FormLoginConfigurerCustomizer oauth2FormLoginConfigurerCustomer(OAuth2AuthenticationProperties authenticationProperties) {
-//    OAuth2FormLoginConfigurerCustomizer configurer = new OAuth2FormLoginConfigurerCustomizer(authenticationProperties);
-//    log.trace("[GstDev Cloud] |- Bean [OAuth2 FormLogin Configurer Customer] Auto Configure.");
-//    return configurer;
-//  }
+  @Bean
+  @ConditionalOnMissingBean
+  public OAuth2FormLoginConfigurerCustomizer oauth2FormLoginConfigurerCustomer(OAuth2AuthenticationProperties authenticationProperties) {
+    OAuth2FormLoginConfigurerCustomizer configurer = new OAuth2FormLoginConfigurerCustomizer(authenticationProperties);
+    log.trace("[GstDev Cloud] |- Bean [OAuth2 FormLogin Configurer Customer] Auto Configure.");
+    return configurer;
+  }
 //
 //  @Bean
 //  public OAuth2TokenCustomizer<JwtEncodingContext> jwtTokenCustomizer() {

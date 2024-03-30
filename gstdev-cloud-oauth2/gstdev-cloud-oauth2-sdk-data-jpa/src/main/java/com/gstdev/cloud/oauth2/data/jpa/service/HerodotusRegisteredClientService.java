@@ -38,7 +38,7 @@ public class HerodotusRegisteredClientService extends BaseService<HerodotusRegis
 
     public Optional<HerodotusRegisteredClient> findByClientId(String clientId) {
         Optional<HerodotusRegisteredClient> result = this.registeredClientRepository.findByClientId(clientId);
-        log.trace("[Herodotus] |- HerodotusRegisteredClient Service findByClientId.");
+        log.trace("[GstDev Cloud] |- HerodotusRegisteredClient Service findByClientId.");
         return result;
     }
 }

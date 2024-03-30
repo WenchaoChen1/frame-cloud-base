@@ -20,6 +20,6 @@ public class DataJpaAutoConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Module [Data JPA] Auto Configure.");
+        log.info("[GstDev Cloud] |- Module [Data JPA] Auto Configure.");
     }
 }

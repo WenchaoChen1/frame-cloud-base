@@ -30,6 +30,6 @@ public class DataTenantAutoConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Module [Data Tenant] Auto Configure.");
+        log.info("[GstDev Cloud] |- Module [Data Tenant] Auto Configure.");
     }
 }

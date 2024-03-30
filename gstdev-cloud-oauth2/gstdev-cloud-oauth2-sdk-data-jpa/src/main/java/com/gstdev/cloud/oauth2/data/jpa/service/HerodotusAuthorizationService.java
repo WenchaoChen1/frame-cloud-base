@@ -44,43 +44,43 @@ public class HerodotusAuthorizationService extends BaseService<HerodotusAuthoriz
 
     public Optional<HerodotusAuthorization> findByState(String state) {
         Optional<HerodotusAuthorization> result = this.herodotusAuthorizationRepository.findByState(state);
-        log.debug("[Herodotus] |- HerodotusAuthorization Service findByState.");
+        log.debug("[GstDev Cloud] |- HerodotusAuthorization Service findByState.");
         return result;
     }
 
     public Optional<HerodotusAuthorization> findByAuthorizationCode(String authorizationCode) {
         Optional<HerodotusAuthorization> result = this.herodotusAuthorizationRepository.findByAuthorizationCodeValue(authorizationCode);
-        log.debug("[Herodotus] |- HerodotusAuthorization Service findByAuthorizationCode.");
+        log.debug("[GstDev Cloud] |- HerodotusAuthorization Service findByAuthorizationCode.");
         return result;
     }
 
     public Optional<HerodotusAuthorization> findByAccessToken(String accessToken) {
         Optional<HerodotusAuthorization> result = this.herodotusAuthorizationRepository.findByAccessTokenValue(accessToken);
-        log.debug("[Herodotus] |- HerodotusAuthorization Service findByAccessToken.");
+        log.debug("[GstDev Cloud] |- HerodotusAuthorization Service findByAccessToken.");
         return result;
     }
 
     public Optional<HerodotusAuthorization> findByRefreshToken(String refreshToken) {
         Optional<HerodotusAuthorization> result = this.herodotusAuthorizationRepository.findByRefreshTokenValue(refreshToken);
-        log.debug("[Herodotus] |- HerodotusAuthorization Service findByRefreshToken.");
+        log.debug("[GstDev Cloud] |- HerodotusAuthorization Service findByRefreshToken.");
         return result;
     }
 
     public Optional<HerodotusAuthorization> findByOidcIdTokenValue(String idToken) {
         Optional<HerodotusAuthorization> result = this.herodotusAuthorizationRepository.findByOidcIdTokenValue(idToken);
-        log.debug("[Herodotus] |- HerodotusAuthorization Service findByOidcIdTokenValue.");
+        log.debug("[GstDev Cloud] |- HerodotusAuthorization Service findByOidcIdTokenValue.");
         return result;
     }
 
     public Optional<HerodotusAuthorization> findByUserCodeValue(String userCode) {
         Optional<HerodotusAuthorization> result = this.herodotusAuthorizationRepository.findByUserCodeValue(userCode);
-        log.debug("[Herodotus] |- HerodotusAuthorization Service findByUserCodeValue.");
+        log.debug("[GstDev Cloud] |- HerodotusAuthorization Service findByUserCodeValue.");
         return result;
     }
 
     public Optional<HerodotusAuthorization> findByDeviceCodeValue(String deviceCode) {
         Optional<HerodotusAuthorization> result = this.herodotusAuthorizationRepository.findByDeviceCodeValue(deviceCode);
-        log.debug("[Herodotus] |- HerodotusAuthorization Service findByDeviceCodeValue.");
+        log.debug("[GstDev Cloud] |- HerodotusAuthorization Service findByDeviceCodeValue.");
         return result;
     }
 
@@ -102,18 +102,18 @@ public class HerodotusAuthorizationService extends BaseService<HerodotusAuthoriz
         };
 
         Optional<HerodotusAuthorization> result = this.herodotusAuthorizationRepository.findOne(specification);
-        log.trace("[Herodotus] |- HerodotusAuthorization Service findByDetection.");
+        log.trace("[GstDev Cloud] |- HerodotusAuthorization Service findByDetection.");
         return result;
     }
 
     public void clearHistoryToken() {
         this.herodotusAuthorizationRepository.deleteByRefreshTokenExpiresAtBefore(LocalDateTime.now());
-        log.debug("[Herodotus] |- HerodotusAuthorization Service clearExpireAccessToken.");
+        log.debug("[GstDev Cloud] |- HerodotusAuthorization Service clearExpireAccessToken.");
     }
 
     public List<HerodotusAuthorization> findAvailableAuthorizations(String registeredClientId, String principalName) {
         List<HerodotusAuthorization> authorizations = this.herodotusAuthorizationRepository.findAllByRegisteredClientIdAndPrincipalNameAndAccessTokenExpiresAtAfter(registeredClientId, principalName, LocalDateTime.now());
-        log.debug("[Herodotus] |- HerodotusAuthorization Service findAvailableAuthorizations.");
+        log.debug("[GstDev Cloud] |- HerodotusAuthorization Service findAvailableAuthorizations.");
         return authorizations;
     }
 
@@ -123,7 +123,7 @@ public class HerodotusAuthorizationService extends BaseService<HerodotusAuthoriz
         if (CollectionUtils.isNotEmpty(authorizations)) {
             count = authorizations.size();
         }
-        log.debug("[Herodotus] |- HerodotusAuthorization Service current authorization count is [{}].", count);
+        log.debug("[GstDev Cloud] |- HerodotusAuthorization Service current authorization count is [{}].", count);
         return count;
     }
 }

@@ -12,7 +12,7 @@ import java.awt.*;
  * @author : cc
  * @date : 2024/12/20 22:55
  */
-@Component
+//@Component
 public class ChineseCaptchaRenderer extends AbstractPngGraphicRenderer {
 
     @Override

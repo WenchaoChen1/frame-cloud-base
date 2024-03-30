@@ -25,13 +25,13 @@ public class SchemaApproachConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Schema Approach] Auto Configure.");
+        log.debug("[GstDev Cloud] |- SDK [Schema Approach] Auto Configure.");
     }
 
     @Bean
     public MultiTenantConnectionProvider multiTenantConnectionProvider(DataSource dataSource) {
         SchemaMultiTenantConnectionProvider schemaMultiTenantConnectionProvider = new SchemaMultiTenantConnectionProvider(dataSource);
-        log.debug("[Herodotus] |- Bean [Multi Tenant Connection Provider] Auto Configure.");
+        log.debug("[GstDev Cloud] |- Bean [Multi Tenant Connection Provider] Auto Configure.");
         return schemaMultiTenantConnectionProvider;
     }
 }

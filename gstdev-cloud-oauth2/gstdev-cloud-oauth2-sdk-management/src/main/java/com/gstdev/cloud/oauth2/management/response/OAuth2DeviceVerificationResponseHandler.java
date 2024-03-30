@@ -37,13 +37,13 @@ public class OAuth2DeviceVerificationResponseHandler extends SimpleUrlAuthentica
         OAuth2DeviceVerificationAuthenticationToken deviceVerificationAuthenticationToken =
                 (OAuth2DeviceVerificationAuthenticationToken) authentication;
 
-        log.info("[Herodotus] |- Device verification authentication token is : [{}]", deviceVerificationAuthenticationToken);
+        log.info("[GstDev Cloud] |- Device verification authentication token is : [{}]", deviceVerificationAuthenticationToken);
 
         String clientId = deviceVerificationAuthenticationToken.getClientId();
 
         if (StringUtils.isNotBlank(clientId)) {
             boolean success = deviceService.activate(clientId, true);
-            log.info("[Herodotus] |- The activation status of the device is : [{}]", success);
+            log.info("[GstDev Cloud] |- The activation status of the device is : [{}]", success);
         }
 
         super.onAuthenticationSuccess(request, response, authentication);

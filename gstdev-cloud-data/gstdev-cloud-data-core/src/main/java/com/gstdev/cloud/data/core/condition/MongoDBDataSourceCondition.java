@@ -25,7 +25,7 @@ public class MongoDBDataSourceCondition implements Condition {
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
         String property = PropertyResolver.getProperty(conditionContext, DataConstants.ITEM_DATA_DATA_SOURCE);
         boolean result = StringUtils.isNotBlank(property) && StringUtils.equalsIgnoreCase(property, DataSource.MONGODB.name());
-        log.debug("[Herodotus] |- Condition [MongoDB Data Source] value is [{}]", result);
+        log.debug("[GstDev Cloud] |- Condition [MongoDB Data Source] value is [{}]", result);
         return result;
     }
 }

@@ -67,7 +67,7 @@
 //        String temp = cleanHtml.replaceAll(getInstance().nbsp, "");
 //        temp = temp.replaceAll(getInstance().quot, "\"");
 //        String result = temp.replaceAll("\n", "");
-//        log.trace("[Herodotus] |- Antisamy process value from [{}] to [{}]", taintedHTML, result);
+//        log.trace("[GstDev Cloud] |- Antisamy process value from [{}] to [{}]", taintedHTML, result);
 //        return result;
 //    }
 //
@@ -76,7 +76,7 @@
 //            URL url = ResourceUtils.getURL("classpath:antisamy/antisamy-anythinggoes.xml");
 //            return Policy.getInstance(url);
 //        } catch (IOException | PolicyException e) {
-//            log.warn("[Herodotus] |- Antisamy create policy error! {}", e.getMessage());
+//            log.warn("[GstDev Cloud] |- Antisamy create policy error! {}", e.getMessage());
 //            return null;
 //        }
 //    }
@@ -91,7 +91,7 @@
 //            final CleanResults cleanResults = scan(taintedHtml);
 //            return cleanResults.getCleanHTML();
 //        } catch (ScanException | PolicyException e) {
-//            log.error("[Herodotus] |- Antisamy scan catch error! {}", e.getMessage());
+//            log.error("[GstDev Cloud] |- Antisamy scan catch error! {}", e.getMessage());
 //            return taintedHtml;
 //        }
 //    }

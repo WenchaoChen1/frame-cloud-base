@@ -1,0 +1,4 @@
+com.gstdev.cloud.captcha.autoconfigure.CaptchaAutoConfiguration
+com.gstdev.cloud.captcha.autoconfigure.BehaviorCaptchaAutoConfiguration
+com.gstdev.cloud.captcha.autoconfigure.GraphicCaptchaAutoConfiguration
+com.gstdev.cloud.captcha.autoconfigure.HutoolCaptchaAutoConfiguration

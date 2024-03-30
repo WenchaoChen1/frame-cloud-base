@@ -25,7 +25,7 @@ public class JpaDataSourceCondition implements Condition {
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
         String property = PropertyResolver.getProperty(conditionContext, DataConstants.ITEM_DATA_DATA_SOURCE, DataSource.JPA.name());
         boolean result = StringUtils.equalsIgnoreCase(property, DataSource.JPA.name());
-        log.debug("[Herodotus] |- Condition [JPA Data Source] value is [{}]", result);
+        log.debug("[GstDev Cloud] |- Condition [JPA Data Source] value is [{}]", result);
         return result;
     }
 }

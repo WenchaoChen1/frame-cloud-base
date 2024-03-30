@@ -45,7 +45,7 @@
 //
 //    private static boolean matching(String lowerValue, String param) {
 //        if (SQL_PATTERN.matcher(param).find()) {
-//            log.error("[Herodotus] |- The parameter contains keywords {} that do not allow SQL!", lowerValue);
+//            log.error("[GstDev Cloud] |- The parameter contains keywords {} that do not allow SQL!", lowerValue);
 //            return true;
 //        }
 //        return false;

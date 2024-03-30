@@ -45,7 +45,7 @@ public class SchemaMultiTenantConnectionProvider implements MultiTenantConnectio
     public Connection getConnection(String schema) throws SQLException {
                 final Connection connection = getAnyConnection();
         connection.setSchema(schema);
-        log.debug("[Herodotus] |- Get connection for schema tenant [{}]", schema);
+        log.debug("[GstDev Cloud] |- Get connection for schema tenant [{}]", schema);
         return connection;
     }
 

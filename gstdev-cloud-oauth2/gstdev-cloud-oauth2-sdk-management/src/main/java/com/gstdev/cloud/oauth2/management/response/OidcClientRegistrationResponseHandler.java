@@ -48,9 +48,9 @@ public class OidcClientRegistrationResponseHandler implements AuthenticationSucc
 
         boolean success = deviceService.sync(clientRegistration);
         if (success) {
-            log.info("[Herodotus] |- Sync oidcClientRegistration to device succeed.");
+            log.info("[GstDev Cloud] |- Sync oidcClientRegistration to device succeed.");
         } else {
-            log.warn("[Herodotus] |- Sync oidcClientRegistration to device failed!");
+            log.warn("[GstDev Cloud] |- Sync oidcClientRegistration to device failed!");
         }
 
         ServletServerHttpResponse httpResponse = new ServletServerHttpResponse(response);

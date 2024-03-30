@@ -20,7 +20,7 @@ import java.awt.image.BufferedImage;
  * @author : cc
  * @date : 2024/12/20 22:55
  */
-@Component
+//@Component
 public class ArithmeticCaptchaRenderer extends AbstractBaseGraphicRenderer {
 
     private static final Logger log = LoggerFactory.getLogger(ArithmeticCaptchaRenderer.class);

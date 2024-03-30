@@ -32,7 +32,7 @@ public class MybatisPlusConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Data Mybatis Plus] Auto Configure.");
+        log.debug("[GstDev Cloud] |- SDK [Data Mybatis Plus] Auto Configure.");
     }
 
     private DbType parseDbType() {
@@ -55,21 +55,21 @@ public class MybatisPlusConfiguration {
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
         mybatisPlusInterceptor.addInnerInterceptor(new PaginationInnerInterceptor(parseDbType()));
-        log.trace("[Herodotus] |- Bean [Mybatis Plus Interceptor] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Mybatis Plus Interceptor] Auto Configure.");
         return mybatisPlusInterceptor;
     }
 
     @Bean
     public BlockAttackInnerInterceptor blockAttackInnerInterceptor() {
         BlockAttackInnerInterceptor blockAttackInnerInterceptor = new BlockAttackInnerInterceptor();
-        log.trace("[Herodotus] |- Bean [Block Attack Inner Interceptor] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Block Attack Inner Interceptor] Auto Configure.");
         return blockAttackInnerInterceptor;
     }
 
     @Bean
     public IdentifierGenerator identifierGenerator() {
         HerodotusIdentifierGenerator herodotusIdentifierGenerator = new HerodotusIdentifierGenerator();
-        log.trace("[Herodotus] |- Bean [Herodotus Identifier Generator] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [GstDev Cloud Identifier Generator] Auto Configure.");
         return herodotusIdentifierGenerator;
     }
 }

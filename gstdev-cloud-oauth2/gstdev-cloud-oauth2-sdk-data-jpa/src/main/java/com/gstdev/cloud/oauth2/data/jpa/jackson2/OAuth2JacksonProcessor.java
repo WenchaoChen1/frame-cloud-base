@@ -41,7 +41,7 @@ public class OAuth2JacksonProcessor {
             return this.objectMapper.readValue(data, new TypeReference<>() {
             });
         } catch (Exception ex) {
-            log.error("[Herodotus] |- OAuth2 jackson processing parseMap catch error {}", ex.getMessage());
+            log.error("[GstDev Cloud] |- OAuth2 jackson processing parseMap catch error {}", ex.getMessage());
             throw new IllegalArgumentException(ex.getMessage(), ex);
         }
     }
@@ -50,7 +50,7 @@ public class OAuth2JacksonProcessor {
         try {
             return this.objectMapper.writeValueAsString(data);
         } catch (Exception ex) {
-            log.error("[Herodotus] |- OAuth2 jackson processing writeMap catch error {}", ex.getMessage());
+            log.error("[GstDev Cloud] |- OAuth2 jackson processing writeMap catch error {}", ex.getMessage());
             throw new IllegalArgumentException(ex.getMessage(), ex);
         }
     }

@@ -40,7 +40,7 @@ public class AuthenticationFailureListener implements ApplicationListener<Abstra
     @Override
     public void onApplicationEvent(AbstractAuthenticationFailureEvent event) {
 
-        log.debug("[Herodotus] |- User sign in catch failure event : [{}].", event.getClass().getName());
+        log.debug("[GstDev Cloud] |- User sign in catch failure event : [{}].", event.getClass().getName());
 
         if (event instanceof AuthenticationFailureBadCredentialsEvent) {
             Authentication authentication = event.getAuthentication();
@@ -49,7 +49,7 @@ public class AuthenticationFailureListener implements ApplicationListener<Abstra
 
             if (authentication instanceof OAuth2AuthorizationGrantAuthenticationToken) {
 
-                log.debug("[Herodotus] |- Toke object in failure event  is OAuth2AuthorizationGrantAuthenticationToken");
+                log.debug("[GstDev Cloud] |- Toke object in failure event  is OAuth2AuthorizationGrantAuthenticationToken");
 
                 OAuth2AuthorizationGrantAuthenticationToken token = (OAuth2AuthorizationGrantAuthenticationToken) authentication;
                 Map<String, Object> params = token.getAdditionalParameters();
@@ -58,7 +58,7 @@ public class AuthenticationFailureListener implements ApplicationListener<Abstra
 
             if (authentication instanceof UsernamePasswordAuthenticationToken) {
 
-                log.debug("[Herodotus] |- Toke object in failure event  is UsernamePasswordAuthenticationToken");
+                log.debug("[GstDev Cloud] |- Toke object in failure event  is UsernamePasswordAuthenticationToken");
 
                 UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
                 Object principal = token.getPrincipal();
@@ -69,15 +69,15 @@ public class AuthenticationFailureListener implements ApplicationListener<Abstra
 
             if (StringUtils.isNotBlank(username)) {
 
-                log.debug("[Herodotus] |- Parse the user name in failure event is [{}].", username);
+                log.debug("[GstDev Cloud] |- Parse the user name in failure event is [{}].", username);
 
                 int maxTimes = stampManager.getAuthenticationProperties().getSignInFailureLimited().getMaxTimes();
                 Duration expire = stampManager.getAuthenticationProperties().getSignInFailureLimited().getExpire();
                 try {
                     int times = stampManager.counting(username, maxTimes, expire, true, "AuthenticationFailureListener");
-                    log.debug("[Herodotus] |- Sign in user input password error [{}] items", times);
+                    log.debug("[GstDev Cloud] |- Sign in user input password error [{}] items", times);
                 } catch (MaximumLimitExceededException e) {
-                    log.warn("[Herodotus] |- User [{}] password error [{}] items, LOCK ACCOUNT!", username, maxTimes);
+                    log.warn("[GstDev Cloud] |- User [{}] password error [{}] items, LOCK ACCOUNT!", username, maxTimes);
                     accountStatusManager.lock(username);
                 }
             }

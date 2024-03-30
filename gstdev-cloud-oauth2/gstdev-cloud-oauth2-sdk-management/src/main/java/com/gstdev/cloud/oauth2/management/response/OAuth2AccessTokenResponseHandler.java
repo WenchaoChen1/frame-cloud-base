@@ -51,7 +51,7 @@ public class OAuth2AccessTokenResponseHandler implements AuthenticationSuccessHa
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 
-        log.debug("[Herodotus] |- OAuth2 authentication success for [{}]", request.getRequestURI());
+        log.debug("[GstDev Cloud] |- OAuth2 authentication success for [{}]", request.getRequestURI());
 
         OAuth2AccessTokenAuthenticationToken accessTokenAuthentication =
                 (OAuth2AccessTokenAuthenticationToken) authentication;
@@ -85,7 +85,7 @@ public class OAuth2AccessTokenResponseHandler implements AuthenticationSuccessHa
                 parameters.put(BaseConstants.OPEN_ID, encryptData);
                 builder.additionalParameters(parameters);
             } else {
-                log.warn("[Herodotus] |- OAuth2 authentication can not get use info.");
+                log.warn("[GstDev Cloud] |- OAuth2 authentication can not get use info.");
             }
         }
 

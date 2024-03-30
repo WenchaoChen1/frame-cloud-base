@@ -21,13 +21,13 @@ public class DiscriminatorApproachConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Discriminator Approach] Auto Configure.");
+        log.debug("[GstDev Cloud] |- SDK [Discriminator Approach] Auto Configure.");
     }
 
     @Bean
     public CurrentTenantIdentifierResolver currentTenantIdentifierResolver() {
         HerodotusTenantIdentifierResolver herodotusTenantIdentifierResolver = new HerodotusTenantIdentifierResolver();
-        log.debug("[Herodotus] |- Bean [Current Tenant Identifier Resolver] Auto Configure.");
+        log.debug("[GstDev Cloud] |- Bean [Current Tenant Identifier Resolver] Auto Configure.");
         return herodotusTenantIdentifierResolver;
     }
 }

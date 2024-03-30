@@ -31,7 +31,11 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
-
+    <!--Maven Plugin 相关组件-->
+<!--    <archetype-packaging.verison>3.2.1</archetype-packaging.verison>-->
+    <org.mapstruct-processor.version>1.5.5.Final</org.mapstruct-processor.version>
+<!--    <maven-gpg-plugin.version>3.2.0</maven-gpg-plugin.version>-->
+    <lombok.version>1.18.24</lombok.version>
     <!--Spring 家族-->
     <!--    <spring-boot-admin.version>3.2.2</spring-boot-admin.version>-->
     <!--    <spring-boot-dependencies.version>3.2.4</spring-boot-dependencies.version>-->
@@ -81,7 +85,7 @@
     <!--    <jackson-databind.version>2.13.2.2</jackson-databind.version>-->
     <!--    <jackson-databind.version>2.17.0</jackson-databind.version>-->
     <jackson-databind.version>2.15.3</jackson-databind.version>
-    <lombok.version>1.18.24</lombok.version>
+
     <mysql-connector-java.version>8.0.29</mysql-connector-java.version>
     <!--    <nacos.version>2.1.0</nacos.version>-->
     <nacos.version>2.3.1</nacos.version>
@@ -92,7 +96,7 @@
 
     <hutool.version>5.5.8</hutool.version>
     <swagger.version>3.0.0</swagger.version>
-    <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+
     <minio.version>7.0.2</minio.version>
     <awss3.version>1.11.233</awss3.version>
     <aliyun-sdk-oss.version>3.9.1</aliyun-sdk-oss.version>
@@ -391,6 +395,11 @@
         <artifactId>gstdev-cloud-starter-swagger</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-starter-captcha</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
       <!--      <dependency>-->
       <!--        <groupId>com.gstdev.cloud</groupId>-->
       <!--        <artifactId>gstdev-cloud-starter-oauth2</artifactId>-->
@@ -625,12 +634,12 @@
       <dependency>
         <groupId>org.mapstruct</groupId>
         <artifactId>mapstruct</artifactId>
-        <version>${org.mapstruct.version}</version>
+        <version>${org.mapstruct-processor.version}</version>
       </dependency>
       <dependency>
         <groupId>org.mapstruct</groupId>
         <artifactId>mapstruct-processor</artifactId>
-        <version>${org.mapstruct.version}</version>
+        <version>${org.mapstruct-processor.version}</version>
       </dependency>
       <!-- Aws related dependencies -->
       <dependency>
@@ -667,7 +676,6 @@
 
 
   </dependencyManagement>
-
   <build>
     <extensions></extensions>
     <pluginManagement>
@@ -681,6 +689,30 @@
             <release>${java.release}</release>
             <source>${java.version}</source>
             <target>${java.version}</target>
+            <encoding>${project.build.sourceEncoding}</encoding>
+            <showWarnings>true</showWarnings>
+            <annotationProcessorPaths>
+              <path>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+              </path>
+              <path>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${org.mapstruct-processor.version}</version>
+              </path>
+              <path>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-configuration-processor</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+              </path>
+              <path>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-autoconfigure-processor</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+              </path>
+            </annotationProcessorPaths>
           </configuration>
         </plugin>
         <plugin>
