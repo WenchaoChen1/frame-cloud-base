@@ -25,7 +25,12 @@
       <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
     </license>
   </licenses>
-
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.2.4</version>
+    <relativePath/>
+  </parent>
   <scm>
     <url/>
   </scm>
