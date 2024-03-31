@@ -8,8 +8,8 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.provider;
 //
-//import com.gstdev.cloud.assistant.core.enums.AccountType;
-//import com.gstdev.cloud.assistant.definition.constants.BaseConstants;
+//import com.gstdev.cloud.commons.ass.core.enums.AccountType;
+//import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
 //com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2EndpointUtils;
 //import com.gstdev.cloud.oauth2.core.definition.HerodotusGrantType;
 //import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;

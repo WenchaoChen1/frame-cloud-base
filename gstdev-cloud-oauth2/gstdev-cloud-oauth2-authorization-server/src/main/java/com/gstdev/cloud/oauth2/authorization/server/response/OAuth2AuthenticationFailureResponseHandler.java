@@ -8,7 +8,7 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.response;
 //
-//import com.gstdev.cloud.assistant.definition.domain.Result;
+//import com.gstdev.cloud.commons.ass.definition.domain.Result;
 //com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2EndpointUtils;
 //import com.gstdev.cloud.oauth2.core.exception.SecurityGlobalExceptionHandler;
 //import com.gstdev.cloud.oauth2.core.utils.WebUtils;

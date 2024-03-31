@@ -2,6 +2,7 @@ package com.gstdev.cloud.oauth2.management.service;
 
 import com.gstdev.cloud.commons.ass.definition.domain.oauth2.SecretKey;
 import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
+import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.OAuth2ErrorCodes;

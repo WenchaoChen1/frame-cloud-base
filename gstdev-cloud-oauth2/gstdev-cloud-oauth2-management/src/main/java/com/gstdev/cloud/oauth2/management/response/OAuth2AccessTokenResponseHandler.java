@@ -1,9 +1,9 @@
 package com.gstdev.cloud.oauth2.management.response;
 
-import com.gstdev.cloud.assistant.definition.constants.BaseConstants;
-import com.gstdev.cloud.assistant.definition.domain.oauth2.PrincipalDetails;
-import com.gstdev.cloud.assistant.core.json.jackson2.utils.Jackson2Utils;
-import com.gstdev.cloud.assistant.core.utils.http.SessionUtils;
+import com.gstdev.cloud.commons.ass.core.json.jackson2.utils.Jackson2Utils;
+import com.gstdev.cloud.commons.ass.core.utils.http.SessionUtils;
+import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
+import com.gstdev.cloud.commons.ass.definition.domain.oauth2.PrincipalDetails;
 import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

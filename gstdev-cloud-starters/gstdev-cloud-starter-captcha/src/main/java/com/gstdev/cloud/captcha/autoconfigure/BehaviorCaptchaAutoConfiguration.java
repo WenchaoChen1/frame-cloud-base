@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.DependsOn;
 
 /**
  * <p>Description: 行为验证码配置 </p>
@@ -28,6 +29,7 @@ public class BehaviorCaptchaAutoConfiguration {
     }
 
     @Bean(CaptchaCategory.JIGSAW_CAPTCHA)
+    @DependsOn("jetCacheCreateCacheFactory")
     public JigsawCaptchaRenderer jigsawCaptchaRenderer(ResourceProvider resourceProvider) {
         JigsawCaptchaRenderer jigsawCaptchaRenderer = new JigsawCaptchaRenderer();
         jigsawCaptchaRenderer.setResourceProvider(resourceProvider);
@@ -36,6 +38,7 @@ public class BehaviorCaptchaAutoConfiguration {
     }
 
     @Bean(CaptchaCategory.WORD_CLICK_CAPTCHA)
+    @DependsOn("jetCacheCreateCacheFactory")
     public WordClickCaptchaRenderer wordClickCaptchaRenderer(ResourceProvider resourceProvider) {
         WordClickCaptchaRenderer wordClickCaptchaRenderer = new WordClickCaptchaRenderer();
         wordClickCaptchaRenderer.setResourceProvider(resourceProvider);

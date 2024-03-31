@@ -20,50 +20,50 @@
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-ouath2-resource-server-autoconfigure</artifactId>
     </dependency>
-
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-oauth2-data-jpa</artifactId>
+      <artifactId>gstdev-cloud-oauth2-management</artifactId>
     </dependency>
 
 <!--    <dependency>-->
 <!--      <groupId>com.gstdev.cloud</groupId>-->
-<!--      <artifactId>gstdev-cloud-web</artifactId>-->
+<!--      <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>-->
 <!--    </dependency>-->
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-captcha</artifactId>
-    </dependency>
 
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-config</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-data-redis</artifactId>
-    </dependency>
-    <!-- Lombok related dependencies -->
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <scope>provided</scope>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.gstdev.cloud</groupId>-->
+<!--      <artifactId>gstdev-cloud-oauth2-data-jpa</artifactId>-->
+<!--    </dependency>    -->
 
-    <!-- MapStruct related dependencies -->
-    <dependency>
-      <groupId>org.mapstruct</groupId>
-      <artifactId>mapstruct</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.mapstruct</groupId>
-      <artifactId>mapstruct-processor</artifactId>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.gstdev.cloud</groupId>-->
+<!--      <artifactId>gstdev-cloud-starter-captcha</artifactId>-->
+<!--    </dependency>-->
+
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.security</groupId>-->
+<!--      <artifactId>spring-security-config</artifactId>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>com.gstdev.cloud</groupId>-->
+<!--      <artifactId>gstdev-cloud-starter-data-redis</artifactId>-->
+<!--    </dependency>-->
+<!--    &lt;!&ndash; Lombok related dependencies &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.projectlombok</groupId>-->
+<!--      <artifactId>lombok</artifactId>-->
+<!--      <scope>provided</scope>-->
+<!--    </dependency>-->
+
+<!--    &lt;!&ndash; MapStruct related dependencies &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.mapstruct</groupId>-->
+<!--      <artifactId>mapstruct</artifactId>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.mapstruct</groupId>-->
+<!--      <artifactId>mapstruct-processor</artifactId>-->
+<!--    </dependency>-->
 
 
 

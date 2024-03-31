@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.management.compliance.listener;
 
-import com.gstdev.cloud.assistant.definition.constants.SymbolConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
 import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
 import com.gstdev.cloud.oauth2.management.compliance.OAuth2AccountStatusManager;
 import org.apache.commons.lang3.StringUtils;

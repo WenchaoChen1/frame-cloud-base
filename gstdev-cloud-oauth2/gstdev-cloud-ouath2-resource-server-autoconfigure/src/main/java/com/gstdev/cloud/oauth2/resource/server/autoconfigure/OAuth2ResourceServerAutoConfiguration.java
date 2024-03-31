@@ -1,4 +1,4 @@
-package com.gstdev.cloud.oauth2.resource.server.autoconfigure.configuration;
+package com.gstdev.cloud.oauth2.resource.server.autoconfigure;
 
 
 import com.gstdev.cloud.oauth2.resource.server.configuration.OAuth2AuthorizationConfiguration;

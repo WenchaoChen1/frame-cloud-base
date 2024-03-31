@@ -8,7 +8,7 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authorization.processor;
 //
-//import com.gstdev.cloud.assistant.definition.constants.SymbolConstants;
+//import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
 //import com.gstdev.cloud.oauth2.authorization.definition.HerodotusConfigAttribute;
 //import com.gstdev.cloud.oauth2.authorization.definition.HerodotusRequest;
 //import com.gstdev.cloud.oauth2.authorization.enums.Category;

@@ -1,17 +1,17 @@
-// ====================================================
+//// ====================================================
+////
+//// This file is part of the GstDev Cloud Platform.
+////
+//// Create by GstDev Cloud <support@gstdev.com>
+//// Copyright (c) 2022-2025 gstdev.com
+////
+//// ====================================================
 //
-// This file is part of the GstDev Cloud Platform.
+//package com.gstdev.cloud.starter.oauth2.authentication.server.configurers;
 //
-// Create by GstDev Cloud <support@gstdev.com>
-// Copyright (c) 2022-2025 gstdev.com
+//import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
+//import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 //
-// ====================================================
-
-package com.gstdev.cloud.starter.oauth2.authentication.server.configurers;
-
-import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-
-public class QRAuthenticationProviderConfigurer<H extends HttpSecurityBuilder<H>> extends AbstractHttpConfigurer<QRAuthenticationProviderConfigurer<H>, H> {
-
-}
+//public class QRAuthenticationProviderConfigurer<H extends HttpSecurityBuilder<H>> extends AbstractHttpConfigurer<QRAuthenticationProviderConfigurer<H>, H> {
+//
+//}

@@ -8,7 +8,7 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.customizer;
 //
-//import com.gstdev.cloud.assistant.definition.constants.BaseConstants;
+//import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
 //import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusUser;
 //import org.apache.commons.collections4.CollectionUtils;
 //import org.apache.commons.lang3.ObjectUtils;

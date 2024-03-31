@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.management.compliance.condition;
 
-import com.gstdev.cloud.assistant.core.context.PropertyResolver;
+import com.gstdev.cloud.commons.ass.core.context.PropertyResolver;
 import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

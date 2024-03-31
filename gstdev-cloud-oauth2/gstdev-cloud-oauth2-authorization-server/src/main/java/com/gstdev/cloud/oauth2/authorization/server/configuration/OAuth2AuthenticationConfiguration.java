@@ -1,7 +1,11 @@
 package com.gstdev.cloud.oauth2.authorization.server.configuration;
 
+import com.gstdev.cloud.cache.jetcache.autoconfigure.CacheJetCacheAutoConfiguration;
+import com.gstdev.cloud.commons.ass.definition.function.ErrorCodeMapperBuilderCustomizer;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.authorization.server.customizer.OAuth2FormLoginConfigurerCustomizer;
+import com.gstdev.cloud.oauth2.authorization.server.stamp.LockedUserDetailsStampManager;
+import com.gstdev.cloud.oauth2.authorization.server.stamp.SignInFailureLimitedStampManager;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +13,10 @@ import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.security.oauth2.server.authorization.token.JwtEncodingContext;
+import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenClaimsContext;
+import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenCustomizer;
 
 /**
  * @program: frame-cloud-base
@@ -16,7 +24,7 @@ import org.springframework.context.annotation.Bean;
  * @author: wenchao.chen
  * @create: 2024/03/25 14:34
  **/
-@AutoConfiguration
+@AutoConfiguration(after = CacheJetCacheAutoConfiguration.class)
 //@Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties({OAuth2AuthenticationProperties.class})
 public class OAuth2AuthenticationConfiguration {
@@ -28,20 +36,21 @@ public class OAuth2AuthenticationConfiguration {
     log.debug("[GstDev Cloud] |- SDK [OAuth2 Authentication] Auto Configure.");
   }
 
-//  @Bean
-//  public LockedUserDetailsStampManager lockedUserDetailsStampManager(OAuth2AuthenticationProperties authenticationProperties) {
-//    LockedUserDetailsStampManager manager = new LockedUserDetailsStampManager(authenticationProperties);
-//    log.trace("[GstDev Cloud] |- Bean [Locked UserDetails Stamp Manager] Auto Configure.");
-//    return manager;
-//  }
-//
-//  @Bean
-//  public SignInFailureLimitedStampManager signInFailureLimitedStampManager(OAuth2AuthenticationProperties authenticationProperties) {
-//    SignInFailureLimitedStampManager manager = new SignInFailureLimitedStampManager(authenticationProperties);
-//    log.trace("[GstDev Cloud] |- Bean [SignIn Failure Limited Stamp Manager] Auto Configure.");
-//    return manager;
-//  }
-//
+  @Bean
+  @DependsOn("jetCacheCreateCacheFactory")
+  public LockedUserDetailsStampManager lockedUserDetailsStampManager(OAuth2AuthenticationProperties authenticationProperties) {
+    LockedUserDetailsStampManager manager = new LockedUserDetailsStampManager(authenticationProperties);
+    log.trace("[GstDev Cloud] |- Bean [Locked UserDetails Stamp Manager] Auto Configure.");
+    return manager;
+  }
+
+  @Bean
+  public SignInFailureLimitedStampManager signInFailureLimitedStampManager(OAuth2AuthenticationProperties authenticationProperties) {
+    SignInFailureLimitedStampManager manager = new SignInFailureLimitedStampManager(authenticationProperties);
+    log.trace("[GstDev Cloud] |- Bean [SignIn Failure Limited Stamp Manager] Auto Configure.");
+    return manager;
+  }
+
   @Bean
   @ConditionalOnMissingBean
   public OAuth2FormLoginConfigurerCustomizer oauth2FormLoginConfigurerCustomer(OAuth2AuthenticationProperties authenticationProperties) {
@@ -49,7 +58,7 @@ public class OAuth2AuthenticationConfiguration {
     log.trace("[GstDev Cloud] |- Bean [OAuth2 FormLogin Configurer Customer] Auto Configure.");
     return configurer;
   }
-//
+
 //  @Bean
 //  public OAuth2TokenCustomizer<JwtEncodingContext> jwtTokenCustomizer() {
 //    HerodotusJwtTokenCustomizer customizer = new HerodotusJwtTokenCustomizer();

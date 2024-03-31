@@ -21,6 +21,10 @@
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-oauth2-core</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.gstdev.cloud</groupId>
+      <artifactId>rest-sdk-protect</artifactId>
+    </dependency>
 
     <!-- Spring Security related dependencies -->
     <dependency>

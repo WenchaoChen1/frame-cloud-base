@@ -1,9 +1,9 @@
 package com.gstdev.cloud.oauth2.management.controller;
 
-import com.gstdev.cloud.assistant.core.context.ServiceContextHolder;
-import com.gstdev.cloud.assistant.definition.constants.DefaultConstants;
-import com.gstdev.cloud.assistant.definition.constants.SymbolConstants;
-import com.gstdev.cloud.assistant.definition.domain.view.vue.Option;
+import com.gstdev.cloud.commons.ass.core.context.ServiceContextHolder;
+import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
+import com.gstdev.cloud.commons.ass.definition.domain.view.vue.Option;
 import com.gstdev.cloud.oauth2.management.entity.OAuth2Application;
 import com.gstdev.cloud.oauth2.management.entity.OAuth2Scope;
 import com.gstdev.cloud.oauth2.management.service.OAuth2ApplicationService;

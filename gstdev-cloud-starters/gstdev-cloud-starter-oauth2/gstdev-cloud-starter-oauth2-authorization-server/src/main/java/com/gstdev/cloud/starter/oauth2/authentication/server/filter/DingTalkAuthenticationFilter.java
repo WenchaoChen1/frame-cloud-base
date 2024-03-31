@@ -1,19 +1,19 @@
-// ====================================================
+//// ====================================================
+////
+//// This file is part of the GstDev Cloud Platform.
+////
+//// Create by GstDev Cloud <support@gstdev.com>
+//// Copyright (c) 2022-2025 gstdev.com
+////
+//// ====================================================
 //
-// This file is part of the GstDev Cloud Platform.
+//package com.gstdev.cloud.starter.oauth2.authentication.server.filter;
 //
-// Create by GstDev Cloud <support@gstdev.com>
-// Copyright (c) 2022-2025 gstdev.com
+//public class DingTalkAuthenticationFilter extends QRAuthenticationFilter {
 //
-// ====================================================
-
-package com.gstdev.cloud.starter.oauth2.authentication.server.filter;
-
-public class DingTalkAuthenticationFilter extends QRAuthenticationFilter {
-
-  public static String DEFAULT_LOGIN_PROCESS_URL = "/login/";
-
-  public DingTalkAuthenticationFilter() {
-    super(DEFAULT_LOGIN_PROCESS_URL);
-  }
-}
+//  public static String DEFAULT_LOGIN_PROCESS_URL = "/login/";
+//
+//  public DingTalkAuthenticationFilter() {
+//    super(DEFAULT_LOGIN_PROCESS_URL);
+//  }
+//}

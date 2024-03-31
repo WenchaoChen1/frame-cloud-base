@@ -8,9 +8,9 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.customizer;
 //
-//import com.gstdev.cloud.assistant.definition.constants.ErrorCodeMapperBuilderOrdered;
-//import com.gstdev.cloud.assistant.definition.function.ErrorCodeMapperBuilderCustomizer;
-//import com.gstdev.cloud.assistant.definition.support.ErrorCodeMapperBuilder;
+//import com.gstdev.cloud.commons.ass.definition.constants.ErrorCodeMapperBuilderOrdered;
+//import com.gstdev.cloud.commons.ass.definition.function.ErrorCodeMapperBuilderCustomizer;
+//import com.gstdev.cloud.commons.ass.definition.support.ErrorCodeMapperBuilder;
 //import com.gstdev.cloud.oauth2.core.constants.OAuth2ErrorCodes;
 //import org.springframework.core.Ordered;
 //

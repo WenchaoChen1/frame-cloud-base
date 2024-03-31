@@ -9,7 +9,7 @@
 //package com.gstdev.cloud.oauth2.core.definition.handler;
 //
 //import com.gstdev.cloud.access.core.exception.AccessIdentityVerificationFailedException;
-//import com.gstdev.cloud.assistant.definition.domain.oauth2.AccessPrincipal;
+//import com.gstdev.cloud.commons.ass.definition.domain.oauth2.AccessPrincipal;
 //import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusUser;
 //import com.gstdev.cloud.oauth2.core.definition.domain.SocialUserDetails;
 //import com.gstdev.cloud.oauth2.core.exception.SocialCredentialsUserBindingFailedException;

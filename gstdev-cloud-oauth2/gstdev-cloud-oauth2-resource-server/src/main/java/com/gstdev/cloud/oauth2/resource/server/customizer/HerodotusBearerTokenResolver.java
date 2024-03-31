@@ -8,8 +8,8 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authorization.customizer;
 //
-//import com.gstdev.cloud.assistant.core.support.BearerTokenResolver;
-//import com.gstdev.cloud.assistant.definition.domain.oauth2.PrincipalDetails;
+//import com.gstdev.cloud.commons.ass.core.support.BearerTokenResolver;
+//import com.gstdev.cloud.commons.ass.definition.domain.oauth2.PrincipalDetails;
 //import com.gstdev.cloud.oauth2.core.utils.PrincipalUtils;
 //import org.apache.commons.lang3.ObjectUtils;
 //import org.apache.commons.lang3.StringUtils;

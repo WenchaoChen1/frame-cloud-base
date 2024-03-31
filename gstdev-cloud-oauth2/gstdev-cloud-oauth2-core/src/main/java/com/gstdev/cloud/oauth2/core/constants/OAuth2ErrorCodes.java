@@ -1,6 +1,6 @@
 //package com.gstdev.cloud.oauth2.core.constants;
 //
-//import com.gstdev.cloud.assistant.definition.feedback.NotAcceptableFeedback;
+//import com.gstdev.cloud.commons.ass.definition.feedback.NotAcceptableFeedback;
 //
 ///**
 // * <p>Description: OAuth2 错误代码 </p>

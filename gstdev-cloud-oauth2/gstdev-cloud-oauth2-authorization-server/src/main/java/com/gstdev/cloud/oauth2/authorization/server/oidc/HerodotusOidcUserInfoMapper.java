@@ -8,7 +8,7 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.oidc;
 //
-//import com.gstdev.cloud.assistant.definition.constants.BaseConstants;
+//import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
 //import org.springframework.security.oauth2.core.oidc.OidcUserInfo;
 //import org.springframework.security.oauth2.core.oidc.StandardClaimNames;
 //import org.springframework.security.oauth2.server.authorization.oidc.authentication.OidcUserInfoAuthenticationContext;

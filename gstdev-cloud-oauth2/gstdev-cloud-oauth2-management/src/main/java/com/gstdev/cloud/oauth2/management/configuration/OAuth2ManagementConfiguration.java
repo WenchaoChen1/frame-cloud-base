@@ -1,19 +1,19 @@
 package com.gstdev.cloud.oauth2.management.configuration;
 
 import com.gstdev.cloud.oauth2.authorization.server.configuration.OAuth2AuthenticationConfiguration;
+import com.gstdev.cloud.oauth2.authorization.server.stamp.SignInFailureLimitedStampManager;
 import com.gstdev.cloud.oauth2.data.jpa.configuration.OAuth2DataJpaConfiguration;
+import com.gstdev.cloud.oauth2.management.compliance.listener.AuthenticationSuccessListener;
 import com.gstdev.cloud.oauth2.management.response.OAuth2DeviceVerificationResponseHandler;
 import com.gstdev.cloud.oauth2.management.response.OidcClientRegistrationResponseHandler;
+import com.gstdev.cloud.oauth2.management.service.OAuth2ComplianceService;
 import com.gstdev.cloud.oauth2.management.service.OAuth2DeviceService;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.*;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
@@ -45,13 +45,13 @@ public class OAuth2ManagementConfiguration {
         log.debug("[GstDev Cloud] |- Module [OAuth2 Management] Auto Configure.");
     }
 
-//    @Bean
-//    @ConditionalOnMissingBean
-//    public AuthenticationSuccessListener authenticationSuccessListener(SignInFailureLimitedStampManager stampManager, OAuth2ComplianceService complianceService, OAuth2DeviceService deviceService) {
-//        AuthenticationSuccessListener listener = new AuthenticationSuccessListener(stampManager, complianceService);
-//        log.trace("[GstDev Cloud] |- Bean [OAuth2 Authentication Success Listener] Auto Configure.");
-//        return listener;
-//    }
+    @Bean
+    @ConditionalOnMissingBean
+    public AuthenticationSuccessListener authenticationSuccessListener(SignInFailureLimitedStampManager stampManager, OAuth2ComplianceService complianceService, OAuth2DeviceService deviceService) {
+        AuthenticationSuccessListener listener = new AuthenticationSuccessListener(stampManager, complianceService);
+        log.trace("[GstDev Cloud] |- Bean [OAuth2 Authentication Success Listener] Auto Configure.");
+        return listener;
+    }
 
     @Bean
     @ConditionalOnMissingBean

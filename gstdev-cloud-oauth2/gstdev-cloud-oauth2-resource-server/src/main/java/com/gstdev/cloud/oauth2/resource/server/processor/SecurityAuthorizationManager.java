@@ -8,7 +8,7 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authorization.processor;
 //
-//import com.gstdev.cloud.assistant.core.utils.http.HeaderUtils;
+//import com.gstdev.cloud.commons.ass.core.utils.http.HeaderUtils;
 //import com.gstdev.cloud.oauth2.authorization.definition.HerodotusConfigAttribute;
 //import com.gstdev.cloud.oauth2.authorization.definition.HerodotusRequest;
 //import com.gstdev.cloud.oauth2.authorization.definition.HerodotusRequestMatcher;

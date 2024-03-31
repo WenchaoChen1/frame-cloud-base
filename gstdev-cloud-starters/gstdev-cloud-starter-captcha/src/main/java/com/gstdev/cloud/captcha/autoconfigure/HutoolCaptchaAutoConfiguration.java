@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.DependsOn;
 
 /**
  * <p>Description: Hutool 验证码配置 </p>
@@ -32,6 +33,7 @@ public class HutoolCaptchaAutoConfiguration {
 
     @Bean(CaptchaCategory.HUTOOL_LINE_CAPTCHA)
     @ConditionalOnBean(ResourceProvider.class)
+    @DependsOn("jetCacheCreateCacheFactory")
     public LineCaptchaRenderer lineCaptchaRenderer(ResourceProvider resourceProvider) {
         LineCaptchaRenderer lineCaptchaRenderer = new LineCaptchaRenderer();
         lineCaptchaRenderer.setResourceProvider(resourceProvider);
@@ -41,6 +43,7 @@ public class HutoolCaptchaAutoConfiguration {
 
     @Bean(CaptchaCategory.HUTOOL_CIRCLE_CAPTCHA)
     @ConditionalOnBean(ResourceProvider.class)
+    @DependsOn("jetCacheCreateCacheFactory")
     public CircleCaptchaRenderer circleCaptchaRenderer(ResourceProvider resourceProvider) {
         CircleCaptchaRenderer circleCaptchaRenderer = new CircleCaptchaRenderer();
         circleCaptchaRenderer.setResourceProvider(resourceProvider);
@@ -50,6 +53,7 @@ public class HutoolCaptchaAutoConfiguration {
 
     @Bean(CaptchaCategory.HUTOOL_SHEAR_CAPTCHA)
     @ConditionalOnBean(ResourceProvider.class)
+    @DependsOn("jetCacheCreateCacheFactory")
     public ShearCaptchaRenderer shearCaptchaRenderer(ResourceProvider resourceProvider) {
         ShearCaptchaRenderer shearCaptchaRenderer = new ShearCaptchaRenderer();
         shearCaptchaRenderer.setResourceProvider(resourceProvider);
@@ -59,6 +63,7 @@ public class HutoolCaptchaAutoConfiguration {
 
     @Bean(CaptchaCategory.HUTOOL_GIF_CAPTCHA)
     @ConditionalOnBean(ResourceProvider.class)
+    @DependsOn("jetCacheCreateCacheFactory")
     public GifCaptchaRenderer gifCaptchaRenderer(ResourceProvider resourceProvider) {
         GifCaptchaRenderer gifCaptchaRenderer = new GifCaptchaRenderer();
         gifCaptchaRenderer.setResourceProvider(resourceProvider);

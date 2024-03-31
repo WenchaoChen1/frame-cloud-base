@@ -8,8 +8,8 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.authentication.provider;
 //
-//import com.gstdev.cloud.assistant.definition.constants.BaseConstants;
-//import com.gstdev.cloud.assistant.definition.domain.oauth2.AccessPrincipal;
+//import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
+//import com.gstdev.cloud.commons.ass.definition.domain.oauth2.AccessPrincipal;
 //com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 //com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2AuthenticationProviderUtils;
 //import com.gstdev.cloud.oauth2.core.definition.HerodotusGrantType;

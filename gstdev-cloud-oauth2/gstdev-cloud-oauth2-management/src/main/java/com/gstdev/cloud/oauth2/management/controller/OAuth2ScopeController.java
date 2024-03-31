@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.management.controller;
 
-import com.gstdev.cloud.assistant.definition.domain.Result;
+import com.gstdev.cloud.commons.ass.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.WriteableService;
 import com.gstdev.cloud.oauth2.management.dto.OAuth2PermissionDto;
 import com.gstdev.cloud.oauth2.management.dto.OAuth2ScopeDto;

@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.management.compliance.listener;
 
 import com.gstdev.cloud.cache.core.exception.MaximumLimitExceededException;
-com.gstdev.cloud.oauth2.authorization.server.stamp.SignInFailureLimitedStampManager;
+import com.gstdev.cloud.oauth2.authorization.server.stamp.SignInFailureLimitedStampManager;
 import com.gstdev.cloud.oauth2.management.compliance.OAuth2AccountStatusManager;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;

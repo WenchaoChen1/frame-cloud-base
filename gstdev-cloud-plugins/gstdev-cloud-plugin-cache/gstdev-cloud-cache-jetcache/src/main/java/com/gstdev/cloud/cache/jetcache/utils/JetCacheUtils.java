@@ -58,7 +58,8 @@ public class JetCacheUtils {
     }
 
     public static <K, V> Cache<K, V> create(String name, CacheType cacheType, Duration expire, Boolean cacheNullValue, Boolean syncLocal) {
-        return getInstance().getJetCacheCreateCacheFactory().create(name, cacheType, expire, cacheNullValue, syncLocal);
+      JetCacheCreateCacheFactory jetCacheCreateCacheFactory1 = getInstance().getJetCacheCreateCacheFactory();
+      return jetCacheCreateCacheFactory1.create(name, cacheType, expire, cacheNullValue, syncLocal);
     }
 
     private void init(JetCacheCreateCacheFactory jetCacheCreateCacheFactory) {

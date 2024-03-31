@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.management.dto;
 
-import com.gstdev.cloud.assistant.definition.domain.base.AbstractDto;
 import com.google.common.base.MoreObjects;
+import com.gstdev.cloud.commons.ass.definition.domain.base.AbstractDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 

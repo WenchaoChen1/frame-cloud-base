@@ -84,13 +84,6 @@
     <commons-text.version>1.10.0</commons-text.version>
 
 
-
-
-
-
-
-
-
     <caffeine.version>3.1.0</caffeine.version>
     <commons-lang3.version>3.12.0</commons-lang3.version>
     <hikaricp.version>5.0.1</hikaricp.version>
@@ -114,7 +107,7 @@
     <aliyun-sdk-oss.version>3.9.1</aliyun-sdk-oss.version>
     <huawei-sdk-obs.version>[3.21.11,)</huawei-sdk-obs.version>
     <poi.version>4.1.2</poi.version>
-<!--    <guava.version>29.0-jre</guava.version>-->
+    <!--    <guava.version>29.0-jre</guava.version>-->
     <pinyin4j.version>2.5.1</pinyin4j.version>
   </properties>
 
@@ -151,11 +144,11 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-<!--      <dependency>-->
-<!--        <groupId>org.springframework.security</groupId>-->
-<!--        <artifactId>spring-security-oauth2-authorization-server</artifactId>-->
-<!--        <version>${spring-security-oauth2-authorization-server.version}</version>-->
-<!--      </dependency>-->
+      <!--      <dependency>-->
+      <!--        <groupId>org.springframework.security</groupId>-->
+      <!--        <artifactId>spring-security-oauth2-authorization-server</artifactId>-->
+      <!--        <version>${spring-security-oauth2-authorization-server.version}</version>-->
+      <!--      </dependency>-->
 
 
       <!--      <dependency>-->
@@ -244,11 +237,11 @@
         <artifactId>gstdev-cloud-oauth2-data-jpa</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
-      <!--      <dependency>-->
-      <!--        <groupId>com.gstdev.cloud</groupId>-->
-      <!--        <artifactId>gstdev-cloud-oauth2-management</artifactId>-->
-      <!--        <version>${gstdev-cloud.version}</version>-->
-      <!--      </dependency>-->
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-oauth2-management</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
       <!--=========================================== message ===========================================-->
 
       <dependency>
@@ -655,19 +648,6 @@
         <artifactId>commons-text</artifactId>
         <version>${commons-text.version}</version>
       </dependency>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
       <!-- Apache related dependencies -->
