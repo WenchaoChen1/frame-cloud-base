@@ -1,7 +1,7 @@
 package cn.herodotus.engine.rest.core.exception;
 
-import cn.herodotus.engine.assistant.definition.domain.Feedback;
 import cn.herodotus.engine.rest.core.constants.RestErrorCodes;
+import com.gstdev.cloud.commons.ass.definition.domain.Feedback;
 
 /**
  * <p>Description: 重复提交Exception </p>

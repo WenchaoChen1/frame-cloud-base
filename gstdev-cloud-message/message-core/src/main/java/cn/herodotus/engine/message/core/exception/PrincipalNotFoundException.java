@@ -1,7 +1,7 @@
 package cn.herodotus.engine.message.core.exception;
 
-import cn.herodotus.engine.assistant.definition.domain.Feedback;
-import cn.herodotus.engine.assistant.definition.exception.PlatformRuntimeException;
+import com.gstdev.cloud.commons.ass.definition.domain.Feedback;
+import com.gstdev.cloud.commons.ass.definition.exception.PlatformRuntimeException;
 import cn.herodotus.engine.message.core.constants.MessageErrorCodes;
 
 /**

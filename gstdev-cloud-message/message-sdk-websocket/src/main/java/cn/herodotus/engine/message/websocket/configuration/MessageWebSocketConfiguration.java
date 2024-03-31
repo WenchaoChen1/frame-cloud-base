@@ -1,12 +1,12 @@
 package cn.herodotus.engine.message.websocket.configuration;
 
-import cn.herodotus.engine.assistant.core.support.BearerTokenResolver;
 import cn.herodotus.engine.message.core.definition.domain.WebSocketMessage;
 import cn.herodotus.engine.message.websocket.annotation.ConditionalOnMultipleWebSocketInstance;
 import cn.herodotus.engine.message.websocket.annotation.ConditionalOnSingleWebSocketInstance;
 import cn.herodotus.engine.message.websocket.definition.WebSocketMessageSender;
 import cn.herodotus.engine.message.websocket.interceptor.WebSocketAuthenticationHandshakeInterceptor;
 import cn.herodotus.engine.message.websocket.messaging.*;
+import com.gstdev.cloud.commons.ass.core.support.BearerTokenResolver;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

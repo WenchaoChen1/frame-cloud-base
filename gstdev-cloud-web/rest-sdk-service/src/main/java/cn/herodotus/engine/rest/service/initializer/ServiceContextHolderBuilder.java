@@ -1,7 +1,7 @@
 package cn.herodotus.engine.rest.service.initializer;
 
-import cn.herodotus.engine.assistant.core.context.ServiceContextHolder;
-import cn.herodotus.engine.assistant.core.utils.WellFormedUtils;
+import com.gstdev.cloud.commons.ass.core.context.ServiceContextHolder;
+import com.gstdev.cloud.commons.ass.core.utils.WellFormedUtils;
 import cn.herodotus.engine.rest.condition.properties.EndpointProperties;
 import cn.herodotus.engine.rest.condition.properties.PlatformProperties;
 import org.apache.commons.lang3.ObjectUtils;

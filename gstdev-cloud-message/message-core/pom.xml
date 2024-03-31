@@ -7,8 +7,9 @@
     <artifactId>gstdev-cloud-message</artifactId>
     <groupId>com.gstdev.cloud</groupId>
     <version>2024.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
-
+  <packaging>jar</packaging>
   <artifactId>message-core</artifactId>
 
 

@@ -1,8 +1,8 @@
 package cn.herodotus.engine.rest.core.controller;
 
-import cn.herodotus.engine.assistant.definition.constants.DefaultConstants;
-import cn.herodotus.engine.assistant.definition.domain.base.Entity;
-import cn.herodotus.engine.assistant.definition.domain.Result;
+import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
+import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.commons.ass.definition.domain.base.Entity;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ArrayUtils;

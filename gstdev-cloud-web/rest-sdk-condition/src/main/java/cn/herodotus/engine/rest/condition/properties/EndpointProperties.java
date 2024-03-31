@@ -1,7 +1,7 @@
 package cn.herodotus.engine.rest.condition.properties;
 
-import cn.herodotus.engine.assistant.definition.constants.DefaultConstants;
-import cn.herodotus.engine.assistant.core.utils.WellFormedUtils;
+import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
+import com.gstdev.cloud.commons.ass.core.utils.WellFormedUtils;
 import cn.herodotus.engine.rest.condition.constants.RestConstants;
 import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;

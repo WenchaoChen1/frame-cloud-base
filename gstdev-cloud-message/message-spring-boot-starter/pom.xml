@@ -1,28 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0"
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <artifactId>gstdev-cloudmessage</artifactId>
-          <groupId>com.gstdev.cloud</groupId>
-            <version>2024.0.1-SNAPSHOT</version>
-    </parent>
+  <parent>
+    <artifactId>gstdev-cloud-message</artifactId>
+    <groupId>com.gstdev.cloud</groupId>
+    <version>2024.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <packaging>jar</packaging>
 
-    <artifactId>message-spring-boot-starter</artifactId>
+  <artifactId>message-spring-boot-starter</artifactId>
 
 
-    <description>基于 Spring Authorization Server 的 Dante Cloud 基础核心组件模块</description>
+  <description>基于 Spring Authorization Server 的 Dante Cloud 基础核心组件模块</description>
 
-    <dependencies>
-        <dependency>
-              <groupId>com.gstdev.cloud</groupId>
-            <artifactId>message-sdk-websocket</artifactId>
-        </dependency>
-        <dependency>
-              <groupId>com.gstdev.cloud</groupId>
-            <artifactId>message-sdk-mqtt</artifactId>
-        </dependency>
-    </dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>com.gstdev.cloud</groupId>
+      <artifactId>message-sdk-websocket</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.gstdev.cloud</groupId>
+      <artifactId>message-sdk-mqtt</artifactId>
+    </dependency>
+  </dependencies>
 
 </project>

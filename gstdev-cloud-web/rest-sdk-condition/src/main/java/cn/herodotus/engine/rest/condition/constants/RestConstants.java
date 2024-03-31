@@ -1,6 +1,6 @@
 package cn.herodotus.engine.rest.condition.constants;
 
-import cn.herodotus.engine.assistant.definition.constants.BaseConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
 
 /**
  * <p>Description: Rest 模块常量 </p>

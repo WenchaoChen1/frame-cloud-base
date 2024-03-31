@@ -1,6 +1,6 @@
 package cn.herodotus.engine.message.mqtt.condition;
 
-import cn.herodotus.engine.assistant.core.context.PropertyResolver;
+import com.gstdev.cloud.commons.ass.core.context.PropertyResolver;
 import cn.herodotus.engine.message.core.constants.MessageConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

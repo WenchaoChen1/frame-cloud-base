@@ -1,8 +1,8 @@
 package cn.herodotus.engine.rest.condition.properties;
 
-import cn.herodotus.engine.assistant.core.enums.Architecture;
-import cn.herodotus.engine.assistant.core.enums.Protocol;
-import cn.herodotus.engine.assistant.core.enums.Target;
+import com.gstdev.cloud.commons.ass.core.enums.Architecture;
+import com.gstdev.cloud.commons.ass.core.enums.Protocol;
+import com.gstdev.cloud.commons.ass.core.enums.Target;
 import cn.herodotus.engine.rest.condition.constants.RestConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

@@ -14,55 +14,55 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <dependencies>
-    <!-- GstDevCloud related dependencies -->
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-web</artifactId>
-    </dependency>
-    <!-- SpringCloud related dependencies -->
+<!--  <dependencies>-->
+<!--    &lt;!&ndash; GstDevCloud related dependencies &ndash;&gt;-->
 <!--    <dependency>-->
-<!--      <groupId>org.springframework.cloud</groupId>-->
-<!--      <artifactId>spring-cloud-starter-bootstrap</artifactId>-->
+<!--      <groupId>com.gstdev.cloud</groupId>-->
+<!--      <artifactId>gstdev-cloud-web</artifactId>-->
 <!--    </dependency>-->
+<!--    &lt;!&ndash; SpringCloud related dependencies &ndash;&gt;-->
+<!--&lt;!&ndash;    <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;      <groupId>org.springframework.cloud</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;      <artifactId>spring-cloud-starter-bootstrap</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;    </dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;    <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;      <groupId>org.springframework.cloud</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;      <artifactId>spring-cloud-starter-loadbalancer</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;    </dependency>&ndash;&gt;-->
+<!--    &lt;!&ndash; SpringCloud Alibaba related dependencies &ndash;&gt;-->
+<!--&lt;!&ndash;    <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;      <groupId>com.alibaba.cloud</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;      <exclusions>&ndash;&gt;-->
+<!--&lt;!&ndash;        <exclusion>&ndash;&gt;-->
+<!--&lt;!&ndash;          <groupId>com.alibaba.nacos</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;          <artifactId>nacos-client</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;        </exclusion>&ndash;&gt;-->
+<!--&lt;!&ndash;      </exclusions>&ndash;&gt;-->
+<!--&lt;!&ndash;    </dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;    <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;      <groupId>com.alibaba.cloud</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;      <exclusions>&ndash;&gt;-->
+<!--&lt;!&ndash;        <exclusion>&ndash;&gt;-->
+<!--&lt;!&ndash;          <groupId>com.alibaba.nacos</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;          <artifactId>nacos-client</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;        </exclusion>&ndash;&gt;-->
+<!--&lt;!&ndash;      </exclusions>&ndash;&gt;-->
+<!--&lt;!&ndash;    </dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;    <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;      <groupId>com.alibaba.nacos</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;      <artifactId>nacos-client</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;    </dependency>&ndash;&gt;-->
+<!--    &lt;!&ndash; SpringBoot related dependencies &ndash;&gt;-->
 <!--    <dependency>-->
-<!--      <groupId>org.springframework.cloud</groupId>-->
-<!--      <artifactId>spring-cloud-starter-loadbalancer</artifactId>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-actuator</artifactId>-->
 <!--    </dependency>-->
-    <!-- SpringCloud Alibaba related dependencies -->
+<!--    &lt;!&ndash; Caffeine related dependencies &ndash;&gt;-->
 <!--    <dependency>-->
-<!--      <groupId>com.alibaba.cloud</groupId>-->
-<!--      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
-<!--      <exclusions>-->
-<!--        <exclusion>-->
-<!--          <groupId>com.alibaba.nacos</groupId>-->
-<!--          <artifactId>nacos-client</artifactId>-->
-<!--        </exclusion>-->
-<!--      </exclusions>-->
+<!--      <groupId>com.github.ben-manes.caffeine</groupId>-->
+<!--      <artifactId>caffeine</artifactId>-->
 <!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>com.alibaba.cloud</groupId>-->
-<!--      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
-<!--      <exclusions>-->
-<!--        <exclusion>-->
-<!--          <groupId>com.alibaba.nacos</groupId>-->
-<!--          <artifactId>nacos-client</artifactId>-->
-<!--        </exclusion>-->
-<!--      </exclusions>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>com.alibaba.nacos</groupId>-->
-<!--      <artifactId>nacos-client</artifactId>-->
-<!--    </dependency>-->
-    <!-- SpringBoot related dependencies -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
-    <!-- Caffeine related dependencies -->
-    <dependency>
-      <groupId>com.github.ben-manes.caffeine</groupId>
-      <artifactId>caffeine</artifactId>
-    </dependency>
-  </dependencies>
+<!--  </dependencies>-->
 </project>

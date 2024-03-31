@@ -1,7 +1,7 @@
 package cn.herodotus.engine.message.websocket.properties;
 
-import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
-import cn.herodotus.engine.assistant.core.utils.http.HeaderUtils;
+import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
+import com.gstdev.cloud.commons.ass.core.utils.http.HeaderUtils;
 import cn.herodotus.engine.message.core.constants.MessageConstants;
 import cn.herodotus.engine.message.websocket.enums.InstanceMode;
 import org.apache.commons.collections4.CollectionUtils;

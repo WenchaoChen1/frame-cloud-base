@@ -1,6 +1,6 @@
 package cn.herodotus.engine.message.websocket.domain;
 
-import cn.herodotus.engine.assistant.definition.domain.oauth2.PrincipalDetails;
+import com.gstdev.cloud.commons.ass.definition.domain.oauth2.PrincipalDetails;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 

@@ -1,6 +1,6 @@
 package cn.herodotus.engine.message.websocket.condition;
 
-import cn.herodotus.engine.assistant.core.context.PropertyResolver;
+import com.gstdev.cloud.commons.ass.core.context.PropertyResolver;
 import cn.herodotus.engine.message.core.constants.MessageConstants;
 import cn.herodotus.engine.message.websocket.enums.InstanceMode;
 import org.apache.commons.lang3.StringUtils;

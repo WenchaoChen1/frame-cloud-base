@@ -1,6 +1,6 @@
 package cn.herodotus.engine.message.websocket.messaging;
 
-import cn.herodotus.engine.assistant.core.context.ServiceContextHolder;
+import com.gstdev.cloud.commons.ass.core.context.ServiceContextHolder;
 import cn.herodotus.engine.message.core.constants.MessageConstants;
 import cn.herodotus.engine.message.core.definition.domain.StreamMessage;
 import cn.herodotus.engine.message.core.definition.domain.WebSocketMessage;

@@ -1,7 +1,7 @@
 
 //package com.gstdev.cloud.commons.ass.core.json.gson;
 //
-//import cn.herodotus.engine.assistant.definition.constants.DefaultConstants;
+//import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
 //import com.google.gson.reflect.TypeToken;
 //import org.apache.commons.lang3.ObjectUtils;
 //

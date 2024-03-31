@@ -1,8 +1,8 @@
 
 //package com.gstdev.cloud.commons.ass.core.exception.api;
 //
-//import cn.herodotus.engine.assistant.definition.domain.Feedback;
-//import cn.herodotus.engine.assistant.definition.exception.PlatformRuntimeException;
+//import com.gstdev.cloud.commons.ass.definition.domain.Feedback;
+//import com.gstdev.cloud.commons.ass.definition.exception.PlatformRuntimeException;
 //
 ///**
 // * <p>Description: Open API 请求失败错误 </p>

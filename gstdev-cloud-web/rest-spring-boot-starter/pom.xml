@@ -7,7 +7,10 @@
     <groupId>com.gstdev.cloud</groupId>
     <artifactId>gstdev-cloud-web</artifactId>
     <version>2024.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
+  <packaging>jar</packaging>
+
 
     <artifactId>rest-spring-boot-starter</artifactId>
 
@@ -28,13 +31,13 @@
 
         <dependency>
               <groupId>com.gstdev.cloud</groupId>
-            <artifactId>cache-spring-boot-starter</artifactId>
+            <artifactId>gstdev-cloud-starter-captcha</artifactId>
         </dependency>
 
-        <dependency>
-              <groupId>com.gstdev.cloud</groupId>
-            <artifactId>data-spring-boot-starter</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--              <groupId>com.gstdev.cloud</groupId>-->
+<!--            <artifactId>data-spring-boot-starter</artifactId>-->
+<!--        </dependency>-->
 
         <dependency>
               <groupId>com.gstdev.cloud</groupId>

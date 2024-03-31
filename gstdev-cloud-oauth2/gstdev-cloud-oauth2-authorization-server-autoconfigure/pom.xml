@@ -31,10 +31,10 @@
       <artifactId>gstdev-cloud-oauth2-data-jpa</artifactId>
     </dependency>
 
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-web</artifactId>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.gstdev.cloud</groupId>-->
+<!--      <artifactId>gstdev-cloud-web</artifactId>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-starter-captcha</artifactId>

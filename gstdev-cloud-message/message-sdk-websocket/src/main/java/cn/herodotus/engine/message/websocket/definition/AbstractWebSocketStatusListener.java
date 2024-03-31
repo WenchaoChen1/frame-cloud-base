@@ -1,9 +1,9 @@
 package cn.herodotus.engine.message.websocket.definition;
 
-import cn.herodotus.engine.cache.redis.utils.RedisBitMapUtils;
 import cn.herodotus.engine.message.core.constants.MessageConstants;
 import cn.herodotus.engine.message.websocket.domain.WebSocketPrincipal;
 import cn.herodotus.engine.message.websocket.utils.WebSocketUtils;
+import com.gstdev.cloud.cache.redis.utils.RedisBitMapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

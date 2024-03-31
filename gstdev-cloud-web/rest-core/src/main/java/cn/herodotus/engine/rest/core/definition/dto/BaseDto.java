@@ -1,6 +1,6 @@
 package cn.herodotus.engine.rest.core.definition.dto;
 
-import cn.herodotus.engine.assistant.definition.domain.base.AbstractDto;
+import com.gstdev.cloud.commons.ass.definition.domain.base.AbstractDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**

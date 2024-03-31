@@ -4,9 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
           <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloudmessage</artifactId>
+        <artifactId>gstdev-cloud-message</artifactId>
             <version>2024.0.1-SNAPSHOT</version>
+      <relativePath>../pom.xml</relativePath>
     </parent>
+  <packaging>jar</packaging>
 
     <artifactId>message-rabbitmq-spring-boot-starter</artifactId>
 

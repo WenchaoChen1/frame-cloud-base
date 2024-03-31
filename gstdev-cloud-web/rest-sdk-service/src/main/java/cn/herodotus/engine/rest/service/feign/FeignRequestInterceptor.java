@@ -1,9 +1,9 @@
 package cn.herodotus.engine.rest.service.feign;
 
-import cn.herodotus.engine.assistant.core.context.TenantContextHolder;
-import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
-import cn.herodotus.engine.assistant.core.utils.http.HeaderUtils;
 import com.google.common.net.HttpHeaders;
+import com.gstdev.cloud.commons.ass.core.context.TenantContextHolder;
+import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
+import com.gstdev.cloud.commons.ass.core.utils.http.HeaderUtils;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import jakarta.servlet.http.HttpServletRequest;

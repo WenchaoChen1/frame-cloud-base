@@ -1,9 +1,9 @@
 package cn.herodotus.engine.rest.protect.tenant;
 
-import cn.herodotus.engine.assistant.definition.constants.DefaultConstants;
-import cn.herodotus.engine.assistant.core.context.TenantContextHolder;
-import cn.herodotus.engine.assistant.core.utils.http.HeaderUtils;
-import cn.herodotus.engine.assistant.core.utils.http.SessionUtils;
+import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
+import com.gstdev.cloud.commons.ass.core.context.TenantContextHolder;
+import com.gstdev.cloud.commons.ass.core.utils.http.HeaderUtils;
+import com.gstdev.cloud.commons.ass.core.utils.http.SessionUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;

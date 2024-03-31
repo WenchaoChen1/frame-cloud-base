@@ -6,7 +6,10 @@
     <groupId>com.gstdev.cloud</groupId>
     <artifactId>gstdev-cloud-web</artifactId>
     <version>2024.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
+  <packaging>jar</packaging>
+
     <artifactId>rest-sdk-protect</artifactId>
 
     <dependencies>
@@ -17,7 +20,7 @@
 
         <dependency>
           <groupId>com.gstdev.cloud</groupId>
-            <artifactId>cache-sdk-jetcache</artifactId>
+            <artifactId>gstdev-cloud-cache-jetcache</artifactId>
         </dependency>
     </dependencies>
 

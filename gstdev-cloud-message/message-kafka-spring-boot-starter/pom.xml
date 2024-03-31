@@ -6,8 +6,9 @@
     <groupId>com.gstdev.cloud</groupId>
     <artifactId>gstdev-cloud-message</artifactId>
     <version>2024.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
-
+  <packaging>jar</packaging>
   <artifactId>message-kafka-spring-boot-starter</artifactId>
 
 

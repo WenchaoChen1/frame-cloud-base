@@ -1,8 +1,8 @@
 package cn.herodotus.engine.rest.core.controller;
 
-import cn.herodotus.engine.assistant.definition.domain.base.Entity;
-import cn.herodotus.engine.assistant.definition.domain.Result;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.commons.ass.definition.domain.base.Entity;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 

@@ -1,8 +1,8 @@
 package cn.herodotus.engine.rest.condition.constants;
 
 
-import cn.herodotus.engine.assistant.core.context.PropertyResolver;
-import cn.herodotus.engine.assistant.definition.constants.BaseConstants;
+import com.gstdev.cloud.commons.ass.core.context.PropertyResolver;
+import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ConditionContext;
 

@@ -1,7 +1,7 @@
 package cn.herodotus.engine.message.core.definition.strategy;
 
-import cn.herodotus.engine.assistant.core.context.ServiceContextHolder;
-import cn.herodotus.engine.assistant.core.json.jackson2.utils.Jackson2Utils;
+import com.gstdev.cloud.commons.ass.core.context.ServiceContextHolder;
+import com.gstdev.cloud.commons.ass.core.json.jackson2.utils.Jackson2Utils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationEvent;
 

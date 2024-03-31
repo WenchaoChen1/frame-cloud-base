@@ -1,7 +1,7 @@
 package cn.herodotus.engine.rest.service.feign;
 
-import cn.herodotus.engine.assistant.definition.domain.Result;
-import cn.herodotus.engine.assistant.core.json.jackson2.utils.Jackson2Utils;
+import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.commons.ass.core.json.jackson2.utils.Jackson2Utils;
 import cn.herodotus.engine.rest.core.exception.FeignDecodeIOException;
 import com.fasterxml.jackson.databind.JavaType;
 import feign.Response;

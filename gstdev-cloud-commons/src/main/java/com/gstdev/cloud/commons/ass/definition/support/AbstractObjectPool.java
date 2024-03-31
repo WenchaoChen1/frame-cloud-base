@@ -1,8 +1,8 @@
 
 //package com.gstdev.cloud.commons.ass.definition.support;
 //
-//import cn.herodotus.engine.assistant.definition.domain.Pool;
-//import cn.herodotus.engine.assistant.definition.exception.BorrowObjectFromPoolErrorException;
+//import com.gstdev.cloud.commons.ass.definition.domain.Pool;
+//import com.gstdev.cloud.commons.ass.definition.exception.BorrowObjectFromPoolErrorException;
 //import jakarta.annotation.Nonnull;
 //import org.apache.commons.lang3.ObjectUtils;
 //import org.apache.commons.pool2.PooledObjectFactory;

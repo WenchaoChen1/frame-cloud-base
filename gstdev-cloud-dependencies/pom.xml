@@ -50,10 +50,12 @@
     <!-- 开源通用工具包 -->
     <commons-collections4.version>4.4</commons-collections4.version>
     <animated-gif-lib.version>1.4</animated-gif-lib.version>
-
+    <antisamy.version>1.7.5</antisamy.version>
+    <guava.version>33.1.0-jre</guava.version>
     <!-- 应用开发辅助工具组件 -->
     <redisson.version>3.27.2</redisson.version>
     <p6spy.version>3.9.1</p6spy.version>
+    <org.eclipse.paho.version>1.2.5</org.eclipse.paho.version>
 
     <!-- 阿里巴巴开源工具依赖 -->
     <jetcache.version>2.7.5</jetcache.version>
@@ -79,6 +81,16 @@
     <vue.version>3.4.15</vue.version>
     <!--厂商应用集成-->
     <!--以下为特殊处理, 统一版本处理漏洞等-->
+    <commons-text.version>1.10.0</commons-text.version>
+
+
+
+
+
+
+
+
+
     <caffeine.version>3.1.0</caffeine.version>
     <commons-lang3.version>3.12.0</commons-lang3.version>
     <hikaricp.version>5.0.1</hikaricp.version>
@@ -102,7 +114,7 @@
     <aliyun-sdk-oss.version>3.9.1</aliyun-sdk-oss.version>
     <huawei-sdk-obs.version>[3.21.11,)</huawei-sdk-obs.version>
     <poi.version>4.1.2</poi.version>
-    <guava.version>29.0-jre</guava.version>
+<!--    <guava.version>29.0-jre</guava.version>-->
     <pinyin4j.version>2.5.1</pinyin4j.version>
   </properties>
 
@@ -139,17 +151,13 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-oauth2-authorization-server</artifactId>
-        <version>${spring-security-oauth2-authorization-server.version}</version>
-      </dependency>
+<!--      <dependency>-->
+<!--        <groupId>org.springframework.security</groupId>-->
+<!--        <artifactId>spring-security-oauth2-authorization-server</artifactId>-->
+<!--        <version>${spring-security-oauth2-authorization-server.version}</version>-->
+<!--      </dependency>-->
 
-      <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-collections4</artifactId>
-        <version>${commons-collections4.version}</version>
-      </dependency>
+
       <!--      <dependency>-->
       <!--        <groupId>org.springframework.session</groupId>-->
       <!--        <artifactId>spring-session-core</artifactId>-->
@@ -490,6 +498,27 @@
       </dependency>
 
       <!--=============================== 开源通用工具包 =======================-->
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-collections4</artifactId>
+        <version>${commons-collections4.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.madgag</groupId>
+        <artifactId>animated-gif-lib</artifactId>
+        <version>${animated-gif-lib.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.owasp.antisamy</groupId>
+        <artifactId>antisamy</artifactId>
+        <version>${antisamy.version}</version>
+      </dependency>
+      <!-- Guava related dependencies -->
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${guava.version}</version>
+      </dependency>
 
       <!--=============================== 应用开发辅助工具组件 =======================-->
       <dependency>
@@ -502,6 +531,12 @@
         <artifactId>p6spy</artifactId>
         <version>${p6spy.version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.eclipse.paho</groupId>
+        <artifactId>org.eclipse.paho.mqttv5.client</artifactId>
+        <version>${org.eclipse.paho.version}</version>
+      </dependency>
+
       <!--=============================== 阿里巴巴开源工具依赖 =======================-->
 
       <dependency>
@@ -529,12 +564,6 @@
         <groupId>com.alibaba</groupId>
         <artifactId>transmittable-thread-local</artifactId>
         <version>${transmittable-thread-local.version}</version>
-      </dependency>
-      <!--=============================== 开源通用工具包 =======================-->
-      <dependency>
-        <groupId>com.madgag</groupId>
-        <artifactId>animated-gif-lib</artifactId>
-        <version>${animated-gif-lib.version}</version>
       </dependency>
 
 
@@ -620,6 +649,25 @@
       </dependency>
       <!--=============================== 厂商应用集成 =======================-->
       <!--=============================== 以下为特殊处理, 统一版本处理漏洞等 =======================-->
+
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-text</artifactId>
+        <version>${commons-text.version}</version>
+      </dependency>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
       <!-- Apache related dependencies -->
@@ -736,12 +784,6 @@
         <groupId>com.huaweicloud</groupId>
         <artifactId>esdk-obs-java-bundle</artifactId>
         <version>${huawei-sdk-obs.version}</version>
-      </dependency>
-      <!-- Guava related dependencies -->
-      <dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava</artifactId>
-        <version>${guava.version}</version>
       </dependency>
 
     </dependencies>

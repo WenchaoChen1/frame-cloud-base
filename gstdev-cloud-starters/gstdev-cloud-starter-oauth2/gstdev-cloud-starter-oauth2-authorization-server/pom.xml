@@ -22,10 +22,10 @@
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-oauth2-authorization-server-autoconfigure</artifactId>
     </dependency>
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-web</artifactId>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.gstdev.cloud</groupId>-->
+<!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
+<!--    </dependency>-->
     <!-- Lombok related dependencies -->
     <dependency>
       <groupId>org.projectlombok</groupId>

@@ -1,8 +1,7 @@
 package cn.herodotus.engine.rest.autoconfigure;
 
-import cn.herodotus.engine.assistant.core.context.ServiceContextHolder;
-import cn.herodotus.engine.assistant.definition.function.ErrorCodeMapperBuilderCustomizer;
-import cn.herodotus.engine.rest.autoconfigure.customizer.Jackson2XssObjectMapperBuilderCustomizer;
+import com.gstdev.cloud.commons.ass.core.context.ServiceContextHolder;
+import com.gstdev.cloud.commons.ass.definition.function.ErrorCodeMapperBuilderCustomizer;
 import cn.herodotus.engine.rest.autoconfigure.customizer.RestErrorCodeMapperBuilderCustomizer;
 import cn.herodotus.engine.rest.condition.constants.RestPropertyFinder;
 import cn.herodotus.engine.rest.condition.properties.EndpointProperties;
@@ -53,12 +52,12 @@ public class RestAutoConfiguration implements ApplicationContextAware {
         log.debug("[GstDev Cloud] |- HERODOTUS ApplicationContext initialization completed.");
     }
 
-    @Bean
-    public Jackson2ObjectMapperBuilderCustomizer xssObjectMapperBuilderCustomizer() {
-        Jackson2XssObjectMapperBuilderCustomizer customizer = new Jackson2XssObjectMapperBuilderCustomizer();
-        log.debug("[GstDev Cloud] |- Strategy [Jackson2 Xss ObjectMapper Builder Customizer] Auto Configure.");
-        return customizer;
-    }
+//    @Bean
+//    public Jackson2ObjectMapperBuilderCustomizer xssObjectMapperBuilderCustomizer() {
+//        Jackson2XssObjectMapperBuilderCustomizer customizer = new Jackson2XssObjectMapperBuilderCustomizer();
+//        log.debug("[GstDev Cloud] |- Strategy [Jackson2 Xss ObjectMapper Builder Customizer] Auto Configure.");
+//        return customizer;
+//    }
 
     @Bean
     public ErrorCodeMapperBuilderCustomizer restErrorCodeMapperBuilderCustomizer() {

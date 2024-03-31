@@ -1,10 +1,10 @@
 package cn.herodotus.engine.rest.protect.jackson2;
 
-import cn.herodotus.engine.assistant.core.utils.protect.XssUtils;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.gstdev.cloud.commons.ass.core.utils.protect.XssUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,8 +1,8 @@
 package cn.herodotus.engine.rest.service.configuration;
 
-import cn.herodotus.engine.assistant.core.annotation.ConditionalOnSwaggerEnabled;
-import cn.herodotus.engine.assistant.core.context.ServiceContextHolder;
-import cn.herodotus.engine.assistant.definition.constants.BaseConstants;
+import com.gstdev.cloud.commons.ass.core.annotation.ConditionalOnSwaggerEnabled;
+import com.gstdev.cloud.commons.ass.core.context.ServiceContextHolder;
+import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
 import cn.herodotus.engine.rest.core.definition.OpenApiServerResolver;
 import cn.herodotus.engine.rest.condition.properties.SwaggerProperties;
 import com.google.common.collect.ImmutableList;

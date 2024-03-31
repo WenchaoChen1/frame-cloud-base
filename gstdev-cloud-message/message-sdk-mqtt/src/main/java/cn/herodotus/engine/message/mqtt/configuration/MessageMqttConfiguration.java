@@ -1,7 +1,7 @@
 package cn.herodotus.engine.message.mqtt.configuration;
 
-import cn.herodotus.engine.assistant.core.utils.type.ListUtils;
-import cn.herodotus.engine.assistant.core.utils.type.NumberUtils;
+import com.gstdev.cloud.commons.ass.core.utils.type.ListUtils;
+import com.gstdev.cloud.commons.ass.core.utils.type.NumberUtils;
 import cn.herodotus.engine.message.core.constants.HerodotusChannels;
 import cn.herodotus.engine.message.mqtt.annotation.ConditionalOnMqttEnabled;
 import cn.herodotus.engine.message.mqtt.properties.MqttProperties;

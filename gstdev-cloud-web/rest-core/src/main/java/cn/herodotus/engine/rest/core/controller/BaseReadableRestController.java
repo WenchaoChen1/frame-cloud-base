@@ -1,10 +1,10 @@
 package cn.herodotus.engine.rest.core.controller;
 
-import cn.herodotus.engine.assistant.definition.constants.BaseConstants;
-import cn.herodotus.engine.assistant.definition.domain.base.AbstractEntity;
-import cn.herodotus.engine.assistant.definition.domain.Result;
 import cn.herodotus.engine.rest.core.annotation.AccessLimited;
 import cn.herodotus.engine.rest.core.definition.dto.Pager;
+import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
+import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.commons.ass.definition.domain.base.AbstractEntity;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;

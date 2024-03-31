@@ -1,7 +1,7 @@
 package cn.herodotus.engine.message.core.logic.domain;
 
-import cn.herodotus.engine.data.core.entity.BaseEntity;
 import com.google.common.base.MoreObjects;
+import com.gstdev.cloud.data.core.entity.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**

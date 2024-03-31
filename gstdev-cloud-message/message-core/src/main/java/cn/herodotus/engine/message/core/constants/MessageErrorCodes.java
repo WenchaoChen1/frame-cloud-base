@@ -1,6 +1,6 @@
 package cn.herodotus.engine.message.core.constants;
 
-import cn.herodotus.engine.assistant.definition.feedback.NotAcceptableFeedback;
+import com.gstdev.cloud.commons.ass.definition.feedback.NotAcceptableFeedback;
 
 /**
  * <p>Description: WebSocket 统一错误代码定义 </p>

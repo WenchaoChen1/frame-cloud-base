@@ -1,8 +1,8 @@
 package cn.herodotus.engine.rest.core.controller;
 
-import cn.herodotus.engine.assistant.definition.domain.Result;
-import cn.herodotus.engine.data.core.entity.BaseMongoEntity;
-import cn.herodotus.engine.data.core.service.MongoService;
+import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.data.core.entity.BaseMongoEntity;
+import com.gstdev.cloud.data.core.service.MongoService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 

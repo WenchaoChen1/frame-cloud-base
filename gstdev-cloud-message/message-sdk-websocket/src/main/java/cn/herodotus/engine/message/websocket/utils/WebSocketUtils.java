@@ -1,7 +1,7 @@
 package cn.herodotus.engine.message.websocket.utils;
 
-import cn.herodotus.engine.cache.redis.utils.RedisBitMapUtils;
 import cn.herodotus.engine.message.core.constants.MessageConstants;
+import com.gstdev.cloud.cache.redis.utils.RedisBitMapUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.server.ServerHttpRequest;

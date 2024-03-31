@@ -1,7 +1,7 @@
 package com.gstdev.cloud.commons.ass.definition.domain.view.vue;
 
-import cn.herodotus.engine.assistant.definition.domain.base.Entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.gstdev.cloud.commons.ass.definition.domain.base.Entity;
 
 /**
  * <p>Description: Vue Router Meta 属性定义 </p>

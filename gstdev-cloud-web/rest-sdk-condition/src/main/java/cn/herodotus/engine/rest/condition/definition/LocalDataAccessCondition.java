@@ -1,6 +1,6 @@
 package cn.herodotus.engine.rest.condition.definition;
 
-import cn.herodotus.engine.assistant.core.enums.Target;
+import com.gstdev.cloud.commons.ass.core.enums.Target;
 import cn.herodotus.engine.rest.condition.constants.RestPropertyFinder;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

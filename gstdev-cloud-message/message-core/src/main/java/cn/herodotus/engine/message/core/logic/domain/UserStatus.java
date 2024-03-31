@@ -1,6 +1,6 @@
 package cn.herodotus.engine.message.core.logic.domain;
 
-import cn.herodotus.engine.assistant.definition.domain.base.AbstractEntity;
+import com.gstdev.cloud.commons.ass.definition.domain.base.AbstractEntity;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 

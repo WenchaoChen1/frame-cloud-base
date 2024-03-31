@@ -1,7 +1,7 @@
 package cn.herodotus.engine.rest.core.definition;
 
-import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
-import cn.herodotus.engine.assistant.core.utils.http.SessionUtils;
+import com.gstdev.cloud.commons.ass.core.utils.http.SessionUtils;
+import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.hutool.crypto.SecureUtil;

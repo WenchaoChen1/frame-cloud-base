@@ -1,6 +1,7 @@
 package cn.herodotus.engine.rest.core.exception;
 
-import cn.herodotus.engine.assistant.definition.exception.PlatformRuntimeException;
+
+import com.gstdev.cloud.commons.ass.definition.exception.PlatformRuntimeException;
 
 /**
  * <p>Description: 非法操作Exception </p>

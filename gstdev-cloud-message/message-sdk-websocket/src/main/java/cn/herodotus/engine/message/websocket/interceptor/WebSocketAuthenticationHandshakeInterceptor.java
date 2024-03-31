@@ -1,9 +1,9 @@
 package cn.herodotus.engine.message.websocket.interceptor;
 
-import cn.herodotus.engine.assistant.core.support.BearerTokenResolver;
-import cn.herodotus.engine.assistant.definition.constants.BaseConstants;
-import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
-import cn.herodotus.engine.assistant.definition.domain.oauth2.PrincipalDetails;
+import com.gstdev.cloud.commons.ass.core.support.BearerTokenResolver;
+import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
+import com.gstdev.cloud.commons.ass.definition.domain.oauth2.PrincipalDetails;
 import cn.herodotus.engine.message.websocket.utils.WebSocketUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
