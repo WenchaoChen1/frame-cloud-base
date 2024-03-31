@@ -1,5 +1,6 @@
-package com.gstdev.cloud.oauth2.authorization.server.configuration;
+package com.gstdev.cloud.oauth2.authorization.server.autoconfigure.configuration;
 
+import com.gstdev.cloud.oauth2.authorization.server.configuration.OAuth2AuthenticationConfiguration;
 import com.gstdev.cloud.oauth2.data.jpa.configuration.OAuth2DataJpaConfiguration;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
