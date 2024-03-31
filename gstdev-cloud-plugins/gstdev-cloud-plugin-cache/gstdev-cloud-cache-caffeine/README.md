@@ -19,7 +19,7 @@ dante 对其进行了简单封装
 
 ```xml
 <dependency>
-  <groupId>cn.herodotus.engine</groupId>
+    <groupId>com.gstdev.cloud</groupId>
   <artifactId>cache-sdk-caffeine</artifactId>
 </dependency>
 ```

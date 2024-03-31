@@ -21,7 +21,7 @@
       <artifactId>gstdev-cloud-commons</artifactId>
     </dependency>
     <dependency>
-      <groupId>cn.herodotus.engine</groupId>
+        <groupId>com.gstdev.cloud</groupId>
       <artifactId>message-core</artifactId>
     </dependency>
 

@@ -17,27 +17,27 @@
     <dependencies>
 
         <dependency>
-            <groupId>cn.herodotus.engine</groupId>
+              <groupId>com.gstdev.cloud</groupId>
             <artifactId>rest-sdk-service</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>cn.herodotus.engine</groupId>
+              <groupId>com.gstdev.cloud</groupId>
             <artifactId>rest-sdk-protect</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>cn.herodotus.engine</groupId>
+              <groupId>com.gstdev.cloud</groupId>
             <artifactId>cache-spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>cn.herodotus.engine</groupId>
+              <groupId>com.gstdev.cloud</groupId>
             <artifactId>data-spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>cn.herodotus.engine</groupId>
+              <groupId>com.gstdev.cloud</groupId>
             <artifactId>web-server-spring-boot-starter</artifactId>
         </dependency>
 

@@ -16,7 +16,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.herodotus.engine</groupId>
+              <groupId>com.gstdev.cloud</groupId>
             <artifactId>rest-sdk-condition</artifactId>
         </dependency>
 
