@@ -1,6 +1,6 @@
 //package com.gstdev.cloud.oauth2.authorization.converter;
 //
-//import com.gstdev.cloud.commons.constant.BaseConstants;
+//import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
 //import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 //
 ///**

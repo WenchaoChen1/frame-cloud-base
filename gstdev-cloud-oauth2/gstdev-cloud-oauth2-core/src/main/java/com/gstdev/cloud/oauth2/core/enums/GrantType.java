@@ -2,7 +2,7 @@ package com.gstdev.cloud.oauth2.core.enums;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.common.collect.ImmutableMap;
-import com.gstdev.cloud.commons.constant.BaseConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
 import com.gstdev.cloud.commons.ass.definition.enums.BaseUiEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * <p>Description: OAuth2 认证模式枚举 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2021/10/16 14:39
  */
 @Schema(title = "OAuth2 认证模式")

@@ -1,6 +1,6 @@
 package com.gstdev.cloud.data.core.repository;
 
-import com.gstdev.cloud.commons.domain.base.Entity;
+import com.gstdev.cloud.commons.ass.definition.domain.base.Entity;
 import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
 import org.springframework.data.domain.Page;

@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.data.jpa.jackson2;
 
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.gstdev.cloud.commons.ass.core.jackson2.Jackson2Constants;
+import com.gstdev.cloud.commons.ass.core.json.jackson2.Jackson2Constants;
 import com.gstdev.cloud.oauth2.core.definition.details.FormLoginWebAuthenticationDetails;
 import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusGrantedAuthority;
 import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusUser;

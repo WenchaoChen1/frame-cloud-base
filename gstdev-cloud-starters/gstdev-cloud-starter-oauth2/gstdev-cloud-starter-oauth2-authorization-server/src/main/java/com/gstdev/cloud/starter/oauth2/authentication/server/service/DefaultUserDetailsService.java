@@ -10,7 +10,7 @@
 package com.gstdev.cloud.starter.oauth2.authentication.server.service;
 
 import cn.hutool.core.util.ObjectUtil;
-import com.gstdev.cloud.commons.domain.oauth2.AccessPrincipal;
+import com.gstdev.cloud.commons.ass.definition.domain.oauth2.AccessPrincipal;
 import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2EndpointUtils;
 import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusUser;
 import com.gstdev.cloud.oauth2.core.definition.service.EnhanceUserDetailsService;

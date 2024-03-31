@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Bean;
 /**
  * <p>Description: 验证码自动注入 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2022/1/18 21:12
  */
 @AutoConfiguration(after = CacheJetCacheAutoConfiguration.class)

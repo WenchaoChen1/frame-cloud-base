@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.data.jpa.converter;
 
-import com.gstdev.cloud.commons.constant.SymbolConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
 import com.gstdev.cloud.oauth2.data.jpa.definition.converter.AbstractOAuth2EntityConverter;
 import com.gstdev.cloud.oauth2.data.jpa.entity.HerodotusAuthorization;
 import com.gstdev.cloud.oauth2.data.jpa.jackson2.OAuth2JacksonProcessor;

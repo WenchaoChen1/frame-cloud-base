@@ -1,6 +1,6 @@
 package com.gstdev.cloud.captcha.core.dto;
 
-import com.gstdev.cloud.commons.domain.base.AbstractDto;
+import com.gstdev.cloud.commons.ass.definition.domain.base.AbstractDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**

@@ -1,7 +1,7 @@
 package com.gstdev.cloud.cache.core.constants;
 
 
-import com.gstdev.cloud.commons.constant.BaseConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
 
 /**
  * <p>Description: Cache Property值常量 </p>

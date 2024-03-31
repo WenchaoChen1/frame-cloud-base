@@ -5,8 +5,17 @@
   <name>GstDev Cloud :: Web</name>
   <description>${project.name}</description>
 
+  <modules>
+    <module>rest-core</module>
+    <module>rest-sdk-protect</module>
+    <module>rest-sdk-service</module>
+    <module>rest-spring-boot-starter</module>
+    <module>web-server-spring-boot-starter</module>
+    <module>rest-sdk-condition</module>
+  </modules>
+
   <artifactId>gstdev-cloud-web</artifactId>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
 
   <parent>
     <groupId>com.gstdev.cloud</groupId>
@@ -21,6 +30,5 @@
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-commons</artifactId>
     </dependency>
-
   </dependencies>
 </project>

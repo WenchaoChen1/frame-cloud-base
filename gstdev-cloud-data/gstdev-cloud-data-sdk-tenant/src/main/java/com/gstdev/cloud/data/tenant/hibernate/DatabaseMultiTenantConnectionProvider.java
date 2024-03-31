@@ -1,6 +1,6 @@
 package com.gstdev.cloud.data.tenant.hibernate;
 
-import com.gstdev.cloud.commons.constant.DefaultConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
 import com.gstdev.cloud.data.tenant.datasource.MultiTenantDataSourceFactory;
 import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.hutool.extra.spring.SpringUtil;

@@ -12,7 +12,7 @@ package com.gstdev.cloud.commons.utils;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
-import com.gstdev.cloud.commons.constant.DefaultConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;

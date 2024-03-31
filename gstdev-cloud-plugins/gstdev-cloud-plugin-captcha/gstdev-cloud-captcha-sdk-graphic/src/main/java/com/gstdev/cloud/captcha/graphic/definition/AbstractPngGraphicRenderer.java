@@ -1,7 +1,7 @@
 package com.gstdev.cloud.captcha.graphic.definition;
 
 import com.gstdev.cloud.captcha.core.definition.domain.Metadata;
-import com.gstdev.cloud.commons.constant.SymbolConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
 import org.apache.commons.lang3.StringUtils;
 
 import java.awt.image.BufferedImage;

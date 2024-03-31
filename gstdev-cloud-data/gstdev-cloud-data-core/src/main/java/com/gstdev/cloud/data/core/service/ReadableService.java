@@ -1,6 +1,6 @@
 package com.gstdev.cloud.data.core.service;
 
-import com.gstdev.cloud.commons.domain.base.Entity;
+import com.gstdev.cloud.commons.ass.definition.domain.base.Entity;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

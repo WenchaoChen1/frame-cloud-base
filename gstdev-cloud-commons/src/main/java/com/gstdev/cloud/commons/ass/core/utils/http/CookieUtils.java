@@ -1,6 +1,6 @@
 package com.gstdev.cloud.commons.ass.core.utils.http;
 
-import com.gstdev.cloud.commons.constant.SymbolConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -20,7 +20,7 @@ import java.util.stream.Stream;
 /**
  * <p>Description: Cookie 操作工具类 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2023/9/2 16:38
  */
 public class CookieUtils {

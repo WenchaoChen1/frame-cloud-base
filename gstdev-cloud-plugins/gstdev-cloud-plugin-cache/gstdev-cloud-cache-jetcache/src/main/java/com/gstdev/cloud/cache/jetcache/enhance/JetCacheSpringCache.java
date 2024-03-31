@@ -1,7 +1,7 @@
 package com.gstdev.cloud.cache.jetcache.enhance;
 
 import com.alicp.jetcache.Cache;
-import com.gstdev.cloud.commons.ass.core.jackson2.utils.Jackson2Utils;
+import com.gstdev.cloud.commons.ass.core.json.jackson2.utils.Jackson2Utils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

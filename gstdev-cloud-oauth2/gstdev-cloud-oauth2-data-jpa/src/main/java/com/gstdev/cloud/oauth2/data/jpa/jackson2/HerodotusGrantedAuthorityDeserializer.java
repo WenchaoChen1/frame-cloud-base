@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.data.jpa.jackson2;
 
-import com.gstdev.cloud.commons.ass.core.jackson2.utils.JsonNodeUtils;
+import com.gstdev.cloud.commons.ass.core.json.jackson2.utils.JsonNodeUtils;
 import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusGrantedAuthority;
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;

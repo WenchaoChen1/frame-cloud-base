@@ -1,6 +1,6 @@
 package com.gstdev.cloud.commons.ass.core.utils.http;
 
-import com.gstdev.cloud.commons.constant.BaseConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * <p>Description: Http Header 工具类 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2023/9/2 16:39
  */
 public class HeaderUtils {

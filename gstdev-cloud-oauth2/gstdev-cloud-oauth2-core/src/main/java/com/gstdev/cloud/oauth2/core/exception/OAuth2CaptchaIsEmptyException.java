@@ -2,7 +2,7 @@ package com.gstdev.cloud.oauth2.core.exception;
 
 
 import com.gstdev.cloud.captcha.core.constants.CaptchaErrorCodes;
-import com.gstdev.cloud.commons.domain.Feedback;
+import com.gstdev.cloud.commons.ass.definition.domain.Feedback;
 
 /**
  * <p>Description: 验证码为空 </p>

@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * <p>Description: 数据库类型 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2022/7/21 17:02
  */
 @Schema(title = "数据库类别")

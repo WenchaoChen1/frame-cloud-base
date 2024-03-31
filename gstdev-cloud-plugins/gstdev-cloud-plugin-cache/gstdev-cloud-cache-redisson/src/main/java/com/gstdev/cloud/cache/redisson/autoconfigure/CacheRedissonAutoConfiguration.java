@@ -2,7 +2,7 @@ package com.gstdev.cloud.cache.redisson.autoconfigure;
 
 import com.gstdev.cloud.cache.redisson.annotation.ConditionalOnRedissonEnabled;
 import com.gstdev.cloud.cache.redisson.properties.RedissonProperties;
-import com.gstdev.cloud.commons.constant.SymbolConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
 import com.gstdev.cloud.commons.ass.core.utils.ResourceUtils;
 import jakarta.annotation.PostConstruct;
 import org.apache.commons.collections4.CollectionUtils;

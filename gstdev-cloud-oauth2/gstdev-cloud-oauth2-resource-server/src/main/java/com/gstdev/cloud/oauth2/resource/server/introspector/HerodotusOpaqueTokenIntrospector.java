@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.resource.server.introspector;
 
-import com.gstdev.cloud.commons.constant.BaseConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
 import com.gstdev.cloud.commons.ass.core.context.ServiceContextHolder;
 import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusGrantedAuthority;
 import org.apache.commons.lang3.StringUtils;

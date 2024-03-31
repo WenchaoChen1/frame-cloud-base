@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * <p>Description: 应用类别 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2020/5/4 12:01
  */
 @Schema(title = "应用类型")

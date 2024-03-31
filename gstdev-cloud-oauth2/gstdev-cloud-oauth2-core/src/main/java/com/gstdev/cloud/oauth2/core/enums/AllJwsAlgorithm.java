@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * <p>Description: OAuth2 TokenJwsAlgorithm </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2023/12/12 19:48
  */
 @Schema(name = "全部Jws加密算法")

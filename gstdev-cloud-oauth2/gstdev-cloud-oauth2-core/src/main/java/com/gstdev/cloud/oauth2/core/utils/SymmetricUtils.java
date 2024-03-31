@@ -8,7 +8,7 @@
 // ====================================================
 package com.gstdev.cloud.oauth2.core.utils;
 
-import com.gstdev.cloud.commons.constant.SymbolConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
 import com.gstdev.cloud.oauth2.core.exception.IllegalSymmetricKeyException;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;

@@ -2,8 +2,8 @@ package com.gstdev.cloud.captcha.core.exception;
 
 
 import com.gstdev.cloud.captcha.core.constants.CaptchaErrorCodes;
-import com.gstdev.cloud.commons.domain.Feedback;
-import com.gstdev.cloud.commons.exception.PlatformRuntimeException;
+import com.gstdev.cloud.commons.ass.definition.domain.Feedback;
+import com.gstdev.cloud.commons.ass.definition.exception.PlatformRuntimeException;
 
 /**
  * <p>Description: 验证码为空 </p>

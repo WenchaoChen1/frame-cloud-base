@@ -1,8 +1,8 @@
 package com.gstdev.cloud.commons.ass.core.context;
 
 
-import com.gstdev.cloud.commons.constant.DefaultConstants;
-import com.gstdev.cloud.commons.constant.SymbolConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
 import com.gstdev.cloud.commons.ass.core.enums.Architecture;
 import com.gstdev.cloud.commons.ass.core.enums.Protocol;
 import com.gstdev.cloud.commons.ass.core.enums.Target;

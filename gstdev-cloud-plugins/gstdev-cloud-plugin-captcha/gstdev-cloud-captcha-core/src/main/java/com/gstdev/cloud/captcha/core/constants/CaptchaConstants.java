@@ -1,7 +1,7 @@
 package com.gstdev.cloud.captcha.core.constants;
 
 
-import com.gstdev.cloud.commons.constant.BaseConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
 
 /**
  * <p>Description: 验证码常量 </p>

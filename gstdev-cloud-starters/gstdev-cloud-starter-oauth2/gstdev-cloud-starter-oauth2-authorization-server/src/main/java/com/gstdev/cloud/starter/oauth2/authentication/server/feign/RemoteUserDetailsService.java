@@ -9,8 +9,8 @@
 
 package com.gstdev.cloud.starter.oauth2.authentication.server.feign;
 
-import com.gstdev.cloud.commons.constant.DefaultConstants;
-import com.gstdev.cloud.commons.domain.Result;
+import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
+import com.gstdev.cloud.commons.ass.definition.domain.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

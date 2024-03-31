@@ -1,6 +1,6 @@
 package com.gstdev.cloud.captcha.core.constants;
 
-import com.gstdev.cloud.commons.feedback.NotAcceptableFeedback;
+import com.gstdev.cloud.commons.ass.definition.feedback.NotAcceptableFeedback;
 
 /**
  * <p>Description: Captcha 错误代码 </p>

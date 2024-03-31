@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.data.jpa.jackson2;
 
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.gstdev.cloud.commons.ass.core.jackson2.Jackson2Constants;
+import com.gstdev.cloud.commons.ass.core.json.jackson2.Jackson2Constants;
 import org.springframework.security.jackson2.SecurityJackson2Modules;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;

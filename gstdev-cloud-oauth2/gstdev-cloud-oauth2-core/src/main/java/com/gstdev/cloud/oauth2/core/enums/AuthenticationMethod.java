@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * <p>Description: 客户端身份验证模式 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2022/3/17 14:49
  */
 @Schema(title = "OAuth2 Client 认证方式")

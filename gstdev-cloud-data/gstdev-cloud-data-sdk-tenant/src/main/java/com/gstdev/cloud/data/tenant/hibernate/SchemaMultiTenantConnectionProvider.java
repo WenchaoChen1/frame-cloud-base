@@ -1,6 +1,6 @@
 package com.gstdev.cloud.data.tenant.hibernate;
 
-import com.gstdev.cloud.commons.constant.DefaultConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.engine.jdbc.connections.spi.MultiTenantConnectionProvider;
 import org.slf4j.Logger;

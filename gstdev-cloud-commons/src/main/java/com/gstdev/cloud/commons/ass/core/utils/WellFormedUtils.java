@@ -1,9 +1,9 @@
 package com.gstdev.cloud.commons.ass.core.utils;
 
-import com.gstdev.cloud.commons.constant.DefaultConstants;
-import com.gstdev.cloud.commons.constant.SymbolConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
 import com.gstdev.cloud.commons.ass.core.enums.Protocol;
-import com.gstdev.cloud.commons.exception.properties.PropertyValueIsNotSetException;
+import com.gstdev.cloud.commons.ass.core.exception.properties.PropertyValueIsNotSetException;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -4,10 +4,9 @@ import com.gstdev.cloud.captcha.core.definition.domain.Metadata;
 import com.gstdev.cloud.captcha.core.definition.enums.CaptchaCategory;
 import com.gstdev.cloud.captcha.core.provider.RandomProvider;
 import com.gstdev.cloud.captcha.graphic.definition.AbstractBaseGraphicRenderer;
-import com.gstdev.cloud.commons.constant.RegexPool;
+import com.gstdev.cloud.commons.ass.definition.constants.RegexPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;

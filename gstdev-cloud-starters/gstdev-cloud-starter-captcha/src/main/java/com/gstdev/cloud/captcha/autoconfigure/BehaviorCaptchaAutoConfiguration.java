@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Bean;
 /**
  * <p>Description: 行为验证码配置 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2022/1/18 20:57
  */
 @AutoConfiguration(after = CaptchaAutoConfiguration.class)

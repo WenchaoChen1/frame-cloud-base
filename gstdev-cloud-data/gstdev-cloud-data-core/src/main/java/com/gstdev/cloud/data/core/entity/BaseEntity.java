@@ -2,8 +2,8 @@ package com.gstdev.cloud.data.core.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.common.base.MoreObjects;
-import com.gstdev.cloud.commons.constant.DefaultConstants;
-import com.gstdev.cloud.commons.domain.base.AbstractEntity;
+import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
+import com.gstdev.cloud.commons.ass.definition.domain.base.AbstractEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

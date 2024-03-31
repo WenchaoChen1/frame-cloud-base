@@ -1,8 +1,8 @@
 package com.gstdev.cloud.oauth2.authorization.server.properties;
 
 import com.google.common.base.MoreObjects;
-import com.gstdev.cloud.commons.constant.DefaultConstants;
-import com.gstdev.cloud.commons.constant.SymbolConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
 import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;

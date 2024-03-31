@@ -9,7 +9,7 @@ import org.springframework.core.Ordered;
 /**
  * <p>Description: Captcha 错误代码映射定义 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2023/9/25 15:31
  */
 public class CaptchaErrorCodeMapperBuilderCustomizer implements ErrorCodeMapperBuilderCustomizer, Ordered {

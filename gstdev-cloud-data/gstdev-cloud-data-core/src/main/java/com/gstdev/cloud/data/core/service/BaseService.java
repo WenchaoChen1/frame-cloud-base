@@ -1,7 +1,7 @@
 package com.gstdev.cloud.data.core.service;
 
-import com.gstdev.cloud.commons.constant.SymbolConstants;
-import com.gstdev.cloud.commons.domain.base.Entity;
+import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
+import com.gstdev.cloud.commons.ass.definition.domain.base.Entity;
 
 import java.io.Serializable;
 

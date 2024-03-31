@@ -1,7 +1,7 @@
 package com.gstdev.cloud.commons.ass.core.context;
 
 import com.alibaba.ttl.TransmittableThreadLocal;
-import com.gstdev.cloud.commons.constant.DefaultConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
 import org.apache.commons.lang3.StringUtils;
 
 /**

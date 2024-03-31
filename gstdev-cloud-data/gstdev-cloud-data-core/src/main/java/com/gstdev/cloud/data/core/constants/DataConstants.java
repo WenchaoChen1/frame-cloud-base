@@ -1,7 +1,7 @@
 package com.gstdev.cloud.data.core.constants;
 
 
-import com.gstdev.cloud.commons.constant.BaseConstants;
+import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
 
 /**
  * <p>Description: 数据常量 </p>

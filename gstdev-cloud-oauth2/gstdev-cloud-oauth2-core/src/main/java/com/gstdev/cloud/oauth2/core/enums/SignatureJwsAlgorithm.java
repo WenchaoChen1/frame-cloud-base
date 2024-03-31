@@ -16,7 +16,7 @@ import java.util.Map;
  * <p>
  * 由JSON Web算法（JWA）规范定义的加密算法的枚举，并由JSON Web签名（JWS）用于对JWS受保护标头和JWS有效载荷的内容进行数字签名。
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2022/3/2 16:15
  */
 @Schema(name = "签名算法")

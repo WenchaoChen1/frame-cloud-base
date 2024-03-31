@@ -10,6 +10,7 @@
 package com.gstdev.cloud.commons.domain;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.gstdev.cloud.commons.ass.definition.domain.Error;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;

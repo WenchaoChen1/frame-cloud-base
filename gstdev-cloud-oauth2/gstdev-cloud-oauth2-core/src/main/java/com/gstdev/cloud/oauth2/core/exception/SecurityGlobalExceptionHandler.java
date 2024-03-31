@@ -1,10 +1,10 @@
 package com.gstdev.cloud.oauth2.core.exception;
 
-import com.gstdev.cloud.commons.constant.ErrorCodes;
-import com.gstdev.cloud.commons.domain.Feedback;
-import com.gstdev.cloud.commons.domain.Result;
-import com.gstdev.cloud.commons.exception.GlobalExceptionHandler;
-import com.gstdev.cloud.commons.exception.PlatformRuntimeException;
+import com.gstdev.cloud.commons.ass.definition.constants.ErrorCodes;
+import com.gstdev.cloud.commons.ass.definition.domain.Feedback;
+import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.commons.ass.core.exception.GlobalExceptionHandler;
+import com.gstdev.cloud.commons.ass.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.oauth2.core.constants.OAuth2ErrorKeys;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

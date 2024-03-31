@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.management.configuration;
 
-com.gstdev.cloud.oauth2.authorization.server.configuration.OAuth2AuthenticationConfiguration;
+import com.gstdev.cloud.oauth2.authorization.server.configuration.OAuth2AuthenticationConfiguration;
 import com.gstdev.cloud.oauth2.data.jpa.configuration.OAuth2DataJpaConfiguration;
 import com.gstdev.cloud.oauth2.management.response.OAuth2DeviceVerificationResponseHandler;
 import com.gstdev.cloud.oauth2.management.response.OidcClientRegistrationResponseHandler;

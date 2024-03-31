@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * <p>Description: 服务器类型 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2022/7/21 16:29
  */
 @Schema(name = "令牌格式")

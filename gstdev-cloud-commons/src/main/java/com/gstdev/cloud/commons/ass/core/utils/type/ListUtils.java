@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * <p>Description: List 常用工具类 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2023/3/28 23:15
  */
 public class ListUtils {

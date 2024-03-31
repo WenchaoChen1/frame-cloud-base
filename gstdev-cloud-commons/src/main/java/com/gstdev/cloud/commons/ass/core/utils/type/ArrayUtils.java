@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * <p>Description: 数组工具类 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2023/5/3 23:12
  */
 public class ArrayUtils {
