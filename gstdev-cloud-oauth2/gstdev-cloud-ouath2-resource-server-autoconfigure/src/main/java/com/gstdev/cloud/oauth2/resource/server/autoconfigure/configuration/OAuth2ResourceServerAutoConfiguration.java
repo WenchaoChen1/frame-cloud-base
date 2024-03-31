@@ -22,7 +22,7 @@ import org.springframework.context.annotation.Import;
 @Import({OAuth2AuthorizationConfiguration.class})
 //@ComponentScan(basePackageClasses = SecurityGlobalExceptionHandler.class)
 //@RemoteApplicationEventScan({
-//        "cn.herodotus.engine.oauth2.resource.autoconfigure.bus"
+//        "com.gstdev.cloud.oauth2.resource.autoconfigure.bus"
 //})
 public class OAuth2ResourceServerAutoConfiguration {
 

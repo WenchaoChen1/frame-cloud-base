@@ -1,1 +1,1 @@
-cn.herodotus.engine.web.server.autoconfigure.WebServerAutoConfiguration
+com.gstdev.cloud.web.server.autoconfigure.WebServerAutoConfiguration

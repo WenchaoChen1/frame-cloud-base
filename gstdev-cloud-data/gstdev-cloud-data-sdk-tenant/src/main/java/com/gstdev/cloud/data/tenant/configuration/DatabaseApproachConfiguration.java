@@ -40,10 +40,10 @@ import java.util.function.Supplier;
 @ConditionalOnDatabaseApproach
 @EnableTransactionManagement
 @EntityScan(basePackages = {
-        "cn.herodotus.engine.data.tenant.entity",
+        "com.gstdev.cloud.data.tenant.entity",
 })
 @EnableJpaRepositories(basePackages = {
-        "cn.herodotus.engine.data.tenant.repository",
+        "com.gstdev.cloud.data.tenant.repository",
 })
 public class DatabaseApproachConfiguration {
 
