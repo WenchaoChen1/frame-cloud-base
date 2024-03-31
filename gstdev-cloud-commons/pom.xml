@@ -16,23 +16,13 @@
   </parent>
 
   <dependencies>
-    <!-- GstdevCloud related dependencies -->
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
-    </dependency>
 
     <!-- Jackson related dependencies -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
     </dependency>
-    <!-- Lombok related dependencies -->
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <scope>provided</scope>
-    </dependency>
+
     <!-- Hutool related dependencies -->
     <dependency>
       <groupId>cn.hutool</groupId>
@@ -86,7 +76,7 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <scope>provided</scope>
+<!--      <scope>provided</scope>-->
     </dependency>
 
     <dependency>
@@ -165,10 +155,10 @@
 <!--      <groupId>cn.zhxu</groupId>-->
 <!--      <artifactId>okhttps-gson</artifactId>-->
 <!--    </dependency>-->
-<!--&lt;!&ndash;    <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;      <groupId>io.swagger.core.v3</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;      <artifactId>swagger-core-jakarta</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;    </dependency>&ndash;&gt;-->
+    <dependency>
+      <groupId>io.swagger.core.v3</groupId>
+      <artifactId>swagger-core-jakarta</artifactId>
+    </dependency>
 <!--    <dependency>-->
 <!--      <groupId>org.dromara.hutool</groupId>-->
 <!--      <artifactId>hutool-all</artifactId>-->
@@ -224,8 +214,14 @@
         </exclusion>
       </exclusions>
     </dependency>
+    <dependency>
+      <groupId>io.swagger.core.v3</groupId>
+      <artifactId>swagger-annotations-jakarta</artifactId>
+      <version>2.2.20</version>
+      <scope>compile</scope>
+    </dependency>
 
-<!--    <dependency>-->
+    <!--    <dependency>-->
 <!--      <groupId>com.alibaba</groupId>-->
 <!--      <artifactId>transmittable-thread-local</artifactId>-->
 <!--    </dependency>-->

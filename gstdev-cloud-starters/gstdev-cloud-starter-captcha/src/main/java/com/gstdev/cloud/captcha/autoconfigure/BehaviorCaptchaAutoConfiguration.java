@@ -1,6 +1,5 @@
 package com.gstdev.cloud.captcha.autoconfigure;
 
-import com.gstdev.cloud.cache.jetcache.autoconfigure.CacheJetCacheAutoConfiguration;
 import com.gstdev.cloud.captcha.behavior.renderer.JigsawCaptchaRenderer;
 import com.gstdev.cloud.captcha.behavior.renderer.WordClickCaptchaRenderer;
 import com.gstdev.cloud.captcha.core.definition.enums.CaptchaCategory;

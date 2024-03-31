@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.DependsOn;
 
 /**
  * <p>Description: 验证码自动注入 </p>
@@ -42,6 +43,7 @@ public class CaptchaAutoConfiguration {
 
   @Bean
   @ConditionalOnMissingBean
+  @DependsOn("jetCacheCreateCacheFactory")
   public CaptchaRendererFactory captchaRendererFactory() {
     CaptchaRendererFactory captchaRendererFactory = new CaptchaRendererFactory();
     log.trace("[GstDev Cloud] |- Bean [Captcha Renderer Factory] Auto Configure.");

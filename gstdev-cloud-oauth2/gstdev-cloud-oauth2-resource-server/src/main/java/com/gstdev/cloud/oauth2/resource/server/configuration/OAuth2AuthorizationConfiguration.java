@@ -1,5 +1,6 @@
 package com.gstdev.cloud.oauth2.resource.server.configuration;
 
+import com.gstdev.cloud.cache.jetcache.autoconfigure.CacheJetCacheAutoConfiguration;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.processor.SecurityMatcherConfigurer;
@@ -20,7 +21,7 @@ import org.springframework.security.oauth2.jwt.JwtDecoder;
  * @author: wenchao.chen
  * @create: 2024/03/25 15:17
  **/
-@AutoConfiguration
+@AutoConfiguration(after = CacheJetCacheAutoConfiguration.class)
 @EnableConfigurationProperties({OAuth2AuthorizationProperties.class})
 //@EnableMethodSecurity(proxyTargetClass = true)
 //@Import({

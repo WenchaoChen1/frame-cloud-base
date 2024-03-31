@@ -16,15 +16,16 @@
   <packaging>jar</packaging>
 
   <dependencies>
+    <dependency>
+      <groupId>com.gstdev.cloud</groupId>
+      <artifactId>gstdev-cloud-commons</artifactId>
+    </dependency>
     <!--     Swagger related dependencies -->
     <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-    </dependency>
+
   </dependencies>
 
 </project>

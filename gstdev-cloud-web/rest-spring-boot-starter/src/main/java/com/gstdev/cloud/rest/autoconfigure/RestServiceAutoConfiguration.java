@@ -2,7 +2,6 @@ package com.gstdev.cloud.rest.autoconfigure;
 
 import com.gstdev.cloud.rest.service.configuration.FeignConfiguration;
 import com.gstdev.cloud.rest.service.configuration.RestScanConfiguration;
-import com.gstdev.cloud.rest.service.configuration.SpringdocConfiguration;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +17,8 @@ import org.springframework.context.annotation.Import;
 @AutoConfiguration
 @Import({
         FeignConfiguration.class,
-        RestScanConfiguration.class,
-        SpringdocConfiguration.class
+        RestScanConfiguration.class
+//        SpringdocConfiguration.class
 })
 public class RestServiceAutoConfiguration {
 
