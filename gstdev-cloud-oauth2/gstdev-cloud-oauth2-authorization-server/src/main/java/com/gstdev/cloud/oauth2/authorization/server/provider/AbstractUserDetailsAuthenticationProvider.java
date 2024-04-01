@@ -26,10 +26,10 @@ public abstract class AbstractUserDetailsAuthenticationProvider extends Abstract
   private final MessageSourceAccessor messages = SpringSecurityMessageSource.getAccessor();
   private final UserDetailsService userDetailsService;
   private final OAuth2AuthorizationService authorizationService;
-    private final OAuth2AuthenticationProperties authenticationProperties;
+  private final OAuth2AuthenticationProperties authenticationProperties;
   private PasswordEncoder passwordEncoder;
 
-    public AbstractUserDetailsAuthenticationProvider(OAuth2AuthorizationService authorizationService, UserDetailsService userDetailsService, OAuth2AuthenticationProperties authenticationProperties) {
+  public AbstractUserDetailsAuthenticationProvider(OAuth2AuthorizationService authorizationService, UserDetailsService userDetailsService, OAuth2AuthenticationProperties authenticationProperties) {
     this.userDetailsService = userDetailsService;
     this.authorizationService = authorizationService;
     this.authenticationProperties = authenticationProperties;

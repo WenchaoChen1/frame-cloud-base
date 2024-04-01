@@ -8,10 +8,10 @@ package com.gstdev.cloud.commons.ass.definition.enums;
  */
 public interface EnumDescription {
 
-    /**
-     * 获取枚举文字表述
-     *
-     * @return 枚举文字表述
-     */
-    String getDescription();
+  /**
+   * 获取枚举文字表述
+   *
+   * @return 枚举文字表述
+   */
+  String getDescription();
 }

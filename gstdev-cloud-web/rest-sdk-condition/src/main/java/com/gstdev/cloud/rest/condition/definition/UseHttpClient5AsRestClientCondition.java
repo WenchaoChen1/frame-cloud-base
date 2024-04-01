@@ -15,13 +15,13 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  */
 public class UseHttpClient5AsRestClientCondition implements Condition {
 
-    private static final Logger log = LoggerFactory.getLogger(UseHttpClient5AsRestClientCondition.class);
+  private static final Logger log = LoggerFactory.getLogger(UseHttpClient5AsRestClientCondition.class);
 
-    @SuppressWarnings("NullableProblems")
-    @Override
-    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
-        boolean result = RestPropertyFinder.isOpenFeignHttpClient5Enabled(conditionContext);
-        log.debug("[GstDev Cloud] |- Condition [Use HttpClient5 AS Rest Client] value is [{}]", result);
-        return result;
-    }
+  @SuppressWarnings("NullableProblems")
+  @Override
+  public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
+    boolean result = RestPropertyFinder.isOpenFeignHttpClient5Enabled(conditionContext);
+    log.debug("[GstDev Cloud] |- Condition [Use HttpClient5 AS Rest Client] value is [{}]", result);
+    return result;
+  }
 }

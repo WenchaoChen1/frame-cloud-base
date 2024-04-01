@@ -24,30 +24,30 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/authorize/application")
 @Tags({
-        @Tag(name = "OAuth2 认证服务接口"),
-        @Tag(name = "OAuth2 应用管理接口")
+  @Tag(name = "OAuth2 认证服务接口"),
+  @Tag(name = "OAuth2 应用管理接口")
 })
 public class OAuth2ApplicationController extends BaseWriteableRestController<OAuth2Application, String> {
 
-    private final OAuth2ApplicationService applicationService;
+  private final OAuth2ApplicationService applicationService;
 
-    public OAuth2ApplicationController(OAuth2ApplicationService applicationService) {
-        this.applicationService = applicationService;
-    }
+  public OAuth2ApplicationController(OAuth2ApplicationService applicationService) {
+    this.applicationService = applicationService;
+  }
 
-    @Override
-    public WriteableService<OAuth2Application, String> getWriteableService() {
-        return this.applicationService;
-    }
+  @Override
+  public WriteableService<OAuth2Application, String> getWriteableService() {
+    return this.applicationService;
+  }
 
-    @Operation(summary = "给应用分配Scope", description = "给应用分配Scope")
-    @Parameters({
-            @Parameter(name = "appKey", required = true, description = "appKey"),
-            @Parameter(name = "scopes[]", required = true, description = "Scope对象组成的数组")
-    })
-    @PutMapping
-    public Result<OAuth2Application> authorize(@RequestParam(name = "applicationId") String scopeId, @RequestParam(name = "scopes[]") String[] scopes) {
-        OAuth2Application application = applicationService.authorize(scopeId, scopes);
-        return result(application);
-    }
+  @Operation(summary = "给应用分配Scope", description = "给应用分配Scope")
+  @Parameters({
+    @Parameter(name = "appKey", required = true, description = "appKey"),
+    @Parameter(name = "scopes[]", required = true, description = "Scope对象组成的数组")
+  })
+  @PutMapping
+  public Result<OAuth2Application> authorize(@RequestParam(name = "applicationId") String scopeId, @RequestParam(name = "scopes[]") String[] scopes) {
+    OAuth2Application application = applicationService.authorize(scopeId, scopes);
+    return result(application);
+  }
 }

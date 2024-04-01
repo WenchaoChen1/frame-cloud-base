@@ -10,18 +10,18 @@ package com.gstdev.cloud.oauth2.resource.server.autoconfigure.bus;
 //public class RemoteChangeUserStatusEvent extends RemoteApplicationEvent {
 public class RemoteChangeUserStatusEvent {
 
-    private String data;
+  private String data;
 
-    public RemoteChangeUserStatusEvent() {
-        super();
-    }
+  public RemoteChangeUserStatusEvent() {
+    super();
+  }
 
-    public RemoteChangeUserStatusEvent(String data, String originService, String destinationService) {
+  public RemoteChangeUserStatusEvent(String data, String originService, String destinationService) {
 //        super(data, originService, DEFAULT_DESTINATION_FACTORY.getDestination(destinationService));
-        this.data = data;
-    }
+    this.data = data;
+  }
 
-    public String getData() {
-        return data;
-    }
+  public String getData() {
+    return data;
+  }
 }

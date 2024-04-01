@@ -20,25 +20,25 @@ import java.nio.charset.StandardCharsets;
  */
 public class AccountAutoEnableListener extends KeyExpirationEventMessageListener {
 
-    private static final Logger log = LoggerFactory.getLogger(AccountAutoEnableListener.class);
+  private static final Logger log = LoggerFactory.getLogger(AccountAutoEnableListener.class);
 
-    private final OAuth2AccountStatusManager accountStatusManager;
+  private final OAuth2AccountStatusManager accountStatusManager;
 
-    public AccountAutoEnableListener(RedisMessageListenerContainer listenerContainer, OAuth2AccountStatusManager accountStatusManager) {
-        super(listenerContainer);
-        this.accountStatusManager = accountStatusManager;
+  public AccountAutoEnableListener(RedisMessageListenerContainer listenerContainer, OAuth2AccountStatusManager accountStatusManager) {
+    super(listenerContainer);
+    this.accountStatusManager = accountStatusManager;
+  }
+
+  @Override
+  public void onMessage(Message message, byte[] pattern) {
+    String key = new String(message.getBody(), StandardCharsets.UTF_8);
+    if (StringUtils.contains(key, OAuth2Constants.CACHE_NAME_TOKEN_LOCKED_USER_DETAIL)) {
+      String userId = StringUtils.substringAfterLast(key, SymbolConstants.COLON);
+      log.info("[GstDev Cloud] |- Parse the user [{}] at expired redis cache key [{}]", userId, key);
+      if (StringUtils.isNotBlank(userId)) {
+        log.debug("[GstDev Cloud] |- Automatically unlock user account [{}]", userId);
+        accountStatusManager.enable(userId);
+      }
     }
-
-    @Override
-    public void onMessage(Message message, byte[] pattern) {
-        String key = new String(message.getBody(), StandardCharsets.UTF_8);
-        if (StringUtils.contains(key, OAuth2Constants.CACHE_NAME_TOKEN_LOCKED_USER_DETAIL)) {
-            String userId = StringUtils.substringAfterLast(key, SymbolConstants.COLON);
-            log.info("[GstDev Cloud] |- Parse the user [{}] at expired redis cache key [{}]", userId, key);
-            if (StringUtils.isNotBlank(userId)) {
-                log.debug("[GstDev Cloud] |- Automatically unlock user account [{}]", userId);
-                accountStatusManager.enable(userId);
-            }
-        }
-    }
+  }
 }

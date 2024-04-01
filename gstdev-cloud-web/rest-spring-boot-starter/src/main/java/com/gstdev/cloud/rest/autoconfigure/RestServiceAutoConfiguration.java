@@ -16,16 +16,16 @@ import org.springframework.context.annotation.Import;
  */
 @AutoConfiguration
 @Import({
-        FeignConfiguration.class,
-        RestScanConfiguration.class
+  FeignConfiguration.class,
+  RestScanConfiguration.class
 //        SpringdocConfiguration.class
 })
 public class RestServiceAutoConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(RestServiceAutoConfiguration.class);
+  private static final Logger log = LoggerFactory.getLogger(RestServiceAutoConfiguration.class);
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[GstDev Cloud] |- Module [Rest Service] Auto Configure.");
-    }
+  @PostConstruct
+  public void postConstruct() {
+    log.info("[GstDev Cloud] |- Module [Rest Service] Auto Configure.");
+  }
 }

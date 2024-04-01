@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
  * @date : 2023/9/26 8:52
  */
 public class NotAcceptableFeedback extends Feedback {
-    public NotAcceptableFeedback(String value) {
-        super(value, HttpStatus.NOT_ACCEPTABLE);
-    }
+  public NotAcceptableFeedback(String value) {
+    super(value, HttpStatus.NOT_ACCEPTABLE);
+  }
 }

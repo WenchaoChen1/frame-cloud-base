@@ -11,16 +11,16 @@ import com.gstdev.cloud.commons.ass.definition.domain.Feedback;
  */
 public class OAuth2CaptchaArgumentIllegalException extends OAuth2CaptchaException {
 
-    public OAuth2CaptchaArgumentIllegalException(String msg, Throwable cause) {
-        super(msg, cause);
-    }
+  public OAuth2CaptchaArgumentIllegalException(String msg, Throwable cause) {
+    super(msg, cause);
+  }
 
-    public OAuth2CaptchaArgumentIllegalException(String msg) {
-        super(msg);
-    }
+  public OAuth2CaptchaArgumentIllegalException(String msg) {
+    super(msg);
+  }
 
-    @Override
-    public Feedback getFeedback() {
-        return CaptchaErrorCodes.CAPTCHA_PARAMETER_ILLEGAL;
-    }
+  @Override
+  public Feedback getFeedback() {
+    return CaptchaErrorCodes.CAPTCHA_PARAMETER_ILLEGAL;
+  }
 }

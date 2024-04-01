@@ -30,57 +30,57 @@ import java.util.stream.Collectors;
  */
 public class RegisteredClientToOAuth2DeviceConverter implements Converter<RegisteredClient, OAuth2Device> {
 
-    private final OAuth2ScopeService scopeService;
+  private final OAuth2ScopeService scopeService;
 
-    public RegisteredClientToOAuth2DeviceConverter(OAuth2ScopeService scopeService) {
-        this.scopeService = scopeService;
+  public RegisteredClientToOAuth2DeviceConverter(OAuth2ScopeService scopeService) {
+    this.scopeService = scopeService;
+  }
+
+  @Override
+  public OAuth2Device convert(RegisteredClient registeredClient) {
+
+    OAuth2Device device = new OAuth2Device();
+    device.setDeviceId(registeredClient.getId());
+    device.setDeviceName(registeredClient.getClientName());
+    device.setProductId("");
+    device.setScopes(getOAuth2Scopes(registeredClient.getScopes()));
+    device.setClientId(registeredClient.getClientId());
+    device.setClientSecret(registeredClient.getClientSecret());
+    device.setClientIdIssuedAt(DateUtil.toLocalDateTime(registeredClient.getClientIdIssuedAt()));
+    device.setClientSecretExpiresAt(DateUtil.toLocalDateTime(registeredClient.getClientSecretExpiresAt()));
+    device.setClientAuthenticationMethods(StringUtils.collectionToCommaDelimitedString(registeredClient.getClientAuthenticationMethods()));
+    device.setAuthorizationGrantTypes(StringUtils.collectionToCommaDelimitedString(registeredClient.getAuthorizationGrantTypes().stream().map(AuthorizationGrantType::getValue).collect(Collectors.toSet())));
+    device.setRedirectUris(StringUtils.collectionToCommaDelimitedString(registeredClient.getRedirectUris()));
+    device.setPostLogoutRedirectUris(StringUtils.collectionToCommaDelimitedString(registeredClient.getRedirectUris()));
+
+    ClientSettings clientSettings = registeredClient.getClientSettings();
+    device.setRequireProofKey(clientSettings.isRequireProofKey());
+    device.setRequireAuthorizationConsent(clientSettings.isRequireAuthorizationConsent());
+    device.setJwkSetUrl(clientSettings.getJwkSetUrl());
+    if (ObjectUtils.isNotEmpty(clientSettings.getTokenEndpointAuthenticationSigningAlgorithm())) {
+      device.setAuthenticationSigningAlgorithm(AllJwsAlgorithm.valueOf(clientSettings.getTokenEndpointAuthenticationSigningAlgorithm().getName()));
     }
 
-    @Override
-    public OAuth2Device convert(RegisteredClient registeredClient) {
+    TokenSettings tokenSettings = registeredClient.getTokenSettings();
+    device.setAuthorizationCodeValidity(tokenSettings.getAuthorizationCodeTimeToLive());
+    device.setAccessTokenValidity(tokenSettings.getAccessTokenTimeToLive());
+    device.setDeviceCodeValidity(tokenSettings.getDeviceCodeTimeToLive());
+    device.setRefreshTokenValidity(tokenSettings.getRefreshTokenTimeToLive());
+    device.setAccessTokenFormat(TokenFormat.get(tokenSettings.getAccessTokenFormat().getValue()));
+    device.setReuseRefreshTokens(tokenSettings.isReuseRefreshTokens());
+    device.setIdTokenSignatureAlgorithm(SignatureJwsAlgorithm.valueOf(tokenSettings.getIdTokenSignatureAlgorithm().getName()));
 
-        OAuth2Device device = new OAuth2Device();
-        device.setDeviceId(registeredClient.getId());
-        device.setDeviceName(registeredClient.getClientName());
-        device.setProductId("");
-        device.setScopes(getOAuth2Scopes(registeredClient.getScopes()));
-        device.setClientId(registeredClient.getClientId());
-        device.setClientSecret(registeredClient.getClientSecret());
-        device.setClientIdIssuedAt(DateUtil.toLocalDateTime(registeredClient.getClientIdIssuedAt()));
-        device.setClientSecretExpiresAt(DateUtil.toLocalDateTime(registeredClient.getClientSecretExpiresAt()));
-        device.setClientAuthenticationMethods(StringUtils.collectionToCommaDelimitedString(registeredClient.getClientAuthenticationMethods()));
-        device.setAuthorizationGrantTypes(StringUtils.collectionToCommaDelimitedString(registeredClient.getAuthorizationGrantTypes().stream().map(AuthorizationGrantType::getValue).collect(Collectors.toSet())));
-        device.setRedirectUris(StringUtils.collectionToCommaDelimitedString(registeredClient.getRedirectUris()));
-        device.setPostLogoutRedirectUris(StringUtils.collectionToCommaDelimitedString(registeredClient.getRedirectUris()));
+    return device;
+  }
 
-        ClientSettings clientSettings = registeredClient.getClientSettings();
-        device.setRequireProofKey(clientSettings.isRequireProofKey());
-        device.setRequireAuthorizationConsent(clientSettings.isRequireAuthorizationConsent());
-        device.setJwkSetUrl(clientSettings.getJwkSetUrl());
-        if (ObjectUtils.isNotEmpty(clientSettings.getTokenEndpointAuthenticationSigningAlgorithm())) {
-            device.setAuthenticationSigningAlgorithm(AllJwsAlgorithm.valueOf(clientSettings.getTokenEndpointAuthenticationSigningAlgorithm().getName()));
-        }
-
-        TokenSettings tokenSettings = registeredClient.getTokenSettings();
-        device.setAuthorizationCodeValidity(tokenSettings.getAuthorizationCodeTimeToLive());
-        device.setAccessTokenValidity(tokenSettings.getAccessTokenTimeToLive());
-        device.setDeviceCodeValidity(tokenSettings.getDeviceCodeTimeToLive());
-        device.setRefreshTokenValidity(tokenSettings.getRefreshTokenTimeToLive());
-        device.setAccessTokenFormat(TokenFormat.get(tokenSettings.getAccessTokenFormat().getValue()));
-        device.setReuseRefreshTokens(tokenSettings.isReuseRefreshTokens());
-        device.setIdTokenSignatureAlgorithm(SignatureJwsAlgorithm.valueOf(tokenSettings.getIdTokenSignatureAlgorithm().getName()));
-
-        return device;
+  private Set<OAuth2Scope> getOAuth2Scopes(Set<String> scopes) {
+    if (CollectionUtils.isNotEmpty(scopes)) {
+      List<String> scopeCodes = new ArrayList<>(scopes);
+      List<OAuth2Scope> result = scopeService.findByScopeCodeIn(scopeCodes);
+      if (CollectionUtils.isNotEmpty(result)) {
+        return new HashSet<>(result);
+      }
     }
-
-    private Set<OAuth2Scope> getOAuth2Scopes(Set<String> scopes) {
-        if (CollectionUtils.isNotEmpty(scopes)) {
-            List<String> scopeCodes = new ArrayList<>(scopes);
-            List<OAuth2Scope> result = scopeService.findByScopeCodeIn(scopeCodes);
-            if (CollectionUtils.isNotEmpty(result)) {
-                return new HashSet<>(result);
-            }
-        }
-        return new HashSet<>();
-    }
+    return new HashSet<>();
+  }
 }

@@ -15,11 +15,9 @@ import java.util.function.Consumer;
 
 /**
  * @program: frame-cloud-base
- * @description:
- * <p>Description: OAuth2AuthorizationCodeAuthenticationProvider 扩展 </p>
+ * @description: <p>Description: OAuth2AuthorizationCodeAuthenticationProvider 扩展 </p>
  * <p>
  * 用于替换 SAS 默认配置的 OAuth2AuthorizationCodeAuthenticationProvider，以实现功能的扩展
- *
  * @author: wenchao.chen
  * @date: 2024/03/25 10:34
  **/
@@ -29,7 +27,7 @@ public class OAuth2AuthorizationCodeAuthenticationProviderConsumer implements Co
   private final HttpSecurity httpSecurity;
 //  private final SessionRegistry sessionRegistry;
 
-//  public OAuth2AuthorizationCodeAuthenticationProviderConsumer(HttpSecurity httpSecurity, SessionRegistry sessionRegistry) {
+  //  public OAuth2AuthorizationCodeAuthenticationProviderConsumer(HttpSecurity httpSecurity, SessionRegistry sessionRegistry) {
   public OAuth2AuthorizationCodeAuthenticationProviderConsumer(HttpSecurity httpSecurity) {
     this.httpSecurity = httpSecurity;
 //    this.sessionRegistry = sessionRegistry;

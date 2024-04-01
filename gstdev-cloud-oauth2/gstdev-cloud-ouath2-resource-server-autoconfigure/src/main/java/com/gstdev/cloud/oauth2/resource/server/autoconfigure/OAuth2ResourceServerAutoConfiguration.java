@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Import;
 
 /**
  * <p>Description: OAuth2 资源服务器自动配置模块 </p>
- *
+ * <p>
  * 所有提供资源访问的服务（即可以作为 OAuth2 资源服务器的服务），所需的基础配置都在该模块中统一完成配置
  *
  * @author : cc
@@ -26,12 +26,12 @@ import org.springframework.context.annotation.Import;
 //})
 public class OAuth2ResourceServerAutoConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(OAuth2ResourceServerAutoConfiguration.class);
+  private static final Logger log = LoggerFactory.getLogger(OAuth2ResourceServerAutoConfiguration.class);
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[GstDev Cloud] |- Module [OAuth2 Resource Server Starter] Auto Configure.");
-    }
+  @PostConstruct
+  public void postConstruct() {
+    log.info("[GstDev Cloud] |- Module [OAuth2 Resource Server Starter] Auto Configure.");
+  }
 
 //    @Bean
 //    @ConditionalOnMissingBean

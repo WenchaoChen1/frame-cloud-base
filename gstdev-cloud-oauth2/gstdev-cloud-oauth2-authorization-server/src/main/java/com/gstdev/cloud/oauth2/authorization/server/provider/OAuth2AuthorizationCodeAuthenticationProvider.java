@@ -30,9 +30,9 @@ import java.security.Principal;
 import java.util.Map;
 
 public final class OAuth2AuthorizationCodeAuthenticationProvider extends AbstractAuthenticationProvider {
-  private final Log logger = LogFactory.getLog(this.getClass());
   private static final String ERROR_URI = "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2";
   private static final OAuth2TokenType AUTHORIZATION_CODE_TOKEN_TYPE = new OAuth2TokenType(OAuth2ParameterNames.CODE);
+  private final Log logger = LogFactory.getLog(this.getClass());
   private final OAuth2AuthorizationService authorizationService;
   private final OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator;
   private SessionRegistry sessionRegistry;

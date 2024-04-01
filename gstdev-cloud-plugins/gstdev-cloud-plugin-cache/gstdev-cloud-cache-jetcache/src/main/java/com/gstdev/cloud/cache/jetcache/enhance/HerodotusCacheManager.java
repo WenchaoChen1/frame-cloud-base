@@ -19,32 +19,32 @@ import java.util.Map;
  */
 public class HerodotusCacheManager extends JetCacheSpringCacheManager {
 
-    private static final Logger log = LoggerFactory.getLogger(HerodotusCacheManager.class);
+  private static final Logger log = LoggerFactory.getLogger(HerodotusCacheManager.class);
 
-    private final CacheProperties cacheProperties;
+  private final CacheProperties cacheProperties;
 
-    public HerodotusCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory, CacheProperties cacheProperties) {
-        super(jetCacheCreateCacheFactory);
-        this.cacheProperties = cacheProperties;
-        this.setAllowNullValues(cacheProperties.getAllowNullValues());
+  public HerodotusCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory, CacheProperties cacheProperties) {
+    super(jetCacheCreateCacheFactory);
+    this.cacheProperties = cacheProperties;
+    this.setAllowNullValues(cacheProperties.getAllowNullValues());
+  }
+
+  public HerodotusCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory, CacheProperties cacheProperties, String... cacheNames) {
+    super(jetCacheCreateCacheFactory, cacheNames);
+    this.cacheProperties = cacheProperties;
+  }
+
+  @Override
+  protected Cache createJetCache(String name) {
+    Map<String, CacheSetting> instances = cacheProperties.getInstances();
+    if (MapUtils.isNotEmpty(instances)) {
+      String key = StringUtils.replace(name, SymbolConstants.COLON, cacheProperties.getSeparator());
+      if (instances.containsKey(key)) {
+        CacheSetting cacheSetting = instances.get(key);
+        log.debug("[GstDev Cloud] |- CACHE - Cache [{}] is set to use INSTANCE cache.", name);
+        return super.createJetCache(name, cacheSetting);
+      }
     }
-
-    public HerodotusCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory, CacheProperties cacheProperties, String... cacheNames) {
-        super(jetCacheCreateCacheFactory, cacheNames);
-        this.cacheProperties = cacheProperties;
-    }
-
-    @Override
-    protected Cache createJetCache(String name) {
-        Map<String, CacheSetting> instances = cacheProperties.getInstances();
-        if (MapUtils.isNotEmpty(instances)) {
-            String key = StringUtils.replace(name, SymbolConstants.COLON, cacheProperties.getSeparator());
-            if (instances.containsKey(key)) {
-                CacheSetting cacheSetting = instances.get(key);
-                log.debug("[GstDev Cloud] |- CACHE - Cache [{}] is set to use INSTANCE cache.", name);
-                return super.createJetCache(name, cacheSetting);
-            }
-        }
-        return super.createJetCache(name);
-    }
+    return super.createJetCache(name);
+  }
 }

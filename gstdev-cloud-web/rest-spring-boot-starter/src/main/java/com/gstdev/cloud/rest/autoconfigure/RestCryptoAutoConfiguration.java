@@ -24,41 +24,41 @@ import java.util.List;
  */
 @AutoConfiguration
 @Import({
-        HttpCryptoConfiguration.class
+  HttpCryptoConfiguration.class
 })
 public class RestCryptoAutoConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(RestWebMvcAutoConfiguration.class);
-    private final RequestMappingHandlerAdapter requestMappingHandlerAdapter;
-    private final DecryptRequestParamResolver decryptRequestParamResolver;
-    private final DecryptRequestParamMapResolver decryptRequestParamMapResolver;
+  private static final Logger log = LoggerFactory.getLogger(RestWebMvcAutoConfiguration.class);
+  private final RequestMappingHandlerAdapter requestMappingHandlerAdapter;
+  private final DecryptRequestParamResolver decryptRequestParamResolver;
+  private final DecryptRequestParamMapResolver decryptRequestParamMapResolver;
 
-    public RestCryptoAutoConfiguration(RequestMappingHandlerAdapter requestMappingHandlerAdapter, DecryptRequestParamResolver decryptRequestParamResolver, DecryptRequestParamMapResolver decryptRequestParamMapResolver) {
-        this.requestMappingHandlerAdapter = requestMappingHandlerAdapter;
-        this.decryptRequestParamResolver = decryptRequestParamResolver;
-        this.decryptRequestParamMapResolver = decryptRequestParamMapResolver;
+  public RestCryptoAutoConfiguration(RequestMappingHandlerAdapter requestMappingHandlerAdapter, DecryptRequestParamResolver decryptRequestParamResolver, DecryptRequestParamMapResolver decryptRequestParamMapResolver) {
+    this.requestMappingHandlerAdapter = requestMappingHandlerAdapter;
+    this.decryptRequestParamResolver = decryptRequestParamResolver;
+    this.decryptRequestParamMapResolver = decryptRequestParamMapResolver;
+  }
+
+  @PostConstruct
+  public void postConstruct() {
+    log.info("[GstDev Cloud] |- Module [Rest Crypto] Auto Configure.");
+
+    List<HandlerMethodArgumentResolver> unmodifiableList = requestMappingHandlerAdapter.getArgumentResolvers();
+    List<HandlerMethodArgumentResolver> list = Lists.newArrayList();
+    for (HandlerMethodArgumentResolver methodArgumentResolver : unmodifiableList) {
+      //需要在requestParam之前执行自定义逻辑，然后再执行下一个逻辑（责任链模式）
+      if (methodArgumentResolver instanceof RequestParamMapMethodArgumentResolver) {
+        decryptRequestParamMapResolver.setRequestParamMapMethodArgumentResolver((RequestParamMapMethodArgumentResolver) methodArgumentResolver);
+        list.add(decryptRequestParamMapResolver);
+      }
+      if (methodArgumentResolver instanceof RequestParamMethodArgumentResolver) {
+        decryptRequestParamResolver.setRequestParamMethodArgumentResolver((RequestParamMethodArgumentResolver) methodArgumentResolver);
+        list.add(decryptRequestParamResolver);
+      }
+      list.add(methodArgumentResolver);
     }
+    log.debug("[GstDev Cloud] |- Rest Crypto HandlerMethodArgumentResolver Auto Configure.");
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[GstDev Cloud] |- Module [Rest Crypto] Auto Configure.");
-
-        List<HandlerMethodArgumentResolver> unmodifiableList = requestMappingHandlerAdapter.getArgumentResolvers();
-        List<HandlerMethodArgumentResolver> list = Lists.newArrayList();
-        for (HandlerMethodArgumentResolver methodArgumentResolver : unmodifiableList) {
-            //需要在requestParam之前执行自定义逻辑，然后再执行下一个逻辑（责任链模式）
-            if (methodArgumentResolver instanceof RequestParamMapMethodArgumentResolver) {
-                decryptRequestParamMapResolver.setRequestParamMapMethodArgumentResolver((RequestParamMapMethodArgumentResolver) methodArgumentResolver);
-                list.add(decryptRequestParamMapResolver);
-            }
-            if (methodArgumentResolver instanceof RequestParamMethodArgumentResolver) {
-                decryptRequestParamResolver.setRequestParamMethodArgumentResolver((RequestParamMethodArgumentResolver) methodArgumentResolver);
-                list.add(decryptRequestParamResolver);
-            }
-            list.add(methodArgumentResolver);
-        }
-        log.debug("[GstDev Cloud] |- Rest Crypto HandlerMethodArgumentResolver Auto Configure.");
-
-        requestMappingHandlerAdapter.setArgumentResolvers(list);
-    }
+    requestMappingHandlerAdapter.setArgumentResolvers(list);
+  }
 }

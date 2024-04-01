@@ -15,14 +15,14 @@ import org.springframework.context.annotation.Import;
  */
 @AutoConfiguration
 @Import({
-        UndertowWebServerFactoryCustomizer.class,
+  UndertowWebServerFactoryCustomizer.class,
 })
 public class WebServerAutoConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(WebServerAutoConfiguration.class);
+  private static final Logger log = LoggerFactory.getLogger(WebServerAutoConfiguration.class);
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[GstDev Cloud] |- Module [Web Server Starter] Auto Configure.");
-    }
+  @PostConstruct
+  public void postConstruct() {
+    log.info("[GstDev Cloud] |- Module [Web Server Starter] Auto Configure.");
+  }
 }

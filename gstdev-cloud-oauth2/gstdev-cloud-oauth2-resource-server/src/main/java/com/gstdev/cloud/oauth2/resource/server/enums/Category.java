@@ -4,7 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 
 /**
  * @program: frame-cloud-base
- * @description:  URL 路径类别
+ * @description: URL 路径类别
  * @author: wenchao.chen
  * @create: 2024/03/25 15:10
  **/

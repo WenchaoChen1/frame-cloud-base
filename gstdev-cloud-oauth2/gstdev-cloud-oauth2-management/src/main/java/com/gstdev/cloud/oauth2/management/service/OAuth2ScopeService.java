@@ -19,30 +19,30 @@ import java.util.Set;
 @Service
 public class OAuth2ScopeService extends BaseService<OAuth2Scope, String> {
 
-    private final OAuth2ScopeRepository oauthScopesRepository;
+  private final OAuth2ScopeRepository oauthScopesRepository;
 
-    public OAuth2ScopeService(OAuth2ScopeRepository oauthScopesRepository) {
-        this.oauthScopesRepository = oauthScopesRepository;
-    }
+  public OAuth2ScopeService(OAuth2ScopeRepository oauthScopesRepository) {
+    this.oauthScopesRepository = oauthScopesRepository;
+  }
 
-    @Override
-    public BaseRepository<OAuth2Scope, String> getRepository() {
-        return oauthScopesRepository;
-    }
+  @Override
+  public BaseRepository<OAuth2Scope, String> getRepository() {
+    return oauthScopesRepository;
+  }
 
-    public OAuth2Scope assigned(String scopeId, Set<OAuth2Permission> permissions) {
+  public OAuth2Scope assigned(String scopeId, Set<OAuth2Permission> permissions) {
 
-        OAuth2Scope oldScope = findById(scopeId);
-        oldScope.setPermissions(permissions);
+    OAuth2Scope oldScope = findById(scopeId);
+    oldScope.setPermissions(permissions);
 
-        return saveAndFlush(oldScope);
-    }
+    return saveAndFlush(oldScope);
+  }
 
-    public OAuth2Scope findByScopeCode(String scopeCode) {
-        return oauthScopesRepository.findByScopeCode(scopeCode);
-    }
+  public OAuth2Scope findByScopeCode(String scopeCode) {
+    return oauthScopesRepository.findByScopeCode(scopeCode);
+  }
 
-    public List<OAuth2Scope> findByScopeCodeIn(List<String> scopeCodes) {
-        return oauthScopesRepository.findByScopeCodeIn(scopeCodes);
-    }
+  public List<OAuth2Scope> findByScopeCodeIn(List<String> scopeCodes) {
+    return oauthScopesRepository.findByScopeCodeIn(scopeCodes);
+  }
 }

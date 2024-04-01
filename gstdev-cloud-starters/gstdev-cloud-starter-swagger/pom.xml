@@ -15,7 +15,7 @@
   </parent>
 
   <dependencies>
-<!--     Swagger related dependencies -->
+    <!--     Swagger related dependencies -->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-plugin-swagger</artifactId>

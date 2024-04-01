@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
  * @date : 2023/9/26 8:52
  */
 public class MethodNotAllowedFeedback extends Feedback {
-    public MethodNotAllowedFeedback(String value) {
-        super(value, HttpStatus.METHOD_NOT_ALLOWED);
-    }
+  public MethodNotAllowedFeedback(String value) {
+    super(value, HttpStatus.METHOD_NOT_ALLOWED);
+  }
 }

@@ -26,39 +26,39 @@ import java.io.IOException;
  */
 public class OidcClientRegistrationResponseHandler implements AuthenticationSuccessHandler {
 
-    private static final Logger log = LoggerFactory.getLogger(OidcClientRegistrationResponseHandler.class);
+  private static final Logger log = LoggerFactory.getLogger(OidcClientRegistrationResponseHandler.class);
 
-    private final OAuth2DeviceService deviceService;
+  private final OAuth2DeviceService deviceService;
 
-    private final HttpMessageConverter<OidcClientRegistration> clientRegistrationHttpMessageConverter =
-            new OidcClientRegistrationHttpMessageConverter();
+  private final HttpMessageConverter<OidcClientRegistration> clientRegistrationHttpMessageConverter =
+    new OidcClientRegistrationHttpMessageConverter();
 
-    public OidcClientRegistrationResponseHandler(OAuth2DeviceService deviceService) {
-        this.deviceService = deviceService;
+  public OidcClientRegistrationResponseHandler(OAuth2DeviceService deviceService) {
+    this.deviceService = deviceService;
+  }
+
+
+  @Override
+  public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+
+    OidcClientRegistrationAuthenticationToken clientRegistrationAuthenticationToken =
+      (OidcClientRegistrationAuthenticationToken) authentication;
+
+    OidcClientRegistration clientRegistration = clientRegistrationAuthenticationToken.getClientRegistration();
+
+    boolean success = deviceService.sync(clientRegistration);
+    if (success) {
+      log.info("[GstDev Cloud] |- Sync oidcClientRegistration to device succeed.");
+    } else {
+      log.warn("[GstDev Cloud] |- Sync oidcClientRegistration to device failed!");
     }
 
-
-    @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-
-        OidcClientRegistrationAuthenticationToken clientRegistrationAuthenticationToken =
-                (OidcClientRegistrationAuthenticationToken) authentication;
-
-        OidcClientRegistration clientRegistration = clientRegistrationAuthenticationToken.getClientRegistration();
-
-        boolean success = deviceService.sync(clientRegistration);
-        if (success) {
-            log.info("[GstDev Cloud] |- Sync oidcClientRegistration to device succeed.");
-        } else {
-            log.warn("[GstDev Cloud] |- Sync oidcClientRegistration to device failed!");
-        }
-
-        ServletServerHttpResponse httpResponse = new ServletServerHttpResponse(response);
-        if (HttpMethod.POST.name().equals(request.getMethod())) {
-            httpResponse.setStatusCode(HttpStatus.CREATED);
-        } else {
-            httpResponse.setStatusCode(HttpStatus.OK);
-        }
-        this.clientRegistrationHttpMessageConverter.write(clientRegistration, null, httpResponse);
+    ServletServerHttpResponse httpResponse = new ServletServerHttpResponse(response);
+    if (HttpMethod.POST.name().equals(request.getMethod())) {
+      httpResponse.setStatusCode(HttpStatus.CREATED);
+    } else {
+      httpResponse.setStatusCode(HttpStatus.OK);
     }
+    this.clientRegistrationHttpMessageConverter.write(clientRegistration, null, httpResponse);
+  }
 }

@@ -8,12 +8,12 @@ package com.gstdev.cloud.oauth2.core.enums;
  */
 public enum Certificate {
 
-    /**
-     * Spring Authorization Server 默认的 JWK 生成方式
-     */
-    STANDARD,
-    /**
-     * 自定义证书 JWK 生成方式
-     */
-    CUSTOM;
+  /**
+   * Spring Authorization Server 默认的 JWK 生成方式
+   */
+  STANDARD,
+  /**
+   * 自定义证书 JWK 生成方式
+   */
+  CUSTOM;
 }

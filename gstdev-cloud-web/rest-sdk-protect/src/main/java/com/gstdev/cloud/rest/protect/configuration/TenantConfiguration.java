@@ -17,18 +17,18 @@ import org.springframework.context.annotation.Bean;
 @AutoConfiguration
 public class TenantConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(TenantConfiguration.class);
+  private static final Logger log = LoggerFactory.getLogger(TenantConfiguration.class);
 
-    @PostConstruct
-    public void postConstruct() {
-        log.debug("[GstDev Cloud] |- SDK [Protect Tenant] Auto Configure.");
-    }
+  @PostConstruct
+  public void postConstruct() {
+    log.debug("[GstDev Cloud] |- SDK [Protect Tenant] Auto Configure.");
+  }
 
-    @Bean
-    @ConditionalOnMissingBean
-    public MultiTenantInterceptor tenantInterceptor() {
-        MultiTenantInterceptor multiTenantInterceptor = new MultiTenantInterceptor();
-        log.trace("[GstDev Cloud] |- Bean [Idempotent Interceptor] Auto Configure.");
-        return multiTenantInterceptor;
-    }
+  @Bean
+  @ConditionalOnMissingBean
+  public MultiTenantInterceptor tenantInterceptor() {
+    MultiTenantInterceptor multiTenantInterceptor = new MultiTenantInterceptor();
+    log.trace("[GstDev Cloud] |- Bean [Idempotent Interceptor] Auto Configure.");
+    return multiTenantInterceptor;
+  }
 }

@@ -21,15 +21,15 @@ import jakarta.validation.constraints.NotBlank;
 @Schema(title = "登录错误提示信息")
 public class SignInErrorPrompt extends BaseDto {
 
-    @NotBlank(message = "登录用户名不能为空")
-    @Schema(name = "登录用户名", title = "必须是有效的用户名")
-    private String username;
+  @NotBlank(message = "登录用户名不能为空")
+  @Schema(name = "登录用户名", title = "必须是有效的用户名")
+  private String username;
 
-    public String getUsername() {
-        return username;
-    }
+  public String getUsername() {
+    return username;
+  }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+  public void setUsername(String username) {
+    this.username = username;
+  }
 }

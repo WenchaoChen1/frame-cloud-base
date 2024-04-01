@@ -27,33 +27,33 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 @ConditionalOnBean(AccountStatusEventManager.class)
 public class OAuth2ComplianceConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(OAuth2ComplianceConfiguration.class);
+  private static final Logger log = LoggerFactory.getLogger(OAuth2ComplianceConfiguration.class);
 
-    @PostConstruct
-    public void postConstruct() {
-        log.debug("[GstDev Cloud] |- SDK [OAuth2 Compliance] Auto Configure.");
-    }
+  @PostConstruct
+  public void postConstruct() {
+    log.debug("[GstDev Cloud] |- SDK [OAuth2 Compliance] Auto Configure.");
+  }
 
-    @Bean
-    public OAuth2AccountStatusManager accountStatusManager(UserDetailsService userDetailsService, AccountStatusEventManager accountStatusChanger, LockedUserDetailsStampManager lockedUserDetailsStampManager) {
-        OAuth2AccountStatusManager manager = new OAuth2AccountStatusManager(userDetailsService, accountStatusChanger, lockedUserDetailsStampManager);
-        log.trace("[GstDev Cloud] |- Bean [OAuth2 Account Status Manager] Auto Configure.");
-        return manager;
-    }
+  @Bean
+  public OAuth2AccountStatusManager accountStatusManager(UserDetailsService userDetailsService, AccountStatusEventManager accountStatusChanger, LockedUserDetailsStampManager lockedUserDetailsStampManager) {
+    OAuth2AccountStatusManager manager = new OAuth2AccountStatusManager(userDetailsService, accountStatusChanger, lockedUserDetailsStampManager);
+    log.trace("[GstDev Cloud] |- Bean [OAuth2 Account Status Manager] Auto Configure.");
+    return manager;
+  }
 
-    @Bean
-    @ConditionalOnAutoUnlockUserAccount
-    public AccountAutoEnableListener accountLockStatusListener(RedisMessageListenerContainer redisMessageListenerContainer, OAuth2AccountStatusManager accountStatusManager) {
-        AccountAutoEnableListener listener = new AccountAutoEnableListener(redisMessageListenerContainer, accountStatusManager);
-        log.trace("[GstDev Cloud] |- Bean [OAuth2 Account Lock Status Listener] Auto Configure.");
-        return listener;
-    }
+  @Bean
+  @ConditionalOnAutoUnlockUserAccount
+  public AccountAutoEnableListener accountLockStatusListener(RedisMessageListenerContainer redisMessageListenerContainer, OAuth2AccountStatusManager accountStatusManager) {
+    AccountAutoEnableListener listener = new AccountAutoEnableListener(redisMessageListenerContainer, accountStatusManager);
+    log.trace("[GstDev Cloud] |- Bean [OAuth2 Account Lock Status Listener] Auto Configure.");
+    return listener;
+  }
 
-    @Bean
-    @ConditionalOnMissingBean
-    public AuthenticationFailureListener authenticationFailureListener(SignInFailureLimitedStampManager stampManager, OAuth2AccountStatusManager accountLockService) {
-        AuthenticationFailureListener listener = new AuthenticationFailureListener(stampManager, accountLockService);
-        log.trace("[GstDev Cloud] |- Bean [OAuth2 Authentication Failure Listener] Auto Configure.");
-        return listener;
-    }
+  @Bean
+  @ConditionalOnMissingBean
+  public AuthenticationFailureListener authenticationFailureListener(SignInFailureLimitedStampManager stampManager, OAuth2AccountStatusManager accountLockService) {
+    AuthenticationFailureListener listener = new AuthenticationFailureListener(stampManager, accountLockService);
+    log.trace("[GstDev Cloud] |- Bean [OAuth2 Authentication Failure Listener] Auto Configure.");
+    return listener;
+  }
 }

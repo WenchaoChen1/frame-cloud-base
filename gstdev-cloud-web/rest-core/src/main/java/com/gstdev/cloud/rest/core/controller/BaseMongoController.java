@@ -33,59 +33,59 @@ import java.util.Map;
 @SecurityRequirement(name = BaseConstants.OPEN_API_SECURITY_SCHEME_BEARER_NAME)
 public abstract class BaseMongoController<E extends BaseMongoEntity, ID extends Serializable> implements MongoController<E, ID> {
 
-    @AccessLimited
-    @Operation(summary = "分页查询数据", description = "通过pageNumber和pageSize获取分页数据",
-            responses = {@ApiResponse(description = "单位列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))})
-    @Parameters({
-            @Parameter(name = "pager", required = true, in = ParameterIn.PATH, description = "分页Bo对象", schema = @Schema(implementation = Pager.class))
-    })
-    @GetMapping
-    public Result<Map<String, Object>> findByPage(@Validated Pager pager) {
-        if (ArrayUtils.isNotEmpty(pager.getProperties())) {
-            Sort.Direction direction = Sort.Direction.valueOf(pager.getDirection());
-            return MongoController.super.findByPage(pager.getPageNumber(), pager.getPageSize(), direction, pager.getProperties());
-        } else {
-            return MongoController.super.findByPage(pager.getPageNumber(), pager.getPageSize());
-        }
+  @AccessLimited
+  @Operation(summary = "分页查询数据", description = "通过pageNumber和pageSize获取分页数据",
+    responses = {@ApiResponse(description = "单位列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))})
+  @Parameters({
+    @Parameter(name = "pager", required = true, in = ParameterIn.PATH, description = "分页Bo对象", schema = @Schema(implementation = Pager.class))
+  })
+  @GetMapping
+  public Result<Map<String, Object>> findByPage(@Validated Pager pager) {
+    if (ArrayUtils.isNotEmpty(pager.getProperties())) {
+      Sort.Direction direction = Sort.Direction.valueOf(pager.getDirection());
+      return MongoController.super.findByPage(pager.getPageNumber(), pager.getPageSize(), direction, pager.getProperties());
+    } else {
+      return MongoController.super.findByPage(pager.getPageNumber(), pager.getPageSize());
+    }
+  }
+
+  @AccessLimited
+  @Operation(summary = "根据ID查询元素", description = "根据ID查询元素",
+    requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
+    responses = {@ApiResponse(description = "操作消息", content = @Content(mediaType = "application/json"))})
+  @Parameters({
+    @Parameter(name = "id", required = true, in = ParameterIn.PATH, description = "实体ID，@Id注解对应的实体属性")
+  })
+  @GetMapping("/{id}")
+  public Result<E> findById(@PathVariable ID id) {
+    return MongoController.super.findById(id);
+  }
+
+  @Idempotent
+  @Operation(summary = "保存或更新数据", description = "接收JSON数据，转换为实体，进行保存或更新",
+    requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
+    responses = {@ApiResponse(description = "已保存数据", content = @Content(mediaType = "application/json"))})
+  @Parameters({
+    @Parameter(name = "domain", required = true, description = "可转换为实体的json数据")
+  })
+  @PostMapping
+  public Result<E> saveOrUpdate(@RequestBody E domain) {
+    if (StringUtils.isBlank(domain.getId())) {
+      domain.setId(IdUtil.objectId());
     }
 
-    @AccessLimited
-    @Operation(summary = "根据ID查询元素", description = "根据ID查询元素",
-            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
-            responses = {@ApiResponse(description = "操作消息", content = @Content(mediaType = "application/json"))})
-    @Parameters({
-            @Parameter(name = "id", required = true, in = ParameterIn.PATH, description = "实体ID，@Id注解对应的实体属性")
-    })
-    @GetMapping("/{id}")
-    public Result<E> findById(@PathVariable ID id) {
-        return MongoController.super.findById(id);
-    }
+    return MongoController.super.saveOrUpdate(domain);
+  }
 
-    @Idempotent
-    @Operation(summary = "保存或更新数据", description = "接收JSON数据，转换为实体，进行保存或更新",
-            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
-            responses = {@ApiResponse(description = "已保存数据", content = @Content(mediaType = "application/json"))})
-    @Parameters({
-            @Parameter(name = "domain", required = true, description = "可转换为实体的json数据")
-    })
-    @PostMapping
-    public Result<E> saveOrUpdate(@RequestBody E domain) {
-        if (StringUtils.isBlank(domain.getId())) {
-            domain.setId(IdUtil.objectId());
-        }
-
-        return MongoController.super.saveOrUpdate(domain);
-    }
-
-    @Idempotent
-    @Operation(summary = "删除数据", description = "根据实体ID删除数据，以及相关联的关联数据",
-            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
-            responses = {@ApiResponse(description = "操作消息", content = @Content(mediaType = "application/json"))})
-    @Parameters({
-            @Parameter(name = "id", required = true, in = ParameterIn.PATH, description = "实体ID，@Id注解对应的实体属性")
-    })
-    @DeleteMapping("/{id}")
-    public Result<String> delete(@PathVariable ID id) {
-        return MongoController.super.delete(id);
-    }
+  @Idempotent
+  @Operation(summary = "删除数据", description = "根据实体ID删除数据，以及相关联的关联数据",
+    requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
+    responses = {@ApiResponse(description = "操作消息", content = @Content(mediaType = "application/json"))})
+  @Parameters({
+    @Parameter(name = "id", required = true, in = ParameterIn.PATH, description = "实体ID，@Id注解对应的实体属性")
+  })
+  @DeleteMapping("/{id}")
+  public Result<String> delete(@PathVariable ID id) {
+    return MongoController.super.delete(id);
+  }
 }

@@ -1,13 +1,16 @@
 # JetCache 相关代码组件模块
 
 **包含以下内容：**
+
 1. JetCache 配置。
 2. 自研 JetCache 缓存手动创建工具类
 3. 签章(Stamp)管理定义类
 
 # 简介
 
-JetCache是一个基于Java的缓存系统封装，提供统一的API和注解来简化缓存的使用。 JetCache提供了比SpringCache更加强大的注解，可以原生的支持TTL、两级缓存、分布式自动刷新，还提供了Cache接口用于手工缓存操作。 当前有四个实现，RedisCache、TairCache（此部分未在github开源）、CaffeineCache(in memory)和一个简易的LinkedHashMapCache(in memory)，要添加新的实现也是非常简单的。
+JetCache是一个基于Java的缓存系统封装，提供统一的API和注解来简化缓存的使用。
+JetCache提供了比SpringCache更加强大的注解，可以原生的支持TTL、两级缓存、分布式自动刷新，还提供了Cache接口用于手工缓存操作。
+当前有四个实现，RedisCache、TairCache（此部分未在github开源）、CaffeineCache(in memory)和一个简易的LinkedHashMapCache(in memory)，要添加新的实现也是非常简单的。
 
 [中文文档](https://github.com/alibaba/jetcache/tree/master/docs/CN)
 
@@ -56,16 +59,21 @@ jetcache:
 
 支持以下几种方式:
 
-- `redis` (查看 `com.alicp.jetcache.autoconfigure.RedisAutoConfiguration` 配置类)，这个使用的是 jedis，注意要引入相应的依赖 `jetcache-starter-redis`
-- `redis.lettuce` (查看 `com.alicp.jetcache.autoconfigure.RedisLettuceAutoConfiguration` 配置类)，这个使用的是 lettuce，注意引入相应的依赖 `jetcache-starter-redis-lettuce`
-- `redisson` (查看 `com.alicp.jetcache.autoconfigure.RedissonAutoConfiguration` 配置类)，这个使用的是 redisson，注意引入相应的依赖 `jetcache-starter-redisson`
-- `redis.springdata` (查看 `com.alicp.jetcache.autoconfigure.RedisSpringDataAutoConfiguration` 配置类)，这个使用的是 spring-data-redis，注意引入相应的依赖 `jetcache-starter-redis-springdata`
+- `redis` (查看 `com.alicp.jetcache.autoconfigure.RedisAutoConfiguration` 配置类)，这个使用的是
+  jedis，注意要引入相应的依赖 `jetcache-starter-redis`
+- `redis.lettuce` (查看 `com.alicp.jetcache.autoconfigure.RedisLettuceAutoConfiguration` 配置类)，这个使用的是
+  lettuce，注意引入相应的依赖 `jetcache-starter-redis-lettuce`
+- `redisson` (查看 `com.alicp.jetcache.autoconfigure.RedissonAutoConfiguration` 配置类)，这个使用的是
+  redisson，注意引入相应的依赖 `jetcache-starter-redisson`
+- `redis.springdata` (查看 `com.alicp.jetcache.autoconfigure.RedisSpringDataAutoConfiguration` 配置类)，这个使用的是
+  spring-data-redis，注意引入相应的依赖 `jetcache-starter-redis-springdata`
 
 > dante 使用的是 redis.lettuce
 
 ## `remote.${area}.readFrom` 详解
 
 `readFrom` 参数的补充说明：
+
 - **master**: 从主节点读取
 - **masterPreferred**: 优先从主节点读取，主服务不可用时再从从服务读取
 - **replica**: 只从从服务读取数据
@@ -76,14 +84,11 @@ jetcache:
 
 # 签章(stamp)的使用
 
-`StampManager` 接口用于定义在特定条件下生成后，在一定时间就会消除的标记性Stamp。
-例如，幂等、短信验证码、Auth State等，用时生成，然后进行验证，之后再删除的标记Stamp。
+`StampManager` 接口用于定义在特定条件下生成后，在一定时间就会消除的标记性Stamp。 例如，幂等、短信验证码、Auth State等，用时生成，然后进行验证，之后再删除的标记Stamp。
 
 ## 计数器
 
-应用场景一般是一段时间内的操作次数，例如登录失败次数、接口请求次数……
-自定义一个计数器需要实现 `AbstractCountStampManager` 并注册为 bean
-如下所示：
+应用场景一般是一段时间内的操作次数，例如登录失败次数、接口请求次数…… 自定义一个计数器需要实现 `AbstractCountStampManager` 并注册为 bean 如下所示：
 
 ```java
 public class NumberCountStamp extends AbstractCountStampManager {
@@ -147,8 +152,7 @@ public class TestController {
 
 ## 缓存签章
 
-应用场景是某段时间后会自动失效的数据，例如验证码，也可以用做分布式锁
-自定义签章需要实现 `AbstractStampManager`，如下所示：
+应用场景是某段时间后会自动失效的数据，例如验证码，也可以用做分布式锁 自定义签章需要实现 `AbstractStampManager`，如下所示：
 
 ```java
 public class CaptchaStamp extends AbstractStampManager<String, String> {
@@ -169,6 +173,7 @@ public class CaptchaStamp extends AbstractStampManager<String, String> {
     }
 }
 ```
+
 然后注册为 bean
 
 ```java
@@ -181,6 +186,7 @@ public class StampConfiguration {
     }
 }
 ```
+
 之后就可以在业务代码中使用了~
 
 ```java

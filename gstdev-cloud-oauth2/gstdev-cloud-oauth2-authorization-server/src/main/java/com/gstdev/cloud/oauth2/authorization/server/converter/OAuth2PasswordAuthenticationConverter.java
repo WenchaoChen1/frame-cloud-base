@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
  * @author : cc
  * @date : 2022/2/22 17:03
  */
-public class OAuth2PasswordAuthenticationConverter  implements AuthenticationConverter {
+public class OAuth2PasswordAuthenticationConverter implements AuthenticationConverter {
 //  public OAuth2ResourceOwnerPasswordAuthenticationConverter(HttpCryptoProcessor httpCryptoProcessor) {
 //    super(httpCryptoProcessor);
 //  }

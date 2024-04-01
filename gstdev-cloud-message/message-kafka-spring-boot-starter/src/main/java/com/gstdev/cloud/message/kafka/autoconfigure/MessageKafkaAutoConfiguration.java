@@ -17,12 +17,12 @@ import org.springframework.context.annotation.Import;
 @Import({KafkaConfiguration.class})
 public class MessageKafkaAutoConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(MessageKafkaAutoConfiguration.class);
+  private static final Logger log = LoggerFactory.getLogger(MessageKafkaAutoConfiguration.class);
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[GstDev Cloud] |- Module [Message Kafka Starter] Auto Configure.");
-    }
+  @PostConstruct
+  public void postConstruct() {
+    log.info("[GstDev Cloud] |- Module [Message Kafka Starter] Auto Configure.");
+  }
 
 
 }

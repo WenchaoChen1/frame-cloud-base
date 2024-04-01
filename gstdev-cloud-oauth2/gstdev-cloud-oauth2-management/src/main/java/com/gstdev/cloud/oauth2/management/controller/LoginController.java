@@ -31,100 +31,100 @@ import java.util.Map;
 @Controller
 public class LoginController {
 
-    private static final String DEFAULT_LOGIN_PAGE_VIEW = "login";
-    private static final String DEFAULT_ERROR_PAGE_VIEW = "error";
+  private static final String DEFAULT_LOGIN_PAGE_VIEW = "login";
+  private static final String DEFAULT_ERROR_PAGE_VIEW = "error";
 
-    private final OAuth2AuthenticationProperties authenticationProperties;
+  private final OAuth2AuthenticationProperties authenticationProperties;
 
-    @Autowired
-    public LoginController(OAuth2AuthenticationProperties authenticationProperties) {
-        this.authenticationProperties = authenticationProperties;
+  @Autowired
+  public LoginController(OAuth2AuthenticationProperties authenticationProperties) {
+    this.authenticationProperties = authenticationProperties;
+  }
+
+
+  @RequestMapping(value = "/login", method = RequestMethod.GET)
+  public ModelAndView login(Map<String, Object> model, HttpServletRequest request) {
+
+    ModelAndView modelAndView = new ModelAndView(DEFAULT_LOGIN_PAGE_VIEW);
+
+    boolean loginError = isErrorPage(request);
+    boolean logoutSuccess = isLogoutSuccess(request);
+    String errorMessage = getErrorMessage(request);
+
+    Map<String, String> hiddenInputs = hiddenInputs(request);
+
+    // 登录可配置用户名参数
+    modelAndView.addObject("vulgar_tycoon", getFormLogin().getUsernameParameter());
+    // 登录可配置密码参数
+    modelAndView.addObject("beast", getFormLogin().getPasswordParameter());
+    modelAndView.addObject("anubis", getFormLogin().getRememberMeParameter());
+    modelAndView.addObject("graphic", getFormLogin().getCaptchaParameter());
+    modelAndView.addObject("hide_verification_code", getFormLogin().getCloseCaptcha());
+    // Security 隐藏域
+    // AES加密key
+    modelAndView.addObject("soup_spoon", SymmetricUtils.getEncryptedSymmetricKey());
+    // 验证码类别
+    modelAndView.addObject("verification_category", getFormLogin().getCategory());
+    modelAndView.addObject("hidden_inputs", hiddenInputs);
+    modelAndView.addObject("login_error", loginError);
+    modelAndView.addObject("logout_success", logoutSuccess);
+    modelAndView.addObject("message", StringUtils.isNotBlank(errorMessage) ? HtmlUtils.htmlEscape(errorMessage) : null);
+    modelAndView.addObject("contentPath", request.getContextPath());
+    modelAndView.addObject("sessionId", SessionUtils.analyseSessionId(request));
+
+    return modelAndView;
+  }
+
+  private OAuth2AuthenticationProperties.FormLogin getFormLogin() {
+    return authenticationProperties.getFormLogin();
+  }
+
+  private boolean isErrorPage(HttpServletRequest request) {
+    String failureUrl = DEFAULT_LOGIN_PAGE_VIEW + "?" + DEFAULT_ERROR_PAGE_VIEW;
+    return matches(request, failureUrl);
+  }
+
+  private boolean isLogoutSuccess(HttpServletRequest request) {
+    String logoutSuccessUrl = DEFAULT_LOGIN_PAGE_VIEW + "?logout";
+    return matches(request, logoutSuccessUrl);
+  }
+
+  private Map<String, String> hiddenInputs(HttpServletRequest request) {
+    CsrfToken token = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
+    return (token != null) ? Collections.singletonMap(token.getParameterName(), token.getToken())
+      : Collections.emptyMap();
+  }
+
+  private String getErrorMessage(HttpServletRequest request) {
+    HttpSession session = SessionUtils.getSession(request);
+    if (ObjectUtils.isNotEmpty(session)) {
+      String message = (String) session.getAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
+      if (ObjectUtils.isNotEmpty(message)) {
+        return message;
+      }
     }
 
+    return null;
+  }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView login(Map<String, Object> model, HttpServletRequest request) {
-
-        ModelAndView modelAndView = new ModelAndView(DEFAULT_LOGIN_PAGE_VIEW);
-
-        boolean loginError = isErrorPage(request);
-        boolean logoutSuccess = isLogoutSuccess(request);
-        String errorMessage = getErrorMessage(request);
-
-        Map<String, String> hiddenInputs = hiddenInputs(request);
-
-        // 登录可配置用户名参数
-        modelAndView.addObject("vulgar_tycoon", getFormLogin().getUsernameParameter());
-        // 登录可配置密码参数
-        modelAndView.addObject("beast", getFormLogin().getPasswordParameter());
-        modelAndView.addObject("anubis", getFormLogin().getRememberMeParameter());
-        modelAndView.addObject("graphic", getFormLogin().getCaptchaParameter());
-        modelAndView.addObject("hide_verification_code", getFormLogin().getCloseCaptcha());
-        // Security 隐藏域
-        // AES加密key
-        modelAndView.addObject("soup_spoon", SymmetricUtils.getEncryptedSymmetricKey());
-        // 验证码类别
-        modelAndView.addObject("verification_category", getFormLogin().getCategory());
-        modelAndView.addObject("hidden_inputs", hiddenInputs);
-        modelAndView.addObject("login_error", loginError);
-        modelAndView.addObject("logout_success", logoutSuccess);
-        modelAndView.addObject("message", StringUtils.isNotBlank(errorMessage) ? HtmlUtils.htmlEscape(errorMessage) : null);
-        modelAndView.addObject("contentPath", request.getContextPath());
-        modelAndView.addObject("sessionId", SessionUtils.analyseSessionId(request));
-
-        return modelAndView;
+  private boolean matches(HttpServletRequest request, String url) {
+    if (!HttpMethod.GET.name().equals(request.getMethod()) || url == null) {
+      return false;
     }
-
-    private OAuth2AuthenticationProperties.FormLogin getFormLogin() {
-        return authenticationProperties.getFormLogin();
+    String uri = request.getRequestURI();
+    int pathParamIndex = uri.indexOf(';');
+    if (pathParamIndex > 0) {
+      // strip everything after the first semi-colon
+      uri = uri.substring(0, pathParamIndex);
     }
-
-    private boolean isErrorPage(HttpServletRequest request) {
-        String failureUrl = DEFAULT_LOGIN_PAGE_VIEW + "?" + DEFAULT_ERROR_PAGE_VIEW;
-        return matches(request, failureUrl);
+    if (request.getQueryString() != null) {
+      uri += "?" + request.getQueryString();
     }
-
-    private boolean isLogoutSuccess(HttpServletRequest request) {
-        String logoutSuccessUrl = DEFAULT_LOGIN_PAGE_VIEW + "?logout";
-        return matches(request, logoutSuccessUrl);
+    if ("".equals(request.getContextPath())) {
+      return uri.equals(url);
     }
-
-    private Map<String, String> hiddenInputs(HttpServletRequest request) {
-        CsrfToken token = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
-        return (token != null) ? Collections.singletonMap(token.getParameterName(), token.getToken())
-                : Collections.emptyMap();
-    }
-
-    private String getErrorMessage(HttpServletRequest request) {
-        HttpSession session = SessionUtils.getSession(request);
-        if (ObjectUtils.isNotEmpty(session)) {
-            String message = (String) session.getAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
-            if (ObjectUtils.isNotEmpty(message)) {
-                return message;
-            }
-        }
-
-        return null;
-    }
-
-    private boolean matches(HttpServletRequest request, String url) {
-        if (!HttpMethod.GET.name().equals(request.getMethod()) || url == null) {
-            return false;
-        }
-        String uri = request.getRequestURI();
-        int pathParamIndex = uri.indexOf(';');
-        if (pathParamIndex > 0) {
-            // strip everything after the first semi-colon
-            uri = uri.substring(0, pathParamIndex);
-        }
-        if (request.getQueryString() != null) {
-            uri += "?" + request.getQueryString();
-        }
-        if ("".equals(request.getContextPath())) {
-            return uri.equals(url);
-        }
-        return uri.equals(request.getContextPath() + url);
-    }
+    return uri.equals(request.getContextPath() + url);
+  }
 
 
 }

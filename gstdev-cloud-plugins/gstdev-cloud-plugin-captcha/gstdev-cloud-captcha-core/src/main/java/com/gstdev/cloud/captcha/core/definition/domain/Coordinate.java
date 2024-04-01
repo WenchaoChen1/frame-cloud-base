@@ -14,55 +14,55 @@ import java.io.Serializable;
  */
 public class Coordinate implements Serializable {
 
-    private int x;
-    private int y;
+  private int x;
+  private int y;
 
-    public Coordinate() {
-    }
+  public Coordinate() {
+  }
 
-    public Coordinate(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
+  public Coordinate(int x, int y) {
+    this.x = x;
+    this.y = y;
+  }
 
-    public int getX() {
-        return x;
-    }
+  public int getX() {
+    return x;
+  }
 
-    public void setX(int x) {
-        this.x = x;
-    }
+  public void setX(int x) {
+    this.x = x;
+  }
 
-    public int getY() {
-        return y;
-    }
+  public int getY() {
+    return y;
+  }
 
-    public void setY(int y) {
-        this.y = y;
-    }
+  public void setY(int y) {
+    this.y = y;
+  }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Coordinate that = (Coordinate) o;
-        return x == that.x && y == that.y;
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Coordinate that = (Coordinate) o;
+    return x == that.x && y == that.y;
+  }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(x, y);
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(x, y);
+  }
 
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("x", x)
-                .add("y", y)
-                .toString();
-    }
+  @Override
+  public String toString() {
+    return MoreObjects.toStringHelper(this)
+      .add("x", x)
+      .add("y", y)
+      .toString();
+  }
 }

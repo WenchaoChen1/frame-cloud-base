@@ -76,7 +76,7 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-<!--      <scope>provided</scope>-->
+      <!--      <scope>provided</scope>-->
     </dependency>
 
     <dependency>
@@ -101,108 +101,108 @@
 
 
     <!--========================================= d ===============================================-->
-<!--    <dependency>-->
-<!--      <groupId>org.apache.commons</groupId>-->
-<!--      <artifactId>commons-collections4</artifactId>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.apache.commons</groupId>-->
+    <!--      <artifactId>commons-collections4</artifactId>-->
+    <!--    </dependency>-->
     <!-- Apache commons related dependencies -->
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
     </dependency>
-<!--    <dependency>-->
-<!--      <groupId>org.apache.commons</groupId>-->
-<!--      <artifactId>commons-pool2</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.apache.httpcomponents.client5</groupId>-->
-<!--      <artifactId>httpclient5</artifactId>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.apache.commons</groupId>-->
+    <!--      <artifactId>commons-pool2</artifactId>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.apache.httpcomponents.client5</groupId>-->
+    <!--      <artifactId>httpclient5</artifactId>-->
+    <!--    </dependency>-->
     <!-- Guava related dependencies -->
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
     </dependency>
-<!--    <dependency>-->
-<!--      <groupId>com.google.code.gson</groupId>-->
-<!--      <artifactId>gson</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>com.google.zxing</groupId>-->
-<!--      <artifactId>core</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>com.fasterxml.jackson.dataformat</groupId>-->
-<!--      <artifactId>jackson-dataformat-yaml</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>com.fasterxml.jackson.datatype</groupId>-->
-<!--      <artifactId>jackson-datatype-jsr310</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>com.fasterxml.jackson.datatype</groupId>-->
-<!--      <artifactId>jackson-datatype-jdk8</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>com.fasterxml.jackson.module</groupId>-->
-<!--      <artifactId>jackson-module-kotlin</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>cn.zhxu</groupId>-->
-<!--      <artifactId>okhttps-jackson</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>cn.zhxu</groupId>-->
-<!--      <artifactId>okhttps-gson</artifactId>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>com.google.code.gson</groupId>-->
+    <!--      <artifactId>gson</artifactId>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>com.google.zxing</groupId>-->
+    <!--      <artifactId>core</artifactId>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>com.fasterxml.jackson.dataformat</groupId>-->
+    <!--      <artifactId>jackson-dataformat-yaml</artifactId>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>com.fasterxml.jackson.datatype</groupId>-->
+    <!--      <artifactId>jackson-datatype-jsr310</artifactId>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>com.fasterxml.jackson.datatype</groupId>-->
+    <!--      <artifactId>jackson-datatype-jdk8</artifactId>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>com.fasterxml.jackson.module</groupId>-->
+    <!--      <artifactId>jackson-module-kotlin</artifactId>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>cn.zhxu</groupId>-->
+    <!--      <artifactId>okhttps-jackson</artifactId>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>cn.zhxu</groupId>-->
+    <!--      <artifactId>okhttps-gson</artifactId>-->
+    <!--    </dependency>-->
     <dependency>
       <groupId>io.swagger.core.v3</groupId>
       <artifactId>swagger-core-jakarta</artifactId>
     </dependency>
-<!--    <dependency>-->
-<!--      <groupId>org.dromara.hutool</groupId>-->
-<!--      <artifactId>hutool-all</artifactId>-->
-<!--    </dependency>-->
-<!--    &lt;!&ndash;指定 bouncycastle 相关依赖，避免依赖第三方携带 bouncycastle 相关包，产生 hutool 不同版本 crypto 不兼容问题，以及抛出DefaultBufferedBlockCipher问题&ndash;&gt;-->
-<!--    <dependency>-->
-<!--      <groupId>org.bouncycastle</groupId>-->
-<!--      <artifactId>bcpkix-jdk18on</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.bouncycastle</groupId>-->
-<!--      <artifactId>bcprov-jdk18on</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>jakarta.annotation</groupId>-->
-<!--      <artifactId>jakarta.annotation-api</artifactId>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.dromara.hutool</groupId>-->
+    <!--      <artifactId>hutool-all</artifactId>-->
+    <!--    </dependency>-->
+    <!--    &lt;!&ndash;指定 bouncycastle 相关依赖，避免依赖第三方携带 bouncycastle 相关包，产生 hutool 不同版本 crypto 不兼容问题，以及抛出DefaultBufferedBlockCipher问题&ndash;&gt;-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.bouncycastle</groupId>-->
+    <!--      <artifactId>bcpkix-jdk18on</artifactId>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.bouncycastle</groupId>-->
+    <!--      <artifactId>bcprov-jdk18on</artifactId>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>jakarta.annotation</groupId>-->
+    <!--      <artifactId>jakarta.annotation-api</artifactId>-->
+    <!--    </dependency>-->
     <!--========================================= core ===============================================-->
-<!--    <dependency>-->
-<!--      <groupId>cn.herodotus.engine</groupId>-->
-<!--      <artifactId>assistant-definition</artifactId>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>cn.herodotus.engine</groupId>-->
+    <!--      <artifactId>assistant-definition</artifactId>-->
+    <!--    </dependency>-->
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-text</artifactId>
     </dependency>
-<!--    <dependency>-->
-<!--      <groupId>commons-io</groupId>-->
-<!--      <artifactId>commons-io</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>commons-codec</groupId>-->
-<!--      <artifactId>commons-codec</artifactId>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>commons-io</groupId>-->
+    <!--      <artifactId>commons-io</artifactId>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>commons-codec</groupId>-->
+    <!--      <artifactId>commons-codec</artifactId>-->
+    <!--    </dependency>-->
 
-<!--    <dependency>-->
-<!--      <groupId>jakarta.servlet</groupId>-->
-<!--      <artifactId>jakarta.servlet-api</artifactId>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>jakarta.servlet</groupId>-->
+    <!--      <artifactId>jakarta.servlet-api</artifactId>-->
+    <!--    </dependency>-->
 
-<!--    <dependency>-->
-<!--      <groupId>me.zhyd.oauth</groupId>-->
-<!--      <artifactId>JustAuth</artifactId>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>me.zhyd.oauth</groupId>-->
+    <!--      <artifactId>JustAuth</artifactId>-->
+    <!--    </dependency>-->
 
     <dependency>
       <groupId>org.owasp.antisamy</groupId>
@@ -222,38 +222,38 @@
     </dependency>
 
     <!--    <dependency>-->
-<!--      <groupId>com.alibaba</groupId>-->
-<!--      <artifactId>transmittable-thread-local</artifactId>-->
-<!--    </dependency>-->
+    <!--      <groupId>com.alibaba</groupId>-->
+    <!--      <artifactId>transmittable-thread-local</artifactId>-->
+    <!--    </dependency>-->
 
-<!--    <dependency>-->
-<!--      <groupId>org.apache.skywalking</groupId>-->
-<!--      <artifactId>apm-toolkit-logback-1.x</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.apache.skywalking</groupId>-->
-<!--      <artifactId>apm-toolkit-trace</artifactId>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.apache.skywalking</groupId>-->
+    <!--      <artifactId>apm-toolkit-logback-1.x</artifactId>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.apache.skywalking</groupId>-->
+    <!--      <artifactId>apm-toolkit-trace</artifactId>-->
+    <!--    </dependency>-->
 
-<!--    <dependency>-->
-<!--      <groupId>org.springframework</groupId>-->
-<!--      <artifactId>spring-web</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.boot</groupId>-->
-<!--      <artifactId>spring-boot-autoconfigure</artifactId>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.springframework</groupId>-->
+    <!--      <artifactId>spring-web</artifactId>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.springframework.boot</groupId>-->
+    <!--      <artifactId>spring-boot-autoconfigure</artifactId>-->
+    <!--    </dependency>-->
 
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.boot</groupId>-->
-<!--      <artifactId>spring-boot-configuration-processor</artifactId>-->
-<!--      <optional>true</optional>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.springframework.boot</groupId>-->
+    <!--      <artifactId>spring-boot-configuration-processor</artifactId>-->
+    <!--      <optional>true</optional>-->
+    <!--    </dependency>-->
 
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.boot</groupId>-->
-<!--      <artifactId>spring-boot-autoconfigure-processor</artifactId>-->
-<!--      <optional>true</optional>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.springframework.boot</groupId>-->
+    <!--      <artifactId>spring-boot-autoconfigure-processor</artifactId>-->
+    <!--      <optional>true</optional>-->
+    <!--    </dependency>-->
   </dependencies>
 </project>

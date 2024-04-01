@@ -12,28 +12,28 @@ import com.gstdev.cloud.message.core.constants.MessageErrorCodes;
  */
 public class PrincipalNotFoundException extends PlatformRuntimeException {
 
-    public PrincipalNotFoundException() {
-        super();
-    }
+  public PrincipalNotFoundException() {
+    super();
+  }
 
-    public PrincipalNotFoundException(String message) {
-        super(message);
-    }
+  public PrincipalNotFoundException(String message) {
+    super(message);
+  }
 
-    public PrincipalNotFoundException(String message, Throwable cause) {
-        super(message, cause);
-    }
+  public PrincipalNotFoundException(String message, Throwable cause) {
+    super(message, cause);
+  }
 
-    public PrincipalNotFoundException(Throwable cause) {
-        super(cause);
-    }
+  public PrincipalNotFoundException(Throwable cause) {
+    super(cause);
+  }
 
-    protected PrincipalNotFoundException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
+  protected PrincipalNotFoundException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    super(message, cause, enableSuppression, writableStackTrace);
+  }
 
-    @Override
-    public Feedback getFeedback() {
-        return MessageErrorCodes.PRINCIPAL_NOT_FOUND;
-    }
+  @Override
+  public Feedback getFeedback() {
+    return MessageErrorCodes.PRINCIPAL_NOT_FOUND;
+  }
 }

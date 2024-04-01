@@ -17,14 +17,14 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  */
 public class RemoteDataAccessCondition implements Condition {
 
-    private static final Logger log = LoggerFactory.getLogger(RemoteDataAccessCondition.class);
+  private static final Logger log = LoggerFactory.getLogger(RemoteDataAccessCondition.class);
 
-    @SuppressWarnings("NullableProblems")
-    @Override
-    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
-        String property = RestPropertyFinder.getDataAccessStrategy(conditionContext, Target.REMOTE.name());
-        boolean result = StringUtils.isNotBlank(property) && StringUtils.equalsIgnoreCase(property, Target.REMOTE.name());
-        log.debug("[GstDev Cloud] |- Condition [Remote Data Access] value is [{}]", result);
-        return result;
-    }
+  @SuppressWarnings("NullableProblems")
+  @Override
+  public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
+    String property = RestPropertyFinder.getDataAccessStrategy(conditionContext, Target.REMOTE.name());
+    boolean result = StringUtils.isNotBlank(property) && StringUtils.equalsIgnoreCase(property, Target.REMOTE.name());
+    log.debug("[GstDev Cloud] |- Condition [Remote Data Access] value is [{}]", result);
+    return result;
+  }
 }

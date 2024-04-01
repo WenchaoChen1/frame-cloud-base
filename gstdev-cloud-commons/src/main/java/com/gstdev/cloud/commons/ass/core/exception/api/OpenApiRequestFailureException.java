@@ -1,4 +1,3 @@
-
 //package com.gstdev.cloud.commons.ass.core.exception.api;
 //
 //import com.gstdev.cloud.commons.ass.definition.domain.Feedback;

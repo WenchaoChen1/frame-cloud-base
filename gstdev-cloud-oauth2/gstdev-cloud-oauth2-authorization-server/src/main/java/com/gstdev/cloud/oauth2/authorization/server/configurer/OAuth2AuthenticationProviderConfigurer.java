@@ -12,10 +12,11 @@ import org.springframework.security.oauth2.server.authorization.OAuth2Authorizat
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenGenerator;
 
 public class OAuth2AuthenticationProviderConfigurer extends AbstractHttpConfigurer<OAuth2AuthenticationProviderConfigurer, HttpSecurity> {
-//  private final SessionRegistry sessionRegistry;
+  //  private final SessionRegistry sessionRegistry;
   private final PasswordEncoder passwordEncoder;
   private final UserDetailsService userDetailsService;
   private final OAuth2AuthenticationProperties authenticationProperties;
+
   public OAuth2AuthenticationProviderConfigurer(PasswordEncoder passwordEncoder, UserDetailsService userDetailsService, OAuth2AuthenticationProperties authenticationProperties) {
 //  public OAuth2AuthenticationProviderConfigurer(SessionRegistry sessionRegistry, PasswordEncoder passwordEncoder, UserDetailsService userDetailsService, OAuth2AuthenticationProperties authenticationProperties) {
 //    this.sessionRegistry = sessionRegistry;

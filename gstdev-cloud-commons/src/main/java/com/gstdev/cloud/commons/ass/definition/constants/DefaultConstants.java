@@ -61,8 +61,6 @@ public interface DefaultConstants {
   String DATE_TIME_FORMAT = DatePattern.NORM_DATETIME_PATTERN;
 
 
-
-
   /**
    * 默认租户ID
    */

@@ -24,31 +24,31 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/authorize/device")
 @Tags({
-        @Tag(name = "OAuth2 认证服务接口"),
-        @Tag(name = "物联网管理接口"),
-        @Tag(name = "物联网设备接口")
+  @Tag(name = "OAuth2 认证服务接口"),
+  @Tag(name = "物联网管理接口"),
+  @Tag(name = "物联网设备接口")
 })
 public class OAuth2DeviceController extends BaseWriteableRestController<OAuth2Device, String> {
 
-    private final OAuth2DeviceService deviceService;
+  private final OAuth2DeviceService deviceService;
 
-    public OAuth2DeviceController(OAuth2DeviceService deviceService) {
-        this.deviceService = deviceService;
-    }
+  public OAuth2DeviceController(OAuth2DeviceService deviceService) {
+    this.deviceService = deviceService;
+  }
 
-    @Override
-    public WriteableService<OAuth2Device, String> getWriteableService() {
-        return deviceService;
-    }
+  @Override
+  public WriteableService<OAuth2Device, String> getWriteableService() {
+    return deviceService;
+  }
 
-    @Operation(summary = "给设备分配Scope", description = "给设备分配Scope")
-    @Parameters({
-            @Parameter(name = "deviceId", required = true, description = "设备ID"),
-            @Parameter(name = "scopes[]", required = true, description = "Scope对象组成的数组")
-    })
-    @PutMapping
-    public Result<OAuth2Device> authorize(@RequestParam(name = "deviceId") String deviceId, @RequestParam(name = "scopes[]") String[] scopes) {
-        OAuth2Device device = deviceService.authorize(deviceId, scopes);
-        return result(device);
-    }
+  @Operation(summary = "给设备分配Scope", description = "给设备分配Scope")
+  @Parameters({
+    @Parameter(name = "deviceId", required = true, description = "设备ID"),
+    @Parameter(name = "scopes[]", required = true, description = "Scope对象组成的数组")
+  })
+  @PutMapping
+  public Result<OAuth2Device> authorize(@RequestParam(name = "deviceId") String deviceId, @RequestParam(name = "scopes[]") String[] scopes) {
+    OAuth2Device device = deviceService.authorize(deviceId, scopes);
+    return result(device);
+  }
 }

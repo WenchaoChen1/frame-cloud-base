@@ -21,14 +21,14 @@ import org.springframework.security.authentication.AuthenticationDetailsSource;
  */
 public class OAuth2FormLoginWebAuthenticationDetailSource implements AuthenticationDetailsSource<HttpServletRequest, FormLoginWebAuthenticationDetails> {
 
-    private final OAuth2AuthenticationProperties authenticationProperties;
+  private final OAuth2AuthenticationProperties authenticationProperties;
 
-    public OAuth2FormLoginWebAuthenticationDetailSource(OAuth2AuthenticationProperties authenticationProperties) {
-        this.authenticationProperties = authenticationProperties;
-    }
+  public OAuth2FormLoginWebAuthenticationDetailSource(OAuth2AuthenticationProperties authenticationProperties) {
+    this.authenticationProperties = authenticationProperties;
+  }
 
-    @Override
-    public FormLoginWebAuthenticationDetails buildDetails(HttpServletRequest context) {
-        return new FormLoginWebAuthenticationDetails(context, authenticationProperties.getFormLogin().getCloseCaptcha(), authenticationProperties.getFormLogin().getCaptchaParameter(), authenticationProperties.getFormLogin().getCategory());
-    }
+  @Override
+  public FormLoginWebAuthenticationDetails buildDetails(HttpServletRequest context) {
+    return new FormLoginWebAuthenticationDetails(context, authenticationProperties.getFormLogin().getCloseCaptcha(), authenticationProperties.getFormLogin().getCaptchaParameter(), authenticationProperties.getFormLogin().getCategory());
+  }
 }

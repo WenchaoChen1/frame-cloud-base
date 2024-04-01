@@ -23,6 +23,7 @@ public class ErrorCodeMapper {
   private static volatile ErrorCodeMapper instance;
 
   private final Map<Feedback, Integer> dictionary;
+
   // 初始化默认的错误代码映射关系
   private ErrorCodeMapper() {
     dictionary = new LinkedHashMap<>();
@@ -56,6 +57,10 @@ public class ErrorCodeMapper {
     return instance;
   }
 
+  public static Integer get(Feedback feedback) {
+    return getInstance().getErrorCode(feedback);
+  }
+
   private Integer getErrorCode(Feedback feedback) {
     return dictionary.get(feedback);
   }
@@ -64,9 +69,5 @@ public class ErrorCodeMapper {
     if (MapUtils.isNotEmpty(indexes)) {
       dictionary.putAll(indexes);
     }
-  }
-
-  public static Integer get(Feedback feedback) {
-    return getInstance().getErrorCode(feedback);
   }
 }

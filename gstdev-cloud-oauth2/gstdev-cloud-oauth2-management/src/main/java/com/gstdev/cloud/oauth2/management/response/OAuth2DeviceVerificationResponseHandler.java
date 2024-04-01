@@ -22,30 +22,30 @@ import java.io.IOException;
  */
 public class OAuth2DeviceVerificationResponseHandler extends SimpleUrlAuthenticationSuccessHandler {
 
-    private static final Logger log = LoggerFactory.getLogger(OAuth2DeviceVerificationResponseHandler.class);
+  private static final Logger log = LoggerFactory.getLogger(OAuth2DeviceVerificationResponseHandler.class);
 
-    private final OAuth2DeviceService deviceService;
+  private final OAuth2DeviceService deviceService;
 
-    public OAuth2DeviceVerificationResponseHandler(OAuth2DeviceService deviceService) {
-        super(DefaultConstants.DEVICE_VERIFICATION_SUCCESS_URI);
-        this.deviceService = deviceService;
+  public OAuth2DeviceVerificationResponseHandler(OAuth2DeviceService deviceService) {
+    super(DefaultConstants.DEVICE_VERIFICATION_SUCCESS_URI);
+    this.deviceService = deviceService;
+  }
+
+  @Override
+  public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+
+    OAuth2DeviceVerificationAuthenticationToken deviceVerificationAuthenticationToken =
+      (OAuth2DeviceVerificationAuthenticationToken) authentication;
+
+    log.info("[GstDev Cloud] |- Device verification authentication token is : [{}]", deviceVerificationAuthenticationToken);
+
+    String clientId = deviceVerificationAuthenticationToken.getClientId();
+
+    if (StringUtils.isNotBlank(clientId)) {
+      boolean success = deviceService.activate(clientId, true);
+      log.info("[GstDev Cloud] |- The activation status of the device is : [{}]", success);
     }
 
-    @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-
-        OAuth2DeviceVerificationAuthenticationToken deviceVerificationAuthenticationToken =
-                (OAuth2DeviceVerificationAuthenticationToken) authentication;
-
-        log.info("[GstDev Cloud] |- Device verification authentication token is : [{}]", deviceVerificationAuthenticationToken);
-
-        String clientId = deviceVerificationAuthenticationToken.getClientId();
-
-        if (StringUtils.isNotBlank(clientId)) {
-            boolean success = deviceService.activate(clientId, true);
-            log.info("[GstDev Cloud] |- The activation status of the device is : [{}]", success);
-        }
-
-        super.onAuthenticationSuccess(request, response, authentication);
-    }
+    super.onAuthenticationSuccess(request, response, authentication);
+  }
 }

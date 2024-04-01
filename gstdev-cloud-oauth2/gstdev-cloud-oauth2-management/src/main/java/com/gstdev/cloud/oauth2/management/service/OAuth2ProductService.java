@@ -15,14 +15,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class OAuth2ProductService extends BaseService<OAuth2Product, String> {
 
-    private final OAuth2ProductRepository productRepository;
+  private final OAuth2ProductRepository productRepository;
 
-    public OAuth2ProductService(OAuth2ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
+  public OAuth2ProductService(OAuth2ProductRepository productRepository) {
+    this.productRepository = productRepository;
+  }
 
-    @Override
-    public BaseRepository<OAuth2Product, String> getRepository() {
-        return productRepository;
-    }
+  @Override
+  public BaseRepository<OAuth2Product, String> getRepository() {
+    return productRepository;
+  }
 }

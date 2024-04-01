@@ -37,68 +37,68 @@ import java.util.Map;
  */
 public class OAuth2AccessTokenResponseHandler implements AuthenticationSuccessHandler {
 
-    private static final Logger log = LoggerFactory.getLogger(OAuth2AccessTokenResponseHandler.class);
+  private static final Logger log = LoggerFactory.getLogger(OAuth2AccessTokenResponseHandler.class);
 
-    private final HttpMessageConverter<OAuth2AccessTokenResponse> accessTokenHttpResponseConverter =
-            new OAuth2AccessTokenResponseHttpMessageConverter();
+  private final HttpMessageConverter<OAuth2AccessTokenResponse> accessTokenHttpResponseConverter =
+    new OAuth2AccessTokenResponseHttpMessageConverter();
 
-    private final HttpCryptoProcessor httpCryptoProcessor;
+  private final HttpCryptoProcessor httpCryptoProcessor;
 
-    public OAuth2AccessTokenResponseHandler(HttpCryptoProcessor httpCryptoProcessor) {
-        this.httpCryptoProcessor = httpCryptoProcessor;
+  public OAuth2AccessTokenResponseHandler(HttpCryptoProcessor httpCryptoProcessor) {
+    this.httpCryptoProcessor = httpCryptoProcessor;
+  }
+
+  @Override
+  public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+
+    log.debug("[GstDev Cloud] |- OAuth2 authentication success for [{}]", request.getRequestURI());
+
+    OAuth2AccessTokenAuthenticationToken accessTokenAuthentication =
+      (OAuth2AccessTokenAuthenticationToken) authentication;
+
+    OAuth2AccessToken accessToken = accessTokenAuthentication.getAccessToken();
+    OAuth2RefreshToken refreshToken = accessTokenAuthentication.getRefreshToken();
+    Map<String, Object> additionalParameters = accessTokenAuthentication.getAdditionalParameters();
+
+    OAuth2AccessTokenResponse.Builder builder =
+      OAuth2AccessTokenResponse.withToken(accessToken.getTokenValue())
+        .tokenType(accessToken.getTokenType())
+        .scopes(accessToken.getScopes());
+    if (accessToken.getIssuedAt() != null && accessToken.getExpiresAt() != null) {
+      builder.expiresIn(ChronoUnit.SECONDS.between(accessToken.getIssuedAt(), accessToken.getExpiresAt()));
     }
 
-    @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-
-        log.debug("[GstDev Cloud] |- OAuth2 authentication success for [{}]", request.getRequestURI());
-
-        OAuth2AccessTokenAuthenticationToken accessTokenAuthentication =
-                (OAuth2AccessTokenAuthenticationToken) authentication;
-
-        OAuth2AccessToken accessToken = accessTokenAuthentication.getAccessToken();
-        OAuth2RefreshToken refreshToken = accessTokenAuthentication.getRefreshToken();
-        Map<String, Object> additionalParameters = accessTokenAuthentication.getAdditionalParameters();
-
-        OAuth2AccessTokenResponse.Builder builder =
-                OAuth2AccessTokenResponse.withToken(accessToken.getTokenValue())
-                        .tokenType(accessToken.getTokenType())
-                        .scopes(accessToken.getScopes());
-        if (accessToken.getIssuedAt() != null && accessToken.getExpiresAt() != null) {
-            builder.expiresIn(ChronoUnit.SECONDS.between(accessToken.getIssuedAt(), accessToken.getExpiresAt()));
-        }
-
-        if (refreshToken != null) {
-            builder.refreshToken(refreshToken.getTokenValue());
-        }
-
-        if (isOidcUserInfoPattern(additionalParameters)) {
-            builder.additionalParameters(additionalParameters);
-        } else {
-            String sessionId = SessionUtils.analyseSessionId(request);
-            Object details = authentication.getDetails();
-            if (isHerodotusUserInfoPattern(sessionId, details)) {
-                PrincipalDetails authenticationDetails = (PrincipalDetails) details;
-                String data = Jackson2Utils.toJson(authenticationDetails);
-                String encryptData = httpCryptoProcessor.encrypt(sessionId, data);
-                Map<String, Object> parameters = new HashMap<>(additionalParameters);
-                parameters.put(BaseConstants.OPEN_ID, encryptData);
-                builder.additionalParameters(parameters);
-            } else {
-                log.warn("[GstDev Cloud] |- OAuth2 authentication can not get use info.");
-            }
-        }
-
-        OAuth2AccessTokenResponse accessTokenResponse = builder.build();
-        ServletServerHttpResponse httpResponse = new ServletServerHttpResponse(response);
-        this.accessTokenHttpResponseConverter.write(accessTokenResponse, null, httpResponse);
+    if (refreshToken != null) {
+      builder.refreshToken(refreshToken.getTokenValue());
     }
 
-    private boolean isHerodotusUserInfoPattern(String sessionId, Object details) {
-        return StringUtils.isNotBlank(sessionId) && ObjectUtils.isNotEmpty(details) && details instanceof PrincipalDetails;
+    if (isOidcUserInfoPattern(additionalParameters)) {
+      builder.additionalParameters(additionalParameters);
+    } else {
+      String sessionId = SessionUtils.analyseSessionId(request);
+      Object details = authentication.getDetails();
+      if (isHerodotusUserInfoPattern(sessionId, details)) {
+        PrincipalDetails authenticationDetails = (PrincipalDetails) details;
+        String data = Jackson2Utils.toJson(authenticationDetails);
+        String encryptData = httpCryptoProcessor.encrypt(sessionId, data);
+        Map<String, Object> parameters = new HashMap<>(additionalParameters);
+        parameters.put(BaseConstants.OPEN_ID, encryptData);
+        builder.additionalParameters(parameters);
+      } else {
+        log.warn("[GstDev Cloud] |- OAuth2 authentication can not get use info.");
+      }
     }
 
-    private boolean isOidcUserInfoPattern(Map<String, Object> additionalParameters) {
-        return MapUtils.isNotEmpty(additionalParameters) && additionalParameters.containsKey(OidcParameterNames.ID_TOKEN);
-    }
+    OAuth2AccessTokenResponse accessTokenResponse = builder.build();
+    ServletServerHttpResponse httpResponse = new ServletServerHttpResponse(response);
+    this.accessTokenHttpResponseConverter.write(accessTokenResponse, null, httpResponse);
+  }
+
+  private boolean isHerodotusUserInfoPattern(String sessionId, Object details) {
+    return StringUtils.isNotBlank(sessionId) && ObjectUtils.isNotEmpty(details) && details instanceof PrincipalDetails;
+  }
+
+  private boolean isOidcUserInfoPattern(Map<String, Object> additionalParameters) {
+    return MapUtils.isNotEmpty(additionalParameters) && additionalParameters.containsKey(OidcParameterNames.ID_TOKEN);
+  }
 }

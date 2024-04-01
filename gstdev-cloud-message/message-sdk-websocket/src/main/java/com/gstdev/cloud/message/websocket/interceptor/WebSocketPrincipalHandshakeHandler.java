@@ -21,26 +21,26 @@ import java.util.Map;
  */
 public class WebSocketPrincipalHandshakeHandler extends DefaultHandshakeHandler {
 
-    private static final Logger log = LoggerFactory.getLogger(WebSocketPrincipalHandshakeHandler.class);
+  private static final Logger log = LoggerFactory.getLogger(WebSocketPrincipalHandshakeHandler.class);
 
-    @Override
-    protected Principal determineUser(ServerHttpRequest request, WebSocketHandler wsHandler, Map<String, Object> attributes) {
+  @Override
+  protected Principal determineUser(ServerHttpRequest request, WebSocketHandler wsHandler, Map<String, Object> attributes) {
 
-        Object object = attributes.get(BaseConstants.PRINCIPAL);
+    Object object = attributes.get(BaseConstants.PRINCIPAL);
 
-        if (ObjectUtils.isNotEmpty(object) && object instanceof PrincipalDetails details) {
-            WebSocketPrincipal webSocketPrincipal = new WebSocketPrincipal(details);
-            log.debug("[GstDev Cloud] |- Determine user by request parameter, userId is  [{}].", webSocketPrincipal.getUserId());
-            return webSocketPrincipal;
-        }
-
-        Principal principal = request.getPrincipal();
-        if (ObjectUtils.isNotEmpty(principal)) {
-            log.debug("[GstDev Cloud] |- Determine user from request, value is  [{}].", principal.getName());
-            return principal;
-        }
-
-        log.warn("[GstDev Cloud] |- Can not determine user from request.");
-        return null;
+    if (ObjectUtils.isNotEmpty(object) && object instanceof PrincipalDetails details) {
+      WebSocketPrincipal webSocketPrincipal = new WebSocketPrincipal(details);
+      log.debug("[GstDev Cloud] |- Determine user by request parameter, userId is  [{}].", webSocketPrincipal.getUserId());
+      return webSocketPrincipal;
     }
+
+    Principal principal = request.getPrincipal();
+    if (ObjectUtils.isNotEmpty(principal)) {
+      log.debug("[GstDev Cloud] |- Determine user from request, value is  [{}].", principal.getName());
+      return principal;
+    }
+
+    log.warn("[GstDev Cloud] |- Can not determine user from request.");
+    return null;
+  }
 }

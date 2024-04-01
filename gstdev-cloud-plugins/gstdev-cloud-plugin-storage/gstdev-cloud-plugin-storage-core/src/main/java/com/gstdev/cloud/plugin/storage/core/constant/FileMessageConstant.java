@@ -30,6 +30,7 @@ public class FileMessageConstant {
    * 桶不存在
    */
   public static final String BUCKET_NOT_EXISTS = "hfle.error.bucket_not_exists";
+
   private FileMessageConstant() {
   }
 }

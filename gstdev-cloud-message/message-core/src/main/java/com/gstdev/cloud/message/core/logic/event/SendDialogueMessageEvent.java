@@ -13,11 +13,11 @@ import java.time.Clock;
  */
 public class SendDialogueMessageEvent extends AbstractApplicationEvent<DialogueMessage> {
 
-    public SendDialogueMessageEvent(DialogueMessage data) {
-        super(data);
-    }
+  public SendDialogueMessageEvent(DialogueMessage data) {
+    super(data);
+  }
 
-    public SendDialogueMessageEvent(DialogueMessage data, Clock clock) {
-        super(data, clock);
-    }
+  public SendDialogueMessageEvent(DialogueMessage data, Clock clock) {
+    super(data, clock);
+  }
 }

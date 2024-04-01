@@ -38,16 +38,16 @@ public class OAuth2ResourceServerConfigurerCustomer implements Customizer<OAuth2
 //      configurer
 //        .opaqueToken(opaque -> opaque.introspector(opaqueTokenIntrospector));
 //    } else {
-      configurer
-        .jwt(jwt -> jwt.decoder(this.jwtDecoder)
+    configurer
+      .jwt(jwt -> jwt.decoder(this.jwtDecoder)
 //                      .jwtAuthenticationConverter(new CustomizeJwtAuthenticationConverter())
-        )
-        .bearerTokenResolver(new DefaultBearerTokenResolver());
+      )
+      .bearerTokenResolver(new DefaultBearerTokenResolver());
 //    }
 
-        configurer
-                .accessDeniedHandler(new HerodotusAccessDeniedHandler())
-                .authenticationEntryPoint(new HerodotusAuthenticationEntryPoint());
+    configurer
+      .accessDeniedHandler(new HerodotusAccessDeniedHandler())
+      .authenticationEntryPoint(new HerodotusAuthenticationEntryPoint());
   }
 
 //    public BearerTokenResolver createBearerTokenResolver() {

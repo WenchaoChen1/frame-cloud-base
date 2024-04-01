@@ -18,23 +18,23 @@ import java.lang.reflect.Member;
  */
 public class OAuth2PermissionUuidGeneratorType extends AbstractUuidGenerator {
 
-    public OAuth2PermissionUuidGeneratorType(OAuth2PermissionUuidGenerator config, Member idMember, CustomIdGeneratorCreationContext creationContext) {
-        super(idMember);
+  public OAuth2PermissionUuidGeneratorType(OAuth2PermissionUuidGenerator config, Member idMember, CustomIdGeneratorCreationContext creationContext) {
+    super(idMember);
+  }
+
+  @Override
+  public Object generate(SharedSessionContractImplementor session, Object object) throws HibernateException {
+    if (ObjectUtils.isEmpty(object)) {
+      throw new HibernateException(new NullPointerException());
     }
 
-    @Override
-    public Object generate(SharedSessionContractImplementor session, Object object) throws HibernateException {
-        if (ObjectUtils.isEmpty(object)) {
-            throw new HibernateException(new NullPointerException());
-        }
+    OAuth2Permission permission = (OAuth2Permission) object;
 
-        OAuth2Permission permission = (OAuth2Permission) object;
-
-        if (StringUtils.isEmpty(permission.getPermissionId())) {
-            return super.generate(session, object);
-        } else {
-            return permission.getPermissionId();
-        }
+    if (StringUtils.isEmpty(permission.getPermissionId())) {
+      return super.generate(session, object);
+    } else {
+      return permission.getPermissionId();
     }
+  }
 }
 

@@ -15,6 +15,7 @@
   <artifactId>cache-sdk-redis</artifactId>
 </dependency>
 ```
+
 ## 2. 配置说明
 
 ```yaml
@@ -36,4 +37,5 @@ herodotus:
 ```
 
 ## 3. 使用 `@EnableHerodotusRedis` 开启配置，这里自动配置了 `RedisTemplate<Object, Object>` 和 `StringRedisTemplate`
+
 ## 4. 提供了 `RedisBitMapUtils` 工具类，常规的 Redis 工具类需要自己封装

@@ -23,6 +23,7 @@ dante 对其进行了简单封装
   <artifactId>cache-sdk-caffeine</artifactId>
 </dependency>
 ```
+
 ## 2. 写一个配置类，导入配置
 
 ```java
@@ -54,6 +55,7 @@ herodotus:
         # 缓存失效时间
         expire: 2h
 ```
+
 ## 4. 可使用spring-cache注解
 
 ```java

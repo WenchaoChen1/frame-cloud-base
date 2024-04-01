@@ -19,20 +19,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/authorize/authorization")
 @Tags({
-        @Tag(name = "OAuth2 认证服务接口"),
-        @Tag(name = "OAuth2 认证管理接口")
+  @Tag(name = "OAuth2 认证服务接口"),
+  @Tag(name = "OAuth2 认证管理接口")
 })
 public class OAuth2AuthorizationController extends BaseWriteableRestController<HerodotusAuthorization, String> {
 
-    private final HerodotusAuthorizationService herodotusAuthorizationService;
+  private final HerodotusAuthorizationService herodotusAuthorizationService;
 
-    @Autowired
-    public OAuth2AuthorizationController(HerodotusAuthorizationService herodotusAuthorizationService) {
-        this.herodotusAuthorizationService = herodotusAuthorizationService;
-    }
+  @Autowired
+  public OAuth2AuthorizationController(HerodotusAuthorizationService herodotusAuthorizationService) {
+    this.herodotusAuthorizationService = herodotusAuthorizationService;
+  }
 
-    @Override
-    public WriteableService<HerodotusAuthorization, String> getWriteableService() {
-        return this.herodotusAuthorizationService;
-    }
+  @Override
+  public WriteableService<HerodotusAuthorization, String> getWriteableService() {
+    return this.herodotusAuthorizationService;
+  }
 }

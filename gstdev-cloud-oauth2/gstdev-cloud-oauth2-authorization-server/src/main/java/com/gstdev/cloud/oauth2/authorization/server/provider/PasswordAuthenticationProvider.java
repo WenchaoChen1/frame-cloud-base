@@ -41,26 +41,25 @@ import java.util.Set;
  * 密码模式身份验证提供者
  * <p>
  * 处理基于用户名和密码的身份验证
- *
  */
 @Slf4j
 public class PasswordAuthenticationProvider implements AuthenticationProvider {
 
-//  private final AuthenticationManager authenticationManager;
+  //  private final AuthenticationManager authenticationManager;
   private final OAuth2AuthorizationService oAuth2AuthorizationService;
   private final OAuth2TokenGenerator<? extends OAuth2Token> oAuth2TokenGenerator;
 
   /**
    * Constructs an {@code OAuth2ResourceOwnerPasswordAuthenticationProviderNew} using the provided parameters.
    *
-   * @param authenticationManager the authentication manager
-   * @param oAuth2AuthorizationService  the authorization service
-   * @param oAuth2TokenGenerator        the token generator
+   * @param authenticationManager      the authentication manager
+   * @param oAuth2AuthorizationService the authorization service
+   * @param oAuth2TokenGenerator       the token generator
    */
   public PasswordAuthenticationProvider(
 //    AuthenticationManager authenticationManager,
-                                        OAuth2AuthorizationService oAuth2AuthorizationService,
-                                        OAuth2TokenGenerator<? extends OAuth2Token> oAuth2TokenGenerator) {
+    OAuth2AuthorizationService oAuth2AuthorizationService,
+    OAuth2TokenGenerator<? extends OAuth2Token> oAuth2TokenGenerator) {
 //    Assert.notNull(authorizationService, "authorizationService cannot be null");
 //    Assert.notNull(tokenGenerator, "tokenGenerator cannot be null");
 //    this.authenticationManager = authenticationManager;
@@ -119,7 +118,6 @@ public class PasswordAuthenticationProvider implements AuthenticationProvider {
       .authorizationGrant(resourceOwnerPasswordAuthentication);// 授权具体对象
 
 
-
     // @formatter:on
 
     // 生成访问令牌(Access Token)
@@ -135,8 +133,7 @@ public class PasswordAuthenticationProvider implements AuthenticationProvider {
     OAuth2Authorization.Builder authorizationBuilder = OAuth2Authorization.withRegisteredClient(registeredClient)
       .principalName(usernamePasswordAuthentication.getName())
       .authorizationGrantType(AuthorizationGrantType.PASSWORD)
-      .attribute(Principal.class.getName(), usernamePasswordAuthentication)
-      ;
+      .attribute(Principal.class.getName(), usernamePasswordAuthentication);
     if (generatedAccessToken instanceof ClaimAccessor) {
       authorizationBuilder.token(accessToken, (metadata) -> metadata.put(OAuth2Authorization.Token.CLAIMS_METADATA_NAME, ((ClaimAccessor) generatedAccessToken).getClaims()));
     } else {

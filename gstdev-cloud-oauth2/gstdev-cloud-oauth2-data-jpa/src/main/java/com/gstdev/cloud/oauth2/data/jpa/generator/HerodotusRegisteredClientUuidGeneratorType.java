@@ -20,22 +20,22 @@ import java.lang.reflect.Member;
  */
 public class HerodotusRegisteredClientUuidGeneratorType extends AbstractUuidGenerator {
 
-    public HerodotusRegisteredClientUuidGeneratorType(HerodotusRegisteredClientUuidGenerator config, Member idMember, CustomIdGeneratorCreationContext creationContext) {
-        super(idMember);
+  public HerodotusRegisteredClientUuidGeneratorType(HerodotusRegisteredClientUuidGenerator config, Member idMember, CustomIdGeneratorCreationContext creationContext) {
+    super(idMember);
+  }
+
+  @Override
+  public Object generate(SharedSessionContractImplementor session, Object object) throws HibernateException {
+    if (ObjectUtils.isEmpty(object)) {
+      throw new HibernateException(new NullPointerException());
     }
 
-    @Override
-    public Object generate(SharedSessionContractImplementor session, Object object) throws HibernateException {
-        if (ObjectUtils.isEmpty(object)) {
-            throw new HibernateException(new NullPointerException());
-        }
+    HerodotusRegisteredClient herodotusRegisteredClient = (HerodotusRegisteredClient) object;
 
-        HerodotusRegisteredClient herodotusRegisteredClient = (HerodotusRegisteredClient) object;
-
-        if (StringUtils.isEmpty(herodotusRegisteredClient.getId())) {
-            return super.generate(session, object);
-        } else {
-            return herodotusRegisteredClient.getId();
-        }
+    if (StringUtils.isEmpty(herodotusRegisteredClient.getId())) {
+      return super.generate(session, object);
+    } else {
+      return herodotusRegisteredClient.getId();
     }
+  }
 }

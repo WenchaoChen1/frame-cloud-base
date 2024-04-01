@@ -23,62 +23,62 @@ import java.time.format.DateTimeParseException;
  */
 public class IdempotentInterceptor extends AbstractBaseHandlerInterceptor {
 
-    private static final Logger log = LoggerFactory.getLogger(IdempotentInterceptor.class);
+  private static final Logger log = LoggerFactory.getLogger(IdempotentInterceptor.class);
 
-    private static final String IDEMPOTENT_ATTRIBUTE = "Idempotent";
+  private static final String IDEMPOTENT_ATTRIBUTE = "Idempotent";
 
-    private IdempotentStampManager idempotentStampManager;
+  private IdempotentStampManager idempotentStampManager;
 
-    public void setIdempotentStampManager(IdempotentStampManager idempotentStampManager) {
-        this.idempotentStampManager = idempotentStampManager;
+  public void setIdempotentStampManager(IdempotentStampManager idempotentStampManager) {
+    this.idempotentStampManager = idempotentStampManager;
+  }
+
+  @Override
+  public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
+    log.trace("[GstDev Cloud] |- IdempotentInterceptor preHandle postProcess.");
+
+    if (!(handler instanceof HandlerMethod handlerMethod)) {
+      return true;
     }
 
-    @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    Method method = handlerMethod.getMethod();
 
-        log.trace("[GstDev Cloud] |- IdempotentInterceptor preHandle postProcess.");
+    Idempotent idempotent = method.getAnnotation(Idempotent.class);
+    if (idempotent != null) {
+      // 幂等性校验, 根据缓存中是否存在Token进行校验。
+      // 如果缓存中没有Token，通过放行, 同时在缓存中存入Token。
+      // 如果缓存中有Token，意味着同一个操作反复操作，认为失败则抛出异常, 并通过统一异常处理返回友好提示
 
-        if (!(handler instanceof HandlerMethod handlerMethod)) {
-            return true;
-        }
-
-        Method method = handlerMethod.getMethod();
-
-        Idempotent idempotent = method.getAnnotation(Idempotent.class);
-        if (idempotent != null) {
-            // 幂等性校验, 根据缓存中是否存在Token进行校验。
-            // 如果缓存中没有Token，通过放行, 同时在缓存中存入Token。
-            // 如果缓存中有Token，意味着同一个操作反复操作，认为失败则抛出异常, 并通过统一异常处理返回友好提示
-
-            String key = generateRequestKey(request);
-            if (StringUtils.isNotBlank(key)) {
-                String token = idempotentStampManager.get(key);
-                if (StringUtils.isBlank(token)) {
-                    Duration configuredDuration = Duration.ZERO;
-                    String annotationExpire = idempotent.expire();
-                    if (StringUtils.isNotBlank(annotationExpire)) {
-                        try {
-                            configuredDuration = Duration.parse(annotationExpire);
-                        } catch (DateTimeParseException e) {
-                            log.warn("[GstDev Cloud] |- Idempotent duration value is incorrect, on api [{}].", request.getRequestURI());
-                        }
-                    }
-
-                    if (!configuredDuration.isZero()) {
-                        idempotentStampManager.create(key, configuredDuration);
-                    } else {
-                        idempotentStampManager.create(key);
-                    }
-
-                    request.setAttribute(IDEMPOTENT_ATTRIBUTE, key);
-
-                    return true;
-                } else {
-                    throw new RepeatSubmissionException("Don't Repeat Submission");
-                }
+      String key = generateRequestKey(request);
+      if (StringUtils.isNotBlank(key)) {
+        String token = idempotentStampManager.get(key);
+        if (StringUtils.isBlank(token)) {
+          Duration configuredDuration = Duration.ZERO;
+          String annotationExpire = idempotent.expire();
+          if (StringUtils.isNotBlank(annotationExpire)) {
+            try {
+              configuredDuration = Duration.parse(annotationExpire);
+            } catch (DateTimeParseException e) {
+              log.warn("[GstDev Cloud] |- Idempotent duration value is incorrect, on api [{}].", request.getRequestURI());
             }
-        }
+          }
 
-        return true;
+          if (!configuredDuration.isZero()) {
+            idempotentStampManager.create(key, configuredDuration);
+          } else {
+            idempotentStampManager.create(key);
+          }
+
+          request.setAttribute(IDEMPOTENT_ATTRIBUTE, key);
+
+          return true;
+        } else {
+          throw new RepeatSubmissionException("Don't Repeat Submission");
+        }
+      }
     }
+
+    return true;
+  }
 }

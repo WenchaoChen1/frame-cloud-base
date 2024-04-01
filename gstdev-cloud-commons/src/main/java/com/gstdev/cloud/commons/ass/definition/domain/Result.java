@@ -24,13 +24,12 @@ import java.util.Date;
 @Schema(title = "统一响应返回实体", description = "所有Rest接口统一返回的实体定义", example = "new Result<T>().ok().message(\"XXX\")")
 public class Result<T> implements Serializable {
 
-  private Boolean success;
-
   @Schema(title = "响应时间戳", pattern = DefaultConstants.DATE_TIME_FORMAT)
   @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT)
   private final Date timestamp = new Date();
   @Schema(title = "校验错误信息")
   private final Error error = new Error();
+  private Boolean success;
   @Schema(title = "自定义响应编码")
   private int code = 0;
   @Schema(title = "响应返回信息")

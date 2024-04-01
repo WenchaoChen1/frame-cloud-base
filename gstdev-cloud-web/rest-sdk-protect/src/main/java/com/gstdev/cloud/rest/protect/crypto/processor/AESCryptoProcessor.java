@@ -18,26 +18,26 @@ import org.slf4j.LoggerFactory;
  */
 public class AESCryptoProcessor implements SymmetricCryptoProcessor {
 
-    private static final Logger log = LoggerFactory.getLogger(AESCryptoProcessor.class);
+  private static final Logger log = LoggerFactory.getLogger(AESCryptoProcessor.class);
 
-    @Override
-    public String createKey() {
-        return RandomUtil.randomStringUpper(16);
-    }
+  @Override
+  public String createKey() {
+    return RandomUtil.randomStringUpper(16);
+  }
 
-    @Override
-    public String decrypt(String data, String key) {
-        AES aes = SecureUtil.aes(ByteUtil.toUtf8Bytes(key));
-        byte[] result = aes.decrypt(Base64.decode(ByteUtil.toUtf8Bytes(data)));
-        log.trace("[GstDev Cloud] |- AES crypto decrypt data, value is : [{}]", result);
-        return StrUtil.utf8Str(result);
-    }
+  @Override
+  public String decrypt(String data, String key) {
+    AES aes = SecureUtil.aes(ByteUtil.toUtf8Bytes(key));
+    byte[] result = aes.decrypt(Base64.decode(ByteUtil.toUtf8Bytes(data)));
+    log.trace("[GstDev Cloud] |- AES crypto decrypt data, value is : [{}]", result);
+    return StrUtil.utf8Str(result);
+  }
 
-    @Override
-    public String encrypt(String data, String key) {
-        AES aes = SecureUtil.aes(ByteUtil.toUtf8Bytes(key));
-        byte[] result = aes.encrypt(ByteUtil.toUtf8Bytes(data));
-        log.trace("[GstDev Cloud] |- AES crypto encrypt data, value is : [{}]", result);
-        return StrUtil.utf8Str(result);
-    }
+  @Override
+  public String encrypt(String data, String key) {
+    AES aes = SecureUtil.aes(ByteUtil.toUtf8Bytes(key));
+    byte[] result = aes.encrypt(ByteUtil.toUtf8Bytes(data));
+    log.trace("[GstDev Cloud] |- AES crypto encrypt data, value is : [{}]", result);
+    return StrUtil.utf8Str(result);
+  }
 }

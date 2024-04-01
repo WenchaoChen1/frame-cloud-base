@@ -15,14 +15,14 @@ import org.springframework.web.socket.messaging.SessionConnectedEvent;
 @Component
 public class WebSocketConnectedListener extends AbstractWebSocketStatusListener<SessionConnectedEvent> {
 
-    public WebSocketConnectedListener(WebSocketMessageSender webSocketMessageSender) {
-        super(webSocketMessageSender);
-    }
+  public WebSocketConnectedListener(WebSocketMessageSender webSocketMessageSender) {
+    super(webSocketMessageSender);
+  }
 
-    @Override
-    public void onApplicationEvent(SessionConnectedEvent event) {
-        WebSocketPrincipal principal = (WebSocketPrincipal) event.getUser();
+  @Override
+  public void onApplicationEvent(SessionConnectedEvent event) {
+    WebSocketPrincipal principal = (WebSocketPrincipal) event.getUser();
 
-        connected(principal);
-    }
+    connected(principal);
+  }
 }

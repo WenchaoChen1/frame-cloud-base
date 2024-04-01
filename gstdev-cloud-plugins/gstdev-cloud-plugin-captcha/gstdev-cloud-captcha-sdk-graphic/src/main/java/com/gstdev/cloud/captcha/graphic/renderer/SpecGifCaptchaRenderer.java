@@ -13,13 +13,13 @@ import org.springframework.stereotype.Component;
 //@Component
 public class SpecGifCaptchaRenderer extends AbstractGifGraphicRenderer {
 
-    @Override
-    public String getCategory() {
-        return CaptchaCategory.SPEC_GIF.getConstant();
-    }
+  @Override
+  public String getCategory() {
+    return CaptchaCategory.SPEC_GIF.getConstant();
+  }
 
-    @Override
-    protected String[] getDrawCharacters() {
-        return this.getCharCharacters();
-    }
+  @Override
+  protected String[] getDrawCharacters() {
+    return this.getCharCharacters();
+  }
 }

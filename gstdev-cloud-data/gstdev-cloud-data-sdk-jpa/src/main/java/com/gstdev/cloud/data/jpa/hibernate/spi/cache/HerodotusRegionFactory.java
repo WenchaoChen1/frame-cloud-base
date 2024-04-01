@@ -20,30 +20,30 @@ import java.util.Map;
  */
 public class HerodotusRegionFactory extends RegionFactoryTemplate {
 
-    private CacheManager cacheManager;
+  private CacheManager cacheManager;
 
-    @Override
-    protected StorageAccess createQueryResultsRegionStorageAccess(String regionName, SessionFactoryImplementor sessionFactory) {
-        return new HerodotusDomainDataStorageAccess(cacheManager.getCache(regionName));
-    }
+  @Override
+  protected StorageAccess createQueryResultsRegionStorageAccess(String regionName, SessionFactoryImplementor sessionFactory) {
+    return new HerodotusDomainDataStorageAccess(cacheManager.getCache(regionName));
+  }
 
-    @Override
-    protected StorageAccess createTimestampsRegionStorageAccess(String regionName, SessionFactoryImplementor sessionFactory) {
-        return new HerodotusDomainDataStorageAccess(cacheManager.getCache(regionName));
-    }
+  @Override
+  protected StorageAccess createTimestampsRegionStorageAccess(String regionName, SessionFactoryImplementor sessionFactory) {
+    return new HerodotusDomainDataStorageAccess(cacheManager.getCache(regionName));
+  }
 
-    @Override
-    protected DomainDataStorageAccess createDomainDataStorageAccess(DomainDataRegionConfig regionConfig, DomainDataRegionBuildingContext buildingContext) {
-        return new HerodotusDomainDataStorageAccess(cacheManager.getCache(regionConfig.getRegionName()));
-    }
+  @Override
+  protected DomainDataStorageAccess createDomainDataStorageAccess(DomainDataRegionConfig regionConfig, DomainDataRegionBuildingContext buildingContext) {
+    return new HerodotusDomainDataStorageAccess(cacheManager.getCache(regionConfig.getRegionName()));
+  }
 
-    @Override
-    protected void prepareForUse(SessionFactoryOptions settings, Map configValues) {
-        this.cacheManager = SpringUtil.getBean("herodotusCacheManager");
-    }
+  @Override
+  protected void prepareForUse(SessionFactoryOptions settings, Map configValues) {
+    this.cacheManager = SpringUtil.getBean("herodotusCacheManager");
+  }
 
-    @Override
-    protected void releaseFromUse() {
-        cacheManager = null;
-    }
+  @Override
+  protected void releaseFromUse() {
+    cacheManager = null;
+  }
 }

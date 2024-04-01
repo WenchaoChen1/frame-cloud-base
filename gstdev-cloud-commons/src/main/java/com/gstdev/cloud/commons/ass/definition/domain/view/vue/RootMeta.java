@@ -8,13 +8,13 @@ package com.gstdev.cloud.commons.ass.definition.domain.view.vue;
  */
 public class RootMeta extends BaseMeta {
 
-    private Integer sort;
+  private Integer sort;
 
-    public Integer getSort() {
-        return sort;
-    }
+  public Integer getSort() {
+    return sort;
+  }
 
-    public void setSort(Integer sort) {
-        this.sort = sort;
-    }
+  public void setSort(Integer sort) {
+    this.sort = sort;
+  }
 }

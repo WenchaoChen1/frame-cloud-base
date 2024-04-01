@@ -14,24 +14,24 @@ import com.gstdev.cloud.cache.jetcache.stamp.AbstractStampManager;
  */
 public class AccessLimitedStampManager extends AbstractStampManager<String, Long> {
 
-    private final SecureProperties secureProperties;
+  private final SecureProperties secureProperties;
 
-    public AccessLimitedStampManager(SecureProperties secureProperties) {
-        super(RestConstants.CACHE_NAME_TOKEN_ACCESS_LIMITED);
-        this.secureProperties = secureProperties;
-    }
+  public AccessLimitedStampManager(SecureProperties secureProperties) {
+    super(RestConstants.CACHE_NAME_TOKEN_ACCESS_LIMITED);
+    this.secureProperties = secureProperties;
+  }
 
-    public SecureProperties getSecureProperties() {
-        return secureProperties;
-    }
+  public SecureProperties getSecureProperties() {
+    return secureProperties;
+  }
 
-    @Override
-    public Long nextStamp(String key) {
-        return 1L;
-    }
+  @Override
+  public Long nextStamp(String key) {
+    return 1L;
+  }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        super.setExpire(secureProperties.getAccessLimited().getExpire());
-    }
+  @Override
+  public void afterPropertiesSet() throws Exception {
+    super.setExpire(secureProperties.getAccessLimited().getExpire());
+  }
 }

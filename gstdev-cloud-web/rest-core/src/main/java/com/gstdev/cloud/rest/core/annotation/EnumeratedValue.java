@@ -20,24 +20,24 @@ import java.lang.annotation.*;
 @Constraint(validatedBy = {EnumeratedValueValidator.class})
 public @interface EnumeratedValue {
 
-    // 默认错误消息
-    String message() default "必须为指定值";
+  // 默认错误消息
+  String message() default "必须为指定值";
 
-    String[] names() default {};
+  String[] names() default {};
 
-    int[] ordinals() default {};
+  int[] ordinals() default {};
 
-    // 分组
-    Class<?>[] groups() default {};
+  // 分组
+  Class<?>[] groups() default {};
 
-    // 负载
-    Class<? extends Payload>[] payload() default {};
+  // 负载
+  Class<? extends Payload>[] payload() default {};
 
-    // 指定多个时使用
-    @Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.PARAMETER, ElementType.TYPE_USE})
-    @Retention(RetentionPolicy.RUNTIME)
-    @Documented
-    @interface List {
-        EnumeratedValue[] value();
-    }
+  // 指定多个时使用
+  @Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.PARAMETER, ElementType.TYPE_USE})
+  @Retention(RetentionPolicy.RUNTIME)
+  @Documented
+  @interface List {
+    EnumeratedValue[] value();
+  }
 }

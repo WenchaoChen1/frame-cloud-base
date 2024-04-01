@@ -18,14 +18,14 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  */
 public class MultipleWebSocketInstanceCondition implements Condition {
 
-    private static final Logger log = LoggerFactory.getLogger(MultipleWebSocketInstanceCondition.class);
+  private static final Logger log = LoggerFactory.getLogger(MultipleWebSocketInstanceCondition.class);
 
-    @SuppressWarnings("NullableProblems")
-    @Override
-    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata metadata) {
-        String property = PropertyResolver.getProperty(conditionContext, MessageConstants.ITEM_WEBSOCKET_MULTIPLE_INSTANCE);
-        boolean result = StringUtils.isNotBlank(property) && StringUtils.equalsIgnoreCase(property, InstanceMode.MULTIPLE.name());
-        log.debug("[GstDev Cloud] |- Condition [Multiple Web Socket Instance] value is [{}]", result);
-        return result;
-    }
+  @SuppressWarnings("NullableProblems")
+  @Override
+  public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata metadata) {
+    String property = PropertyResolver.getProperty(conditionContext, MessageConstants.ITEM_WEBSOCKET_MULTIPLE_INSTANCE);
+    boolean result = StringUtils.isNotBlank(property) && StringUtils.equalsIgnoreCase(property, InstanceMode.MULTIPLE.name());
+    log.debug("[GstDev Cloud] |- Condition [Multiple Web Socket Instance] value is [{}]", result);
+    return result;
+  }
 }

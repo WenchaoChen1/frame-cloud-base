@@ -14,19 +14,19 @@ import org.dromara.hutool.swing.captcha.ShearCaptcha;
  */
 public class ShearCaptchaRenderer extends AbstractGraphicRenderer {
 
-    @Override
-    public Metadata draw() {
-        ShearCaptcha shearCaptcha = CaptchaUtil.ofShearCaptcha(this.getWidth(), this.getHeight(), this.getLength(), 4);
-        shearCaptcha.setFont(this.getFont());
+  @Override
+  public Metadata draw() {
+    ShearCaptcha shearCaptcha = CaptchaUtil.ofShearCaptcha(this.getWidth(), this.getHeight(), this.getLength(), 4);
+    shearCaptcha.setFont(this.getFont());
 
-        Metadata metadata = new Metadata();
-        metadata.setGraphicImageBase64(shearCaptcha.getImageBase64Data());
-        metadata.setCharacters(shearCaptcha.getCode());
-        return metadata;
-    }
+    Metadata metadata = new Metadata();
+    metadata.setGraphicImageBase64(shearCaptcha.getImageBase64Data());
+    metadata.setCharacters(shearCaptcha.getCode());
+    return metadata;
+  }
 
-    @Override
-    public String getCategory() {
-        return CaptchaCategory.HUTOOL_SHEAR.getConstant();
-    }
+  @Override
+  public String getCategory() {
+    return CaptchaCategory.HUTOOL_SHEAR.getConstant();
+  }
 }

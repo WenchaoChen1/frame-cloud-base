@@ -10,40 +10,40 @@ import org.springframework.util.MimeType;
  */
 public class StreamMessage implements Message {
 
-    private String bindingName;
-    private String binderName;
-    private Object data;
-    private MimeType outputContentType;
+  private String bindingName;
+  private String binderName;
+  private Object data;
+  private MimeType outputContentType;
 
-    public String getBindingName() {
-        return bindingName;
-    }
+  public String getBindingName() {
+    return bindingName;
+  }
 
-    public void setBindingName(String bindingName) {
-        this.bindingName = bindingName;
-    }
+  public void setBindingName(String bindingName) {
+    this.bindingName = bindingName;
+  }
 
-    public String getBinderName() {
-        return binderName;
-    }
+  public String getBinderName() {
+    return binderName;
+  }
 
-    public void setBinderName(String binderName) {
-        this.binderName = binderName;
-    }
+  public void setBinderName(String binderName) {
+    this.binderName = binderName;
+  }
 
-    public Object getData() {
-        return data;
-    }
+  public Object getData() {
+    return data;
+  }
 
-    public void setData(Object data) {
-        this.data = data;
-    }
+  public void setData(Object data) {
+    this.data = data;
+  }
 
-    public MimeType getOutputContentType() {
-        return outputContentType;
-    }
+  public MimeType getOutputContentType() {
+    return outputContentType;
+  }
 
-    public void setOutputContentType(MimeType outputContentType) {
-        this.outputContentType = outputContentType;
-    }
+  public void setOutputContentType(MimeType outputContentType) {
+    this.outputContentType = outputContentType;
+  }
 }

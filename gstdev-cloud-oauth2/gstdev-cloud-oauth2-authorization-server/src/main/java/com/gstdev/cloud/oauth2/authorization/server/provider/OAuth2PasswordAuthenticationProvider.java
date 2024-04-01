@@ -173,6 +173,7 @@ public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAut
       registeredClient, clientPrincipal, accessToken, refreshToken, additionalParameters);
     return createOAuth2AccessTokenAuthenticationToken(principal, accessTokenAuthenticationToken);
   }
+
   /**
    * Sets the {@link SessionRegistry} used to track OpenID Connect sessions.
    *

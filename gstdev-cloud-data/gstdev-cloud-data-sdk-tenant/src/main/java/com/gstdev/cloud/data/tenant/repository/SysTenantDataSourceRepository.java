@@ -14,12 +14,12 @@ import org.springframework.data.jpa.repository.QueryHints;
  */
 public interface SysTenantDataSourceRepository extends BaseRepository<SysTenantDataSource, String> {
 
-    /**
-     * 根据租户ID查询数据源
-     *
-     * @param tenantId 租户ID
-     * @return {@link SysTenantDataSource}
-     */
-    @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
-    SysTenantDataSource findByTenantId(String tenantId);
+  /**
+   * 根据租户ID查询数据源
+   *
+   * @param tenantId 租户ID
+   * @return {@link SysTenantDataSource}
+   */
+  @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
+  SysTenantDataSource findByTenantId(String tenantId);
 }

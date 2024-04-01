@@ -1,4 +1,3 @@
-
 //package com.gstdev.cloud.commons.ass.definition.domain;
 //
 //import com.google.common.base.MoreObjects;

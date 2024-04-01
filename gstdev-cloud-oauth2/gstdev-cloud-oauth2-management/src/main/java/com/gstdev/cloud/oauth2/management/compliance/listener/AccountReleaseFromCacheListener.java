@@ -12,15 +12,15 @@ import org.springframework.context.ApplicationListener;
  */
 public class AccountReleaseFromCacheListener implements ApplicationListener<AccountReleaseFromCacheEvent> {
 
-    private final OAuth2AccountStatusManager accountStatusManager;
+  private final OAuth2AccountStatusManager accountStatusManager;
 
-    public AccountReleaseFromCacheListener(OAuth2AccountStatusManager accountStatusManager) {
-        this.accountStatusManager = accountStatusManager;
-    }
+  public AccountReleaseFromCacheListener(OAuth2AccountStatusManager accountStatusManager) {
+    this.accountStatusManager = accountStatusManager;
+  }
 
-    @Override
-    public void onApplicationEvent(AccountReleaseFromCacheEvent event) {
-        String username = event.getData();
-        accountStatusManager.releaseFromCache(username);
-    }
+  @Override
+  public void onApplicationEvent(AccountReleaseFromCacheEvent event) {
+    String username = event.getData();
+    accountStatusManager.releaseFromCache(username);
+  }
 }

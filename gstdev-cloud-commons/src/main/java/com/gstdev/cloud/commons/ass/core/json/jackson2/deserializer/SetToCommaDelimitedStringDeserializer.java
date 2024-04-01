@@ -21,23 +21,23 @@ import java.util.Set;
  */
 public class SetToCommaDelimitedStringDeserializer extends StdDeserializer<String> {
 
-    protected SetToCommaDelimitedStringDeserializer() {
-        super(String.class);
+  protected SetToCommaDelimitedStringDeserializer() {
+    super(String.class);
+  }
+
+  public JavaType getValueType() {
+    return TypeFactory.defaultInstance().constructType(Set.class);
+  }
+
+  @Override
+  public String deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
+    Set<String> collection = jsonParser.readValueAs(new TypeReference<Set<String>>() {
+    });
+
+    if (CollectionUtils.isNotEmpty(collection)) {
+      return StringUtils.collectionToCommaDelimitedString(collection);
     }
 
-    public JavaType getValueType() {
-        return TypeFactory.defaultInstance().constructType(Set.class);
-    }
-
-    @Override
-    public String deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
-        Set<String> collection = jsonParser.readValueAs(new TypeReference<Set<String>>() {
-        });
-
-        if (CollectionUtils.isNotEmpty(collection)) {
-            return StringUtils.collectionToCommaDelimitedString(collection);
-        }
-
-        return null;
-    }
+    return null;
+  }
 }

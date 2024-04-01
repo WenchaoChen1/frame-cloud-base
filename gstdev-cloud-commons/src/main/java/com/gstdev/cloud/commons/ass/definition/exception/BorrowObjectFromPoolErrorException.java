@@ -12,28 +12,28 @@ import com.gstdev.cloud.commons.ass.definition.domain.Feedback;
  */
 public class BorrowObjectFromPoolErrorException extends PlatformRuntimeException {
 
-    public BorrowObjectFromPoolErrorException() {
-        super();
-    }
+  public BorrowObjectFromPoolErrorException() {
+    super();
+  }
 
-    public BorrowObjectFromPoolErrorException(String message) {
-        super(message);
-    }
+  public BorrowObjectFromPoolErrorException(String message) {
+    super(message);
+  }
 
-    public BorrowObjectFromPoolErrorException(String message, Throwable cause) {
-        super(message, cause);
-    }
+  public BorrowObjectFromPoolErrorException(String message, Throwable cause) {
+    super(message, cause);
+  }
 
-    public BorrowObjectFromPoolErrorException(Throwable cause) {
-        super(cause);
-    }
+  public BorrowObjectFromPoolErrorException(Throwable cause) {
+    super(cause);
+  }
 
-    protected BorrowObjectFromPoolErrorException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
+  protected BorrowObjectFromPoolErrorException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    super(message, cause, enableSuppression, writableStackTrace);
+  }
 
-    @Override
-    public Feedback getFeedback() {
-        return ErrorCodes.BORROW_OBJECT_FROM_POOL_ERROR_EXCEPTION;
-    }
+  @Override
+  public Feedback getFeedback() {
+    return ErrorCodes.BORROW_OBJECT_FROM_POOL_ERROR_EXCEPTION;
+  }
 }

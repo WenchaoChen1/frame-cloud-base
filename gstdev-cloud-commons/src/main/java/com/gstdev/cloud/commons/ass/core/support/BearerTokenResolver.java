@@ -1,4 +1,3 @@
-
 package com.gstdev.cloud.commons.ass.core.support;
 
 import com.gstdev.cloud.commons.ass.definition.domain.oauth2.PrincipalDetails;
@@ -11,5 +10,5 @@ import com.gstdev.cloud.commons.ass.definition.domain.oauth2.PrincipalDetails;
  */
 public interface BearerTokenResolver {
 
-    PrincipalDetails resolve(String token);
+  PrincipalDetails resolve(String token);
 }

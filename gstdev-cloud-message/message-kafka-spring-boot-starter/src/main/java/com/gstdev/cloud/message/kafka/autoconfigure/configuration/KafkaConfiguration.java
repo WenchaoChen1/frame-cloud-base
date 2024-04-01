@@ -23,24 +23,24 @@ import org.springframework.kafka.core.ConsumerFactory;
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnKafkaEnabled
 @EnableConfigurationProperties({
-        KafkaProperties.class
+  KafkaProperties.class
 })
 public class KafkaConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(KafkaConfiguration.class);
+  private static final Logger log = LoggerFactory.getLogger(KafkaConfiguration.class);
 
-    @PostConstruct
-    public void postConstruct() {
-        log.debug("[GstDev Cloud] |- SDK [Event Message Kafka] Auto Configure.");
-    }
+  @PostConstruct
+  public void postConstruct() {
+    log.debug("[GstDev Cloud] |- SDK [Event Message Kafka] Auto Configure.");
+  }
 
-    @Bean
-    @ConditionalOnMissingBean(ConcurrentKafkaListenerContainerFactory.class)
-    public ConcurrentKafkaListenerContainerFactory<String, String> concurrentKafkaListenerContainerFactory(KafkaProperties kafkaProperties, ConsumerFactory<String, String> consumerFactory) {
-        ConcurrentKafkaListenerContainerFactory<String, String> concurrentKafkaListenerContainerFactory = new ConcurrentKafkaListenerContainerFactory<>();
-        concurrentKafkaListenerContainerFactory.setConsumerFactory(consumerFactory);
-        concurrentKafkaListenerContainerFactory.setAutoStartup(kafkaProperties.getEnabled());
-        log.trace("[GstDev Cloud] |- Bean [Concurrent Kafka Listener ContainerFactory] Auto Configure.");
-        return concurrentKafkaListenerContainerFactory;
-    }
+  @Bean
+  @ConditionalOnMissingBean(ConcurrentKafkaListenerContainerFactory.class)
+  public ConcurrentKafkaListenerContainerFactory<String, String> concurrentKafkaListenerContainerFactory(KafkaProperties kafkaProperties, ConsumerFactory<String, String> consumerFactory) {
+    ConcurrentKafkaListenerContainerFactory<String, String> concurrentKafkaListenerContainerFactory = new ConcurrentKafkaListenerContainerFactory<>();
+    concurrentKafkaListenerContainerFactory.setConsumerFactory(consumerFactory);
+    concurrentKafkaListenerContainerFactory.setAutoStartup(kafkaProperties.getEnabled());
+    log.trace("[GstDev Cloud] |- Bean [Concurrent Kafka Listener ContainerFactory] Auto Configure.");
+    return concurrentKafkaListenerContainerFactory;
+  }
 }

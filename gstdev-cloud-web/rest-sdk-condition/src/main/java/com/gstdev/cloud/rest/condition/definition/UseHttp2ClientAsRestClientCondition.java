@@ -15,13 +15,13 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  */
 public class UseHttp2ClientAsRestClientCondition implements Condition {
 
-    private static final Logger log = LoggerFactory.getLogger(UseHttp2ClientAsRestClientCondition.class);
+  private static final Logger log = LoggerFactory.getLogger(UseHttp2ClientAsRestClientCondition.class);
 
-    @SuppressWarnings("NullableProblems")
-    @Override
-    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
-        boolean result = RestPropertyFinder.isOpenFeignHttp2ClientEnabled(conditionContext);
-        log.debug("[GstDev Cloud] |- Condition [Use Http2Client as Rest Client] value is [{}]", result);
-        return result;
-    }
+  @SuppressWarnings("NullableProblems")
+  @Override
+  public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
+    boolean result = RestPropertyFinder.isOpenFeignHttp2ClientEnabled(conditionContext);
+    log.debug("[GstDev Cloud] |- Condition [Use Http2Client as Rest Client] value is [{}]", result);
+    return result;
+  }
 }

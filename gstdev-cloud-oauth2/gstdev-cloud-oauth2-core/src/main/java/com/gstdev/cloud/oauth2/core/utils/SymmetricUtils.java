@@ -26,48 +26,48 @@ import org.slf4j.LoggerFactory;
  */
 public class SymmetricUtils {
 
-    private static final Logger log = LoggerFactory.getLogger(SymmetricUtils.class);
+  private static final Logger log = LoggerFactory.getLogger(SymmetricUtils.class);
 
-    private static String encryptedRealSecretKey(String symmetricKey) {
-        String realSecretKey = RandomUtil.randomString(16);
-        log.trace("[GstDev Cloud] |- Generate Random Secret Key is : [{}]", realSecretKey);
+  private static String encryptedRealSecretKey(String symmetricKey) {
+    String realSecretKey = RandomUtil.randomString(16);
+    log.trace("[GstDev Cloud] |- Generate Random Secret Key is : [{}]", realSecretKey);
 
-        AES ase = SecureUtil.aes(symmetricKey.getBytes());
-        String encryptedRealSecretKey = ase.encryptHex(realSecretKey);
-        log.trace("[GstDev Cloud] |- Generate Encrypt Hex Secret Key is : [{}]", encryptedRealSecretKey);
+    AES ase = SecureUtil.aes(symmetricKey.getBytes());
+    String encryptedRealSecretKey = ase.encryptHex(realSecretKey);
+    log.trace("[GstDev Cloud] |- Generate Encrypt Hex Secret Key is : [{}]", encryptedRealSecretKey);
 
-        return encryptedRealSecretKey;
+    return encryptedRealSecretKey;
+  }
+
+  public static String getEncryptedSymmetricKey() {
+    String symmetricKey = RandomUtil.randomString(16);
+    String realSecretKey = encryptedRealSecretKey(symmetricKey);
+    log.trace("[GstDev Cloud] |- Generate Symmetric Key is : [{}]", realSecretKey);
+
+    return symmetricKey +
+      SymbolConstants.FORWARD_SLASH +
+      realSecretKey;
+  }
+
+  public static byte[] getDecryptedSymmetricKey(String key) {
+    if (!StringUtils.contains(key, SymbolConstants.FORWARD_SLASH)) {
+      throw new IllegalSymmetricKeyException("Parameter Illegal!");
     }
 
-    public static String getEncryptedSymmetricKey() {
-        String symmetricKey = RandomUtil.randomString(16);
-        String realSecretKey = encryptedRealSecretKey(symmetricKey);
-        log.trace("[GstDev Cloud] |- Generate Symmetric Key is : [{}]", realSecretKey);
+    String[] keys = StringUtils.split(key, SymbolConstants.FORWARD_SLASH);
+    String symmetricKey = keys[0];
+    String realSecretKey = keys[1];
 
-        return symmetricKey +
-                SymbolConstants.FORWARD_SLASH +
-                realSecretKey;
+    AES ase = SecureUtil.aes(symmetricKey.getBytes());
+    return ase.decrypt(realSecretKey);
+  }
+
+  public static String decrypt(String content, byte[] key) {
+    if (ArrayUtils.isNotEmpty(key)) {
+      AES ase = SecureUtil.aes(key);
+      return ase.decryptStr(content);
     }
 
-    public static byte[] getDecryptedSymmetricKey(String key) {
-        if (!StringUtils.contains(key, SymbolConstants.FORWARD_SLASH)) {
-            throw new IllegalSymmetricKeyException("Parameter Illegal!");
-        }
-
-        String[] keys = StringUtils.split(key, SymbolConstants.FORWARD_SLASH);
-        String symmetricKey = keys[0];
-        String realSecretKey = keys[1];
-
-        AES ase = SecureUtil.aes(symmetricKey.getBytes());
-        return ase.decrypt(realSecretKey);
-    }
-
-    public static String decrypt(String content, byte[] key) {
-        if (ArrayUtils.isNotEmpty(key)) {
-            AES ase = SecureUtil.aes(key);
-            return ase.decryptStr(content);
-        }
-
-        return "";
-    }
+    return "";
+  }
 }

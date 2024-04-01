@@ -19,20 +19,20 @@ import java.io.IOException;
  */
 public class XssStringJsonDeserializer extends JsonDeserializer<String> {
 
-    private static final Logger log = LoggerFactory.getLogger(XssStringJsonDeserializer.class);
+  private static final Logger log = LoggerFactory.getLogger(XssStringJsonDeserializer.class);
 
-    @Override
-    public Class<String> handledType() {
-        return String.class;
+  @Override
+  public Class<String> handledType() {
+    return String.class;
+  }
+
+  @Override
+  public String deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
+    String value = jsonParser.getValueAsString();
+    if (StringUtils.isNotBlank(value)) {
+      return XssUtils.cleaning(value);
     }
 
-    @Override
-    public String deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
-        String value = jsonParser.getValueAsString();
-        if (StringUtils.isNotBlank(value)) {
-            return XssUtils.cleaning(value);
-        }
-
-        return value;
-    }
+    return value;
+  }
 }

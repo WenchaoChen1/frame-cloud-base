@@ -19,32 +19,32 @@ import org.springframework.web.servlet.HandlerInterceptor;
  */
 public class MultiTenantInterceptor implements HandlerInterceptor {
 
-    private static final Logger log = LoggerFactory.getLogger(MultiTenantInterceptor.class);
+  private static final Logger log = LoggerFactory.getLogger(MultiTenantInterceptor.class);
 
-    @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+  @Override
+  public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        String tenantId = HeaderUtils.getHerodotusTenantId(request);
-        if (StringUtils.isBlank(tenantId)) {
-            tenantId = DefaultConstants.TENANT_ID;
-        }
-        TenantContextHolder.setTenantId(tenantId);
-        log.debug("[GstDev Cloud] |- TENANT ID is : [{}].", tenantId);
-
-        String path = request.getRequestURI();
-        String sessionId = SessionUtils.getSessionId(request);
-        String herodotusSessionId = HeaderUtils.getHerodotusSessionId(request);
-
-        log.debug("[GstDev Cloud] |- SESSION ID for [{}] is : [{}].", path, sessionId);
-        log.debug("[GstDev Cloud] |- SESSION ID of HERODOTUS for [{}] is : [{}].", path, herodotusSessionId);
-
-        return true;
+    String tenantId = HeaderUtils.getHerodotusTenantId(request);
+    if (StringUtils.isBlank(tenantId)) {
+      tenantId = DefaultConstants.TENANT_ID;
     }
+    TenantContextHolder.setTenantId(tenantId);
+    log.debug("[GstDev Cloud] |- TENANT ID is : [{}].", tenantId);
 
-    @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        String path = request.getRequestURI();
-        TenantContextHolder.clear();
-        log.debug("[GstDev Cloud] |- Tenant Interceptor CLEAR tenantId for request [{}].", path);
-    }
+    String path = request.getRequestURI();
+    String sessionId = SessionUtils.getSessionId(request);
+    String herodotusSessionId = HeaderUtils.getHerodotusSessionId(request);
+
+    log.debug("[GstDev Cloud] |- SESSION ID for [{}] is : [{}].", path, sessionId);
+    log.debug("[GstDev Cloud] |- SESSION ID of HERODOTUS for [{}] is : [{}].", path, herodotusSessionId);
+
+    return true;
+  }
+
+  @Override
+  public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+    String path = request.getRequestURI();
+    TenantContextHolder.clear();
+    log.debug("[GstDev Cloud] |- Tenant Interceptor CLEAR tenantId for request [{}].", path);
+  }
 }

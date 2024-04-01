@@ -8,9 +8,9 @@ code.google.com/p/crypto-js/wiki/License
  * A noop padding strategy.
  */
 CryptoJS.pad.NoPadding = {
-    pad: function () {
-    },
+  pad: function () {
+  },
 
-    unpad: function () {
-    }
+  unpad: function () {
+  }
 };

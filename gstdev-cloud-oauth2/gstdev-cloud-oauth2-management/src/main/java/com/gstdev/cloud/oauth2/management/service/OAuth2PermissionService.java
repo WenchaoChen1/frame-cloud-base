@@ -15,14 +15,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class OAuth2PermissionService extends BaseService<OAuth2Permission, String> {
 
-    private final OAuth2PermissionRepository authorityRepository;
+  private final OAuth2PermissionRepository authorityRepository;
 
-    public OAuth2PermissionService(OAuth2PermissionRepository authorityRepository) {
-        this.authorityRepository = authorityRepository;
-    }
+  public OAuth2PermissionService(OAuth2PermissionRepository authorityRepository) {
+    this.authorityRepository = authorityRepository;
+  }
 
-    @Override
-    public BaseRepository<OAuth2Permission, String> getRepository() {
-        return authorityRepository;
-    }
+  @Override
+  public BaseRepository<OAuth2Permission, String> getRepository() {
+    return authorityRepository;
+  }
 }

@@ -17,14 +17,14 @@ import java.io.IOException;
 @Component
 public class XssHttpServletFilter implements Filter {
 
-    private static final Logger log = LoggerFactory.getLogger(XssHttpServletFilter.class);
+  private static final Logger log = LoggerFactory.getLogger(XssHttpServletFilter.class);
 
-    @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
+  @Override
+  public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    HttpServletRequest request = (HttpServletRequest) servletRequest;
 
-        XssHttpServletRequestWrapper xssRequest = new XssHttpServletRequestWrapper(request);
-        log.trace("[GstDev Cloud] |- XssHttpServletFilter wrapper request for [{}].", request.getRequestURI());
-        filterChain.doFilter(xssRequest, servletResponse);
-    }
+    XssHttpServletRequestWrapper xssRequest = new XssHttpServletRequestWrapper(request);
+    log.trace("[GstDev Cloud] |- XssHttpServletFilter wrapper request for [{}].", request.getRequestURI());
+    filterChain.doFilter(xssRequest, servletResponse);
+  }
 }

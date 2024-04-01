@@ -15,24 +15,24 @@ import org.springframework.security.core.AuthenticationException;
  */
 public class PlatformAuthenticationException extends AuthenticationException implements HerodotusException {
 
-    public PlatformAuthenticationException(String msg, Throwable cause) {
-        super(msg, cause);
-    }
+  public PlatformAuthenticationException(String msg, Throwable cause) {
+    super(msg, cause);
+  }
 
-    public PlatformAuthenticationException(String msg) {
-        super(msg);
-    }
+  public PlatformAuthenticationException(String msg) {
+    super(msg);
+  }
 
-    @Override
-    public Feedback getFeedback() {
-        return ErrorCodes.INTERNAL_SERVER_ERROR;
-    }
+  @Override
+  public Feedback getFeedback() {
+    return ErrorCodes.INTERNAL_SERVER_ERROR;
+  }
 
-    @Override
-    public Result<String> getResult() {
-        Result<String> result = Result.failure(getFeedback());
-        result.stackTrace(super.getStackTrace());
-        result.detail(super.getMessage());
-        return result;
-    }
+  @Override
+  public Result<String> getResult() {
+    Result<String> result = Result.failure(getFeedback());
+    result.stackTrace(super.getStackTrace());
+    result.detail(super.getMessage());
+    return result;
+  }
 }

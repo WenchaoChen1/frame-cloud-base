@@ -796,14 +796,14 @@
             </annotationProcessorPaths>
           </configuration>
         </plugin>
-<!--        1. **maven-resources-plugin**：-->
-<!--        - 作用：处理项目中的资源文件，例如配置文件、属性文件等。-->
-<!--        - 配置：-->
-<!--        - `encoding`：指定资源文件的编码方式。-->
-<!--        - `propertiesEncoding`：指定属性文件的编码方式。-->
-<!--        - `addDefaultExcludes`：是否添加默认的排除规则。-->
-<!--        - `delimiters`：指定资源文件中的占位符分隔符。-->
-<!--        - `useDefaultDelimiters`：是否使用默认的占位符分隔符。-->
+        <!--        1. **maven-resources-plugin**：-->
+        <!--        - 作用：处理项目中的资源文件，例如配置文件、属性文件等。-->
+        <!--        - 配置：-->
+        <!--        - `encoding`：指定资源文件的编码方式。-->
+        <!--        - `propertiesEncoding`：指定属性文件的编码方式。-->
+        <!--        - `addDefaultExcludes`：是否添加默认的排除规则。-->
+        <!--        - `delimiters`：指定资源文件中的占位符分隔符。-->
+        <!--        - `useDefaultDelimiters`：是否使用默认的占位符分隔符。-->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
@@ -818,10 +818,10 @@
           </configuration>
         </plugin>
 
-<!--        2. **maven-surefire-plugin**：-->
-<!--        - 作用：运行单元测试。-->
-<!--        - 配置：-->
-<!--        - `skipTests`：是否跳过执行测试。-->
+        <!--        2. **maven-surefire-plugin**：-->
+        <!--        - 作用：运行单元测试。-->
+        <!--        - 配置：-->
+        <!--        - `skipTests`：是否跳过执行测试。-->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
@@ -829,10 +829,10 @@
             <skipTests>true</skipTests>
           </configuration>
         </plugin>
-<!--        3. **maven-source-plugin**：-->
-<!--        - 作用：生成项目的源代码 jar 文件，通常与发布源码相关。-->
-<!--        - 配置：-->
-<!--        - 执行一个 `jar-no-fork` 的目标，该目标负责生成源代码 jar 文件。-->
+        <!--        3. **maven-source-plugin**：-->
+        <!--        - 作用：生成项目的源代码 jar 文件，通常与发布源码相关。-->
+        <!--        - 配置：-->
+        <!--        - 执行一个 `jar-no-fork` 的目标，该目标负责生成源代码 jar 文件。-->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-source-plugin</artifactId>
@@ -846,12 +846,12 @@
             </execution>
           </executions>
         </plugin>
-<!--        4. **maven-javadoc-plugin**：-->
-<!--        - 作用：生成项目的 Javadoc 文档。-->
-<!--        - 配置：-->
-<!--        - `show`：指定生成 Javadoc 的内容（例如 `public`、`protected`、`package`、`private`）。-->
-<!--        - `tags`：定义 Javadoc 文档中使用的标签。-->
-<!--        - `doclint`：指定是否启用 Java 9 新特性中的 Javadoc 格式验证。-->
+        <!--        4. **maven-javadoc-plugin**：-->
+        <!--        - 作用：生成项目的 Javadoc 文档。-->
+        <!--        - 配置：-->
+        <!--        - `show`：指定生成 Javadoc 的内容（例如 `public`、`protected`、`package`、`private`）。-->
+        <!--        - `tags`：定义 Javadoc 文档中使用的标签。-->
+        <!--        - `doclint`：指定是否启用 Java 9 新特性中的 Javadoc 格式验证。-->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
@@ -876,11 +876,11 @@
             </execution>
           </executions>
         </plugin>
-<!--        这个 Maven 插件是 `maven-gpg-plugin`，它用于对 Maven 构建的项目进行 GPG（GNU Privacy Guard）签名，以确保构建的软件包在传输和分发过程中的完整性和安全性。-->
-<!--        配置说明如下：-->
-<!--        - `<phase>`：指定了执行插件的阶段，这里是 `verify`，表示在 Maven 构建的 `verify` 阶段执行签名操作。-->
-<!--        - `<goals>`：指定了在执行插件时要执行的目标，这里是 `sign`，表示对构建的软件包进行签名。-->
-<!--        通过配置 `maven-gpg-plugin`，你可以在 Maven 构建过程中自动对项目进行 GPG 签名，从而确保项目的可信度和安全性。-->
+        <!--        这个 Maven 插件是 `maven-gpg-plugin`，它用于对 Maven 构建的项目进行 GPG（GNU Privacy Guard）签名，以确保构建的软件包在传输和分发过程中的完整性和安全性。-->
+        <!--        配置说明如下：-->
+        <!--        - `<phase>`：指定了执行插件的阶段，这里是 `verify`，表示在 Maven 构建的 `verify` 阶段执行签名操作。-->
+        <!--        - `<goals>`：指定了在执行插件时要执行的目标，这里是 `sign`，表示对构建的软件包进行签名。-->
+        <!--        通过配置 `maven-gpg-plugin`，你可以在 Maven 构建过程中自动对项目进行 GPG 签名，从而确保项目的可信度和安全性。-->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-gpg-plugin</artifactId>

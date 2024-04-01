@@ -95,7 +95,7 @@ public class HuaweiStorageService extends AbstractFileService implements Storage
   public String getObjectURL(String bucketName, String objectName, Integer expires) {
     if (expires <= 0) {
       String[] segments = endpoint.split("://");
-      return segments[0] + "://" + bucketName + "." + segments[1]  + "/" + objectName;
+      return segments[0] + "://" + bucketName + "." + segments[1] + "/" + objectName;
     }
 
     String url = null;

@@ -19,22 +19,22 @@ import org.springframework.web.servlet.HandlerInterceptor;
  */
 public abstract class AbstractBaseHandlerInterceptor implements HandlerInterceptor {
 
-    private static final Logger log = LoggerFactory.getLogger(AbstractBaseHandlerInterceptor.class);
+  private static final Logger log = LoggerFactory.getLogger(AbstractBaseHandlerInterceptor.class);
 
-    protected String generateRequestKey(HttpServletRequest request) {
+  protected String generateRequestKey(HttpServletRequest request) {
 
-        String sessionId = SessionUtils.analyseSessionId(request);
+    String sessionId = SessionUtils.analyseSessionId(request);
 
-        String url = request.getRequestURI();
-        String method = request.getMethod();
+    String url = request.getRequestURI();
+    String method = request.getMethod();
 
-        if (StringUtils.isNotBlank(sessionId)) {
-            String key = SecureUtil.md5(sessionId + SymbolConstants.COLON + url + SymbolConstants.COLON + method);
-            log.debug("[GstDev Cloud] |- IdempotentInterceptor key is [{}].", key);
-            return key;
-        } else {
-            log.warn("[GstDev Cloud] |- IdempotentInterceptor cannot create key, because sessionId is null.");
-            return null;
-        }
+    if (StringUtils.isNotBlank(sessionId)) {
+      String key = SecureUtil.md5(sessionId + SymbolConstants.COLON + url + SymbolConstants.COLON + method);
+      log.debug("[GstDev Cloud] |- IdempotentInterceptor key is [{}].", key);
+      return key;
+    } else {
+      log.warn("[GstDev Cloud] |- IdempotentInterceptor cannot create key, because sessionId is null.");
+      return null;
     }
+  }
 }

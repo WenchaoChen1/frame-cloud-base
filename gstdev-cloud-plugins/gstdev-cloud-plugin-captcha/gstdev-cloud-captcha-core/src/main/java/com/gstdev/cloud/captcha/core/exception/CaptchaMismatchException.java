@@ -13,28 +13,28 @@ import com.gstdev.cloud.commons.ass.definition.exception.PlatformRuntimeExceptio
  */
 public class CaptchaMismatchException extends PlatformRuntimeException {
 
-    public CaptchaMismatchException() {
-        super();
-    }
+  public CaptchaMismatchException() {
+    super();
+  }
 
-    public CaptchaMismatchException(String message) {
-        super(message);
-    }
+  public CaptchaMismatchException(String message) {
+    super(message);
+  }
 
-    public CaptchaMismatchException(String message, Throwable cause) {
-        super(message, cause);
-    }
+  public CaptchaMismatchException(String message, Throwable cause) {
+    super(message, cause);
+  }
 
-    public CaptchaMismatchException(Throwable cause) {
-        super(cause);
-    }
+  public CaptchaMismatchException(Throwable cause) {
+    super(cause);
+  }
 
-    protected CaptchaMismatchException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
+  protected CaptchaMismatchException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    super(message, cause, enableSuppression, writableStackTrace);
+  }
 
-    @Override
-    public Feedback getFeedback() {
-        return CaptchaErrorCodes.CAPTCHA_MISMATCH;
-    }
+  @Override
+  public Feedback getFeedback() {
+    return CaptchaErrorCodes.CAPTCHA_MISMATCH;
+  }
 }

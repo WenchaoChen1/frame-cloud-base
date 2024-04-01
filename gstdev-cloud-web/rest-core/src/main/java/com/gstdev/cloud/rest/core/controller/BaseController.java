@@ -16,26 +16,26 @@ import java.io.Serializable;
  */
 public abstract class BaseController<E extends AbstractEntity, ID extends Serializable> implements WriteableController<E, ID> {
 
-    /**
-     * 获取Service
-     *
-     * @return Service
-     */
-    @Override
-    public ReadableService<E, ID> getReadableService() {
-        return this.getWriteableService();
-    }
+  /**
+   * 获取Service
+   *
+   * @return Service
+   */
+  @Override
+  public ReadableService<E, ID> getReadableService() {
+    return this.getWriteableService();
+  }
 
-    @Override
-    public Result<E> saveOrUpdate(E domain) {
-        E savedDomain = getWriteableService().saveAndFlush(domain);
-        return result(savedDomain);
-    }
+  @Override
+  public Result<E> saveOrUpdate(E domain) {
+    E savedDomain = getWriteableService().saveAndFlush(domain);
+    return result(savedDomain);
+  }
 
-    @Override
-    public Result<String> delete(ID id) {
-        Result<String> result = result(String.valueOf(id));
-        getWriteableService().deleteById(id);
-        return result;
-    }
+  @Override
+  public Result<String> delete(ID id) {
+    Result<String> result = result(String.valueOf(id));
+    getWriteableService().deleteById(id);
+    return result;
+  }
 }

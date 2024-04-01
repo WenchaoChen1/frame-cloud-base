@@ -22,28 +22,28 @@ import org.springframework.security.config.annotation.web.configurers.FormLoginC
  */
 public class OAuth2FormLoginConfigurerCustomizer implements Customizer<FormLoginConfigurer<HttpSecurity>> {
 
-    private final OAuth2AuthenticationProperties authenticationProperties;
+  private final OAuth2AuthenticationProperties authenticationProperties;
 
-    public OAuth2FormLoginConfigurerCustomizer(OAuth2AuthenticationProperties authenticationProperties) {
-        this.authenticationProperties = authenticationProperties;
+  public OAuth2FormLoginConfigurerCustomizer(OAuth2AuthenticationProperties authenticationProperties) {
+    this.authenticationProperties = authenticationProperties;
+  }
+
+  @Override
+  public void customize(FormLoginConfigurer<HttpSecurity> configurer) {
+    configurer
+      .loginPage(getFormLogin().getLoginPageUrl())
+      .usernameParameter(getFormLogin().getUsernameParameter())
+      .passwordParameter(getFormLogin().getPasswordParameter());
+
+    if (StringUtils.isNotBlank(getFormLogin().getFailureForwardUrl())) {
+      configurer.failureForwardUrl(getFormLogin().getFailureForwardUrl());
     }
-
-    @Override
-    public void customize(FormLoginConfigurer<HttpSecurity> configurer) {
-        configurer
-                .loginPage(getFormLogin().getLoginPageUrl())
-                .usernameParameter(getFormLogin().getUsernameParameter())
-                .passwordParameter(getFormLogin().getPasswordParameter());
-
-        if (StringUtils.isNotBlank(getFormLogin().getFailureForwardUrl())) {
-            configurer.failureForwardUrl(getFormLogin().getFailureForwardUrl());
-        }
-        if (StringUtils.isNotBlank(getFormLogin().getSuccessForwardUrl())) {
-            configurer.successForwardUrl(getFormLogin().getSuccessForwardUrl());
-        }
+    if (StringUtils.isNotBlank(getFormLogin().getSuccessForwardUrl())) {
+      configurer.successForwardUrl(getFormLogin().getSuccessForwardUrl());
     }
+  }
 
-    private OAuth2AuthenticationProperties.FormLogin getFormLogin() {
-        return authenticationProperties.getFormLogin();
-    }
+  private OAuth2AuthenticationProperties.FormLogin getFormLogin() {
+    return authenticationProperties.getFormLogin();
+  }
 }

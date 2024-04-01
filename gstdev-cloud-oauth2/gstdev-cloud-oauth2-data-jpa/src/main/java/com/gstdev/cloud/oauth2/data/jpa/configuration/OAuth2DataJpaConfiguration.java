@@ -28,44 +28,44 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
  */
 @Configuration(proxyBeanMethods = false)
 @EntityScan(basePackages = {
-        "com.gstdev.cloud.oauth2.data.jpa.entity"
+  "com.gstdev.cloud.oauth2.data.jpa.entity"
 })
 @EnableJpaRepositories(basePackages = {
-        "com.gstdev.cloud.oauth2.data.jpa.repository",
+  "com.gstdev.cloud.oauth2.data.jpa.repository",
 })
 @ComponentScan(basePackages = {
-        "com.gstdev.cloud.oauth2.data.jpa.service",
+  "com.gstdev.cloud.oauth2.data.jpa.service",
 })
 public class OAuth2DataJpaConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(OAuth2DataJpaConfiguration.class);
+  private static final Logger log = LoggerFactory.getLogger(OAuth2DataJpaConfiguration.class);
 
-    @PostConstruct
-    public void postConstruct() {
-        log.debug("[GstDev Cloud] |- SDK [OAuth2 Data JPA] Auto Configure.");
-    }
+  @PostConstruct
+  public void postConstruct() {
+    log.debug("[GstDev Cloud] |- SDK [OAuth2 Data JPA] Auto Configure.");
+  }
 
-    @Bean
-    @ConditionalOnMissingBean
-    public RegisteredClientRepository registeredClientRepository(HerodotusRegisteredClientService herodotusRegisteredClientService, PasswordEncoder passwordEncoder) {
-        JpaRegisteredClientRepository jpaRegisteredClientRepository = new JpaRegisteredClientRepository(herodotusRegisteredClientService, passwordEncoder);
-        log.debug("[GstDev Cloud] |- Bean [Jpa Registered Client Repository] Auto Configure.");
-        return jpaRegisteredClientRepository;
-    }
+  @Bean
+  @ConditionalOnMissingBean
+  public RegisteredClientRepository registeredClientRepository(HerodotusRegisteredClientService herodotusRegisteredClientService, PasswordEncoder passwordEncoder) {
+    JpaRegisteredClientRepository jpaRegisteredClientRepository = new JpaRegisteredClientRepository(herodotusRegisteredClientService, passwordEncoder);
+    log.debug("[GstDev Cloud] |- Bean [Jpa Registered Client Repository] Auto Configure.");
+    return jpaRegisteredClientRepository;
+  }
 
-    @Bean
-    @ConditionalOnMissingBean
-    public OAuth2AuthorizationService authorizationService(HerodotusAuthorizationService herodotusAuthorizationService, RegisteredClientRepository registeredClientRepository) {
-        JpaOAuth2AuthorizationService jpaOAuth2AuthorizationService = new JpaOAuth2AuthorizationService(herodotusAuthorizationService, registeredClientRepository);
-        log.debug("[GstDev Cloud] |- Bean [Jpa OAuth2 Authorization Service] Auto Configure.");
-        return jpaOAuth2AuthorizationService;
-    }
+  @Bean
+  @ConditionalOnMissingBean
+  public OAuth2AuthorizationService authorizationService(HerodotusAuthorizationService herodotusAuthorizationService, RegisteredClientRepository registeredClientRepository) {
+    JpaOAuth2AuthorizationService jpaOAuth2AuthorizationService = new JpaOAuth2AuthorizationService(herodotusAuthorizationService, registeredClientRepository);
+    log.debug("[GstDev Cloud] |- Bean [Jpa OAuth2 Authorization Service] Auto Configure.");
+    return jpaOAuth2AuthorizationService;
+  }
 
-    @Bean
-    @ConditionalOnMissingBean
-    public OAuth2AuthorizationConsentService authorizationConsentService(HerodotusAuthorizationConsentService herodotusAuthorizationConsentService, RegisteredClientRepository registeredClientRepository) {
-        JpaOAuth2AuthorizationConsentService jpaOAuth2AuthorizationConsentService = new JpaOAuth2AuthorizationConsentService(herodotusAuthorizationConsentService, registeredClientRepository);
-        log.debug("[GstDev Cloud] |- Bean [Jpa OAuth2 Authorization Consent Service] Auto Configure.");
-        return jpaOAuth2AuthorizationConsentService;
-    }
+  @Bean
+  @ConditionalOnMissingBean
+  public OAuth2AuthorizationConsentService authorizationConsentService(HerodotusAuthorizationConsentService herodotusAuthorizationConsentService, RegisteredClientRepository registeredClientRepository) {
+    JpaOAuth2AuthorizationConsentService jpaOAuth2AuthorizationConsentService = new JpaOAuth2AuthorizationConsentService(herodotusAuthorizationConsentService, registeredClientRepository);
+    log.debug("[GstDev Cloud] |- Bean [Jpa OAuth2 Authorization Consent Service] Auto Configure.");
+    return jpaOAuth2AuthorizationConsentService;
+  }
 }

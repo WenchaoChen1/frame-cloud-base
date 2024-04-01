@@ -18,24 +18,24 @@ import java.util.Set;
  */
 public class HerodotusToOAuth2RegisteredClientConverter extends AbstractRegisteredClientConverter<HerodotusRegisteredClient> {
 
-    public HerodotusToOAuth2RegisteredClientConverter(OAuth2JacksonProcessor jacksonProcessor) {
-        super(jacksonProcessor);
-    }
+  public HerodotusToOAuth2RegisteredClientConverter(OAuth2JacksonProcessor jacksonProcessor) {
+    super(jacksonProcessor);
+  }
 
-    @Override
-    public Set<String> getScopes(HerodotusRegisteredClient details) {
-        return StringUtils.commaDelimitedListToSet(details.getScopes());
-    }
+  @Override
+  public Set<String> getScopes(HerodotusRegisteredClient details) {
+    return StringUtils.commaDelimitedListToSet(details.getScopes());
+  }
 
-    @Override
-    public ClientSettings getClientSettings(HerodotusRegisteredClient details) {
-        Map<String, Object> clientSettingsMap = parseMap(details.getClientSettings());
-        return ClientSettings.withSettings(clientSettingsMap).build();
-    }
+  @Override
+  public ClientSettings getClientSettings(HerodotusRegisteredClient details) {
+    Map<String, Object> clientSettingsMap = parseMap(details.getClientSettings());
+    return ClientSettings.withSettings(clientSettingsMap).build();
+  }
 
-    @Override
-    public TokenSettings getTokenSettings(HerodotusRegisteredClient details) {
-        Map<String, Object> tokenSettingsMap = parseMap(details.getTokenSettings());
-        return TokenSettings.withSettings(tokenSettingsMap).build();
-    }
+  @Override
+  public TokenSettings getTokenSettings(HerodotusRegisteredClient details) {
+    Map<String, Object> tokenSettingsMap = parseMap(details.getTokenSettings());
+    return TokenSettings.withSettings(tokenSettingsMap).build();
+  }
 }

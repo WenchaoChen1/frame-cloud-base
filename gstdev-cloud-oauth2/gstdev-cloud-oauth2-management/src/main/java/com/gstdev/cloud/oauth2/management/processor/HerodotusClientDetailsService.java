@@ -21,31 +21,31 @@ import java.util.stream.Collectors;
  */
 public class HerodotusClientDetailsService implements EnhanceClientDetailsService {
 
-    private final OAuth2ApplicationService applicationService;
+  private final OAuth2ApplicationService applicationService;
 
-    public HerodotusClientDetailsService(OAuth2ApplicationService applicationService) {
-        this.applicationService = applicationService;
-    }
+  public HerodotusClientDetailsService(OAuth2ApplicationService applicationService) {
+    this.applicationService = applicationService;
+  }
 
-    @Override
-    public Set<HerodotusGrantedAuthority> findAuthoritiesById(String clientId) {
+  @Override
+  public Set<HerodotusGrantedAuthority> findAuthoritiesById(String clientId) {
 
-        OAuth2Application application = applicationService.findByClientId(clientId);
-        if (ObjectUtils.isNotEmpty(application)) {
-            Set<OAuth2Scope> scopes = application.getScopes();
-            Set<HerodotusGrantedAuthority> result = new HashSet<>();
-            if (CollectionUtils.isNotEmpty(scopes)) {
-                for (OAuth2Scope scope : scopes) {
-                    Set<OAuth2Permission> permissions = scope.getPermissions();
-                    if (CollectionUtils.isNotEmpty(permissions)) {
-                        Set<HerodotusGrantedAuthority> grantedAuthorities = permissions.stream().map(item -> new HerodotusGrantedAuthority(item.getPermissionCode())).collect(Collectors.toSet());
-                        result.addAll(grantedAuthorities);
-                    }
-                }
-            }
-            return result;
+    OAuth2Application application = applicationService.findByClientId(clientId);
+    if (ObjectUtils.isNotEmpty(application)) {
+      Set<OAuth2Scope> scopes = application.getScopes();
+      Set<HerodotusGrantedAuthority> result = new HashSet<>();
+      if (CollectionUtils.isNotEmpty(scopes)) {
+        for (OAuth2Scope scope : scopes) {
+          Set<OAuth2Permission> permissions = scope.getPermissions();
+          if (CollectionUtils.isNotEmpty(permissions)) {
+            Set<HerodotusGrantedAuthority> grantedAuthorities = permissions.stream().map(item -> new HerodotusGrantedAuthority(item.getPermissionCode())).collect(Collectors.toSet());
+            result.addAll(grantedAuthorities);
+          }
         }
-
-        return new HashSet<>();
+      }
+      return result;
     }
+
+    return new HashSet<>();
+  }
 }

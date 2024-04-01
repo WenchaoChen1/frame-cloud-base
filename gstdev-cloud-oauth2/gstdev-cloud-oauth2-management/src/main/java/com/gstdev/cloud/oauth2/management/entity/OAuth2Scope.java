@@ -22,95 +22,95 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "oauth2_scope", uniqueConstraints = {@UniqueConstraint(columnNames = {"scope_code"})}, indexes = {
-        @Index(name = "oauth2_scope_id_idx", columnList = "scope_id"),
-        @Index(name = "oauth2_scope_code_idx", columnList = "scope_code")})
+  @Index(name = "oauth2_scope_id_idx", columnList = "scope_id"),
+  @Index(name = "oauth2_scope_code_idx", columnList = "scope_code")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_SCOPE)
 public class OAuth2Scope extends BaseSysEntity {
 
-    @Id
-    @UuidGenerator
-    @Column(name = "scope_id", length = 64)
-    private String scopeId;
+  @Id
+  @UuidGenerator
+  @Column(name = "scope_id", length = 64)
+  private String scopeId;
 
-    @Column(name = "scope_code", length = 128, unique = true)
-    private String scopeCode;
+  @Column(name = "scope_code", length = 128, unique = true)
+  private String scopeCode;
 
-    @Column(name = "scope_name", length = 128)
-    private String scopeName;
+  @Column(name = "scope_name", length = 128)
+  private String scopeName;
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_PERMISSION)
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REMOVE, CascadeType.MERGE}, fetch = FetchType.EAGER)
-    @Fetch(FetchMode.SUBSELECT)
-    @JoinTable(name = "oauth2_scope_permission",
-            joinColumns = {@JoinColumn(name = "scope_id")},
-            inverseJoinColumns = {@JoinColumn(name = "permission_id")},
-            uniqueConstraints = {@UniqueConstraint(columnNames = {"scope_id", "permission_id"})},
-            indexes = {@Index(name = "oauth2_scope_permission_sid_idx", columnList = "scope_id"), @Index(name = "oauth2_scope_permission_pid_idx", columnList = "permission_id")})
-    private Set<OAuth2Permission> permissions = new HashSet<>();
+  @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_PERMISSION)
+  @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REMOVE, CascadeType.MERGE}, fetch = FetchType.EAGER)
+  @Fetch(FetchMode.SUBSELECT)
+  @JoinTable(name = "oauth2_scope_permission",
+    joinColumns = {@JoinColumn(name = "scope_id")},
+    inverseJoinColumns = {@JoinColumn(name = "permission_id")},
+    uniqueConstraints = {@UniqueConstraint(columnNames = {"scope_id", "permission_id"})},
+    indexes = {@Index(name = "oauth2_scope_permission_sid_idx", columnList = "scope_id"), @Index(name = "oauth2_scope_permission_pid_idx", columnList = "permission_id")})
+  private Set<OAuth2Permission> permissions = new HashSet<>();
 
-    public String getScopeId() {
-        return scopeId;
+  public String getScopeId() {
+    return scopeId;
+  }
+
+  public void setScopeId(String scopeId) {
+    this.scopeId = scopeId;
+  }
+
+  public String getScopeCode() {
+    return scopeCode;
+  }
+
+  public void setScopeCode(String scopeCode) {
+    this.scopeCode = scopeCode;
+  }
+
+  public String getScopeName() {
+    return scopeName;
+  }
+
+  public void setScopeName(String scopeName) {
+    this.scopeName = scopeName;
+  }
+
+  public Set<OAuth2Permission> getPermissions() {
+    return permissions;
+  }
+
+  public void setPermissions(Set<OAuth2Permission> permissions) {
+    this.permissions = permissions;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
 
-    public void setScopeId(String scopeId) {
-        this.scopeId = scopeId;
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
 
-    public String getScopeCode() {
-        return scopeCode;
-    }
+    OAuth2Scope that = (OAuth2Scope) o;
 
-    public void setScopeCode(String scopeCode) {
-        this.scopeCode = scopeCode;
-    }
+    return new EqualsBuilder()
+      .append(getScopeId(), that.getScopeId())
+      .isEquals();
+  }
 
-    public String getScopeName() {
-        return scopeName;
-    }
+  @Override
+  public int hashCode() {
+    return new HashCodeBuilder(17, 37)
+      .append(getScopeId())
+      .toHashCode();
+  }
 
-    public void setScopeName(String scopeName) {
-        this.scopeName = scopeName;
-    }
-
-    public Set<OAuth2Permission> getPermissions() {
-        return permissions;
-    }
-
-    public void setPermissions(Set<OAuth2Permission> permissions) {
-        this.permissions = permissions;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        OAuth2Scope that = (OAuth2Scope) o;
-
-        return new EqualsBuilder()
-                .append(getScopeId(), that.getScopeId())
-                .isEquals();
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder(17, 37)
-                .append(getScopeId())
-                .toHashCode();
-    }
-
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("scopeId", scopeId)
-                .add("scopeCode", scopeCode)
-                .add("scopeName", scopeName)
-                .toString();
-    }
+  @Override
+  public String toString() {
+    return MoreObjects.toStringHelper(this)
+      .add("scopeId", scopeId)
+      .add("scopeCode", scopeCode)
+      .add("scopeName", scopeName)
+      .toString();
+  }
 }

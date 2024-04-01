@@ -8,13 +8,13 @@ package com.gstdev.cloud.commons.ass.core.enums;
  */
 public enum Architecture {
 
-    /**
-     * 分布式架构
-     */
-    DISTRIBUTED,
+  /**
+   * 分布式架构
+   */
+  DISTRIBUTED,
 
-    /**
-     * 单体式架构
-     */
-    MONOCOQUE;
+  /**
+   * 单体式架构
+   */
+  MONOCOQUE;
 }

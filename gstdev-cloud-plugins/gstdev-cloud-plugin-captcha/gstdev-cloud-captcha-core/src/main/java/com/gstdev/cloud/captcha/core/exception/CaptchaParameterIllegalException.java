@@ -13,28 +13,28 @@ import com.gstdev.cloud.commons.ass.definition.exception.PlatformRuntimeExceptio
  */
 public class CaptchaParameterIllegalException extends PlatformRuntimeException {
 
-    public CaptchaParameterIllegalException() {
-        super();
-    }
+  public CaptchaParameterIllegalException() {
+    super();
+  }
 
-    public CaptchaParameterIllegalException(String message) {
-        super(message);
-    }
+  public CaptchaParameterIllegalException(String message) {
+    super(message);
+  }
 
-    public CaptchaParameterIllegalException(String message, Throwable cause) {
-        super(message, cause);
-    }
+  public CaptchaParameterIllegalException(String message, Throwable cause) {
+    super(message, cause);
+  }
 
-    public CaptchaParameterIllegalException(Throwable cause) {
-        super(cause);
-    }
+  public CaptchaParameterIllegalException(Throwable cause) {
+    super(cause);
+  }
 
-    protected CaptchaParameterIllegalException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
+  protected CaptchaParameterIllegalException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    super(message, cause, enableSuppression, writableStackTrace);
+  }
 
-    @Override
-    public Feedback getFeedback() {
-        return CaptchaErrorCodes.CAPTCHA_PARAMETER_ILLEGAL;
-    }
+  @Override
+  public Feedback getFeedback() {
+    return CaptchaErrorCodes.CAPTCHA_PARAMETER_ILLEGAL;
+  }
 }

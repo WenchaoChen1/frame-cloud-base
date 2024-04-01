@@ -12,28 +12,28 @@ import com.gstdev.cloud.message.core.constants.MessageErrorCodes;
  */
 public class IllegalChannelException extends PlatformRuntimeException {
 
-    public IllegalChannelException() {
-        super();
-    }
+  public IllegalChannelException() {
+    super();
+  }
 
-    public IllegalChannelException(String message) {
-        super(message);
-    }
+  public IllegalChannelException(String message) {
+    super(message);
+  }
 
-    public IllegalChannelException(String message, Throwable cause) {
-        super(message, cause);
-    }
+  public IllegalChannelException(String message, Throwable cause) {
+    super(message, cause);
+  }
 
-    public IllegalChannelException(Throwable cause) {
-        super(cause);
-    }
+  public IllegalChannelException(Throwable cause) {
+    super(cause);
+  }
 
-    protected IllegalChannelException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
+  protected IllegalChannelException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    super(message, cause, enableSuppression, writableStackTrace);
+  }
 
-    @Override
-    public Feedback getFeedback() {
-        return MessageErrorCodes.ILLEGAL_CHANNEL;
-    }
+  @Override
+  public Feedback getFeedback() {
+    return MessageErrorCodes.ILLEGAL_CHANNEL;
+  }
 }

@@ -23,55 +23,55 @@ import java.util.Map;
 @Component
 public class SchemaMultiTenantConnectionProvider implements MultiTenantConnectionProvider<String>, HibernatePropertiesCustomizer {
 
-    private static final Logger log = LoggerFactory.getLogger(SchemaMultiTenantConnectionProvider.class);
+  private static final Logger log = LoggerFactory.getLogger(SchemaMultiTenantConnectionProvider.class);
 
-    private final DataSource dataSource;
+  private final DataSource dataSource;
 
-    public SchemaMultiTenantConnectionProvider(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
+  public SchemaMultiTenantConnectionProvider(DataSource dataSource) {
+    this.dataSource = dataSource;
+  }
 
-    @Override
-    public Connection getAnyConnection() throws SQLException {
-        return dataSource.getConnection();
-    }
+  @Override
+  public Connection getAnyConnection() throws SQLException {
+    return dataSource.getConnection();
+  }
 
-    @Override
-    public void releaseAnyConnection(Connection connection) throws SQLException {
-        connection.close();
-    }
+  @Override
+  public void releaseAnyConnection(Connection connection) throws SQLException {
+    connection.close();
+  }
 
-    @Override
-    public Connection getConnection(String schema) throws SQLException {
-                final Connection connection = getAnyConnection();
-        connection.setSchema(schema);
-        log.debug("[GstDev Cloud] |- Get connection for schema tenant [{}]", schema);
-        return connection;
-    }
+  @Override
+  public Connection getConnection(String schema) throws SQLException {
+    final Connection connection = getAnyConnection();
+    connection.setSchema(schema);
+    log.debug("[GstDev Cloud] |- Get connection for schema tenant [{}]", schema);
+    return connection;
+  }
 
-    @Override
-    public void releaseConnection(String schema, Connection connection) throws SQLException {
-                connection.setSchema(DefaultConstants.TENANT_ID);
-        releaseAnyConnection(connection);
-    }
+  @Override
+  public void releaseConnection(String schema, Connection connection) throws SQLException {
+    connection.setSchema(DefaultConstants.TENANT_ID);
+    releaseAnyConnection(connection);
+  }
 
-    @Override
-    public boolean supportsAggressiveRelease() {
-        return false;
-    }
+  @Override
+  public boolean supportsAggressiveRelease() {
+    return false;
+  }
 
-    @Override
-    public boolean isUnwrappableAs(Class<?> aClass) {
-        return false;
-    }
+  @Override
+  public boolean isUnwrappableAs(Class<?> aClass) {
+    return false;
+  }
 
-    @Override
-    public <T> T unwrap(Class<T> aClass) {
-        return null;
-    }
+  @Override
+  public <T> T unwrap(Class<T> aClass) {
+    return null;
+  }
 
-    @Override
-    public void customize(Map<String, Object> hibernateProperties) {
-        hibernateProperties.put(AvailableSettings.MULTI_TENANT_CONNECTION_PROVIDER, this);
-    }
+  @Override
+  public void customize(Map<String, Object> hibernateProperties) {
+    hibernateProperties.put(AvailableSettings.MULTI_TENANT_CONNECTION_PROVIDER, this);
+  }
 }

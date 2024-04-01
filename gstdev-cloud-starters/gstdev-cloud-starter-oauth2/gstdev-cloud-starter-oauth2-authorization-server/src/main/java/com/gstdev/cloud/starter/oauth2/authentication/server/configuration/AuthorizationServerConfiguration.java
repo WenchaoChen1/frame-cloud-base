@@ -334,6 +334,5 @@ public class AuthorizationServerConfiguration {
   }
 
 
-
 }
 

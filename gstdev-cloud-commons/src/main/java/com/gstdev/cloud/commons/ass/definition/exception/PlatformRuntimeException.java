@@ -11,28 +11,28 @@ import com.gstdev.cloud.commons.ass.definition.domain.Feedback;
  */
 public class PlatformRuntimeException extends AbstractRuntimeException {
 
-    public PlatformRuntimeException() {
-        super();
-    }
+  public PlatformRuntimeException() {
+    super();
+  }
 
-    public PlatformRuntimeException(String message) {
-        super(message);
-    }
+  public PlatformRuntimeException(String message) {
+    super(message);
+  }
 
-    public PlatformRuntimeException(String message, Throwable cause) {
-        super(message, cause);
-    }
+  public PlatformRuntimeException(String message, Throwable cause) {
+    super(message, cause);
+  }
 
-    public PlatformRuntimeException(Throwable cause) {
-        super(cause);
-    }
+  public PlatformRuntimeException(Throwable cause) {
+    super(cause);
+  }
 
-    protected PlatformRuntimeException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
+  protected PlatformRuntimeException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    super(message, cause, enableSuppression, writableStackTrace);
+  }
 
-    @Override
-    public Feedback getFeedback() {
-        return ErrorCodes.INTERNAL_SERVER_ERROR;
-    }
+  @Override
+  public Feedback getFeedback() {
+    return ErrorCodes.INTERNAL_SERVER_ERROR;
+  }
 }

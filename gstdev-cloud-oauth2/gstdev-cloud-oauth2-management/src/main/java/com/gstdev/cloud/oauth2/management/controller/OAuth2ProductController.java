@@ -18,20 +18,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/authorize/product")
 @Tags({
-        @Tag(name = "OAuth2 认证服务接口"),
-        @Tag(name = "物联网管理接口"),
-        @Tag(name = "物联网产品接口")
+  @Tag(name = "OAuth2 认证服务接口"),
+  @Tag(name = "物联网管理接口"),
+  @Tag(name = "物联网产品接口")
 })
 public class OAuth2ProductController extends BaseWriteableRestController<OAuth2Product, String> {
 
-    private final OAuth2ProductService iotProductService;
+  private final OAuth2ProductService iotProductService;
 
-    public OAuth2ProductController(OAuth2ProductService iotProductService) {
-        this.iotProductService = iotProductService;
-    }
+  public OAuth2ProductController(OAuth2ProductService iotProductService) {
+    this.iotProductService = iotProductService;
+  }
 
-    @Override
-    public WriteableService<OAuth2Product, String> getWriteableService() {
-        return iotProductService;
-    }
+  @Override
+  public WriteableService<OAuth2Product, String> getWriteableService() {
+    return iotProductService;
+  }
 }

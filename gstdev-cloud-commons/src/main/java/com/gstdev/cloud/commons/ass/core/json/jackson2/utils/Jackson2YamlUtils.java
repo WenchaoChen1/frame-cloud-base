@@ -17,44 +17,44 @@ import org.slf4j.LoggerFactory;
  */
 public class Jackson2YamlUtils {
 
-    private static final Logger log = LoggerFactory.getLogger(Jackson2YamlUtils.class);
+  private static final Logger log = LoggerFactory.getLogger(Jackson2YamlUtils.class);
 
-    private static final ObjectMapper objectMapper;
+  private static final ObjectMapper objectMapper;
 
-    static {
-        objectMapper = new ObjectMapper(new YAMLFactory());
-        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+  static {
+    objectMapper = new ObjectMapper(new YAMLFactory());
+    objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+  }
+
+  private static ObjectMapper getObjectMapper() {
+    return objectMapper;
+  }
+
+  public static <T> String writeAsString(T entity) {
+    return writeAsString(entity, true);
+  }
+
+  /**
+   * 将实体转化为Yaml形式的字符串
+   *
+   * @param domain      可序列化的试题
+   * @param removeQuote 是否要去除转化后字符串的双引号
+   * @param <D>         任意类型
+   * @return 字符串形式的Yaml
+   */
+  public static <D> String writeAsString(D domain, boolean removeQuote) {
+    try {
+      String yaml = getObjectMapper().writeValueAsString(domain);
+      if (StringUtils.isNotBlank(yaml) && removeQuote) {
+        return StringUtils.remove(yaml, SymbolConstants.QUOTE);
+      } else {
+        return yaml;
+      }
+    } catch (JsonProcessingException e) {
+      log.error("[GstDev Cloud] |- Yaml writeAsString processing error! {}", e.getMessage());
     }
 
-    private static ObjectMapper getObjectMapper() {
-        return objectMapper;
-    }
-
-    public static <T> String writeAsString(T entity) {
-        return writeAsString(entity, true);
-    }
-
-    /**
-     * 将实体转化为Yaml形式的字符串
-     *
-     * @param domain      可序列化的试题
-     * @param removeQuote 是否要去除转化后字符串的双引号
-     * @param <D>         任意类型
-     * @return 字符串形式的Yaml
-     */
-    public static <D> String writeAsString(D domain, boolean removeQuote) {
-        try {
-            String yaml = getObjectMapper().writeValueAsString(domain);
-            if (StringUtils.isNotBlank(yaml) && removeQuote) {
-                return StringUtils.remove(yaml, SymbolConstants.QUOTE);
-            } else {
-                return yaml;
-            }
-        } catch (JsonProcessingException e) {
-            log.error("[GstDev Cloud] |- Yaml writeAsString processing error! {}", e.getMessage());
-        }
-
-        return null;
-    }
+    return null;
+  }
 
 }

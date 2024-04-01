@@ -14,7 +14,7 @@ import org.springframework.http.HttpStatus;
  */
 public class NotFoundFeedback extends Feedback {
 
-    public NotFoundFeedback(String message) {
-        super(message, HttpStatus.NOT_FOUND);
-    }
+  public NotFoundFeedback(String message) {
+    super(message, HttpStatus.NOT_FOUND);
+  }
 }

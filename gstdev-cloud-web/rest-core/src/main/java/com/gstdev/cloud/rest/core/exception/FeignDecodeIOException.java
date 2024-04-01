@@ -12,28 +12,28 @@ import com.gstdev.cloud.commons.ass.definition.exception.PlatformRuntimeExceptio
  */
 public class FeignDecodeIOException extends PlatformRuntimeException {
 
-    public FeignDecodeIOException() {
-        super();
-    }
+  public FeignDecodeIOException() {
+    super();
+  }
 
-    public FeignDecodeIOException(String message) {
-        super(message);
-    }
+  public FeignDecodeIOException(String message) {
+    super(message);
+  }
 
-    public FeignDecodeIOException(String message, Throwable cause) {
-        super(message, cause);
-    }
+  public FeignDecodeIOException(String message, Throwable cause) {
+    super(message, cause);
+  }
 
-    public FeignDecodeIOException(Throwable cause) {
-        super(cause);
-    }
+  public FeignDecodeIOException(Throwable cause) {
+    super(cause);
+  }
 
-    protected FeignDecodeIOException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
+  protected FeignDecodeIOException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    super(message, cause, enableSuppression, writableStackTrace);
+  }
 
-    @Override
-    public Feedback getFeedback() {
-        return RestErrorCodes.FEIGN_DECODER_IO_EXCEPTION;
-    }
+  @Override
+  public Feedback getFeedback() {
+    return RestErrorCodes.FEIGN_DECODER_IO_EXCEPTION;
+  }
 }

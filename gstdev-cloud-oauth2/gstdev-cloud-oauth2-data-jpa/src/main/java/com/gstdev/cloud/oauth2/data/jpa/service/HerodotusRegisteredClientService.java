@@ -22,23 +22,23 @@ import java.util.Optional;
 @Service
 public class HerodotusRegisteredClientService extends BaseService<HerodotusRegisteredClient, String> {
 
-    private static final Logger log = LoggerFactory.getLogger(HerodotusRegisteredClientService.class);
+  private static final Logger log = LoggerFactory.getLogger(HerodotusRegisteredClientService.class);
 
-    private final HerodotusRegisteredClientRepository registeredClientRepository;
+  private final HerodotusRegisteredClientRepository registeredClientRepository;
 
-    @Autowired
-    public HerodotusRegisteredClientService(HerodotusRegisteredClientRepository registeredClientRepository) {
-        this.registeredClientRepository = registeredClientRepository;
-    }
+  @Autowired
+  public HerodotusRegisteredClientService(HerodotusRegisteredClientRepository registeredClientRepository) {
+    this.registeredClientRepository = registeredClientRepository;
+  }
 
-    @Override
-    public BaseRepository<HerodotusRegisteredClient, String> getRepository() {
-        return registeredClientRepository;
-    }
+  @Override
+  public BaseRepository<HerodotusRegisteredClient, String> getRepository() {
+    return registeredClientRepository;
+  }
 
-    public Optional<HerodotusRegisteredClient> findByClientId(String clientId) {
-        Optional<HerodotusRegisteredClient> result = this.registeredClientRepository.findByClientId(clientId);
-        log.trace("[GstDev Cloud] |- HerodotusRegisteredClient Service findByClientId.");
-        return result;
-    }
+  public Optional<HerodotusRegisteredClient> findByClientId(String clientId) {
+    Optional<HerodotusRegisteredClient> result = this.registeredClientRepository.findByClientId(clientId);
+    log.trace("[GstDev Cloud] |- HerodotusRegisteredClient Service findByClientId.");
+    return result;
+  }
 }

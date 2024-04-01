@@ -23,33 +23,33 @@ import java.util.Map;
  */
 public class HerodotusCaffeineCacheManager extends CaffeineCacheManager {
 
-    private static final Logger log = LoggerFactory.getLogger(HerodotusCaffeineCacheManager.class);
+  private static final Logger log = LoggerFactory.getLogger(HerodotusCaffeineCacheManager.class);
 
-    private final CacheProperties cacheProperties;
+  private final CacheProperties cacheProperties;
 
-    public HerodotusCaffeineCacheManager(CacheProperties cacheProperties) {
-        this.cacheProperties = cacheProperties;
-        this.setAllowNullValues(cacheProperties.getAllowNullValues());
+  public HerodotusCaffeineCacheManager(CacheProperties cacheProperties) {
+    this.cacheProperties = cacheProperties;
+    this.setAllowNullValues(cacheProperties.getAllowNullValues());
+  }
+
+  public HerodotusCaffeineCacheManager(CacheProperties cacheProperties, String... cacheNames) {
+    super(cacheNames);
+    this.cacheProperties = cacheProperties;
+    this.setAllowNullValues(cacheProperties.getAllowNullValues());
+  }
+
+  @Override
+  protected Cache<Object, Object> createNativeCaffeineCache(String name) {
+    Map<String, CacheSetting> instances = cacheProperties.getInstances();
+    if (MapUtils.isNotEmpty(instances)) {
+      String key = StringUtils.replace(name, SymbolConstants.COLON, cacheProperties.getSeparator());
+      if (instances.containsKey(key)) {
+        CacheSetting cacheSetting = instances.get(key);
+        log.debug("[GstDev Cloud] |- CACHE - Caffeine cache [{}] is set to use INSTANCE config.", name);
+        return Caffeine.newBuilder().expireAfterWrite(cacheSetting.getExpire()).build();
+      }
     }
 
-    public HerodotusCaffeineCacheManager(CacheProperties cacheProperties, String... cacheNames) {
-        super(cacheNames);
-        this.cacheProperties = cacheProperties;
-        this.setAllowNullValues(cacheProperties.getAllowNullValues());
-    }
-
-    @Override
-    protected Cache<Object, Object> createNativeCaffeineCache(String name) {
-        Map<String, CacheSetting> instances = cacheProperties.getInstances();
-        if (MapUtils.isNotEmpty(instances)) {
-            String key = StringUtils.replace(name, SymbolConstants.COLON, cacheProperties.getSeparator());
-            if (instances.containsKey(key)) {
-                CacheSetting cacheSetting = instances.get(key);
-                log.debug("[GstDev Cloud] |- CACHE - Caffeine cache [{}] is set to use INSTANCE config.", name);
-                return Caffeine.newBuilder().expireAfterWrite(cacheSetting.getExpire()).build();
-            }
-        }
-
-        return super.createNativeCaffeineCache(name);
-    }
+    return super.createNativeCaffeineCache(name);
+  }
 }

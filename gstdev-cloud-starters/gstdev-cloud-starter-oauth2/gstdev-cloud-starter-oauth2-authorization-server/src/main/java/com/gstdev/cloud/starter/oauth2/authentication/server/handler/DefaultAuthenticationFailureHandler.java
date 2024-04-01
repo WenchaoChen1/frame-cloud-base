@@ -25,7 +25,6 @@ import java.io.IOException;
 
 /**
  * 认证失败处理器
- *
  */
 @Slf4j
 public class DefaultAuthenticationFailureHandler implements AuthenticationFailureHandler {

@@ -37,6 +37,7 @@ public class FileConstant {
     public static final String READ_ONLY = "read-only";
     public static final String WRITE_ONLY = "write-only";
     public static final String READ_WRITE = "read-write";
+
     private MinioAccessControl() {
     }
   }
@@ -49,6 +50,7 @@ public class FileConstant {
     public static final String PRIVATE = "private";
     public static final String PUBLIC_READ = "public-read";
     public static final String PUBLIC_READ_WRITE = "public-read-write";
+
     private AliyunAccessControl() {
     }
   }
@@ -60,6 +62,7 @@ public class FileConstant {
     public static final String PRIVATE = "private";
     public static final String PUBLIC_READ = "public-read";
     public static final String PUBLIC_READ_WRITE = "public-read-write";
+
     private HuaweiAccessControl() {
     }
   }
@@ -72,6 +75,7 @@ public class FileConstant {
     public static final String PRIVATE = "private";
     public static final String PUBLIC_READ = "public-read";
     public static final String PUBLIC_READ_WRITE = "public-read-write";
+
     private QcloudAccessControl() {
     }
   }
@@ -93,6 +97,7 @@ public class FileConstant {
     public static final String PRIVATE = "private";
     public static final String PUBLIC_READ = "public-read";
     public static final String PUBLIC_READ_WRITE = "public-read-write";
+
     private AwsAccessControl() {
     }
   }
@@ -104,6 +109,7 @@ public class FileConstant {
     public static final String PRIVATE = "private";
     public static final String PUBLIC_READ = "public-read";
     public static final String PUBLIC_READ_WRITE = "public-read-write";
+
     private BaiduAccessControl() {
     }
   }
@@ -124,6 +130,7 @@ public class FileConstant {
      * 允许匿名读(blob级别)
      */
     public static final String BLOB = "blob";
+
     private MicrosoftControl() {
     }
   }
@@ -131,6 +138,7 @@ public class FileConstant {
   public static final class Protocol {
     public static final String HTTP = "http";
     public static final String HTTPS = "https";
+
     private Protocol() {
     }
   }

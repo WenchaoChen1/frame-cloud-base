@@ -43,6 +43,7 @@ public class Feedback implements Serializable {
   public Feedback(String message, HttpStatus noContent) {
     this(message, noContent.value());
   }
+
   public Feedback(String message, HttpStatus noContent, int custom) {
     Assert.checkBetween(custom, IS_NOT_CUSTOMIZED, 9);
     this.message = message;

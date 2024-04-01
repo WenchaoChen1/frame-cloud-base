@@ -25,22 +25,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * @author : wenchao.chen
  * @program: frame-cloud-base
- * @description:
- * <p>Description: OAuth 2.0 Endpoint 工具方法类 </p>
+ * @description: <p>Description: OAuth 2.0 Endpoint 工具方法类 </p>
  * <p>
  * 新版 spring-security-oauth2-authorization-server 很多代码都是“包”级可访问的，外部无法使用。为了方便扩展将其提取出来，便于使用。
  * <p>
  * 代码内容与原包代码基本一致。
- *
- * @author : wenchao.chen
  * @date: 2024/03/25 10:34
  */
 public class OAuth2EndpointUtils {
 
   public static final String ACCESS_TOKEN_REQUEST_ERROR_URI = "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2";
 
-  private OAuth2EndpointUtils() {}
+  private OAuth2EndpointUtils() {
+  }
 
   public static MultiValueMap<String, String> getParameters(HttpServletRequest request) {
     Map<String, String[]> parameterMap = request.getParameterMap();
@@ -56,6 +55,7 @@ public class OAuth2EndpointUtils {
 
     return parameters;
   }
+
   public static Map<String, Object> getParametersIfMatchesAuthorizationCodeGrantRequest(HttpServletRequest request, String... exclusions) {
     if (!matchesAuthorizationCodeGrantRequest(request)) {
       return Collections.emptyMap();

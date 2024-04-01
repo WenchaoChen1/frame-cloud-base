@@ -1,4 +1,3 @@
-
 //package com.gstdev.cloud.commons.ass.definition.support;
 //
 //import com.gstdev.cloud.commons.ass.definition.domain.Pool;

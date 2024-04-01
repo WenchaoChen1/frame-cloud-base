@@ -20,7 +20,6 @@ import java.io.IOException;
 
 /**
  * 认证成功处理器
- *
  */
 @Slf4j
 public class DefaultAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
@@ -33,10 +32,10 @@ public class DefaultAuthenticationSuccessHandler implements AuthenticationSucces
   /**
    * 自定义认证成功响应数据结构
    *
-   * @param request the request which caused the successful authentication
-   * @param response the response
+   * @param request        the request which caused the successful authentication
+   * @param response       the response
    * @param authentication the <tt>Authentication</tt> object which was created during
-   * the authentication process.
+   *                       the authentication process.
    * @throws IOException
    * @throws ServletException
    */

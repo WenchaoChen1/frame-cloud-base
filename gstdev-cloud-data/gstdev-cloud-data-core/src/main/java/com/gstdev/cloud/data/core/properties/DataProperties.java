@@ -13,16 +13,16 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(DataConstants.PROPERTY_PREFIX_DATA)
 public class DataProperties {
 
-    /**
-     * 基础数据源切换。用于某些基础核心应用底层存储切换的配置。默认，JPA
-     */
-    private DataSource dataSource = DataSource.JPA;
+  /**
+   * 基础数据源切换。用于某些基础核心应用底层存储切换的配置。默认，JPA
+   */
+  private DataSource dataSource = DataSource.JPA;
 
-    public DataSource getDataSource() {
-        return dataSource;
-    }
+  public DataSource getDataSource() {
+    return dataSource;
+  }
 
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
+  public void setDataSource(DataSource dataSource) {
+    this.dataSource = dataSource;
+  }
 }

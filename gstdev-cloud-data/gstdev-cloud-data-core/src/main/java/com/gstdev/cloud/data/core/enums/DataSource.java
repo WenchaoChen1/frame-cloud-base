@@ -9,5 +9,5 @@ package com.gstdev.cloud.data.core.enums;
  * @date : 2023/10/2 16:34
  */
 public enum DataSource {
-    JPA, MONGODB
+  JPA, MONGODB
 }

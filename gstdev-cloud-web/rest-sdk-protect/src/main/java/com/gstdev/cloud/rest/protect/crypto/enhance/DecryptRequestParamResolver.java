@@ -30,84 +30,84 @@ import java.util.List;
  */
 public class DecryptRequestParamResolver implements HandlerMethodArgumentResolver {
 
-    private static final Logger log = LoggerFactory.getLogger(DecryptRequestParamResolver.class);
+  private static final Logger log = LoggerFactory.getLogger(DecryptRequestParamResolver.class);
 
-    private HttpCryptoProcessor httpCryptoProcessor;
-    private RequestParamMethodArgumentResolver requestParamMethodArgumentResolver;
+  private HttpCryptoProcessor httpCryptoProcessor;
+  private RequestParamMethodArgumentResolver requestParamMethodArgumentResolver;
 
-    public void setRequestParamMethodArgumentResolver(RequestParamMethodArgumentResolver requestParamMethodArgumentResolver) {
-        this.requestParamMethodArgumentResolver = requestParamMethodArgumentResolver;
+  public void setRequestParamMethodArgumentResolver(RequestParamMethodArgumentResolver requestParamMethodArgumentResolver) {
+    this.requestParamMethodArgumentResolver = requestParamMethodArgumentResolver;
+  }
+
+  public void setInterfaceCryptoProcessor(HttpCryptoProcessor httpCryptoProcessor) {
+    this.httpCryptoProcessor = httpCryptoProcessor;
+  }
+
+  @Override
+  public boolean supportsParameter(MethodParameter methodParameter) {
+    String methodName = methodParameter.getMethod().getName();
+    boolean isSupports = isConfigCrypto(methodParameter) && requestParamMethodArgumentResolver.supportsParameter(methodParameter);
+
+    log.trace("[GstDev Cloud] |- Is DecryptRequestParamResolver supports method [{}] ? Status is [{}].", methodName, isSupports);
+    return isSupports;
+  }
+
+  /**
+   * 判断该接口方法是否用@Crypto注解标记，同时requestDecrypt的值是true
+   *
+   * @param methodParameter {@link MethodParameter}
+   * @return 是否开启了自定义@Crypto
+   */
+  private boolean isConfigCrypto(MethodParameter methodParameter) {
+    Crypto crypto = methodParameter.getMethodAnnotation(Crypto.class);
+    return ObjectUtils.isNotEmpty(crypto) && crypto.requestDecrypt();
+  }
+
+  /**
+   * 是否是常规的请求
+   *
+   * @param webRequest {@link NativeWebRequest}
+   * @return boolean
+   */
+  private boolean isRegularRequest(NativeWebRequest webRequest) {
+    MultipartRequest multipartRequest = webRequest.getNativeRequest(MultipartRequest.class);
+    return ObjectUtils.isEmpty(multipartRequest);
+  }
+
+  private String[] decrypt(String sessionId, String[] paramValues) throws SessionInvalidException {
+    List<String> values = new ArrayList<>();
+    for (String paramValue : paramValues) {
+      String value = httpCryptoProcessor.decrypt(sessionId, paramValue);
+      if (StringUtils.isNotBlank(value)) {
+        values.add(value);
+      }
     }
 
-    public void setInterfaceCryptoProcessor(HttpCryptoProcessor httpCryptoProcessor) {
-        this.httpCryptoProcessor = httpCryptoProcessor;
-    }
+    String[] result = new String[values.size()];
+    return values.toArray(result);
+  }
 
-    @Override
-    public boolean supportsParameter(MethodParameter methodParameter) {
-        String methodName = methodParameter.getMethod().getName();
-        boolean isSupports = isConfigCrypto(methodParameter) && requestParamMethodArgumentResolver.supportsParameter(methodParameter);
+  @Override
+  @Nullable
+  public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
 
-        log.trace("[GstDev Cloud] |- Is DecryptRequestParamResolver supports method [{}] ? Status is [{}].", methodName, isSupports);
-        return isSupports;
-    }
+    if (isRegularRequest(webRequest)) {
 
-    /**
-     * 判断该接口方法是否用@Crypto注解标记，同时requestDecrypt的值是true
-     *
-     * @param methodParameter {@link MethodParameter}
-     * @return 是否开启了自定义@Crypto
-     */
-    private boolean isConfigCrypto(MethodParameter methodParameter) {
-        Crypto crypto = methodParameter.getMethodAnnotation(Crypto.class);
-        return ObjectUtils.isNotEmpty(crypto) && crypto.requestDecrypt();
-    }
+      HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
 
-    /**
-     * 是否是常规的请求
-     *
-     * @param webRequest {@link NativeWebRequest}
-     * @return boolean
-     */
-    private boolean isRegularRequest(NativeWebRequest webRequest) {
-        MultipartRequest multipartRequest = webRequest.getNativeRequest(MultipartRequest.class);
-        return ObjectUtils.isEmpty(multipartRequest);
-    }
-
-    private String[] decrypt(String sessionId, String[] paramValues) throws SessionInvalidException {
-        List<String> values = new ArrayList<>();
-        for (String paramValue : paramValues) {
-            String value = httpCryptoProcessor.decrypt(sessionId, paramValue);
-            if (StringUtils.isNotBlank(value)) {
-                values.add(value);
-            }
+      String sessionId = SessionUtils.analyseSessionId(request);
+      if (SessionUtils.isCryptoEnabled(request, sessionId)) {
+        String[] paramValues = request.getParameterValues(methodParameter.getParameterName());
+        if (ArrayUtils.isNotEmpty(paramValues)) {
+          String[] values = decrypt(sessionId, paramValues);
+          return (values.length == 1 ? values[0] : values);
         }
-
-        String[] result = new String[values.size()];
-        return values.toArray(result);
+      } else {
+        log.warn("[GstDev Cloud] |- Cannot find Herodotus Cloud custom session header. Use interface crypto founction need add X_HERODOTUS_SESSION_ID to request header.");
+      }
     }
 
-    @Override
-    @Nullable
-    public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
-
-        if (isRegularRequest(webRequest)) {
-
-            HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
-
-            String sessionId = SessionUtils.analyseSessionId(request);
-            if (SessionUtils.isCryptoEnabled(request, sessionId)) {
-                String[] paramValues = request.getParameterValues(methodParameter.getParameterName());
-                if (ArrayUtils.isNotEmpty(paramValues)) {
-                    String[] values = decrypt(sessionId, paramValues);
-                    return (values.length == 1 ? values[0] : values);
-                }
-            } else {
-                log.warn("[GstDev Cloud] |- Cannot find Herodotus Cloud custom session header. Use interface crypto founction need add X_HERODOTUS_SESSION_ID to request header.");
-            }
-        }
-
-        log.debug("[GstDev Cloud] |- The decryption conditions are not met DecryptRequestParamResolver, skip! to next!");
-        return requestParamMethodArgumentResolver.resolveArgument(methodParameter, mavContainer, webRequest, binderFactory);
-    }
+    log.debug("[GstDev Cloud] |- The decryption conditions are not met DecryptRequestParamResolver, skip! to next!");
+    return requestParamMethodArgumentResolver.resolveArgument(methodParameter, mavContainer, webRequest, binderFactory);
+  }
 }

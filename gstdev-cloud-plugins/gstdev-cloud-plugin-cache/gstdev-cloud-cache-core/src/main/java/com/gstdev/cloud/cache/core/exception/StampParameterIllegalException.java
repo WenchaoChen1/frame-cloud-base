@@ -12,28 +12,28 @@ import com.gstdev.cloud.commons.ass.definition.exception.PlatformRuntimeExceptio
  */
 public class StampParameterIllegalException extends PlatformRuntimeException {
 
-    public StampParameterIllegalException() {
-        super();
-    }
+  public StampParameterIllegalException() {
+    super();
+  }
 
-    public StampParameterIllegalException(String message) {
-        super(message);
-    }
+  public StampParameterIllegalException(String message) {
+    super(message);
+  }
 
-    public StampParameterIllegalException(String message, Throwable cause) {
-        super(message, cause);
-    }
+  public StampParameterIllegalException(String message, Throwable cause) {
+    super(message, cause);
+  }
 
-    public StampParameterIllegalException(Throwable cause) {
-        super(cause);
-    }
+  public StampParameterIllegalException(Throwable cause) {
+    super(cause);
+  }
 
-    protected StampParameterIllegalException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
+  protected StampParameterIllegalException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    super(message, cause, enableSuppression, writableStackTrace);
+  }
 
-    @Override
-    public Feedback getFeedback() {
-        return CacheErrorCodes.STAMP_PARAMETER_ILLEGAL;
-    }
+  @Override
+  public Feedback getFeedback() {
+    return CacheErrorCodes.STAMP_PARAMETER_ILLEGAL;
+  }
 }

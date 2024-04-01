@@ -40,57 +40,57 @@ import java.util.function.Supplier;
 @ConditionalOnDatabaseApproach
 @EnableTransactionManagement
 @EntityScan(basePackages = {
-        "com.gstdev.cloud.data.tenant.entity",
+  "com.gstdev.cloud.data.tenant.entity",
 })
 @EnableJpaRepositories(basePackages = {
-        "com.gstdev.cloud.data.tenant.repository",
+  "com.gstdev.cloud.data.tenant.repository",
 })
 public class DatabaseApproachConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(DatabaseApproachConfiguration.class);
+  private static final Logger log = LoggerFactory.getLogger(DatabaseApproachConfiguration.class);
 
-    @PostConstruct
-    public void postConstruct() {
-        log.debug("[GstDev Cloud] |- SDK [Database Approach] Auto Configure.");
-    }
+  @PostConstruct
+  public void postConstruct() {
+    log.debug("[GstDev Cloud] |- SDK [Database Approach] Auto Configure.");
+  }
 
-    @Bean
-    public MultiTenantConnectionProvider multiTenantConnectionProvider(DataSource dataSource) {
-        DatabaseMultiTenantConnectionProvider herodotusTenantConnectionProvider = new DatabaseMultiTenantConnectionProvider(dataSource);
-        log.debug("[GstDev Cloud] |- Bean [Multi Tenant Connection Provider] Auto Configure.");
-        return herodotusTenantConnectionProvider;
-    }
+  @Bean
+  public MultiTenantConnectionProvider multiTenantConnectionProvider(DataSource dataSource) {
+    DatabaseMultiTenantConnectionProvider herodotusTenantConnectionProvider = new DatabaseMultiTenantConnectionProvider(dataSource);
+    log.debug("[GstDev Cloud] |- Bean [Multi Tenant Connection Provider] Auto Configure.");
+    return herodotusTenantConnectionProvider;
+  }
 
-    @Primary
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, HibernateProperties hibernateProperties, JpaVendorAdapter jpaVendorAdapter, JpaProperties jpaProperties, MultiTenantProperties multiTenantProperties, MultiTenantConnectionProvider multiTenantConnectionProvider, CurrentTenantIdentifierResolver currentTenantIdentifierResolver) {
+  @Primary
+  @Bean
+  public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, HibernateProperties hibernateProperties, JpaVendorAdapter jpaVendorAdapter, JpaProperties jpaProperties, MultiTenantProperties multiTenantProperties, MultiTenantConnectionProvider multiTenantConnectionProvider, CurrentTenantIdentifierResolver currentTenantIdentifierResolver) {
 
-        Supplier<String> defaultDdlMode = hibernateProperties::getDdlAuto;
-        Map<String, Object> properties = hibernateProperties.determineHibernateProperties(jpaProperties.getProperties(), new HibernateSettings().ddlAuto(defaultDdlMode));
+    Supplier<String> defaultDdlMode = hibernateProperties::getDdlAuto;
+    Map<String, Object> properties = hibernateProperties.determineHibernateProperties(jpaProperties.getProperties(), new HibernateSettings().ddlAuto(defaultDdlMode));
 
-        properties.put(Environment.MULTI_TENANT_CONNECTION_PROVIDER, multiTenantConnectionProvider);
-        properties.put(Environment.MULTI_TENANT_IDENTIFIER_RESOLVER, currentTenantIdentifierResolver);
-        LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
-        entityManagerFactory.setDataSource(dataSource);
-        //此处不能省略，哪怕你使用了 @EntityScan，实际上 @EntityScan 会失效
-        entityManagerFactory.setPackagesToScan(multiTenantProperties.getPackageToScan());
-        entityManagerFactory.setJpaVendorAdapter(jpaVendorAdapter);
-        entityManagerFactory.setJpaPropertyMap(properties);
-        return entityManagerFactory;
-    }
+    properties.put(Environment.MULTI_TENANT_CONNECTION_PROVIDER, multiTenantConnectionProvider);
+    properties.put(Environment.MULTI_TENANT_IDENTIFIER_RESOLVER, currentTenantIdentifierResolver);
+    LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
+    entityManagerFactory.setDataSource(dataSource);
+    //此处不能省略，哪怕你使用了 @EntityScan，实际上 @EntityScan 会失效
+    entityManagerFactory.setPackagesToScan(multiTenantProperties.getPackageToScan());
+    entityManagerFactory.setJpaVendorAdapter(jpaVendorAdapter);
+    entityManagerFactory.setJpaPropertyMap(properties);
+    return entityManagerFactory;
+  }
 
-    @Primary
-    @Bean
-    @ConditionalOnClass({LocalContainerEntityManagerFactoryBean.class})
-    public PlatformTransactionManager transactionManager(LocalContainerEntityManagerFactoryBean entityManagerFactory) {
-        return new JpaTransactionManager(Objects.requireNonNull(entityManagerFactory.getObject()));
-    }
+  @Primary
+  @Bean
+  @ConditionalOnClass({LocalContainerEntityManagerFactoryBean.class})
+  public PlatformTransactionManager transactionManager(LocalContainerEntityManagerFactoryBean entityManagerFactory) {
+    return new JpaTransactionManager(Objects.requireNonNull(entityManagerFactory.getObject()));
+  }
 
-    @Bean
-    @ConditionalOnClass({LocalContainerEntityManagerFactoryBean.class})
-    public MultiTenantDataSourceFactory multiTenantDataSourceFactory() {
-        MultiTenantDataSourceFactory multiTenantDataSourceFactory = new MultiTenantDataSourceFactory();
-        log.debug("[GstDev Cloud] |- Bean [Multi Tenant DataSource Factory] Auto Configure.");
-        return multiTenantDataSourceFactory;
-    }
+  @Bean
+  @ConditionalOnClass({LocalContainerEntityManagerFactoryBean.class})
+  public MultiTenantDataSourceFactory multiTenantDataSourceFactory() {
+    MultiTenantDataSourceFactory multiTenantDataSourceFactory = new MultiTenantDataSourceFactory();
+    log.debug("[GstDev Cloud] |- Bean [Multi Tenant DataSource Factory] Auto Configure.");
+    return multiTenantDataSourceFactory;
+  }
 }

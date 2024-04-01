@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Bean;
 
 /**
  * <p>Description: Rest 自动注入 </p>
- *
+ * <p>
  * {@code RestAutoConfiguration} 注入的时机比较早，所以在此进行 {@link ServiceContextHolder} 的初始化。
  * 如果在其它地方注入 {@link ServiceContextHolder} 因为时机过完，会导致未完成初始化即被使用，出现抛错的问题。
  *
@@ -31,25 +31,25 @@ import org.springframework.context.annotation.Bean;
 @EnableConfigurationProperties({EndpointProperties.class, PlatformProperties.class})
 public class RestAutoConfiguration implements ApplicationContextAware {
 
-    private static final Logger log = LoggerFactory.getLogger(RestAutoConfiguration.class);
+  private static final Logger log = LoggerFactory.getLogger(RestAutoConfiguration.class);
 
-    private final ServiceContextHolder serviceContextHolder;
+  private final ServiceContextHolder serviceContextHolder;
 
-    public RestAutoConfiguration(EndpointProperties endpointProperties, PlatformProperties platformProperties, ServerProperties serverProperties) {
-        this.serviceContextHolder = ServiceContextHolderBuilder.builder()
+  public RestAutoConfiguration(EndpointProperties endpointProperties, PlatformProperties platformProperties, ServerProperties serverProperties) {
+    this.serviceContextHolder = ServiceContextHolderBuilder.builder()
 //                .endpointProperties(endpointProperties)
 //                .platformProperties(platformProperties)
 //                .serverProperties(serverProperties)
-                .build();
-        log.info("[GstDev Cloud] |- Module [Rest Starter] Auto Configure.");
-    }
+      .build();
+    log.info("[GstDev Cloud] |- Module [Rest Starter] Auto Configure.");
+  }
 
-    @Override
-    public void setApplicationContext(@Nonnull ApplicationContext applicationContext) throws BeansException {
-        this.serviceContextHolder.setApplicationContext(applicationContext);
-        this.serviceContextHolder.setApplicationName(RestPropertyFinder.getApplicationName(applicationContext));
-        log.debug("[GstDev Cloud] |- HERODOTUS ApplicationContext initialization completed.");
-    }
+  @Override
+  public void setApplicationContext(@Nonnull ApplicationContext applicationContext) throws BeansException {
+    this.serviceContextHolder.setApplicationContext(applicationContext);
+    this.serviceContextHolder.setApplicationName(RestPropertyFinder.getApplicationName(applicationContext));
+    log.debug("[GstDev Cloud] |- HERODOTUS ApplicationContext initialization completed.");
+  }
 
 //    @Bean
 //    public Jackson2ObjectMapperBuilderCustomizer xssObjectMapperBuilderCustomizer() {
@@ -58,10 +58,10 @@ public class RestAutoConfiguration implements ApplicationContextAware {
 //        return customizer;
 //    }
 
-    @Bean
-    public ErrorCodeMapperBuilderCustomizer restErrorCodeMapperBuilderCustomizer() {
-        RestErrorCodeMapperBuilderCustomizer customizer = new RestErrorCodeMapperBuilderCustomizer();
-        log.debug("[GstDev Cloud] |- Strategy [Rest ErrorCodeMapper Builder Customizer] Auto Configure.");
-        return customizer;
-    }
+  @Bean
+  public ErrorCodeMapperBuilderCustomizer restErrorCodeMapperBuilderCustomizer() {
+    RestErrorCodeMapperBuilderCustomizer customizer = new RestErrorCodeMapperBuilderCustomizer();
+    log.debug("[GstDev Cloud] |- Strategy [Rest ErrorCodeMapper Builder Customizer] Auto Configure.");
+    return customizer;
+  }
 }

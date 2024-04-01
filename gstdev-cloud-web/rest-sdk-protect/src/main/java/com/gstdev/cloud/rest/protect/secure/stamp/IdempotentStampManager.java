@@ -13,24 +13,24 @@ import org.dromara.hutool.core.data.id.IdUtil;
  */
 public class IdempotentStampManager extends AbstractStampManager<String, String> {
 
-    private final SecureProperties secureProperties;
+  private final SecureProperties secureProperties;
 
-    public IdempotentStampManager(SecureProperties secureProperties) {
-        super(RestConstants.CACHE_NAME_TOKEN_IDEMPOTENT);
-        this.secureProperties = secureProperties;
-    }
+  public IdempotentStampManager(SecureProperties secureProperties) {
+    super(RestConstants.CACHE_NAME_TOKEN_IDEMPOTENT);
+    this.secureProperties = secureProperties;
+  }
 
-    public SecureProperties getSecureProperties() {
-        return secureProperties;
-    }
+  public SecureProperties getSecureProperties() {
+    return secureProperties;
+  }
 
-    @Override
-    public String nextStamp(String key) {
-        return IdUtil.fastSimpleUUID();
-    }
+  @Override
+  public String nextStamp(String key) {
+    return IdUtil.fastSimpleUUID();
+  }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        super.setExpire(secureProperties.getIdempotent().getExpire());
-    }
+  @Override
+  public void afterPropertiesSet() throws Exception {
+    super.setExpire(secureProperties.getIdempotent().getExpire());
+  }
 }

@@ -30,47 +30,47 @@ import org.springframework.security.web.context.SecurityContextRepository;
  */
 public class OAuth2FormLoginSecureConfigurer<H extends HttpSecurityBuilder<H>> extends AbstractHttpConfigurer<OAuth2FormLoginSecureConfigurer<H>, H> {
 
-    private final UserDetailsService userDetailsService;
-    private final OAuth2AuthenticationProperties authenticationProperties;
-    private final CaptchaRendererFactory captchaRendererFactory;
+  private final UserDetailsService userDetailsService;
+  private final OAuth2AuthenticationProperties authenticationProperties;
+  private final CaptchaRendererFactory captchaRendererFactory;
 
-    public OAuth2FormLoginSecureConfigurer(UserDetailsService userDetailsService, OAuth2AuthenticationProperties authenticationProperties, CaptchaRendererFactory captchaRendererFactory) {
-        this.userDetailsService = userDetailsService;
-        this.authenticationProperties = authenticationProperties;
-        this.captchaRendererFactory = captchaRendererFactory;
-    }
+  public OAuth2FormLoginSecureConfigurer(UserDetailsService userDetailsService, OAuth2AuthenticationProperties authenticationProperties, CaptchaRendererFactory captchaRendererFactory) {
+    this.userDetailsService = userDetailsService;
+    this.authenticationProperties = authenticationProperties;
+    this.captchaRendererFactory = captchaRendererFactory;
+  }
 
-    @Override
-    public void configure(H httpSecurity) throws Exception {
+  @Override
+  public void configure(H httpSecurity) throws Exception {
 
-        AuthenticationManager authenticationManager = httpSecurity.getSharedObject(AuthenticationManager.class);
-        SecurityContextRepository securityContextRepository = httpSecurity.getSharedObject(SecurityContextRepository.class);
+    AuthenticationManager authenticationManager = httpSecurity.getSharedObject(AuthenticationManager.class);
+    SecurityContextRepository securityContextRepository = httpSecurity.getSharedObject(SecurityContextRepository.class);
 
-        OAuth2FormLoginAuthenticationFilter filter = getOAuth2FormLoginAuthenticationFilter(authenticationManager, securityContextRepository);
+    OAuth2FormLoginAuthenticationFilter filter = getOAuth2FormLoginAuthenticationFilter(authenticationManager, securityContextRepository);
 
-        OAuth2FormLoginAuthenticationProvider provider = new OAuth2FormLoginAuthenticationProvider(captchaRendererFactory);
-        provider.setUserDetailsService(userDetailsService);
-        provider.setHideUserNotFoundExceptions(false);
+    OAuth2FormLoginAuthenticationProvider provider = new OAuth2FormLoginAuthenticationProvider(captchaRendererFactory);
+    provider.setUserDetailsService(userDetailsService);
+    provider.setHideUserNotFoundExceptions(false);
 
-        httpSecurity
-                .authenticationProvider(provider)
-                .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
-    }
+    httpSecurity
+      .authenticationProvider(provider)
+      .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
+  }
 
-    private OAuth2FormLoginAuthenticationFilter getOAuth2FormLoginAuthenticationFilter(
-      AuthenticationManager authenticationManager,
-      SecurityContextRepository securityContextRepository) {
-        OAuth2FormLoginAuthenticationFilter filter = new OAuth2FormLoginAuthenticationFilter(authenticationManager);
-        filter.setUsernameParameter(getFormLogin().getUsernameParameter());
-        filter.setPasswordParameter(getFormLogin().getPasswordParameter());
-        filter.setAuthenticationDetailsSource(new OAuth2FormLoginWebAuthenticationDetailSource(authenticationProperties));
+  private OAuth2FormLoginAuthenticationFilter getOAuth2FormLoginAuthenticationFilter(
+    AuthenticationManager authenticationManager,
+    SecurityContextRepository securityContextRepository) {
+    OAuth2FormLoginAuthenticationFilter filter = new OAuth2FormLoginAuthenticationFilter(authenticationManager);
+    filter.setUsernameParameter(getFormLogin().getUsernameParameter());
+    filter.setPasswordParameter(getFormLogin().getPasswordParameter());
+    filter.setAuthenticationDetailsSource(new OAuth2FormLoginWebAuthenticationDetailSource(authenticationProperties));
 
-        filter.setAuthenticationFailureHandler(new OAuth2FormLoginAuthenticationFailureHandler(getFormLogin().getFailureForwardUrl()));
-        filter.setSecurityContextRepository(securityContextRepository);
-        return filter;
-    }
+    filter.setAuthenticationFailureHandler(new OAuth2FormLoginAuthenticationFailureHandler(getFormLogin().getFailureForwardUrl()));
+    filter.setSecurityContextRepository(securityContextRepository);
+    return filter;
+  }
 
-    private OAuth2AuthenticationProperties.FormLogin getFormLogin() {
-        return authenticationProperties.getFormLogin();
-    }
+  private OAuth2AuthenticationProperties.FormLogin getFormLogin() {
+    return authenticationProperties.getFormLogin();
+  }
 }

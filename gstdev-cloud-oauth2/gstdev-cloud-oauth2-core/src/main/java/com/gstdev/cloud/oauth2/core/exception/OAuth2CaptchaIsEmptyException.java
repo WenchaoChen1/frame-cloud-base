@@ -12,16 +12,16 @@ import com.gstdev.cloud.commons.ass.definition.domain.Feedback;
  */
 public class OAuth2CaptchaIsEmptyException extends OAuth2CaptchaException {
 
-    public OAuth2CaptchaIsEmptyException(String msg, Throwable cause) {
-        super(msg, cause);
-    }
+  public OAuth2CaptchaIsEmptyException(String msg, Throwable cause) {
+    super(msg, cause);
+  }
 
-    public OAuth2CaptchaIsEmptyException(String msg) {
-        super(msg);
-    }
+  public OAuth2CaptchaIsEmptyException(String msg) {
+    super(msg);
+  }
 
-    @Override
-    public Feedback getFeedback() {
-        return CaptchaErrorCodes.CAPTCHA_IS_EMPTY;
-    }
+  @Override
+  public Feedback getFeedback() {
+    return CaptchaErrorCodes.CAPTCHA_IS_EMPTY;
+  }
 }

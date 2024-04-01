@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
  * @date : 2023/9/26 8:54
  */
 public class InternalServerErrorFeedback extends Feedback {
-    public InternalServerErrorFeedback(String value) {
-        super(value, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+  public InternalServerErrorFeedback(String value) {
+    super(value, HttpStatus.INTERNAL_SERVER_ERROR);
+  }
 }

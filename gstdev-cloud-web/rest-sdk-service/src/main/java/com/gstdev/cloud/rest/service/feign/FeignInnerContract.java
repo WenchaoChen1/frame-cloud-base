@@ -24,34 +24,34 @@ import static org.springframework.core.annotation.AnnotatedElementUtils.findMerg
  */
 public class FeignInnerContract extends SpringMvcContract {
 
-    private static final Logger log = LoggerFactory.getLogger(FeignInnerContract.class);
+  private static final Logger log = LoggerFactory.getLogger(FeignInnerContract.class);
 
-    public FeignInnerContract() {
+  public FeignInnerContract() {
+  }
+
+  public FeignInnerContract(List<AnnotatedParameterProcessor> annotatedParameterProcessors) {
+    super(annotatedParameterProcessors);
+  }
+
+  public FeignInnerContract(List<AnnotatedParameterProcessor> annotatedParameterProcessors, ConversionService conversionService) {
+    super(annotatedParameterProcessors, conversionService);
+  }
+
+  public FeignInnerContract(List<AnnotatedParameterProcessor> annotatedParameterProcessors, ConversionService conversionService, boolean decodeSlash) {
+    super(annotatedParameterProcessors, conversionService, decodeSlash);
+  }
+
+  @Override
+  protected void processAnnotationOnMethod(MethodMetadata data, Annotation methodAnnotation, Method method) {
+
+    if (methodAnnotation instanceof Inner) {
+      Inner inner = findMergedAnnotation(method, Inner.class);
+      if (ObjectUtils.isNotEmpty(inner)) {
+        log.debug("[GstDev Cloud] |- Found inner annotation on Feign interface, add header!");
+        data.template().header(HeaderUtils.X_HERODOTUS_FROM_IN, "true");
+      }
     }
 
-    public FeignInnerContract(List<AnnotatedParameterProcessor> annotatedParameterProcessors) {
-        super(annotatedParameterProcessors);
-    }
-
-    public FeignInnerContract(List<AnnotatedParameterProcessor> annotatedParameterProcessors, ConversionService conversionService) {
-        super(annotatedParameterProcessors, conversionService);
-    }
-
-    public FeignInnerContract(List<AnnotatedParameterProcessor> annotatedParameterProcessors, ConversionService conversionService, boolean decodeSlash) {
-        super(annotatedParameterProcessors, conversionService, decodeSlash);
-    }
-
-    @Override
-    protected void processAnnotationOnMethod(MethodMetadata data, Annotation methodAnnotation, Method method) {
-
-        if (methodAnnotation instanceof Inner) {
-            Inner inner = findMergedAnnotation(method, Inner.class);
-            if (ObjectUtils.isNotEmpty(inner)) {
-                log.debug("[GstDev Cloud] |- Found inner annotation on Feign interface, add header!");
-                data.template().header(HeaderUtils.X_HERODOTUS_FROM_IN, "true");
-            }
-        }
-
-        super.processAnnotationOnMethod(data, methodAnnotation, method);
-    }
+    super.processAnnotationOnMethod(data, methodAnnotation, method);
+  }
 }

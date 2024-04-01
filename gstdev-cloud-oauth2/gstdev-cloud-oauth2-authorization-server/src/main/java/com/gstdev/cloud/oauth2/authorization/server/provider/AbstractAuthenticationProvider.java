@@ -36,9 +36,8 @@ import java.util.*;
  * @date : 2022/10/14 12:46
  */
 public abstract class AbstractAuthenticationProvider implements AuthenticationProvider {
-  private final Log logger = LogFactory.getLog(getClass());
-
   private static final OAuth2TokenType ID_TOKEN_TOKEN_TYPE = new OAuth2TokenType(OidcParameterNames.ID_TOKEN);
+  private final Log logger = LogFactory.getLog(getClass());
 
   private static String createHash(String value) throws NoSuchAlgorithmException {
     MessageDigest md = MessageDigest.getInstance("SHA-256");

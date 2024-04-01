@@ -24,46 +24,46 @@ import java.util.Map;
  */
 public class HerodotusRedisCacheManager extends RedisCacheManager {
 
-    private static final Logger log = LoggerFactory.getLogger(HerodotusRedisCacheManager.class);
+  private static final Logger log = LoggerFactory.getLogger(HerodotusRedisCacheManager.class);
 
-    private CacheProperties cacheProperties;
+  private CacheProperties cacheProperties;
 
-    public HerodotusRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, CacheProperties cacheProperties) {
-        super(cacheWriter, defaultCacheConfiguration);
-        this.cacheProperties = cacheProperties;
+  public HerodotusRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, CacheProperties cacheProperties) {
+    super(cacheWriter, defaultCacheConfiguration);
+    this.cacheProperties = cacheProperties;
+  }
+
+  public HerodotusRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, CacheProperties cacheProperties, String... initialCacheNames) {
+    super(cacheWriter, defaultCacheConfiguration, initialCacheNames);
+    this.cacheProperties = cacheProperties;
+  }
+
+  public HerodotusRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, boolean allowInFlightCacheCreation, CacheProperties cacheProperties, String... initialCacheNames) {
+    super(cacheWriter, defaultCacheConfiguration, allowInFlightCacheCreation, initialCacheNames);
+    this.cacheProperties = cacheProperties;
+  }
+
+  public HerodotusRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, Map<String, RedisCacheConfiguration> initialCacheConfigurations, CacheProperties cacheProperties) {
+    super(cacheWriter, defaultCacheConfiguration, initialCacheConfigurations);
+    this.cacheProperties = cacheProperties;
+  }
+
+  public HerodotusRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, Map<String, RedisCacheConfiguration> initialCacheConfigurations, boolean allowInFlightCacheCreation) {
+    super(cacheWriter, defaultCacheConfiguration, initialCacheConfigurations, allowInFlightCacheCreation);
+  }
+
+  @Override
+  protected RedisCache createRedisCache(String name, RedisCacheConfiguration cacheConfig) {
+    Map<String, CacheSetting> expires = cacheProperties.getInstances();
+    if (MapUtils.isNotEmpty(expires)) {
+      String key = StringUtils.replace(name, SymbolConstants.COLON, cacheProperties.getSeparator());
+      if (expires.containsKey(key)) {
+        CacheSetting cacheSetting = expires.get(key);
+        log.debug("[GstDev Cloud] |- CACHE - Redis cache [{}] is setted to use CUSTEM exprie.", name);
+        cacheConfig = cacheConfig.entryTtl(cacheSetting.getExpire());
+      }
     }
 
-    public HerodotusRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, CacheProperties cacheProperties, String... initialCacheNames) {
-        super(cacheWriter, defaultCacheConfiguration, initialCacheNames);
-        this.cacheProperties = cacheProperties;
-    }
-
-    public HerodotusRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, boolean allowInFlightCacheCreation, CacheProperties cacheProperties, String... initialCacheNames) {
-        super(cacheWriter, defaultCacheConfiguration, allowInFlightCacheCreation, initialCacheNames);
-        this.cacheProperties = cacheProperties;
-    }
-
-    public HerodotusRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, Map<String, RedisCacheConfiguration> initialCacheConfigurations, CacheProperties cacheProperties) {
-        super(cacheWriter, defaultCacheConfiguration, initialCacheConfigurations);
-        this.cacheProperties = cacheProperties;
-    }
-
-    public HerodotusRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, Map<String, RedisCacheConfiguration> initialCacheConfigurations, boolean allowInFlightCacheCreation) {
-        super(cacheWriter, defaultCacheConfiguration, initialCacheConfigurations, allowInFlightCacheCreation);
-    }
-
-    @Override
-    protected RedisCache createRedisCache(String name, RedisCacheConfiguration cacheConfig) {
-        Map<String, CacheSetting> expires = cacheProperties.getInstances();
-        if (MapUtils.isNotEmpty(expires)) {
-            String key = StringUtils.replace(name, SymbolConstants.COLON, cacheProperties.getSeparator());
-            if (expires.containsKey(key)) {
-                CacheSetting cacheSetting = expires.get(key);
-                log.debug("[GstDev Cloud] |- CACHE - Redis cache [{}] is setted to use CUSTEM exprie.", name);
-                cacheConfig = cacheConfig.entryTtl(cacheSetting.getExpire());
-            }
-        }
-
-        return super.createRedisCache(name, cacheConfig);
-    }
+    return super.createRedisCache(name, cacheConfig);
+  }
 }

@@ -35,6 +35,7 @@ public class OAuth2AuthorizationServerAutoConfiguration {
   public void postConstruct() {
     log.info("[GstDev Cloud] |- Module [OAuth2 Authorization Server Starter] Auto Configure.");
   }
+
   @Bean
   public AccountStatusEventManager accountStatusEventManager() {
     DefaultAccountStatusEventManager manager = new DefaultAccountStatusEventManager();

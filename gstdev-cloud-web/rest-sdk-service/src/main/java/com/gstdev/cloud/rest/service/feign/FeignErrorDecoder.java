@@ -22,23 +22,23 @@ import java.nio.charset.StandardCharsets;
  */
 public class FeignErrorDecoder implements ErrorDecoder {
 
-    private static final Logger log = LoggerFactory.getLogger(FeignErrorDecoder.class);
+  private static final Logger log = LoggerFactory.getLogger(FeignErrorDecoder.class);
 
-    @Override
-    public Exception decode(String methodKey, Response response) {
+  @Override
+  public Exception decode(String methodKey, Response response) {
 
-        try {
-            String content = Util.toString(response.body().asReader(StandardCharsets.UTF_8));
-            Result<String> result = Result.failure("Feign 远程调用" + methodKey + " 出错");
-            JavaType javaType = Jackson2Utils.getTypeFactory().constructParametricType(Result.class, String.class);
-            Result<String> object = Jackson2Utils.toObject(content, javaType);
-            if (ObjectUtils.isNotEmpty(object)) {
-                result = object;
-            }
-            return new FeignRemoteCallExceptionWrapper(result);
-        } catch (IOException e) {
-            log.error("[GstDev Cloud] |- Feign invoke [{}] error decoder convert result catch io exception.", methodKey, e);
-            return new FeignDecodeIOException();
-        }
+    try {
+      String content = Util.toString(response.body().asReader(StandardCharsets.UTF_8));
+      Result<String> result = Result.failure("Feign 远程调用" + methodKey + " 出错");
+      JavaType javaType = Jackson2Utils.getTypeFactory().constructParametricType(Result.class, String.class);
+      Result<String> object = Jackson2Utils.toObject(content, javaType);
+      if (ObjectUtils.isNotEmpty(object)) {
+        result = object;
+      }
+      return new FeignRemoteCallExceptionWrapper(result);
+    } catch (IOException e) {
+      log.error("[GstDev Cloud] |- Feign invoke [{}] error decoder convert result catch io exception.", methodKey, e);
+      return new FeignDecodeIOException();
     }
+  }
 }

@@ -20,16 +20,16 @@ import org.springframework.context.annotation.Import;
 @AutoConfiguration
 @EnableConfigurationProperties(MultiTenantProperties.class)
 @Import({
-        DiscriminatorApproachConfiguration.class,
-        SchemaApproachConfiguration.class,
-        DatabaseApproachConfiguration.class,
+  DiscriminatorApproachConfiguration.class,
+  SchemaApproachConfiguration.class,
+  DatabaseApproachConfiguration.class,
 })
 public class DataTenantAutoConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(SchemaApproachConfiguration.class);
+  private static final Logger log = LoggerFactory.getLogger(SchemaApproachConfiguration.class);
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[GstDev Cloud] |- Module [Data Tenant] Auto Configure.");
-    }
+  @PostConstruct
+  public void postConstruct() {
+    log.info("[GstDev Cloud] |- Module [Data Tenant] Auto Configure.");
+  }
 }

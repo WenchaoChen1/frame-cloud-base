@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
  * @date : 2023/9/26 8:53
  */
 public class UnsupportedMediaTypeFeedback extends Feedback {
-    public UnsupportedMediaTypeFeedback(String value) {
-        super(value, HttpStatus.UNSUPPORTED_MEDIA_TYPE);
-    }
+  public UnsupportedMediaTypeFeedback(String value) {
+    super(value, HttpStatus.UNSUPPORTED_MEDIA_TYPE);
+  }
 }

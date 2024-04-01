@@ -18,14 +18,14 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  */
 public class SchemaApproachCondition implements Condition {
 
-    private static final Logger log = LoggerFactory.getLogger(SchemaApproachCondition.class);
+  private static final Logger log = LoggerFactory.getLogger(SchemaApproachCondition.class);
 
-    @SuppressWarnings("NullableProblems")
-    @Override
-    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
-        String property = PropertyResolver.getProperty(conditionContext, DataConstants.ITEM_MULTI_TENANT_APPROACH);
-        boolean result = StringUtils.isNotBlank(property) && StringUtils.equalsIgnoreCase(property, MultiTenantApproach.SCHEMA.name());
-        log.debug("[GstDev Cloud] |- Condition [Schema Approach] value is [{}]", result);
-        return result;
-    }
+  @SuppressWarnings("NullableProblems")
+  @Override
+  public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
+    String property = PropertyResolver.getProperty(conditionContext, DataConstants.ITEM_MULTI_TENANT_APPROACH);
+    boolean result = StringUtils.isNotBlank(property) && StringUtils.equalsIgnoreCase(property, MultiTenantApproach.SCHEMA.name());
+    log.debug("[GstDev Cloud] |- Condition [Schema Approach] value is [{}]", result);
+    return result;
+  }
 }

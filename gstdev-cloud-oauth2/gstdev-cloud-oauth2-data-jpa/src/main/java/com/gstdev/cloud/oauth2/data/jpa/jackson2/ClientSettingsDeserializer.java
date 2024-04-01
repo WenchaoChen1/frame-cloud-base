@@ -20,13 +20,13 @@ import java.util.Map;
  */
 public class ClientSettingsDeserializer extends JsonDeserializer<ClientSettings> {
 
-    @Override
-    public ClientSettings deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
-        ObjectMapper mapper = (ObjectMapper) jsonParser.getCodec();
-        JsonNode jsonNode = mapper.readTree(jsonParser);
+  @Override
+  public ClientSettings deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
+    ObjectMapper mapper = (ObjectMapper) jsonParser.getCodec();
+    JsonNode jsonNode = mapper.readTree(jsonParser);
 
-        Map<String, Object> settings = JsonNodeUtils.findValue(jsonNode, "settings", JsonNodeUtils.STRING_OBJECT_MAP, mapper);
+    Map<String, Object> settings = JsonNodeUtils.findValue(jsonNode, "settings", JsonNodeUtils.STRING_OBJECT_MAP, mapper);
 
-        return ClientSettings.withSettings(settings).build();
-    }
+    return ClientSettings.withSettings(settings).build();
+  }
 }

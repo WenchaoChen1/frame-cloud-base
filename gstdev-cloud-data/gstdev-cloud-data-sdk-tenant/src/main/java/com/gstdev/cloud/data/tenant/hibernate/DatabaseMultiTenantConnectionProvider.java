@@ -24,51 +24,51 @@ import java.util.Map;
  */
 public class DatabaseMultiTenantConnectionProvider extends AbstractDataSourceBasedMultiTenantConnectionProviderImpl<String> implements HibernatePropertiesCustomizer {
 
-    private static final Logger log = LoggerFactory.getLogger(DatabaseMultiTenantConnectionProvider.class);
-    private final Map<String, DataSource> dataSources = new HashMap<>();
-    private final DataSource defaultDataSource;
-    private boolean isDataSourceInit = false;
+  private static final Logger log = LoggerFactory.getLogger(DatabaseMultiTenantConnectionProvider.class);
+  private final Map<String, DataSource> dataSources = new HashMap<>();
+  private final DataSource defaultDataSource;
+  private boolean isDataSourceInit = false;
 
-    public DatabaseMultiTenantConnectionProvider(DataSource dataSource) {
-        this.defaultDataSource = dataSource;
-        dataSources.put(DefaultConstants.TENANT_ID, dataSource);
+  public DatabaseMultiTenantConnectionProvider(DataSource dataSource) {
+    this.defaultDataSource = dataSource;
+    dataSources.put(DefaultConstants.TENANT_ID, dataSource);
+  }
+
+  private void initialize() {
+    isDataSourceInit = true;
+    MultiTenantDataSourceFactory factory = SpringUtil.getBean(MultiTenantDataSourceFactory.class);
+    dataSources.putAll(factory.getAll(defaultDataSource));
+  }
+
+  /**
+   * 在没有指定 tenantId 的情况下选择的数据源（例如启动处理）
+   *
+   * @return {@link DataSource}
+   */
+  @Override
+  protected DataSource selectAnyDataSource() {
+    log.debug("[GstDev Cloud] |- Select any dataSource: " + defaultDataSource);
+    return defaultDataSource;
+  }
+
+  @Override
+  protected DataSource selectDataSource(String tenantIdentifier) {
+    if (!isDataSourceInit) {
+      initialize();
     }
 
-    private void initialize() {
-        isDataSourceInit = true;
-        MultiTenantDataSourceFactory factory = SpringUtil.getBean(MultiTenantDataSourceFactory.class);
-        dataSources.putAll(factory.getAll(defaultDataSource));
+    DataSource currentDataSource = dataSources.get(tenantIdentifier);
+    if (ObjectUtils.isNotEmpty(currentDataSource)) {
+      log.debug("[GstDev Cloud] |- Found the multi tenant dataSource for id : [{}]", tenantIdentifier);
+      return currentDataSource;
+    } else {
+      log.warn("[GstDev Cloud] |- Cannot found the dataSource for tenant [{}], change to use default.", tenantIdentifier);
+      return defaultDataSource;
     }
+  }
 
-    /**
-     * 在没有指定 tenantId 的情况下选择的数据源（例如启动处理）
-     *
-     * @return {@link DataSource}
-     */
-    @Override
-    protected DataSource selectAnyDataSource() {
-        log.debug("[GstDev Cloud] |- Select any dataSource: " + defaultDataSource);
-        return defaultDataSource;
-    }
-
-    @Override
-    protected DataSource selectDataSource(String tenantIdentifier) {
-        if (!isDataSourceInit) {
-            initialize();
-        }
-
-        DataSource currentDataSource = dataSources.get(tenantIdentifier);
-        if (ObjectUtils.isNotEmpty(currentDataSource)) {
-            log.debug("[GstDev Cloud] |- Found the multi tenant dataSource for id : [{}]", tenantIdentifier);
-            return currentDataSource;
-        } else {
-            log.warn("[GstDev Cloud] |- Cannot found the dataSource for tenant [{}], change to use default.", tenantIdentifier);
-            return defaultDataSource;
-        }
-    }
-
-    @Override
-    public void customize(Map<String, Object> hibernateProperties) {
-        hibernateProperties.put(AvailableSettings.MULTI_TENANT_CONNECTION_PROVIDER, this);
-    }
+  @Override
+  public void customize(Map<String, Object> hibernateProperties) {
+    hibernateProperties.put(AvailableSettings.MULTI_TENANT_CONNECTION_PROVIDER, this);
+  }
 }

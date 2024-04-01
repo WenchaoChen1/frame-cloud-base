@@ -18,62 +18,62 @@ import java.io.Serializable;
  */
 public class HerodotusAuthorizationConsentId implements Serializable {
 
-    /**
-     * 这里一定要注意：
-     * <p>
-     * 属性名：这里的属性名，一定要与中间表中，ManyToOne的属性名称一致
-     * 类型：虽然名称一致，但是类型可以不一致，此处的String类型，说明属性对应数据库字段的类型为String
-     */
-    private String registeredClientId;
+  /**
+   * 这里一定要注意：
+   * <p>
+   * 属性名：这里的属性名，一定要与中间表中，ManyToOne的属性名称一致
+   * 类型：虽然名称一致，但是类型可以不一致，此处的String类型，说明属性对应数据库字段的类型为String
+   */
+  private String registeredClientId;
 
-    private String principalName;
+  private String principalName;
 
-    public HerodotusAuthorizationConsentId() {
+  public HerodotusAuthorizationConsentId() {
+  }
+
+  public HerodotusAuthorizationConsentId(String registeredClientId, String principalName) {
+    this.registeredClientId = registeredClientId;
+    this.principalName = principalName;
+  }
+
+  public String getRegisteredClientId() {
+    return registeredClientId;
+  }
+
+  public void setRegisteredClientId(String registeredClientId) {
+    this.registeredClientId = registeredClientId;
+  }
+
+  public String getPrincipalName() {
+    return principalName;
+  }
+
+  public void setPrincipalName(String principalName) {
+    this.principalName = principalName;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-
-    public HerodotusAuthorizationConsentId(String registeredClientId, String principalName) {
-        this.registeredClientId = registeredClientId;
-        this.principalName = principalName;
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
+    HerodotusAuthorizationConsentId that = (HerodotusAuthorizationConsentId) o;
+    return Objects.equal(registeredClientId, that.registeredClientId) && Objects.equal(principalName, that.principalName);
+  }
 
-    public String getRegisteredClientId() {
-        return registeredClientId;
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(registeredClientId, principalName);
+  }
 
-    public void setRegisteredClientId(String registeredClientId) {
-        this.registeredClientId = registeredClientId;
-    }
-
-    public String getPrincipalName() {
-        return principalName;
-    }
-
-    public void setPrincipalName(String principalName) {
-        this.principalName = principalName;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        HerodotusAuthorizationConsentId that = (HerodotusAuthorizationConsentId) o;
-        return Objects.equal(registeredClientId, that.registeredClientId) && Objects.equal(principalName, that.principalName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(registeredClientId, principalName);
-    }
-
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("registeredClientId", registeredClientId)
-                .add("principalName", principalName)
-                .toString();
-    }
+  @Override
+  public String toString() {
+    return MoreObjects.toStringHelper(this)
+      .add("registeredClientId", registeredClientId)
+      .add("principalName", principalName)
+      .toString();
+  }
 }

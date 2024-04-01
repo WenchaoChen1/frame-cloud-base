@@ -21,19 +21,19 @@ import java.io.IOException;
  */
 public class MultiTenantFilter extends GenericFilterBean {
 
-    @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
+  @Override
+  public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    HttpServletRequest request = (HttpServletRequest) servletRequest;
 
-        String tenantId = HeaderUtils.getHerodotusTenantId(request);
-        TenantContextHolder.setTenantId(StringUtils.isBlank(tenantId) ? DefaultConstants.TENANT_ID : tenantId);
+    String tenantId = HeaderUtils.getHerodotusTenantId(request);
+    TenantContextHolder.setTenantId(StringUtils.isBlank(tenantId) ? DefaultConstants.TENANT_ID : tenantId);
 
-        filterChain.doFilter(servletRequest, servletResponse);
-        TenantContextHolder.clear();
-    }
+    filterChain.doFilter(servletRequest, servletResponse);
+    TenantContextHolder.clear();
+  }
 
-    @Override
-    public void destroy() {
-        TenantContextHolder.clear();
-    }
+  @Override
+  public void destroy() {
+    TenantContextHolder.clear();
+  }
 }

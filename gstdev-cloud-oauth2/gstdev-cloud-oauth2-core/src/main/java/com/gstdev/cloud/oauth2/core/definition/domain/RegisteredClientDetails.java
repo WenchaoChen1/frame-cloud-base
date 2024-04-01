@@ -18,21 +18,21 @@ import java.time.LocalDateTime;
  */
 public interface RegisteredClientDetails {
 
-    String getId();
+  String getId();
 
-    String getClientId();
+  String getClientId();
 
-    LocalDateTime getClientIdIssuedAt();
+  LocalDateTime getClientIdIssuedAt();
 
-    String getClientSecret();
+  String getClientSecret();
 
-    LocalDateTime getClientSecretExpiresAt();
+  LocalDateTime getClientSecretExpiresAt();
 
-    String getClientAuthenticationMethods();
+  String getClientAuthenticationMethods();
 
-    String getAuthorizationGrantTypes();
+  String getAuthorizationGrantTypes();
 
-    String getRedirectUris();
+  String getRedirectUris();
 
-    String getPostLogoutRedirectUris();
+  String getPostLogoutRedirectUris();
 }

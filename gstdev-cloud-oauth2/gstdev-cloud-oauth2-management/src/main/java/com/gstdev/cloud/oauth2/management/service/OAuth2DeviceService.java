@@ -31,85 +31,85 @@ import java.util.Set;
 @Service
 public class OAuth2DeviceService extends BaseService<OAuth2Device, String> {
 
-    private static final Logger log = LoggerFactory.getLogger(OAuth2ApplicationService.class);
+  private static final Logger log = LoggerFactory.getLogger(OAuth2ApplicationService.class);
 
-    private final RegisteredClientRepository registeredClientRepository;
-    private final HerodotusRegisteredClientRepository herodotusRegisteredClientRepository;
-    private final OAuth2DeviceRepository deviceRepository;
-    private final Converter<OAuth2Device, RegisteredClient> oauth2DeviceToRegisteredClientConverter;
-    private final Converter<RegisteredClient, OAuth2Device> registeredClientToOAuth2DeviceConverter;
+  private final RegisteredClientRepository registeredClientRepository;
+  private final HerodotusRegisteredClientRepository herodotusRegisteredClientRepository;
+  private final OAuth2DeviceRepository deviceRepository;
+  private final Converter<OAuth2Device, RegisteredClient> oauth2DeviceToRegisteredClientConverter;
+  private final Converter<RegisteredClient, OAuth2Device> registeredClientToOAuth2DeviceConverter;
 
-    public OAuth2DeviceService(RegisteredClientRepository registeredClientRepository, HerodotusRegisteredClientRepository herodotusRegisteredClientRepository, OAuth2DeviceRepository deviceRepository, OAuth2ScopeService scopeService) {
-        this.registeredClientRepository = registeredClientRepository;
-        this.herodotusRegisteredClientRepository = herodotusRegisteredClientRepository;
-        this.deviceRepository = deviceRepository;
-        this.oauth2DeviceToRegisteredClientConverter = new OAuth2DeviceToRegisteredClientConverter();
-        this.registeredClientToOAuth2DeviceConverter = new RegisteredClientToOAuth2DeviceConverter(scopeService);
+  public OAuth2DeviceService(RegisteredClientRepository registeredClientRepository, HerodotusRegisteredClientRepository herodotusRegisteredClientRepository, OAuth2DeviceRepository deviceRepository, OAuth2ScopeService scopeService) {
+    this.registeredClientRepository = registeredClientRepository;
+    this.herodotusRegisteredClientRepository = herodotusRegisteredClientRepository;
+    this.deviceRepository = deviceRepository;
+    this.oauth2DeviceToRegisteredClientConverter = new OAuth2DeviceToRegisteredClientConverter();
+    this.registeredClientToOAuth2DeviceConverter = new RegisteredClientToOAuth2DeviceConverter(scopeService);
+  }
+
+  @Override
+  public BaseRepository<OAuth2Device, String> getRepository() {
+    return deviceRepository;
+  }
+
+  @Transactional(rollbackFor = TransactionalRollbackException.class)
+  @Override
+  public OAuth2Device saveAndFlush(OAuth2Device entity) {
+    OAuth2Device device = super.saveAndFlush(entity);
+    if (ObjectUtils.isNotEmpty(device)) {
+      registeredClientRepository.save(oauth2DeviceToRegisteredClientConverter.convert(device));
+      return device;
+    } else {
+      log.error("[GstDev Cloud] |- OAuth2DeviceService saveOrUpdate error, rollback data!");
+      throw new NullPointerException("save or update OAuth2DeviceService failed");
+    }
+  }
+
+  @Transactional(rollbackFor = TransactionalRollbackException.class)
+  @Override
+  public void deleteById(String id) {
+    super.deleteById(id);
+    herodotusRegisteredClientRepository.deleteById(id);
+  }
+
+  @Transactional(rollbackFor = TransactionalRollbackException.class)
+  public OAuth2Device authorize(String deviceId, String[] scopeIds) {
+
+    Set<OAuth2Scope> scopes = new HashSet<>();
+    for (String scopeId : scopeIds) {
+      OAuth2Scope scope = new OAuth2Scope();
+      scope.setScopeId(scopeId);
+      scopes.add(scope);
     }
 
-    @Override
-    public BaseRepository<OAuth2Device, String> getRepository() {
-        return deviceRepository;
+    OAuth2Device oldDevice = findById(deviceId);
+    oldDevice.setScopes(scopes);
+
+    return saveAndFlush(oldDevice);
+  }
+
+  /**
+   * 客户端自动注册是将信息存储在 oauth2_registered_client 中。
+   * 为了方便管理，将该条数据同步至 oauth2_device 表中。
+   *
+   * @param oidcClientRegistration {@link OidcClientRegistration}
+   * @return 是否同步成功
+   */
+  public boolean sync(OidcClientRegistration oidcClientRegistration) {
+    RegisteredClient registeredClient = registeredClientRepository.findByClientId(oidcClientRegistration.getClientId());
+
+    if (ObjectUtils.isNotEmpty(registeredClient)) {
+      OAuth2Device oauth2Device = registeredClientToOAuth2DeviceConverter.convert(registeredClient);
+      if (ObjectUtils.isNotEmpty(oauth2Device)) {
+        OAuth2Device result = deviceRepository.save(oauth2Device);
+        return ObjectUtils.isNotEmpty(result);
+      }
     }
+    return false;
+  }
 
-    @Transactional(rollbackFor = TransactionalRollbackException.class)
-    @Override
-    public OAuth2Device saveAndFlush(OAuth2Device entity) {
-        OAuth2Device device = super.saveAndFlush(entity);
-        if (ObjectUtils.isNotEmpty(device)) {
-            registeredClientRepository.save(oauth2DeviceToRegisteredClientConverter.convert(device));
-            return device;
-        } else {
-            log.error("[GstDev Cloud] |- OAuth2DeviceService saveOrUpdate error, rollback data!");
-            throw new NullPointerException("save or update OAuth2DeviceService failed");
-        }
-    }
-
-    @Transactional(rollbackFor = TransactionalRollbackException.class)
-    @Override
-    public void deleteById(String id) {
-        super.deleteById(id);
-        herodotusRegisteredClientRepository.deleteById(id);
-    }
-
-    @Transactional(rollbackFor = TransactionalRollbackException.class)
-    public OAuth2Device authorize(String deviceId, String[] scopeIds) {
-
-        Set<OAuth2Scope> scopes = new HashSet<>();
-        for (String scopeId : scopeIds) {
-            OAuth2Scope scope = new OAuth2Scope();
-            scope.setScopeId(scopeId);
-            scopes.add(scope);
-        }
-
-        OAuth2Device oldDevice = findById(deviceId);
-        oldDevice.setScopes(scopes);
-
-        return saveAndFlush(oldDevice);
-    }
-
-    /**
-     * 客户端自动注册是将信息存储在 oauth2_registered_client 中。
-     * 为了方便管理，将该条数据同步至 oauth2_device 表中。
-     *
-     * @param oidcClientRegistration {@link OidcClientRegistration}
-     * @return 是否同步成功
-     */
-    public boolean sync(OidcClientRegistration oidcClientRegistration) {
-        RegisteredClient registeredClient = registeredClientRepository.findByClientId(oidcClientRegistration.getClientId());
-
-        if (ObjectUtils.isNotEmpty(registeredClient)) {
-            OAuth2Device oauth2Device = registeredClientToOAuth2DeviceConverter.convert(registeredClient);
-            if (ObjectUtils.isNotEmpty(oauth2Device)) {
-                OAuth2Device result = deviceRepository.save(oauth2Device);
-                return ObjectUtils.isNotEmpty(result);
-            }
-        }
-        return false;
-    }
-
-    public boolean activate(String clientId, boolean isActivated) {
-        int result = deviceRepository.activate(clientId, isActivated);
-        return result != 0;
-    }
+  public boolean activate(String clientId, boolean isActivated) {
+    int result = deviceRepository.activate(clientId, isActivated);
+    return result != 0;
+  }
 }

@@ -17,15 +17,15 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  */
 public class MqttEnabledCondition implements Condition {
 
-    private static final Logger log = LoggerFactory.getLogger(MqttEnabledCondition.class);
+  private static final Logger log = LoggerFactory.getLogger(MqttEnabledCondition.class);
 
-    @SuppressWarnings("NullableProblems")
-    @Override
-    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata metadata) {
-        String username = PropertyResolver.getProperty(conditionContext, MessageConstants.ITEM_MQTT_USERNAME);
-        String password = PropertyResolver.getProperty(conditionContext, MessageConstants.ITEM_MQTT_PASSWORD);
-        boolean result = StringUtils.isNotBlank(username) && StringUtils.isNotBlank(password);
-        log.debug("[GstDev Cloud] |- Condition [Mqtt Enabled] value is [{}]", result);
-        return result;
-    }
+  @SuppressWarnings("NullableProblems")
+  @Override
+  public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata metadata) {
+    String username = PropertyResolver.getProperty(conditionContext, MessageConstants.ITEM_MQTT_USERNAME);
+    String password = PropertyResolver.getProperty(conditionContext, MessageConstants.ITEM_MQTT_PASSWORD);
+    boolean result = StringUtils.isNotBlank(username) && StringUtils.isNotBlank(password);
+    log.debug("[GstDev Cloud] |- Condition [Mqtt Enabled] value is [{}]", result);
+    return result;
+  }
 }

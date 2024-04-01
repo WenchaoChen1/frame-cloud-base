@@ -15,14 +15,14 @@ import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 @Component
 public class WebSocketDisconnectListener extends AbstractWebSocketStatusListener<SessionDisconnectEvent> {
 
-    public WebSocketDisconnectListener(WebSocketMessageSender webSocketMessageSender) {
-        super(webSocketMessageSender);
-    }
+  public WebSocketDisconnectListener(WebSocketMessageSender webSocketMessageSender) {
+    super(webSocketMessageSender);
+  }
 
-    @Override
-    public void onApplicationEvent(SessionDisconnectEvent event) {
-        WebSocketPrincipal principal = (WebSocketPrincipal) event.getUser();
+  @Override
+  public void onApplicationEvent(SessionDisconnectEvent event) {
+    WebSocketPrincipal principal = (WebSocketPrincipal) event.getUser();
 
-        disconnected(principal);
-    }
+    disconnected(principal);
+  }
 }

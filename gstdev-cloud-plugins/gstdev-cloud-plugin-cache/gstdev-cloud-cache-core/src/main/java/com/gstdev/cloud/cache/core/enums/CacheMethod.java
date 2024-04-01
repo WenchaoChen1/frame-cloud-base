@@ -9,7 +9,7 @@ package com.gstdev.cloud.cache.core.enums;
  * @date : 2023/5/19 20:25
  */
 public enum CacheMethod {
-    REMOTE,
-    LOCAL,
-    BOTH;
+  REMOTE,
+  LOCAL,
+  BOTH;
 }

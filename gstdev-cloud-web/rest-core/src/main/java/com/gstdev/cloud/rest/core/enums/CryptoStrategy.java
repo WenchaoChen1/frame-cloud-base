@@ -8,12 +8,12 @@ package com.gstdev.cloud.rest.core.enums;
  */
 public enum CryptoStrategy {
 
-    /**
-     * 国密加密算法
-     */
-    SM,
-    /**
-     * 传统加密算法，RSA AES 等
-     */
-    STANDARD;
+  /**
+   * 国密加密算法
+   */
+  SM,
+  /**
+   * 传统加密算法，RSA AES 等
+   */
+  STANDARD;
 }

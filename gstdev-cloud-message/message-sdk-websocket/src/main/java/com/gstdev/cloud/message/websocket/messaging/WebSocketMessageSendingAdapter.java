@@ -16,21 +16,21 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class WebSocketMessageSendingAdapter implements MessageSendingAdapter<WebSocketMessage, TemplateMessageSendingEvent<WebSocketMessage>> {
 
-    private final WebSocketMessageSender webSocketMessageSender;
+  private final WebSocketMessageSender webSocketMessageSender;
 
-    public WebSocketMessageSendingAdapter(WebSocketMessageSender webSocketMessageSender) {
-        this.webSocketMessageSender = webSocketMessageSender;
+  public WebSocketMessageSendingAdapter(WebSocketMessageSender webSocketMessageSender) {
+    this.webSocketMessageSender = webSocketMessageSender;
+  }
+
+
+  @Override
+  public void onApplicationEvent(TemplateMessageSendingEvent<WebSocketMessage> event) {
+    WebSocketMessage message = event.getData();
+
+    if (StringUtils.isNotBlank(message.getUser())) {
+      webSocketMessageSender.toUser(message.getUser(), message.getDestination(), message.getPayload());
+    } else {
+      webSocketMessageSender.toAll(message.getDestination(), message.getPayload());
     }
-
-
-    @Override
-    public void onApplicationEvent(TemplateMessageSendingEvent<WebSocketMessage> event) {
-        WebSocketMessage message = event.getData();
-
-        if (StringUtils.isNotBlank(message.getUser())) {
-            webSocketMessageSender.toUser(message.getUser(), message.getDestination(), message.getPayload());
-        } else {
-            webSocketMessageSender.toAll(message.getDestination(), message.getPayload());
-        }
-    }
+  }
 }

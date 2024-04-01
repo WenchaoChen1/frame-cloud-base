@@ -21,17 +21,17 @@ import javax.sql.DataSource;
 @ConditionalOnSchemaApproach
 public class SchemaApproachConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(SchemaApproachConfiguration.class);
+  private static final Logger log = LoggerFactory.getLogger(SchemaApproachConfiguration.class);
 
-    @PostConstruct
-    public void postConstruct() {
-        log.debug("[GstDev Cloud] |- SDK [Schema Approach] Auto Configure.");
-    }
+  @PostConstruct
+  public void postConstruct() {
+    log.debug("[GstDev Cloud] |- SDK [Schema Approach] Auto Configure.");
+  }
 
-    @Bean
-    public MultiTenantConnectionProvider multiTenantConnectionProvider(DataSource dataSource) {
-        SchemaMultiTenantConnectionProvider schemaMultiTenantConnectionProvider = new SchemaMultiTenantConnectionProvider(dataSource);
-        log.debug("[GstDev Cloud] |- Bean [Multi Tenant Connection Provider] Auto Configure.");
-        return schemaMultiTenantConnectionProvider;
-    }
+  @Bean
+  public MultiTenantConnectionProvider multiTenantConnectionProvider(DataSource dataSource) {
+    SchemaMultiTenantConnectionProvider schemaMultiTenantConnectionProvider = new SchemaMultiTenantConnectionProvider(dataSource);
+    log.debug("[GstDev Cloud] |- Bean [Multi Tenant Connection Provider] Auto Configure.");
+    return schemaMultiTenantConnectionProvider;
+  }
 }

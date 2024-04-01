@@ -19,45 +19,45 @@ import java.util.List;
  */
 public class OAuth2ToHerodotusRegisteredClientConverter extends AbstractOAuth2EntityConverter<RegisteredClient, HerodotusRegisteredClient> {
 
-    private final PasswordEncoder passwordEncoder;
+  private final PasswordEncoder passwordEncoder;
 
-    public OAuth2ToHerodotusRegisteredClientConverter(OAuth2JacksonProcessor jacksonProcessor, PasswordEncoder passwordEncoder) {
-        super(jacksonProcessor);
-        this.passwordEncoder = passwordEncoder;
+  public OAuth2ToHerodotusRegisteredClientConverter(OAuth2JacksonProcessor jacksonProcessor, PasswordEncoder passwordEncoder) {
+    super(jacksonProcessor);
+    this.passwordEncoder = passwordEncoder;
+  }
+
+  @Override
+  public HerodotusRegisteredClient convert(RegisteredClient registeredClient) {
+    List<String> clientAuthenticationMethods = new ArrayList<>(registeredClient.getClientAuthenticationMethods().size());
+    registeredClient.getClientAuthenticationMethods().forEach(clientAuthenticationMethod ->
+      clientAuthenticationMethods.add(clientAuthenticationMethod.getValue()));
+
+    List<String> authorizationGrantTypes = new ArrayList<>(registeredClient.getAuthorizationGrantTypes().size());
+    registeredClient.getAuthorizationGrantTypes().forEach(authorizationGrantType ->
+      authorizationGrantTypes.add(authorizationGrantType.getValue()));
+
+    HerodotusRegisteredClient entity = new HerodotusRegisteredClient();
+    entity.setId(registeredClient.getId());
+    entity.setClientId(registeredClient.getClientId());
+    entity.setClientIdIssuedAt(DateUtil.toLocalDateTime(registeredClient.getClientIdIssuedAt()));
+    entity.setClientSecret(encode(registeredClient.getClientSecret()));
+    entity.setClientSecretExpiresAt(DateUtil.toLocalDateTime(registeredClient.getClientSecretExpiresAt()));
+    entity.setClientName(registeredClient.getClientName());
+    entity.setClientAuthenticationMethods(StringUtils.collectionToCommaDelimitedString(clientAuthenticationMethods));
+    entity.setAuthorizationGrantTypes(StringUtils.collectionToCommaDelimitedString(authorizationGrantTypes));
+    entity.setRedirectUris(StringUtils.collectionToCommaDelimitedString(registeredClient.getRedirectUris()));
+    entity.setPostLogoutRedirectUris(StringUtils.collectionToCommaDelimitedString(registeredClient.getPostLogoutRedirectUris()));
+    entity.setScopes(StringUtils.collectionToCommaDelimitedString(registeredClient.getScopes()));
+    entity.setClientSettings(writeMap(registeredClient.getClientSettings().getSettings()));
+    entity.setTokenSettings(writeMap(registeredClient.getTokenSettings().getSettings()));
+
+    return entity;
+  }
+
+  private String encode(String value) {
+    if (value != null) {
+      return this.passwordEncoder.encode(value);
     }
-
-    @Override
-    public HerodotusRegisteredClient convert(RegisteredClient registeredClient) {
-        List<String> clientAuthenticationMethods = new ArrayList<>(registeredClient.getClientAuthenticationMethods().size());
-        registeredClient.getClientAuthenticationMethods().forEach(clientAuthenticationMethod ->
-                clientAuthenticationMethods.add(clientAuthenticationMethod.getValue()));
-
-        List<String> authorizationGrantTypes = new ArrayList<>(registeredClient.getAuthorizationGrantTypes().size());
-        registeredClient.getAuthorizationGrantTypes().forEach(authorizationGrantType ->
-                authorizationGrantTypes.add(authorizationGrantType.getValue()));
-
-        HerodotusRegisteredClient entity = new HerodotusRegisteredClient();
-        entity.setId(registeredClient.getId());
-        entity.setClientId(registeredClient.getClientId());
-        entity.setClientIdIssuedAt(DateUtil.toLocalDateTime(registeredClient.getClientIdIssuedAt()));
-        entity.setClientSecret(encode(registeredClient.getClientSecret()));
-        entity.setClientSecretExpiresAt(DateUtil.toLocalDateTime(registeredClient.getClientSecretExpiresAt()));
-        entity.setClientName(registeredClient.getClientName());
-        entity.setClientAuthenticationMethods(StringUtils.collectionToCommaDelimitedString(clientAuthenticationMethods));
-        entity.setAuthorizationGrantTypes(StringUtils.collectionToCommaDelimitedString(authorizationGrantTypes));
-        entity.setRedirectUris(StringUtils.collectionToCommaDelimitedString(registeredClient.getRedirectUris()));
-        entity.setPostLogoutRedirectUris(StringUtils.collectionToCommaDelimitedString(registeredClient.getPostLogoutRedirectUris()));
-        entity.setScopes(StringUtils.collectionToCommaDelimitedString(registeredClient.getScopes()));
-        entity.setClientSettings(writeMap(registeredClient.getClientSettings().getSettings()));
-        entity.setTokenSettings(writeMap(registeredClient.getTokenSettings().getSettings()));
-
-        return entity;
-    }
-
-    private String encode(String value) {
-        if (value != null) {
-            return this.passwordEncoder.encode(value);
-        }
-        return null;
-    }
+    return null;
+  }
 }

@@ -27,13 +27,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
  */
 public class HerodotusUserDetailsService implements EnhanceUserDetailsService {
 
-    private static final Logger log = LoggerFactory.getLogger(HerodotusUserDetailsService.class);
+  private static final Logger log = LoggerFactory.getLogger(HerodotusUserDetailsService.class);
 
-    private final StrategyUserDetailsService strategyUserDetailsService;
+  private final StrategyUserDetailsService strategyUserDetailsService;
 
-    public HerodotusUserDetailsService(StrategyUserDetailsService strategyUserDetailsService) {
-        this.strategyUserDetailsService = strategyUserDetailsService;
-    }
+  public HerodotusUserDetailsService(StrategyUserDetailsService strategyUserDetailsService) {
+    this.strategyUserDetailsService = strategyUserDetailsService;
+  }
 
 
 //    @Override
@@ -43,22 +43,22 @@ public class HerodotusUserDetailsService implements EnhanceUserDetailsService {
 //        return HerodotusUser;
 //    }
 
-    @Override
-    public UserDetails loadUserBySocial(String source, AccessPrincipal accessPrincipal) throws UsernameNotFoundException {
-        HerodotusUser HerodotusUser = strategyUserDetailsService.findUserDetailsBySocial(StringUtils.toRootUpperCase(source), accessPrincipal);
-        log.debug("[GstDev Cloud] |- UserDetailsService loaded social user : [{}]", HerodotusUser.getUsername());
-        return HerodotusUser;
-    }
+  @Override
+  public UserDetails loadUserBySocial(String source, AccessPrincipal accessPrincipal) throws UsernameNotFoundException {
+    HerodotusUser HerodotusUser = strategyUserDetailsService.findUserDetailsBySocial(StringUtils.toRootUpperCase(source), accessPrincipal);
+    log.debug("[GstDev Cloud] |- UserDetailsService loaded social user : [{}]", HerodotusUser.getUsername());
+    return HerodotusUser;
+  }
 
-    @Override
-    public HerodotusUser loadHerodotusUserByUsername(String username) throws UsernameNotFoundException {
-        HerodotusUser HerodotusUser = strategyUserDetailsService.findUserDetailsByUsername(username);
-        log.debug("[GstDev Cloud] |- UserDetailsService loaded user : [{}]", username);
-        return HerodotusUser;
-    }
+  @Override
+  public HerodotusUser loadHerodotusUserByUsername(String username) throws UsernameNotFoundException {
+    HerodotusUser HerodotusUser = strategyUserDetailsService.findUserDetailsByUsername(username);
+    log.debug("[GstDev Cloud] |- UserDetailsService loaded user : [{}]", username);
+    return HerodotusUser;
+  }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return loadHerodotusUserByUsername(username);
-    }
+  @Override
+  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    return loadHerodotusUserByUsername(username);
+  }
 }

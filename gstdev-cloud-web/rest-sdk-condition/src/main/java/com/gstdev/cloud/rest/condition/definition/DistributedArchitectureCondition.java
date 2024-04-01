@@ -17,14 +17,14 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  */
 public class DistributedArchitectureCondition implements Condition {
 
-    private static final Logger log = LoggerFactory.getLogger(DistributedArchitectureCondition.class);
+  private static final Logger log = LoggerFactory.getLogger(DistributedArchitectureCondition.class);
 
-    @SuppressWarnings("NullableProblems")
-    @Override
-    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
-        String property = RestPropertyFinder.getArchitecture(conditionContext, Architecture.DISTRIBUTED.name());
-        boolean result = StringUtils.equalsIgnoreCase(property, Architecture.DISTRIBUTED.name());
-        log.debug("[GstDev Cloud] |- Condition [Distributed Architecture] value is [{}]", result);
-        return result;
-    }
+  @SuppressWarnings("NullableProblems")
+  @Override
+  public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
+    String property = RestPropertyFinder.getArchitecture(conditionContext, Architecture.DISTRIBUTED.name());
+    boolean result = StringUtils.equalsIgnoreCase(property, Architecture.DISTRIBUTED.name());
+    log.debug("[GstDev Cloud] |- Condition [Distributed Architecture] value is [{}]", result);
+    return result;
+  }
 }

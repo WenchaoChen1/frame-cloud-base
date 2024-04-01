@@ -350,16 +350,13 @@ public class OAuth2AuthenticationProperties {
     private String oidcLogoutEndpoint = DefaultConstants.DEFAULT_OIDC_LOGOUNT_ENDPOINT;
     private String oidcUserInfoEndpoint = DefaultConstants.DEFAULT_OIDC_USER_INFO_ENDPOINT;
     private String oidcClientRegistrationEndpoint = DefaultConstants.DEFAULT_OIDC_CLIENT_REGISTRATION_ENDPOINT;
-
-    public AuthorizationServerSettings() {
-
-    }
-
     private String jksJksPath = DefaultConstants.DEFAULT_JKS_JKS_PATH;
     private String jksCerPath = DefaultConstants.DEFAULT_JKS_CER_PATH;
     private String jksAlias = DefaultConstants.DEFAULT_JKS_ALIAS;
     private String jksPass = DefaultConstants.DEFAULT_JKS_PASS;
+    public AuthorizationServerSettings() {
 
+    }
 
     public String getIssuerUri() {
       return issuerUri;

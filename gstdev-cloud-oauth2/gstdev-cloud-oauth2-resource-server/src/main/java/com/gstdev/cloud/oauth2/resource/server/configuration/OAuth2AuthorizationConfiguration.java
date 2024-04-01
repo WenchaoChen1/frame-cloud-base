@@ -37,7 +37,7 @@ public class OAuth2AuthorizationConfiguration {
     log.debug("[GstDev Cloud] |- SDK [OAuth2 Authorization] Auto Configure.");
   }
 
-//  @Bean
+  //  @Bean
 //  @ConditionalOnMissingBean
 //  public SecurityMetadataSourceStorage securityMetadataSourceStorage() {
 //    SecurityMetadataSourceStorage securityMetadataSourceStorage = new SecurityMetadataSourceStorage();
@@ -70,7 +70,8 @@ public class OAuth2AuthorizationConfiguration {
     log.trace("[GstDev Cloud] |- Bean [Authorize Http Requests Configurer Customer] Auto Configure.");
     return OAuth2AuthorizeHttpRequestsConfigurerCustomer;
   }
-//
+
+  //
 //  @Bean
 //  @ConditionalOnMissingBean
 //  public SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer(SecurityMetadataSourceStorage securityMetadataSourceStorage, SecurityMatcherConfigurer securityMatcherConfigurer) {

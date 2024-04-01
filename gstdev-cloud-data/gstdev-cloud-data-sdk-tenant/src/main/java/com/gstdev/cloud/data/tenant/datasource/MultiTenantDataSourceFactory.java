@@ -26,40 +26,40 @@ import java.util.stream.Collectors;
 @Component
 public class MultiTenantDataSourceFactory {
 
-    @Autowired
-    private SysTenantDataSourceRepository sysTenantDataSourceRepository;
+  @Autowired
+  private SysTenantDataSourceRepository sysTenantDataSourceRepository;
 
-    private DataSource createDataSource(DataSource defaultDataSource, SysTenantDataSource sysTenantDataSource) {
-        if (defaultDataSource instanceof HikariDataSource defaultHikariDataSource) {
-            Properties defaultDataSourceProperties = defaultHikariDataSource.getDataSourceProperties();
-            HikariConfig hikariConfig = new HikariConfig();
-            hikariConfig.setDriverClassName(sysTenantDataSource.getDriverClassName());
-            hikariConfig.setJdbcUrl(sysTenantDataSource.getUrl());
-            hikariConfig.setUsername(sysTenantDataSource.getUsername());
-            hikariConfig.setPassword(sysTenantDataSource.getPassword());
+  private DataSource createDataSource(DataSource defaultDataSource, SysTenantDataSource sysTenantDataSource) {
+    if (defaultDataSource instanceof HikariDataSource defaultHikariDataSource) {
+      Properties defaultDataSourceProperties = defaultHikariDataSource.getDataSourceProperties();
+      HikariConfig hikariConfig = new HikariConfig();
+      hikariConfig.setDriverClassName(sysTenantDataSource.getDriverClassName());
+      hikariConfig.setJdbcUrl(sysTenantDataSource.getUrl());
+      hikariConfig.setUsername(sysTenantDataSource.getUsername());
+      hikariConfig.setPassword(sysTenantDataSource.getPassword());
 
-            if (ObjectUtils.isNotEmpty(defaultDataSource)) {
-                defaultDataSourceProperties.forEach((key, value) -> hikariConfig.addDataSourceProperty(String.valueOf(key), value));
-            }
+      if (ObjectUtils.isNotEmpty(defaultDataSource)) {
+        defaultDataSourceProperties.forEach((key, value) -> hikariConfig.addDataSourceProperty(String.valueOf(key), value));
+      }
 
-            return new HikariDataSource(hikariConfig);
-        } else {
-            return DataSourceBuilder.create()
-                    .type(HikariDataSource.class)
-                    .url(sysTenantDataSource.getUrl())
-                    .driverClassName(sysTenantDataSource.getDriverClassName())
-                    .username(sysTenantDataSource.getUsername())
-                    .password(sysTenantDataSource.getPassword())
-                    .build();
-        }
+      return new HikariDataSource(hikariConfig);
+    } else {
+      return DataSourceBuilder.create()
+        .type(HikariDataSource.class)
+        .url(sysTenantDataSource.getUrl())
+        .driverClassName(sysTenantDataSource.getDriverClassName())
+        .username(sysTenantDataSource.getUsername())
+        .password(sysTenantDataSource.getPassword())
+        .build();
     }
+  }
 
-    public Map<String, DataSource> getAll(DataSource defaultDataSource) {
-        List<SysTenantDataSource> sysTenantDataSources = sysTenantDataSourceRepository.findAll();
-        if (CollectionUtils.isNotEmpty(sysTenantDataSources)) {
-            return sysTenantDataSources.stream().collect(Collectors.toMap(SysTenantDataSource::getTenantId, value -> createDataSource(defaultDataSource, value)));
-        } else {
-            return new HashMap<>();
-        }
+  public Map<String, DataSource> getAll(DataSource defaultDataSource) {
+    List<SysTenantDataSource> sysTenantDataSources = sysTenantDataSourceRepository.findAll();
+    if (CollectionUtils.isNotEmpty(sysTenantDataSources)) {
+      return sysTenantDataSources.stream().collect(Collectors.toMap(SysTenantDataSource::getTenantId, value -> createDataSource(defaultDataSource, value)));
+    } else {
+      return new HashMap<>();
     }
+  }
 }

@@ -7,12 +7,12 @@ package com.gstdev.cloud.message.websocket.enums;
  * @date : 2023/9/14 17:48
  */
 public enum InstanceMode {
-    /**
-     * 单实例模式
-     */
-    SINGLE,
-    /**
-     * 多实例模式
-     */
-    MULTIPLE;
+  /**
+   * 单实例模式
+   */
+  SINGLE,
+  /**
+   * 多实例模式
+   */
+  MULTIPLE;
 }

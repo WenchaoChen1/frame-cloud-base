@@ -108,7 +108,7 @@ public class AwsStorageService extends AbstractFileService implements StorageSer
 
 //    try {
 //      url = getClient().presignedGetObject(bucketName, objectName);
-      url = getClient().generatePresignedUrl(new GeneratePresignedUrlRequest(bucketName, objectName)).toString();
+    url = getClient().generatePresignedUrl(new GeneratePresignedUrlRequest(bucketName, objectName)).toString();
 //    } catch (Exception ex) {
 //      log.info("获得FileObject失败");
 //    }
@@ -129,7 +129,7 @@ public class AwsStorageService extends AbstractFileService implements StorageSer
 //
 //      getClient().putObject(bucketName, objectName, stream, options);
 //      String key = BUCKET_NAME_URL_STRING+objectName;
-      PutObjectRequest request = new PutObjectRequest(bucketName, objectName, stream,null);
+      PutObjectRequest request = new PutObjectRequest(bucketName, objectName, stream, null);
       request.withCannedAcl(CannedAccessControlList.PublicRead);
       PutObjectResult putObjectResult = getClient().putObject(request);
     } catch (Exception ex) {
@@ -150,7 +150,7 @@ public class AwsStorageService extends AbstractFileService implements StorageSer
   @Override
   public InputStream getObject(String bucketName, String objectName) {
     try {
-      return getClient().getObject(new GetObjectRequest(bucketName,objectName)).getObjectContent();
+      return getClient().getObject(new GetObjectRequest(bucketName, objectName)).getObjectContent();
 //      return getClient().getObject(bucketName, objectName);
     } catch (Exception ex) {
       log.info("删除FileObject失败");
@@ -159,7 +159,7 @@ public class AwsStorageService extends AbstractFileService implements StorageSer
     return null;
   }
 
-//  private MinioClient getClient() {
+  //  private MinioClient getClient() {
 //
 //    if (client == null) {
 //      try {
@@ -171,7 +171,7 @@ public class AwsStorageService extends AbstractFileService implements StorageSer
 //    return client;
 //  }
   private AmazonS3 getClient() {
-    if (ObjectUtils.isEmpty(accessKey)&&ObjectUtils.isEmpty(secretKey)){
+    if (ObjectUtils.isEmpty(accessKey) && ObjectUtils.isEmpty(secretKey)) {
       return AmazonS3ClientBuilder.standard()
         .withRegion(Regions.US_EAST_1)
         .build();

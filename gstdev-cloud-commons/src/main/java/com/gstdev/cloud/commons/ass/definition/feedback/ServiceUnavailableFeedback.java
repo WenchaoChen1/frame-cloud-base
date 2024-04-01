@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
  * @date : 2023/9/26 8:54
  */
 public class ServiceUnavailableFeedback extends Feedback {
-    public ServiceUnavailableFeedback(String value) {
-        super(value, HttpStatus.SERVICE_UNAVAILABLE);
-    }
+  public ServiceUnavailableFeedback(String value) {
+    super(value, HttpStatus.SERVICE_UNAVAILABLE);
+  }
 }

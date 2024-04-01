@@ -12,28 +12,28 @@ import com.gstdev.cloud.commons.ass.definition.exception.PlatformRuntimeExceptio
  */
 public class DiscoveredUnrecordedErrorException extends PlatformRuntimeException {
 
-    public DiscoveredUnrecordedErrorException() {
-        super();
-    }
+  public DiscoveredUnrecordedErrorException() {
+    super();
+  }
 
-    public DiscoveredUnrecordedErrorException(String message) {
-        super(message);
-    }
+  public DiscoveredUnrecordedErrorException(String message) {
+    super(message);
+  }
 
-    public DiscoveredUnrecordedErrorException(String message, Throwable cause) {
-        super(message, cause);
-    }
+  public DiscoveredUnrecordedErrorException(String message, Throwable cause) {
+    super(message, cause);
+  }
 
-    public DiscoveredUnrecordedErrorException(Throwable cause) {
-        super(cause);
-    }
+  public DiscoveredUnrecordedErrorException(Throwable cause) {
+    super(cause);
+  }
 
-    protected DiscoveredUnrecordedErrorException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
+  protected DiscoveredUnrecordedErrorException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    super(message, cause, enableSuppression, writableStackTrace);
+  }
 
-    @Override
-    public Feedback getFeedback() {
-        return ErrorCodes.DISCOVERED_UNRECORDED_ERROR_EXCEPTION;
-    }
+  @Override
+  public Feedback getFeedback() {
+    return ErrorCodes.DISCOVERED_UNRECORDED_ERROR_EXCEPTION;
+  }
 }

@@ -15,9 +15,9 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 @JsonDeserialize(using = OAuth2ClientAuthenticationTokenDeserializer.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
-        fieldVisibility = JsonAutoDetect.Visibility.ANY,
-        getterVisibility = JsonAutoDetect.Visibility.NONE,
-        isGetterVisibility = JsonAutoDetect.Visibility.NONE,
-        creatorVisibility = JsonAutoDetect.Visibility.ANY)
+  fieldVisibility = JsonAutoDetect.Visibility.ANY,
+  getterVisibility = JsonAutoDetect.Visibility.NONE,
+  isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+  creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class OAuth2ClientAuthenticationTokenMixin {
 }

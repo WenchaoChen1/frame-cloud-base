@@ -17,14 +17,14 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  */
 public class StandardCryptoCondition implements Condition {
 
-    private static final Logger log = LoggerFactory.getLogger(StandardCryptoCondition.class);
+  private static final Logger log = LoggerFactory.getLogger(StandardCryptoCondition.class);
 
-    @SuppressWarnings("NullableProblems")
-    @Override
-    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
-        String property = RestPropertyFinder.getCryptoStrategy(conditionContext);
-        boolean result = StringUtils.isNotBlank(property) && StringUtils.equalsIgnoreCase(property, CryptoStrategy.STANDARD.name());
-        log.debug("[GstDev Cloud] |- Condition [Standard Crypto] value is [{}]", result);
-        return result;
-    }
+  @SuppressWarnings("NullableProblems")
+  @Override
+  public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
+    String property = RestPropertyFinder.getCryptoStrategy(conditionContext);
+    boolean result = StringUtils.isNotBlank(property) && StringUtils.equalsIgnoreCase(property, CryptoStrategy.STANDARD.name());
+    log.debug("[GstDev Cloud] |- Condition [Standard Crypto] value is [{}]", result);
+    return result;
+  }
 }

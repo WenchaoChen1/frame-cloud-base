@@ -10,14 +10,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class ParentMeta extends BaseMeta {
 
-    @JsonProperty("isHideAllChild")
-    private Boolean hideAllChild = false;
+  @JsonProperty("isHideAllChild")
+  private Boolean hideAllChild = false;
 
-    public Boolean getHideAllChild() {
-        return hideAllChild;
-    }
+  public Boolean getHideAllChild() {
+    return hideAllChild;
+  }
 
-    public void setHideAllChild(Boolean hideAllChild) {
-        this.hideAllChild = hideAllChild;
-    }
+  public void setHideAllChild(Boolean hideAllChild) {
+    this.hideAllChild = hideAllChild;
+  }
 }
