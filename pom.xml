@@ -58,14 +58,10 @@
   </build>
   <modules>
     <module>gstdev-cloud-commons</module>
-    <!--    <module>gstdev-cloud-components</module>-->
     <module>gstdev-cloud-data</module>
     <module>gstdev-cloud-dependencies</module>
-    <!--    <module>gstdev-cloud-engines</module>-->
     <module>gstdev-cloud-oauth2</module>
     <module>gstdev-cloud-parent</module>
-    <!--    <module>gstdev-cloud-platforms</module>-->
-    <!--    <module>gstdev-cloud-plugins</module>-->
     <module>gstdev-cloud-services</module>
     <module>gstdev-cloud-starters</module>
     <module>gstdev-cloud-web</module>
