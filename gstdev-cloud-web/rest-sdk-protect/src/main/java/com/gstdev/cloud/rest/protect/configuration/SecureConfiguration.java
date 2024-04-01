@@ -1,5 +1,6 @@
 package com.gstdev.cloud.rest.protect.configuration;
 
+import com.gstdev.cloud.cache.jetcache.autoconfigure.CacheJetCacheAutoConfiguration;
 import com.gstdev.cloud.rest.condition.properties.SecureProperties;
 import com.gstdev.cloud.rest.protect.secure.interceptor.AccessLimitedInterceptor;
 import com.gstdev.cloud.rest.protect.secure.interceptor.IdempotentInterceptor;
@@ -9,11 +10,14 @@ import com.gstdev.cloud.rest.protect.secure.stamp.IdempotentStampManager;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Import;
 
 /**
  * <p>Description: 接口安全配置 </p>
@@ -23,6 +27,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties({SecureProperties.class})
+@AutoConfiguration(after ={CacheJetCacheAutoConfiguration.class})
 public class SecureConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(SecureConfiguration.class);
@@ -34,6 +39,7 @@ public class SecureConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
+    @DependsOn("jetCacheCreateCacheFactory")
     public IdempotentStampManager idempotentStampManager(SecureProperties secureProperties) {
         IdempotentStampManager idempotentStampManager = new IdempotentStampManager(secureProperties);
         log.trace("[GstDev Cloud] |- Bean [Idempotent Stamp Manager] Auto Configure.");
@@ -42,6 +48,7 @@ public class SecureConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
+    @DependsOn("jetCacheCreateCacheFactory")
     public AccessLimitedStampManager accessLimitedStampManager(SecureProperties secureProperties) {
         AccessLimitedStampManager accessLimitedStampManager = new AccessLimitedStampManager(secureProperties);
         log.trace("[GstDev Cloud] |- Bean [Access Limited Stamp Manager] Auto Configure.");

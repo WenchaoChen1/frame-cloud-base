@@ -1,0 +1,3 @@
+com.gstdev.cloud.cache.autoconfigure.CacheAutoConfiguration
+com.gstdev.cloud.cache.jetcache.autoconfigure.CacheJetCacheAutoConfiguration
+com.gstdev.cloud.cache.redisson.autoconfigure.CacheRedissonAutoConfiguration

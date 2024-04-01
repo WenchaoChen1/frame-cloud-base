@@ -45,10 +45,10 @@ public class ServiceContextHolderBuilder{
 
     public ServiceContextHolder build() {
         ServiceContextHolder holder = ServiceContextHolder.getInstance();
-        toServiceContextHolder(platformProperties, holder);
-        toServiceContextHolder(endpointProperties, holder, holder.isDistributedArchitecture());
-        holder.setPort(String.valueOf(this.getPort()));
-        holder.setIp(getHostAddress());
+//        toServiceContextHolder(platformProperties, holder);
+//        toServiceContextHolder(endpointProperties, holder, holder.isDistributedArchitecture());
+//        holder.setPort(String.valueOf(this.getPort()));
+//        holder.setIp(getHostAddress());
         return holder;
     }
 

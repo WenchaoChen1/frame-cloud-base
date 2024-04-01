@@ -29,16 +29,16 @@ import org.springframework.context.annotation.Configuration;
 @Configuration(proxyBeanMethods = false)
 //@ConditionalOnSwaggerEnabled
 @EnableConfigurationProperties(SpringDocProperties.class)
-@SecuritySchemes({
-  @SecurityScheme(name = BaseConstants.OPEN_API_SECURITY_SCHEME_BEARER_NAME, type = SecuritySchemeType.OAUTH2, bearerFormat = "JWT", scheme = "bearer",
-    flows = @OAuthFlows(
-      password = @OAuthFlow(authorizationUrl = "http://localhost:8101/oauth2/authorize", tokenUrl = "http://localhost:8101/oauth2/token"
-        , refreshUrl = "http://localhost:8101/oauth2/token", scopes = @OAuthScope(name = "all"))
-//                        password = @OAuthFlow(authorizationUrl = "${herodotus.endpoint.authorization-uri}", tokenUrl = "${herodotus.endpoint.access-token-uri}", refreshUrl = "${herodotus.endpoint.access-token-uri}", scopes = @OAuthScope(name = "all")),
-//                        clientCredentials = @OAuthFlow(authorizationUrl = "${herodotus.endpoint.authorization-uri}", tokenUrl = "${herodotus.endpoint.access-token-uri}", refreshUrl = "${herodotus.endpoint.access-token-uri}", scopes = @OAuthScope(name = "all"))
-//                        authorizationCode = @OAuthFlow(authorizationUrl = "${herodotus.platform.endpoint.user-authorization-uri}", tokenUrl = "${herodotus.platform.endpoint.access-token-uri}", refreshUrl = "${herodotus.platform.endpoint.access-token-uri}", scopes = @OAuthScope(name = "all"))
-    )),
-})
+//@SecuritySchemes({
+//  @SecurityScheme(name = BaseConstants.OPEN_API_SECURITY_SCHEME_BEARER_NAME, type = SecuritySchemeType.OAUTH2, bearerFormat = "JWT", scheme = "bearer",
+//    flows = @OAuthFlows(
+//      password = @OAuthFlow(authorizationUrl = "http://localhost:8101/oauth2/authorize", tokenUrl = "http://localhost:8101/oauth2/token"
+//        , refreshUrl = "http://localhost:8101/oauth2/token", scopes = @OAuthScope(name = "all"))
+////                        password = @OAuthFlow(authorizationUrl = "${herodotus.endpoint.authorization-uri}", tokenUrl = "${herodotus.endpoint.access-token-uri}", refreshUrl = "${herodotus.endpoint.access-token-uri}", scopes = @OAuthScope(name = "all")),
+////                        clientCredentials = @OAuthFlow(authorizationUrl = "${herodotus.endpoint.authorization-uri}", tokenUrl = "${herodotus.endpoint.access-token-uri}", refreshUrl = "${herodotus.endpoint.access-token-uri}", scopes = @OAuthScope(name = "all"))
+////                        authorizationCode = @OAuthFlow(authorizationUrl = "${herodotus.platform.endpoint.user-authorization-uri}", tokenUrl = "${herodotus.platform.endpoint.access-token-uri}", refreshUrl = "${herodotus.platform.endpoint.access-token-uri}", scopes = @OAuthScope(name = "all"))
+//    )),
+//})
 public class SpringDocConfiguration {
 
   private static final Logger log = LoggerFactory.getLogger(SpringDocConfiguration.class);

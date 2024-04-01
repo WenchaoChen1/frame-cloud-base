@@ -450,6 +450,11 @@
         <artifactId>gstdev-cloud-starter-captcha</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-starter-cache</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
       <!--      <dependency>-->
       <!--        <groupId>com.gstdev.cloud</groupId>-->
       <!--        <artifactId>gstdev-cloud-starter-oauth2</artifactId>-->

@@ -25,5 +25,6 @@
     <module>gstdev-cloud-starter-openapi</module>
     <module>gstdev-cloud-starter-oauth2</module>
     <module>gstdev-cloud-starter-captcha</module>
+    <module>gstdev-cloud-starter-cache</module>
   </modules>
 </project>
