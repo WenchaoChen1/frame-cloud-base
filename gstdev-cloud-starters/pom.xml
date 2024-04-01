@@ -18,7 +18,6 @@
   <modules>
     <module>gstdev-cloud-starter-data-commons</module>
     <module>gstdev-cloud-starter-data-jpa</module>
-    <module>gstdev-cloud-starter-data-redis</module>
     <module>gstdev-cloud-starter-web</module>
     <module>gstdev-cloud-starter-swagger</module>
     <module>gstdev-cloud-starter-storage</module>

@@ -145,11 +145,6 @@
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-data-redis</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-service-oauth2</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
@@ -415,11 +410,6 @@
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-starter-data-jpa</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-data-redis</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
@@ -734,7 +724,17 @@
         <artifactId>esdk-obs-java-bundle</artifactId>
         <version>${huawei-sdk-obs.version}</version>
       </dependency>
-
+      <!-- MapStruct related dependencies -->
+      <dependency>
+        <groupId>org.mapstruct</groupId>
+        <artifactId>mapstruct</artifactId>
+        <version>${org.mapstruct-processor.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mapstruct</groupId>
+        <artifactId>mapstruct-processor</artifactId>
+        <version>${org.mapstruct-processor.version}</version>
+      </dependency>
     </dependencies>
 
 

@@ -18,7 +18,6 @@
   <modules>
     <module>gstdev-cloud-data-commons</module>
     <module>gstdev-cloud-data-jpa</module>
-    <module>gstdev-cloud-data-redis</module>
     <module>gstdev-cloud-data-core</module>
     <module>gstdev-cloud-data-sdk-jpa</module>
     <module>gstdev-cloud-data-sdk-mybatis-plus</module>
