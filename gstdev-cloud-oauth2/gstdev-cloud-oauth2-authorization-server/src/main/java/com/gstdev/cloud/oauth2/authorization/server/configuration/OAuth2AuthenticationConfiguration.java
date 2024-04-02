@@ -2,6 +2,7 @@ package com.gstdev.cloud.oauth2.authorization.server.configuration;
 
 import com.gstdev.cloud.cache.jetcache.autoconfigure.CacheJetCacheAutoConfiguration;
 import com.gstdev.cloud.commons.ass.definition.function.ErrorCodeMapperBuilderCustomizer;
+import com.gstdev.cloud.oauth2.authorization.server.customizer.HerodotusJwtTokenCustomizer;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.authorization.server.customizer.OAuth2FormLoginConfigurerCustomizer;
 import com.gstdev.cloud.oauth2.authorization.server.stamp.LockedUserDetailsStampManager;
@@ -59,12 +60,16 @@ public class OAuth2AuthenticationConfiguration {
     return configurer;
   }
 
-//  @Bean
-//  public OAuth2TokenCustomizer<JwtEncodingContext> jwtTokenCustomizer() {
-//    HerodotusJwtTokenCustomizer customizer = new HerodotusJwtTokenCustomizer();
-//    log.trace("[GstDev Cloud] |- Bean [OAuth2 Jwt Token Customizer] Auto Configure.");
-//    return customizer;
-//  }
+  /**
+   * 定制化 OAuth2 JWT Token，可能是用于对 JWT Token 进行特定的定制化处理，例如添加额外的信息或验证规则等。
+   * @return
+   */
+  @Bean
+  public OAuth2TokenCustomizer<JwtEncodingContext> jwtTokenCustomizer() {
+    HerodotusJwtTokenCustomizer customizer = new HerodotusJwtTokenCustomizer();
+    log.trace("[GstDev Cloud] |- Bean [OAuth2 Jwt Token Customizer] Auto Configure.");
+    return customizer;
+  }
 //
 //  @Bean
 //  public OAuth2TokenCustomizer<OAuth2TokenClaimsContext> opaqueTokenCustomizer() {
