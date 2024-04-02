@@ -20,46 +20,63 @@ import org.springframework.security.oauth2.server.authorization.authentication.O
 // TODO NU
 public class OAuth2AuthenticationProviderUtils {
 
-  private OAuth2AuthenticationProviderUtils() {
-  }
-
-  public static OAuth2ClientAuthenticationToken getAuthenticatedClientElseThrowInvalidClient(Authentication authentication) {
-    OAuth2ClientAuthenticationToken clientPrincipal = null;
-    if (OAuth2ClientAuthenticationToken.class.isAssignableFrom(authentication.getPrincipal().getClass())) {
-      clientPrincipal = (OAuth2ClientAuthenticationToken) authentication.getPrincipal();
+    private OAuth2AuthenticationProviderUtils() {
     }
-    if (clientPrincipal != null && clientPrincipal.isAuthenticated()) {
-      return clientPrincipal;
+
+    /**
+     * 获取已认证的客户端，否则抛出无效客户端异常。
+     *
+     * @param authentication 身份认证对象
+     * @return 已认证的客户端身份认证令牌
+     * @throws OAuth2AuthenticationException 如果客户端未认证，则抛出异常
+     */
+    public static OAuth2ClientAuthenticationToken getAuthenticatedClientElseThrowInvalidClient(Authentication authentication) {
+        OAuth2ClientAuthenticationToken clientPrincipal = null;
+        if (OAuth2ClientAuthenticationToken.class.isAssignableFrom(authentication.getPrincipal().getClass())) {
+            clientPrincipal = (OAuth2ClientAuthenticationToken) authentication.getPrincipal();
+        }
+        if (clientPrincipal != null && clientPrincipal.isAuthenticated()) {
+            return clientPrincipal;
+        }
+        throw new OAuth2AuthenticationException(OAuth2ErrorCodes.INVALID_CLIENT);
     }
-    throw new OAuth2AuthenticationException(OAuth2ErrorCodes.INVALID_CLIENT);
-  }
 
-  public static <T extends OAuth2Token> OAuth2Authorization invalidate(
-    OAuth2Authorization authorization, T token) {
+    /**
+     * 使授权无效。
+     *
+     * @param authorization 要使无效的授权
+     * @param token         要使无效的令牌
+     * @return 已无效的授权
+     */
+    public static <T extends OAuth2Token> OAuth2Authorization invalidate(OAuth2Authorization authorization, T token) {
 
-    // @formatter:off
-    OAuth2Authorization.Builder authorizationBuilder = OAuth2Authorization.from(authorization)
-      .token(token,
-        (metadata) ->
-          metadata.put(OAuth2Authorization.Token.INVALIDATED_METADATA_NAME, true));
+        // 创建授权构建器
+        OAuth2Authorization.Builder authorizationBuilder = OAuth2Authorization.from(authorization)
+            // 标记令牌为无效
+            .token(token,
+                (metadata) ->
+                    metadata.put(OAuth2Authorization.Token.INVALIDATED_METADATA_NAME, true));
 
-    if (OAuth2RefreshToken.class.isAssignableFrom(token.getClass())) {
-      authorizationBuilder.token(
-        authorization.getAccessToken().getToken(),
-        (metadata) ->
-          metadata.put(OAuth2Authorization.Token.INVALIDATED_METADATA_NAME, true));
+        if (OAuth2RefreshToken.class.isAssignableFrom(token.getClass())) {
+            // 如果是刷新令牌，则同时标记关联的访问令牌和授权码为无效
+            authorizationBuilder.token(
+                authorization.getAccessToken().getToken(),
+                (metadata) ->
+                    metadata.put(OAuth2Authorization.Token.INVALIDATED_METADATA_NAME, true));
+            // 获取授权中的授权码令牌
+            OAuth2Authorization.Token<OAuth2AuthorizationCode> authorizationCode =
+                authorization.getToken(OAuth2AuthorizationCode.class);
+            // 如果授权码令牌存在且未被标记为无效
+            if (authorizationCode != null && !authorizationCode.isInvalidated()) {
+                // 标记授权码令牌为无效，并将此操作添加到授权构建器中
+                authorizationBuilder.token(
+                    authorizationCode.getToken(),
+                    (metadata) ->
+                        metadata.put(OAuth2Authorization.Token.INVALIDATED_METADATA_NAME, true));
+            }
+        }
+        // @formatter:on
 
-      OAuth2Authorization.Token<OAuth2AuthorizationCode> authorizationCode =
-        authorization.getToken(OAuth2AuthorizationCode.class);
-      if (authorizationCode != null && !authorizationCode.isInvalidated()) {
-        authorizationBuilder.token(
-          authorizationCode.getToken(),
-          (metadata) ->
-            metadata.put(OAuth2Authorization.Token.INVALIDATED_METADATA_NAME, true));
-      }
+        return authorizationBuilder.build();
     }
-    // @formatter:on
-
-    return authorizationBuilder.build();
-  }
 }

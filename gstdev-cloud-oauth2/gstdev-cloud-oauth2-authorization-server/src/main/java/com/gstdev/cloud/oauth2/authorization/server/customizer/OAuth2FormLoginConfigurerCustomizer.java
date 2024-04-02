@@ -24,26 +24,34 @@ public class OAuth2FormLoginConfigurerCustomizer implements Customizer<FormLogin
 
   private final OAuth2AuthenticationProperties authenticationProperties;
 
-  public OAuth2FormLoginConfigurerCustomizer(OAuth2AuthenticationProperties authenticationProperties) {
-    this.authenticationProperties = authenticationProperties;
-  }
-
-  @Override
-  public void customize(FormLoginConfigurer<HttpSecurity> configurer) {
-    configurer
-      .loginPage(getFormLogin().getLoginPageUrl())
-      .usernameParameter(getFormLogin().getUsernameParameter())
-      .passwordParameter(getFormLogin().getPasswordParameter());
-
-    if (StringUtils.isNotBlank(getFormLogin().getFailureForwardUrl())) {
-      configurer.failureForwardUrl(getFormLogin().getFailureForwardUrl());
+    // 构造函数，接收 OAuth2AuthenticationProperties 对象
+    public OAuth2FormLoginConfigurerCustomizer(OAuth2AuthenticationProperties authenticationProperties) {
+        this.authenticationProperties = authenticationProperties;
     }
-    if (StringUtils.isNotBlank(getFormLogin().getSuccessForwardUrl())) {
-      configurer.successForwardUrl(getFormLogin().getSuccessForwardUrl());
-    }
-  }
 
-  private OAuth2AuthenticationProperties.FormLogin getFormLogin() {
-    return authenticationProperties.getFormLogin();
-  }
+    // 实现 Customizer 接口的方法，用于定制化 FormLoginConfigurer
+    @Override
+    public void customize(FormLoginConfigurer<HttpSecurity> configurer) {
+        // 设置登录页面 URL
+        configurer
+            .loginPage(getFormLogin().getLoginPageUrl())
+            // 设置用户名参数名
+            .usernameParameter(getFormLogin().getUsernameParameter())
+            // 设置密码参数名
+            .passwordParameter(getFormLogin().getPasswordParameter());
+
+        // 如果设置了失败转发 URL，则进行配置
+        if (StringUtils.isNotBlank(getFormLogin().getFailureForwardUrl())) {
+            configurer.failureForwardUrl(getFormLogin().getFailureForwardUrl());
+        }
+        // 如果设置了成功转发 URL，则进行配置
+        if (StringUtils.isNotBlank(getFormLogin().getSuccessForwardUrl())) {
+            configurer.successForwardUrl(getFormLogin().getSuccessForwardUrl());
+        }
+    }
+
+    // 获取 FormLogin 对象
+    private OAuth2AuthenticationProperties.FormLogin getFormLogin() {
+        return authenticationProperties.getFormLogin();
+    }
 }

@@ -36,169 +36,258 @@ import java.util.Map;
  */
 // TODO NU
 public final class OAuth2ConfigurerUtils {
-  private OAuth2ConfigurerUtils() {
-  }
-
-  public static RegisteredClientRepository getRegisteredClientRepository(HttpSecurity httpSecurity) {
-    RegisteredClientRepository registeredClientRepository = httpSecurity.getSharedObject(RegisteredClientRepository.class);
-    if (registeredClientRepository == null) {
-      registeredClientRepository = getBean(httpSecurity, RegisteredClientRepository.class);
-      httpSecurity.setSharedObject(RegisteredClientRepository.class, registeredClientRepository);
+    // 私有构造函数，防止实例化
+    private OAuth2ConfigurerUtils() {
     }
-    return registeredClientRepository;
-  }
 
-  public static OAuth2AuthorizationService getAuthorizationService(HttpSecurity httpSecurity) {
-    OAuth2AuthorizationService authorizationService = httpSecurity.getSharedObject(OAuth2AuthorizationService.class);
-    if (authorizationService == null) {
-      authorizationService = getOptionalBean(httpSecurity, OAuth2AuthorizationService.class);
-      if (authorizationService == null) {
-        authorizationService = new InMemoryOAuth2AuthorizationService();
-      }
-      httpSecurity.setSharedObject(OAuth2AuthorizationService.class, authorizationService);
-    }
-    return authorizationService;
-  }
-
-  public static OAuth2AuthorizationConsentService getAuthorizationConsentService(HttpSecurity httpSecurity) {
-    OAuth2AuthorizationConsentService authorizationConsentService = httpSecurity.getSharedObject(OAuth2AuthorizationConsentService.class);
-    if (authorizationConsentService == null) {
-      authorizationConsentService = getOptionalBean(httpSecurity, OAuth2AuthorizationConsentService.class);
-      if (authorizationConsentService == null) {
-        authorizationConsentService = new InMemoryOAuth2AuthorizationConsentService();
-      }
-      httpSecurity.setSharedObject(OAuth2AuthorizationConsentService.class, authorizationConsentService);
-    }
-    return authorizationConsentService;
-  }
-
-  @SuppressWarnings("unchecked")
-  public static OAuth2TokenGenerator<? extends OAuth2Token> getTokenGenerator(HttpSecurity httpSecurity) {
-    OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator = httpSecurity.getSharedObject(OAuth2TokenGenerator.class);
-    if (tokenGenerator == null) {
-      tokenGenerator = getOptionalBean(httpSecurity, OAuth2TokenGenerator.class);
-      if (tokenGenerator == null) {
-        JwtGenerator jwtGenerator = getJwtGenerator(httpSecurity);
-        OAuth2AccessTokenGenerator accessTokenGenerator = new OAuth2AccessTokenGenerator();
-        OAuth2TokenCustomizer<OAuth2TokenClaimsContext> accessTokenCustomizer = getAccessTokenCustomizer(httpSecurity);
-        if (accessTokenCustomizer != null) {
-          accessTokenGenerator.setAccessTokenCustomizer(accessTokenCustomizer);
+    /**
+     * 获取注册的客户端存储库实例
+     *
+     * @param httpSecurity HttpSecurity对象
+     * @return RegisteredClientRepository实例
+     */
+    public static RegisteredClientRepository getRegisteredClientRepository(HttpSecurity httpSecurity) {
+        RegisteredClientRepository registeredClientRepository = httpSecurity.getSharedObject(RegisteredClientRepository.class);
+        if (registeredClientRepository == null) {
+            registeredClientRepository = getBean(httpSecurity, RegisteredClientRepository.class);
+            httpSecurity.setSharedObject(RegisteredClientRepository.class, registeredClientRepository);
         }
-        OAuth2RefreshTokenGenerator refreshTokenGenerator = new OAuth2RefreshTokenGenerator();
-        if (jwtGenerator != null) {
-          tokenGenerator = new DelegatingOAuth2TokenGenerator(
-            jwtGenerator, accessTokenGenerator, refreshTokenGenerator);
-        } else {
-          tokenGenerator = new DelegatingOAuth2TokenGenerator(
-            accessTokenGenerator, refreshTokenGenerator);
+        return registeredClientRepository;
+    }
+
+    /**
+     * 获取授权服务实例
+     *
+     * @param httpSecurity HttpSecurity对象
+     * @return OAuth2AuthorizationService实例
+     */
+    public static OAuth2AuthorizationService getAuthorizationService(HttpSecurity httpSecurity) {
+        OAuth2AuthorizationService authorizationService = httpSecurity.getSharedObject(OAuth2AuthorizationService.class);
+        if (authorizationService == null) {
+            authorizationService = getOptionalBean(httpSecurity, OAuth2AuthorizationService.class);
+            if (authorizationService == null) {
+                authorizationService = new InMemoryOAuth2AuthorizationService();
+            }
+            httpSecurity.setSharedObject(OAuth2AuthorizationService.class, authorizationService);
         }
-      }
-      httpSecurity.setSharedObject(OAuth2TokenGenerator.class, tokenGenerator);
+        return authorizationService;
     }
-    return tokenGenerator;
-  }
 
-  private static JwtGenerator getJwtGenerator(HttpSecurity httpSecurity) {
-    JwtGenerator jwtGenerator = httpSecurity.getSharedObject(JwtGenerator.class);
-    if (jwtGenerator == null) {
-      JwtEncoder jwtEncoder = getJwtEncoder(httpSecurity);
-      if (jwtEncoder != null) {
-        jwtGenerator = new JwtGenerator(jwtEncoder);
-        OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer = getJwtCustomizer(httpSecurity);
-        if (jwtCustomizer != null) {
-          jwtGenerator.setJwtCustomizer(jwtCustomizer);
+    /**
+     * 获取授权同意服务实例
+     *
+     * @param httpSecurity HttpSecurity对象
+     * @return OAuth2AuthorizationConsentService实例
+     */
+    public static OAuth2AuthorizationConsentService getAuthorizationConsentService(HttpSecurity httpSecurity) {
+        OAuth2AuthorizationConsentService authorizationConsentService = httpSecurity.getSharedObject(OAuth2AuthorizationConsentService.class);
+        if (authorizationConsentService == null) {
+            authorizationConsentService = getOptionalBean(httpSecurity, OAuth2AuthorizationConsentService.class);
+            if (authorizationConsentService == null) {
+                authorizationConsentService = new InMemoryOAuth2AuthorizationConsentService();
+            }
+            httpSecurity.setSharedObject(OAuth2AuthorizationConsentService.class, authorizationConsentService);
         }
-        httpSecurity.setSharedObject(JwtGenerator.class, jwtGenerator);
-      }
+        return authorizationConsentService;
     }
-    return jwtGenerator;
-  }
 
-  private static JwtEncoder getJwtEncoder(HttpSecurity httpSecurity) {
-    JwtEncoder jwtEncoder = httpSecurity.getSharedObject(JwtEncoder.class);
-    if (jwtEncoder == null) {
-      jwtEncoder = getOptionalBean(httpSecurity, JwtEncoder.class);
-      if (jwtEncoder == null) {
-        JWKSource<SecurityContext> jwkSource = getJwkSource(httpSecurity);
-        if (jwkSource != null) {
-          jwtEncoder = new NimbusJwtEncoder(jwkSource);
+    /**
+     * 获取令牌生成器实例
+     *
+     * @param httpSecurity HttpSecurity对象
+     * @return OAuth2TokenGenerator实例
+     */
+    @SuppressWarnings("unchecked")
+    public static OAuth2TokenGenerator<? extends OAuth2Token> getTokenGenerator(HttpSecurity httpSecurity) {
+        OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator = httpSecurity.getSharedObject(OAuth2TokenGenerator.class);
+        if (tokenGenerator == null) {
+            tokenGenerator = getOptionalBean(httpSecurity, OAuth2TokenGenerator.class);
+            if (tokenGenerator == null) {
+                JwtGenerator jwtGenerator = getJwtGenerator(httpSecurity);
+                OAuth2AccessTokenGenerator accessTokenGenerator = new OAuth2AccessTokenGenerator();
+                OAuth2TokenCustomizer<OAuth2TokenClaimsContext> accessTokenCustomizer = getAccessTokenCustomizer(httpSecurity);
+                if (accessTokenCustomizer != null) {
+                    accessTokenGenerator.setAccessTokenCustomizer(accessTokenCustomizer);
+                }
+                OAuth2RefreshTokenGenerator refreshTokenGenerator = new OAuth2RefreshTokenGenerator();
+                if (jwtGenerator != null) {
+                    tokenGenerator = new DelegatingOAuth2TokenGenerator(
+                        jwtGenerator, accessTokenGenerator, refreshTokenGenerator);
+                } else {
+                    tokenGenerator = new DelegatingOAuth2TokenGenerator(
+                        accessTokenGenerator, refreshTokenGenerator);
+                }
+            }
+            httpSecurity.setSharedObject(OAuth2TokenGenerator.class, tokenGenerator);
         }
-      }
-      if (jwtEncoder != null) {
-        httpSecurity.setSharedObject(JwtEncoder.class, jwtEncoder);
-      }
+        return tokenGenerator;
     }
-    return jwtEncoder;
-  }
 
-  @SuppressWarnings("unchecked")
-  public static JWKSource<SecurityContext> getJwkSource(HttpSecurity httpSecurity) {
-    JWKSource<SecurityContext> jwkSource = httpSecurity.getSharedObject(JWKSource.class);
-    if (jwkSource == null) {
-      ResolvableType type = ResolvableType.forClassWithGenerics(JWKSource.class, SecurityContext.class);
-      jwkSource = getOptionalBean(httpSecurity, type);
-      if (jwkSource != null) {
-        httpSecurity.setSharedObject(JWKSource.class, jwkSource);
-      }
+    /**
+     * 获取JWT生成器实例
+     *
+     * @param httpSecurity HttpSecurity对象
+     * @return JwtGenerator实例
+     */
+    private static JwtGenerator getJwtGenerator(HttpSecurity httpSecurity) {
+        JwtGenerator jwtGenerator = httpSecurity.getSharedObject(JwtGenerator.class);
+        if (jwtGenerator == null) {
+            JwtEncoder jwtEncoder = getJwtEncoder(httpSecurity);
+            if (jwtEncoder != null) {
+                jwtGenerator = new JwtGenerator(jwtEncoder);
+                OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer = getJwtCustomizer(httpSecurity);
+                if (jwtCustomizer != null) {
+                    jwtGenerator.setJwtCustomizer(jwtCustomizer);
+                }
+                httpSecurity.setSharedObject(JwtGenerator.class, jwtGenerator);
+            }
+        }
+        return jwtGenerator;
     }
-    return jwkSource;
-  }
 
-  private static OAuth2TokenCustomizer<JwtEncodingContext> getJwtCustomizer(HttpSecurity httpSecurity) {
-    ResolvableType type = ResolvableType.forClassWithGenerics(OAuth2TokenCustomizer.class, JwtEncodingContext.class);
-    return getOptionalBean(httpSecurity, type);
-  }
-
-  private static OAuth2TokenCustomizer<OAuth2TokenClaimsContext> getAccessTokenCustomizer(HttpSecurity httpSecurity) {
-    ResolvableType type = ResolvableType.forClassWithGenerics(OAuth2TokenCustomizer.class, OAuth2TokenClaimsContext.class);
-    return getOptionalBean(httpSecurity, type);
-  }
-
-  public static AuthorizationServerSettings getAuthorizationServerSettings(HttpSecurity httpSecurity) {
-    AuthorizationServerSettings authorizationServerSettings = httpSecurity.getSharedObject(AuthorizationServerSettings.class);
-    if (authorizationServerSettings == null) {
-      authorizationServerSettings = getBean(httpSecurity, AuthorizationServerSettings.class);
-      httpSecurity.setSharedObject(AuthorizationServerSettings.class, authorizationServerSettings);
+    /**
+     * 获取JWT编码器实例
+     *
+     * @param httpSecurity HttpSecurity对象
+     * @return JwtEncoder实例
+     */
+    private static JwtEncoder getJwtEncoder(HttpSecurity httpSecurity) {
+        JwtEncoder jwtEncoder = httpSecurity.getSharedObject(JwtEncoder.class);
+        if (jwtEncoder == null) {
+            jwtEncoder = getOptionalBean(httpSecurity, JwtEncoder.class);
+            if (jwtEncoder == null) {
+                JWKSource<SecurityContext> jwkSource = getJwkSource(httpSecurity);
+                if (jwkSource != null) {
+                    jwtEncoder = new NimbusJwtEncoder(jwkSource);
+                }
+            }
+            if (jwtEncoder != null) {
+                httpSecurity.setSharedObject(JwtEncoder.class, jwtEncoder);
+            }
+        }
+        return jwtEncoder;
     }
-    return authorizationServerSettings;
-  }
 
-  public static <T> T getBean(HttpSecurity httpSecurity, Class<T> type) {
-    return httpSecurity.getSharedObject(ApplicationContext.class).getBean(type);
-  }
+    /**
+     * 获取JWK源实例
+     *
+     * @param httpSecurity HttpSecurity对象
+     * @return JWKSource实例
+     */
+    @SuppressWarnings("unchecked")
+    public static JWKSource<SecurityContext> getJwkSource(HttpSecurity httpSecurity) {
+        JWKSource<SecurityContext> jwkSource = httpSecurity.getSharedObject(JWKSource.class);
+        if (jwkSource == null) {
+            ResolvableType type = ResolvableType.forClassWithGenerics(JWKSource.class, SecurityContext.class);
+            jwkSource = getOptionalBean(httpSecurity, type);
+            if (jwkSource != null) {
+                httpSecurity.setSharedObject(JWKSource.class, jwkSource);
+            }
+        }
+        return jwkSource;
+    }
 
-  @SuppressWarnings("unchecked")
-  public static <T> T getBean(HttpSecurity httpSecurity, ResolvableType type) {
-    ApplicationContext context = httpSecurity.getSharedObject(ApplicationContext.class);
-    String[] names = context.getBeanNamesForType(type);
-    if (names.length == 1) {
-      return (T) context.getBean(names[0]);
+    /**
+     * 获取JWT自定义器实例
+     *
+     * @param httpSecurity HttpSecurity对象
+     * @return OAuth2TokenCustomizer实例
+     */
+    private static OAuth2TokenCustomizer<JwtEncodingContext> getJwtCustomizer(HttpSecurity httpSecurity) {
+        ResolvableType type = ResolvableType.forClassWithGenerics(OAuth2TokenCustomizer.class, JwtEncodingContext.class);
+        return getOptionalBean(httpSecurity, type);
     }
-    if (names.length > 1) {
-      throw new NoUniqueBeanDefinitionException(type, names);
-    }
-    throw new NoSuchBeanDefinitionException(type);
-  }
 
-  public static <T> T getOptionalBean(HttpSecurity httpSecurity, Class<T> type) {
-    Map<String, T> beansMap = BeanFactoryUtils.beansOfTypeIncludingAncestors(
-      httpSecurity.getSharedObject(ApplicationContext.class), type);
-    if (beansMap.size() > 1) {
-      throw new NoUniqueBeanDefinitionException(type, beansMap.size(),
-        "Expected single matching bean of type '" + type.getName() + "' but found " +
-          beansMap.size() + ": " + StringUtils.collectionToCommaDelimitedString(beansMap.keySet()));
+    /**
+     * 获取访问令牌自定义器实例
+     *
+     * @param httpSecurity HttpSecurity对象
+     * @return OAuth2TokenCustomizer实例
+     */
+    private static OAuth2TokenCustomizer<OAuth2TokenClaimsContext> getAccessTokenCustomizer(HttpSecurity httpSecurity) {
+        ResolvableType type = ResolvableType.forClassWithGenerics(OAuth2TokenCustomizer.class, OAuth2TokenClaimsContext.class);
+        return getOptionalBean(httpSecurity, type);
     }
-    return (!beansMap.isEmpty() ? beansMap.values().iterator().next() : null);
-  }
 
-  @SuppressWarnings("unchecked")
-  public static <T> T getOptionalBean(HttpSecurity httpSecurity, ResolvableType type) {
-    ApplicationContext context = httpSecurity.getSharedObject(ApplicationContext.class);
-    String[] names = context.getBeanNamesForType(type);
-    if (names.length > 1) {
-      throw new NoUniqueBeanDefinitionException(type, names);
+    /**
+     * 获取授权服务器设置实例
+     *
+     * @param httpSecurity HttpSecurity对象
+     * @return AuthorizationServerSettings实例
+     */
+    public static AuthorizationServerSettings getAuthorizationServerSettings(HttpSecurity httpSecurity) {
+        AuthorizationServerSettings authorizationServerSettings = httpSecurity.getSharedObject(AuthorizationServerSettings.class);
+        if (authorizationServerSettings == null) {
+            authorizationServerSettings = getBean(httpSecurity, AuthorizationServerSettings.class);
+            httpSecurity.setSharedObject(AuthorizationServerSettings.class, authorizationServerSettings);
+        }
+        return authorizationServerSettings;
     }
-    return names.length == 1 ? (T) context.getBean(names[0]) : null;
-  }
+
+    /**
+     * 根据类型获取bean实例
+     *
+     * @param httpSecurity HttpSecurity对象
+     * @param type         bean类型
+     * @return bean实例
+     */
+    public static <T> T getBean(HttpSecurity httpSecurity, Class<T> type) {
+        return httpSecurity.getSharedObject(ApplicationContext.class).getBean(type);
+    }
+
+    /**
+     * 根据类型获取bean实例
+     *
+     * @param httpSecurity HttpSecurity对象
+     * @param type         bean类型
+     * @return bean实例
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> T getBean(HttpSecurity httpSecurity, ResolvableType type) {
+        ApplicationContext context = httpSecurity.getSharedObject(ApplicationContext.class);
+        String[] names = context.getBeanNamesForType(type);
+        if (names.length == 1) {
+            return (T) context.getBean(names[0]);
+        }
+        if (names.length > 1) {
+            throw new NoUniqueBeanDefinitionException(type, names);
+        }
+        throw new NoSuchBeanDefinitionException(type);
+    }
+
+    /**
+     * 获取可选的bean实例
+     *
+     * @param httpSecurity HttpSecurity对象
+     * @param type         bean类型
+     * @return bean实例
+     */
+    public static <T> T getOptionalBean(HttpSecurity httpSecurity, Class<T> type) {
+        Map<String, T> beansMap = BeanFactoryUtils.beansOfTypeIncludingAncestors(
+            httpSecurity.getSharedObject(ApplicationContext.class), type);
+        if (beansMap.size() > 1) {
+            throw new NoUniqueBeanDefinitionException(type, beansMap.size(),
+                "Expected single matching bean of type '" + type.getName() + "' but found " +
+                    beansMap.size() + ": " + StringUtils.collectionToCommaDelimitedString(beansMap.keySet()));
+        }
+        return (!beansMap.isEmpty() ? beansMap.values().iterator().next() : null);
+    }
+
+    /**
+     * 获取可选的bean实例
+     *
+     * @param httpSecurity HttpSecurity对象
+     * @param type         bean类型
+     * @return bean实例
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> T getOptionalBean(HttpSecurity httpSecurity, ResolvableType type) {
+        ApplicationContext context = httpSecurity.getSharedObject(ApplicationContext.class);
+        String[] names = context.getBeanNamesForType(type);
+        if (names.length > 1) {
+            throw new NoUniqueBeanDefinitionException(type, names);
+        }
+        return names.length == 1 ? (T) context.getBean(names[0]) : null;
+    }
 
 }

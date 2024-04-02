@@ -32,7 +32,7 @@ import java.util.Map;
  * @author : cc
  * @date : 2022/2/23 22:17
  */
-public class HerodotusJwtTokenCustomizer extends AbstractTokenCustomizer implements OAuth2TokenCustomizer<JwtEncodingContext> {
+public class BaseJwtTokenCustomizer extends AbstractTokenCustomizer implements OAuth2TokenCustomizer<JwtEncodingContext> {
 
     @Override
     public void customize(JwtEncodingContext context) {
