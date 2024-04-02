@@ -59,6 +59,8 @@ public class SpringDocConfiguration {
     OpenApiServerResolver resolver = () -> {
       Server server = new Server();
       server.setUrl(ServiceContextHolder.getInstance().getUrl());
+        Server server1 = new Server();
+        server1.setUrl(ServiceContextHolder.getInstance().getUrl());
       return ImmutableList.of(server);
     };
     log.trace("[GstDev Cloud] |- Bean [Open Api Server Resolver] Auto Configure.");

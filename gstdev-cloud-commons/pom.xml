@@ -17,21 +17,11 @@
 
   <dependencies>
 
-    <!-- Jackson related dependencies -->
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-    </dependency>
-
-    <!-- Hutool related dependencies -->
-    <dependency>
-      <groupId>cn.hutool</groupId>
-      <artifactId>hutool-all</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
+<!--    &lt;!&ndash; Jackson related dependencies &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>com.fasterxml.jackson.core</groupId>-->
+<!--      <artifactId>jackson-databind</artifactId>-->
+<!--    </dependency>-->
 
     <!-- Apache related dependencies -->
     <dependency>
@@ -48,17 +38,10 @@
       <groupId>com.belerweb</groupId>
       <artifactId>pinyin4j</artifactId>
     </dependency>
-
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-openfeign</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-
-
     <!-- SpringBoot related dependencies -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -77,26 +60,6 @@
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <!--      <scope>provided</scope>-->
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-web</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.dromara.hutool</groupId>
-      <artifactId>hutool-all</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-test</artifactId>
-    </dependency>
-
-
-    <dependency>
-      <groupId>com.alibaba</groupId>
-      <artifactId>transmittable-thread-local</artifactId>
     </dependency>
 
 
@@ -159,10 +122,10 @@
       <groupId>io.swagger.core.v3</groupId>
       <artifactId>swagger-core-jakarta</artifactId>
     </dependency>
-    <!--    <dependency>-->
-    <!--      <groupId>org.dromara.hutool</groupId>-->
-    <!--      <artifactId>hutool-all</artifactId>-->
-    <!--    </dependency>-->
+        <dependency>
+          <groupId>org.dromara.hutool</groupId>
+          <artifactId>hutool-all</artifactId>
+        </dependency>
     <!--    &lt;!&ndash;指定 bouncycastle 相关依赖，避免依赖第三方携带 bouncycastle 相关包，产生 hutool 不同版本 crypto 不兼容问题，以及抛出DefaultBufferedBlockCipher问题&ndash;&gt;-->
     <!--    <dependency>-->
     <!--      <groupId>org.bouncycastle</groupId>-->
@@ -221,10 +184,10 @@
       <scope>compile</scope>
     </dependency>
 
-    <!--    <dependency>-->
-    <!--      <groupId>com.alibaba</groupId>-->
-    <!--      <artifactId>transmittable-thread-local</artifactId>-->
-    <!--    </dependency>-->
+        <dependency>
+          <groupId>com.alibaba</groupId>
+          <artifactId>transmittable-thread-local</artifactId>
+        </dependency>
 
     <!--    <dependency>-->
     <!--      <groupId>org.apache.skywalking</groupId>-->

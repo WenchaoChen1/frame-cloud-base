@@ -87,7 +87,6 @@
     <postgresql.version>42.4.0</postgresql.version>
     <shardingsphere.version>5.1.2</shardingsphere.version>
     <gstdev-cloud.version>${project.version}</gstdev-cloud.version>
-    <hutool.version>5.5.8</hutool.version>
     <swagger.version>3.0.0</swagger.version>
     <minio.version>7.0.2</minio.version>
     <awss3.version>1.11.233</awss3.version>
@@ -674,12 +673,6 @@
         <groupId>com.github.ben-manes.caffeine</groupId>
         <artifactId>caffeine</artifactId>
         <version>${caffeine.version}</version>
-      </dependency>
-      <!-- Hutool related dependencies -->
-      <dependency>
-        <groupId>cn.hutool</groupId>
-        <artifactId>hutool-all</artifactId>
-        <version>${hutool.version}</version>
       </dependency>
       <!-- Lombok related dependencies -->
       <dependency>
