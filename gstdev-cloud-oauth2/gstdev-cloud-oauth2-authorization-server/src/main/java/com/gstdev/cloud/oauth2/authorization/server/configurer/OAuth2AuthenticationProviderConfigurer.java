@@ -17,7 +17,9 @@ public class OAuth2AuthenticationProviderConfigurer extends AbstractHttpConfigur
   private final UserDetailsService userDetailsService;
   private final OAuth2AuthenticationProperties authenticationProperties;
 
-  public OAuth2AuthenticationProviderConfigurer(PasswordEncoder passwordEncoder, UserDetailsService userDetailsService, OAuth2AuthenticationProperties authenticationProperties) {
+  public OAuth2AuthenticationProviderConfigurer(PasswordEncoder passwordEncoder
+    , UserDetailsService userDetailsService
+    , OAuth2AuthenticationProperties authenticationProperties) {
 //  public OAuth2AuthenticationProviderConfigurer(SessionRegistry sessionRegistry, PasswordEncoder passwordEncoder, UserDetailsService userDetailsService, OAuth2AuthenticationProperties authenticationProperties) {
 //    this.sessionRegistry = sessionRegistry;
     this.passwordEncoder = passwordEncoder;

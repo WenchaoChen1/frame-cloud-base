@@ -19,6 +19,7 @@ import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2Authenticat
 import com.gstdev.cloud.oauth2.core.enums.Certificate;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.properties.OAuth2AuthorizationProperties;
+import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
 import com.gstdev.cloud.starter.oauth2.authentication.server.handler.DefaultAccessDeniedHandler;
 import com.gstdev.cloud.starter.oauth2.authentication.server.handler.DefaultAuthenticationEntryPoint;
 import com.gstdev.cloud.starter.oauth2.authentication.server.handler.DefaultAuthenticationFailureHandler;
@@ -86,7 +87,7 @@ public class AuthorizationServerConfiguration {
     PasswordEncoder passwordEncoder,
     UserDetailsService userDetailsService,
 //    ClientDetailsService clientDetailsService,
-//    HttpCryptoProcessor httpCryptoProcessor,
+    HttpCryptoProcessor httpCryptoProcessor,
 //    OidcClientRegistrationResponseHandler oidcClientRegistrationResponseHandler,
     OAuth2AuthenticationProperties oauth2AuthenticationProperties,
 //    OAuth2DeviceVerificationResponseHandler oauth2DeviceVerificationResponseHandler,
@@ -105,10 +106,9 @@ public class AuthorizationServerConfiguration {
     // OAuth2AuthorizationService、OAuth2TokenGenerator和其他。此外，它还允许您自定义协议端点的请求处理逻辑 -
     // 例如，授权端点、设备授权端点、设备验证端点、令牌端点、令牌内省端点等。
     DefaultAuthenticationFailureHandler errorResponseHandler = new DefaultAuthenticationFailureHandler();
-    DefaultAuthenticationSuccessHandler successResponseHandler = new DefaultAuthenticationSuccessHandler();
-    DefaultAccessDeniedHandler accessDeniedHandler = new DefaultAccessDeniedHandler();
-    DefaultAuthenticationEntryPoint authenticationEntryPoint = new DefaultAuthenticationEntryPoint();
-
+//    DefaultAuthenticationSuccessHandler successResponseHandler = new DefaultAuthenticationSuccessHandler();
+//    DefaultAccessDeniedHandler accessDeniedHandler = new DefaultAccessDeniedHandler();
+//    DefaultAuthenticationEntryPoint authenticationEntryPoint = new DefaultAuthenticationEntryPoint();
     OAuth2AuthorizationServerConfigurer authorizationServerConfigurer = http.getConfigurer(OAuth2AuthorizationServerConfigurer.class);
 //    authorizationServerConfigurer.registeredClientRepository(registeredClientRepository);
 //    authorizationServerConfigurer.authorizationService(authorizationService);
@@ -131,34 +131,18 @@ public class AuthorizationServerConfiguration {
       //      authorizationEndpoint.consentPage(authorizationServerProperties.getu);
     });
 
-// TODO 保留这三行  可替换
-//    AuthenticationManager authenticationManager = http.getSharedObject(AuthenticationManager.class);
-//    @SuppressWarnings("unchecked")
-//    OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator = http.getSharedObject(OAuth2TokenGenerator.class);
     authorizationServerConfigurer.tokenEndpoint(tokenEndpoint -> {
       AuthenticationConverter delegatingAuthenticationConverter = new DelegatingAuthenticationConverter(Arrays.asList(
-        new OAuth2AuthorizationCodeAuthenticationConverter(),
-        new OAuth2RefreshTokenAuthenticationConverter(),
-        new OAuth2ClientCredentialsAuthenticationConverter(),
+        new OAuth2AuthorizationCodeAuthenticationConverter()
+        , new OAuth2RefreshTokenAuthenticationConverter()
+        , new OAuth2ClientCredentialsAuthenticationConverter()
         //TODO 多加的
-        new OAuth2DeviceCodeAuthenticationConverter(),
+        , new OAuth2DeviceCodeAuthenticationConverter()
         //自定义授权模式转换器(Converter)
-//        new PasswordAuthenticationConverter()
-        new OAuth2PasswordAuthenticationConverter()
+        , new OAuth2PasswordAuthenticationConverter(httpCryptoProcessor)
+//        new OAuth2SocialCredentialsAuthenticationConverter(httpCryptoProcessor))
       ));
       tokenEndpoint.accessTokenRequestConverter(delegatingAuthenticationConverter);
-//
-//      // 自定义授权模式提供者(Provider)
-//      tokenEndpoint.authenticationProviders(authenticationProviders ->// <2>
-//        authenticationProviders.addAll(
-//          // 自定义授权模式提供者(Provider)
-//          List.of(
-//            new PasswordAuthenticationProvider(authenticationManager, authorizationService, tokenGenerator)
-//          )
-//        )
-//      );
-//      tokenEndpoint.accessTokenResponseHandler(successResponseHandler);// 自定义成功响应
-      // @formatter:on
 //      tokenEndpoint.accessTokenResponseHandler(new OAuth2AccessTokenResponseHandler(httpCryptoProcessor));
 //      tokenEndpoint.authenticationProviders(new OAuth2AuthorizationCodeAuthenticationProviderConsumer(http, sessionRegistry));
       tokenEndpoint.authenticationProviders(new OAuth2AuthorizationCodeAuthenticationProviderConsumer(http));
