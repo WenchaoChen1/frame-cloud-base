@@ -1,893 +1,902 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <name>GstDev Cloud :: Dependencies</name>
-  <description>${project.name}</description>
+    <modelVersion>4.0.0</modelVersion>
+    <name>GstDev Cloud :: Dependencies</name>
+    <description>${project.name}</description>
 
-  <artifactId>gstdev-cloud-dependencies</artifactId>
-  <packaging>pom</packaging>
+    <artifactId>gstdev-cloud-dependencies</artifactId>
+    <packaging>pom</packaging>
 
-  <parent>
-    <groupId>com.gstdev.cloud</groupId>
-    <artifactId>gstdev-cloud-project</artifactId>
-    <version>2024.0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
+    <parent>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-project</artifactId>
+        <version>2024.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
-  <properties>
-    <java.release>17</java.release>
-    <java.version>${java.release}</java.version>
-
-
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-    <!--Maven Plugin 相关组件-->
-    <archetype-packaging.verison>3.2.1</archetype-packaging.verison>
-    <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <resource.delimiter>@</resource.delimiter>
-    <!--maven annotationProcessorPaths-->
-    <lombok.version>1.18.24</lombok.version>
-    <org.mapstruct-processor.version>1.5.5.Final</org.mapstruct-processor.version>
-    <maven-gpg-plugin.version>3.2.0</maven-gpg-plugin.version>
-
-    <!--Spring 家族-->
-    <!--    <spring-boot-admin.version>3.2.2</spring-boot-admin.version>-->
-    <!--    <spring-cloud-tencent-dependencies.version>1.13.1-2023.0.0</spring-cloud-tencent-dependencies.version>-->
-    <spring-security-oauth2-authorization-server.version>1.2.3</spring-security-oauth2-authorization-server.version>
-    <spring-boot-dependencies.version>3.2.4</spring-boot-dependencies.version>
-    <spring-cloud-dependencies.version>2023.0.0</spring-cloud-dependencies.version>
-    <spring-cloud-alibaba-dependencies.version>2023.0.0.0-RC1</spring-cloud-alibaba-dependencies.version>
+    <properties>
+        <java.release>17</java.release>
+        <java.version>${java.release}</java.version>
 
 
-    <!-- 开源通用工具包 -->
-    <commons-collections4.version>4.4</commons-collections4.version>
-    <animated-gif-lib.version>1.4</animated-gif-lib.version>
-    <antisamy.version>1.7.5</antisamy.version>
-    <guava.version>33.1.0-jre</guava.version>
-    <!-- 应用开发辅助工具组件 -->
-    <redisson.version>3.27.2</redisson.version>
-    <p6spy.version>3.9.1</p6spy.version>
-    <org.eclipse.paho.version>1.2.5</org.eclipse.paho.version>
-    <springdoc.version>2.4.0</springdoc.version>
-    <!-- 阿里巴巴开源工具依赖 -->
-    <jetcache.version>2.7.5</jetcache.version>
-    <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
-    <!-- 国内开源通用组件 -->
-    <dromara-hutool.version>6.0.0-M11</dromara-hutool.version>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!--Maven Plugin 相关组件-->
+        <archetype-packaging.verison>3.2.1</archetype-packaging.verison>
+        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <resource.delimiter>@</resource.delimiter>
+        <!--maven annotationProcessorPaths-->
+        <lombok.version>1.18.24</lombok.version>
+        <org.mapstruct-processor.version>1.5.5.Final</org.mapstruct-processor.version>
+        <maven-gpg-plugin.version>3.2.0</maven-gpg-plugin.version>
+
+        <!--Spring 家族-->
+        <!--    <spring-boot-admin.version>3.2.2</spring-boot-admin.version>-->
+        <!--    <spring-cloud-tencent-dependencies.version>1.13.1-2023.0.0</spring-cloud-tencent-dependencies.version>-->
+        <spring-security-oauth2-authorization-server.version>1.2.3</spring-security-oauth2-authorization-server.version>
+        <spring-boot-dependencies.version>3.2.4</spring-boot-dependencies.version>
+        <spring-cloud-dependencies.version>2023.0.0</spring-cloud-dependencies.version>
+        <spring-cloud-alibaba-dependencies.version>2023.0.0.0-RC1</spring-cloud-alibaba-dependencies.version>
 
 
-    <!--第三方starter-->
-    <mybatis-plus-boot-starter.version>3.5.5</mybatis-plus-boot-starter.version>
-    <mybatis-plus-generator.version>3.5.5</mybatis-plus-generator.version>
-    <mybatis.version>3.5.15</mybatis.version>
-    <velocity.version>2.3</velocity.version>
-    <!--Webjars 依赖-->
-    <animate.css.version>3.7.2</animate.css.version>
-    <bootstrap.version>5.3.3</bootstrap.version>
-    <font-awesome.version>6.5.1</font-awesome.version>
-    <jquery.version>3.7.1</jquery.version>
-    <jquery-backstretch.version>2.1.16</jquery-backstretch.version>
-    <mdi__font.version>7.3.67</mdi__font.version>
-    <quasar.version>2.14.0</quasar.version>
-    <uniform.version>2.1.2-1</uniform.version>
-    <vue.version>3.4.15</vue.version>
-    <!--厂商应用集成-->
-    <!--以下为特殊处理, 统一版本处理漏洞等-->
-    <commons-text.version>1.10.0</commons-text.version>
+        <!-- 开源通用工具包 -->
+        <commons-collections4.version>4.4</commons-collections4.version>
+        <animated-gif-lib.version>1.4</animated-gif-lib.version>
+        <antisamy.version>1.7.5</antisamy.version>
+        <guava.version>33.1.0-jre</guava.version>
+        <!-- 应用开发辅助工具组件 -->
+        <redisson.version>3.27.2</redisson.version>
+        <p6spy.version>3.9.1</p6spy.version>
+        <org.eclipse.paho.version>1.2.5</org.eclipse.paho.version>
+        <springdoc.version>2.4.0</springdoc.version>
+        <!-- 阿里巴巴开源工具依赖 -->
+        <jetcache.version>2.7.5</jetcache.version>
+        <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
+        <!-- 国内开源通用组件 -->
+        <dromara-hutool.version>6.0.0-M11</dromara-hutool.version>
 
 
-    <caffeine.version>3.1.0</caffeine.version>
-    <commons-lang3.version>3.12.0</commons-lang3.version>
-    <hikaricp.version>5.0.1</hikaricp.version>
-    <jackson-databind.version>2.15.3</jackson-databind.version>
-    <mysql-connector-java.version>8.0.29</mysql-connector-java.version>
-    <nacos.version>2.3.1</nacos.version>
-    <postgresql.version>42.4.0</postgresql.version>
-    <shardingsphere.version>5.1.2</shardingsphere.version>
-    <gstdev-cloud.version>${project.version}</gstdev-cloud.version>
-    <swagger.version>3.0.0</swagger.version>
-    <minio.version>7.0.2</minio.version>
-    <awss3.version>1.11.233</awss3.version>
-    <aliyun-sdk-oss.version>3.9.1</aliyun-sdk-oss.version>
-    <huawei-sdk-obs.version>[3.21.11,)</huawei-sdk-obs.version>
-    <poi.version>4.1.2</poi.version>
-    <pinyin4j.version>2.5.1</pinyin4j.version>
-  </properties>
-
-  <dependencyManagement>
-    <dependencies>
-      <!-- SpringCloud related dependencies -->
-      <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-dependencies</artifactId>
-        <version>${spring-cloud-dependencies.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-
-      <!-- SpringCloud Alibaba related dependencies -->
-      <dependency>
-        <groupId>com.alibaba.cloud</groupId>
-        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-        <version>${spring-cloud-alibaba-dependencies.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-
-      <!-- SpringBoot related dependencies -->
-      <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-dependencies</artifactId>
-        <version>${spring-boot-dependencies.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
+        <!--第三方starter-->
+        <mybatis-plus-boot-starter.version>3.5.5</mybatis-plus-boot-starter.version>
+        <mybatis-plus-generator.version>3.5.5</mybatis-plus-generator.version>
+        <mybatis.version>3.5.15</mybatis.version>
+        <velocity.version>2.3</velocity.version>
+        <!--Webjars 依赖-->
+        <animate.css.version>3.7.2</animate.css.version>
+        <bootstrap.version>5.3.3</bootstrap.version>
+        <font-awesome.version>6.5.1</font-awesome.version>
+        <jquery.version>3.7.1</jquery.version>
+        <jquery-backstretch.version>2.1.16</jquery-backstretch.version>
+        <mdi__font.version>7.3.67</mdi__font.version>
+        <quasar.version>2.14.0</quasar.version>
+        <uniform.version>2.1.2-1</uniform.version>
+        <vue.version>3.4.15</vue.version>
+        <!--厂商应用集成-->
+        <!--以下为特殊处理, 统一版本处理漏洞等-->
+        <commons-text.version>1.10.0</commons-text.version>
 
 
-      <!-- [GstDev Cloud] related dependencies -->
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-commons</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-data-commons</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-data-jpa</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-service-oauth2</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-web</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-web</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-plugins</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
+        <caffeine.version>3.1.0</caffeine.version>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <hikaricp.version>5.0.1</hikaricp.version>
+        <jackson-databind.version>2.15.3</jackson-databind.version>
+        <mysql-connector-java.version>8.0.29</mysql-connector-java.version>
+        <nacos.version>2.3.1</nacos.version>
+        <postgresql.version>42.4.0</postgresql.version>
+        <shardingsphere.version>5.1.2</shardingsphere.version>
+        <gstdev-cloud.version>${project.version}</gstdev-cloud.version>
+        <swagger.version>3.0.0</swagger.version>
+        <minio.version>7.0.2</minio.version>
+        <awss3.version>1.11.233</awss3.version>
+        <aliyun-sdk-oss.version>3.9.1</aliyun-sdk-oss.version>
+        <huawei-sdk-obs.version>[3.21.11,)</huawei-sdk-obs.version>
+        <poi.version>4.1.2</poi.version>
+        <pinyin4j.version>2.5.1</pinyin4j.version>
+        <hutool.version>5.8.9</hutool.version>
+    </properties>
 
-      <!--=========================================== oauth2 ===========================================-->
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-oauth2-authorization-server-autoconfigure</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-ouath2-resource-server-autoconfigure</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-oauth2-core</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-oauth2-data-jpa</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-oauth2-management</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <!--=========================================== message ===========================================-->
+    <dependencyManagement>
+        <dependencies>
+            <!-- SpringCloud related dependencies -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>message-core</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>message-sdk-websocket</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>message-spring-boot-starter</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>message-kafka-spring-boot-starter</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>message-rabbitmq-spring-boot-starter</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>message-sdk-mqtt</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <!--=========================================== web ===========================================-->
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>rest-core</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>rest-sdk-protect</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>rest-sdk-service</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>rest-spring-boot-starter</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>web-server-spring-boot-starter</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>rest-sdk-condition</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <!--=========================================== data ===========================================-->
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-data-core</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-data-sdk-jpa</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-data-sdk-mybatis-plus</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-data-sdk-tenant</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
+            <!-- SpringCloud Alibaba related dependencies -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
-      <!--=========================================== plugins ===========================================-->
-      <!--=========================================== plugins-captcha ===================================-->
-
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-captcha-core</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-captcha-sdk-behavior</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-captcha-sdk-graphic</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-captcha-sdk-hutool</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <!--=========================================== plugins-storage ===================================-->
-
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-plugin-storage-core</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-plugin-storage-huawei</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-plugin-storage-aliyun</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-plugin-storage-minio</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-plugin-storage-aws</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <!--=========================================== plugins-openapi ===================================-->
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-plugin-swagger</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-plugin-openapi-springdoc</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-
-      <!--=========================================== plugins-cache ===================================-->
-
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-cache-core</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-cache-jetcache</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-cache-redis</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-cache-caffeine</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-cache-redisson</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
+            <!-- SpringBoot related dependencies -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
 
-      <!-- starters -->
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-storage-core</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-storage-huawei</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-storage-aliyun</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-storage-minio</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-storage-aws</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-data-jpa</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-data-commons</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-swagger</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-captcha</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-cache</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <!--      <dependency>-->
-      <!--        <groupId>com.gstdev.cloud</groupId>-->
-      <!--        <artifactId>gstdev-cloud-starter-oauth2</artifactId>-->
-      <!--        <version>${gstdev-cloud.version}</version>-->
-      <!--      </dependency>-->
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-oauth2-authorization-server</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-oauth2-resource-server</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
+            <!-- [GstDev Cloud] related dependencies -->
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-commons</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-data-commons</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-data-jpa</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-service-oauth2</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-web</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-web</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-plugins</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
 
-      <!--=============================== 开源通用工具包 =======================-->
-      <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-collections4</artifactId>
-        <version>${commons-collections4.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.madgag</groupId>
-        <artifactId>animated-gif-lib</artifactId>
-        <version>${animated-gif-lib.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.owasp.antisamy</groupId>
-        <artifactId>antisamy</artifactId>
-        <version>${antisamy.version}</version>
-      </dependency>
-      <!-- Guava related dependencies -->
-      <dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava</artifactId>
-        <version>${guava.version}</version>
-      </dependency>
+            <!--=========================================== oauth2 ===========================================-->
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-oauth2-authorization-server-autoconfigure</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-ouath2-resource-server-autoconfigure</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-oauth2-core</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-oauth2-data-jpa</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-oauth2-management</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <!--=========================================== message ===========================================-->
 
-      <!--=============================== 应用开发辅助工具组件 =======================-->
-      <dependency>
-        <groupId>org.redisson</groupId>
-        <artifactId>redisson</artifactId>
-        <version>${redisson.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>p6spy</groupId>
-        <artifactId>p6spy</artifactId>
-        <version>${p6spy.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.eclipse.paho</groupId>
-        <artifactId>org.eclipse.paho.mqttv5.client</artifactId>
-        <version>${org.eclipse.paho.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springdoc</groupId>
-        <artifactId>springdoc-openapi</artifactId>
-        <version>${springdoc.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <!--=============================== 阿里巴巴开源工具依赖 =======================-->
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>message-core</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>message-sdk-websocket</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>message-spring-boot-starter</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>message-kafka-spring-boot-starter</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>message-rabbitmq-spring-boot-starter</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>message-sdk-mqtt</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <!--=========================================== web ===========================================-->
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>rest-core</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>rest-sdk-protect</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>rest-sdk-service</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>rest-spring-boot-starter</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>web-server-spring-boot-starter</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>rest-sdk-condition</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <!--=========================================== data ===========================================-->
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-data-core</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-data-sdk-jpa</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-data-sdk-mybatis-plus</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-data-sdk-tenant</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
 
-      <dependency>
-        <groupId>com.alicp.jetcache</groupId>
-        <artifactId>jetcache-starter-redis-lettuce</artifactId>
-        <version>${jetcache.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.alicp.jetcache</groupId>
-        <artifactId>jetcache-autoconfigure</artifactId>
-        <version>${jetcache.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.alicp.jetcache</groupId>
-        <artifactId>jetcache-anno</artifactId>
-        <version>${jetcache.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.alicp.jetcache</groupId>
-        <artifactId>jetcache-redis-lettuce</artifactId>
-        <version>${jetcache.version}</version>
-      </dependency>
+            <!--=========================================== plugins ===========================================-->
+            <!--=========================================== plugins-captcha ===================================-->
 
-      <dependency>
-        <groupId>com.alibaba</groupId>
-        <artifactId>transmittable-thread-local</artifactId>
-        <version>${transmittable-thread-local.version}</version>
-      </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-captcha-core</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-captcha-sdk-behavior</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-captcha-sdk-graphic</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-captcha-sdk-hutool</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <!--=========================================== plugins-storage ===================================-->
 
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-plugin-storage-core</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-plugin-storage-huawei</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-plugin-storage-aliyun</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-plugin-storage-minio</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-plugin-storage-aws</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <!--=========================================== plugins-openapi ===================================-->
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-plugin-swagger</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-plugin-openapi-springdoc</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
 
-      <!--=============================== 国内开源通用组件 =======================-->
+            <!--=========================================== plugins-cache ===================================-->
 
-      <dependency>
-        <groupId>org.dromara.hutool</groupId>
-        <artifactId>hutool-all</artifactId>
-        <version>${dromara-hutool.version}</version>
-      </dependency>
-
-      <!--=============================== 第三方starter =======================-->
-      <dependency>
-        <groupId>com.baomidou</groupId>
-        <artifactId>mybatis-plus-core</artifactId>
-        <version>${mybatis-plus-boot-starter.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.baomidou</groupId>
-        <artifactId>mybatis-plus-boot-starter</artifactId>
-        <version>${mybatis-plus-boot-starter.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.baomidou</groupId>
-        <artifactId>mybatis-plus-generator</artifactId>
-        <version>${mybatis-plus-generator.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.mybatis</groupId>
-        <artifactId>mybatis</artifactId>
-        <version>${mybatis.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.velocity</groupId>
-        <artifactId>velocity-engine-core</artifactId>
-        <version>${velocity.version}</version>
-      </dependency>
-      <!--=============================== Webjars 依赖 =======================-->
-      <dependency>
-        <groupId>org.webjars</groupId>
-        <artifactId>animate.css</artifactId>
-        <version>${animate.css.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.webjars</groupId>
-        <artifactId>bootstrap</artifactId>
-        <version>${bootstrap.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.webjars</groupId>
-        <artifactId>font-awesome</artifactId>
-        <version>${font-awesome.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.webjars</groupId>
-        <artifactId>jquery</artifactId>
-        <version>${jquery.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.webjars</groupId>
-        <artifactId>jquery-backstretch</artifactId>
-        <version>${jquery-backstretch.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.webjars.npm</groupId>
-        <artifactId>mdi__font</artifactId>
-        <version>${mdi__font.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.webjars.npm</groupId>
-        <artifactId>quasar</artifactId>
-        <version>${quasar.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.webjars</groupId>
-        <artifactId>uniform</artifactId>
-        <version>${uniform.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.webjars.npm</groupId>
-        <artifactId>vue</artifactId>
-        <version>${vue.version}</version>
-      </dependency>
-      <!--=============================== 厂商应用集成 =======================-->
-      <!--=============================== 以下为特殊处理, 统一版本处理漏洞等 =======================-->
-
-      <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-text</artifactId>
-        <version>${commons-text.version}</version>
-      </dependency>
-
-
-      <!-- Apache related dependencies -->
-      <dependency>
-        <groupId>org.apache.poi</groupId>
-        <artifactId>poi</artifactId>
-        <version>${poi.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.poi</groupId>
-        <artifactId>poi-ooxml</artifactId>
-        <version>${poi.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-lang3</artifactId>
-        <version>${commons-lang3.version}</version>
-      </dependency>
-      <!-- Pinyin4j related dependencies -->
-      <dependency>
-        <groupId>com.belerweb</groupId>
-        <artifactId>pinyin4j</artifactId>
-        <version>${pinyin4j.version}</version>
-      </dependency>
-      <!-- Database related dependencies -->
-      <dependency>
-        <groupId>org.postgresql</groupId>
-        <artifactId>postgresql</artifactId>
-        <version>${postgresql.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-        <version>${mysql-connector-java.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.zaxxer</groupId>
-        <artifactId>HikariCP</artifactId>
-        <version>${hikaricp.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.shardingsphere</groupId>
-        <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
-        <version>${shardingsphere.version}</version>
-      </dependency>
-
-      <!-- Jackson related dependencies -->
-      <!--      <dependency>-->
-      <!--        <groupId>com.fasterxml.jackson.core</groupId>-->
-      <!--        <artifactId>jackson-databind</artifactId>-->
-      <!--        <version>${jackson-databind.version}</version>-->
-      <!--      </dependency>-->
-
-      <dependency>
-        <groupId>com.github.ben-manes.caffeine</groupId>
-        <artifactId>caffeine</artifactId>
-        <version>${caffeine.version}</version>
-      </dependency>
-      <!-- Lombok related dependencies -->
-      <dependency>
-        <groupId>org.projectlombok</groupId>
-        <artifactId>lombok</artifactId>
-        <version>${lombok.version}</version>
-      </dependency>
-
-      <!-- Swagger-->
-      <dependency>
-        <groupId>io.springfox</groupId>
-        <artifactId>springfox-boot-starter</artifactId>
-        <version>${swagger.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springdoc</groupId>
-        <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-        <version>2.4.0</version>
-      </dependency>
-
-      <!-- Aws related dependencies -->
-      <dependency>
-        <groupId>com.amazonaws</groupId>
-        <artifactId>aws-java-sdk-s3</artifactId>
-        <version>${awss3.version}</version>
-      </dependency>
-      <!-- Minio related dependencies -->
-      <dependency>
-        <groupId>io.minio</groupId>
-        <artifactId>minio</artifactId>
-        <version>${minio.version}</version>
-      </dependency>
-      <!-- Aliyun related dependencies -->
-      <dependency>
-        <groupId>com.aliyun.oss</groupId>
-        <artifactId>aliyun-sdk-oss</artifactId>
-        <version>${aliyun-sdk-oss.version}</version>
-      </dependency>
-      <!-- Huawei related dependencies -->
-      <dependency>
-        <groupId>com.huaweicloud</groupId>
-        <artifactId>esdk-obs-java-bundle</artifactId>
-        <version>${huawei-sdk-obs.version}</version>
-      </dependency>
-      <!-- MapStruct related dependencies -->
-      <dependency>
-        <groupId>org.mapstruct</groupId>
-        <artifactId>mapstruct</artifactId>
-        <version>${org.mapstruct-processor.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.mapstruct</groupId>
-        <artifactId>mapstruct-processor</artifactId>
-        <version>${org.mapstruct-processor.version}</version>
-      </dependency>
-    </dependencies>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-cache-core</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-cache-jetcache</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-cache-redis</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-cache-caffeine</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-cache-redisson</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
 
 
-  </dependencyManagement>
-  <build>
-    <resources>
-      <!-- 先指定 src/main/resources下所有文件及文件夹为资源文件 -->
-      <resource>
-        <directory>src/main/resources</directory>
-        <includes>
-          <include>**/*</include>
-        </includes>
-        <filtering>true</filtering>
-      </resource>
-    </resources>
+            <!-- starters -->
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-storage-core</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-storage-huawei</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-storage-aliyun</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-storage-minio</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-storage-aws</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-data-jpa</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-data-commons</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-swagger</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-captcha</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-cache</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <!--      <dependency>-->
+            <!--        <groupId>com.gstdev.cloud</groupId>-->
+            <!--        <artifactId>gstdev-cloud-starter-oauth2</artifactId>-->
+            <!--        <version>${gstdev-cloud.version}</version>-->
+            <!--      </dependency>-->
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-oauth2-authorization-server</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-oauth2-resource-server</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
 
-    <extensions>
-      <extension>
-        <groupId>org.apache.maven.archetype</groupId>
-        <artifactId>archetype-packaging</artifactId>
-        <version>${archetype-packaging.verison}</version>
-      </extension>
-    </extensions>
+            <!--=============================== 开源通用工具包 =======================-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections4.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.madgag</groupId>
+                <artifactId>animated-gif-lib</artifactId>
+                <version>${animated-gif-lib.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.owasp.antisamy</groupId>
+                <artifactId>antisamy</artifactId>
+                <version>${antisamy.version}</version>
+            </dependency>
+            <!-- Guava related dependencies -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
 
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>${maven-compiler-plugin.version}</version>
-          <configuration>
-            <compilerVersion>${java.version}</compilerVersion>
-            <release>${java.release}</release>
-            <source>${java.version}</source>
-            <target>${java.version}</target>
-            <encoding>${project.build.sourceEncoding}</encoding>
-            <showWarnings>true</showWarnings>
-            <annotationProcessorPaths>
-              <path>
+            <!--=============================== 应用开发辅助工具组件 =======================-->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>p6spy</groupId>
+                <artifactId>p6spy</artifactId>
+                <version>${p6spy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.paho</groupId>
+                <artifactId>org.eclipse.paho.mqttv5.client</artifactId>
+                <version>${org.eclipse.paho.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi</artifactId>
+                <version>${springdoc.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--=============================== 阿里巴巴开源工具依赖 =======================-->
+
+            <dependency>
+                <groupId>com.alicp.jetcache</groupId>
+                <artifactId>jetcache-starter-redis-lettuce</artifactId>
+                <version>${jetcache.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alicp.jetcache</groupId>
+                <artifactId>jetcache-autoconfigure</artifactId>
+                <version>${jetcache.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alicp.jetcache</groupId>
+                <artifactId>jetcache-anno</artifactId>
+                <version>${jetcache.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alicp.jetcache</groupId>
+                <artifactId>jetcache-redis-lettuce</artifactId>
+                <version>${jetcache.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>transmittable-thread-local</artifactId>
+                <version>${transmittable-thread-local.version}</version>
+            </dependency>
+
+
+            <!--=============================== 国内开源通用组件 =======================-->
+
+            <dependency>
+                <groupId>org.dromara.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${dromara-hutool.version}</version>
+            </dependency>
+
+            <!--=============================== 第三方starter =======================-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-core</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus-generator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${velocity.version}</version>
+            </dependency>
+            <!--=============================== Webjars 依赖 =======================-->
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>animate.css</artifactId>
+                <version>${animate.css.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>bootstrap</artifactId>
+                <version>${bootstrap.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>font-awesome</artifactId>
+                <version>${font-awesome.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>jquery</artifactId>
+                <version>${jquery.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>jquery-backstretch</artifactId>
+                <version>${jquery-backstretch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars.npm</groupId>
+                <artifactId>mdi__font</artifactId>
+                <version>${mdi__font.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars.npm</groupId>
+                <artifactId>quasar</artifactId>
+                <version>${quasar.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>uniform</artifactId>
+                <version>${uniform.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars.npm</groupId>
+                <artifactId>vue</artifactId>
+                <version>${vue.version}</version>
+            </dependency>
+            <!--=============================== 厂商应用集成 =======================-->
+            <!--=============================== 以下为特殊处理, 统一版本处理漏洞等 =======================-->
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>${commons-text.version}</version>
+            </dependency>
+
+
+            <!-- Apache related dependencies -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <!-- Pinyin4j related dependencies -->
+            <dependency>
+                <groupId>com.belerweb</groupId>
+                <artifactId>pinyin4j</artifactId>
+                <version>${pinyin4j.version}</version>
+            </dependency>
+            <!-- Database related dependencies -->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zaxxer</groupId>
+                <artifactId>HikariCP</artifactId>
+                <version>${hikaricp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
+                <version>${shardingsphere.version}</version>
+            </dependency>
+
+            <!-- Jackson related dependencies -->
+            <!--      <dependency>-->
+            <!--        <groupId>com.fasterxml.jackson.core</groupId>-->
+            <!--        <artifactId>jackson-databind</artifactId>-->
+            <!--        <version>${jackson-databind.version}</version>-->
+            <!--      </dependency>-->
+
+            <dependency>
+                <groupId>com.github.ben-manes.caffeine</groupId>
+                <artifactId>caffeine</artifactId>
+                <version>${caffeine.version}</version>
+            </dependency>
+            <!-- Lombok related dependencies -->
+            <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
-              </path>
-              <path>
+            </dependency>
+
+            <!-- Swagger-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-boot-starter</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>2.4.0</version>
+            </dependency>
+
+            <!-- Aws related dependencies -->
+            <dependency>
+                <groupId>com.amazonaws</groupId>
+                <artifactId>aws-java-sdk-s3</artifactId>
+                <version>${awss3.version}</version>
+            </dependency>
+            <!-- Minio related dependencies -->
+            <dependency>
+                <groupId>io.minio</groupId>
+                <artifactId>minio</artifactId>
+                <version>${minio.version}</version>
+            </dependency>
+            <!-- Aliyun related dependencies -->
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun-sdk-oss.version}</version>
+            </dependency>
+            <!-- Huawei related dependencies -->
+            <dependency>
+                <groupId>com.huaweicloud</groupId>
+                <artifactId>esdk-obs-java-bundle</artifactId>
+                <version>${huawei-sdk-obs.version}</version>
+            </dependency>
+            <!-- MapStruct related dependencies -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${org.mapstruct-processor.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct-processor</artifactId>
                 <version>${org.mapstruct-processor.version}</version>
-              </path>
-              <path>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-configuration-processor</artifactId>
-                <version>${spring-boot-dependencies.version}</version>
-              </path>
-              <path>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-autoconfigure-processor</artifactId>
-                <version>${spring-boot-dependencies.version}</version>
-              </path>
-            </annotationProcessorPaths>
-          </configuration>
-        </plugin>
-        <!--        1. **maven-resources-plugin**：-->
-        <!--        - 作用：处理项目中的资源文件，例如配置文件、属性文件等。-->
-        <!--        - 配置：-->
-        <!--        - `encoding`：指定资源文件的编码方式。-->
-        <!--        - `propertiesEncoding`：指定属性文件的编码方式。-->
-        <!--        - `addDefaultExcludes`：是否添加默认的排除规则。-->
-        <!--        - `delimiters`：指定资源文件中的占位符分隔符。-->
-        <!--        - `useDefaultDelimiters`：是否使用默认的占位符分隔符。-->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-resources-plugin</artifactId>
-          <configuration>
-            <encoding>UTF-8</encoding>
-            <propertiesEncoding>UTF-8</propertiesEncoding>
-            <addDefaultExcludes>false</addDefaultExcludes>
-            <delimiters>
-              <delimiter>${resource.delimiter}</delimiter>
-            </delimiters>
-            <useDefaultDelimiters>false</useDefaultDelimiters>
-          </configuration>
-        </plugin>
+            </dependency>
 
-        <!--        2. **maven-surefire-plugin**：-->
-        <!--        - 作用：运行单元测试。-->
-        <!--        - 配置：-->
-        <!--        - `skipTests`：是否跳过执行测试。-->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <configuration>
-            <skipTests>true</skipTests>
-          </configuration>
-        </plugin>
-        <!--        3. **maven-source-plugin**：-->
-        <!--        - 作用：生成项目的源代码 jar 文件，通常与发布源码相关。-->
-        <!--        - 配置：-->
-        <!--        - 执行一个 `jar-no-fork` 的目标，该目标负责生成源代码 jar 文件。-->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-source-plugin</artifactId>
-          <executions>
-            <execution>
-              <id>attach-sources</id>
-              <phase>package</phase>
-              <goals>
-                <goal>jar-no-fork</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-        <!--        4. **maven-javadoc-plugin**：-->
-        <!--        - 作用：生成项目的 Javadoc 文档。-->
-        <!--        - 配置：-->
-        <!--        - `show`：指定生成 Javadoc 的内容（例如 `public`、`protected`、`package`、`private`）。-->
-        <!--        - `tags`：定义 Javadoc 文档中使用的标签。-->
-        <!--        - `doclint`：指定是否启用 Java 9 新特性中的 Javadoc 格式验证。-->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <configuration>
-            <show>package</show>
-            <tags>
-              <tag>
-                <name>date</name>
-              </tag>
-            </tags>
-          </configuration>
-          <executions>
-            <execution>
-              <id>attach-javadocs</id>
-              <phase>package</phase>
-              <goals>
-                <goal>jar</goal>
-              </goals>
-              <configuration>
-                <doclint>none</doclint>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-        <!--        这个 Maven 插件是 `maven-gpg-plugin`，它用于对 Maven 构建的项目进行 GPG（GNU Privacy Guard）签名，以确保构建的软件包在传输和分发过程中的完整性和安全性。-->
-        <!--        配置说明如下：-->
-        <!--        - `<phase>`：指定了执行插件的阶段，这里是 `verify`，表示在 Maven 构建的 `verify` 阶段执行签名操作。-->
-        <!--        - `<goals>`：指定了在执行插件时要执行的目标，这里是 `sign`，表示对构建的软件包进行签名。-->
-        <!--        通过配置 `maven-gpg-plugin`，你可以在 Maven 构建过程中自动对项目进行 GPG 签名，从而确保项目的可信度和安全性。-->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-gpg-plugin</artifactId>
-          <version>${maven-gpg-plugin.version}</version>
-          <executions>
-            <execution>
-              <phase>verify</phase>
-              <goals>
-                <goal>sign</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
+            <!-- Hutool related dependencies -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+        </dependencies>
+
+
+    </dependencyManagement>
+    <build>
+        <resources>
+            <!-- 先指定 src/main/resources下所有文件及文件夹为资源文件 -->
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.archetype</groupId>
+                <artifactId>archetype-packaging</artifactId>
+                <version>${archetype-packaging.verison}</version>
+            </extension>
+        </extensions>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <compilerVersion>${java.version}</compilerVersion>
+                        <release>${java.release}</release>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                        <showWarnings>true</showWarnings>
+                        <annotationProcessorPaths>
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>${lombok.version}</version>
+                            </path>
+                            <path>
+                                <groupId>org.mapstruct</groupId>
+                                <artifactId>mapstruct-processor</artifactId>
+                                <version>${org.mapstruct-processor.version}</version>
+                            </path>
+                            <path>
+                                <groupId>org.springframework.boot</groupId>
+                                <artifactId>spring-boot-configuration-processor</artifactId>
+                                <version>${spring-boot-dependencies.version}</version>
+                            </path>
+                            <path>
+                                <groupId>org.springframework.boot</groupId>
+                                <artifactId>spring-boot-autoconfigure-processor</artifactId>
+                                <version>${spring-boot-dependencies.version}</version>
+                            </path>
+                        </annotationProcessorPaths>
+                    </configuration>
+                </plugin>
+                <!--        1. **maven-resources-plugin**：-->
+                <!--        - 作用：处理项目中的资源文件，例如配置文件、属性文件等。-->
+                <!--        - 配置：-->
+                <!--        - `encoding`：指定资源文件的编码方式。-->
+                <!--        - `propertiesEncoding`：指定属性文件的编码方式。-->
+                <!--        - `addDefaultExcludes`：是否添加默认的排除规则。-->
+                <!--        - `delimiters`：指定资源文件中的占位符分隔符。-->
+                <!--        - `useDefaultDelimiters`：是否使用默认的占位符分隔符。-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <configuration>
+                        <encoding>UTF-8</encoding>
+                        <propertiesEncoding>UTF-8</propertiesEncoding>
+                        <addDefaultExcludes>false</addDefaultExcludes>
+                        <delimiters>
+                            <delimiter>${resource.delimiter}</delimiter>
+                        </delimiters>
+                        <useDefaultDelimiters>false</useDefaultDelimiters>
+                    </configuration>
+                </plugin>
+
+                <!--        2. **maven-surefire-plugin**：-->
+                <!--        - 作用：运行单元测试。-->
+                <!--        - 配置：-->
+                <!--        - `skipTests`：是否跳过执行测试。-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <skipTests>true</skipTests>
+                    </configuration>
+                </plugin>
+                <!--        3. **maven-source-plugin**：-->
+                <!--        - 作用：生成项目的源代码 jar 文件，通常与发布源码相关。-->
+                <!--        - 配置：-->
+                <!--        - 执行一个 `jar-no-fork` 的目标，该目标负责生成源代码 jar 文件。-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!--        4. **maven-javadoc-plugin**：-->
+                <!--        - 作用：生成项目的 Javadoc 文档。-->
+                <!--        - 配置：-->
+                <!--        - `show`：指定生成 Javadoc 的内容（例如 `public`、`protected`、`package`、`private`）。-->
+                <!--        - `tags`：定义 Javadoc 文档中使用的标签。-->
+                <!--        - `doclint`：指定是否启用 Java 9 新特性中的 Javadoc 格式验证。-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <configuration>
+                        <show>package</show>
+                        <tags>
+                            <tag>
+                                <name>date</name>
+                            </tag>
+                        </tags>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                            <configuration>
+                                <doclint>none</doclint>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!--        这个 Maven 插件是 `maven-gpg-plugin`，它用于对 Maven 构建的项目进行 GPG（GNU Privacy Guard）签名，以确保构建的软件包在传输和分发过程中的完整性和安全性。-->
+                <!--        配置说明如下：-->
+                <!--        - `<phase>`：指定了执行插件的阶段，这里是 `verify`，表示在 Maven 构建的 `verify` 阶段执行签名操作。-->
+                <!--        - `<goals>`：指定了在执行插件时要执行的目标，这里是 `sign`，表示对构建的软件包进行签名。-->
+                <!--        通过配置 `maven-gpg-plugin`，你可以在 Maven 构建过程中自动对项目进行 GPG 签名，从而确保项目的可信度和安全性。-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>${maven-gpg-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>sign</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
