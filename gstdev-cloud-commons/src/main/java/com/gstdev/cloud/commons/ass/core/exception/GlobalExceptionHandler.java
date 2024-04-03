@@ -15,7 +15,6 @@ import com.gstdev.cloud.commons.ass.definition.domain.Error;
 import com.gstdev.cloud.commons.domain.ErrorResponse;
 import com.gstdev.cloud.commons.ass.definition.domain.Feedback;
 import com.gstdev.cloud.commons.ass.definition.domain.Result;
-import com.gstdev.cloud.commons.utils.ThrowableUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
@@ -133,7 +132,6 @@ public class GlobalExceptionHandler {
 
   @ExceptionHandler(Throwable.class)
   public ResponseEntity<Object> handleException(Throwable ex, HttpServletRequest request, HttpServletResponse response) {
-    log.error(ThrowableUtils.getStackTrace(ex));
 
     ErrorResponse errorResponse = new ErrorResponse();
     errorResponse.setMessage(ex.getMessage());
