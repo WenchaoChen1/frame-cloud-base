@@ -312,7 +312,7 @@
                 <version>${gstdev-cloud.version}</version>
             </dependency>
 
-            <!--=========================================== data ===========================================-->
+            <!--=========================================== plugins-data ===========================================-->
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
                 <artifactId>gstdev-cloud-data-core</artifactId>
@@ -361,6 +361,7 @@
                 <artifactId>gstdev-cloud-storage-aws</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
+
             <!--=========================================== plugins-openapi ===================================-->
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
@@ -373,7 +374,13 @@
                 <version>${gstdev-cloud.version}</version>
             </dependency>
 
-
+            <!--=========================================== plugin - other ===================================-->
+            <!--=========================================== plugins-sentinel ===================================-->
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-sentinel-alibaba</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
 
             <!-- starters -->
             <dependency>

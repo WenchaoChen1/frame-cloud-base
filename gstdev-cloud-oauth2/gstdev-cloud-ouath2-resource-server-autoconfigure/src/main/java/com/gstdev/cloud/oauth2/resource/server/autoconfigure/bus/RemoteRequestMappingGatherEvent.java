@@ -5,7 +5,7 @@
 ///**
 // * <p>Description: Request Mapping 收集远程事件 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2021/8/6 11:23
 // */
 //public class RemoteRequestMappingGatherEvent extends RemoteApplicationEvent {

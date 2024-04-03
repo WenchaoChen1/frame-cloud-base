@@ -5,7 +5,7 @@
 ///**
 // * <p>Description: Security Metadata 远程刷新事件 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2021/8/6 11:24
 // */
 //public class RemoteSecurityMetadataSyncEvent extends RemoteApplicationEvent {

@@ -4,7 +4,7 @@ package com.gstdev.cloud.oauth2.resource.server.autoconfigure.bus;
 /**
  * <p>Description: 修改用户状态远程事件 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2022/7/10 16:13
  */
 //public class RemoteChangeUserStatusEvent extends RemoteApplicationEvent {

@@ -10,7 +10,7 @@ import com.gstdev.cloud.oauth2.resource.server.autoconfigure.bus.RemoteChangeUse
 /**
  * <p>Description: 用户状态变更处理器 </p>
  *
- * @author : gengwei.zheng
+ * @author : cc
  * @date : 2022/7/10 17:25
  */
 public class DefaultAccountStatusEventManager implements AccountStatusEventManager {

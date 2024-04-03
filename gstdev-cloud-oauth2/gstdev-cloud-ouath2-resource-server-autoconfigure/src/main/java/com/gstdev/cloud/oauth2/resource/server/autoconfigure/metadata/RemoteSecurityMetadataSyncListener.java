@@ -16,7 +16,7 @@
 ///**
 // * <p>Description: Security Metadata 数据同步监听 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2021/8/6 12:23
 // */
 //public class RemoteSecurityMetadataSyncListener implements ApplicationListener<RemoteSecurityMetadataSyncEvent> {
@@ -35,14 +35,14 @@
 //    public void onApplicationEvent(RemoteSecurityMetadataSyncEvent event) {
 //
 //        if (!serviceMatcher.isFromSelf(event)) {
-//            log.info("[Herodotus] |- Remote security metadata sync listener, response event!");
+//            log.info("[GstDev Cloud] |- Remote security metadata sync listener, response event!");
 //
 //            String data = event.getData();
 //            if (StringUtils.isNotBlank(data)) {
 //                List<SecurityAttribute> securityMetadata = Jackson2Utils.toList(data, SecurityAttribute.class);
 //
 //                if (CollectionUtils.isNotEmpty(securityMetadata)) {
-//                    log.debug("[Herodotus] |- Got security attributes from service [{}], current [{}] start to process security attributes.", event.getOriginService(), event.getDestinationService());
+//                    log.debug("[GstDev Cloud] |- Got security attributes from service [{}], current [{}] start to process security attributes.", event.getOriginService(), event.getDestinationService());
 //                    securityMetadataSourceAnalyzer.processSecurityAttribute(securityMetadata);
 //                }
 //            }

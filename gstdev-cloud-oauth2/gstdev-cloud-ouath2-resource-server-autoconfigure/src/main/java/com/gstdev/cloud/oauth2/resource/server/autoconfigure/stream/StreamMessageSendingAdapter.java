@@ -9,7 +9,7 @@
 ///**
 // * <p>Description: Spring Cloud Stream 消息发送适配器 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2023/10/26 18:01
 // */
 //public class StreamMessageSendingAdapter implements MessageSendingAdapter<StreamMessage, StreamMessageSendingEvent<StreamMessage>> {
