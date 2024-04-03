@@ -28,38 +28,38 @@
         <!--      <artifactId>jackson-databind</artifactId>-->
         <!--    </dependency>-->
 
-        <!-- Apache related dependencies -->
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-        </dependency>
+        <!--        &lt;!&ndash; Apache related dependencies &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.poi</groupId>-->
+        <!--            <artifactId>poi</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.poi</groupId>-->
+        <!--            <artifactId>poi-ooxml</artifactId>-->
+        <!--        </dependency>-->
 
-        <!-- Pinyin4j related dependencies -->
-        <dependency>
-            <groupId>com.belerweb</groupId>
-            <artifactId>pinyin4j</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-        <!-- SpringBoot related dependencies -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
+        <!--        &lt;!&ndash; Pinyin4j related dependencies &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.belerweb</groupId>-->
+        <!--            <artifactId>pinyin4j</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-openfeign</artifactId>-->
+        <!--        </dependency>-->
+        <!--        &lt;!&ndash; SpringBoot related dependencies &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-aop</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-web</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-validation</artifactId>-->
+        <!--        </dependency>-->
         <!-- Lombok related dependencies -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -69,10 +69,10 @@
 
 
         <!--========================================= d ===============================================-->
-        <!--    <dependency>-->
-        <!--      <groupId>org.apache.commons</groupId>-->
-        <!--      <artifactId>commons-collections4</artifactId>-->
-        <!--    </dependency>-->
+            <dependency>
+              <groupId>org.apache.commons</groupId>
+              <artifactId>commons-collections4</artifactId>
+            </dependency>
         <!-- Apache commons related dependencies -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -140,10 +140,10 @@
         <!--      <groupId>org.bouncycastle</groupId>-->
         <!--      <artifactId>bcprov-jdk18on</artifactId>-->
         <!--    </dependency>-->
-        <!--    <dependency>-->
-        <!--      <groupId>jakarta.annotation</groupId>-->
-        <!--      <artifactId>jakarta.annotation-api</artifactId>-->
-        <!--    </dependency>-->
+            <dependency>
+              <groupId>jakarta.annotation</groupId>
+              <artifactId>jakarta.annotation-api</artifactId>
+            </dependency>
         <!--========================================= core ===============================================-->
         <!--    <dependency>-->
         <!--      <groupId>cn.herodotus.engine</groupId>-->
@@ -162,10 +162,10 @@
         <!--      <artifactId>commons-codec</artifactId>-->
         <!--    </dependency>-->
 
-        <!--    <dependency>-->
-        <!--      <groupId>jakarta.servlet</groupId>-->
-        <!--      <artifactId>jakarta.servlet-api</artifactId>-->
-        <!--    </dependency>-->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+        </dependency>
 
         <!--    <dependency>-->
         <!--      <groupId>me.zhyd.oauth</groupId>-->
@@ -203,25 +203,29 @@
         <!--      <artifactId>apm-toolkit-trace</artifactId>-->
         <!--    </dependency>-->
 
-        <!--    <dependency>-->
-        <!--      <groupId>org.springframework</groupId>-->
-        <!--      <artifactId>spring-web</artifactId>-->
-        <!--    </dependency>-->
-        <!--    <dependency>-->
-        <!--      <groupId>org.springframework.boot</groupId>-->
-        <!--      <artifactId>spring-boot-autoconfigure</artifactId>-->
-        <!--    </dependency>-->
+            <dependency>
+              <groupId>org.springframework</groupId>
+              <artifactId>spring-web</artifactId>
+            </dependency>
+            <dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-autoconfigure</artifactId>
+            </dependency>
 
-        <!--    <dependency>-->
-        <!--      <groupId>org.springframework.boot</groupId>-->
-        <!--      <artifactId>spring-boot-configuration-processor</artifactId>-->
-        <!--      <optional>true</optional>-->
-        <!--    </dependency>-->
+            <dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-configuration-processor</artifactId>
+              <optional>true</optional>
+            </dependency>
 
-        <!--    <dependency>-->
-        <!--      <groupId>org.springframework.boot</groupId>-->
-        <!--      <artifactId>spring-boot-autoconfigure-processor</artifactId>-->
-        <!--      <optional>true</optional>-->
-        <!--    </dependency>-->
+            <dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-autoconfigure-processor</artifactId>
+              <optional>true</optional>
+            </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
     </dependencies>
 </project>

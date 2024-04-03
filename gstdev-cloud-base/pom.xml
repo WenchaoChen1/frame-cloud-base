@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>gstdev-cloud-dependencies</artifactId>
+        <groupId>com.gstdev.cloud</groupId>
+        <version>2024.0.1-SNAPSHOT</version>
+        <relativePath>../gstdev-cloud-dependencies</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <artifactId>gstdev-cloud-base</artifactId>
+    <name>GstDev Cloud :: Base</name>
+    <description>${project.name}</description>
+
+    <!--    <artifactId>gstdev-cloud-commons</artifactId>-->
+    <!--    <packaging>jar</packaging>-->
+
+    <!--    <parent>-->
+    <!--        <groupId>com.gstdev.cloud</groupId>-->
+    <!--        <artifactId>gstdev-cloud-parent</artifactId>-->
+    <!--        <version>2024.0.1-SNAPSHOT</version>-->
+    <!--        <relativePath>../gstdev-cloud-parent</relativePath>-->
+    <!--    </parent>-->
+
+</project>
