@@ -20,7 +20,7 @@
     <!-- stoeage core related dependencies -->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-plugin-storage-core</artifactId>
+      <artifactId>gstdev-cloud-storage-core</artifactId>
     </dependency>
   </dependencies>
 

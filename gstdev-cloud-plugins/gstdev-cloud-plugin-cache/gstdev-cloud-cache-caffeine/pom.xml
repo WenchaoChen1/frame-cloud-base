@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>gstdev-cloud-cache-caffeine</artifactId>
-  <name>GstDev Cloud :: Plugin :: Cache :: Sdk :: Caffeine</name>
+  <name>GstDev Cloud :: Cache :: Caffeine</name>
   <description>${project.name}</description>
   <parent>
     <artifactId>gstdev-cloud-plugin-cache</artifactId>

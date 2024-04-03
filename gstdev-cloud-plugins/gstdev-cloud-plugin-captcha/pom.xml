@@ -17,9 +17,8 @@
 
   <modules>
     <module>gstdev-cloud-captcha-core</module>
-    <module>gstdev-cloud-captcha-sdk-hutool</module>
-    <module>gstdev-cloud-captcha-sdk-behavior</module>
-    <module>gstdev-cloud-captcha-sdk-graphic</module>
-    <!--    <module>captcha-spring-boot-starter</module>-->
+    <module>gstdev-cloud-captcha-hutool</module>
+    <module>gstdev-cloud-captcha-behavior</module>
+    <module>gstdev-cloud-captcha-graphic</module>
   </modules>
 </project>

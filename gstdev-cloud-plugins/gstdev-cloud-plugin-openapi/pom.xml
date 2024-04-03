@@ -18,6 +18,6 @@
 
   <modules>
 
-    <module>gstdev-cloud-plugin-openapi-springdoc</module>
+    <module>gstdev-cloud-openapi-springdoc</module>
   </modules>
 </project>

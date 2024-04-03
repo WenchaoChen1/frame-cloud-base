@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-  <name>GstDev Cloud :: Plugin :: Storage :: Huawei</name>
+  <name>GstDev Cloud :: Storage :: Huawei</name>
   <description>${project.name}</description>
-  <artifactId>gstdev-cloud-plugin-storage-huawei</artifactId>
+  <artifactId>gstdev-cloud-storage-huawei</artifactId>
   <packaging>jar</packaging>
 
   <parent>
@@ -21,7 +21,7 @@
     <!-- GstDev Cloud related dependencies -->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-data-commons</artifactId>
+      <artifactId>gstdev-cloud-commons</artifactId>
     </dependency>
     <dependency>
       <groupId>com.gstdev.cloud</groupId>

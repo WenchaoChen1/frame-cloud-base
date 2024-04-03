@@ -18,7 +18,7 @@
     <!-- stoeage aliyun related dependencies -->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-plugin-storage-aliyun</artifactId>
+      <artifactId>gstdev-cloud-storage-aliyun</artifactId>
     </dependency>
   </dependencies>
 </project>

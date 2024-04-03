@@ -17,7 +17,7 @@
     <!--     Swagger related dependencies -->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-plugin-openapi-springdoc</artifactId>
+      <artifactId>gstdev-cloud-openapi-springdoc</artifactId>
     </dependency>
   </dependencies>
 </project>

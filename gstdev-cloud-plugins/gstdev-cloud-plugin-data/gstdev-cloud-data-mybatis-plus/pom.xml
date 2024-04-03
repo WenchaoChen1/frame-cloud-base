@@ -3,9 +3,8 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
-  <name>GstDev Cloud :: Data :: Sdk :: jpa</name>
-  <artifactId>gstdev-cloud-data-sdk-jpa</artifactId>
+  <name>GstDev Cloud :: Data :: Mybatis-plus</name>
+  <artifactId>gstdev-cloud-data-mybatis-plus</artifactId>
   <packaging>jar</packaging>
 
   <parent>
@@ -16,33 +15,25 @@
   </parent>
 
 
-  <description>基于 Spring Authorization Server 的 Dante Cloud 基础核心组件模块</description>
+  <description>基于 Spring Authorization Server 的 GstDev Cloud 基础核心组件模块</description>
 
   <dependencies>
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-data-core</artifactId>
     </dependency>
-
     <dependency>
-      <groupId>p6spy</groupId>
-      <artifactId>p6spy</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.hibernate.orm</groupId>
-      <artifactId>hibernate-community-dialects</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.data</groupId>
-      <artifactId>spring-data-envers</artifactId>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus-boot-starter</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus-generator</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>org.apache.velocity</groupId>
+      <artifactId>velocity-engine-core</artifactId>
+    </dependency>
   </dependencies>
 
 </project>

@@ -6,7 +6,7 @@
 
   <artifactId>gstdev-cloud-cache-jetcache</artifactId>
 
-  <name>GstDev Cloud :: Plugin :: Cache :: Sdk :: Jetcache</name>
+  <name>GstDev Cloud :: Cache :: Jetcache</name>
   <description>${project.name}</description>
   <parent>
     <artifactId>gstdev-cloud-plugin-cache</artifactId>

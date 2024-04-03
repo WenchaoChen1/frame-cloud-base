@@ -3,8 +3,8 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <name>GstDev Cloud :: Data :: Sdk :: Mybatis-plus</name>
-  <artifactId>gstdev-cloud-data-sdk-mybatis-plus</artifactId>
+  <name>GstDev Cloud :: Data :: Tenant</name>
+  <artifactId>gstdev-cloud-data-tenant</artifactId>
   <packaging>jar</packaging>
 
   <parent>
@@ -14,25 +14,17 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-
-  <description>基于 Spring Authorization Server 的 GstDev Cloud 基础核心组件模块</description>
+  <description>GstDev Cloud 基于 JPA 的多租户核心组件模块</description>
 
   <dependencies>
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-data-core</artifactId>
     </dependency>
+
     <dependency>
-      <groupId>com.baomidou</groupId>
-      <artifactId>mybatis-plus-boot-starter</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.baomidou</groupId>
-      <artifactId>mybatis-plus-generator</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.velocity</groupId>
-      <artifactId>velocity-engine-core</artifactId>
+      <groupId>com.zaxxer</groupId>
+      <artifactId>HikariCP</artifactId>
     </dependency>
   </dependencies>
 

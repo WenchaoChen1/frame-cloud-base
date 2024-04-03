@@ -2,39 +2,43 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.gstdev.cloud</groupId>
-    <artifactId>gstdev-cloud-oauth2</artifactId>
-    <version>2024.0.1-SNAPSHOT</version>
-  </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-oauth2</artifactId>
+        <version>2024.0.1-SNAPSHOT</version>
+    </parent>
 
-  <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>
-  <name>GstDev Cloud :: OAuth2 :: Resource Server</name>
-  <description>${project.name}</description>
-  <packaging>jar</packaging>
+    <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>
+    <name>GstDev Cloud :: OAuth2 :: Resource Server</name>
+    <description>${project.name}</description>
+    <packaging>jar</packaging>
 
-  <dependencies>
+    <dependencies>
 
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-oauth2-core</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-oauth2-core</artifactId>
+        </dependency>
 
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-cache-jetcache</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-cache-jetcache</artifactId>
+        </dependency>
 
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-config</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
 
-    <dependency>
-      <groupId>jakarta.servlet</groupId>
-      <artifactId>jakarta.servlet-api</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
 
-  </dependencies>
+    </dependencies>
 </project>

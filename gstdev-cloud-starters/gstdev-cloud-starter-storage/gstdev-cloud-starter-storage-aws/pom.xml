@@ -20,7 +20,7 @@
     <!-- stoeage aliyun related dependencies -->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-plugin-storage-aws</artifactId>
+      <artifactId>gstdev-cloud-storage-aws</artifactId>
     </dependency>
   </dependencies>
 </project>

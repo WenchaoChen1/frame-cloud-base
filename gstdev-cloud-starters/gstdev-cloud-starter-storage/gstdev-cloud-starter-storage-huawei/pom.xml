@@ -20,7 +20,7 @@
     <!-- stoeage aliyun related dependencies -->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-plugin-storage-huawei</artifactId>
+      <artifactId>gstdev-cloud-storage-huawei</artifactId>
     </dependency>
   </dependencies>
 </project>

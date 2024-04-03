@@ -9,7 +9,7 @@
     <groupId>com.gstdev.cloud</groupId>
     <version>2024.0.1-SNAPSHOT</version>
   </parent>
-  <name>GstDev Cloud :: Plugin :: Captcha :: Core</name>
+  <name>GstDev Cloud :: Captcha :: Core</name>
   <artifactId>gstdev-cloud-captcha-core</artifactId>
   <description>${project.name}</description>
 

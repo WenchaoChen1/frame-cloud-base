@@ -29,7 +29,7 @@
     <!-- GstDevCloud related dependencies -->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-data-commons</artifactId>
+      <artifactId>gstdev-cloud-commons</artifactId>
     </dependency>
 
     <dependency>

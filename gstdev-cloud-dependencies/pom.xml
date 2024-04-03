@@ -76,7 +76,8 @@
         <!--厂商应用集成-->
         <!--以下为特殊处理, 统一版本处理漏洞等-->
         <commons-text.version>1.10.0</commons-text.version>
-
+        <bcprov-jdk18on.version>1.77</bcprov-jdk18on.version>
+        <bcpkix-jdk18on.version>1.77</bcpkix-jdk18on.version>
 
         <caffeine.version>3.1.0</caffeine.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
@@ -131,16 +132,6 @@
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
                 <artifactId>gstdev-cloud-commons</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-data-commons</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-data-jpa</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
             <dependency>
@@ -268,90 +259,8 @@
                 <artifactId>rest-sdk-condition</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
-            <!--=========================================== data ===========================================-->
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-data-core</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-data-sdk-jpa</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-data-sdk-mybatis-plus</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-data-sdk-tenant</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
 
             <!--=========================================== plugins ===========================================-->
-            <!--=========================================== plugins-captcha ===================================-->
-
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-captcha-core</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-captcha-sdk-behavior</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-captcha-sdk-graphic</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-captcha-sdk-hutool</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <!--=========================================== plugins-storage ===================================-->
-
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-plugin-storage-core</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-plugin-storage-huawei</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-plugin-storage-aliyun</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-plugin-storage-minio</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-plugin-storage-aws</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <!--=========================================== plugins-openapi ===================================-->
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-plugin-swagger</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-plugin-openapi-springdoc</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-
             <!--=========================================== plugins-cache ===================================-->
 
             <dependency>
@@ -380,6 +289,91 @@
                 <version>${gstdev-cloud.version}</version>
             </dependency>
 
+            <!--=========================================== plugins-captcha ===================================-->
+
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-captcha-core</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-captcha-behavior</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-captcha-graphic</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-captcha-hutool</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+
+            <!--=========================================== data ===========================================-->
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-data-core</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-data-jpa</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-data-mybatis-plus</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-data-tenant</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+
+            <!--=========================================== plugins-storage ===================================-->
+
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-storage-core</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-storage-huawei</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-storage-aliyun</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-storage-minio</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-storage-aws</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <!--=========================================== plugins-openapi ===================================-->
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-plugin-swagger</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-openapi-springdoc</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+
+
 
             <!-- starters -->
             <dependency>
@@ -405,16 +399,6 @@
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
                 <artifactId>gstdev-cloud-starter-storage-aws</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-starter-data-jpa</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-starter-data-commons</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
             <dependency>
@@ -617,6 +601,17 @@
                 <artifactId>commons-text</artifactId>
                 <version>${commons-text.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk18on</artifactId>
+                <version>${bcprov-jdk18on.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcpkix-jdk18on</artifactId>
+                <version>${bcpkix-jdk18on.version}</version>
+            </dependency>
+
 
 
             <!-- Apache related dependencies -->

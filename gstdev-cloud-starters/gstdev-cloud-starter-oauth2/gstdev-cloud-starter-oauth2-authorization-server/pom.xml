@@ -2,35 +2,29 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>com.gstdev.cloud</groupId>
-    <artifactId>gstdev-cloud-starter-oauth2</artifactId>
-    <version>2024.0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
+    <parent>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-starter-oauth2</artifactId>
+        <version>2024.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
-  <packaging>jar</packaging>
-  <artifactId>gstdev-cloud-starter-oauth2-authorization-server</artifactId>
-  <name>GstDev Cloud :: Starter :: Oauth2 :: Authentication Server</name>
-  <description>${project.name}</description>
+    <packaging>jar</packaging>
+    <artifactId>gstdev-cloud-starter-oauth2-authorization-server</artifactId>
+    <name>GstDev Cloud :: Starter :: Oauth2 :: Authentication Server</name>
+    <description>${project.name}</description>
 
-  <dependencies>
-    <!-- GstDevCloud related dependencies -->
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-oauth2-authorization-server-autoconfigure</artifactId>
-    </dependency>
-    <!--    <dependency>-->
-    <!--      <groupId>com.gstdev.cloud</groupId>-->
-    <!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
-    <!--    </dependency>-->
-    <!-- Lombok related dependencies -->
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
+    <dependencies>
+        <!-- GstDevCloud related dependencies -->
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-oauth2-authorization-server-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-rsa</artifactId>
+        </dependency>
+    </dependencies>
 </project>

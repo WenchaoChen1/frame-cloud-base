@@ -2,30 +2,30 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <name>GstDev Cloud :: Data :: Sdk :: Tenant</name>
-  <artifactId>gstdev-cloud-data-sdk-tenant</artifactId>
-  <packaging>jar</packaging>
-
   <parent>
+    <artifactId>gstdev-cloud-plugin-openapi</artifactId>
     <groupId>com.gstdev.cloud</groupId>
-    <artifactId>gstdev-cloud-data</artifactId>
     <version>2024.0.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <description>GstDev Cloud 基于 JPA 的多租户核心组件模块</description>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>gstdev-cloud-openapi-springdoc</artifactId>
+  <name>GstDev Cloud :: OpenApi :: SpringDoc</name>
+  <description>${project.name}</description>
+  <packaging>jar</packaging>
 
   <dependencies>
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-data-core</artifactId>
+      <artifactId>gstdev-cloud-commons</artifactId>
+    </dependency>
+    <!--     Swagger related dependencies -->
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
     </dependency>
 
-    <dependency>
-      <groupId>com.zaxxer</groupId>
-      <artifactId>HikariCP</artifactId>
-    </dependency>
   </dependencies>
 
 </project>

@@ -9,8 +9,8 @@
     <groupId>com.gstdev.cloud</groupId>
     <version>2024.0.1-SNAPSHOT</version>
   </parent>
-  <name>GstDev Cloud :: Plugin :: Captcha :: Sdk :: hutool</name>
-  <artifactId>gstdev-cloud-captcha-sdk-hutool</artifactId>
+  <name>GstDev Cloud :: Captcha :: Behavior</name>
+  <artifactId>gstdev-cloud-captcha-behavior</artifactId>
   <description>${project.name}</description>
 
   <dependencies>
@@ -18,7 +18,6 @@
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-captcha-core</artifactId>
     </dependency>
-
   </dependencies>
 
 </project>

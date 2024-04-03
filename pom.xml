@@ -57,9 +57,7 @@
         </plugins>
     </build>
     <modules>
-        <module>gstdev-cloud-base</module>
         <module>gstdev-cloud-commons</module>
-        <module>gstdev-cloud-data</module>
         <module>gstdev-cloud-dependencies</module>
         <module>gstdev-cloud-oauth2</module>
         <module>gstdev-cloud-parent</module>

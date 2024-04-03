@@ -19,7 +19,7 @@
     <!-- stoeage aliyun related dependencies -->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-plugin-storage-minio</artifactId>
+      <artifactId>gstdev-cloud-storage-minio</artifactId>
     </dependency>
   </dependencies>
 </project>

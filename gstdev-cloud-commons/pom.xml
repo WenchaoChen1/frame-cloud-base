@@ -69,10 +69,10 @@
 
 
         <!--========================================= d ===============================================-->
-            <dependency>
-              <groupId>org.apache.commons</groupId>
-              <artifactId>commons-collections4</artifactId>
-            </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+        </dependency>
         <!-- Apache commons related dependencies -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -132,18 +132,18 @@
             <artifactId>hutool-all</artifactId>
         </dependency>
         <!--    &lt;!&ndash;指定 bouncycastle 相关依赖，避免依赖第三方携带 bouncycastle 相关包，产生 hutool 不同版本 crypto 不兼容问题，以及抛出DefaultBufferedBlockCipher问题&ndash;&gt;-->
-        <!--    <dependency>-->
-        <!--      <groupId>org.bouncycastle</groupId>-->
-        <!--      <artifactId>bcpkix-jdk18on</artifactId>-->
-        <!--    </dependency>-->
-        <!--    <dependency>-->
-        <!--      <groupId>org.bouncycastle</groupId>-->
-        <!--      <artifactId>bcprov-jdk18on</artifactId>-->
-        <!--    </dependency>-->
-            <dependency>
-              <groupId>jakarta.annotation</groupId>
-              <artifactId>jakarta.annotation-api</artifactId>
-            </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcpkix-jdk18on</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk18on</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+        </dependency>
         <!--========================================= core ===============================================-->
         <!--    <dependency>-->
         <!--      <groupId>cn.herodotus.engine</groupId>-->
@@ -203,26 +203,26 @@
         <!--      <artifactId>apm-toolkit-trace</artifactId>-->
         <!--    </dependency>-->
 
-            <dependency>
-              <groupId>org.springframework</groupId>
-              <artifactId>spring-web</artifactId>
-            </dependency>
-            <dependency>
-              <groupId>org.springframework.boot</groupId>
-              <artifactId>spring-boot-autoconfigure</artifactId>
-            </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
 
-            <dependency>
-              <groupId>org.springframework.boot</groupId>
-              <artifactId>spring-boot-configuration-processor</artifactId>
-              <optional>true</optional>
-            </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
 
-            <dependency>
-              <groupId>org.springframework.boot</groupId>
-              <artifactId>spring-boot-autoconfigure-processor</artifactId>
-              <optional>true</optional>
-            </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <name>GstDev Cloud :: Data :: JPA</name>
-  <description>${project.name}</description>
 
+  <name>GstDev Cloud :: Data :: jpa</name>
   <artifactId>gstdev-cloud-data-jpa</artifactId>
   <packaging>jar</packaging>
 
@@ -15,22 +15,34 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
+
+  <description>基于 Spring Authorization Server 的 Dante Cloud 基础核心组件模块</description>
+
   <dependencies>
-    <!-- GstDevCloud related dependencies -->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-data-commons</artifactId>
+      <artifactId>gstdev-cloud-data-core</artifactId>
     </dependency>
-    <!-- GstDevBoot related dependencies -->
+
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jpa</artifactId>
+      <groupId>p6spy</groupId>
+      <artifactId>p6spy</artifactId>
     </dependency>
-    <!-- Lombok related dependencies -->
+
+    <dependency>
+      <groupId>org.hibernate.orm</groupId>
+      <artifactId>hibernate-community-dialects</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-envers</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <scope>provided</scope>
     </dependency>
+
   </dependencies>
+
 </project>

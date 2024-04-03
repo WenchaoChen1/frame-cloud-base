@@ -18,15 +18,15 @@
   <dependencies>
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-captcha-sdk-behavior</artifactId>
+      <artifactId>gstdev-cloud-captcha-behavior</artifactId>
     </dependency>
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-captcha-sdk-graphic</artifactId>
+      <artifactId>gstdev-cloud-captcha-graphic</artifactId>
     </dependency>
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-captcha-sdk-hutool</artifactId>
+      <artifactId>gstdev-cloud-captcha-hutool</artifactId>
     </dependency>
   </dependencies>
 

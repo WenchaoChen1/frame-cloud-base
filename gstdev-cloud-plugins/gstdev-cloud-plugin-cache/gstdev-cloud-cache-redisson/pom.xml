@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>gstdev-cloud-cache-redisson</artifactId>
-  <name>GstDev Cloud :: Plugin :: Cache :: Sdk :: Redisson</name>
+  <name>GstDev Cloud :: Cache :: Redisson</name>
   <description>${project.name}</description>
   <parent>
     <artifactId>gstdev-cloud-plugin-cache</artifactId>

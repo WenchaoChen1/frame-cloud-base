@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>gstdev-cloud-cache-core</artifactId>
-  <name>GstDev Cloud :: Plugin :: Cache :: Core</name>
+  <name>GstDev Cloud :: Cache :: Core</name>
   <description>${project.name}</description>
 
   <parent>
