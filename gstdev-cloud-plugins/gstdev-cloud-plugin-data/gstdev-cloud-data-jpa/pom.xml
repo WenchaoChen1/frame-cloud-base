@@ -10,7 +10,7 @@
 
   <parent>
     <groupId>com.gstdev.cloud</groupId>
-    <artifactId>gstdev-cloud-data</artifactId>
+    <artifactId>gstdev-cloud-plugin-data</artifactId>
     <version>2024.0.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>

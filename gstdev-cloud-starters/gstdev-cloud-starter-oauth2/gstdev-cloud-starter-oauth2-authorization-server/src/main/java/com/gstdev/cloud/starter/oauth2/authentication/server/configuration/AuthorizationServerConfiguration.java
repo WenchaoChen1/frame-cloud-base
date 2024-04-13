@@ -11,12 +11,16 @@ package com.gstdev.cloud.starter.oauth2.authentication.server.configuration;
 
 
 import com.gstdev.cloud.commons.ass.core.utils.ResourceUtils;
+import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
 import com.gstdev.cloud.oauth2.authorization.server.configurer.OAuth2AuthenticationProviderConfigurer;
 import com.gstdev.cloud.oauth2.authorization.server.consumer.OAuth2AuthorizationCodeAuthenticationProviderConsumer;
 import com.gstdev.cloud.oauth2.authorization.server.converter.OAuth2PasswordAuthenticationConverter;
 import com.gstdev.cloud.oauth2.authorization.server.customizer.OAuth2FormLoginConfigurerCustomizer;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
+import com.gstdev.cloud.oauth2.authorization.server.response.OAuth2AuthenticationFailureResponseHandler;
 import com.gstdev.cloud.oauth2.core.enums.Certificate;
+import com.gstdev.cloud.oauth2.management.response.OAuth2AccessTokenResponseHandler;
+import com.gstdev.cloud.oauth2.management.response.OAuth2DeviceVerificationResponseHandler;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.properties.OAuth2AuthorizationProperties;
 import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
@@ -90,7 +94,7 @@ public class AuthorizationServerConfiguration {
     HttpCryptoProcessor httpCryptoProcessor,
 //    OidcClientRegistrationResponseHandler oidcClientRegistrationResponseHandler,
     OAuth2AuthenticationProperties oauth2AuthenticationProperties,
-//    OAuth2DeviceVerificationResponseHandler oauth2DeviceVerificationResponseHandler,
+    OAuth2DeviceVerificationResponseHandler oauth2DeviceVerificationResponseHandler,
     OAuth2FormLoginConfigurerCustomizer oauth2FormLoginConfigurerCustomizer,
 //    OAuth2SessionManagementConfigurerCustomer oauth2sessionManagementConfigurerCustomer,
     OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer
@@ -98,14 +102,15 @@ public class AuthorizationServerConfiguration {
     log.debug("[GstDev Cloud] |- Bean [Authorization Server Security Filter Chain] Auto Configure.");
 
     //是一个便利 ( static) 实用程序方法，它将默认的 OAuth2 安全配置应用于HttpSecurity.
-    OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
+        OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
 
 //    SessionRegistry sessionRegistry = OAuth2ConfigurerUtils.getOptionalBean(http, SessionRegistry.class);
 
     //提供完全自定义 OAuth2 授权服务器安全配置的能力。它允许您指定要使用的核心组件 - 例如，RegisteredClientRepository、
     // OAuth2AuthorizationService、OAuth2TokenGenerator和其他。此外，它还允许您自定义协议端点的请求处理逻辑 -
     // 例如，授权端点、设备授权端点、设备验证端点、令牌端点、令牌内省端点等。
-    DefaultAuthenticationFailureHandler errorResponseHandler = new DefaultAuthenticationFailureHandler();
+//    DefaultAuthenticationFailureHandler errorResponseHandler = new DefaultAuthenticationFailureHandler();
+      OAuth2AuthenticationFailureResponseHandler errorResponseHandler = new OAuth2AuthenticationFailureResponseHandler();
 //    DefaultAuthenticationSuccessHandler successResponseHandler = new DefaultAuthenticationSuccessHandler();
 //    DefaultAccessDeniedHandler accessDeniedHandler = new DefaultAccessDeniedHandler();
 //    DefaultAuthenticationEntryPoint authenticationEntryPoint = new DefaultAuthenticationEntryPoint();
@@ -117,18 +122,21 @@ public class AuthorizationServerConfiguration {
 //    authorizationServerConfigurer.tokenGenerator(tokenGenerator);
     authorizationServerConfigurer.clientAuthentication(clientAuthentication -> {
       clientAuthentication.errorResponseHandler(errorResponseHandler);//（AuthenticationFailureHandler后处理器）用于处理失败的客户端身份验证并返回OAuth2Error响应。
+//        clientAuthentication.authenticationProviders(new OAuth2ClientCredentialsAuthenticationProviderConsumer(httpSecurity, clientDetailsService));
     });
     authorizationServerConfigurer.authorizationEndpoint(authorizationEndpoint -> {
       authorizationEndpoint.errorResponseHandler(errorResponseHandler);
-//      authorizationEndpoint.consentPage(authorizationServerProperties.getu);
+        authorizationEndpoint.consentPage(DefaultConstants.AUTHORIZATION_CONSENT_URI);
     });
     authorizationServerConfigurer.deviceAuthorizationEndpoint(deviceAuthorizationEndpoint -> {
       deviceAuthorizationEndpoint.errorResponseHandler(errorResponseHandler);
-      //      authorizationEndpoint.consentPage(authorizationServerProperties.getu);
+        deviceAuthorizationEndpoint.verificationUri(DefaultConstants.DEVICE_ACTIVATION_URI);
+
     });
     authorizationServerConfigurer.deviceVerificationEndpoint(deviceVerificationEndpoint -> {
       deviceVerificationEndpoint.errorResponseHandler(errorResponseHandler);
-      //      authorizationEndpoint.consentPage(authorizationServerProperties.getu);
+        deviceVerificationEndpoint.consentPage(DefaultConstants.AUTHORIZATION_CONSENT_URI);
+        deviceVerificationEndpoint.deviceVerificationResponseHandler(oauth2DeviceVerificationResponseHandler);
     });
 
     authorizationServerConfigurer.tokenEndpoint(tokenEndpoint -> {
@@ -143,7 +151,7 @@ public class AuthorizationServerConfiguration {
 //        new OAuth2SocialCredentialsAuthenticationConverter(httpCryptoProcessor))
       ));
       tokenEndpoint.accessTokenRequestConverter(delegatingAuthenticationConverter);
-//      tokenEndpoint.accessTokenResponseHandler(new OAuth2AccessTokenResponseHandler(httpCryptoProcessor));
+      tokenEndpoint.accessTokenResponseHandler(new OAuth2AccessTokenResponseHandler(httpCryptoProcessor));
 //      tokenEndpoint.authenticationProviders(new OAuth2AuthorizationCodeAuthenticationProviderConsumer(http, sessionRegistry));
       tokenEndpoint.authenticationProviders(new OAuth2AuthorizationCodeAuthenticationProviderConsumer(http));
       tokenEndpoint.errorResponseHandler(errorResponseHandler);// 自定义失败响应
@@ -170,15 +178,6 @@ public class AuthorizationServerConfiguration {
     // 仅拦截 OAuth2 Authorization Server 的相关 endpoint
 //    http.securityMatcher(endpointsMatcher)
     http
-      //在未通过身份验证时重定向到登录页面
-//      //授权端点
-//      .exceptionHandling(exceptions -> {
-//        exceptions.defaultAuthenticationEntryPointFor(
-//          new LoginUrlAuthenticationEntryPoint("/login"),
-//          new MediaTypeRequestMatcher(MediaType.TEXT_HTML));
-////        exceptions.accessDeniedHandler(accessDeniedHandler);
-////        exceptions.authenticationEntryPoint(authenticationEntryPoint);
-//      })
       // 开启请求认证
 //      .authorizeHttpRequests(authorizeRequests -> authorizeRequests.anyRequest().authenticated())
       // 禁用对 OAuth2 Authorization Server 相关 endpoint 的 CSRF 防御

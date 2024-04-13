@@ -5,7 +5,7 @@
   <name>GstDev Cloud :: Plugin :: Data</name>
   <description>${project.name}</description>
 
-  <artifactId>gstdev-cloud-data</artifactId>
+  <artifactId>gstdev-cloud-plugin-data</artifactId>
   <packaging>pom</packaging>
 
   <parent>

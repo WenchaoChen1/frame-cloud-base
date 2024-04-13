@@ -80,16 +80,10 @@ public class DefaultSecurityConfiguration {
                                                         OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer,
                                                         OAuth2AuthorizeHttpRequestsConfigurerCustomer oauth2AuthorizeHttpRequestsConfigurerCustomer,
                                                         UrlBasedCorsConfigurationSource configurationSource) {
-    DefaultAccessDeniedHandler accessDeniedHandler = new DefaultAccessDeniedHandler();
-    DefaultAuthenticationEntryPoint authenticationEntryPoint = new DefaultAuthenticationEntryPoint();
-    http
-//      .exceptionHandling(handling -> {
-//        handling.accessDeniedHandler(accessDeniedHandler);
-//        handling.authenticationEntryPoint(authenticationEntryPoint);
-//      })
-      //表单login处理重定向到登录页面
-      //授权服务器过滤器链
-      .formLogin(Customizer.withDefaults());
+//    http
+//      //表单login处理重定向到登录页面
+//      //授权服务器过滤器链
+//      .formLogin(Customizer.withDefaults());
     // 禁用CSRF 开启跨域
 //    http.csrf(AbstractHttpConfigurer::disable).cors(AbstractHttpConfigurer::disable);
     // TODO 不知道做什么的
