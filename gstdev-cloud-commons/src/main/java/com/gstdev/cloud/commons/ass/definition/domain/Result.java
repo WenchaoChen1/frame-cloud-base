@@ -59,6 +59,7 @@ public class Result<T> implements Serializable {
     }
 
     result.code(code);
+    result.setSuccess(success);
     result.status(status);
 
     if (ObjectUtils.isNotEmpty(data)) {
