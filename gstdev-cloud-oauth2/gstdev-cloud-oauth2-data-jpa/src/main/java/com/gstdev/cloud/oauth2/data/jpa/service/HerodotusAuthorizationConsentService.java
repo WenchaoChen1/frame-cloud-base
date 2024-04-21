@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.data.jpa.service;
 
 import com.gstdev.cloud.data.core.repository.BaseRepository;
-import com.gstdev.cloud.data.core.service.BaseService;
+import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.oauth2.data.jpa.entity.HerodotusAuthorizationConsent;
 import com.gstdev.cloud.oauth2.data.jpa.generator.HerodotusAuthorizationConsentId;
 import com.gstdev.cloud.oauth2.data.jpa.repository.HerodotusAuthorizationConsentRepository;
@@ -21,7 +21,7 @@ import java.util.Optional;
  * @date : 2022/2/25 21:02
  */
 @Service
-public class HerodotusAuthorizationConsentService extends BaseService<HerodotusAuthorizationConsent, HerodotusAuthorizationConsentId> {
+public class HerodotusAuthorizationConsentService extends BaseServiceImpl<HerodotusAuthorizationConsent, HerodotusAuthorizationConsentId,HerodotusAuthorizationConsentRepository> {
 
   private static final Logger log = LoggerFactory.getLogger(HerodotusAuthorizationConsentService.class);
 
@@ -32,8 +32,7 @@ public class HerodotusAuthorizationConsentService extends BaseService<HerodotusA
     this.authorizationConsentRepository = authorizationConsentRepository;
   }
 
-  @Override
-  public BaseRepository<HerodotusAuthorizationConsent, HerodotusAuthorizationConsentId> getRepository() {
+  public HerodotusAuthorizationConsentRepository getRepository() {
     return this.authorizationConsentRepository;
   }
 

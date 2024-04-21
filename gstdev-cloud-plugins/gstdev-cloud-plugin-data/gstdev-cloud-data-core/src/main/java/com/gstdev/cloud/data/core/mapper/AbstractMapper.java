@@ -7,7 +7,7 @@
 //
 // ====================================================
 
-package com.gstdev.cloud.data.jpa.mapper;
+package com.gstdev.cloud.data.core.mapper;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

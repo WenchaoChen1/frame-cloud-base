@@ -5,6 +5,7 @@ import com.gstdev.cloud.oauth2.management.entity.OAuth2Device;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>Description: OAuth2DeviceRepository </p>
@@ -12,6 +13,7 @@ import org.springframework.data.jpa.repository.Query;
  * @author : cc
  * @date : 2023/5/15 16:14
  */
+@Repository
 public interface OAuth2DeviceRepository extends BaseRepository<OAuth2Device, String> {
 
   /**

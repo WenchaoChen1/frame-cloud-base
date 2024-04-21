@@ -5,6 +5,7 @@ import com.gstdev.cloud.oauth2.data.jpa.entity.HerodotusRegisteredClient;
 import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
 import org.springframework.data.jpa.repository.QueryHints;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
@@ -14,6 +15,7 @@ import java.util.Optional;
  * @author : cc
  * @date : 2022/2/25 21:05
  */
+@Repository
 public interface HerodotusRegisteredClientRepository extends BaseRepository<HerodotusRegisteredClient, String> {
 
   /**

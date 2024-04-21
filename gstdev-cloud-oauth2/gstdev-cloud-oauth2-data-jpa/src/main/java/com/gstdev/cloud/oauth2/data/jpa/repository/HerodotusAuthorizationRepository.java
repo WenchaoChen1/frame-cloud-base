@@ -6,6 +6,7 @@ import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.QueryHints;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
@@ -18,6 +19,7 @@ import java.util.Optional;
  * @author : cc
  * @date : 2022/2/25 21:05
  */
+@Repository
 public interface HerodotusAuthorizationRepository extends BaseRepository<HerodotusAuthorization, String> {
 
   /**

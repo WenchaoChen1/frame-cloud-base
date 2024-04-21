@@ -8,7 +8,7 @@ import com.gstdev.cloud.oauth2.management.entity.OAuth2Permission;
 import com.gstdev.cloud.oauth2.management.entity.OAuth2Scope;
 import com.gstdev.cloud.oauth2.management.service.OAuth2ScopeService;
 import com.gstdev.cloud.rest.core.annotation.AccessLimited;
-import com.gstdev.cloud.rest.core.controller.BaseWriteableRestController;
+import com.gstdev.cloud.rest.core.controller.BaseController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -38,21 +38,14 @@ import java.util.stream.Collectors;
   @Tag(name = "OAuth2 认证服务接口"),
   @Tag(name = "OAuth2 权限范围管理接口")
 })
-public class OAuth2ScopeController extends BaseWriteableRestController<OAuth2Scope, String> {
+public class OAuth2ScopeController extends BaseController<OAuth2Scope, String,OAuth2ScopeService> {
 
-  private final OAuth2ScopeService scopeService;
 
-  @Autowired
-  public OAuth2ScopeController(OAuth2ScopeService scopeService) {
-    this.scopeService = scopeService;
-  }
+    public OAuth2ScopeController(OAuth2ScopeService service) {
+        super(service);
+    }
 
-  @Override
-  public WriteableService<OAuth2Scope, String> getWriteableService() {
-    return this.scopeService;
-  }
-
-  @Operation(summary = "给Scope分配权限", description = "给Scope分配权限",
+    @Operation(summary = "给Scope分配权限", description = "给Scope分配权限",
     responses = {
       @ApiResponse(description = "查询到的角色", content = @Content(mediaType = "application/json", schema = @Schema(implementation = OAuth2ScopeDto.class))),
     })
@@ -67,7 +60,7 @@ public class OAuth2ScopeController extends BaseWriteableRestController<OAuth2Sco
       permissions = scope.getPermissions().stream().map(this::toEntity).collect(Collectors.toSet());
     }
 
-    OAuth2Scope result = scopeService.assigned(scope.getScopeId(), permissions);
+    OAuth2Scope result = getService().assigned(scope.getScopeId(), permissions);
     return result(result);
   }
 
@@ -79,7 +72,7 @@ public class OAuth2ScopeController extends BaseWriteableRestController<OAuth2Sco
   })
   @GetMapping("/list")
   public Result<List<OAuth2Scope>> findAll() {
-    List<OAuth2Scope> oAuth2Scopes = scopeService.findAll();
+    List<OAuth2Scope> oAuth2Scopes = getService().findAll();
     return result(oAuth2Scopes);
   }
 
@@ -93,7 +86,7 @@ public class OAuth2ScopeController extends BaseWriteableRestController<OAuth2Sco
   )
   @GetMapping("/{scopeCode}")
   public Result<OAuth2Scope> findByScopeCode(@PathVariable("scopeCode") String scopeCode) {
-    OAuth2Scope scope = scopeService.findByScopeCode(scopeCode);
+    OAuth2Scope scope = getService().findByScopeCode(scopeCode);
     return result(scope);
   }
 

@@ -4,7 +4,7 @@ import com.gstdev.cloud.commons.ass.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.WriteableService;
 import com.gstdev.cloud.oauth2.management.entity.OAuth2Compliance;
 import com.gstdev.cloud.oauth2.management.service.OAuth2ComplianceService;
-import com.gstdev.cloud.rest.core.controller.BaseWriteableRestController;
+import com.gstdev.cloud.rest.core.controller.BaseController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -36,21 +36,14 @@ import java.util.Map;
   @Tag(name = "OAuth2 应用安全合规接口"),
   @Tag(name = "OAuth2 审计管理接口")
 })
-public class OAuth2ComplianceController extends BaseWriteableRestController<OAuth2Compliance, String> {
+public class OAuth2ComplianceController extends BaseController<OAuth2Compliance, String,OAuth2ComplianceService> {
 
-  private final OAuth2ComplianceService complianceService;
 
-  @Autowired
-  public OAuth2ComplianceController(OAuth2ComplianceService complianceService) {
-    this.complianceService = complianceService;
-  }
+    public OAuth2ComplianceController(OAuth2ComplianceService service) {
+        super(service);
+    }
 
-  @Override
-  public WriteableService<OAuth2Compliance, String> getWriteableService() {
-    return complianceService;
-  }
-
-  @Operation(summary = "模糊条件查询合规信息", description = "根据动态输入的字段模糊查询合规信息",
+    @Operation(summary = "模糊条件查询合规信息", description = "根据动态输入的字段模糊查询合规信息",
     responses = {@ApiResponse(description = "人员分页列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))})
   @Parameters({
     @Parameter(name = "pageNumber", required = true, description = "当前页码"),
@@ -65,7 +58,7 @@ public class OAuth2ComplianceController extends BaseWriteableRestController<OAut
                                                      @RequestParam(value = "principalName", required = false) String principalName,
                                                      @RequestParam(value = "clientId", required = false) String clientId,
                                                      @RequestParam(value = "ip", required = false) String ip) {
-    Page<OAuth2Compliance> pages = complianceService.findByCondition(pageNumber, pageSize, principalName, clientId, ip);
+    Page<OAuth2Compliance> pages = getService().findByCondition(pageNumber, pageSize, principalName, clientId, ip);
     return result(pages);
   }
 }

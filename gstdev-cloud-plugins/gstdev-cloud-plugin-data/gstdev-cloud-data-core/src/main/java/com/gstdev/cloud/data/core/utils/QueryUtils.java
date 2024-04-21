@@ -7,11 +7,11 @@
 //
 // ====================================================
 
-package com.gstdev.cloud.data.jpa.utils;
+package com.gstdev.cloud.data.core.utils;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ObjectUtil;
-import com.gstdev.cloud.data.jpa.annotations.Query;
+import com.gstdev.cloud.data.core.annotations.Query;
 import jakarta.persistence.criteria.*;
 import lombok.extern.slf4j.Slf4j;
 

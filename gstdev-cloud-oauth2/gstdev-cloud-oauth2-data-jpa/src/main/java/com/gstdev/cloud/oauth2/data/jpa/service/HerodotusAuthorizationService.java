@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.data.jpa.service;
 
 import com.gstdev.cloud.data.core.repository.BaseRepository;
-import com.gstdev.cloud.data.core.service.BaseService;
+import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.oauth2.data.jpa.entity.HerodotusAuthorization;
 import com.gstdev.cloud.oauth2.data.jpa.repository.HerodotusAuthorizationRepository;
 import jakarta.persistence.criteria.Predicate;
@@ -26,7 +26,7 @@ import java.util.Optional;
  * @date : 2022/2/25 21:06
  */
 @Service
-public class HerodotusAuthorizationService extends BaseService<HerodotusAuthorization, String> {
+public class HerodotusAuthorizationService extends BaseServiceImpl<HerodotusAuthorization, String,HerodotusAuthorizationRepository> {
 
   private static final Logger log = LoggerFactory.getLogger(HerodotusAuthorizationService.class);
 
@@ -37,8 +37,7 @@ public class HerodotusAuthorizationService extends BaseService<HerodotusAuthoriz
     this.herodotusAuthorizationRepository = herodotusAuthorizationRepository;
   }
 
-  @Override
-  public BaseRepository<HerodotusAuthorization, String> getRepository() {
+  public HerodotusAuthorizationRepository getRepository() {
     return this.herodotusAuthorizationRepository;
   }
 

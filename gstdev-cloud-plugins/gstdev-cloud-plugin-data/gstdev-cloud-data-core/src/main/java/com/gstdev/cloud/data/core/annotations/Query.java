@@ -7,7 +7,7 @@
 //
 // ====================================================
 
-package com.gstdev.cloud.data.jpa.annotations;
+package com.gstdev.cloud.data.core.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,7 +1,6 @@
 package com.gstdev.cloud.oauth2.management.service;
 
-import com.gstdev.cloud.data.core.repository.BaseRepository;
-import com.gstdev.cloud.data.core.service.BaseService;
+import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.oauth2.management.entity.OAuth2Permission;
 import com.gstdev.cloud.oauth2.management.entity.OAuth2Scope;
 import com.gstdev.cloud.oauth2.management.repository.OAuth2ScopeRepository;
@@ -17,32 +16,32 @@ import java.util.Set;
  * @date : 2020/3/19 17:00
  */
 @Service
-public class OAuth2ScopeService extends BaseService<OAuth2Scope, String> {
+public class OAuth2ScopeService extends BaseServiceImpl<OAuth2Scope, String,OAuth2ScopeRepository> {
 
-  private final OAuth2ScopeRepository oauthScopesRepository;
+    private final OAuth2ScopeRepository oauthScopesRepository;
 
-  public OAuth2ScopeService(OAuth2ScopeRepository oauthScopesRepository) {
-    this.oauthScopesRepository = oauthScopesRepository;
-  }
+    public OAuth2ScopeService(OAuth2ScopeRepository oauthScopesRepository) {
+        this.oauthScopesRepository = oauthScopesRepository;
+    }
 
-  @Override
-  public BaseRepository<OAuth2Scope, String> getRepository() {
-    return oauthScopesRepository;
-  }
 
-  public OAuth2Scope assigned(String scopeId, Set<OAuth2Permission> permissions) {
+    public OAuth2ScopeRepository getRepository() {
+        return oauthScopesRepository;
+    }
 
-    OAuth2Scope oldScope = findById(scopeId);
-    oldScope.setPermissions(permissions);
+    public OAuth2Scope assigned(String scopeId, Set<OAuth2Permission> permissions) {
 
-    return saveAndFlush(oldScope);
-  }
+        OAuth2Scope oldScope = findById(scopeId);
+        oldScope.setPermissions(permissions);
 
-  public OAuth2Scope findByScopeCode(String scopeCode) {
-    return oauthScopesRepository.findByScopeCode(scopeCode);
-  }
+        return saveAndFlush(oldScope);
+    }
 
-  public List<OAuth2Scope> findByScopeCodeIn(List<String> scopeCodes) {
-    return oauthScopesRepository.findByScopeCodeIn(scopeCodes);
-  }
+    public OAuth2Scope findByScopeCode(String scopeCode) {
+        return oauthScopesRepository.findByScopeCode(scopeCode);
+    }
+
+    public List<OAuth2Scope> findByScopeCodeIn(List<String> scopeCodes) {
+        return oauthScopesRepository.findByScopeCodeIn(scopeCodes);
+    }
 }

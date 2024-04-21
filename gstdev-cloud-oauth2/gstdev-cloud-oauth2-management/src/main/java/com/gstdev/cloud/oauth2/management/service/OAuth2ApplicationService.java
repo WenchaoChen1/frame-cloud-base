@@ -2,7 +2,7 @@ package com.gstdev.cloud.oauth2.management.service;
 
 import com.gstdev.cloud.commons.ass.core.exception.transaction.TransactionalRollbackException;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
-import com.gstdev.cloud.data.core.service.BaseService;
+import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.oauth2.data.jpa.repository.HerodotusRegisteredClientRepository;
 import com.gstdev.cloud.oauth2.management.converter.OAuth2ApplicationToRegisteredClientConverter;
 import com.gstdev.cloud.oauth2.management.entity.OAuth2Application;
@@ -27,7 +27,7 @@ import java.util.Set;
  * @date : 2022/3/1 18:06
  */
 @Service
-public class OAuth2ApplicationService extends BaseService<OAuth2Application, String> {
+public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application, String,OAuth2ApplicationRepository> {
 
   private static final Logger log = LoggerFactory.getLogger(OAuth2ApplicationService.class);
 
@@ -43,8 +43,7 @@ public class OAuth2ApplicationService extends BaseService<OAuth2Application, Str
     this.objectConverter = new OAuth2ApplicationToRegisteredClientConverter();
   }
 
-  @Override
-  public BaseRepository<OAuth2Application, String> getRepository() {
+  public OAuth2ApplicationRepository getRepository() {
     return this.applicationRepository;
   }
 

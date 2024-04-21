@@ -7,7 +7,7 @@
 //
 // ====================================================
 
-package com.gstdev.cloud.data.jpa.utils;
+package com.gstdev.cloud.data.core.utils;
 
 import org.springframework.data.domain.Page;
 

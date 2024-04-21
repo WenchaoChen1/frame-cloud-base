@@ -2,7 +2,7 @@ package com.gstdev.cloud.oauth2.management.service;
 
 import com.gstdev.cloud.commons.ass.core.exception.transaction.TransactionalRollbackException;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
-import com.gstdev.cloud.data.core.service.BaseService;
+import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.oauth2.data.jpa.repository.HerodotusRegisteredClientRepository;
 import com.gstdev.cloud.oauth2.management.converter.OAuth2DeviceToRegisteredClientConverter;
 import com.gstdev.cloud.oauth2.management.converter.RegisteredClientToOAuth2DeviceConverter;
@@ -29,7 +29,7 @@ import java.util.Set;
  * @date : 2023/5/15 16:36
  */
 @Service
-public class OAuth2DeviceService extends BaseService<OAuth2Device, String> {
+public class OAuth2DeviceService extends BaseServiceImpl<OAuth2Device, String,OAuth2DeviceRepository> {
 
   private static final Logger log = LoggerFactory.getLogger(OAuth2ApplicationService.class);
 
@@ -47,8 +47,7 @@ public class OAuth2DeviceService extends BaseService<OAuth2Device, String> {
     this.registeredClientToOAuth2DeviceConverter = new RegisteredClientToOAuth2DeviceConverter(scopeService);
   }
 
-  @Override
-  public BaseRepository<OAuth2Device, String> getRepository() {
+  public OAuth2DeviceRepository getRepository() {
     return deviceRepository;
   }
 

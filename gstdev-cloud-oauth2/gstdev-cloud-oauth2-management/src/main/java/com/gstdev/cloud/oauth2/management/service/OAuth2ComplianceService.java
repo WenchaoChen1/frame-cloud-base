@@ -1,8 +1,9 @@
 package com.gstdev.cloud.oauth2.management.service;
 
 import com.gstdev.cloud.data.core.repository.BaseRepository;
-import com.gstdev.cloud.data.core.service.BaseService;
+import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.oauth2.management.entity.OAuth2Compliance;
+import com.gstdev.cloud.oauth2.management.repository.OAuth2ApplicationRepository;
 import com.gstdev.cloud.oauth2.management.repository.OAuth2ComplianceRepository;
 import com.google.common.net.HttpHeaders;
 import jakarta.persistence.criteria.Predicate;
@@ -30,7 +31,7 @@ import java.util.List;
  * @date : 2022/7/7 20:37
  */
 @Service
-public class OAuth2ComplianceService extends BaseService<OAuth2Compliance, String> {
+public class OAuth2ComplianceService extends BaseServiceImpl<OAuth2Compliance, String, OAuth2ComplianceRepository> {
 
   private static final Logger log = LoggerFactory.getLogger(OAuth2ComplianceService.class);
 
@@ -40,10 +41,9 @@ public class OAuth2ComplianceService extends BaseService<OAuth2Compliance, Strin
     this.complianceRepository = complianceRepository;
   }
 
-  @Override
-  public BaseRepository<OAuth2Compliance, String> getRepository() {
-    return complianceRepository;
-  }
+//  public OAuth2ComplianceRepository getRepository() {
+//    return complianceRepository;
+//  }
 
   public Page<OAuth2Compliance> findByCondition(int pageNumber, int pageSize, String principalName, String clientId, String ip) {
     Pageable pageable = PageRequest.of(pageNumber, pageSize);

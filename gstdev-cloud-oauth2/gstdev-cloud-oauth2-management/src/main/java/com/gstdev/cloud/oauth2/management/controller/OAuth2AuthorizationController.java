@@ -3,7 +3,7 @@ package com.gstdev.cloud.oauth2.management.controller;
 import com.gstdev.cloud.data.core.service.WriteableService;
 import com.gstdev.cloud.oauth2.data.jpa.entity.HerodotusAuthorization;
 import com.gstdev.cloud.oauth2.data.jpa.service.HerodotusAuthorizationService;
-import com.gstdev.cloud.rest.core.controller.BaseWriteableRestController;
+import com.gstdev.cloud.rest.core.controller.BaseController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,20 +19,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/authorize/authorization")
 @Tags({
-  @Tag(name = "OAuth2 认证服务接口"),
-  @Tag(name = "OAuth2 认证管理接口")
+    @Tag(name = "OAuth2 认证服务接口"),
+    @Tag(name = "OAuth2 认证管理接口")
 })
-public class OAuth2AuthorizationController extends BaseWriteableRestController<HerodotusAuthorization, String> {
+public class OAuth2AuthorizationController extends BaseController<HerodotusAuthorization, String, HerodotusAuthorizationService> {
 
-  private final HerodotusAuthorizationService herodotusAuthorizationService;
 
-  @Autowired
-  public OAuth2AuthorizationController(HerodotusAuthorizationService herodotusAuthorizationService) {
-    this.herodotusAuthorizationService = herodotusAuthorizationService;
-  }
+    @Autowired
+    public OAuth2AuthorizationController(HerodotusAuthorizationService herodotusAuthorizationService) {
+        super(herodotusAuthorizationService);
+    }
 
-  @Override
-  public WriteableService<HerodotusAuthorization, String> getWriteableService() {
-    return this.herodotusAuthorizationService;
-  }
 }
