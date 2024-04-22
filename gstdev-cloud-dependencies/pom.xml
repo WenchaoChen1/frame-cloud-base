@@ -95,7 +95,7 @@
         <huawei-sdk-obs.version>[3.21.11,)</huawei-sdk-obs.version>
         <poi.version>4.1.2</poi.version>
         <pinyin4j.version>2.5.1</pinyin4j.version>
-        <hutool.version>5.8.9</hutool.version>
+        <hutool.version>5.8.25</hutool.version>
     </properties>
 
     <dependencyManagement>
