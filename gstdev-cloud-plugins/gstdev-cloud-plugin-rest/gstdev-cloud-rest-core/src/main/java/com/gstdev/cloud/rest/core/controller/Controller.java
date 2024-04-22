@@ -31,7 +31,6 @@ import java.util.stream.Collectors;
  */
 public interface Controller<E extends Entity, ID extends Serializable, S extends BaseService<E, ID>> {
 
-
     /**
      * 获取Service
      *

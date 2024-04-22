@@ -28,6 +28,10 @@ public abstract class BaseTreeController<E extends BaseTreeEntityINT
     , FQC extends BaseTreeFindAllByQueryCriteria> extends BasePOJOController<E, ID, S, M, V, D, II, UI, PQC, FQC> implements TreeController<E, ID, S, M, V, D, II, UI, PQC, FQC> {
 
 
+    public BaseTreeController(S service, M mapper) {
+        super(service, mapper);
+    }
+
     public BaseTreeController(S service) {
         super(service);
     }

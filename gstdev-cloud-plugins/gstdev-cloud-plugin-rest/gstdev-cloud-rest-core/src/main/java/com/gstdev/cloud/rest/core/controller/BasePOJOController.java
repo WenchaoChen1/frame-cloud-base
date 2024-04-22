@@ -30,30 +30,30 @@ public abstract class BasePOJOController<E extends BasePOJOEntityINT
         super(service);
     }
 
-//    protected S service;
-//
-//    private M mapper;
-//
-//    public BasePOJOController(S service, M mapper) {
-//        this.service = service;
-//        this.mapper = mapper;
-//    }
-//
-//    public M getMapper() {
-//        return mapper;
-//    }
-//
-//    public void setMapper(M mapper) {
-//        this.mapper = mapper;
-//    }
-//
-//    public S getService() {
-//        return this.service;
-//    }
-//
-//    public void setService(S service) {
-//        this.service = service;
-//    }
+    protected S service;
+
+    private M mapper;
+
+    public BasePOJOController(S service, M mapper) {
+        super(service);
+        this.mapper = mapper;
+    }
+
+    public M getMapper() {
+        return mapper;
+    }
+
+    public void setMapper(M mapper) {
+        this.mapper = mapper;
+    }
+
+    public S getService() {
+        return this.service;
+    }
+
+    public void setService(S service) {
+        this.service = service;
+    }
 
 
 }
