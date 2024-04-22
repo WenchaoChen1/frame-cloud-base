@@ -2,9 +2,9 @@ package com.gstdev.cloud.data.core.service;
 
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.base.core.utils.treeUtils.TreeFactory;
+import com.gstdev.cloud.base.definition.domain.base.pojo.*;
 import com.gstdev.cloud.data.core.entity.BaseTreeEntityINT;
 import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
-import com.gstdev.cloud.data.core.pojo.*;
 import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
@@ -24,15 +24,15 @@ import java.util.List;
  * @param <PQC> xxxPageQueryCriteria
  * @param <FQC> xxxFindAllByQueryCriteria
  */
-public abstract class BaseTreeServiceImpl<E extends BaseTreeEntityINT
+public abstract class BaseTreeServiceImpl<E extends BaseTreeEntityINT<ID>
     , ID extends Serializable
     , R extends BaseTreeRepository<E, ID>
     , M extends BaseTreeMapper<E, D, II, UI>
-    , D extends BaseTreeDto
-    , II extends BaseTreeInsertInput
-    , UI extends BaseTreeUpdateInput
-    , PQC extends BaseTreePageQueryCriteria
-    , FQC extends BaseTreeFindAllByQueryCriteria>
+    , D extends BaseTreeDtoInterface<D,ID> & BaseDtoInterface<ID>
+    , II extends BaseTreeInsertInputInterface & BaseInsertInputInterface
+    , UI extends BaseTreeUpdateInputInterface & BaseUpdateInputInterface
+    , PQC extends BaseTreePageQueryCriteriaInterface & BasePageQueryCriteriaInterface
+    , FQC extends BaseTreeFindAllByQueryCriteriaInterface & BaseFindAllByQueryCriteriaInterface>
     extends BasePOJOServiceImpl<E, ID, R, M, D, II, UI, PQC, FQC> implements BaseTreeService<E, ID, D, II, UI, PQC, FQC> {
 
     public BaseTreeServiceImpl(R repository, M mapper) {
@@ -116,7 +116,7 @@ public abstract class BaseTreeServiceImpl<E extends BaseTreeEntityINT
 
 
     public List<D> findChildren(D var) {
-        List<D> byParentIdToDto = findByParentIdToDto((ID) var.getId());
+        List<D> byParentIdToDto = findByParentIdToDto(var.getId());
         if (!CollectionUtils.isEmpty(byParentIdToDto)) {
             byParentIdToDto.forEach(item -> {
                 item.setChildren(findChildren(item));

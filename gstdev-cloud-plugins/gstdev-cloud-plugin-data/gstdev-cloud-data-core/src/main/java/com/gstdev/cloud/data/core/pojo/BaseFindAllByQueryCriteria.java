@@ -1,13 +1,12 @@
 package com.gstdev.cloud.data.core.pojo;
 
+import com.gstdev.cloud.base.definition.domain.base.pojo.BaseFindAllByQueryCriteriaInterface;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.io.Serializable;
 
 
 @Getter
 @Setter
-public class BaseFindAllByQueryCriteria implements Serializable {
+public class BaseFindAllByQueryCriteria implements BaseFindAllByQueryCriteriaInterface {
 
 }

@@ -1,14 +1,13 @@
 package com.gstdev.cloud.data.core.mapper;
 
 import com.gstdev.cloud.data.core.entity.BaseTreeEntityINT;
-import com.gstdev.cloud.data.core.pojo.BaseTreeDto;
+import com.gstdev.cloud.data.core.pojo.*;
 import com.gstdev.cloud.data.core.entity.BaseTreeEntity;
-import com.gstdev.cloud.data.core.pojo.BaseTreeInsertInput;
-import com.gstdev.cloud.data.core.pojo.BaseTreeUpdateInput;
 
-public interface BaseTreeMapper<E extends BaseTreeEntityINT
-    , D extends BaseTreeDto
-    , II extends BaseTreeInsertInput
-    , UI extends BaseTreeUpdateInput> extends BaseMapper<E, D, II, UI> {
+//public interface BaseTreeMapper<E extends BaseTreeEntityINT
+//    , D extends BaseTreeDtoInterface
+//    , II extends BaseTreeInsertInputInterface
+//    , UI extends BaseTreeUpdateInputInterface> extends BaseMapper<E, D, II, UI> {
+public interface BaseTreeMapper<E, D, II, UI> extends BaseMapper<E, D, II, UI> {
 
 }

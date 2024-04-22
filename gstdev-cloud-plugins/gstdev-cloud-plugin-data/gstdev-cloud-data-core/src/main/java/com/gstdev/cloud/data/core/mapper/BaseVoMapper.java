@@ -8,7 +8,7 @@ import org.springframework.data.domain.PageImpl;
 
 import java.util.List;
 
-public interface BaseVoMapper<V extends BaseVo, D extends BaseDto> {
+public interface BaseVoMapper<V, D> {
 
   V toVo(D var1);
 

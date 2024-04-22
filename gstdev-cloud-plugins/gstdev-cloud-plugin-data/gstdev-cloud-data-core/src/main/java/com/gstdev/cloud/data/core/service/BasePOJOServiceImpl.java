@@ -1,10 +1,10 @@
 package com.gstdev.cloud.data.core.service;
 
 import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.base.pojo.*;
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntityINT;
 import com.gstdev.cloud.data.core.mapper.BaseMapper;
-import com.gstdev.cloud.data.core.pojo.*;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import org.springframework.data.domain.Page;
@@ -30,15 +30,15 @@ import java.util.Optional;
  * @param <PQC> xxxPageQueryCriteria
  * @param <FQC> xxxFindAllByQueryCriteria
  */
-public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT
+public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
     , ID extends Serializable
     , R extends BaseRepository<E,ID>
     , M extends BaseMapper<E, D, II, UI>
-    , D extends BaseDto
-    , II extends BaseInsertInput
-    , UI extends BaseUpdateInput
-    , PQC extends BasePageQueryCriteria
-    , FQC extends BaseFindAllByQueryCriteria> extends BaseServiceImpl<E,ID,R> implements BasePOJOService<E,ID,D, II, UI, PQC, FQC>  {
+    , D extends BaseDtoInterface<ID>
+    , II extends BaseInsertInputInterface
+    , UI extends BaseUpdateInputInterface
+    , PQC extends BasePageQueryCriteriaInterface
+    , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseServiceImpl<E,ID,R> implements BasePOJOService<E,ID,D, II, UI, PQC, FQC>  {
 
     private R repository;
 
@@ -62,9 +62,9 @@ public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT
         return mapper;
     }
 
-//    public void setMapper(M mapper) {
-//        this.mapper = mapper;
-//    }
+    public void setMapper(M mapper) {
+        this.mapper = mapper;
+    }
 //
 //    public RCLI getRedisCurrentLoginInformation() {
 //        return redisCurrentLoginInformation;

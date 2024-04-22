@@ -1,9 +1,9 @@
 package com.gstdev.cloud.rest.core.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.base.pojo.*;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntityINT;
 import com.gstdev.cloud.data.core.mapper.BaseVoMapper;
-import com.gstdev.cloud.data.core.pojo.*;
 import com.gstdev.cloud.data.core.service.BasePOJOService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,16 +11,16 @@ import org.springframework.data.domain.Pageable;
 import java.io.Serializable;
 import java.util.List;
 
-public interface POJOController<E extends BasePOJOEntityINT
+public interface POJOController<E extends BasePOJOEntityINT<ID>
     , ID extends Serializable
     , S extends BasePOJOService<E, ID, D, II, UI, PQC, FQC>
     , M extends BaseVoMapper<V, D>
-    , V extends BaseVo
-    , D extends BaseDto
-    , II extends BaseInsertInput
-    , UI extends BaseUpdateInput
-    , PQC extends BasePageQueryCriteria
-    , FQC extends BaseFindAllByQueryCriteria> extends Controller<E, ID, S> {
+    , V extends BaseVoInterface
+    , D extends BaseDtoInterface<ID>
+    , II extends BaseInsertInputInterface
+    , UI extends BaseUpdateInputInterface
+    , PQC extends BasePageQueryCriteriaInterface
+    , FQC extends BaseFindAllByQueryCriteriaInterface> extends Controller<E, ID, S> {
 
     S getService();
 
