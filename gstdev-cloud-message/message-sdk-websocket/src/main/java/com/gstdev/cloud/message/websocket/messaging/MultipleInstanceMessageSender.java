@@ -1,6 +1,6 @@
 package com.gstdev.cloud.message.websocket.messaging;
 
-import com.gstdev.cloud.commons.ass.core.context.ServiceContextHolder;
+import com.gstdev.cloud.base.core.context.ServiceContextHolder;
 import com.gstdev.cloud.message.core.constants.MessageConstants;
 import com.gstdev.cloud.message.core.definition.domain.StreamMessage;
 import com.gstdev.cloud.message.core.definition.domain.WebSocketMessage;

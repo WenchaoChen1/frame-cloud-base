@@ -10,8 +10,8 @@
 package com.gstdev.cloud.starter.oauth2.authentication.server.configuration;
 
 
-import com.gstdev.cloud.commons.ass.core.utils.ResourceUtils;
-import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
+import com.gstdev.cloud.base.core.utils.ResourceUtils;
+import com.gstdev.cloud.base.definition.constants.DefaultConstants;
 import com.gstdev.cloud.oauth2.authorization.server.configurer.OAuth2AuthenticationProviderConfigurer;
 import com.gstdev.cloud.oauth2.authorization.server.consumer.OAuth2AuthorizationCodeAuthenticationProviderConsumer;
 import com.gstdev.cloud.oauth2.authorization.server.converter.OAuth2PasswordAuthenticationConverter;
@@ -24,10 +24,6 @@ import com.gstdev.cloud.oauth2.management.response.OAuth2DeviceVerificationRespo
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.properties.OAuth2AuthorizationProperties;
 import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
-import com.gstdev.cloud.starter.oauth2.authentication.server.handler.DefaultAccessDeniedHandler;
-import com.gstdev.cloud.starter.oauth2.authentication.server.handler.DefaultAuthenticationEntryPoint;
-import com.gstdev.cloud.starter.oauth2.authentication.server.handler.DefaultAuthenticationFailureHandler;
-import com.gstdev.cloud.starter.oauth2.authentication.server.handler.DefaultAuthenticationSuccessHandler;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;

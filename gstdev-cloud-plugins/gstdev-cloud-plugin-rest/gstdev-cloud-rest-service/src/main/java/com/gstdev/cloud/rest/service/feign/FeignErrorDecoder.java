@@ -1,7 +1,7 @@
 package com.gstdev.cloud.rest.service.feign;
 
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
-import com.gstdev.cloud.commons.ass.core.json.jackson2.utils.Jackson2Utils;
+import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.base.core.json.jackson2.utils.Jackson2Utils;
 import com.gstdev.cloud.rest.core.exception.FeignDecodeIOException;
 import com.fasterxml.jackson.databind.JavaType;
 import feign.Response;

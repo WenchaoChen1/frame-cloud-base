@@ -2,7 +2,7 @@ package com.gstdev.cloud.cache.redis.enhance;
 
 import com.gstdev.cloud.cache.core.properties.CacheProperties;
 import com.gstdev.cloud.cache.core.properties.CacheSetting;
-import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
+import com.gstdev.cloud.base.definition.constants.SymbolConstants;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

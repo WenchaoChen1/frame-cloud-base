@@ -1,6 +1,6 @@
 package com.gstdev.cloud.message.mqtt.condition;
 
-import com.gstdev.cloud.commons.ass.core.context.PropertyResolver;
+import com.gstdev.cloud.base.core.context.PropertyResolver;
 import com.gstdev.cloud.message.core.constants.MessageConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

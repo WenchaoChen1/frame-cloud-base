@@ -1,10 +1,7 @@
 package com.gstdev.cloud.data.core.service;
 
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
-import com.gstdev.cloud.commons.ass.definition.domain.base.Entity;
-import com.gstdev.cloud.commons.utils.treeUtils.TreeFactory;
-import com.gstdev.cloud.data.core.base.BaseRedisCurrentLoginInformation;
-import com.gstdev.cloud.data.core.entity.BaseTreeEntity;
+import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.base.core.utils.treeUtils.TreeFactory;
 import com.gstdev.cloud.data.core.entity.BaseTreeEntityINT;
 import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
 import com.gstdev.cloud.data.core.pojo.*;

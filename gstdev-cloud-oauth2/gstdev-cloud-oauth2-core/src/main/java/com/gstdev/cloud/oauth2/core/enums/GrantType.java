@@ -2,8 +2,8 @@ package com.gstdev.cloud.oauth2.core.enums;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.common.collect.ImmutableMap;
-import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
-import com.gstdev.cloud.commons.ass.definition.enums.BaseUiEnum;
+import com.gstdev.cloud.base.definition.constants.BaseConstants;
+import com.gstdev.cloud.base.definition.enums.BaseUiEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 

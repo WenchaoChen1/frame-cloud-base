@@ -1,7 +1,6 @@
 package com.gstdev.cloud.oauth2.management.controller;
 
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
-import com.gstdev.cloud.data.core.service.WriteableService;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.oauth2.management.dto.OAuth2PermissionDto;
 import com.gstdev.cloud.oauth2.management.dto.OAuth2ScopeDto;
 import com.gstdev.cloud.oauth2.management.entity.OAuth2Permission;
@@ -18,7 +17,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.apache.commons.collections4.CollectionUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;

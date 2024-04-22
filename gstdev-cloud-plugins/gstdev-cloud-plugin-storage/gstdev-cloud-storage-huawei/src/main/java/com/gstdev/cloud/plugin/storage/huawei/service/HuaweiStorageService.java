@@ -9,7 +9,7 @@
 
 package com.gstdev.cloud.plugin.storage.huawei.service;
 
-import com.gstdev.cloud.commons.exception.BadRequestException;
+import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.plugin.storage.core.model.FileBucket;
 import com.gstdev.cloud.plugin.storage.core.model.FileObject;
 import com.gstdev.cloud.plugin.storage.core.service.AbstractFileService;
@@ -156,7 +156,7 @@ public class HuaweiStorageService extends AbstractFileService implements Storage
       try {
         client = new ObsClient(accessKey, secretKey, endpoint);
       } catch (Exception e) {
-        throw new BadRequestException(e);
+        throw new PlatformRuntimeException(e);
       }
     }
     return client;

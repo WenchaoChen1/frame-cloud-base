@@ -1,7 +1,7 @@
 package com.gstdev.cloud.cache.core.constants;
 
 
-import com.gstdev.cloud.commons.ass.definition.feedback.NotAcceptableFeedback;
+import com.gstdev.cloud.base.definition.feedback.NotAcceptableFeedback;
 
 /**
  * <p>Description: Cache 相关错误代码 </p>

@@ -1,7 +1,7 @@
 package com.gstdev.cloud.rest.protect.crypto.enhance;
 
-import com.gstdev.cloud.commons.ass.core.json.jackson2.utils.Jackson2Utils;
-import com.gstdev.cloud.commons.ass.core.utils.http.SessionUtils;
+import com.gstdev.cloud.base.core.json.jackson2.utils.Jackson2Utils;
+import com.gstdev.cloud.base.core.utils.http.SessionUtils;
 import com.gstdev.cloud.rest.core.annotation.Crypto;
 import com.gstdev.cloud.rest.core.exception.SessionInvalidException;
 import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;

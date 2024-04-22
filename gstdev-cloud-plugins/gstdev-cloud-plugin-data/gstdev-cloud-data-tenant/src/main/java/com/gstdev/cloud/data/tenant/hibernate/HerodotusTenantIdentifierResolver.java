@@ -1,6 +1,6 @@
 package com.gstdev.cloud.data.tenant.hibernate;
 
-import com.gstdev.cloud.commons.ass.core.context.TenantContextHolder;
+import com.gstdev.cloud.base.core.context.TenantContextHolder;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.context.spi.CurrentTenantIdentifierResolver;
 import org.slf4j.Logger;

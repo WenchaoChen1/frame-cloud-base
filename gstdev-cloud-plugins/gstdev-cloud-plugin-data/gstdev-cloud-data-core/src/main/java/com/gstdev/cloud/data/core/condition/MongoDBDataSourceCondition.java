@@ -1,6 +1,6 @@
 package com.gstdev.cloud.data.core.condition;
 
-import com.gstdev.cloud.commons.ass.core.context.PropertyResolver;
+import com.gstdev.cloud.base.core.context.PropertyResolver;
 import com.gstdev.cloud.data.core.constants.DataConstants;
 import com.gstdev.cloud.data.core.enums.DataSource;
 import org.apache.commons.lang3.StringUtils;

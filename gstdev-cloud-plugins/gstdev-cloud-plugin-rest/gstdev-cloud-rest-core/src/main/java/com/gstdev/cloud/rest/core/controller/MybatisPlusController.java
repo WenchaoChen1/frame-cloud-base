@@ -1,8 +1,8 @@
 package com.gstdev.cloud.rest.core.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
-import com.gstdev.cloud.commons.ass.definition.domain.base.Entity;
+import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.base.Entity;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 

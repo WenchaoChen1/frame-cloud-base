@@ -1,8 +1,8 @@
 package com.gstdev.cloud.oauth2.authorization.server.converter;
 
 
-import com.gstdev.cloud.commons.ass.core.utils.http.SessionUtils;
-import com.gstdev.cloud.commons.ass.core.utils.type.ListUtils;
+import com.gstdev.cloud.base.core.utils.http.SessionUtils;
+import com.gstdev.cloud.base.core.utils.type.ListUtils;
 import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2EndpointUtils;
 import com.gstdev.cloud.rest.core.exception.SessionInvalidException;
 import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;

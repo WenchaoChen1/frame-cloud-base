@@ -1,7 +1,7 @@
 package com.gstdev.cloud.rest.protect.crypto.processor;
 
-import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
-import com.gstdev.cloud.commons.ass.definition.domain.oauth2.SecretKey;
+import com.gstdev.cloud.base.definition.constants.SymbolConstants;
+import com.gstdev.cloud.base.definition.domain.oauth2.SecretKey;
 import com.gstdev.cloud.rest.core.definition.crypto.AsymmetricCryptoProcessor;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;

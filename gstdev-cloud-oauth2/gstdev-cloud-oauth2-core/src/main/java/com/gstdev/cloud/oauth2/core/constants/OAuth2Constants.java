@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.core.constants;
 
 
-import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
+import com.gstdev.cloud.base.definition.constants.BaseConstants;
 
 /**
  * <p>Description: OAuth2 模块通用常量 </p>

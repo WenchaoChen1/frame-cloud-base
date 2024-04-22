@@ -1,8 +1,8 @@
 package com.gstdev.cloud.captcha.core.exception;
 
 import com.gstdev.cloud.captcha.core.constants.CaptchaErrorCodes;
-import com.gstdev.cloud.commons.ass.definition.domain.Feedback;
-import com.gstdev.cloud.commons.ass.definition.exception.PlatformRuntimeException;
+import com.gstdev.cloud.base.definition.domain.Feedback;
+import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 
 /**
  * <p>Description: 验证码分类错误 </p>

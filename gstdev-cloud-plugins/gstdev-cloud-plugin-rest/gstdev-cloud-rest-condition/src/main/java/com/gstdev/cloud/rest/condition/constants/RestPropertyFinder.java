@@ -1,8 +1,8 @@
 package com.gstdev.cloud.rest.condition.constants;
 
 
-import com.gstdev.cloud.commons.ass.core.context.PropertyResolver;
-import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
+import com.gstdev.cloud.base.core.context.PropertyResolver;
+import com.gstdev.cloud.base.definition.constants.BaseConstants;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ConditionContext;
 

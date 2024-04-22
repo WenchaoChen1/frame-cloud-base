@@ -8,8 +8,8 @@
 // ====================================================
 package com.gstdev.cloud.oauth2.authorization.server.response;
 
-import com.gstdev.cloud.commons.ass.core.utils.http.SessionUtils;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.core.utils.http.SessionUtils;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.oauth2.core.exception.SecurityGlobalExceptionHandler;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

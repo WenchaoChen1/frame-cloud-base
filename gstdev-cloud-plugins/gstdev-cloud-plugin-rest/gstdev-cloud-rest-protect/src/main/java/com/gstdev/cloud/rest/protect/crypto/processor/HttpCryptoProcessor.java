@@ -2,7 +2,7 @@ package com.gstdev.cloud.rest.protect.crypto.processor;
 
 import com.gstdev.cloud.cache.core.exception.StampHasExpiredException;
 import com.gstdev.cloud.cache.jetcache.stamp.AbstractStampManager;
-import com.gstdev.cloud.commons.ass.definition.domain.oauth2.SecretKey;
+import com.gstdev.cloud.base.definition.domain.oauth2.SecretKey;
 import com.gstdev.cloud.rest.condition.constants.RestConstants;
 import com.gstdev.cloud.rest.core.definition.crypto.AsymmetricCryptoProcessor;
 import com.gstdev.cloud.rest.core.definition.crypto.SymmetricCryptoProcessor;

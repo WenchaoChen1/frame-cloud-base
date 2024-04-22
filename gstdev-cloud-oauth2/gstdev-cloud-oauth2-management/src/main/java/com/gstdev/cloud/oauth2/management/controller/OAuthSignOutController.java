@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.management.controller;
 
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.message.core.logic.event.AccountReleaseFromCacheEvent;
 import com.gstdev.cloud.oauth2.management.service.OAuth2ComplianceService;
 import io.swagger.v3.oas.annotations.Operation;

@@ -1,13 +1,8 @@
 package com.gstdev.cloud.openapi.springdoc;
 
 import com.google.common.collect.ImmutableList;
-import com.gstdev.cloud.commons.ass.core.annotation.ConditionalOnSwaggerEnabled;
-import com.gstdev.cloud.commons.ass.core.context.ServiceContextHolder;
-import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
-import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
-import io.swagger.v3.oas.annotations.security.*;
+import com.gstdev.cloud.base.core.context.ServiceContextHolder;
 import io.swagger.v3.oas.models.ExternalDocumentation;
-import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.OpenAPI;

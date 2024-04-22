@@ -1,6 +1,6 @@
 package com.gstdev.cloud.message.autoconfigure;
 
-import com.gstdev.cloud.commons.ass.definition.function.ErrorCodeMapperBuilderCustomizer;
+import com.gstdev.cloud.base.definition.function.ErrorCodeMapperBuilderCustomizer;
 import com.gstdev.cloud.message.autoconfigure.customizer.MessageErrorCodeMapperBuilderCustomizer;
 import com.gstdev.cloud.message.mqtt.annotation.EnableHerodotusMqtt;
 import com.gstdev.cloud.message.websocket.annotation.EnableHerodotusWebSocket;

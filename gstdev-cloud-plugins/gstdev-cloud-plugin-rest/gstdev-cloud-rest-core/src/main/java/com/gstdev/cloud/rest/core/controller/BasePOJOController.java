@@ -1,16 +1,11 @@
 package com.gstdev.cloud.rest.core.controller;
 
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntityINT;
 import com.gstdev.cloud.data.core.mapper.BaseVoMapper;
 import com.gstdev.cloud.data.core.pojo.*;
 import com.gstdev.cloud.data.core.service.BasePOJOService;
-import org.checkerframework.checker.guieffect.qual.UI;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * @param <S>   xxxService

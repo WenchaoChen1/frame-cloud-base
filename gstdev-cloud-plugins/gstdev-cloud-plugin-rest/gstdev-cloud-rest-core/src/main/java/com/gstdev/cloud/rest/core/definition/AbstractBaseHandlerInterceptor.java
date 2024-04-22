@@ -1,7 +1,7 @@
 package com.gstdev.cloud.rest.core.definition;
 
-import com.gstdev.cloud.commons.ass.core.utils.http.SessionUtils;
-import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
+import com.gstdev.cloud.base.core.utils.http.SessionUtils;
+import com.gstdev.cloud.base.definition.constants.SymbolConstants;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.hutool.crypto.SecureUtil;

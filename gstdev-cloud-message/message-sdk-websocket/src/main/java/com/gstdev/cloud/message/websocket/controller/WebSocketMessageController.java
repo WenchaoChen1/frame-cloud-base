@@ -1,6 +1,6 @@
 package com.gstdev.cloud.message.websocket.controller;
 
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.message.websocket.definition.WebSocketMessageSender;
 import com.gstdev.cloud.message.websocket.utils.WebSocketUtils;
 import io.swagger.v3.oas.annotations.Operation;

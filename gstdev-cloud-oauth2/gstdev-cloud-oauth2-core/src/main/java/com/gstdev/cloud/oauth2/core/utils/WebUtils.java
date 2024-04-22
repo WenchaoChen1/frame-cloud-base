@@ -8,7 +8,7 @@
 // ====================================================
 package com.gstdev.cloud.oauth2.core.utils;
 
-import com.gstdev.cloud.commons.ass.core.json.jackson2.utils.Jackson2Utils;
+import com.gstdev.cloud.base.core.json.jackson2.utils.Jackson2Utils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.collections4.CollectionUtils;

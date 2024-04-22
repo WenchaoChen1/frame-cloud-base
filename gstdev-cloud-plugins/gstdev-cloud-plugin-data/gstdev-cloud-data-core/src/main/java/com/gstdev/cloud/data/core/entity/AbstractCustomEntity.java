@@ -9,13 +9,10 @@
 
 package com.gstdev.cloud.data.core.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.InstantSerializer;
-import com.google.common.base.MoreObjects;
-import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
-import com.gstdev.cloud.commons.ass.definition.domain.base.AbstractEntity;
+import com.gstdev.cloud.base.definition.domain.base.AbstractEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -14,8 +14,6 @@ import com.gstdev.cloud.oauth2.authorization.server.configurer.OAuth2FormLoginSe
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
-import com.gstdev.cloud.starter.oauth2.authentication.server.handler.DefaultAccessDeniedHandler;
-import com.gstdev.cloud.starter.oauth2.authentication.server.handler.DefaultAuthenticationEntryPoint;
 import com.gstdev.cloud.starter.oauth2.authentication.server.service.DefaultUserDetailsService;
 import lombok.SneakyThrows;
 import org.slf4j.Logger;
@@ -24,7 +22,6 @@ import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;

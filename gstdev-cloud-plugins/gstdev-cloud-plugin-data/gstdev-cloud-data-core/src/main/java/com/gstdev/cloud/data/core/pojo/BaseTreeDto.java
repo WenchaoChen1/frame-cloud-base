@@ -1,6 +1,6 @@
 package com.gstdev.cloud.data.core.pojo;
 
-import com.gstdev.cloud.commons.utils.treeUtils.TreeNode;
+import com.gstdev.cloud.base.core.utils.treeUtils.TreeNode;
 import lombok.Getter;
 import lombok.Setter;
 

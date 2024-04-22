@@ -1,7 +1,7 @@
 package com.gstdev.cloud.cache.autoconfigure;
 
 import com.gstdev.cloud.cache.autoconfigure.customizer.CacheErrorCodeMapperBuilderCustomizer;
-import com.gstdev.cloud.commons.ass.definition.function.ErrorCodeMapperBuilderCustomizer;
+import com.gstdev.cloud.base.definition.function.ErrorCodeMapperBuilderCustomizer;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

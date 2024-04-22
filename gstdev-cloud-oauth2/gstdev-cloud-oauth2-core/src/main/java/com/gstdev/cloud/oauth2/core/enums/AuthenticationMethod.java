@@ -2,6 +2,8 @@ package com.gstdev.cloud.oauth2.core.enums;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.common.collect.ImmutableMap;
+import com.gstdev.cloud.base.definition.enums.EnumDescription;
+import com.gstdev.cloud.base.definition.enums.EnumValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 
@@ -18,7 +20,7 @@ import java.util.Map;
  */
 @Schema(title = "OAuth2 Client 认证方式")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum AuthenticationMethod implements com.gstdev.cloud.commons.ass.definition.enums.EnumValue<String>, com.gstdev.cloud.commons.ass.definition.enums.EnumDescription {
+public enum AuthenticationMethod implements EnumValue<String>, EnumDescription {
 
   /**
    * enum

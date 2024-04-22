@@ -1,6 +1,6 @@
 package com.gstdev.cloud.rest.service.feign;
 
-import com.gstdev.cloud.commons.ass.core.utils.http.HeaderUtils;
+import com.gstdev.cloud.base.core.utils.http.HeaderUtils;
 import com.gstdev.cloud.rest.core.annotation.Inner;
 import feign.MethodMetadata;
 import org.apache.commons.lang3.ObjectUtils;

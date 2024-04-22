@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.management.controller;
 
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
-import com.gstdev.cloud.commons.ass.definition.domain.oauth2.SecretKey;
+import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.oauth2.SecretKey;
 import com.gstdev.cloud.oauth2.authorization.server.dto.SignInErrorPrompt;
 import com.gstdev.cloud.oauth2.authorization.server.dto.SignInErrorStatus;
 import com.gstdev.cloud.oauth2.authorization.server.stamp.SignInFailureLimitedStampManager;

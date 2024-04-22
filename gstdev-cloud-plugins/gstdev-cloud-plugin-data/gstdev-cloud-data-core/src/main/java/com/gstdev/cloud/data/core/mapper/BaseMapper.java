@@ -1,6 +1,6 @@
 package com.gstdev.cloud.data.core.mapper;
 
-import com.gstdev.cloud.commons.ass.definition.domain.base.Entity;
+import com.gstdev.cloud.base.definition.domain.base.Entity;
 import com.gstdev.cloud.data.core.pojo.BaseDto;
 import com.gstdev.cloud.data.core.pojo.BaseInsertInput;
 import com.gstdev.cloud.data.core.pojo.BaseUpdateInput;

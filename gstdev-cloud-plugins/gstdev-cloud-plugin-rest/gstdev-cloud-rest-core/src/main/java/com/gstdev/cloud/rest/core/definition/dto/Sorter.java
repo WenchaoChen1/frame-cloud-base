@@ -1,6 +1,6 @@
 package com.gstdev.cloud.rest.core.definition.dto;
 
-import com.gstdev.cloud.commons.ass.definition.domain.base.AbstractDto;
+import com.gstdev.cloud.base.definition.domain.base.AbstractDto;
 import com.gstdev.cloud.rest.core.annotation.EnumeratedValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 

@@ -1,7 +1,7 @@
 package com.gstdev.cloud.message.core.definition.strategy;
 
-import com.gstdev.cloud.commons.ass.core.context.ServiceContextHolder;
-import com.gstdev.cloud.commons.ass.core.json.jackson2.utils.Jackson2Utils;
+import com.gstdev.cloud.base.core.context.ServiceContextHolder;
+import com.gstdev.cloud.base.core.json.jackson2.utils.Jackson2Utils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationEvent;
 

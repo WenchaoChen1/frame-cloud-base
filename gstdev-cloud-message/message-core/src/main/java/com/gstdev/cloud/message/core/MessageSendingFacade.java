@@ -1,6 +1,6 @@
 package com.gstdev.cloud.message.core;
 
-import com.gstdev.cloud.commons.ass.core.context.ServiceContextHolder;
+import com.gstdev.cloud.base.core.context.ServiceContextHolder;
 import com.gstdev.cloud.message.core.definition.event.AbstractApplicationEvent;
 import com.gstdev.cloud.message.core.definition.event.StreamMessageSendingEvent;
 import com.gstdev.cloud.message.core.definition.event.TemplateMessageSendingEvent;

@@ -1,6 +1,6 @@
 package com.gstdev.cloud.rest.condition.constants;
 
-import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
+import com.gstdev.cloud.base.definition.constants.BaseConstants;
 
 /**
  * <p>Description: Rest 模块常量 </p>

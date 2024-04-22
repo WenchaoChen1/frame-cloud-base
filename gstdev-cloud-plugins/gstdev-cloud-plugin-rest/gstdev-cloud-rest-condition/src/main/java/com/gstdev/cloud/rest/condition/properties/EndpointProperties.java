@@ -1,7 +1,7 @@
 package com.gstdev.cloud.rest.condition.properties;
 
-import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
-import com.gstdev.cloud.commons.ass.core.utils.WellFormedUtils;
+import com.gstdev.cloud.base.definition.constants.DefaultConstants;
+import com.gstdev.cloud.base.core.utils.WellFormedUtils;
 import com.gstdev.cloud.rest.condition.constants.RestConstants;
 import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;

@@ -2,9 +2,9 @@ package com.gstdev.cloud.cache.autoconfigure.customizer;
 
 
 import com.gstdev.cloud.cache.core.constants.CacheErrorCodes;
-import com.gstdev.cloud.commons.ass.definition.constants.ErrorCodeMapperBuilderOrdered;
-import com.gstdev.cloud.commons.ass.definition.function.ErrorCodeMapperBuilderCustomizer;
-import com.gstdev.cloud.commons.ass.definition.support.ErrorCodeMapperBuilder;
+import com.gstdev.cloud.base.definition.constants.ErrorCodeMapperBuilderOrdered;
+import com.gstdev.cloud.base.definition.function.ErrorCodeMapperBuilderCustomizer;
+import com.gstdev.cloud.base.definition.support.ErrorCodeMapperBuilder;
 import org.springframework.core.Ordered;
 
 /**

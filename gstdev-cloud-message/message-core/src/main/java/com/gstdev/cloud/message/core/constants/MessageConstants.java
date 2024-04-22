@@ -1,6 +1,6 @@
 package com.gstdev.cloud.message.core.constants;
 
-import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
+import com.gstdev.cloud.base.definition.constants.BaseConstants;
 
 /**
  * <p>Description: 消息模块常量 </p>

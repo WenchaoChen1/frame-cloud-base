@@ -1,7 +1,7 @@
 package com.gstdev.cloud.rest.service.feign;
 
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
-import com.gstdev.cloud.commons.ass.definition.exception.PlatformRuntimeException;
+import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 
 /**
  * <p>Description: Feign Fallback 错误统一封装器 </p>

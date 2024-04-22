@@ -2,8 +2,8 @@ package com.gstdev.cloud.sentinel.alibaba.autoconfigure;
 
 import com.alibaba.csp.sentinel.adapter.spring.webflux.callback.BlockRequestHandler;
 import com.alibaba.csp.sentinel.adapter.spring.webmvc.callback.BlockExceptionHandler;
-import com.gstdev.cloud.commons.ass.core.json.jackson2.utils.Jackson2Utils;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.core.json.jackson2.utils.Jackson2Utils;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.sentinel.alibaba.autoconfigure.enhance.BaseSentinelFeign;
 import feign.Feign;
 import jakarta.annotation.PostConstruct;

@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.resource.server.processor;
 
 
-import com.gstdev.cloud.commons.ass.core.utils.type.ListUtils;
+import com.gstdev.cloud.base.core.utils.type.ListUtils;
 import com.gstdev.cloud.oauth2.resource.server.definition.HerodotusConfigAttribute;
 import com.gstdev.cloud.oauth2.resource.server.definition.HerodotusRequest;
 import com.gstdev.cloud.oauth2.resource.server.properties.OAuth2AuthorizationProperties;

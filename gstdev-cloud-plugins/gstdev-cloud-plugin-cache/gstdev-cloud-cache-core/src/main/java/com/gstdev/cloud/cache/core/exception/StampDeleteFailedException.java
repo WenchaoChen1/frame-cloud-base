@@ -1,8 +1,8 @@
 package com.gstdev.cloud.cache.core.exception;
 
 import com.gstdev.cloud.cache.core.constants.CacheErrorCodes;
-import com.gstdev.cloud.commons.ass.definition.domain.Feedback;
-import com.gstdev.cloud.commons.ass.definition.exception.PlatformRuntimeException;
+import com.gstdev.cloud.base.definition.domain.Feedback;
+import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 
 /**
  * <p>Description: Stamp签章删除失败Exception </p>

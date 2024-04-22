@@ -1,8 +1,8 @@
 package com.gstdev.cloud.oauth2.core.exception;
 
 
-import com.gstdev.cloud.commons.ass.definition.constants.ErrorCodes;
-import com.gstdev.cloud.commons.ass.definition.domain.Feedback;
+import com.gstdev.cloud.base.definition.constants.ErrorCodes;
+import com.gstdev.cloud.base.definition.domain.Feedback;
 
 /**
  * <p> Description : 非法加密Key HerodotusException </p>

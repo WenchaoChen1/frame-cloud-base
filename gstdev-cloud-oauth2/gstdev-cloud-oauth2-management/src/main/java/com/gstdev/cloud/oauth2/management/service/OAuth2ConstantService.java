@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.management.service;
 
-import com.gstdev.cloud.commons.ass.core.enums.Database;
-import com.gstdev.cloud.commons.ass.core.enums.ServerDevice;
+import com.gstdev.cloud.base.core.enums.Database;
+import com.gstdev.cloud.base.core.enums.ServerDevice;
 import com.gstdev.cloud.oauth2.core.enums.*;
 import org.springframework.stereotype.Service;
 

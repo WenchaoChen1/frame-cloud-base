@@ -1,11 +1,10 @@
 package com.gstdev.cloud.oauth2.authorization.server.autoconfigure.status;
 
 
-import com.gstdev.cloud.commons.ass.core.context.ServiceContextHolder;
+import com.gstdev.cloud.base.core.context.ServiceContextHolder;
 import com.gstdev.cloud.message.core.logic.domain.UserStatus;
 import com.gstdev.cloud.message.core.logic.event.ChangeUserStatusEvent;
 import com.gstdev.cloud.message.core.logic.strategy.AccountStatusEventManager;
-import com.gstdev.cloud.oauth2.resource.server.autoconfigure.bus.RemoteChangeUserStatusEvent;
 
 /**
  * <p>Description: 用户状态变更处理器 </p>

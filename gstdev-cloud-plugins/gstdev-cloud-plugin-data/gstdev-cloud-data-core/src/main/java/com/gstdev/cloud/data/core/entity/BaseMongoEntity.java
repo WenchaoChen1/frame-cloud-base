@@ -1,8 +1,8 @@
 package com.gstdev.cloud.data.core.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
-import com.gstdev.cloud.commons.ass.definition.domain.base.AbstractEntity;
+import com.gstdev.cloud.base.definition.constants.DefaultConstants;
+import com.gstdev.cloud.base.definition.domain.base.AbstractEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import org.springframework.data.annotation.CreatedDate;

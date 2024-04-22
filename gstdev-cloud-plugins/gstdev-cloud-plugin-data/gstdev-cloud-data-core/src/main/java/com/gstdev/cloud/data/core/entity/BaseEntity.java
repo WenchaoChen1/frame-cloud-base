@@ -3,7 +3,7 @@ package com.gstdev.cloud.data.core.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.InstantSerializer;
-import com.gstdev.cloud.commons.ass.definition.domain.base.AbstractEntity;
+import com.gstdev.cloud.base.definition.domain.base.AbstractEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

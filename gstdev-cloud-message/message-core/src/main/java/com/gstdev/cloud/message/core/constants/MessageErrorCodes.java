@@ -1,6 +1,6 @@
 package com.gstdev.cloud.message.core.constants;
 
-import com.gstdev.cloud.commons.ass.definition.feedback.NotAcceptableFeedback;
+import com.gstdev.cloud.base.definition.feedback.NotAcceptableFeedback;
 
 /**
  * <p>Description: WebSocket 统一错误代码定义 </p>

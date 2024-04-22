@@ -1,7 +1,7 @@
 package com.gstdev.cloud.message.mqtt.configuration;
 
-import com.gstdev.cloud.commons.ass.core.utils.type.ListUtils;
-import com.gstdev.cloud.commons.ass.core.utils.type.NumberUtils;
+import com.gstdev.cloud.base.core.utils.type.ListUtils;
+import com.gstdev.cloud.base.core.utils.type.NumberUtils;
 import com.gstdev.cloud.message.core.constants.HerodotusChannels;
 import com.gstdev.cloud.message.mqtt.annotation.ConditionalOnMqttEnabled;
 import com.gstdev.cloud.message.mqtt.properties.MqttProperties;

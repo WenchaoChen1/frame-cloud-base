@@ -1,7 +1,7 @@
 package com.gstdev.cloud.data.core.service;
 
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
-import com.gstdev.cloud.commons.exception.BadRequestException;
+import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntityINT;
 import com.gstdev.cloud.data.core.mapper.BaseMapper;
 import com.gstdev.cloud.data.core.pojo.*;
@@ -167,7 +167,7 @@ public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT
     @Transactional
     public Result<D> deleteByIdToResult(ID id) {
         if (ObjectUtils.isEmpty(id)) {
-            throw new BadRequestException("The primary key cannot be empty");
+            throw new PlatformRuntimeException("The primary key cannot be empty");
         }
         deleteById(id);
         return Result.success(null);
@@ -240,14 +240,14 @@ public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT
             Object value = method.invoke(var1, new Object[]{});
             id = (ID) value;
         } catch (Exception e) {
-            throw new BadRequestException("The primary key cannot be empty");
+            throw new PlatformRuntimeException("The primary key cannot be empty");
         }
         if (id.equals("null")) {
-            throw new BadRequestException("The primary key cannot be empty");
+            throw new PlatformRuntimeException("The primary key cannot be empty");
         }
         Optional<E> byId = getRepository().findById(id);
         if (byId.isEmpty()) {
-            throw new BadRequestException("The primary key cannot be empty");
+            throw new PlatformRuntimeException("The primary key cannot be empty");
         }
         E e = null;
         if (byId.isPresent()) {

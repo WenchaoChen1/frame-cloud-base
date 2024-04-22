@@ -9,14 +9,13 @@
 
 package com.gstdev.cloud.plugin.storage.minio.service;
 
-import com.gstdev.cloud.commons.exception.BadRequestException;
+import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.plugin.storage.core.model.FileBucket;
 import com.gstdev.cloud.plugin.storage.core.model.FileObject;
 import com.gstdev.cloud.plugin.storage.core.service.AbstractFileService;
 import com.gstdev.cloud.plugin.storage.core.service.StorageService;
 import io.minio.MinioClient;
 import io.minio.PutObjectOptions;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -153,7 +152,7 @@ public class MinioStorageService extends AbstractFileService implements StorageS
       try {
         client = new MinioClient(endpoint, accessKey, secretKey);
       } catch (Exception e) {
-        throw new BadRequestException(e);
+        throw new PlatformRuntimeException(e);
       }
     }
     return client;

@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.management.controller;
 
-import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
-import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
+import com.gstdev.cloud.base.definition.constants.DefaultConstants;
+import com.gstdev.cloud.base.definition.constants.SymbolConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.stereotype.Controller;

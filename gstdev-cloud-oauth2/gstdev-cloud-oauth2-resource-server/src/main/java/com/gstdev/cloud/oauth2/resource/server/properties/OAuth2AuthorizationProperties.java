@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.resource.server.properties;
 
-import com.gstdev.cloud.commons.ass.core.enums.Target;
+import com.gstdev.cloud.base.core.enums.Target;
 import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
 import com.gstdev.cloud.oauth2.core.enums.Certificate;
 import org.springframework.boot.context.properties.ConfigurationProperties;

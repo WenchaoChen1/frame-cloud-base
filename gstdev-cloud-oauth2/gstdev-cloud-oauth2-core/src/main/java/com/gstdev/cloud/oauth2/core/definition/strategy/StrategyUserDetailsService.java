@@ -8,7 +8,7 @@
 // ====================================================
 package com.gstdev.cloud.oauth2.core.definition.strategy;
 
-import com.gstdev.cloud.commons.ass.definition.domain.oauth2.AccessPrincipal;
+import com.gstdev.cloud.base.definition.domain.oauth2.AccessPrincipal;
 import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusUser;
 import org.springframework.security.core.AuthenticationException;
 

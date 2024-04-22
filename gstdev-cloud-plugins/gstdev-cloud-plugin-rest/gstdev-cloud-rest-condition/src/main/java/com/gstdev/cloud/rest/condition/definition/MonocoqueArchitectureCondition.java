@@ -1,6 +1,6 @@
 package com.gstdev.cloud.rest.condition.definition;
 
-import com.gstdev.cloud.commons.ass.core.enums.Architecture;
+import com.gstdev.cloud.base.core.enums.Architecture;
 import com.gstdev.cloud.rest.condition.constants.RestPropertyFinder;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

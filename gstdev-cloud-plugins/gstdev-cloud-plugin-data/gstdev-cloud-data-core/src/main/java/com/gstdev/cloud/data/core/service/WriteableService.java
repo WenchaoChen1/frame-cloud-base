@@ -1,6 +1,6 @@
 package com.gstdev.cloud.data.core.service;
 
-import com.gstdev.cloud.commons.ass.definition.domain.base.Entity;
+import com.gstdev.cloud.base.definition.domain.base.Entity;
 
 import java.io.Serializable;
 import java.util.List;

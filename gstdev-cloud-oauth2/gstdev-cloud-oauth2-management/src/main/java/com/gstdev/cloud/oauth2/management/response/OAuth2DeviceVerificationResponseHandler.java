@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.management.response;
 
-import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
+import com.gstdev.cloud.base.definition.constants.DefaultConstants;
 import com.gstdev.cloud.oauth2.management.service.OAuth2DeviceService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

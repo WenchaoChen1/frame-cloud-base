@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.core.definition;
 
-import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
+import com.gstdev.cloud.base.definition.constants.BaseConstants;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 
 /**

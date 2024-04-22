@@ -3,7 +3,7 @@ package com.gstdev.cloud.captcha.core.provider;
 import com.gstdev.cloud.captcha.core.definition.enums.CaptchaResource;
 import com.gstdev.cloud.captcha.core.definition.enums.FontStyle;
 import com.gstdev.cloud.captcha.core.processor.properties.CaptchaProperties;
-import com.gstdev.cloud.commons.ass.core.utils.ResourceUtils;
+import com.gstdev.cloud.base.core.utils.ResourceUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ObjectUtils;
@@ -18,7 +18,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.core.io.Resource;
-import org.springframework.stereotype.Component;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

@@ -1,6 +1,6 @@
 package com.gstdev.cloud.rest.core.definition.context;
 
-import com.gstdev.cloud.commons.ass.core.context.ServiceContextHolder;
+import com.gstdev.cloud.base.core.context.ServiceContextHolder;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

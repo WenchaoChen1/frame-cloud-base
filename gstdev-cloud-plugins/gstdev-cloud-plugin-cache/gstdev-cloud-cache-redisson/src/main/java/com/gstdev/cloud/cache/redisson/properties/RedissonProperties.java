@@ -2,8 +2,8 @@ package com.gstdev.cloud.cache.redisson.properties;
 
 import com.google.common.base.MoreObjects;
 import com.gstdev.cloud.cache.core.constants.CacheConstants;
-import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
-import com.gstdev.cloud.commons.ass.core.enums.Protocol;
+import com.gstdev.cloud.base.definition.constants.SymbolConstants;
+import com.gstdev.cloud.base.core.enums.Protocol;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.config.ClusterServersConfig;
 import org.redisson.config.SentinelServersConfig;

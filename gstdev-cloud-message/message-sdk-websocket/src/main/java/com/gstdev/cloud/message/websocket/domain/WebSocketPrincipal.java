@@ -1,6 +1,6 @@
 package com.gstdev.cloud.message.websocket.domain;
 
-import com.gstdev.cloud.commons.ass.definition.domain.oauth2.PrincipalDetails;
+import com.gstdev.cloud.base.definition.domain.oauth2.PrincipalDetails;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 

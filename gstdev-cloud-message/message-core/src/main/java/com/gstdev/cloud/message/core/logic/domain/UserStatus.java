@@ -1,6 +1,6 @@
 package com.gstdev.cloud.message.core.logic.domain;
 
-import com.gstdev.cloud.commons.ass.definition.domain.base.AbstractEntity;
+import com.gstdev.cloud.base.definition.domain.base.AbstractEntity;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 

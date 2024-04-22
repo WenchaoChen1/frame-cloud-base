@@ -1,7 +1,7 @@
 package com.gstdev.cloud.rest.service.initializer;
 
-import com.gstdev.cloud.commons.ass.core.context.ServiceContextHolder;
-import com.gstdev.cloud.commons.ass.core.utils.WellFormedUtils;
+import com.gstdev.cloud.base.core.context.ServiceContextHolder;
+import com.gstdev.cloud.base.core.utils.WellFormedUtils;
 import com.gstdev.cloud.rest.condition.properties.EndpointProperties;
 import com.gstdev.cloud.rest.condition.properties.PlatformProperties;
 import org.apache.commons.lang3.ObjectUtils;

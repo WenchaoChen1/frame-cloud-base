@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <name>GstDev Cloud :: Base :: Core</name>
+
+
+    <parent>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-base</artifactId>
+        <version>2024.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>gstdev-cloud-base-core</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-base-definition</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+        </dependency>
+        <!--    <dependency>-->
+        <!--      <groupId>commons-io</groupId>-->
+        <!--      <artifactId>commons-io</artifactId>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>commons-codec</groupId>-->
+        <!--      <artifactId>commons-codec</artifactId>-->
+        <!--    </dependency>-->
+
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+        </dependency>
+
+        <!--    <dependency>-->
+        <!--      <groupId>me.zhyd.oauth</groupId>-->
+        <!--      <artifactId>JustAuth</artifactId>-->
+        <!--    </dependency>-->
+
+        <dependency>
+            <groupId>org.owasp.antisamy</groupId>
+            <artifactId>antisamy</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-simple</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations-jakarta</artifactId>
+            <version>2.2.20</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>transmittable-thread-local</artifactId>
+        </dependency>
+
+        <!--    <dependency>-->
+        <!--      <groupId>org.apache.skywalking</groupId>-->
+        <!--      <artifactId>apm-toolkit-logback-1.x</artifactId>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.apache.skywalking</groupId>-->
+        <!--      <artifactId>apm-toolkit-trace</artifactId>-->
+        <!--    </dependency>-->
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+
+
+
+        <!-- MapStruct related dependencies -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+        </dependency>
+
+        <!-- Hutool related dependencies -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+    </dependencies>
+</project>

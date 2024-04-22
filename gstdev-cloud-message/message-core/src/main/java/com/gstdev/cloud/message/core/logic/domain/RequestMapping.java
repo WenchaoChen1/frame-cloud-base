@@ -2,7 +2,7 @@ package com.gstdev.cloud.message.core.logic.domain;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
-import com.gstdev.cloud.commons.ass.definition.domain.base.AbstractEntity;
+import com.gstdev.cloud.base.definition.domain.base.AbstractEntity;
 
 /**
  * <p>Description: Controller 请求注解元数据封装实体 </p>

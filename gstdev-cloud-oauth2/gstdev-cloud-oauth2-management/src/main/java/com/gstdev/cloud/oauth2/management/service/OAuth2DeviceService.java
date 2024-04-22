@@ -1,7 +1,6 @@
 package com.gstdev.cloud.oauth2.management.service;
 
-import com.gstdev.cloud.commons.ass.core.exception.transaction.TransactionalRollbackException;
-import com.gstdev.cloud.data.core.repository.BaseRepository;
+import com.gstdev.cloud.base.core.exception.transaction.TransactionalRollbackException;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.oauth2.data.jpa.repository.HerodotusRegisteredClientRepository;
 import com.gstdev.cloud.oauth2.management.converter.OAuth2DeviceToRegisteredClientConverter;

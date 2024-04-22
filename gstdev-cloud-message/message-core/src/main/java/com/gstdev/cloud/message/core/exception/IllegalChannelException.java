@@ -1,7 +1,7 @@
 package com.gstdev.cloud.message.core.exception;
 
-import com.gstdev.cloud.commons.ass.definition.domain.Feedback;
-import com.gstdev.cloud.commons.ass.definition.exception.PlatformRuntimeException;
+import com.gstdev.cloud.base.definition.domain.Feedback;
+import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.message.core.constants.MessageErrorCodes;
 
 /**

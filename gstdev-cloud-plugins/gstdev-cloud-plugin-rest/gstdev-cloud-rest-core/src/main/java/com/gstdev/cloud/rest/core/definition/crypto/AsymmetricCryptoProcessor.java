@@ -1,6 +1,6 @@
 package com.gstdev.cloud.rest.core.definition.crypto;
 
-import com.gstdev.cloud.commons.ass.definition.domain.oauth2.SecretKey;
+import com.gstdev.cloud.base.definition.domain.oauth2.SecretKey;
 
 /**
  * <p>Description: 非对称加密 </p>

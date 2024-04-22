@@ -3,7 +3,7 @@ package com.gstdev.cloud.oauth2.core.enums;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.common.collect.ImmutableMap;
-import com.gstdev.cloud.commons.ass.definition.enums.BaseUiEnum;
+import com.gstdev.cloud.base.definition.enums.BaseUiEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.ArrayList;

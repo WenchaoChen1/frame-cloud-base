@@ -1,6 +1,6 @@
 package com.gstdev.cloud.data.core.service;
 
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntityINT;
 import com.gstdev.cloud.data.core.pojo.*;
 import org.springframework.data.domain.Page;

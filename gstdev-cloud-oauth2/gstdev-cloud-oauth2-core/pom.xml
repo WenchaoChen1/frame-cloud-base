@@ -18,7 +18,7 @@
   <dependencies>
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-commons</artifactId>
+        <artifactId>gstdev-cloud-base-core</artifactId>
     </dependency>
     <dependency>
       <groupId>com.gstdev.cloud</groupId>

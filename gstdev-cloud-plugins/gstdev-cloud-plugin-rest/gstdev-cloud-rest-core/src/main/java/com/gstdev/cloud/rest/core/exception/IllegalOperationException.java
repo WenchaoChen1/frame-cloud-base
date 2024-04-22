@@ -1,7 +1,7 @@
 package com.gstdev.cloud.rest.core.exception;
 
 
-import com.gstdev.cloud.commons.ass.definition.exception.PlatformRuntimeException;
+import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 
 /**
  * <p>Description: 非法操作Exception </p>

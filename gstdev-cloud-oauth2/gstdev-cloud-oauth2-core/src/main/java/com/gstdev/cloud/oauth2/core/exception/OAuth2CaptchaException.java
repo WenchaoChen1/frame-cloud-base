@@ -1,10 +1,10 @@
 package com.gstdev.cloud.oauth2.core.exception;
 
 
-import com.gstdev.cloud.commons.ass.definition.constants.ErrorCodes;
-import com.gstdev.cloud.commons.ass.definition.domain.Feedback;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
-import com.gstdev.cloud.commons.ass.definition.exception.HerodotusException;
+import com.gstdev.cloud.base.definition.constants.ErrorCodes;
+import com.gstdev.cloud.base.definition.domain.Feedback;
+import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.base.definition.exception.HerodotusException;
 import org.springframework.security.authentication.AccountStatusException;
 import org.springframework.security.core.Authentication;
 

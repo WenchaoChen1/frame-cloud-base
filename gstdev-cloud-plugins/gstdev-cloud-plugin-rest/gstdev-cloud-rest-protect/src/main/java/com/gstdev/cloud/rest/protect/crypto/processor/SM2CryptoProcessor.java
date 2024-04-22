@@ -1,6 +1,6 @@
 package com.gstdev.cloud.rest.protect.crypto.processor;
 
-import com.gstdev.cloud.commons.ass.definition.domain.oauth2.SecretKey;
+import com.gstdev.cloud.base.definition.domain.oauth2.SecretKey;
 import com.gstdev.cloud.rest.core.definition.crypto.AsymmetricCryptoProcessor;
 import org.bouncycastle.crypto.engines.SM2Engine;
 import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPublicKey;

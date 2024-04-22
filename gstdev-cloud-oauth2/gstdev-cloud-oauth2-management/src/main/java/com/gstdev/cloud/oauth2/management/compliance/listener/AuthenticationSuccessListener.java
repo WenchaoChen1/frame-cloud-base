@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.management.compliance.listener;
 
-import com.gstdev.cloud.commons.ass.definition.domain.oauth2.PrincipalDetails;
+import com.gstdev.cloud.base.definition.domain.oauth2.PrincipalDetails;
 import com.gstdev.cloud.oauth2.authorization.server.stamp.SignInFailureLimitedStampManager;
 import com.gstdev.cloud.oauth2.management.service.OAuth2ComplianceService;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,7 +1,6 @@
 package com.gstdev.cloud.oauth2.management.controller;
 
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
-import com.gstdev.cloud.data.core.service.WriteableService;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.oauth2.management.entity.OAuth2Compliance;
 import com.gstdev.cloud.oauth2.management.service.OAuth2ComplianceService;
 import com.gstdev.cloud.rest.core.controller.BaseController;
@@ -14,7 +13,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.validation.constraints.NotBlank;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

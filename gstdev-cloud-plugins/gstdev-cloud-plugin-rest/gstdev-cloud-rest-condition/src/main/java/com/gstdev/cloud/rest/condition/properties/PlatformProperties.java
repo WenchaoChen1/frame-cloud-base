@@ -1,8 +1,8 @@
 package com.gstdev.cloud.rest.condition.properties;
 
-import com.gstdev.cloud.commons.ass.core.enums.Architecture;
-import com.gstdev.cloud.commons.ass.core.enums.Protocol;
-import com.gstdev.cloud.commons.ass.core.enums.Target;
+import com.gstdev.cloud.base.core.enums.Architecture;
+import com.gstdev.cloud.base.core.enums.Protocol;
+import com.gstdev.cloud.base.core.enums.Target;
 import com.gstdev.cloud.rest.condition.constants.RestConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

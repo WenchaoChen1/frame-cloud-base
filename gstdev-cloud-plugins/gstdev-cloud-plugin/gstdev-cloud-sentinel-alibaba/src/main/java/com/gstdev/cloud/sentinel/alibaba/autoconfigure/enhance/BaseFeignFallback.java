@@ -1,9 +1,9 @@
 package com.gstdev.cloud.sentinel.alibaba.autoconfigure.enhance;
 
 import com.google.common.base.Objects;
-import com.gstdev.cloud.commons.ass.core.exception.GlobalExceptionHandler;
-import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.core.exception.GlobalExceptionHandler;
+import com.gstdev.cloud.base.definition.constants.SymbolConstants;
+import com.gstdev.cloud.base.definition.domain.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cglib.proxy.MethodInterceptor;

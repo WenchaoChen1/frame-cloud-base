@@ -1,8 +1,8 @@
 package com.gstdev.cloud.rest.core.controller;
 
-import com.gstdev.cloud.commons.ass.definition.constants.DefaultConstants;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
-import com.gstdev.cloud.commons.ass.definition.domain.base.Entity;
+import com.gstdev.cloud.base.definition.constants.DefaultConstants;
+import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.base.Entity;
 import com.gstdev.cloud.data.core.service.BaseService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;

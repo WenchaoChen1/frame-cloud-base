@@ -1,7 +1,7 @@
 package com.gstdev.cloud.captcha.behavior.renderer;
 
 import com.gstdev.cloud.captcha.core.definition.domain.Coordinate;
-import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
+import com.gstdev.cloud.base.definition.constants.SymbolConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.hutool.core.util.RandomUtil;
 

@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.data.jpa.entity;
 
 import com.google.common.base.MoreObjects;
-import com.gstdev.cloud.commons.ass.definition.domain.base.AbstractEntity;
+import com.gstdev.cloud.base.definition.domain.base.AbstractEntity;
 import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
 import com.gstdev.cloud.oauth2.data.jpa.generator.HerodotusAuthorizationUuidGenerator;
 import jakarta.persistence.*;

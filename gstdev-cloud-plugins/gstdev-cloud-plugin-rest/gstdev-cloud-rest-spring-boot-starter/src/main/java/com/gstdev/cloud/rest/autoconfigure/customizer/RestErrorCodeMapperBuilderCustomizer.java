@@ -1,8 +1,8 @@
 package com.gstdev.cloud.rest.autoconfigure.customizer;
 
-import com.gstdev.cloud.commons.ass.definition.constants.ErrorCodeMapperBuilderOrdered;
-import com.gstdev.cloud.commons.ass.definition.function.ErrorCodeMapperBuilderCustomizer;
-import com.gstdev.cloud.commons.ass.definition.support.ErrorCodeMapperBuilder;
+import com.gstdev.cloud.base.definition.constants.ErrorCodeMapperBuilderOrdered;
+import com.gstdev.cloud.base.definition.function.ErrorCodeMapperBuilderCustomizer;
+import com.gstdev.cloud.base.definition.support.ErrorCodeMapperBuilder;
 import com.gstdev.cloud.rest.core.constants.RestErrorCodes;
 import org.springframework.core.Ordered;
 

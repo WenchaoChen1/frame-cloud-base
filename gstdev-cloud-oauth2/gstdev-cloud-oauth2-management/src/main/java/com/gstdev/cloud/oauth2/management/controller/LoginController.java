@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.management.controller;
 
-import com.gstdev.cloud.commons.ass.core.utils.http.SessionUtils;
+import com.gstdev.cloud.base.core.utils.http.SessionUtils;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.core.utils.SymmetricUtils;
 import jakarta.servlet.http.HttpServletRequest;

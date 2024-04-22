@@ -1,6 +1,6 @@
 package com.gstdev.cloud.rest.service.processor;
 
-import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
+import com.gstdev.cloud.base.definition.constants.SymbolConstants;
 import com.gstdev.cloud.message.core.logic.strategy.RequestMappingScanEventManager;
 import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
 import com.gstdev.cloud.rest.condition.constants.RestPropertyFinder;

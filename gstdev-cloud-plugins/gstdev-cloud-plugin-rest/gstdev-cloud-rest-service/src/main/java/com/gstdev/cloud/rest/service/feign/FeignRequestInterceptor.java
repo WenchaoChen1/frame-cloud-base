@@ -1,9 +1,9 @@
 package com.gstdev.cloud.rest.service.feign;
 
 import com.google.common.net.HttpHeaders;
-import com.gstdev.cloud.commons.ass.core.context.TenantContextHolder;
-import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
-import com.gstdev.cloud.commons.ass.core.utils.http.HeaderUtils;
+import com.gstdev.cloud.base.core.context.TenantContextHolder;
+import com.gstdev.cloud.base.definition.constants.SymbolConstants;
+import com.gstdev.cloud.base.core.utils.http.HeaderUtils;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import jakarta.servlet.http.HttpServletRequest;

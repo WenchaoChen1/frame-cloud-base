@@ -1,6 +1,6 @@
 package com.gstdev.cloud.message.websocket.condition;
 
-import com.gstdev.cloud.commons.ass.core.context.PropertyResolver;
+import com.gstdev.cloud.base.core.context.PropertyResolver;
 import com.gstdev.cloud.message.core.constants.MessageConstants;
 import com.gstdev.cloud.message.websocket.enums.InstanceMode;
 import org.apache.commons.lang3.StringUtils;

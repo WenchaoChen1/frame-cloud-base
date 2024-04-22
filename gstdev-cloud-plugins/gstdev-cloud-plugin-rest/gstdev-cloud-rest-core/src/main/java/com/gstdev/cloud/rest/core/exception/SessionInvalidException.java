@@ -1,8 +1,8 @@
 package com.gstdev.cloud.rest.core.exception;
 
 import com.gstdev.cloud.rest.core.constants.RestErrorCodes;
-import com.gstdev.cloud.commons.ass.definition.domain.Feedback;
-import com.gstdev.cloud.commons.ass.definition.exception.PlatformRuntimeException;
+import com.gstdev.cloud.base.definition.domain.Feedback;
+import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 
 /**
  * <p>Description: Session 不可用错误 </p>

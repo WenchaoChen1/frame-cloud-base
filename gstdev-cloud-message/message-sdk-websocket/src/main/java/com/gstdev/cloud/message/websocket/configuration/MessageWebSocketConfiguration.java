@@ -5,7 +5,7 @@ import com.gstdev.cloud.message.websocket.annotation.ConditionalOnMultipleWebSoc
 import com.gstdev.cloud.message.websocket.annotation.ConditionalOnSingleWebSocketInstance;
 import com.gstdev.cloud.message.websocket.definition.WebSocketMessageSender;
 import com.gstdev.cloud.message.websocket.interceptor.WebSocketAuthenticationHandshakeInterceptor;
-import com.gstdev.cloud.commons.ass.core.support.BearerTokenResolver;
+import com.gstdev.cloud.base.core.support.BearerTokenResolver;
 import com.gstdev.cloud.message.websocket.messaging.*;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;

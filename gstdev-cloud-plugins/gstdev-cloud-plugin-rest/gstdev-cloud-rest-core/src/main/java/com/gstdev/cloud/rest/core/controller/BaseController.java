@@ -1,10 +1,8 @@
 package com.gstdev.cloud.rest.core.controller;
 
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
-import com.gstdev.cloud.commons.ass.definition.domain.base.AbstractEntity;
-import com.gstdev.cloud.commons.ass.definition.domain.base.Entity;
+import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.base.Entity;
 import com.gstdev.cloud.data.core.service.BaseService;
-import com.gstdev.cloud.data.core.service.ReadableService;
 import com.gstdev.cloud.rest.core.annotation.AccessLimited;
 import com.gstdev.cloud.rest.core.annotation.Idempotent;
 import com.gstdev.cloud.rest.core.definition.dto.Pager;
@@ -16,13 +14,11 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.apache.commons.lang3.ArrayUtils;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Map;
 
 /**

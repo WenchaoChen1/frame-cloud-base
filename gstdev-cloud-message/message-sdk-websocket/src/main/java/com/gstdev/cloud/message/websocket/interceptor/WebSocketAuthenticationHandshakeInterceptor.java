@@ -1,9 +1,9 @@
 package com.gstdev.cloud.message.websocket.interceptor;
 
-import com.gstdev.cloud.commons.ass.core.support.BearerTokenResolver;
-import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
-import com.gstdev.cloud.commons.ass.definition.constants.SymbolConstants;
-import com.gstdev.cloud.commons.ass.definition.domain.oauth2.PrincipalDetails;
+import com.gstdev.cloud.base.core.support.BearerTokenResolver;
+import com.gstdev.cloud.base.definition.constants.BaseConstants;
+import com.gstdev.cloud.base.definition.constants.SymbolConstants;
+import com.gstdev.cloud.base.definition.domain.oauth2.PrincipalDetails;
 import com.gstdev.cloud.message.websocket.utils.WebSocketUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

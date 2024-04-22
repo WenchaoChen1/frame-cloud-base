@@ -1,7 +1,7 @@
 package com.gstdev.cloud.message.websocket.interceptor;
 
-import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
-import com.gstdev.cloud.commons.ass.definition.domain.oauth2.PrincipalDetails;
+import com.gstdev.cloud.base.definition.constants.BaseConstants;
+import com.gstdev.cloud.base.definition.domain.oauth2.PrincipalDetails;
 import com.gstdev.cloud.message.websocket.domain.WebSocketPrincipal;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;

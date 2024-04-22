@@ -8,7 +8,7 @@
 // ====================================================
 package com.gstdev.cloud.oauth2.authorization.server.dto;
 
-import com.gstdev.cloud.commons.ass.definition.domain.base.AbstractEntity;
+import com.gstdev.cloud.base.definition.domain.base.AbstractEntity;
 
 /**
  * <p>Description: 用户错误状态信息 </p>
