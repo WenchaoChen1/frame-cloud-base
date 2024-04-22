@@ -20,21 +20,21 @@
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-base-core</artifactId>
         </dependency>
-        <!-- MapStruct related dependencies -->
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct-processor</artifactId>
-        </dependency>
+<!--        &lt;!&ndash; MapStruct related dependencies &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.mapstruct</groupId>-->
+<!--            <artifactId>mapstruct</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.mapstruct</groupId>-->
+<!--            <artifactId>mapstruct-processor</artifactId>-->
+<!--        </dependency>-->
 
-        <!-- Hutool related dependencies -->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-        </dependency>
+<!--        &lt;!&ndash; Hutool related dependencies &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>cn.hutool</groupId>-->
+<!--            <artifactId>hutool-all</artifactId>-->
+<!--        </dependency>-->
         <!--    &lt;!&ndash; Jackson related dependencies &ndash;&gt;-->
         <!--    <dependency>-->
         <!--      <groupId>com.fasterxml.jackson.core</groupId>-->
@@ -82,81 +82,81 @@
 
 
         <!--========================================= d ===============================================-->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
-        </dependency>
-        <!-- Apache commons related dependencies -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <!--    <dependency>-->
-        <!--      <groupId>org.apache.commons</groupId>-->
-        <!--      <artifactId>commons-pool2</artifactId>-->
-        <!--    </dependency>-->
-        <!--    <dependency>-->
-        <!--      <groupId>org.apache.httpcomponents.client5</groupId>-->
-        <!--      <artifactId>httpclient5</artifactId>-->
-        <!--    </dependency>-->
-        <!-- Guava related dependencies -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
-        <!--    <dependency>-->
-        <!--      <groupId>com.google.code.gson</groupId>-->
-        <!--      <artifactId>gson</artifactId>-->
-        <!--    </dependency>-->
-        <!--    <dependency>-->
-        <!--      <groupId>com.google.zxing</groupId>-->
-        <!--      <artifactId>core</artifactId>-->
-        <!--    </dependency>-->
-        <!--    <dependency>-->
-        <!--      <groupId>com.fasterxml.jackson.dataformat</groupId>-->
-        <!--      <artifactId>jackson-dataformat-yaml</artifactId>-->
-        <!--    </dependency>-->
-        <!--    <dependency>-->
-        <!--      <groupId>com.fasterxml.jackson.datatype</groupId>-->
-        <!--      <artifactId>jackson-datatype-jsr310</artifactId>-->
-        <!--    </dependency>-->
-        <!--    <dependency>-->
-        <!--      <groupId>com.fasterxml.jackson.datatype</groupId>-->
-        <!--      <artifactId>jackson-datatype-jdk8</artifactId>-->
-        <!--    </dependency>-->
-        <!--    <dependency>-->
-        <!--      <groupId>com.fasterxml.jackson.module</groupId>-->
-        <!--      <artifactId>jackson-module-kotlin</artifactId>-->
-        <!--    </dependency>-->
-        <!--    <dependency>-->
-        <!--      <groupId>cn.zhxu</groupId>-->
-        <!--      <artifactId>okhttps-jackson</artifactId>-->
-        <!--    </dependency>-->
-        <!--    <dependency>-->
-        <!--      <groupId>cn.zhxu</groupId>-->
-        <!--      <artifactId>okhttps-gson</artifactId>-->
-        <!--    </dependency>-->
-        <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-core-jakarta</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.dromara.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-        </dependency>
-        <!--    &lt;!&ndash;指定 bouncycastle 相关依赖，避免依赖第三方携带 bouncycastle 相关包，产生 hutool 不同版本 crypto 不兼容问题，以及抛出DefaultBufferedBlockCipher问题&ndash;&gt;-->
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcpkix-jdk18on</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk18on</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.annotation</groupId>
-            <artifactId>jakarta.annotation-api</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.commons</groupId>-->
+<!--            <artifactId>commons-collections4</artifactId>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; Apache commons related dependencies &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.commons</groupId>-->
+<!--            <artifactId>commons-lang3</artifactId>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;    <dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <groupId>org.apache.commons</groupId>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <artifactId>commons-pool2</artifactId>&ndash;&gt;-->
+<!--        &lt;!&ndash;    </dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <groupId>org.apache.httpcomponents.client5</groupId>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <artifactId>httpclient5</artifactId>&ndash;&gt;-->
+<!--        &lt;!&ndash;    </dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash; Guava related dependencies &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.google.guava</groupId>-->
+<!--            <artifactId>guava</artifactId>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;    <dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <groupId>com.google.code.gson</groupId>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <artifactId>gson</artifactId>&ndash;&gt;-->
+<!--        &lt;!&ndash;    </dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <groupId>com.google.zxing</groupId>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <artifactId>core</artifactId>&ndash;&gt;-->
+<!--        &lt;!&ndash;    </dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <groupId>com.fasterxml.jackson.dataformat</groupId>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <artifactId>jackson-dataformat-yaml</artifactId>&ndash;&gt;-->
+<!--        &lt;!&ndash;    </dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <groupId>com.fasterxml.jackson.datatype</groupId>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <artifactId>jackson-datatype-jsr310</artifactId>&ndash;&gt;-->
+<!--        &lt;!&ndash;    </dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <groupId>com.fasterxml.jackson.datatype</groupId>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <artifactId>jackson-datatype-jdk8</artifactId>&ndash;&gt;-->
+<!--        &lt;!&ndash;    </dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <groupId>com.fasterxml.jackson.module</groupId>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <artifactId>jackson-module-kotlin</artifactId>&ndash;&gt;-->
+<!--        &lt;!&ndash;    </dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <groupId>cn.zhxu</groupId>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <artifactId>okhttps-jackson</artifactId>&ndash;&gt;-->
+<!--        &lt;!&ndash;    </dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;    <dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <groupId>cn.zhxu</groupId>&ndash;&gt;-->
+<!--        &lt;!&ndash;      <artifactId>okhttps-gson</artifactId>&ndash;&gt;-->
+<!--        &lt;!&ndash;    </dependency>&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>io.swagger.core.v3</groupId>-->
+<!--            <artifactId>swagger-core-jakarta</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.dromara.hutool</groupId>-->
+<!--            <artifactId>hutool-all</artifactId>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;    &lt;!&ndash;指定 bouncycastle 相关依赖，避免依赖第三方携带 bouncycastle 相关包，产生 hutool 不同版本 crypto 不兼容问题，以及抛出DefaultBufferedBlockCipher问题&ndash;&gt;&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.bouncycastle</groupId>-->
+<!--            <artifactId>bcpkix-jdk18on</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.bouncycastle</groupId>-->
+<!--            <artifactId>bcprov-jdk18on</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>jakarta.annotation</groupId>-->
+<!--            <artifactId>jakarta.annotation-api</artifactId>-->
+<!--        </dependency>-->
 <!--        &lt;!&ndash;========================================= core ===============================================&ndash;&gt;-->
 <!--        &lt;!&ndash;    <dependency>&ndash;&gt;-->
 <!--        &lt;!&ndash;      <groupId>cn.herodotus.engine</groupId>&ndash;&gt;-->
