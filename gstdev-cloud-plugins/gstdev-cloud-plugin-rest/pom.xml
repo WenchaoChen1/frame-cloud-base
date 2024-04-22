@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <name>GstDev Cloud :: Plugin :: Rest</name>
+    <description>${project.name}</description>
+    <artifactId>gstdev-cloud-plugin-rest</artifactId>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-plugins</artifactId>
+        <version>2024.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+
+    <modules>
+        <module>gstdev-cloud-rest-core</module>
+        <module>gstdev-cloud-rest-protect</module>
+        <module>gstdev-cloud-rest-service</module>
+        <module>gstdev-cloud-rest-spring-boot-starter</module>
+        <module>gstdev-cloud-web-server-spring-boot-starter</module>
+        <module>gstdev-cloud-rest-condition</module>
+    </modules>
+
+    <dependencies>
+        <!-- GstDevCloud related dependencies -->
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-commons</artifactId>
+        </dependency>
+    </dependencies>
+</project>

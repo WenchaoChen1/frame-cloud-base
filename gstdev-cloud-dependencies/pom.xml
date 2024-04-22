@@ -141,7 +141,7 @@
             </dependency>
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-web</artifactId>
+                <artifactId>gstdev-cloud-plugin-rest</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
             <dependency>
@@ -174,11 +174,6 @@
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
                 <artifactId>gstdev-cloud-oauth2-core</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
             <dependency>
@@ -228,44 +223,47 @@
                 <artifactId>message-sdk-mqtt</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
-            <!--=========================================== web ===========================================-->
+
+
+            <!--=========================================== plugins ===========================================-->
+            <!--=========================================== plugins-rest ===========================================-->
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
-                <artifactId>rest-core</artifactId>
+                <artifactId>gstdev-cloud-rest-core</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
-                <artifactId>rest-sdk-protect</artifactId>
+                <artifactId>gstdev-cloud-rest-protect</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
-                <artifactId>rest-sdk-service</artifactId>
+                <artifactId>gstdev-cloud-rest-service</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
-                <artifactId>rest-spring-boot-starter</artifactId>
+                <artifactId>gstdev-cloud-rest-spring-boot-starter</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
-                <artifactId>web-server-spring-boot-starter</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>rest-sdk-condition</artifactId>
+                <artifactId>gstdev-cloud-web-server-spring-boot-starter</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
 
-            <!--=========================================== plugins ===========================================-->
+
             <!--=========================================== plugins-cache ===================================-->
 
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
                 <artifactId>gstdev-cloud-cache-core</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-rest-condition</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
             <dependency>

@@ -5,14 +5,14 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.gstdev.cloud</groupId>
-    <artifactId>gstdev-cloud-web</artifactId>
+    <artifactId>gstdev-cloud-plugin-rest</artifactId>
     <version>2024.0.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <packaging>jar</packaging>
 
 
-  <artifactId>web-server-spring-boot-starter</artifactId>
+  <artifactId>gstdev-cloud-web-server-spring-boot-starter</artifactId>
 
 
   <description>Dante Cloud 基础 WebServer 配置模块</description>

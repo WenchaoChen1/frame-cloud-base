@@ -39,6 +39,7 @@ public abstract class BaseController<E extends Entity, ID extends Serializable, 
     public BaseController(S service) {
         this.service = service;
     }
+
     /**
      * 获取Service
      *
@@ -69,6 +70,7 @@ public abstract class BaseController<E extends Entity, ID extends Serializable, 
             return Controller.super.findByPage(pager.getPageNumber(), pager.getPageSize());
         }
     }
+
     @Idempotent
     @Operation(summary = "保存或更新数据", description = "接收JSON数据，转换为实体，进行保存或更新",
         requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),

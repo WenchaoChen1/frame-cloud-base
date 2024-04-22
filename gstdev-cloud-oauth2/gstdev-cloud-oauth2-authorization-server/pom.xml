@@ -23,7 +23,7 @@
     </dependency>
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>rest-sdk-protect</artifactId>
+      <artifactId>gstdev-cloud-rest-protect</artifactId>
     </dependency>
 
     <!-- Spring Security related dependencies -->

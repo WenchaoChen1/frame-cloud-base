@@ -5,19 +5,19 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.gstdev.cloud</groupId>
-    <artifactId>gstdev-cloud-web</artifactId>
+    <artifactId>gstdev-cloud-plugin-rest</artifactId>
     <version>2024.0.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <packaging>jar</packaging>
 
 
-  <artifactId>rest-sdk-condition</artifactId>
+  <artifactId>gstdev-cloud-rest-condition</artifactId>
 
   <dependencies>
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>rest-core</artifactId>
+      <artifactId>gstdev-cloud-rest-core</artifactId>
     </dependency>
   </dependencies>
 

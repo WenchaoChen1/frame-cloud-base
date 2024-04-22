@@ -24,5 +24,6 @@
         <module>gstdev-cloud-plugin-openapi</module>
         <module>gstdev-cloud-plugin-captcha</module>
         <module>gstdev-cloud-plugin-cache</module>
+        <module>gstdev-cloud-plugin-rest</module>
     </modules>
 </project>

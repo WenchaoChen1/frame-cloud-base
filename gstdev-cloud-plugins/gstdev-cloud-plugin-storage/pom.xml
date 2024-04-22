@@ -17,11 +17,11 @@
   </parent>
 
   <modules>
-    <module>gstdev-cloud-plugin-storage-core</module>
-    <module>gstdev-cloud-plugin-storage-minio</module>
-    <module>gstdev-cloud-plugin-storage-aliyun</module>
-    <module>gstdev-cloud-plugin-storage-huawei</module>
-    <module>gstdev-cloud-plugin-storage-aws</module>
+    <module>gstdev-cloud-storage-core</module>
+    <module>gstdev-cloud-storage-minio</module>
+    <module>gstdev-cloud-storage-aliyun</module>
+    <module>gstdev-cloud-storage-huawei</module>
+    <module>gstdev-cloud-storage-aws</module>
   </modules>
 
   <dependencies>
