@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gstdev.cloud.base.core.json.jackson2.utils.JsonNodeUtils;
 import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusGrantedAuthority;
-import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusUser;
+import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
@@ -30,7 +30,7 @@ import java.util.Set;
  * @author : cc
  * @date : 2022/2/17 21:01
  */
-public class HerodotusUserDeserializer extends JsonDeserializer<HerodotusUser> {
+public class HerodotusUserDeserializer extends JsonDeserializer<DefaultSecurityUser> {
 
   private static final TypeReference<Set<HerodotusGrantedAuthority>> HERODOTUS_GRANTED_AUTHORITY_SET = new TypeReference<Set<HerodotusGrantedAuthority>>() {
   };
@@ -50,7 +50,7 @@ public class HerodotusUserDeserializer extends JsonDeserializer<HerodotusUser> {
    * @throws JsonProcessingException if an error during JSON processing occurs
    */
   @Override
-  public HerodotusUser deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+  public DefaultSecurityUser deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
     ObjectMapper mapper = (ObjectMapper) jp.getCodec();
     JsonNode jsonNode = mapper.readTree(jp);
     Set<? extends GrantedAuthority> authorities = mapper.convertValue(jsonNode.get("authorities"), HERODOTUS_GRANTED_AUTHORITY_SET);
@@ -65,7 +65,7 @@ public class HerodotusUserDeserializer extends JsonDeserializer<HerodotusUser> {
     boolean accountNonLocked = JsonNodeUtils.findBooleanValue(jsonNode, "accountNonLocked");
     String employeeId = JsonNodeUtils.findStringValue(jsonNode, "employeeId");
     String avatar = JsonNodeUtils.findStringValue(jsonNode, "avatar");
-    HerodotusUser result = new HerodotusUser(userId, username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities, roles, employeeId, avatar);
+    DefaultSecurityUser result = new DefaultSecurityUser(userId, username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities, roles, employeeId, avatar);
     if (passwordNode.asText(null) == null) {
       result.eraseCredentials();
     }

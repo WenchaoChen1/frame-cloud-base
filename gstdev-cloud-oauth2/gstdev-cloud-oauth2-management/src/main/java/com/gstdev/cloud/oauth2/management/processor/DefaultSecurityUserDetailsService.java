@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.management.processor;
 
 import com.gstdev.cloud.base.definition.domain.oauth2.AccessPrincipal;
-import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusUser;
+import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.oauth2.core.definition.service.EnhanceUserDetailsService;
 import com.gstdev.cloud.oauth2.core.definition.strategy.StrategyUserDetailsService;
 import org.apache.commons.lang3.StringUtils;
@@ -25,13 +25,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
  * @author : cc
  * @date : 2019/11/25 11:02
  */
-public class HerodotusUserDetailsService implements EnhanceUserDetailsService {
+public class DefaultSecurityUserDetailsService implements EnhanceUserDetailsService {
 
-  private static final Logger log = LoggerFactory.getLogger(HerodotusUserDetailsService.class);
+  private static final Logger log = LoggerFactory.getLogger(DefaultSecurityUserDetailsService.class);
 
   private final StrategyUserDetailsService strategyUserDetailsService;
 
-  public HerodotusUserDetailsService(StrategyUserDetailsService strategyUserDetailsService) {
+  public DefaultSecurityUserDetailsService(StrategyUserDetailsService strategyUserDetailsService) {
     this.strategyUserDetailsService = strategyUserDetailsService;
   }
 
@@ -45,14 +45,14 @@ public class HerodotusUserDetailsService implements EnhanceUserDetailsService {
 
   @Override
   public UserDetails loadUserBySocial(String source, AccessPrincipal accessPrincipal) throws UsernameNotFoundException {
-    HerodotusUser HerodotusUser = strategyUserDetailsService.findUserDetailsBySocial(StringUtils.toRootUpperCase(source), accessPrincipal);
+    DefaultSecurityUser HerodotusUser = strategyUserDetailsService.findUserDetailsBySocial(StringUtils.toRootUpperCase(source), accessPrincipal);
     log.debug("[GstDev Cloud] |- UserDetailsService loaded social user : [{}]", HerodotusUser.getUsername());
     return HerodotusUser;
   }
 
   @Override
-  public HerodotusUser loadHerodotusUserByUsername(String username) throws UsernameNotFoundException {
-    HerodotusUser HerodotusUser = strategyUserDetailsService.findUserDetailsByUsername(username);
+  public DefaultSecurityUser loadHerodotusUserByUsername(String username) throws UsernameNotFoundException {
+    DefaultSecurityUser HerodotusUser = strategyUserDetailsService.findUserDetailsByUsername(username);
     log.debug("[GstDev Cloud] |- UserDetailsService loaded user : [{}]", username);
     return HerodotusUser;
   }

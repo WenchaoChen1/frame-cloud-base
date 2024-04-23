@@ -4,7 +4,7 @@ import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.message.core.logic.domain.UserStatus;
 import com.gstdev.cloud.message.core.logic.strategy.AccountStatusEventManager;
 import com.gstdev.cloud.oauth2.authorization.server.stamp.LockedUserDetailsStampManager;
-import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusUser;
+import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.oauth2.core.definition.service.EnhanceUserDetailsService;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -39,7 +39,7 @@ public class OAuth2AccountStatusManager {
 
   private String getUserId(String username) {
     EnhanceUserDetailsService enhanceUserDetailsService = getUserDetailsService();
-    HerodotusUser user = enhanceUserDetailsService.loadHerodotusUserByUsername(username);
+    DefaultSecurityUser user = enhanceUserDetailsService.loadHerodotusUserByUsername(username);
     if (ObjectUtils.isNotEmpty(user)) {
       return user.getUserId();
     }

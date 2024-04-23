@@ -9,7 +9,7 @@
 package com.gstdev.cloud.oauth2.core.definition.service;
 
 import com.gstdev.cloud.base.definition.domain.oauth2.AccessPrincipal;
-import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusUser;
+import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -39,8 +39,8 @@ public interface EnhanceUserDetailsService extends UserDetailsService {
    * 系统用户名
    *
    * @param username 用户账号
-   * @return {@link HerodotusUser}
+   * @return {@link DefaultSecurityUser}
    * @throws UsernameNotFoundException 用户不存在
    */
-  HerodotusUser loadHerodotusUserByUsername(String username) throws UsernameNotFoundException;
+  DefaultSecurityUser loadHerodotusUserByUsername(String username) throws UsernameNotFoundException;
 }

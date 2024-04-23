@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.gstdev.cloud.base.core.json.jackson2.Jackson2Constants;
 import com.gstdev.cloud.oauth2.core.definition.details.FormLoginWebAuthenticationDetails;
 import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusGrantedAuthority;
-import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusUser;
+import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import org.springframework.security.jackson2.SecurityJackson2Modules;
 
 /**
@@ -22,7 +22,7 @@ public class HerodotusJackson2Module extends SimpleModule {
   @Override
   public void setupModule(SetupContext context) {
     SecurityJackson2Modules.enableDefaultTyping(context.getOwner());
-    context.setMixInAnnotations(HerodotusUser.class, HerodotusUserMixin.class);
+    context.setMixInAnnotations(DefaultSecurityUser.class, HerodotusUserMixin.class);
     context.setMixInAnnotations(HerodotusGrantedAuthority.class, HerodotusGrantedAuthorityMixin.class);
     context.setMixInAnnotations(FormLoginWebAuthenticationDetails.class, FormLoginWebAuthenticationDetailsMixin.class);
   }

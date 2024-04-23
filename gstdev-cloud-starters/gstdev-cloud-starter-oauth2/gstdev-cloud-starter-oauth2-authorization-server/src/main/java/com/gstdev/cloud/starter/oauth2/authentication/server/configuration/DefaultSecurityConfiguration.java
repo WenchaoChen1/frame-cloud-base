@@ -12,9 +12,10 @@ package com.gstdev.cloud.starter.oauth2.authentication.server.configuration;
 import com.gstdev.cloud.captcha.core.processor.CaptchaRendererFactory;
 import com.gstdev.cloud.oauth2.authorization.server.configurer.OAuth2FormLoginSecureConfigurer;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
+import com.gstdev.cloud.oauth2.core.definition.strategy.StrategyUserDetailsService;
+import com.gstdev.cloud.oauth2.management.processor.DefaultSecurityUserDetailsService;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
-import com.gstdev.cloud.starter.oauth2.authentication.server.service.DefaultUserDetailsService;
 import lombok.SneakyThrows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -120,12 +121,12 @@ public class DefaultSecurityConfiguration {
    */
   @Bean
   @ConditionalOnMissingBean
-  public UserDetailsService userDetailsService() {
-//  public UserDetailsService userDetailsService(StrategyUserDetailsService strategyUserDetailsService) {
-//    HerodotusUserDetailsService herodotusUserDetailsService = new HerodotusUserDetailsService(strategyUserDetailsService);
+//  public UserDetailsService userDetailsService() {
+  public UserDetailsService userDetailsService(StrategyUserDetailsService strategyUserDetailsService) {
+    DefaultSecurityUserDetailsService herodotusUserDetailsService = new DefaultSecurityUserDetailsService(strategyUserDetailsService);
     log.debug("[GstDev Cloud] |- Bean [GstDev Cloud User Details Service] Auto Configure.");
-    return new DefaultUserDetailsService();
-//    return herodotusUserDetailsService;
+//    return new DefaultUserDetailsService();
+    return herodotusUserDetailsService;
   }
 
 //  @Bean

@@ -9,7 +9,7 @@
 package com.gstdev.cloud.oauth2.authorization.server.customizer;
 
 import com.gstdev.cloud.base.definition.constants.BaseConstants;
-import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusUser;
+import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -67,7 +67,7 @@ public abstract class AbstractTokenCustomizer {
 
     // 添加用户信息到attributes中
     private void putUserInfo(Map<String, Object> attributes, Object object) {
-        if (ObjectUtils.isNotEmpty(object) && object instanceof HerodotusUser principal) {
+        if (ObjectUtils.isNotEmpty(object) && object instanceof DefaultSecurityUser principal) {
             attributes.put(BaseConstants.OPEN_ID, principal.getUserId());
             attributes.put(BaseConstants.ROLES, principal.getRoles());
             attributes.put(BaseConstants.AVATAR, principal.getAvatar());

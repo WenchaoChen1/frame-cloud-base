@@ -9,7 +9,7 @@
 package com.gstdev.cloud.oauth2.core.definition.strategy;
 
 import com.gstdev.cloud.base.definition.domain.oauth2.AccessPrincipal;
-import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusUser;
+import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import org.springframework.security.core.AuthenticationException;
 
 /**
@@ -20,7 +20,7 @@ import org.springframework.security.core.AuthenticationException;
  */
 public interface StrategyUserDetailsService {
 
-  HerodotusUser findUserDetailsByUsername(String username) throws AuthenticationException;
+  DefaultSecurityUser findUserDetailsByUsername(String username) throws AuthenticationException;
 
-  HerodotusUser findUserDetailsBySocial(String source, AccessPrincipal accessPrincipal) throws AuthenticationException;
+  DefaultSecurityUser findUserDetailsBySocial(String source, AccessPrincipal accessPrincipal) throws AuthenticationException;
 }
