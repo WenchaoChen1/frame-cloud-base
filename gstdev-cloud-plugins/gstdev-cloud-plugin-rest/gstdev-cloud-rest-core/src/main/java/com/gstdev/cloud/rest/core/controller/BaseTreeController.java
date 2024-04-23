@@ -31,8 +31,4 @@ public abstract class BaseTreeController<E extends BaseTreeEntityINT<ID>
     public BaseTreeController(S service, M mapper) {
         super(service, mapper);
     }
-
-    public BaseTreeController(S service) {
-        super(service);
-    }
 }

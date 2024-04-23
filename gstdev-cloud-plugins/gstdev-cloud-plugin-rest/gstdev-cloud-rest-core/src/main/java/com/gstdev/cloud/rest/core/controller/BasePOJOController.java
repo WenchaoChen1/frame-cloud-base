@@ -30,7 +30,6 @@ public abstract class BasePOJOController<E extends BasePOJOEntityINT<ID>
         super(service);
     }
 
-    protected S service;
 
     private M mapper;
 
@@ -46,14 +45,5 @@ public abstract class BasePOJOController<E extends BasePOJOEntityINT<ID>
     public void setMapper(M mapper) {
         this.mapper = mapper;
     }
-
-    public S getService() {
-        return this.service;
-    }
-
-    public void setService(S service) {
-        this.service = service;
-    }
-
 
 }
