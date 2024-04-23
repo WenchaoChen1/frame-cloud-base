@@ -32,19 +32,16 @@ public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application,
 
   private final RegisteredClientRepository registeredClientRepository;
   private final HerodotusRegisteredClientRepository herodotusRegisteredClientRepository;
-  private final OAuth2ApplicationRepository applicationRepository;
+  private  OAuth2ApplicationRepository applicationRepository;
   private final Converter<OAuth2Application, RegisteredClient> objectConverter;
 
-  public OAuth2ApplicationService(RegisteredClientRepository registeredClientRepository, HerodotusRegisteredClientRepository herodotusRegisteredClientRepository, OAuth2ApplicationRepository applicationRepository) {
-    this.registeredClientRepository = registeredClientRepository;
-    this.herodotusRegisteredClientRepository = herodotusRegisteredClientRepository;
-    this.applicationRepository = applicationRepository;
+  public OAuth2ApplicationService(RegisteredClientRepository registeredClientRepository, RegisteredClientRepository registeredClientRepository1, HerodotusRegisteredClientRepository herodotusRegisteredClientRepository, OAuth2ApplicationRepository applicationRepository) {
+      super(applicationRepository);
+      this.registeredClientRepository = registeredClientRepository1;
+      this.herodotusRegisteredClientRepository = herodotusRegisteredClientRepository;
     this.objectConverter = new OAuth2ApplicationToRegisteredClientConverter();
   }
 
-  public OAuth2ApplicationRepository getRepository() {
-    return this.applicationRepository;
-  }
 
   @Override
   public OAuth2Application saveAndFlush(OAuth2Application entity) {

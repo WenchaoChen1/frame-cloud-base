@@ -18,16 +18,12 @@ import java.util.Set;
 @Service
 public class OAuth2ScopeService extends BaseServiceImpl<OAuth2Scope, String,OAuth2ScopeRepository> {
 
-    private final OAuth2ScopeRepository oauthScopesRepository;
+    private  OAuth2ScopeRepository oauthScopesRepository;
 
     public OAuth2ScopeService(OAuth2ScopeRepository oauthScopesRepository) {
-        this.oauthScopesRepository = oauthScopesRepository;
+        super(oauthScopesRepository);
     }
 
-
-    public OAuth2ScopeRepository getRepository() {
-        return oauthScopesRepository;
-    }
 
     public OAuth2Scope assigned(String scopeId, Set<OAuth2Permission> permissions) {
 

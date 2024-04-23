@@ -21,29 +21,29 @@ import java.util.Optional;
  * @date : 2022/2/25 21:02
  */
 @Service
-public class HerodotusAuthorizationConsentService extends BaseServiceImpl<HerodotusAuthorizationConsent, HerodotusAuthorizationConsentId,HerodotusAuthorizationConsentRepository> {
+public class HerodotusAuthorizationConsentService extends BaseServiceImpl<HerodotusAuthorizationConsent, HerodotusAuthorizationConsentId, HerodotusAuthorizationConsentRepository> {
 
-  private static final Logger log = LoggerFactory.getLogger(HerodotusAuthorizationConsentService.class);
+    private static final Logger log = LoggerFactory.getLogger(HerodotusAuthorizationConsentService.class);
 
-  private final HerodotusAuthorizationConsentRepository authorizationConsentRepository;
+    private HerodotusAuthorizationConsentRepository authorizationConsentRepository;
 
-  @Autowired
-  public HerodotusAuthorizationConsentService(HerodotusAuthorizationConsentRepository authorizationConsentRepository) {
-    this.authorizationConsentRepository = authorizationConsentRepository;
-  }
+    @Autowired
+    public HerodotusAuthorizationConsentService(HerodotusAuthorizationConsentRepository authorizationConsentRepository) {
+        super(authorizationConsentRepository);
+    }
 
-  public HerodotusAuthorizationConsentRepository getRepository() {
-    return this.authorizationConsentRepository;
-  }
+    public HerodotusAuthorizationConsentRepository getRepository() {
+        return this.authorizationConsentRepository;
+    }
 
-  public Optional<HerodotusAuthorizationConsent> findByRegisteredClientIdAndPrincipalName(String registeredClientId, String principalName) {
-    Optional<HerodotusAuthorizationConsent> result = this.authorizationConsentRepository.findByRegisteredClientIdAndPrincipalName(registeredClientId, principalName);
-    log.trace("[GstDev Cloud] |- HerodotusAuthorizationConsent Service findByRegisteredClientIdAndPrincipalName.");
-    return result;
-  }
+    public Optional<HerodotusAuthorizationConsent> findByRegisteredClientIdAndPrincipalName(String registeredClientId, String principalName) {
+        Optional<HerodotusAuthorizationConsent> result = this.authorizationConsentRepository.findByRegisteredClientIdAndPrincipalName(registeredClientId, principalName);
+        log.trace("[GstDev Cloud] |- HerodotusAuthorizationConsent Service findByRegisteredClientIdAndPrincipalName.");
+        return result;
+    }
 
-  public void deleteByRegisteredClientIdAndPrincipalName(String registeredClientId, String principalName) {
-    this.authorizationConsentRepository.deleteByRegisteredClientIdAndPrincipalName(registeredClientId, principalName);
-    log.trace("[GstDev Cloud] |- HerodotusAuthorizationConsent Service deleteByRegisteredClientIdAndPrincipalName.");
-  }
+    public void deleteByRegisteredClientIdAndPrincipalName(String registeredClientId, String principalName) {
+        this.authorizationConsentRepository.deleteByRegisteredClientIdAndPrincipalName(registeredClientId, principalName);
+        log.trace("[GstDev Cloud] |- HerodotusAuthorizationConsent Service deleteByRegisteredClientIdAndPrincipalName.");
+    }
 }

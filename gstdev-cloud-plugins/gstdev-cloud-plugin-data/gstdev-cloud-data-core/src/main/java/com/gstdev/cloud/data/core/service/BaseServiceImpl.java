@@ -32,8 +32,12 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable,
      *
      * @return {@link BaseRepository}
      */
-    R getRepository() {
+    public R getRepository() {
         return baseRepository;
+    }
+
+    public BaseServiceImpl(R baseRepository) {
+        this.baseRepository = baseRepository;
     }
 
     /**

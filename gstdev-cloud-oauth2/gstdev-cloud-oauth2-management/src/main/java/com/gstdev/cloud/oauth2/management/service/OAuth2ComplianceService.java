@@ -35,10 +35,10 @@ public class OAuth2ComplianceService extends BaseServiceImpl<OAuth2Compliance, S
 
   private static final Logger log = LoggerFactory.getLogger(OAuth2ComplianceService.class);
 
-  private final OAuth2ComplianceRepository complianceRepository;
+  private  OAuth2ComplianceRepository complianceRepository;
 
   public OAuth2ComplianceService(OAuth2ComplianceRepository complianceRepository) {
-    this.complianceRepository = complianceRepository;
+      super(complianceRepository);
   }
 
 //  public OAuth2ComplianceRepository getRepository() {

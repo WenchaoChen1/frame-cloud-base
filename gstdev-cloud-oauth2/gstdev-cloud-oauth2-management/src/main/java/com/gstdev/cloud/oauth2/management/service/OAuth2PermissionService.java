@@ -21,15 +21,12 @@ import java.util.List;
 @Service
 public class OAuth2PermissionService extends BaseServiceImpl<OAuth2Permission, String,OAuth2PermissionRepository> {
 
-  private final OAuth2PermissionRepository authorityRepository;
+  private  OAuth2PermissionRepository authorityRepository;
 
   public OAuth2PermissionService(OAuth2PermissionRepository authorityRepository) {
-    this.authorityRepository = authorityRepository;
+      super(authorityRepository);
   }
 
-  public OAuth2PermissionRepository getRepository() {
-    return authorityRepository;
-  }
 
     @Override
     public OAuth2Permission findById(String s) {

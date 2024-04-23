@@ -34,21 +34,18 @@ public class OAuth2DeviceService extends BaseServiceImpl<OAuth2Device, String,OA
 
   private final RegisteredClientRepository registeredClientRepository;
   private final HerodotusRegisteredClientRepository herodotusRegisteredClientRepository;
-  private final OAuth2DeviceRepository deviceRepository;
+  private  OAuth2DeviceRepository deviceRepository;
   private final Converter<OAuth2Device, RegisteredClient> oauth2DeviceToRegisteredClientConverter;
   private final Converter<RegisteredClient, OAuth2Device> registeredClientToOAuth2DeviceConverter;
 
   public OAuth2DeviceService(RegisteredClientRepository registeredClientRepository, HerodotusRegisteredClientRepository herodotusRegisteredClientRepository, OAuth2DeviceRepository deviceRepository, OAuth2ScopeService scopeService) {
-    this.registeredClientRepository = registeredClientRepository;
+      super(deviceRepository);
+      this.registeredClientRepository = registeredClientRepository;
     this.herodotusRegisteredClientRepository = herodotusRegisteredClientRepository;
-    this.deviceRepository = deviceRepository;
     this.oauth2DeviceToRegisteredClientConverter = new OAuth2DeviceToRegisteredClientConverter();
     this.registeredClientToOAuth2DeviceConverter = new RegisteredClientToOAuth2DeviceConverter(scopeService);
   }
 
-  public OAuth2DeviceRepository getRepository() {
-    return deviceRepository;
-  }
 
   @Transactional(rollbackFor = TransactionalRollbackException.class)
   @Override

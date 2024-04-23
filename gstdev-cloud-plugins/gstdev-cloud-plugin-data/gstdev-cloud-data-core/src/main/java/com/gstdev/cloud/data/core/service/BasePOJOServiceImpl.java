@@ -40,22 +40,13 @@ public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
     , PQC extends BasePageQueryCriteriaInterface
     , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseServiceImpl<E,ID,R> implements BasePOJOService<E,ID,D, II, UI, PQC, FQC>  {
 
-    private R repository;
 
     private M mapper;
 
 
     public BasePOJOServiceImpl(R repository, M mapper) {
-        this.repository = repository;
+        super(repository);
         this.mapper = mapper;
-    }
-
-    public R getRepository() {
-        return repository;
-    }
-
-    public void setRepository(R repository) {
-        this.repository = repository;
     }
 
     public M getMapper() {
