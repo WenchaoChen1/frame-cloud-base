@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.data.jpa.generator;
 
 import com.gstdev.cloud.data.core.identifier.AbstractUuidGenerator;
-import com.gstdev.cloud.oauth2.data.jpa.entity.HerodotusAuthorization;
+import com.gstdev.cloud.oauth2.data.jpa.entity.DefaultOauth2Authorization;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.HibernateException;
@@ -31,7 +31,7 @@ public class HerodotusAuthorizationUuidGeneratorType extends AbstractUuidGenerat
       throw new HibernateException(new NullPointerException());
     }
 
-    HerodotusAuthorization HerodotusAuthorization = (HerodotusAuthorization) object;
+    DefaultOauth2Authorization HerodotusAuthorization = (DefaultOauth2Authorization) object;
 
     if (StringUtils.isEmpty(HerodotusAuthorization.getId())) {
       return super.generate(session, object);

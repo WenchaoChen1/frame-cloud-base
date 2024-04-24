@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.data.jpa.generator;
 
 import com.gstdev.cloud.data.core.identifier.AbstractUuidGenerator;
-import com.gstdev.cloud.oauth2.data.jpa.entity.HerodotusRegisteredClient;
+import com.gstdev.cloud.oauth2.data.jpa.entity.DefaultOauth2RegisteredClient;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.HibernateException;
@@ -30,7 +30,7 @@ public class HerodotusRegisteredClientUuidGeneratorType extends AbstractUuidGene
       throw new HibernateException(new NullPointerException());
     }
 
-    HerodotusRegisteredClient herodotusRegisteredClient = (HerodotusRegisteredClient) object;
+    DefaultOauth2RegisteredClient herodotusRegisteredClient = (DefaultOauth2RegisteredClient) object;
 
     if (StringUtils.isEmpty(herodotusRegisteredClient.getId())) {
       return super.generate(session, object);

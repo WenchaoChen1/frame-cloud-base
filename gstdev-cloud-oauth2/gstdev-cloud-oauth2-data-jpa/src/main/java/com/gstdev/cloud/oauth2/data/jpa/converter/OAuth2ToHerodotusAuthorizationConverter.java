@@ -2,9 +2,8 @@ package com.gstdev.cloud.oauth2.data.jpa.converter;
 
 import com.gstdev.cloud.base.definition.constants.SymbolConstants;
 import com.gstdev.cloud.oauth2.data.jpa.definition.converter.AbstractOAuth2EntityConverter;
-import com.gstdev.cloud.oauth2.data.jpa.entity.HerodotusAuthorization;
+import com.gstdev.cloud.oauth2.data.jpa.entity.DefaultOauth2Authorization;
 import com.gstdev.cloud.oauth2.data.jpa.jackson2.OAuth2JacksonProcessor;
-import org.dromara.hutool.core.date.DateUtil;
 import org.springframework.security.oauth2.core.*;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
@@ -12,7 +11,7 @@ import org.springframework.security.oauth2.server.authorization.OAuth2Authorizat
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationCode;
 import org.springframework.util.StringUtils;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.function.Consumer;
 
 /**
@@ -21,15 +20,15 @@ import java.util.function.Consumer;
  * @author : cc
  * @date : 2023/5/21 20:57
  */
-public class OAuth2ToHerodotusAuthorizationConverter extends AbstractOAuth2EntityConverter<OAuth2Authorization, HerodotusAuthorization> {
+public class OAuth2ToHerodotusAuthorizationConverter extends AbstractOAuth2EntityConverter<OAuth2Authorization, DefaultOauth2Authorization> {
 
   public OAuth2ToHerodotusAuthorizationConverter(OAuth2JacksonProcessor jacksonProcessor) {
     super(jacksonProcessor);
   }
 
   @Override
-  public HerodotusAuthorization convert(OAuth2Authorization authorization) {
-    HerodotusAuthorization entity = new HerodotusAuthorization();
+  public DefaultOauth2Authorization convert(OAuth2Authorization authorization) {
+    DefaultOauth2Authorization entity = new DefaultOauth2Authorization();
     entity.setId(authorization.getId());
     entity.setRegisteredClientId(authorization.getRegisteredClientId());
     entity.setPrincipalName(authorization.getPrincipalName());
@@ -110,14 +109,14 @@ public class OAuth2ToHerodotusAuthorizationConverter extends AbstractOAuth2Entit
   private void setTokenValues(
     OAuth2Authorization.Token<?> token,
     Consumer<String> tokenValueConsumer,
-    Consumer<LocalDateTime> issuedAtConsumer,
-    Consumer<LocalDateTime> expiresAtConsumer,
+    Consumer<Instant> issuedAtConsumer,
+    Consumer<Instant> expiresAtConsumer,
     Consumer<String> metadataConsumer) {
     if (token != null) {
       OAuth2Token oAuth2Token = token.getToken();
       tokenValueConsumer.accept(oAuth2Token.getTokenValue());
-      issuedAtConsumer.accept(DateUtil.toLocalDateTime(oAuth2Token.getIssuedAt()));
-      expiresAtConsumer.accept(DateUtil.toLocalDateTime(oAuth2Token.getExpiresAt()));
+      issuedAtConsumer.accept(oAuth2Token.getIssuedAt());
+      expiresAtConsumer.accept(oAuth2Token.getExpiresAt());
       metadataConsumer.accept(writeMap(token.getMetadata()));
     }
   }

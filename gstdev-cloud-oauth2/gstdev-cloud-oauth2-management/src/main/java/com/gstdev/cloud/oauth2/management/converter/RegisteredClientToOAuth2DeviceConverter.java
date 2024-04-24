@@ -46,8 +46,8 @@ public class RegisteredClientToOAuth2DeviceConverter implements Converter<Regist
     device.setScopes(getOAuth2Scopes(registeredClient.getScopes()));
     device.setClientId(registeredClient.getClientId());
     device.setClientSecret(registeredClient.getClientSecret());
-    device.setClientIdIssuedAt(DateUtil.toLocalDateTime(registeredClient.getClientIdIssuedAt()));
-    device.setClientSecretExpiresAt(DateUtil.toLocalDateTime(registeredClient.getClientSecretExpiresAt()));
+    device.setClientIdIssuedAt(registeredClient.getClientIdIssuedAt());
+    device.setClientSecretExpiresAt(registeredClient.getClientSecretExpiresAt());
     device.setClientAuthenticationMethods(StringUtils.collectionToCommaDelimitedString(registeredClient.getClientAuthenticationMethods()));
     device.setAuthorizationGrantTypes(StringUtils.collectionToCommaDelimitedString(registeredClient.getAuthorizationGrantTypes().stream().map(AuthorizationGrantType::getValue).collect(Collectors.toSet())));
     device.setRedirectUris(StringUtils.collectionToCommaDelimitedString(registeredClient.getRedirectUris()));

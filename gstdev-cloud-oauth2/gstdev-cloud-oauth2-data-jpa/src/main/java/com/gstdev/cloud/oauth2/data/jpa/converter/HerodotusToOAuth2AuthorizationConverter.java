@@ -2,7 +2,7 @@ package com.gstdev.cloud.oauth2.data.jpa.converter;
 
 import com.gstdev.cloud.oauth2.core.utils.OAuth2AuthorizationUtils;
 import com.gstdev.cloud.oauth2.data.jpa.definition.converter.AbstractOAuth2EntityConverter;
-import com.gstdev.cloud.oauth2.data.jpa.entity.HerodotusAuthorization;
+import com.gstdev.cloud.oauth2.data.jpa.entity.DefaultOauth2Authorization;
 import com.gstdev.cloud.oauth2.data.jpa.jackson2.OAuth2JacksonProcessor;
 import org.dromara.hutool.core.date.DateUtil;
 import org.springframework.dao.DataRetrievalFailureException;
@@ -24,7 +24,7 @@ import org.springframework.util.StringUtils;
  * @author : cc
  * @date : 2023/5/21 20:53
  */
-public class HerodotusToOAuth2AuthorizationConverter extends AbstractOAuth2EntityConverter<HerodotusAuthorization, OAuth2Authorization> {
+public class HerodotusToOAuth2AuthorizationConverter extends AbstractOAuth2EntityConverter<DefaultOauth2Authorization, OAuth2Authorization> {
 
   private final RegisteredClientRepository registeredClientRepository;
 
@@ -34,7 +34,7 @@ public class HerodotusToOAuth2AuthorizationConverter extends AbstractOAuth2Entit
   }
 
   @Override
-  public OAuth2Authorization convert(HerodotusAuthorization entity) {
+  public OAuth2Authorization convert(DefaultOauth2Authorization entity) {
     RegisteredClient registeredClient = this.registeredClientRepository.findById(entity.getRegisteredClientId());
     if (registeredClient == null) {
       throw new DataRetrievalFailureException(

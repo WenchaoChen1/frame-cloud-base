@@ -22,7 +22,7 @@ import java.util.Objects;
   @Index(name = "oauth2_registered_client_cid_idx", columnList = "client_id")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_REGISTERED_CLIENT)
-public class HerodotusRegisteredClient extends AbstractRegisteredClient {
+public class DefaultOauth2RegisteredClient extends AbstractRegisteredClient {
 
   @Id
   @HerodotusRegisteredClientUuidGenerator
@@ -114,7 +114,7 @@ public class HerodotusRegisteredClient extends AbstractRegisteredClient {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HerodotusRegisteredClient that = (HerodotusRegisteredClient) o;
+    DefaultOauth2RegisteredClient that = (DefaultOauth2RegisteredClient) o;
     return Objects.equals(id, that.id);
   }
 

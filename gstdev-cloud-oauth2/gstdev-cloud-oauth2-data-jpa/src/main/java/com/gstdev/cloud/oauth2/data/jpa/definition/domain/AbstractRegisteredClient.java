@@ -13,7 +13,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.LocalDateTime;
+import java.time.Instant ;
 
 /**
  * <p>Description: 多实例共用 RegisteredClient属性 </p>
@@ -28,12 +28,12 @@ public abstract class AbstractRegisteredClient extends BaseSysEntity implements 
   @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT, locale = "GMT+8", shape = JsonFormat.Shape.STRING)
   @Column(name = "client_id_issued_at", nullable = false, updatable = false)
   @CreationTimestamp
-  private LocalDateTime clientIdIssuedAt;
+  private Instant  clientIdIssuedAt;
 
   @Schema(name = "客户端秘钥过期时间", title = "客户端秘钥过期时间")
   @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT, locale = "GMT+8", shape = JsonFormat.Shape.STRING)
   @Column(name = "client_secret_expires_at")
-  private LocalDateTime clientSecretExpiresAt;
+  private Instant  clientSecretExpiresAt;
 
   @Schema(name = "客户端认证模式", title = "支持多个值，以逗号分隔", requiredMode = Schema.RequiredMode.REQUIRED)
   @Column(name = "client_authentication_methods", nullable = false, length = 1000)
@@ -56,20 +56,20 @@ public abstract class AbstractRegisteredClient extends BaseSysEntity implements 
   private String postLogoutRedirectUris;
 
   @Override
-  public LocalDateTime getClientIdIssuedAt() {
+  public Instant  getClientIdIssuedAt() {
     return clientIdIssuedAt;
   }
 
-  public void setClientIdIssuedAt(LocalDateTime clientIdIssuedAt) {
+  public void setClientIdIssuedAt(Instant  clientIdIssuedAt) {
     this.clientIdIssuedAt = clientIdIssuedAt;
   }
 
   @Override
-  public LocalDateTime getClientSecretExpiresAt() {
+  public Instant  getClientSecretExpiresAt() {
     return clientSecretExpiresAt;
   }
 
-  public void setClientSecretExpiresAt(LocalDateTime clientSecretExpiresAt) {
+  public void setClientSecretExpiresAt(Instant  clientSecretExpiresAt) {
     this.clientSecretExpiresAt = clientSecretExpiresAt;
   }
 

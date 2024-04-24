@@ -1,8 +1,7 @@
 package com.gstdev.cloud.oauth2.data.jpa.service;
 
-import com.gstdev.cloud.data.core.repository.BaseRepository;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
-import com.gstdev.cloud.oauth2.data.jpa.entity.HerodotusAuthorizationConsent;
+import com.gstdev.cloud.oauth2.data.jpa.entity.DefaultOauth2AuthorizationConsent;
 import com.gstdev.cloud.oauth2.data.jpa.generator.HerodotusAuthorizationConsentId;
 import com.gstdev.cloud.oauth2.data.jpa.repository.HerodotusAuthorizationConsentRepository;
 import org.slf4j.Logger;
@@ -21,14 +20,14 @@ import java.util.Optional;
  * @date : 2022/2/25 21:02
  */
 @Service
-public class HerodotusAuthorizationConsentService extends BaseServiceImpl<HerodotusAuthorizationConsent, HerodotusAuthorizationConsentId, HerodotusAuthorizationConsentRepository> {
+public class DefaultOauth2AuthorizationConsentService extends BaseServiceImpl<DefaultOauth2AuthorizationConsent, HerodotusAuthorizationConsentId, HerodotusAuthorizationConsentRepository> {
 
-    private static final Logger log = LoggerFactory.getLogger(HerodotusAuthorizationConsentService.class);
+    private static final Logger log = LoggerFactory.getLogger(DefaultOauth2AuthorizationConsentService.class);
 
     private HerodotusAuthorizationConsentRepository authorizationConsentRepository;
 
     @Autowired
-    public HerodotusAuthorizationConsentService(HerodotusAuthorizationConsentRepository authorizationConsentRepository) {
+    public DefaultOauth2AuthorizationConsentService(HerodotusAuthorizationConsentRepository authorizationConsentRepository) {
         super(authorizationConsentRepository);
     }
 
@@ -36,8 +35,8 @@ public class HerodotusAuthorizationConsentService extends BaseServiceImpl<Herodo
         return this.authorizationConsentRepository;
     }
 
-    public Optional<HerodotusAuthorizationConsent> findByRegisteredClientIdAndPrincipalName(String registeredClientId, String principalName) {
-        Optional<HerodotusAuthorizationConsent> result = this.authorizationConsentRepository.findByRegisteredClientIdAndPrincipalName(registeredClientId, principalName);
+    public Optional<DefaultOauth2AuthorizationConsent> findByRegisteredClientIdAndPrincipalName(String registeredClientId, String principalName) {
+        Optional<DefaultOauth2AuthorizationConsent> result = this.authorizationConsentRepository.findByRegisteredClientIdAndPrincipalName(registeredClientId, principalName);
         log.trace("[GstDev Cloud] |- HerodotusAuthorizationConsent Service findByRegisteredClientIdAndPrincipalName.");
         return result;
     }

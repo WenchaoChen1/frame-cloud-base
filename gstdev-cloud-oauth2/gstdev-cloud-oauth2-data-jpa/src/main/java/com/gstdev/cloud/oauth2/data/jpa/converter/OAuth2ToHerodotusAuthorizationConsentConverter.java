@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.data.jpa.converter;
 
-import com.gstdev.cloud.oauth2.data.jpa.entity.HerodotusAuthorizationConsent;
+import com.gstdev.cloud.oauth2.data.jpa.entity.DefaultOauth2AuthorizationConsent;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsent;
@@ -15,10 +15,10 @@ import java.util.Set;
  * @author : cc
  * @date : 2023/5/21 21:05
  */
-public class OAuth2ToHerodotusAuthorizationConsentConverter implements Converter<OAuth2AuthorizationConsent, HerodotusAuthorizationConsent> {
+public class OAuth2ToHerodotusAuthorizationConsentConverter implements Converter<OAuth2AuthorizationConsent, DefaultOauth2AuthorizationConsent> {
   @Override
-  public HerodotusAuthorizationConsent convert(OAuth2AuthorizationConsent authorizationConsent) {
-    HerodotusAuthorizationConsent entity = new HerodotusAuthorizationConsent();
+  public DefaultOauth2AuthorizationConsent convert(OAuth2AuthorizationConsent authorizationConsent) {
+    DefaultOauth2AuthorizationConsent entity = new DefaultOauth2AuthorizationConsent();
     entity.setRegisteredClientId(authorizationConsent.getRegisteredClientId());
     entity.setPrincipalName(authorizationConsent.getPrincipalName());
 

@@ -8,7 +8,7 @@
 // ====================================================
 package com.gstdev.cloud.oauth2.core.definition.domain;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 /**
  * <p>Description: RegisteredClient 属性定义 </p>
@@ -22,11 +22,11 @@ public interface RegisteredClientDetails {
 
   String getClientId();
 
-  LocalDateTime getClientIdIssuedAt();
+  Instant getClientIdIssuedAt();
 
   String getClientSecret();
 
-  LocalDateTime getClientSecretExpiresAt();
+  Instant  getClientSecretExpiresAt();
 
   String getClientAuthenticationMethods();
 

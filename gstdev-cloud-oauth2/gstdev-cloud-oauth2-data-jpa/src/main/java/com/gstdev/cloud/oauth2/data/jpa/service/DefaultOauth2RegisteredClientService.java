@@ -1,8 +1,7 @@
 package com.gstdev.cloud.oauth2.data.jpa.service;
 
-import com.gstdev.cloud.data.core.repository.BaseRepository;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
-import com.gstdev.cloud.oauth2.data.jpa.entity.HerodotusRegisteredClient;
+import com.gstdev.cloud.oauth2.data.jpa.entity.DefaultOauth2RegisteredClient;
 import com.gstdev.cloud.oauth2.data.jpa.repository.HerodotusRegisteredClientRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,19 +19,19 @@ import java.util.Optional;
  * @date : 2022/2/25 21:06
  */
 @Service
-public class HerodotusRegisteredClientService extends BaseServiceImpl<HerodotusRegisteredClient, String, HerodotusRegisteredClientRepository> {
+public class DefaultOauth2RegisteredClientService extends BaseServiceImpl<DefaultOauth2RegisteredClient, String, HerodotusRegisteredClientRepository> {
 
-    private static final Logger log = LoggerFactory.getLogger(HerodotusRegisteredClientService.class);
+    private static final Logger log = LoggerFactory.getLogger(DefaultOauth2RegisteredClientService.class);
 
 
     @Autowired
-    public HerodotusRegisteredClientService(HerodotusRegisteredClientRepository registeredClientRepository) {
+    public DefaultOauth2RegisteredClientService(HerodotusRegisteredClientRepository registeredClientRepository) {
         super(registeredClientRepository);
     }
 
 
-    public Optional<HerodotusRegisteredClient> findByClientId(String clientId) {
-        Optional<HerodotusRegisteredClient> result = getRepository().findByClientId(clientId);
+    public Optional<DefaultOauth2RegisteredClient> findByClientId(String clientId) {
+        Optional<DefaultOauth2RegisteredClient> result = getRepository().findByClientId(clientId);
         log.trace("[GstDev Cloud] |- HerodotusRegisteredClient Service findByClientId.");
         return result;
     }

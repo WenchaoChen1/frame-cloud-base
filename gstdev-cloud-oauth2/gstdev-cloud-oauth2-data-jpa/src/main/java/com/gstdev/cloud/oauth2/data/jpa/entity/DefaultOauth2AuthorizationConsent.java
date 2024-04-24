@@ -21,7 +21,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @IdClass(HerodotusAuthorizationConsentId.class)
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_AUTHORIZATION_CONSENT)
-public class HerodotusAuthorizationConsent extends AbstractEntity {
+public class DefaultOauth2AuthorizationConsent extends AbstractEntity {
 
   @Id
   @Column(name = "registered_client_id", nullable = false, length = 100)
@@ -66,7 +66,7 @@ public class HerodotusAuthorizationConsent extends AbstractEntity {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HerodotusAuthorizationConsent that = (HerodotusAuthorizationConsent) o;
+    DefaultOauth2AuthorizationConsent that = (DefaultOauth2AuthorizationConsent) o;
     return Objects.equal(registeredClientId, that.registeredClientId) && Objects.equal(principalName, that.principalName);
   }
 

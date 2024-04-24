@@ -2,8 +2,8 @@ package com.gstdev.cloud.oauth2.data.jpa.storage;
 
 import com.gstdev.cloud.oauth2.data.jpa.converter.HerodotusToOAuth2AuthorizationConsentConverter;
 import com.gstdev.cloud.oauth2.data.jpa.converter.OAuth2ToHerodotusAuthorizationConsentConverter;
-import com.gstdev.cloud.oauth2.data.jpa.entity.HerodotusAuthorizationConsent;
-import com.gstdev.cloud.oauth2.data.jpa.service.HerodotusAuthorizationConsentService;
+import com.gstdev.cloud.oauth2.data.jpa.entity.DefaultOauth2AuthorizationConsent;
+import com.gstdev.cloud.oauth2.data.jpa.service.DefaultOauth2AuthorizationConsentService;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsent;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsentService;
@@ -17,11 +17,11 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
  */
 public class JpaOAuth2AuthorizationConsentService implements OAuth2AuthorizationConsentService {
 
-  private final HerodotusAuthorizationConsentService herodotusAuthorizationConsentService;
-  private final Converter<HerodotusAuthorizationConsent, OAuth2AuthorizationConsent> herodotusToOAuth2Converter;
-  private final Converter<OAuth2AuthorizationConsent, HerodotusAuthorizationConsent> oauth2ToherodotusConverter;
+  private final DefaultOauth2AuthorizationConsentService herodotusAuthorizationConsentService;
+  private final Converter<DefaultOauth2AuthorizationConsent, OAuth2AuthorizationConsent> herodotusToOAuth2Converter;
+  private final Converter<OAuth2AuthorizationConsent, DefaultOauth2AuthorizationConsent> oauth2ToherodotusConverter;
 
-  public JpaOAuth2AuthorizationConsentService(HerodotusAuthorizationConsentService herodotusAuthorizationConsentService, RegisteredClientRepository registeredClientRepository) {
+  public JpaOAuth2AuthorizationConsentService(DefaultOauth2AuthorizationConsentService herodotusAuthorizationConsentService, RegisteredClientRepository registeredClientRepository) {
     this.herodotusAuthorizationConsentService = herodotusAuthorizationConsentService;
     this.herodotusToOAuth2Converter = new HerodotusToOAuth2AuthorizationConsentConverter(registeredClientRepository);
     this.oauth2ToherodotusConverter = new OAuth2ToHerodotusAuthorizationConsentConverter();
@@ -44,11 +44,11 @@ public class JpaOAuth2AuthorizationConsentService implements OAuth2Authorization
       registeredClientId, principalName).map(this::toObject).orElse(null);
   }
 
-  private OAuth2AuthorizationConsent toObject(HerodotusAuthorizationConsent authorizationConsent) {
+  private OAuth2AuthorizationConsent toObject(DefaultOauth2AuthorizationConsent authorizationConsent) {
     return herodotusToOAuth2Converter.convert(authorizationConsent);
   }
 
-  private HerodotusAuthorizationConsent toEntity(OAuth2AuthorizationConsent authorizationConsent) {
+  private DefaultOauth2AuthorizationConsent toEntity(OAuth2AuthorizationConsent authorizationConsent) {
     return oauth2ToherodotusConverter.convert(authorizationConsent);
   }
 }

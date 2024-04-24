@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.data.jpa.converter;
 
 import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusGrantedAuthority;
-import com.gstdev.cloud.oauth2.data.jpa.entity.HerodotusAuthorizationConsent;
+import com.gstdev.cloud.oauth2.data.jpa.entity.DefaultOauth2AuthorizationConsent;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsent;
@@ -15,7 +15,7 @@ import org.springframework.util.StringUtils;
  * @author : cc
  * @date : 2023/5/21 21:03
  */
-public class HerodotusToOAuth2AuthorizationConsentConverter implements Converter<HerodotusAuthorizationConsent, OAuth2AuthorizationConsent> {
+public class HerodotusToOAuth2AuthorizationConsentConverter implements Converter<DefaultOauth2AuthorizationConsent, OAuth2AuthorizationConsent> {
 
   private final RegisteredClientRepository registeredClientRepository;
 
@@ -24,7 +24,7 @@ public class HerodotusToOAuth2AuthorizationConsentConverter implements Converter
   }
 
   @Override
-  public OAuth2AuthorizationConsent convert(HerodotusAuthorizationConsent authorizationConsent) {
+  public OAuth2AuthorizationConsent convert(DefaultOauth2AuthorizationConsent authorizationConsent) {
     String registeredClientId = authorizationConsent.getRegisteredClientId();
     RegisteredClient registeredClient = this.registeredClientRepository.findById(registeredClientId);
     if (registeredClient == null) {
