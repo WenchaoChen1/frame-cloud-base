@@ -10,14 +10,14 @@ import org.springframework.security.core.GrantedAuthority;
  * @author : cc
  * @date : 2022/3/5 0:12
  */
-public class HerodotusGrantedAuthority implements GrantedAuthority {
+public class FrameGrantedAuthority implements GrantedAuthority {
 
   private String authority;
 
-  public HerodotusGrantedAuthority() {
+  public FrameGrantedAuthority() {
   }
 
-  public HerodotusGrantedAuthority(String authority) {
+  public FrameGrantedAuthority(String authority) {
     this.authority = authority;
   }
 
@@ -38,7 +38,7 @@ public class HerodotusGrantedAuthority implements GrantedAuthority {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HerodotusGrantedAuthority that = (HerodotusGrantedAuthority) o;
+    FrameGrantedAuthority that = (FrameGrantedAuthority) o;
     return Objects.equal(authority, that.authority);
   }
 

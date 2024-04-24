@@ -4,7 +4,7 @@ import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.gstdev.cloud.base.definition.domain.base.AbstractEntity;
 import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
-import com.gstdev.cloud.oauth2.data.jpa.generator.HerodotusAuthorizationConsentId;
+import com.gstdev.cloud.oauth2.data.jpa.generator.FrameAuthorizationConsentId;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -18,10 +18,10 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Table(name = "oauth2_authorization_consent", indexes = {
   @Index(name = "oauth2_authorization_consent_rcid_idx", columnList = "registered_client_id"),
   @Index(name = "oauth2_authorization_consent_pn_idx", columnList = "principal_name")})
-@IdClass(HerodotusAuthorizationConsentId.class)
+@IdClass(FrameAuthorizationConsentId.class)
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_AUTHORIZATION_CONSENT)
-public class DefaultOauth2AuthorizationConsent extends AbstractEntity {
+public class FrameAuthorizationConsent extends AbstractEntity {
 
   @Id
   @Column(name = "registered_client_id", nullable = false, length = 100)
@@ -66,7 +66,7 @@ public class DefaultOauth2AuthorizationConsent extends AbstractEntity {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DefaultOauth2AuthorizationConsent that = (DefaultOauth2AuthorizationConsent) o;
+    FrameAuthorizationConsent that = (FrameAuthorizationConsent) o;
     return Objects.equal(registeredClientId, that.registeredClientId) && Objects.equal(principalName, that.principalName);
   }
 

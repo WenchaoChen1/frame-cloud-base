@@ -2,8 +2,8 @@ package com.gstdev.cloud.oauth2.resource.server.customizer;
 
 import com.gstdev.cloud.base.core.enums.Target;
 import com.gstdev.cloud.oauth2.resource.server.properties.OAuth2AuthorizationProperties;
-import com.gstdev.cloud.oauth2.core.response.HerodotusAccessDeniedHandler;
-import com.gstdev.cloud.oauth2.core.response.HerodotusAuthenticationEntryPoint;
+import com.gstdev.cloud.oauth2.core.response.FrameAccessDeniedHandler;
+import com.gstdev.cloud.oauth2.core.response.FrameAuthenticationEntryPoint;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -46,8 +46,8 @@ public class OAuth2ResourceServerConfigurerCustomer implements Customizer<OAuth2
 //    }
 
     configurer
-      .accessDeniedHandler(new HerodotusAccessDeniedHandler())
-      .authenticationEntryPoint(new HerodotusAuthenticationEntryPoint());
+      .accessDeniedHandler(new FrameAccessDeniedHandler())
+      .authenticationEntryPoint(new FrameAuthenticationEntryPoint());
   }
 
 //    public BearerTokenResolver createBearerTokenResolver() {

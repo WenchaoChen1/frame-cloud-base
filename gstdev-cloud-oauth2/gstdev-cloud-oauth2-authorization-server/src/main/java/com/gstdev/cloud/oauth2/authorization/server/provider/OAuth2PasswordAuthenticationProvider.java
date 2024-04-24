@@ -3,7 +3,7 @@ package com.gstdev.cloud.oauth2.authorization.server.provider;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.authorization.server.token.OAuth2PasswordAuthenticationToken;
 import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2AuthenticationProviderUtils;
-import com.gstdev.cloud.oauth2.core.definition.HerodotusGrantType;
+import com.gstdev.cloud.oauth2.core.definition.FrameGrantType;
 import com.gstdev.cloud.oauth2.core.definition.service.EnhanceUserDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -125,7 +125,7 @@ public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAut
       OAuth2AuthenticationProviderUtils.getAuthenticatedClientElseThrowInvalidClient(resourceOwnerPasswordAuthentication);
     RegisteredClient registeredClient = clientPrincipal.getRegisteredClient();
 
-    if (!registeredClient.getAuthorizationGrantTypes().contains(HerodotusGrantType.PASSWORD)) {
+    if (!registeredClient.getAuthorizationGrantTypes().contains(FrameGrantType.PASSWORD)) {
       throw new OAuth2AuthenticationException(OAuth2ErrorCodes.UNAUTHORIZED_CLIENT);
     }
 
@@ -136,7 +136,7 @@ public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAut
 
     OAuth2Authorization.Builder authorizationBuilder = OAuth2Authorization.withRegisteredClient(registeredClient)
       .principalName(principal.getName())
-      .authorizationGrantType(HerodotusGrantType.PASSWORD)
+      .authorizationGrantType(FrameGrantType.PASSWORD)
       .authorizedScopes(authorizedScopes)
       .attribute(Principal.class.getName(), principal);
 
@@ -147,7 +147,7 @@ public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAut
       .authorizationServerContext(AuthorizationServerContextHolder.getContext())
       .authorizedScopes(authorizedScopes)
       .tokenType(OAuth2TokenType.ACCESS_TOKEN)
-      .authorizationGrantType(HerodotusGrantType.PASSWORD)
+      .authorizationGrantType(FrameGrantType.PASSWORD)
       .authorizationGrant(resourceOwnerPasswordAuthentication);
     // @formatter:on
 

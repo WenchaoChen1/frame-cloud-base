@@ -8,7 +8,7 @@
 // ====================================================
 package com.gstdev.cloud.oauth2.core.definition.domain;
 
-import com.gstdev.cloud.oauth2.core.jackson2.HerodotusUserDeserializer;
+import com.gstdev.cloud.oauth2.core.jackson2.FrameUserDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
@@ -25,7 +25,7 @@ import java.util.*;
 /**
  * @author gengwei.zheng
  */
-@JsonDeserialize(using = HerodotusUserDeserializer.class)
+@JsonDeserialize(using = FrameUserDeserializer.class)
 public class DefaultSecurityUser implements UserDetails, CredentialsContainer {
 
     private String userId;

@@ -78,13 +78,13 @@ public class SecurityUtils {
   /**
    * 当用户角色发生变化，或者用户角色对应的权限发生变化，那么就从数据库中重新查询用户相关信息
    *
-   * @param newHerodotusUser 从数据库中重新查询并生成的用户信息
+   * @param defaultSecurityUser 从数据库中重新查询并生成的用户信息
    */
-  public static void reloadAuthority(DefaultSecurityUser newHerodotusUser) {
+  public static void reloadAuthority(DefaultSecurityUser defaultSecurityUser) {
     // 重新new一个token，因为Authentication中的权限是不可变的.
     UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
-      newHerodotusUser, newHerodotusUser.getPassword(),
-      newHerodotusUser.getAuthorities());
+        defaultSecurityUser, defaultSecurityUser.getPassword(),
+        defaultSecurityUser.getAuthorities());
     token.setDetails(getDetails());
     getSecurityContext().setAuthentication(token);
   }
@@ -148,9 +148,9 @@ public class SecurityUtils {
   }
 
   public static String getUserId() {
-    DefaultSecurityUser herodotusUser = getPrincipal();
-    if (ObjectUtils.isNotEmpty(herodotusUser)) {
-      return herodotusUser.getUserId();
+    DefaultSecurityUser defaultSecurityUser = getPrincipal();
+    if (ObjectUtils.isNotEmpty(defaultSecurityUser)) {
+      return defaultSecurityUser.getUserId();
     }
 
     return null;

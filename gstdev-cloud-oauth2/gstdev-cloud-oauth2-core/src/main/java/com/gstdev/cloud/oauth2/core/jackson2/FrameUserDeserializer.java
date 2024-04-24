@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gstdev.cloud.base.core.json.jackson2.utils.JsonNodeUtils;
-import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusGrantedAuthority;
+import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -30,9 +30,9 @@ import java.util.Set;
  * @author : cc
  * @date : 2022/2/17 21:01
  */
-public class HerodotusUserDeserializer extends JsonDeserializer<DefaultSecurityUser> {
+public class FrameUserDeserializer extends JsonDeserializer<DefaultSecurityUser> {
 
-  private static final TypeReference<Set<HerodotusGrantedAuthority>> HERODOTUS_GRANTED_AUTHORITY_SET = new TypeReference<Set<HerodotusGrantedAuthority>>() {
+  private static final TypeReference<Set<FrameGrantedAuthority>> HERODOTUS_GRANTED_AUTHORITY_SET = new TypeReference<Set<FrameGrantedAuthority>>() {
   };
   private static final TypeReference<Set<String>> HERODOTUS_ROLE_SET = new TypeReference<Set<String>>() {
   };

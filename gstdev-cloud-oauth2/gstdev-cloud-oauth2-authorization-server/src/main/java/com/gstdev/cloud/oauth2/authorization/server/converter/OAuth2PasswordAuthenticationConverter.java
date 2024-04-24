@@ -6,24 +6,13 @@ package com.gstdev.cloud.oauth2.authorization.server.converter;
 
 import com.gstdev.cloud.oauth2.authorization.server.token.OAuth2PasswordAuthenticationToken;
 import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2EndpointUtils;
-import com.gstdev.cloud.oauth2.core.definition.HerodotusGrantType;
+import com.gstdev.cloud.oauth2.core.definition.FrameGrantType;
 import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.core.AuthorizationGrantType;
-import org.springframework.security.oauth2.core.OAuth2ErrorCodes;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
-import org.springframework.security.web.authentication.AuthenticationConverter;
 import org.springframework.util.MultiValueMap;
-import org.springframework.util.StringUtils;
 import org.springframework.lang.Nullable;
-
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * <p>Description: 自定义密码模式认证转换器 </p>
@@ -46,7 +35,7 @@ public final class OAuth2PasswordAuthenticationConverter extends AbstractAuthent
   public Authentication convert(HttpServletRequest request) {
     // grant_type (REQUIRED)
     String grantType = request.getParameter(OAuth2ParameterNames.GRANT_TYPE);
-    if (!HerodotusGrantType.PASSWORD.getValue().equals(grantType)) {
+    if (!FrameGrantType.PASSWORD.getValue().equals(grantType)) {
       return null;
     }
     // 参数提取验证

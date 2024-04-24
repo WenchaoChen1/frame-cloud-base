@@ -8,7 +8,7 @@
 // ====================================================
 package com.gstdev.cloud.oauth2.core.definition.service;
 
-import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusGrantedAuthority;
+import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 
 import java.util.Set;
 
@@ -26,5 +26,5 @@ public interface ClientDetailsService {
    * @param clientId 客户端ID
    * @return 客户端权限集合
    */
-  Set<HerodotusGrantedAuthority> findAuthoritiesById(String clientId);
+  Set<FrameGrantedAuthority> findAuthoritiesById(String clientId);
 }

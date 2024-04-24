@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.data.jpa.converter;
 
-import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusGrantedAuthority;
-import com.gstdev.cloud.oauth2.data.jpa.entity.DefaultOauth2AuthorizationConsent;
+import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
+import com.gstdev.cloud.oauth2.data.jpa.entity.FrameAuthorizationConsent;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsent;
@@ -10,21 +10,21 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
 import org.springframework.util.StringUtils;
 
 /**
- * <p>Description: HerodotusAuthorizationConsent 转 OAuth2AuthorizationConsent 转换器 </p>
+ * <p>Description: FrameAuthorizationConsent 转 OAuth2AuthorizationConsent 转换器 </p>
  *
  * @author : cc
  * @date : 2023/5/21 21:03
  */
-public class HerodotusToOAuth2AuthorizationConsentConverter implements Converter<DefaultOauth2AuthorizationConsent, OAuth2AuthorizationConsent> {
+public class FrameToOAuth2AuthorizationConsentConverter implements Converter<FrameAuthorizationConsent, OAuth2AuthorizationConsent> {
 
   private final RegisteredClientRepository registeredClientRepository;
 
-  public HerodotusToOAuth2AuthorizationConsentConverter(RegisteredClientRepository registeredClientRepository) {
+  public FrameToOAuth2AuthorizationConsentConverter(RegisteredClientRepository registeredClientRepository) {
     this.registeredClientRepository = registeredClientRepository;
   }
 
   @Override
-  public OAuth2AuthorizationConsent convert(DefaultOauth2AuthorizationConsent authorizationConsent) {
+  public OAuth2AuthorizationConsent convert(FrameAuthorizationConsent authorizationConsent) {
     String registeredClientId = authorizationConsent.getRegisteredClientId();
     RegisteredClient registeredClient = this.registeredClientRepository.findById(registeredClientId);
     if (registeredClient == null) {
@@ -36,7 +36,7 @@ public class HerodotusToOAuth2AuthorizationConsentConverter implements Converter
       registeredClientId, authorizationConsent.getPrincipalName());
     if (authorizationConsent.getAuthorities() != null) {
       for (String authority : StringUtils.commaDelimitedListToSet(authorizationConsent.getAuthorities())) {
-        builder.authority(new HerodotusGrantedAuthority(authority));
+        builder.authority(new FrameGrantedAuthority(authority));
       }
     }
 

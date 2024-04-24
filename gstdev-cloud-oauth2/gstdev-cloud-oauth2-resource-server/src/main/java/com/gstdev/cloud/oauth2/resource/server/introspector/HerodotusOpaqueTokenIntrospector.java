@@ -2,7 +2,7 @@ package com.gstdev.cloud.oauth2.resource.server.introspector;
 
 import com.gstdev.cloud.base.definition.constants.BaseConstants;
 import com.gstdev.cloud.base.core.context.ServiceContextHolder;
-import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusGrantedAuthority;
+import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -212,7 +212,7 @@ public class HerodotusOpaqueTokenIntrospector implements OpaqueTokenIntrospector
     claims.computeIfPresent(BaseConstants.AUTHORITIES, (k, v) -> {
       if (v instanceof ArrayList) {
         List<String> values = (List<String>) v;
-        values.forEach(value -> authorities.add(new HerodotusGrantedAuthority(value)));
+        values.forEach(value -> authorities.add(new FrameGrantedAuthority(value)));
       }
       return v;
     });

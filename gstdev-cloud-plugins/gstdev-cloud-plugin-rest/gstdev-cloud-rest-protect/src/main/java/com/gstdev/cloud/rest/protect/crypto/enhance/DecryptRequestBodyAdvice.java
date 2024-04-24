@@ -81,7 +81,7 @@ public class DecryptRequestBodyAdvice implements RequestBodyAdvice {
         return httpInputMessage;
       }
     } else {
-      log.warn("[GstDev Cloud] |- Cannot find Herodotus Cloud custom session header. Use interface crypto founction need add X_HERODOTUS_SESSION_ID to request header.");
+      log.warn("[GstDev Cloud] |- Cannot find GstDev Cloud custom session header. Use interface crypto founction need add X_GstDev_SESSION_ID to request header.");
       return httpInputMessage;
     }
   }

@@ -42,5 +42,5 @@ public interface EnhanceUserDetailsService extends UserDetailsService {
    * @return {@link DefaultSecurityUser}
    * @throws UsernameNotFoundException 用户不存在
    */
-  DefaultSecurityUser loadHerodotusUserByUsername(String username) throws UsernameNotFoundException;
+  DefaultSecurityUser loadDefaultSecurityUserByUsername(String username) throws UsernameNotFoundException;
 }

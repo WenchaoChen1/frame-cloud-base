@@ -2,7 +2,7 @@ package com.gstdev.cloud.oauth2.management.service;
 
 import com.gstdev.cloud.base.core.exception.transaction.TransactionalRollbackException;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
-import com.gstdev.cloud.oauth2.data.jpa.repository.HerodotusRegisteredClientRepository;
+import com.gstdev.cloud.oauth2.data.jpa.repository.FrameRegisteredClientRepository;
 import com.gstdev.cloud.oauth2.management.converter.OAuth2ApplicationToRegisteredClientConverter;
 import com.gstdev.cloud.oauth2.management.entity.OAuth2Application;
 import com.gstdev.cloud.oauth2.management.entity.OAuth2Scope;
@@ -31,14 +31,14 @@ public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application,
   private static final Logger log = LoggerFactory.getLogger(OAuth2ApplicationService.class);
 
   private final RegisteredClientRepository registeredClientRepository;
-  private final HerodotusRegisteredClientRepository herodotusRegisteredClientRepository;
+  private final FrameRegisteredClientRepository frameRegisteredClientRepository;
   private  OAuth2ApplicationRepository applicationRepository;
   private final Converter<OAuth2Application, RegisteredClient> objectConverter;
 
-  public OAuth2ApplicationService(RegisteredClientRepository registeredClientRepository, RegisteredClientRepository registeredClientRepository1, HerodotusRegisteredClientRepository herodotusRegisteredClientRepository, OAuth2ApplicationRepository applicationRepository) {
+  public OAuth2ApplicationService(RegisteredClientRepository registeredClientRepository, RegisteredClientRepository registeredClientRepository1, FrameRegisteredClientRepository frameRegisteredClientRepository, OAuth2ApplicationRepository applicationRepository) {
       super(applicationRepository);
       this.registeredClientRepository = registeredClientRepository1;
-      this.herodotusRegisteredClientRepository = herodotusRegisteredClientRepository;
+      this.frameRegisteredClientRepository = frameRegisteredClientRepository;
     this.objectConverter = new OAuth2ApplicationToRegisteredClientConverter();
   }
 
@@ -60,7 +60,7 @@ public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application,
   @Override
   public void deleteById(String id) {
     super.deleteById(id);
-    herodotusRegisteredClientRepository.deleteById(id);
+    frameRegisteredClientRepository.deleteById(id);
   }
 
   @Transactional(rollbackFor = TransactionalRollbackException.class)

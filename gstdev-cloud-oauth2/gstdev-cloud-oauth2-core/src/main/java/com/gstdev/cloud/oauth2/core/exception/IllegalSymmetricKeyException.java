@@ -5,7 +5,7 @@ import com.gstdev.cloud.base.definition.constants.ErrorCodes;
 import com.gstdev.cloud.base.definition.domain.Feedback;
 
 /**
- * <p> Description : 非法加密Key HerodotusException </p>
+ * <p> Description : 非法加密Key FrameException </p>
  *
  * @author : cc
  * @date : 2020/1/28 17:32

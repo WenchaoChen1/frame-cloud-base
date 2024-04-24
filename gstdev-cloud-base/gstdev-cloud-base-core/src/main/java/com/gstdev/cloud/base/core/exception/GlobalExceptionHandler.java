@@ -9,7 +9,7 @@
 
 package com.gstdev.cloud.base.core.exception;
 
-import com.gstdev.cloud.base.definition.exception.HerodotusException;
+import com.gstdev.cloud.base.definition.exception.FrameException;
 import com.gstdev.cloud.base.definition.constants.ErrorCodes;
 import com.gstdev.cloud.base.definition.domain.Feedback;
 import com.gstdev.cloud.base.definition.domain.Result;
@@ -60,7 +60,7 @@ public class GlobalExceptionHandler {
 
     log.trace("[GstDev Cloud] |- Global Exception Handler, Path : [{}], Exception：", path, ex);
 
-    if (ex instanceof HerodotusException exception) {
+    if (ex instanceof FrameException exception) {
       Result<String> result = exception.getResult();
       result.path(path);
       log.error("[GstDev Cloud] |- Global Exception Handler, Error is : {}", result);

@@ -2,7 +2,7 @@ package com.gstdev.cloud.oauth2.data.jpa.converter;
 
 import com.gstdev.cloud.base.definition.constants.SymbolConstants;
 import com.gstdev.cloud.oauth2.data.jpa.definition.converter.AbstractOAuth2EntityConverter;
-import com.gstdev.cloud.oauth2.data.jpa.entity.DefaultOauth2Authorization;
+import com.gstdev.cloud.oauth2.data.jpa.entity.FrameAuthorization;
 import com.gstdev.cloud.oauth2.data.jpa.jackson2.OAuth2JacksonProcessor;
 import org.springframework.security.oauth2.core.*;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
@@ -15,20 +15,20 @@ import java.time.Instant;
 import java.util.function.Consumer;
 
 /**
- * <p>Description: OAuth2Authorization 转 HerodotusAuthorization 转换器 </p>
+ * <p>Description: OAuth2Authorization 转 FrameAuthorization 转换器 </p>
  *
  * @author : cc
  * @date : 2023/5/21 20:57
  */
-public class OAuth2ToHerodotusAuthorizationConverter extends AbstractOAuth2EntityConverter<OAuth2Authorization, DefaultOauth2Authorization> {
+public class OAuth2ToFrameAuthorizationConverter extends AbstractOAuth2EntityConverter<OAuth2Authorization, FrameAuthorization> {
 
-  public OAuth2ToHerodotusAuthorizationConverter(OAuth2JacksonProcessor jacksonProcessor) {
+  public OAuth2ToFrameAuthorizationConverter(OAuth2JacksonProcessor jacksonProcessor) {
     super(jacksonProcessor);
   }
 
   @Override
-  public DefaultOauth2Authorization convert(OAuth2Authorization authorization) {
-    DefaultOauth2Authorization entity = new DefaultOauth2Authorization();
+  public FrameAuthorization convert(OAuth2Authorization authorization) {
+    FrameAuthorization entity = new FrameAuthorization();
     entity.setId(authorization.getId());
     entity.setRegisteredClientId(authorization.getRegisteredClientId());
     entity.setPrincipalName(authorization.getPrincipalName());

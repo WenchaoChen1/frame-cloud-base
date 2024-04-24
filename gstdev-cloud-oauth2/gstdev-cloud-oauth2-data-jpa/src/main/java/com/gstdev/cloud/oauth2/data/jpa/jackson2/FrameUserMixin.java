@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.data.jpa.jackson2;
 
-import com.gstdev.cloud.oauth2.core.jackson2.HerodotusUserDeserializer;
+import com.gstdev.cloud.oauth2.core.jackson2.FrameUserDeserializer;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -21,11 +21,11 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * @date : 2022/2/17 21:57
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-@JsonDeserialize(using = HerodotusUserDeserializer.class)
+@JsonDeserialize(using = FrameUserDeserializer.class)
 @JsonAutoDetect(
   fieldVisibility = JsonAutoDetect.Visibility.ANY,
   getterVisibility = JsonAutoDetect.Visibility.NONE,
   isGetterVisibility = JsonAutoDetect.Visibility.NONE)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public abstract class HerodotusUserMixin {
+public abstract class FrameUserMixin {
 }

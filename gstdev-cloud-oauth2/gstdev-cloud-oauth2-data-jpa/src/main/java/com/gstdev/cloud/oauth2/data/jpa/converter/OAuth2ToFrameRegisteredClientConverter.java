@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.data.jpa.converter;
 
 import com.gstdev.cloud.oauth2.data.jpa.definition.converter.AbstractOAuth2EntityConverter;
-import com.gstdev.cloud.oauth2.data.jpa.entity.DefaultOauth2RegisteredClient;
+import com.gstdev.cloud.oauth2.data.jpa.entity.FrameRegisteredClient;
 import com.gstdev.cloud.oauth2.data.jpa.jackson2.OAuth2JacksonProcessor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
@@ -11,22 +11,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <p>Description: RegisteredClient 转 HerodotusRegisteredClient 转换器 </p>
+ * <p>Description: RegisteredClient 转 FrameRegisteredClient 转换器 </p>
  *
  * @author : cc
  * @date : 2023/5/12 23:56
  */
-public class OAuth2ToHerodotusRegisteredClientConverter extends AbstractOAuth2EntityConverter<RegisteredClient, DefaultOauth2RegisteredClient> {
+public class OAuth2ToFrameRegisteredClientConverter extends AbstractOAuth2EntityConverter<RegisteredClient, FrameRegisteredClient> {
 
   private final PasswordEncoder passwordEncoder;
 
-  public OAuth2ToHerodotusRegisteredClientConverter(OAuth2JacksonProcessor jacksonProcessor, PasswordEncoder passwordEncoder) {
+  public OAuth2ToFrameRegisteredClientConverter(OAuth2JacksonProcessor jacksonProcessor, PasswordEncoder passwordEncoder) {
     super(jacksonProcessor);
     this.passwordEncoder = passwordEncoder;
   }
 
   @Override
-  public DefaultOauth2RegisteredClient convert(RegisteredClient registeredClient) {
+  public FrameRegisteredClient convert(RegisteredClient registeredClient) {
     List<String> clientAuthenticationMethods = new ArrayList<>(registeredClient.getClientAuthenticationMethods().size());
     registeredClient.getClientAuthenticationMethods().forEach(clientAuthenticationMethod ->
       clientAuthenticationMethods.add(clientAuthenticationMethod.getValue()));
@@ -35,7 +35,7 @@ public class OAuth2ToHerodotusRegisteredClientConverter extends AbstractOAuth2En
     registeredClient.getAuthorizationGrantTypes().forEach(authorizationGrantType ->
       authorizationGrantTypes.add(authorizationGrantType.getValue()));
 
-    DefaultOauth2RegisteredClient entity = new DefaultOauth2RegisteredClient();
+    FrameRegisteredClient entity = new FrameRegisteredClient();
     entity.setId(registeredClient.getId());
     entity.setClientId(registeredClient.getClientId());
     entity.setClientIdIssuedAt(registeredClient.getClientIdIssuedAt());

@@ -75,7 +75,7 @@ public class EncryptResponseBodyAdvice implements ResponseBodyAdvice<Object> {
         return body;
       }
     } else {
-      log.warn("[GstDev Cloud] |- Cannot find Herodotus Cloud custom session header. Use interface crypto function need add X_HERODOTUS_SESSION_ID to request header.");
+      log.warn("[GstDev Cloud] |- Cannot find GstDev Cloud custom session header. Use interface crypto function need add X_GstDev_SESSION_ID to request header.");
       return body;
     }
   }

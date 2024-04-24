@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.authorization.server.token;
 
-import com.gstdev.cloud.oauth2.core.definition.HerodotusGrantType;
+import com.gstdev.cloud.oauth2.core.definition.FrameGrantType;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.lang.Nullable;
 import org.springframework.security.core.Authentication;
@@ -22,7 +22,7 @@ public class OAuth2PasswordAuthenticationToken extends OAuth2AuthorizationGrantA
   private final Set<String> scopes;
 
   public OAuth2PasswordAuthenticationToken(Authentication clientPrincipal, @Nullable Set<String> scopes, @Nullable Map<String, Object> additionalParameters) {
-    super(HerodotusGrantType.PASSWORD, clientPrincipal, additionalParameters);
+    super(FrameGrantType.PASSWORD, clientPrincipal, additionalParameters);
     Assert.notNull(clientPrincipal, "clientPrincipal cannot be null");
     this.scopes = Collections.unmodifiableSet(CollectionUtils.isNotEmpty(scopes) ? new HashSet<>(scopes) : Collections.emptySet());
   }

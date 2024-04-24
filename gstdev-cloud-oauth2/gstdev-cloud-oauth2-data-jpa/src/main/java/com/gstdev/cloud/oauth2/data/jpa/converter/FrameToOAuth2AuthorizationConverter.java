@@ -2,7 +2,7 @@ package com.gstdev.cloud.oauth2.data.jpa.converter;
 
 import com.gstdev.cloud.oauth2.core.utils.OAuth2AuthorizationUtils;
 import com.gstdev.cloud.oauth2.data.jpa.definition.converter.AbstractOAuth2EntityConverter;
-import com.gstdev.cloud.oauth2.data.jpa.entity.DefaultOauth2Authorization;
+import com.gstdev.cloud.oauth2.data.jpa.entity.FrameAuthorization;
 import com.gstdev.cloud.oauth2.data.jpa.jackson2.OAuth2JacksonProcessor;
 import org.dromara.hutool.core.date.DateUtil;
 import org.springframework.dao.DataRetrievalFailureException;
@@ -19,22 +19,22 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
 import org.springframework.util.StringUtils;
 
 /**
- * <p>Description: HerodotusAuthorization 转 OAuth2Authorization 转换器 </p>
+ * <p>Description: FrameAuthorization 转 OAuth2Authorization 转换器 </p>
  *
  * @author : cc
  * @date : 2023/5/21 20:53
  */
-public class HerodotusToOAuth2AuthorizationConverter extends AbstractOAuth2EntityConverter<DefaultOauth2Authorization, OAuth2Authorization> {
+public class FrameToOAuth2AuthorizationConverter extends AbstractOAuth2EntityConverter<FrameAuthorization, OAuth2Authorization> {
 
   private final RegisteredClientRepository registeredClientRepository;
 
-  public HerodotusToOAuth2AuthorizationConverter(OAuth2JacksonProcessor jacksonProcessor, RegisteredClientRepository registeredClientRepository) {
+  public FrameToOAuth2AuthorizationConverter(OAuth2JacksonProcessor jacksonProcessor, RegisteredClientRepository registeredClientRepository) {
     super(jacksonProcessor);
     this.registeredClientRepository = registeredClientRepository;
   }
 
   @Override
-  public OAuth2Authorization convert(DefaultOauth2Authorization entity) {
+  public OAuth2Authorization convert(FrameAuthorization entity) {
     RegisteredClient registeredClient = this.registeredClientRepository.findById(entity.getRegisteredClientId());
     if (registeredClient == null) {
       throw new DataRetrievalFailureException(

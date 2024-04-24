@@ -9,7 +9,7 @@ import org.springframework.security.oauth2.core.AuthorizationGrantType;
  * @author : cc
  * @date : 2022/2/25 9:53
  */
-public interface HerodotusGrantType {
+public interface FrameGrantType {
 
   AuthorizationGrantType SOCIAL = new AuthorizationGrantType(BaseConstants.SOCIAL_CREDENTIALS);
 

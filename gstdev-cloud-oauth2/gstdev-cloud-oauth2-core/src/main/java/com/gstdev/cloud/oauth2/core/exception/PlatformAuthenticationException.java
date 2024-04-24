@@ -4,7 +4,7 @@ package com.gstdev.cloud.oauth2.core.exception;
 import com.gstdev.cloud.base.definition.constants.ErrorCodes;
 import com.gstdev.cloud.base.definition.domain.Feedback;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.base.definition.exception.HerodotusException;
+import com.gstdev.cloud.base.definition.exception.FrameException;
 import org.springframework.security.core.AuthenticationException;
 
 /**
@@ -13,7 +13,7 @@ import org.springframework.security.core.AuthenticationException;
  * @author : cc
  * @date : 2021/10/16 14:41
  */
-public class PlatformAuthenticationException extends AuthenticationException implements HerodotusException {
+public class PlatformAuthenticationException extends AuthenticationException implements FrameException {
 
   public PlatformAuthenticationException(String msg, Throwable cause) {
     super(msg, cause);

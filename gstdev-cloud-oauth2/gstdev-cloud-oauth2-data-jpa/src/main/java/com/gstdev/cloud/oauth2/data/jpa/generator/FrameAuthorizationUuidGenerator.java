@@ -10,13 +10,13 @@ import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
 
 /**
- * <p>Description: HerodotusRegisteredClientUuid 注解 </p>
+ * <p>Description: FrameAuthorizationUuid 注解 </p>
  *
  * @author : cc
- * @date : 2022/11/7 15:49
+ * @date : 2022/11/7 15:41
  */
-@IdGeneratorType(HerodotusRegisteredClientUuidGeneratorType.class)
+@IdGeneratorType(FrameAuthorizationUuidGeneratorType.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target({FIELD, METHOD})
-public @interface HerodotusRegisteredClientUuidGenerator {
+public @interface FrameAuthorizationUuidGenerator {
 }

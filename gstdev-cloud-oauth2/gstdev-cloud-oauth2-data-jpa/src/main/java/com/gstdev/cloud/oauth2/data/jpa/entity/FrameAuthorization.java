@@ -3,7 +3,7 @@ package com.gstdev.cloud.oauth2.data.jpa.entity;
 import com.google.common.base.MoreObjects;
 import com.gstdev.cloud.base.definition.domain.base.AbstractEntity;
 import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
-import com.gstdev.cloud.oauth2.data.jpa.generator.HerodotusAuthorizationUuidGenerator;
+import com.gstdev.cloud.oauth2.data.jpa.generator.FrameAuthorizationUuidGenerator;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -23,10 +23,10 @@ import java.time.Instant;
 )
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_AUTHORIZATION)
-public class DefaultOauth2Authorization extends AbstractEntity {
+public class FrameAuthorization extends AbstractEntity {
 
     @Id
-    @HerodotusAuthorizationUuidGenerator
+    @FrameAuthorizationUuidGenerator
     @Column(name = "id", nullable = false, length = 100)
     private String id;
 

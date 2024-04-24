@@ -1,8 +1,8 @@
 package com.gstdev.cloud.oauth2.management.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.oauth2.data.jpa.entity.DefaultOauth2Authorization;
-import com.gstdev.cloud.oauth2.data.jpa.service.DefaultOauth2AuthorizationService;
+import com.gstdev.cloud.oauth2.data.jpa.entity.FrameAuthorization;
+import com.gstdev.cloud.oauth2.data.jpa.service.FrameAuthorizationService;
 import com.gstdev.cloud.oauth2.management.mapper.vo.Oauth2AuthorizationVoMapper;
 import com.gstdev.cloud.rest.core.annotation.AccessLimited;
 import com.gstdev.cloud.rest.core.annotation.Idempotent;
@@ -38,7 +38,7 @@ import java.util.Map;
     @Tag(name = "OAuth2 认证服务接口"),
     @Tag(name = "OAuth2 认证管理接口")
 })
-public class OAuth2AuthorizationController implements Controller<DefaultOauth2Authorization, String, DefaultOauth2AuthorizationService> {
+public class OAuth2AuthorizationController implements Controller<FrameAuthorization, String, FrameAuthorizationService> {
 //public class OAuth2AuthorizationController implements POJOController<DefaultOauth2Authorization
 //    , String, HerodotusAuthorizationService
 //    , Oauth2AuthorizationVoMapper
@@ -51,13 +51,13 @@ public class OAuth2AuthorizationController implements Controller<DefaultOauth2Au
 
 
     @Resource
-    private DefaultOauth2AuthorizationService service;
+    private FrameAuthorizationService service;
 
     @Resource
     private Oauth2AuthorizationVoMapper oauth2AuthorizationVoMapper;
 
     @Override
-    public DefaultOauth2AuthorizationService getService() {
+    public FrameAuthorizationService getService() {
         return service;
     }
 
@@ -77,10 +77,10 @@ public class OAuth2AuthorizationController implements Controller<DefaultOauth2Au
     public Result<Object> findByPage(@Validated Pager pager) {
         if (ArrayUtils.isNotEmpty(pager.getProperties())) {
             Sort.Direction direction = Sort.Direction.valueOf(pager.getDirection());
-            Page<DefaultOauth2Authorization> pages = getService().findByPage(pager.getPageNumber(), pager.getPageSize(), direction, pager.getProperties());
+            Page<FrameAuthorization> pages = getService().findByPage(pager.getPageNumber(), pager.getPageSize(), direction, pager.getProperties());
             return Result.success(oauth2AuthorizationVoMapper.entityToVo(pages));
         } else {
-            Page<DefaultOauth2Authorization> pages = getService().findByPage(pager.getPageNumber(), pager.getPageSize());
+            Page<FrameAuthorization> pages = getService().findByPage(pager.getPageNumber(), pager.getPageSize());
             return Result.success(oauth2AuthorizationVoMapper.entityToVo(pages));
         }
     }

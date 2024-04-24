@@ -1,10 +1,10 @@
 package com.gstdev.cloud.oauth2.data.jpa.storage;
 
-import com.gstdev.cloud.oauth2.data.jpa.converter.HerodotusToOAuth2RegisteredClientConverter;
-import com.gstdev.cloud.oauth2.data.jpa.converter.OAuth2ToHerodotusRegisteredClientConverter;
-import com.gstdev.cloud.oauth2.data.jpa.entity.DefaultOauth2RegisteredClient;
+import com.gstdev.cloud.oauth2.data.jpa.converter.FrameToOAuth2RegisteredClientConverter;
+import com.gstdev.cloud.oauth2.data.jpa.converter.OAuth2ToFrameRegisteredClientConverter;
+import com.gstdev.cloud.oauth2.data.jpa.entity.FrameRegisteredClient;
 import com.gstdev.cloud.oauth2.data.jpa.jackson2.OAuth2JacksonProcessor;
-import com.gstdev.cloud.oauth2.data.jpa.service.DefaultOauth2RegisteredClientService;
+import com.gstdev.cloud.oauth2.data.jpa.service.FrameRegisteredClientService;
 import jakarta.annotation.PostConstruct;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.core.convert.converter.Converter;
@@ -31,15 +31,15 @@ import java.util.UUID;
  */
 public class JpaRegisteredClientRepository implements RegisteredClientRepository {
 
-  private final DefaultOauth2RegisteredClientService herodotusRegisteredClientService;
-  private final Converter<DefaultOauth2RegisteredClient, RegisteredClient> herodotusToOAuth2Converter;
-  private final Converter<RegisteredClient, DefaultOauth2RegisteredClient> oauth2ToHerodotusConverter;
+  private final FrameRegisteredClientService herodotusRegisteredClientService;
+  private final Converter<FrameRegisteredClient, RegisteredClient> frameToOAuth2Converter;
+  private final Converter<RegisteredClient, FrameRegisteredClient> oauth2ToHerodotusConverter;
 
-  public JpaRegisteredClientRepository(DefaultOauth2RegisteredClientService herodotusRegisteredClientService, PasswordEncoder passwordEncoder) {
+  public JpaRegisteredClientRepository(FrameRegisteredClientService herodotusRegisteredClientService, PasswordEncoder passwordEncoder) {
     this.herodotusRegisteredClientService = herodotusRegisteredClientService;
     OAuth2JacksonProcessor jacksonProcessor = new OAuth2JacksonProcessor();
-    this.herodotusToOAuth2Converter = new HerodotusToOAuth2RegisteredClientConverter(jacksonProcessor);
-    this.oauth2ToHerodotusConverter = new OAuth2ToHerodotusRegisteredClientConverter(jacksonProcessor, passwordEncoder);
+    this.frameToOAuth2Converter = new FrameToOAuth2RegisteredClientConverter(jacksonProcessor);
+    this.oauth2ToHerodotusConverter = new OAuth2ToFrameRegisteredClientConverter(jacksonProcessor, passwordEncoder);
   }
 
   @PostConstruct
@@ -61,7 +61,7 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
 
   @Override
   public RegisteredClient findById(String id) {
-    DefaultOauth2RegisteredClient herodotusRegisteredClient = this.herodotusRegisteredClientService.findById(id);
+    FrameRegisteredClient herodotusRegisteredClient = this.herodotusRegisteredClientService.findById(id);
     if (ObjectUtils.isNotEmpty(herodotusRegisteredClient)) {
       return toObject(herodotusRegisteredClient);
     }
@@ -77,11 +77,11 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
     this.herodotusRegisteredClientService.deleteById(id);
   }
 
-  private RegisteredClient toObject(DefaultOauth2RegisteredClient herodotusRegisteredClient) {
-    return herodotusToOAuth2Converter.convert(herodotusRegisteredClient);
+  private RegisteredClient toObject(FrameRegisteredClient herodotusRegisteredClient) {
+    return frameToOAuth2Converter.convert(herodotusRegisteredClient);
   }
 
-  private DefaultOauth2RegisteredClient toEntity(RegisteredClient registeredClient) {
+  private FrameRegisteredClient toEntity(RegisteredClient registeredClient) {
     return oauth2ToHerodotusConverter.convert(registeredClient);
   }
 

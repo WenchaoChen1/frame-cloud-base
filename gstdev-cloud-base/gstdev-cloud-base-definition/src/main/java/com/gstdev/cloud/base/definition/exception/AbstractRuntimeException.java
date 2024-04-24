@@ -9,7 +9,7 @@ import com.gstdev.cloud.base.definition.domain.Result;
  * @author : cc
  * @date : 2022/3/4 18:31
  */
-public abstract class AbstractRuntimeException extends RuntimeException implements HerodotusException {
+public abstract class AbstractRuntimeException extends RuntimeException implements FrameException {
 
   public AbstractRuntimeException() {
     super();

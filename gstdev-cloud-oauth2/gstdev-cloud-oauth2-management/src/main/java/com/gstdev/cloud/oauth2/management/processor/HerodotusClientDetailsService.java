@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.management.processor;
 
-import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusGrantedAuthority;
+import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import com.gstdev.cloud.oauth2.core.definition.service.EnhanceClientDetailsService;
 import com.gstdev.cloud.oauth2.management.entity.OAuth2Application;
 import com.gstdev.cloud.oauth2.management.entity.OAuth2Permission;
@@ -28,17 +28,17 @@ public class HerodotusClientDetailsService implements EnhanceClientDetailsServic
   }
 
   @Override
-  public Set<HerodotusGrantedAuthority> findAuthoritiesById(String clientId) {
+  public Set<FrameGrantedAuthority> findAuthoritiesById(String clientId) {
 
     OAuth2Application application = applicationService.findByClientId(clientId);
     if (ObjectUtils.isNotEmpty(application)) {
       Set<OAuth2Scope> scopes = application.getScopes();
-      Set<HerodotusGrantedAuthority> result = new HashSet<>();
+      Set<FrameGrantedAuthority> result = new HashSet<>();
       if (CollectionUtils.isNotEmpty(scopes)) {
         for (OAuth2Scope scope : scopes) {
           Set<OAuth2Permission> permissions = scope.getPermissions();
           if (CollectionUtils.isNotEmpty(permissions)) {
-            Set<HerodotusGrantedAuthority> grantedAuthorities = permissions.stream().map(item -> new HerodotusGrantedAuthority(item.getPermissionCode())).collect(Collectors.toSet());
+            Set<FrameGrantedAuthority> grantedAuthorities = permissions.stream().map(item -> new FrameGrantedAuthority(item.getPermissionCode())).collect(Collectors.toSet());
             result.addAll(grantedAuthorities);
           }
         }

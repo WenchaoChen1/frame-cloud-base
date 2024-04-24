@@ -2,7 +2,7 @@ package com.gstdev.cloud.oauth2.management.service;
 
 import com.gstdev.cloud.base.core.exception.transaction.TransactionalRollbackException;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
-import com.gstdev.cloud.oauth2.data.jpa.repository.HerodotusRegisteredClientRepository;
+import com.gstdev.cloud.oauth2.data.jpa.repository.FrameRegisteredClientRepository;
 import com.gstdev.cloud.oauth2.management.converter.OAuth2DeviceToRegisteredClientConverter;
 import com.gstdev.cloud.oauth2.management.converter.RegisteredClientToOAuth2DeviceConverter;
 import com.gstdev.cloud.oauth2.management.entity.OAuth2Device;
@@ -33,15 +33,15 @@ public class OAuth2DeviceService extends BaseServiceImpl<OAuth2Device, String,OA
   private static final Logger log = LoggerFactory.getLogger(OAuth2ApplicationService.class);
 
   private final RegisteredClientRepository registeredClientRepository;
-  private final HerodotusRegisteredClientRepository herodotusRegisteredClientRepository;
+  private final FrameRegisteredClientRepository frameRegisteredClientRepository;
   private  OAuth2DeviceRepository deviceRepository;
   private final Converter<OAuth2Device, RegisteredClient> oauth2DeviceToRegisteredClientConverter;
   private final Converter<RegisteredClient, OAuth2Device> registeredClientToOAuth2DeviceConverter;
 
-  public OAuth2DeviceService(RegisteredClientRepository registeredClientRepository, HerodotusRegisteredClientRepository herodotusRegisteredClientRepository, OAuth2DeviceRepository deviceRepository, OAuth2ScopeService scopeService) {
+  public OAuth2DeviceService(RegisteredClientRepository registeredClientRepository, FrameRegisteredClientRepository frameRegisteredClientRepository, OAuth2DeviceRepository deviceRepository, OAuth2ScopeService scopeService) {
       super(deviceRepository);
       this.registeredClientRepository = registeredClientRepository;
-    this.herodotusRegisteredClientRepository = herodotusRegisteredClientRepository;
+    this.frameRegisteredClientRepository = frameRegisteredClientRepository;
     this.oauth2DeviceToRegisteredClientConverter = new OAuth2DeviceToRegisteredClientConverter();
     this.registeredClientToOAuth2DeviceConverter = new RegisteredClientToOAuth2DeviceConverter(scopeService);
   }
@@ -64,7 +64,7 @@ public class OAuth2DeviceService extends BaseServiceImpl<OAuth2Device, String,OA
   @Override
   public void deleteById(String id) {
     super.deleteById(id);
-    herodotusRegisteredClientRepository.deleteById(id);
+    frameRegisteredClientRepository.deleteById(id);
   }
 
   @Transactional(rollbackFor = TransactionalRollbackException.class)

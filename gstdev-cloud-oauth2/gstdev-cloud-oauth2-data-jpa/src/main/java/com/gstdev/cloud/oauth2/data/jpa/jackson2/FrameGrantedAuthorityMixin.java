@@ -6,17 +6,17 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
- * <p>Description: HerodotusGrantedAuthority Jackson2 Mixin </p>
+ * <p>Description: FrameGrantedAuthority Jackson2 Mixin </p>
  *
  * @author : cc
  * @date : 2022/3/17 20:28
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-@JsonDeserialize(using = HerodotusGrantedAuthorityDeserializer.class)
+@JsonDeserialize(using = FrameGrantedAuthorityDeserializer.class)
 @JsonAutoDetect(
   fieldVisibility = JsonAutoDetect.Visibility.ANY,
   getterVisibility = JsonAutoDetect.Visibility.NONE,
   isGetterVisibility = JsonAutoDetect.Visibility.NONE)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public abstract class HerodotusGrantedAuthorityMixin {
+public abstract class FrameGrantedAuthorityMixin {
 }

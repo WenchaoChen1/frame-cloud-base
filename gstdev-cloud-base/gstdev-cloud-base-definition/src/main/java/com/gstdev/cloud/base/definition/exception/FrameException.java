@@ -9,7 +9,7 @@ import com.gstdev.cloud.base.definition.domain.Result;
  * @author : cc
  * @date : 2022/3/8 9:06
  */
-public interface HerodotusException {
+public interface FrameException {
 
   /**
    * 获取反馈信息

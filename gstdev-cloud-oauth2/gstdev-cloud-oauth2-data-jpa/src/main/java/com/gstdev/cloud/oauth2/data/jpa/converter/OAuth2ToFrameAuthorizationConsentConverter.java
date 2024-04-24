@@ -1,6 +1,6 @@
 package com.gstdev.cloud.oauth2.data.jpa.converter;
 
-import com.gstdev.cloud.oauth2.data.jpa.entity.DefaultOauth2AuthorizationConsent;
+import com.gstdev.cloud.oauth2.data.jpa.entity.FrameAuthorizationConsent;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsent;
@@ -10,15 +10,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * <p>Description: OAuth2AuthorizationConsent 转 HerodotusAuthorizationConsent 转换器</p>
+ * <p>Description: OAuth2AuthorizationConsent 转 FrameAuthorizationConsent 转换器</p>
  *
  * @author : cc
  * @date : 2023/5/21 21:05
  */
-public class OAuth2ToHerodotusAuthorizationConsentConverter implements Converter<OAuth2AuthorizationConsent, DefaultOauth2AuthorizationConsent> {
+public class OAuth2ToFrameAuthorizationConsentConverter implements Converter<OAuth2AuthorizationConsent, FrameAuthorizationConsent> {
   @Override
-  public DefaultOauth2AuthorizationConsent convert(OAuth2AuthorizationConsent authorizationConsent) {
-    DefaultOauth2AuthorizationConsent entity = new DefaultOauth2AuthorizationConsent();
+  public FrameAuthorizationConsent convert(OAuth2AuthorizationConsent authorizationConsent) {
+    FrameAuthorizationConsent entity = new FrameAuthorizationConsent();
     entity.setRegisteredClientId(authorizationConsent.getRegisteredClientId());
     entity.setPrincipalName(authorizationConsent.getPrincipalName());
 

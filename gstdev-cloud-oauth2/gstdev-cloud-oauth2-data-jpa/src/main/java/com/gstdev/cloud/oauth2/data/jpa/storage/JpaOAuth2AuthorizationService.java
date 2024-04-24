@@ -1,10 +1,10 @@
 package com.gstdev.cloud.oauth2.data.jpa.storage;
 
-import com.gstdev.cloud.oauth2.data.jpa.converter.HerodotusToOAuth2AuthorizationConverter;
-import com.gstdev.cloud.oauth2.data.jpa.converter.OAuth2ToHerodotusAuthorizationConverter;
-import com.gstdev.cloud.oauth2.data.jpa.entity.DefaultOauth2Authorization;
+import com.gstdev.cloud.oauth2.data.jpa.converter.FrameToOAuth2AuthorizationConverter;
+import com.gstdev.cloud.oauth2.data.jpa.converter.OAuth2ToFrameAuthorizationConverter;
+import com.gstdev.cloud.oauth2.data.jpa.entity.FrameAuthorization;
 import com.gstdev.cloud.oauth2.data.jpa.jackson2.OAuth2JacksonProcessor;
-import com.gstdev.cloud.oauth2.data.jpa.service.DefaultOauth2AuthorizationService;
+import com.gstdev.cloud.oauth2.data.jpa.service.FrameAuthorizationService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
@@ -34,16 +34,16 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
 
   private static final Logger log = LoggerFactory.getLogger(JpaOAuth2AuthorizationService.class);
 
-  private final DefaultOauth2AuthorizationService herodotusAuthorizationService;
-  private final Converter<DefaultOauth2Authorization, OAuth2Authorization> herodotusToOAuth2Converter;
-  private final Converter<OAuth2Authorization, DefaultOauth2Authorization> oauth2ToHerodotusConverter;
+  private final FrameAuthorizationService herodotusAuthorizationService;
+  private final Converter<FrameAuthorization, OAuth2Authorization> frameToOAuth2Converter;
+  private final Converter<OAuth2Authorization, FrameAuthorization> oauth2ToHerodotusConverter;
 
-  public JpaOAuth2AuthorizationService(DefaultOauth2AuthorizationService herodotusAuthorizationService, RegisteredClientRepository registeredClientRepository) {
+  public JpaOAuth2AuthorizationService(FrameAuthorizationService herodotusAuthorizationService, RegisteredClientRepository registeredClientRepository) {
     this.herodotusAuthorizationService = herodotusAuthorizationService;
 
     OAuth2JacksonProcessor jacksonProcessor = new OAuth2JacksonProcessor();
-    this.herodotusToOAuth2Converter = new HerodotusToOAuth2AuthorizationConverter(jacksonProcessor, registeredClientRepository);
-    this.oauth2ToHerodotusConverter = new OAuth2ToHerodotusAuthorizationConverter(jacksonProcessor);
+    this.frameToOAuth2Converter = new FrameToOAuth2AuthorizationConverter(jacksonProcessor, registeredClientRepository);
+    this.oauth2ToHerodotusConverter = new OAuth2ToFrameAuthorizationConverter(jacksonProcessor);
 
   }
 
@@ -65,7 +65,7 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
 
   @Override
   public OAuth2Authorization findById(String id) {
-    DefaultOauth2Authorization herodotusAuthorization = this.herodotusAuthorizationService.findById(id);
+    FrameAuthorization herodotusAuthorization = this.herodotusAuthorizationService.findById(id);
     if (ObjectUtils.isNotEmpty(herodotusAuthorization)) {
       return toObject(herodotusAuthorization);
     } else {
@@ -80,7 +80,7 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
   }
 
   public List<OAuth2Authorization> findAvailableAuthorizations(String registeredClientId, String principalName) {
-    List<DefaultOauth2Authorization> authorizations = this.herodotusAuthorizationService.findAvailableAuthorizations(registeredClientId, principalName);
+    List<FrameAuthorization> authorizations = this.herodotusAuthorizationService.findAvailableAuthorizations(registeredClientId, principalName);
     if (CollectionUtils.isNotEmpty(authorizations)) {
       return authorizations.stream().map(this::toObject).collect(Collectors.toList());
     }
@@ -92,7 +92,7 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
   public OAuth2Authorization findByToken(String token, OAuth2TokenType tokenType) {
     Assert.hasText(token, "token cannot be empty");
 
-    Optional<DefaultOauth2Authorization> result;
+    Optional<FrameAuthorization> result;
     if (tokenType == null) {
       result = this.herodotusAuthorizationService.findByStateOrAuthorizationCodeValueOrAccessTokenValueOrRefreshTokenValueOrOidcIdTokenValueOrUserCodeValueOrDeviceCodeValue(token);
     } else if (OAuth2ParameterNames.STATE.equals(tokenType.getValue())) {
@@ -116,11 +116,11 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
     return result.map(this::toObject).orElse(null);
   }
 
-  private OAuth2Authorization toObject(DefaultOauth2Authorization entity) {
-    return herodotusToOAuth2Converter.convert(entity);
+  private OAuth2Authorization toObject(FrameAuthorization entity) {
+    return frameToOAuth2Converter.convert(entity);
   }
 
-  private DefaultOauth2Authorization toEntity(OAuth2Authorization authorization) {
+  private FrameAuthorization toEntity(OAuth2Authorization authorization) {
     return oauth2ToHerodotusConverter.convert(authorization);
   }
 }

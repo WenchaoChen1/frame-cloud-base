@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.data.jpa.repository;
 
 import com.gstdev.cloud.data.core.repository.BaseRepository;
-import com.gstdev.cloud.oauth2.data.jpa.entity.DefaultOauth2Authorization;
+import com.gstdev.cloud.oauth2.data.jpa.entity.FrameAuthorization;
 import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
 import org.springframework.data.jpa.repository.Modifying;
@@ -14,76 +14,76 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * <p>Description: HerodotusAuthorizationRepository </p>
+ * <p>Description: FrameAuthorizationRepository </p>
  *
  * @author : cc
  * @date : 2022/2/25 21:05
  */
 @Repository
-public interface HerodotusAuthorizationRepository extends BaseRepository<DefaultOauth2Authorization, String> {
+public interface FrameAuthorizationRepository extends BaseRepository<FrameAuthorization, String> {
 
   /**
    * 根据 State 查询 OAuth2 认证信息
    *
    * @param state OAuth2 Authorization Code 模式参数 State
-   * @return OAuth2 认证信息 {@link DefaultOauth2Authorization}
+   * @return OAuth2 认证信息 {@link FrameAuthorization}
    */
   @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
-  Optional<DefaultOauth2Authorization> findByState(String state);
+  Optional<FrameAuthorization> findByState(String state);
 
   /**
    * 根据 authorizationCode 查询 OAuth2 认证信息
    *
    * @param authorizationCode OAuth2 Authorization Code 模式参数 code
-   * @return OAuth2 认证信息 {@link DefaultOauth2Authorization}
+   * @return OAuth2 认证信息 {@link FrameAuthorization}
    */
   @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
-  Optional<DefaultOauth2Authorization> findByAuthorizationCodeValue(String authorizationCode);
+  Optional<FrameAuthorization> findByAuthorizationCodeValue(String authorizationCode);
 
   /**
    * 根据 Access Token 查询 OAuth2 认证信息
    *
    * @param accessToken OAuth2 accessToken
-   * @return OAuth2 认证信息 {@link DefaultOauth2Authorization}
+   * @return OAuth2 认证信息 {@link FrameAuthorization}
    */
   @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
-  Optional<DefaultOauth2Authorization> findByAccessTokenValue(String accessToken);
+  Optional<FrameAuthorization> findByAccessTokenValue(String accessToken);
 
   /**
    * 根据 Refresh Token 查询 OAuth2 认证信息
    *
    * @param refreshToken OAuth2 refreshToken
-   * @return OAuth2 认证信息 {@link DefaultOauth2Authorization}
+   * @return OAuth2 认证信息 {@link FrameAuthorization}
    */
   @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
-  Optional<DefaultOauth2Authorization> findByRefreshTokenValue(String refreshToken);
+  Optional<FrameAuthorization> findByRefreshTokenValue(String refreshToken);
 
   /**
    * 根据 Id Token 查询 OAuth2 认证信息
    *
    * @param idToken OAuth2 idToken
-   * @return OAuth2 认证信息 {@link DefaultOauth2Authorization}
+   * @return OAuth2 认证信息 {@link FrameAuthorization}
    */
   @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
-  Optional<DefaultOauth2Authorization> findByOidcIdTokenValue(String idToken);
+  Optional<FrameAuthorization> findByOidcIdTokenValue(String idToken);
 
   /**
    * 根据 User Code 查询 OAuth2 认证信息
    *
    * @param userCode OAuth2 userCode
-   * @return OAuth2 认证信息 {@link DefaultOauth2Authorization}
+   * @return OAuth2 认证信息 {@link FrameAuthorization}
    */
   @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
-  Optional<DefaultOauth2Authorization> findByUserCodeValue(String userCode);
+  Optional<FrameAuthorization> findByUserCodeValue(String userCode);
 
   /**
    * 根据 Device Code 查询 OAuth2 认证信息
    *
    * @param deviceCode OAuth2 deviceCode
-   * @return OAuth2 认证信息 {@link DefaultOauth2Authorization}
+   * @return OAuth2 认证信息 {@link FrameAuthorization}
    */
   @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
-  Optional<DefaultOauth2Authorization> findByDeviceCodeValue(String deviceCode);
+  Optional<FrameAuthorization> findByDeviceCodeValue(String deviceCode);
 
   /**
    * 根据客户端ID和用户名查询未过期Token
@@ -93,7 +93,7 @@ public interface HerodotusAuthorizationRepository extends BaseRepository<Default
    * @param instant      时间
    * @return 认证信息列表
    */
-  List<DefaultOauth2Authorization> findAllByRegisteredClientIdAndPrincipalNameAndAccessTokenExpiresAtAfter(String registeredClientId, String principalName, Instant instant);
+  List<FrameAuthorization> findAllByRegisteredClientIdAndPrincipalNameAndAccessTokenExpiresAtAfter(String registeredClientId, String principalName, Instant instant);
 
   /**
    * 根据 RefreshToken 过期时间，清理历史 Token信息

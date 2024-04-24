@@ -4,7 +4,7 @@ package com.gstdev.cloud.oauth2.core.exception;
 import com.gstdev.cloud.base.definition.constants.ErrorCodes;
 import com.gstdev.cloud.base.definition.domain.Feedback;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.base.definition.exception.HerodotusException;
+import com.gstdev.cloud.base.definition.exception.FrameException;
 import org.springframework.security.authentication.AccountStatusException;
 import org.springframework.security.core.Authentication;
 
@@ -18,7 +18,7 @@ import org.springframework.security.core.Authentication;
  * @date : 2022/4/12 22:33
  * @see org.springframework.security.authentication.ProviderManager#authenticate(Authentication)
  */
-public class OAuth2CaptchaException extends AccountStatusException implements HerodotusException {
+public class OAuth2CaptchaException extends AccountStatusException implements FrameException {
 
   public OAuth2CaptchaException(String msg) {
     super(msg);

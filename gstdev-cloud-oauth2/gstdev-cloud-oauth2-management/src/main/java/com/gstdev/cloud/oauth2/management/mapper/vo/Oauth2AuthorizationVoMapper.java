@@ -10,7 +10,7 @@
 package com.gstdev.cloud.oauth2.management.mapper.vo;
 
 import com.gstdev.cloud.data.core.mapper.BaseVoMapper;
-import com.gstdev.cloud.oauth2.data.jpa.entity.DefaultOauth2Authorization;
+import com.gstdev.cloud.oauth2.data.jpa.entity.FrameAuthorization;
 import com.gstdev.cloud.oauth2.management.domain.base.Oauth2AuthorizationDto;
 import com.gstdev.cloud.oauth2.management.domain.base.Oauth2AuthorizationVo;
 import org.mapstruct.Mapper;
@@ -26,9 +26,9 @@ import java.util.List;
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface Oauth2AuthorizationVoMapper extends BaseVoMapper<Oauth2AuthorizationVo, Oauth2AuthorizationDto> {
-    Oauth2AuthorizationVo entityToVo(DefaultOauth2Authorization entity);
-    List<Oauth2AuthorizationVo> entityToVo(List<DefaultOauth2Authorization> entity);
-    default Page<Oauth2AuthorizationVo> entityToVo(Page<DefaultOauth2Authorization> page) {
+    Oauth2AuthorizationVo entityToVo(FrameAuthorization entity);
+    List<Oauth2AuthorizationVo> entityToVo(List<FrameAuthorization> entity);
+    default Page<Oauth2AuthorizationVo> entityToVo(Page<FrameAuthorization> page) {
         List<Oauth2AuthorizationVo> responses = this.entityToVo(page.getContent());
         return new PageImpl(responses, page.getPageable(), page.getTotalElements());
     }

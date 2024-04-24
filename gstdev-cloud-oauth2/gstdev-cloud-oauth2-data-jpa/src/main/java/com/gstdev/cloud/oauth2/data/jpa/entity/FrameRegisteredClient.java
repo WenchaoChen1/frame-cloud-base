@@ -2,7 +2,7 @@ package com.gstdev.cloud.oauth2.data.jpa.entity;
 
 import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
 import com.gstdev.cloud.oauth2.data.jpa.definition.domain.AbstractRegisteredClient;
-import com.gstdev.cloud.oauth2.data.jpa.generator.HerodotusRegisteredClientUuidGenerator;
+import com.gstdev.cloud.oauth2.data.jpa.generator.FrameRegisteredClientUuidGenerator;
 import com.google.common.base.MoreObjects;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -22,10 +22,10 @@ import java.util.Objects;
   @Index(name = "oauth2_registered_client_cid_idx", columnList = "client_id")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_REGISTERED_CLIENT)
-public class DefaultOauth2RegisteredClient extends AbstractRegisteredClient {
+public class FrameRegisteredClient extends AbstractRegisteredClient {
 
   @Id
-  @HerodotusRegisteredClientUuidGenerator
+  @FrameRegisteredClientUuidGenerator
   @Column(name = "id", nullable = false, length = 100)
   private String id;
 
@@ -114,7 +114,7 @@ public class DefaultOauth2RegisteredClient extends AbstractRegisteredClient {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DefaultOauth2RegisteredClient that = (DefaultOauth2RegisteredClient) o;
+    FrameRegisteredClient that = (FrameRegisteredClient) o;
     return Objects.equals(id, that.id);
   }
 

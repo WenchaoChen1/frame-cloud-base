@@ -16,7 +16,7 @@ import java.io.Serializable;
  * @author : cc
  * @date : 2022/1/22 17:58
  */
-public class HerodotusAuthorizationConsentId implements Serializable {
+public class FrameAuthorizationConsentId implements Serializable {
 
   /**
    * 这里一定要注意：
@@ -28,10 +28,10 @@ public class HerodotusAuthorizationConsentId implements Serializable {
 
   private String principalName;
 
-  public HerodotusAuthorizationConsentId() {
+  public FrameAuthorizationConsentId() {
   }
 
-  public HerodotusAuthorizationConsentId(String registeredClientId, String principalName) {
+  public FrameAuthorizationConsentId(String registeredClientId, String principalName) {
     this.registeredClientId = registeredClientId;
     this.principalName = principalName;
   }
@@ -60,7 +60,7 @@ public class HerodotusAuthorizationConsentId implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HerodotusAuthorizationConsentId that = (HerodotusAuthorizationConsentId) o;
+    FrameAuthorizationConsentId that = (FrameAuthorizationConsentId) o;
     return Objects.equal(registeredClientId, that.registeredClientId) && Objects.equal(principalName, that.principalName);
   }
 

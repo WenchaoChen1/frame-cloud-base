@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.data.jpa.jackson2;
 
 import com.gstdev.cloud.base.core.json.jackson2.utils.JsonNodeUtils;
-import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusGrantedAuthority;
+import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -26,7 +26,7 @@ import java.util.Set;
  */
 public class OAuth2ClientAuthenticationTokenDeserializer extends JsonDeserializer<OAuth2ClientAuthenticationToken> {
 
-  private static final TypeReference<Set<HerodotusGrantedAuthority>> HERODOTUS_GRANTED_AUTHORITY_SET = new TypeReference<Set<HerodotusGrantedAuthority>>() {
+  private static final TypeReference<Set<FrameGrantedAuthority>> HERODOTUS_GRANTED_AUTHORITY_SET = new TypeReference<Set<FrameGrantedAuthority>>() {
   };
 
   @Override
@@ -38,7 +38,7 @@ public class OAuth2ClientAuthenticationTokenDeserializer extends JsonDeserialize
   }
 
   private OAuth2ClientAuthenticationToken deserialize(JsonParser parser, ObjectMapper mapper, JsonNode root) throws IOException {
-    Set<HerodotusGrantedAuthority> authorities = JsonNodeUtils.findValue(root, "authorities", HERODOTUS_GRANTED_AUTHORITY_SET, mapper);
+    Set<FrameGrantedAuthority> authorities = JsonNodeUtils.findValue(root, "authorities", HERODOTUS_GRANTED_AUTHORITY_SET, mapper);
     RegisteredClient registeredClient = JsonNodeUtils.findValue(root, "registeredClient", new TypeReference<RegisteredClient>() {
     }, mapper);
     String credentials = JsonNodeUtils.findStringValue(root, "credentials");

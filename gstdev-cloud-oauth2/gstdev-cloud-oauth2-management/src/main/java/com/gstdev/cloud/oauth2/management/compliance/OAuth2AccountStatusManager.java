@@ -39,7 +39,7 @@ public class OAuth2AccountStatusManager {
 
   private String getUserId(String username) {
     EnhanceUserDetailsService enhanceUserDetailsService = getUserDetailsService();
-    DefaultSecurityUser user = enhanceUserDetailsService.loadHerodotusUserByUsername(username);
+    DefaultSecurityUser user = enhanceUserDetailsService.loadDefaultSecurityUserByUsername(username);
     if (ObjectUtils.isNotEmpty(user)) {
       return user.getUserId();
     }
