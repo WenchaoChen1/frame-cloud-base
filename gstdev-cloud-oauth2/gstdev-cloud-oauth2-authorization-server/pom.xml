@@ -2,41 +2,51 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>com.gstdev.cloud</groupId>
-    <artifactId>gstdev-cloud-oauth2</artifactId>
-    <version>2024.0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
+    <parent>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-oauth2</artifactId>
+        <version>2024.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
-  <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
-  <name>GstDev Cloud :: OAuth2 :: Authorization Server</name>
-  <description>${project.name}</description>
-  <packaging>jar</packaging>
+    <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
+    <name>GstDev Cloud :: OAuth2 :: Authorization Server</name>
+    <description>${project.name}</description>
+    <packaging>jar</packaging>
 
-  <dependencies>
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-oauth2-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-rest-protect</artifactId>
-    </dependency>
+    <dependencies>
 
-    <!-- Spring Security related dependencies -->
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-oauth2-authorization-server</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-oauth2-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-rest-protect</artifactId>
+        </dependency>
 
-    <!--TODO-->
-    <dependency>
-      <groupId>jakarta.servlet</groupId>
-      <artifactId>jakarta.servlet-api</artifactId>
-    </dependency>
+        <!--    <dependency>-->
+        <!--      <groupId>com.gstdev.cloud</groupId>-->
+        <!--      <artifactId>gstdev-cloud-oauth2-core</artifactId>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>com.gstdev.cloud</groupId>-->
+        <!--      <artifactId>gstdev-cloud-rest-protect</artifactId>-->
+        <!--    </dependency>-->
 
-  </dependencies>
+        <!--    &lt;!&ndash; Spring Security related dependencies &ndash;&gt;-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.springframework.security</groupId>-->
+        <!--      <artifactId>spring-security-oauth2-authorization-server</artifactId>-->
+        <!--    </dependency>-->
+
+        <!--    &lt;!&ndash;TODO&ndash;&gt;-->
+        <!--    <dependency>-->
+        <!--      <groupId>jakarta.servlet</groupId>-->
+        <!--      <artifactId>jakarta.servlet-api</artifactId>-->
+        <!--    </dependency>-->
+
+    </dependencies>
 </project>
