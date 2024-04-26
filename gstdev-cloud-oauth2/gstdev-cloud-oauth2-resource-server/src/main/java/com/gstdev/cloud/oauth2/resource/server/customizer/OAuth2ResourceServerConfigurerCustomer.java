@@ -20,39 +20,39 @@ import org.springframework.security.oauth2.server.resource.web.DefaultBearerToke
  */
 public class OAuth2ResourceServerConfigurerCustomer implements Customizer<OAuth2ResourceServerConfigurer<HttpSecurity>> {
 
-  private final JwtDecoder jwtDecoder;
-  private final OAuth2AuthorizationProperties authorizationProperties;
+    private final JwtDecoder jwtDecoder;
+    private final OAuth2AuthorizationProperties authorizationProperties;
 //  private final OpaqueTokenIntrospector opaqueTokenIntrospector;
 
-  public OAuth2ResourceServerConfigurerCustomer(OAuth2AuthorizationProperties authorizationProperties, JwtDecoder jwtDecoder, OAuth2ResourceServerProperties resourceServerProperties) {
-    this.jwtDecoder = jwtDecoder;
-    this.authorizationProperties = authorizationProperties;
+    public OAuth2ResourceServerConfigurerCustomer(OAuth2AuthorizationProperties authorizationProperties, JwtDecoder jwtDecoder, OAuth2ResourceServerProperties resourceServerProperties) {
+        this.jwtDecoder = jwtDecoder;
+        this.authorizationProperties = authorizationProperties;
 //    this.opaqueTokenIntrospector = new HerodotusOpaqueTokenIntrospector(resourceServerProperties);
-  }
+    }
 
-  private boolean isRemoteValidate() {
-    return this.authorizationProperties.getValidate() == Target.REMOTE;
-  }
+    private boolean isRemoteValidate() {
+        return this.authorizationProperties.getValidate() == Target.REMOTE;
+    }
 
-  @Override
-  public void customize(OAuth2ResourceServerConfigurer<HttpSecurity> configurer) {
+    @Override
+    public void customize(OAuth2ResourceServerConfigurer<HttpSecurity> configurer) {
 //    if (isRemoteValidate()) {
 //      configurer
 //        .opaqueToken(opaque -> opaque.introspector(opaqueTokenIntrospector));
 //    } else {
-    configurer
-        .bearerTokenResolver(new DefaultBearerTokenResolver())
-      .jwt(jwt -> jwt.decoder(this.jwtDecoder)
-                      .jwtAuthenticationConverter(new CustomizeJwtAuthenticationConverter()));
+        configurer
+            .bearerTokenResolver(new DefaultBearerTokenResolver())
+            .jwt(jwt -> jwt.decoder(this.jwtDecoder)
+                .jwtAuthenticationConverter(new CustomizeJwtAuthenticationConverter()));
 //    }
 
-    configurer
-      .accessDeniedHandler(new FrameAccessDeniedHandler())
-      .authenticationEntryPoint(new FrameAuthenticationEntryPoint());
-  }
+        configurer
+            .accessDeniedHandler(new FrameAccessDeniedHandler())
+            .authenticationEntryPoint(new FrameAuthenticationEntryPoint());
+    }
 
     public BearerTokenResolver createBearerTokenResolver() {
-      // TODO
+        // TODO
 //        return new HerodotusBearerTokenResolver(this.jwtDecoder, this.opaqueTokenIntrospector, this.isRemoteValidate());
         return new HerodotusBearerTokenResolver(this.jwtDecoder, null, this.isRemoteValidate());
     }
