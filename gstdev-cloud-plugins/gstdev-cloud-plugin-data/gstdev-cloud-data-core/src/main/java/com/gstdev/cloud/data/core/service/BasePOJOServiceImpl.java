@@ -176,7 +176,8 @@ public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
 
     @Override
     public Page<D> page(PQC pageQueryCriteria, Pageable pageable) {
-        pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(Sort.Direction.DESC, "updatedAt"));
+//        pageable.getSort()
+//        pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(Sort.Direction.DESC, "updatedAt"));
         Page<E> page = getRepository().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, pageQueryCriteria, criteriaBuilder), pageable);
         return getMapper().toDto(page);
     }

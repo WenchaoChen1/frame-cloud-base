@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.apache.commons.lang3.ArrayUtils;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -58,12 +59,11 @@ public abstract class BaseController<E extends Entity, ID extends Serializable, 
         @Parameter(name = "pager", required = true, in = ParameterIn.QUERY, description = "分页Bo对象", schema = @Schema(implementation = Pager.class))
     })
     @GetMapping
-    public Result<Map<String, Object>> findByPage(@Validated Pager pager) {
-        if (ArrayUtils.isNotEmpty(pager.getProperties())) {
-            Sort.Direction direction = Sort.Direction.valueOf(pager.getDirection());
-            return Controller.super.findByPage(pager.getPageNumber(), pager.getPageSize(), direction, pager.getProperties());
+    public Result<Map<String, Object>> findByPage(@Validated  Pageable pageable) {
+        if (pageable.getSort().isSorted()) {
+            return Controller.super.findByPage(pageable.getPageNumber(), pageable.getPageSize(),pageable.getSort());
         } else {
-            return Controller.super.findByPage(pager.getPageNumber(), pager.getPageSize());
+            return Controller.super.findByPage(pageable.getPageNumber(), pageable.getPageSize());
         }
     }
 

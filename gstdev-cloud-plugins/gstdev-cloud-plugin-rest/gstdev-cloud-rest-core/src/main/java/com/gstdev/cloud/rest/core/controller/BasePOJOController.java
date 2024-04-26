@@ -24,20 +24,31 @@ public abstract class BasePOJOController<E extends BasePOJOEntityINT<ID>
     , II extends BaseInsertInputInterface
     , UI extends BaseUpdateInputInterface
     , PQC extends BasePageQueryCriteriaInterface
-    , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseController<E, ID, S>
+    , FQC extends BaseFindAllByQueryCriteriaInterface>
     implements POJOController<E, ID, S, M, V, D, II, UI, PQC, FQC> {
-    public BasePOJOController(S service) {
-        super(service);
-    }
-
+    //    public BasePOJOController(S service) {
+//        super(service);
+//    }
+    private S service;
 
     private M mapper;
 
     public BasePOJOController(S service, M mapper) {
-        super(service);
+        this.service = service;
         this.mapper = mapper;
     }
 
+    /**
+     * 获取Service
+     *
+     * @return Service
+     */
+    @Override
+    public S getService() {
+        return this.service;
+    }
+
+    @Override
     public M getMapper() {
         return mapper;
     }
@@ -46,4 +57,7 @@ public abstract class BasePOJOController<E extends BasePOJOEntityINT<ID>
         this.mapper = mapper;
     }
 
+    public void setService(S service) {
+        this.service = service;
+    }
 }
