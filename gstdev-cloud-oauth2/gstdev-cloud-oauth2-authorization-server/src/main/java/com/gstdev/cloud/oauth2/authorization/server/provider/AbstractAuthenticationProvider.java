@@ -1,9 +1,12 @@
 package com.gstdev.cloud.oauth2.authorization.server.provider;
 
 
+import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
+import com.gstdev.cloud.oauth2.core.utils.PrincipalUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.session.SessionInformation;
 import org.springframework.security.core.session.SessionRegistry;
@@ -178,11 +181,11 @@ public abstract class AbstractAuthenticationProvider implements AuthenticationPr
   }
 
   protected OAuth2AccessTokenAuthenticationToken createOAuth2AccessTokenAuthenticationToken(Authentication source, OAuth2AccessTokenAuthenticationToken destination) {
-//    if (source instanceof UsernamePasswordAuthenticationToken) {
-//      if (source.getPrincipal() instanceof HerodotusUser user) {
-//        destination.setDetails(PrincipalUtils.toPrincipalDetails(user));
-//      }
-//    }
+    if (source instanceof UsernamePasswordAuthenticationToken) {
+      if (source.getPrincipal() instanceof DefaultSecurityUser user) {
+        destination.setDetails(PrincipalUtils.toPrincipalDetails(user));
+      }
+    }
 
     return destination;
   }

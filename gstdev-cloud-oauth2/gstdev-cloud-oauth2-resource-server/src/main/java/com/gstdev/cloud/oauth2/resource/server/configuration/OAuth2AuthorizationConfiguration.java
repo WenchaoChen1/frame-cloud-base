@@ -1,6 +1,8 @@
 package com.gstdev.cloud.oauth2.resource.server.configuration;
 
+import com.gstdev.cloud.base.core.support.BearerTokenResolver;
 import com.gstdev.cloud.cache.jetcache.autoconfigure.CacheJetCacheAutoConfiguration;
+import com.gstdev.cloud.oauth2.resource.server.auditing.SecurityAuditorAware;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.processor.SecurityMatcherConfigurer;
@@ -9,10 +11,12 @@ import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 
 /**
@@ -87,20 +91,20 @@ public class OAuth2AuthorizationConfiguration {
     log.trace("[GstDev Cloud] |- Bean [OAuth2 Resource Server Configurer Customer] Auto Configure.");
     return oauth2ResourceServerConfigurerCustomer;
   }
-//
-//  @Bean
-//  @ConditionalOnMissingBean
-//  @ConditionalOnBean(OAuth2ResourceServerConfigurerCustomer.class)
-//  public BearerTokenResolver bearerTokenResolver(OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer) {
-//    BearerTokenResolver bearerTokenResolver = oauth2ResourceServerConfigurerCustomer.createBearerTokenResolver();
-//    log.trace("[GstDev Cloud] |- Bean [Bearer Token Resolver] Auto Configure.");
-//    return bearerTokenResolver;
-//  }
-//
-//  @Bean
-//  public AuditorAware<String> auditorAware() {
-//    SecurityAuditorAware securityAuditorAware = new SecurityAuditorAware();
-//    log.debug("[GstDev Cloud] |- Bean [Security Auditor Aware] Auto Configure.");
-//    return securityAuditorAware;
-//  }
+
+  @Bean
+  @ConditionalOnMissingBean
+  @ConditionalOnBean(OAuth2ResourceServerConfigurerCustomer.class)
+  public BearerTokenResolver bearerTokenResolver(OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer) {
+    BearerTokenResolver bearerTokenResolver = oauth2ResourceServerConfigurerCustomer.createBearerTokenResolver();
+    log.trace("[GstDev Cloud] |- Bean [Bearer Token Resolver] Auto Configure.");
+    return bearerTokenResolver;
+  }
+
+  @Bean
+  public AuditorAware<String> auditorAware() {
+    SecurityAuditorAware securityAuditorAware = new SecurityAuditorAware();
+    log.debug("[GstDev Cloud] |- Bean [Security Auditor Aware] Auto Configure.");
+    return securityAuditorAware;
+  }
 }

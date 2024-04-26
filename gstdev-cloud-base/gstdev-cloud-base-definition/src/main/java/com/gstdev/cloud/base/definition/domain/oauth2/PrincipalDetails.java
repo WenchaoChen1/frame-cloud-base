@@ -3,6 +3,8 @@ package com.gstdev.cloud.base.definition.domain.oauth2;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.gstdev.cloud.base.definition.constants.BaseConstants;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,8 +16,11 @@ import java.util.Set;
  * @author : cc
  * @date : 2022/7/13 14:31
  */
+@Setter
+@Getter
 public class PrincipalDetails {
 
+  private String userId;
   private String openId;
 
   private String username;

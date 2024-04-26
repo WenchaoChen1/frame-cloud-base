@@ -12,6 +12,7 @@ import com.gstdev.cloud.oauth2.core.jackson2.FrameUserDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
+import lombok.Setter;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.security.core.CredentialsContainer;
 import org.springframework.security.core.GrantedAuthority;
@@ -26,6 +27,7 @@ import java.util.*;
  * @author gengwei.zheng
  */
 @JsonDeserialize(using = FrameUserDeserializer.class)
+@Setter
 public class DefaultSecurityUser implements UserDetails, CredentialsContainer {
 
     private String userId;

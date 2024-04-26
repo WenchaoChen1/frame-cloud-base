@@ -97,5 +97,6 @@ public interface BaseConstants {
   String ROLES = "roles";
   String SOURCE = "source";
   String USERNAME = "username";
+  String USER_ID = "userid";
 }
 

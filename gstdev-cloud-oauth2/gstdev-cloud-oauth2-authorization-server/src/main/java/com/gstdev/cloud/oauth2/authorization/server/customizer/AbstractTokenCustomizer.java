@@ -68,6 +68,7 @@ public abstract class AbstractTokenCustomizer {
     // 添加用户信息到attributes中
     private void putUserInfo(Map<String, Object> attributes, Object object) {
         if (ObjectUtils.isNotEmpty(object) && object instanceof DefaultSecurityUser principal) {
+            attributes.put(BaseConstants.USER_ID, principal.getUserId());
             attributes.put(BaseConstants.OPEN_ID, principal.getUserId());
             attributes.put(BaseConstants.ROLES, principal.getRoles());
             attributes.put(BaseConstants.AVATAR, principal.getAvatar());

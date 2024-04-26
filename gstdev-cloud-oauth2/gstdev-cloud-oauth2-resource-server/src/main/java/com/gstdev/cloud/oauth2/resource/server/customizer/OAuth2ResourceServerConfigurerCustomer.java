@@ -1,6 +1,8 @@
 package com.gstdev.cloud.oauth2.resource.server.customizer;
 
 import com.gstdev.cloud.base.core.enums.Target;
+import com.gstdev.cloud.base.core.support.BearerTokenResolver;
+import com.gstdev.cloud.oauth2.resource.server.converter.CustomizeJwtAuthenticationConverter;
 import com.gstdev.cloud.oauth2.resource.server.properties.OAuth2AuthorizationProperties;
 import com.gstdev.cloud.oauth2.core.response.FrameAccessDeniedHandler;
 import com.gstdev.cloud.oauth2.core.response.FrameAuthenticationEntryPoint;
@@ -39,10 +41,9 @@ public class OAuth2ResourceServerConfigurerCustomer implements Customizer<OAuth2
 //        .opaqueToken(opaque -> opaque.introspector(opaqueTokenIntrospector));
 //    } else {
     configurer
+        .bearerTokenResolver(new DefaultBearerTokenResolver())
       .jwt(jwt -> jwt.decoder(this.jwtDecoder)
-//                      .jwtAuthenticationConverter(new CustomizeJwtAuthenticationConverter())
-      )
-      .bearerTokenResolver(new DefaultBearerTokenResolver());
+                      .jwtAuthenticationConverter(new CustomizeJwtAuthenticationConverter()));
 //    }
 
     configurer
@@ -50,7 +51,9 @@ public class OAuth2ResourceServerConfigurerCustomer implements Customizer<OAuth2
       .authenticationEntryPoint(new FrameAuthenticationEntryPoint());
   }
 
-//    public BearerTokenResolver createBearerTokenResolver() {
+    public BearerTokenResolver createBearerTokenResolver() {
+      // TODO
 //        return new HerodotusBearerTokenResolver(this.jwtDecoder, this.opaqueTokenIntrospector, this.isRemoteValidate());
-//    }
+        return new HerodotusBearerTokenResolver(this.jwtDecoder, null, this.isRemoteValidate());
+    }
 }
