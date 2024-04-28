@@ -32,7 +32,7 @@ import java.util.Set;
  */
 public class FrameUserDeserializer extends JsonDeserializer<DefaultSecurityUser> {
 
-  private static final TypeReference<Set<FrameGrantedAuthority>> HERODOTUS_GRANTED_AUTHORITY_SET = new TypeReference<Set<FrameGrantedAuthority>>() {
+  private static final TypeReference<Set<FrameGrantedAuthority>> FRAME_GRANTED_AUTHORITY_SET = new TypeReference<Set<FrameGrantedAuthority>>() {
   };
   private static final TypeReference<Set<String>> HERODOTUS_ROLE_SET = new TypeReference<Set<String>>() {
   };
@@ -53,7 +53,7 @@ public class FrameUserDeserializer extends JsonDeserializer<DefaultSecurityUser>
   public DefaultSecurityUser deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
     ObjectMapper mapper = (ObjectMapper) jp.getCodec();
     JsonNode jsonNode = mapper.readTree(jp);
-    Set<? extends GrantedAuthority> authorities = mapper.convertValue(jsonNode.get("authorities"), HERODOTUS_GRANTED_AUTHORITY_SET);
+    Set<? extends GrantedAuthority> authorities = mapper.convertValue(jsonNode.get("authorities"), FRAME_GRANTED_AUTHORITY_SET);
     Set<String> roles = mapper.convertValue(jsonNode.get("roles"), HERODOTUS_ROLE_SET);
     JsonNode passwordNode = JsonNodeUtils.readJsonNode(jsonNode, "password");
     String userId = JsonNodeUtils.findStringValue(jsonNode, "userId");

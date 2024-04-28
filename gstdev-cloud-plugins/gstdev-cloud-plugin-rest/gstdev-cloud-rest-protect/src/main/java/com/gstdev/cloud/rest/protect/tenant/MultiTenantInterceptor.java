@@ -24,7 +24,7 @@
 //  @Override
 //  public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 //
-//    String tenantId = HeaderUtils.getHerodotusTenantId(request);
+//    String tenantId = HeaderUtils.getFrameTenantId(request);
 //    if (StringUtils.isBlank(tenantId)) {
 //      tenantId = DefaultConstants.TENANT_ID;
 //    }
@@ -33,7 +33,7 @@
 //
 //    String path = request.getRequestURI();
 //    String sessionId = SessionUtils.getSessionId(request);
-//    String herodotusSessionId = HeaderUtils.getHerodotusSessionId(request);
+//    String herodotusSessionId = HeaderUtils.getFrameSessionId(request);
 //
 //    log.debug("[GstDev Cloud] |- SESSION ID for [{}] is : [{}].", path, sessionId);
 //    log.debug("[GstDev Cloud] |- SESSION ID of HERODOTUS for [{}] is : [{}].", path, herodotusSessionId);

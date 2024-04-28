@@ -86,11 +86,11 @@ public class SecurityMetadataSourceStorage {
     /**
      * 写入 indexable 缓存
      *
-     * @param herodotusRequest 自定义扩展的 AntPathRequestMatchers {@link FrameRequest}
+     * @param frameRequest 自定义扩展的 AntPathRequestMatchers {@link FrameRequest}
      * @param configAttributes 权限配置属性
      */
-    private void writeToIndexable(FrameRequest herodotusRequest, List<FrameConfigAttribute> configAttributes) {
-        this.indexable.put(herodotusRequest, configAttributes);
+    private void writeToIndexable(FrameRequest frameRequest, List<FrameConfigAttribute> configAttributes) {
+        this.indexable.put(frameRequest, configAttributes);
     }
 
     /**

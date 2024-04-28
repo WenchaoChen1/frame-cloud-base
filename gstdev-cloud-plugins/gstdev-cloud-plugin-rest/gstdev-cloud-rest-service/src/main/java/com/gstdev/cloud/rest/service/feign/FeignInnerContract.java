@@ -48,7 +48,7 @@ public class FeignInnerContract extends SpringMvcContract {
       Inner inner = findMergedAnnotation(method, Inner.class);
       if (ObjectUtils.isNotEmpty(inner)) {
         log.debug("[GstDev Cloud] |- Found inner annotation on Feign interface, add header!");
-        data.template().header(HeaderUtils.X_HERODOTUS_FROM_IN, "true");
+        data.template().header(HeaderUtils.X_FRAME_FROM_IN, "true");
       }
     }
 

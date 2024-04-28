@@ -63,8 +63,8 @@ public class RestWebMvcAutoConfiguration implements WebMvcConfigurer {
       .addResolver(new WebJarsResourceResolver());
       registry.addResourceHandler("/plugins/**")
           .addResourceLocations("classpath:/static/plugins/");
-      registry.addResourceHandler("/herodotus/**")
-          .addResourceLocations("classpath:/static/herodotus/");
+      registry.addResourceHandler("/frame/**")
+          .addResourceLocations("classpath:/static/frame/");
   }
 
 }

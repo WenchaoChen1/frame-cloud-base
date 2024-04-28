@@ -47,7 +47,7 @@ public class WebSocketProperties {
   /**
    * 请求中传递的用户身份标识属性名
    */
-  private String principalHeader = HeaderUtils.X_HERODOTUS_OPEN_ID;
+  private String principalHeader = HeaderUtils.X_FRAME_OPEN_ID;
 
   public InstanceMode getMode() {
     return mode;

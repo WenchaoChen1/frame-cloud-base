@@ -18,10 +18,10 @@ import java.util.List;
  */
 public class HeaderUtils {
 
-  public static final String X_HERODOTUS_SESSION_ID = "X-Herodotus-Session-id";
-  public static final String X_HERODOTUS_FROM_IN = "X-Herodotus-From-In";
-  public static final String X_HERODOTUS_TENANT_ID = "X-Herodotus-Tenant-Id";
-  public static final String X_HERODOTUS_OPEN_ID = "X-Herodotus-Open-Id";
+  public static final String X_FRAME_SESSION_ID = "X-Frame-Session-id";
+  public static final String X_FRAME_FROM_IN = "X-Frame-From-In";
+  public static final String X_FRAME_TENANT_ID = "X-Frame-Tenant-Id";
+  public static final String X_FRAME_OPEN_ID = "X-Frame-Open-Id";
 
   /**
    * 获取头信息
@@ -113,83 +113,83 @@ public class HeaderUtils {
   }
 
   /**
-   * 获取自定义 X_HERODOTUS_SESSION_ID 头信息
+   * 获取自定义 X_FRAME_SESSION_ID 头信息
    *
    * @param httpServletRequest {@link HttpServletRequest}
-   * @return X_HERODOTUS_SESSION_ID 头信息
+   * @return X_FRAME_SESSION_ID 头信息
    */
-  public static String getHerodotusSessionId(HttpServletRequest httpServletRequest) {
-    return getHeader(httpServletRequest, X_HERODOTUS_SESSION_ID);
+  public static String getFrameSessionId(HttpServletRequest httpServletRequest) {
+    return getHeader(httpServletRequest, X_FRAME_SESSION_ID);
   }
 
   /**
-   * 获取自定义 X_HERODOTUS_SESSION_ID 请求头内容
+   * 获取自定义 X_FRAME_SESSION_ID 请求头内容
    *
    * @param serverHttpRequest {@link ServerHttpRequest}
-   * @return X_HERODOTUS_SESSION_ID 请求头内容
+   * @return X_FRAME_SESSION_ID 请求头内容
    */
-  public static String getHerodotusSessionId(ServerHttpRequest serverHttpRequest) {
-    return getHeader(serverHttpRequest, X_HERODOTUS_SESSION_ID);
+  public static String getFrameSessionId(ServerHttpRequest serverHttpRequest) {
+    return getHeader(serverHttpRequest, X_FRAME_SESSION_ID);
   }
 
   /**
-   * 获取自定义 X_HERODOTUS_SESSION_ID 请求头内容
+   * 获取自定义 X_FRAME_SESSION_ID 请求头内容
    *
    * @param httpInputMessage {@link HttpInputMessage}
-   * @return X_HERODOTUS_SESSION_ID 请求头内容
+   * @return X_FRAME_SESSION_ID 请求头内容
    */
-  public static String getHerodotusSessionId(HttpInputMessage httpInputMessage) {
-    return getHeader(httpInputMessage.getHeaders(), X_HERODOTUS_SESSION_ID);
+  public static String getFrameSessionId(HttpInputMessage httpInputMessage) {
+    return getHeader(httpInputMessage.getHeaders(), X_FRAME_SESSION_ID);
   }
 
   /**
-   * 获取自定义 X_HERODOTUS_TENANT_ID 请求头内容
+   * 获取自定义 X_FRAME_TENANT_ID 请求头内容
    *
    * @param httpServletRequest {@link HttpServletRequest}
-   * @return X_HERODOTUS_TENANT_ID 请求头内容
+   * @return X_FRAME_TENANT_ID 请求头内容
    */
-  public static String getHerodotusTenantId(HttpServletRequest httpServletRequest) {
-    return getHeader(httpServletRequest, X_HERODOTUS_TENANT_ID);
+  public static String getFrameTenantId(HttpServletRequest httpServletRequest) {
+    return getHeader(httpServletRequest, X_FRAME_TENANT_ID);
   }
 
   /**
-   * 获取自定义 X_HERODOTUS_FROM_IN 请求头内容
+   * 获取自定义 X_FRAME_FROM_IN 请求头内容
    *
    * @param httpServletRequest {@link HttpServletRequest}
-   * @return X_HERODOTUS_FROM_IN 请求头内容
+   * @return X_FRAME_FROM_IN 请求头内容
    */
-  public static String getHerodotusFromIn(HttpServletRequest httpServletRequest) {
-    return getHeader(httpServletRequest, X_HERODOTUS_FROM_IN);
+  public static String getFrameFromIn(HttpServletRequest httpServletRequest) {
+    return getHeader(httpServletRequest, X_FRAME_FROM_IN);
   }
 
   /**
-   * 请求中包含 X_HERODOTUS_SESSION_ID 请求头
+   * 请求中包含 X_FRAME_SESSION_ID 请求头
    *
    * @param httpServletRequest {@link HttpServletRequest}
-   * @return 是否包含 X_HERODOTUS_SESSION_ID 请求头
+   * @return 是否包含 X_FRAME_SESSION_ID 请求头
    */
   public static boolean hasHerodotusSessionIdHeader(HttpServletRequest httpServletRequest) {
-    return hasHeader(httpServletRequest, X_HERODOTUS_SESSION_ID);
+    return hasHeader(httpServletRequest, X_FRAME_SESSION_ID);
   }
 
   /**
-   * 请求中包含 X_HERODOTUS_SESSION_ID 请求头
+   * 请求中包含 X_FRAME_SESSION_ID 请求头
    *
    * @param serverHttpRequest {@link ServerHttpRequest}
-   * @return 是否包含 X_HERODOTUS_SESSION_ID 请求头
+   * @return 是否包含 X_FRAME_SESSION_ID 请求头
    */
   public static boolean hasHerodotusSessionIdHeader(ServerHttpRequest serverHttpRequest) {
-    return hasHeader(serverHttpRequest, X_HERODOTUS_SESSION_ID);
+    return hasHeader(serverHttpRequest, X_FRAME_SESSION_ID);
   }
 
   /**
-   * 请求中包含 X_HERODOTUS_SESSION_ID 请求头
+   * 请求中包含 X_FRAME_SESSION_ID 请求头
    *
    * @param httpInputMessage {@link HttpInputMessage}
-   * @return 是否包含 X_HERODOTUS_SESSION_ID 请求头
+   * @return 是否包含 X_FRAME_SESSION_ID 请求头
    */
   public static boolean hasHerodotusSessionIdHeader(HttpInputMessage httpInputMessage) {
-    return hasHeader(httpInputMessage.getHeaders(), X_HERODOTUS_SESSION_ID);
+    return hasHeader(httpInputMessage.getHeaders(), X_FRAME_SESSION_ID);
   }
 
   /**

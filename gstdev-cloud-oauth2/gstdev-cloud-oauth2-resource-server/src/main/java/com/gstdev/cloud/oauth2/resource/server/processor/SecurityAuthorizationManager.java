@@ -73,7 +73,7 @@ public class SecurityAuthorizationManager implements AuthorizationManager<Reques
         }
 
         // 检查是否为Feign内部调用，如果是，则直接放行
-        String feignInnerFlag = HeaderUtils.getHerodotusFromIn(request);
+        String feignInnerFlag = HeaderUtils.getFrameFromIn(request);
         if (StringUtils.isNotBlank(feignInnerFlag)) {
             log.trace("[GstDev Cloud] |- Is feign inner invoke : [{}], Passed!", url);
             return new AuthorizationDecision(true);

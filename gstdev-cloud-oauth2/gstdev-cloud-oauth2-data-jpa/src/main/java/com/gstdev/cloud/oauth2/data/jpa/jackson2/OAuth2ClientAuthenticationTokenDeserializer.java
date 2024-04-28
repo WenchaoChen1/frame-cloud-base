@@ -26,7 +26,7 @@ import java.util.Set;
  */
 public class OAuth2ClientAuthenticationTokenDeserializer extends JsonDeserializer<OAuth2ClientAuthenticationToken> {
 
-  private static final TypeReference<Set<FrameGrantedAuthority>> HERODOTUS_GRANTED_AUTHORITY_SET = new TypeReference<Set<FrameGrantedAuthority>>() {
+  private static final TypeReference<Set<FrameGrantedAuthority>> FRAME_GRANTED_AUTHORITY_SET = new TypeReference<Set<FrameGrantedAuthority>>() {
   };
 
   @Override
@@ -38,7 +38,7 @@ public class OAuth2ClientAuthenticationTokenDeserializer extends JsonDeserialize
   }
 
   private OAuth2ClientAuthenticationToken deserialize(JsonParser parser, ObjectMapper mapper, JsonNode root) throws IOException {
-    Set<FrameGrantedAuthority> authorities = JsonNodeUtils.findValue(root, "authorities", HERODOTUS_GRANTED_AUTHORITY_SET, mapper);
+    Set<FrameGrantedAuthority> authorities = JsonNodeUtils.findValue(root, "authorities", FRAME_GRANTED_AUTHORITY_SET, mapper);
     RegisteredClient registeredClient = JsonNodeUtils.findValue(root, "registeredClient", new TypeReference<RegisteredClient>() {
     }, mapper);
     String credentials = JsonNodeUtils.findStringValue(root, "credentials");

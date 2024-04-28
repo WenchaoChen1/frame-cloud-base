@@ -85,7 +85,7 @@ public class SessionUtils {
   /**
    * 解析 Session ID
    * <p>
-   * 如果请求中有 X_HERODOTUS_SESSION_ID 头，那么则返回 SessionId，意味着前后端加密有效。
+   * 如果请求中有 X_FRAME_SESSION_ID 头，那么则返回 SessionId，意味着前后端加密有效。
    * 这种处理方式，主要解决在没有使用系统 Session 的环境下，单独调用接口特别是测试接口时，提示 Session 过期的问题。
    *
    * @param httpServletRequest {@link HttpServletRequest}
@@ -94,7 +94,7 @@ public class SessionUtils {
   public static String analyseSessionId(HttpServletRequest httpServletRequest) {
     String sessionId = getSessionId(httpServletRequest);
     if (StringUtils.isBlank(sessionId)) {
-      sessionId = HeaderUtils.getHerodotusSessionId(httpServletRequest);
+      sessionId = HeaderUtils.getFrameSessionId(httpServletRequest);
     }
     return sessionId;
   }
@@ -102,7 +102,7 @@ public class SessionUtils {
   /**
    * 解析 Session ID
    * <p>
-   * 如果请求中有 X_HERODOTUS_SESSION_ID 头，那么则返回 SessionId，意味着前后端加密有效。
+   * 如果请求中有 X_FRAME_SESSION_ID 头，那么则返回 SessionId，意味着前后端加密有效。
    * 这种处理方式，主要解决在没有使用系统 Session 的环境下，单独调用接口特别是测试接口时，提示 Session 过期的问题。
    *
    * @param serverHttpRequest {@link ServerHttpRequest}
@@ -111,7 +111,7 @@ public class SessionUtils {
   public static String analyseSessionId(ServerHttpRequest serverHttpRequest) {
     String sessionId = getSessionIdFromHeader(serverHttpRequest);
     if (StringUtils.isBlank(sessionId)) {
-      sessionId = HeaderUtils.getHerodotusSessionId(serverHttpRequest);
+      sessionId = HeaderUtils.getFrameSessionId(serverHttpRequest);
     }
     return sessionId;
   }
@@ -119,7 +119,7 @@ public class SessionUtils {
   /**
    * 解析 Session ID
    * <p>
-   * 如果请求中有 X_HERODOTUS_SESSION_ID 头，那么则返回 SessionId，意味着前后端加密有效。
+   * 如果请求中有 X_FRAME_SESSION_ID 头，那么则返回 SessionId，意味着前后端加密有效。
    * 这种处理方式，主要解决在没有使用系统 Session 的环境下，单独调用接口特别是测试接口时，提示 Session 过期的问题。
    *
    * @param httpInputMessage {@link HttpInputMessage}
@@ -128,7 +128,7 @@ public class SessionUtils {
   public static String analyseSessionId(HttpInputMessage httpInputMessage) {
     String sessionId = getSessionIdFromHeader(httpInputMessage);
     if (StringUtils.isBlank(sessionId)) {
-      sessionId = HeaderUtils.getHerodotusSessionId(httpInputMessage);
+      sessionId = HeaderUtils.getFrameSessionId(httpInputMessage);
     }
     return sessionId;
   }

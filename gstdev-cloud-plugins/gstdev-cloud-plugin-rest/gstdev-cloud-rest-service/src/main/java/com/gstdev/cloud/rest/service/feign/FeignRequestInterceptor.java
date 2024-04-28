@@ -72,7 +72,7 @@ public class FeignRequestInterceptor implements RequestInterceptor {
       log.debug("[GstDev Cloud] |- Feign Request Interceptor copy all need transfer header!");
 
       // 检查 Tenant Id 的可用性。
-      String tenantIdHeader = HeaderUtils.X_HERODOTUS_TENANT_ID;
+      String tenantIdHeader = HeaderUtils.X_FRAME_TENANT_ID;
       if (!headers.containsKey(tenantIdHeader)) {
         String tenantId = TenantContextHolder.getTenantId();
         if (StringUtils.isNotBlank(tenantId)) {
