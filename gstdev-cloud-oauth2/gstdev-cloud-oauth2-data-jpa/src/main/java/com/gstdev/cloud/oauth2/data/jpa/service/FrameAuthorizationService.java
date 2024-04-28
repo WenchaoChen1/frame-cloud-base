@@ -31,8 +31,8 @@ public class FrameAuthorizationService extends BaseServiceImpl<FrameAuthorizatio
 
 
     @Autowired
-    public FrameAuthorizationService(FrameAuthorizationRepository herodotusAuthorizationRepository) {
-        super(herodotusAuthorizationRepository);
+    public FrameAuthorizationService(FrameAuthorizationRepository frameAuthorizationRepository) {
+        super(frameAuthorizationRepository);
     }
 
 

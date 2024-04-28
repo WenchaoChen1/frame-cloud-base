@@ -141,7 +141,7 @@ public class SessionUtils {
    * @return true 已开启，false 未开启。
    */
   public static boolean isCryptoEnabled(HttpServletRequest httpServletRequest, String sessionId) {
-    return HeaderUtils.hasHerodotusSessionIdHeader(httpServletRequest) && StringUtils.isNotBlank(sessionId);
+    return HeaderUtils.hasFrameSessionIdHeader(httpServletRequest) && StringUtils.isNotBlank(sessionId);
   }
 
   /**
@@ -152,6 +152,6 @@ public class SessionUtils {
    * @return true 已开启，false 未开启。
    */
   public static boolean isCryptoEnabled(HttpInputMessage httpInputMessage, String sessionId) {
-    return HeaderUtils.hasHerodotusSessionIdHeader(httpInputMessage) && StringUtils.isNotBlank(sessionId);
+    return HeaderUtils.hasFrameSessionIdHeader(httpInputMessage) && StringUtils.isNotBlank(sessionId);
   }
 }

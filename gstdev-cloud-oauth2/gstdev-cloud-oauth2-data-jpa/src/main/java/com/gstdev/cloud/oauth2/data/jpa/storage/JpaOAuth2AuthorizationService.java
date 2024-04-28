@@ -34,12 +34,12 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
 
   private static final Logger log = LoggerFactory.getLogger(JpaOAuth2AuthorizationService.class);
 
-  private final FrameAuthorizationService herodotusAuthorizationService;
+  private final FrameAuthorizationService frameAuthorizationService;
   private final Converter<FrameAuthorization, OAuth2Authorization> frameToOAuth2Converter;
   private final Converter<OAuth2Authorization, FrameAuthorization> oauth2ToHerodotusConverter;
 
-  public JpaOAuth2AuthorizationService(FrameAuthorizationService herodotusAuthorizationService, RegisteredClientRepository registeredClientRepository) {
-    this.herodotusAuthorizationService = herodotusAuthorizationService;
+  public JpaOAuth2AuthorizationService(FrameAuthorizationService frameAuthorizationService, RegisteredClientRepository registeredClientRepository) {
+    this.frameAuthorizationService = frameAuthorizationService;
 
     OAuth2JacksonProcessor jacksonProcessor = new OAuth2JacksonProcessor();
     this.frameToOAuth2Converter = new FrameToOAuth2AuthorizationConverter(jacksonProcessor, registeredClientRepository);
@@ -49,23 +49,23 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
 
   @Override
   public void save(OAuth2Authorization authorization) {
-    this.herodotusAuthorizationService.saveAndFlush(toEntity(authorization));
+    this.frameAuthorizationService.saveAndFlush(toEntity(authorization));
   }
 
   @Transactional
   @Override
   public void remove(OAuth2Authorization authorization) {
     Assert.notNull(authorization, "authorization cannot be null");
-    this.herodotusAuthorizationService.deleteById(authorization.getId());
+    this.frameAuthorizationService.deleteById(authorization.getId());
     log.debug("[GstDev Cloud] |- Jpa OAuth2 Authorization Service remove entity.");
     // TODO： 后期还是考虑改为异步任务的形式，先临时放在这里。
-    this.herodotusAuthorizationService.clearHistoryToken();
+    this.frameAuthorizationService.clearHistoryToken();
     log.debug("[GstDev Cloud] |- Jpa OAuth2 Authorization Service clear history token.");
   }
 
   @Override
   public OAuth2Authorization findById(String id) {
-    FrameAuthorization herodotusAuthorization = this.herodotusAuthorizationService.findById(id);
+    FrameAuthorization herodotusAuthorization = this.frameAuthorizationService.findById(id);
     if (ObjectUtils.isNotEmpty(herodotusAuthorization)) {
       return toObject(herodotusAuthorization);
     } else {
@@ -74,13 +74,13 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
   }
 
   public int findAuthorizationCount(String registeredClientId, String principalName) {
-    int count = this.herodotusAuthorizationService.findAuthorizationCount(registeredClientId, principalName);
+    int count = this.frameAuthorizationService.findAuthorizationCount(registeredClientId, principalName);
     log.debug("[GstDev Cloud] |- Jpa OAuth2 Authorization Service findAuthorizationCount.");
     return count;
   }
 
   public List<OAuth2Authorization> findAvailableAuthorizations(String registeredClientId, String principalName) {
-    List<FrameAuthorization> authorizations = this.herodotusAuthorizationService.findAvailableAuthorizations(registeredClientId, principalName);
+    List<FrameAuthorization> authorizations = this.frameAuthorizationService.findAvailableAuthorizations(registeredClientId, principalName);
     if (CollectionUtils.isNotEmpty(authorizations)) {
       return authorizations.stream().map(this::toObject).collect(Collectors.toList());
     }
@@ -94,21 +94,21 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
 
     Optional<FrameAuthorization> result;
     if (tokenType == null) {
-      result = this.herodotusAuthorizationService.findByStateOrAuthorizationCodeValueOrAccessTokenValueOrRefreshTokenValueOrOidcIdTokenValueOrUserCodeValueOrDeviceCodeValue(token);
+      result = this.frameAuthorizationService.findByStateOrAuthorizationCodeValueOrAccessTokenValueOrRefreshTokenValueOrOidcIdTokenValueOrUserCodeValueOrDeviceCodeValue(token);
     } else if (OAuth2ParameterNames.STATE.equals(tokenType.getValue())) {
-      result = this.herodotusAuthorizationService.findByState(token);
+      result = this.frameAuthorizationService.findByState(token);
     } else if (OAuth2ParameterNames.CODE.equals(tokenType.getValue())) {
-      result = this.herodotusAuthorizationService.findByAuthorizationCode(token);
+      result = this.frameAuthorizationService.findByAuthorizationCode(token);
     } else if (OAuth2ParameterNames.ACCESS_TOKEN.equals(tokenType.getValue())) {
-      result = this.herodotusAuthorizationService.findByAccessToken(token);
+      result = this.frameAuthorizationService.findByAccessToken(token);
     } else if (OAuth2ParameterNames.REFRESH_TOKEN.equals(tokenType.getValue())) {
-      result = this.herodotusAuthorizationService.findByRefreshToken(token);
+      result = this.frameAuthorizationService.findByRefreshToken(token);
     } else if (OidcParameterNames.ID_TOKEN.equals(tokenType.getValue())) {
-      result = this.herodotusAuthorizationService.findByOidcIdTokenValue(token);
+      result = this.frameAuthorizationService.findByOidcIdTokenValue(token);
     } else if (OAuth2ParameterNames.USER_CODE.equals(tokenType.getValue())) {
-      result = this.herodotusAuthorizationService.findByUserCodeValue(token);
+      result = this.frameAuthorizationService.findByUserCodeValue(token);
     } else if (OAuth2ParameterNames.DEVICE_CODE.equals(tokenType.getValue())) {
-      result = this.herodotusAuthorizationService.findByDeviceCodeValue(token);
+      result = this.frameAuthorizationService.findByDeviceCodeValue(token);
     } else {
       result = Optional.empty();
     }

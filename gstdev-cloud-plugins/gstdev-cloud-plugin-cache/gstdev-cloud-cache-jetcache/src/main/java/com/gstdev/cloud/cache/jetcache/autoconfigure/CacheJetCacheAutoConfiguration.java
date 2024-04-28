@@ -41,39 +41,39 @@ import org.springframework.context.annotation.Primary;
 @Import({CacheCaffeineConfiguration.class, CacheRedisConfiguration.class})
 public class CacheJetCacheAutoConfiguration {
 
-  private static final Logger log = LoggerFactory.getLogger(CacheJetCacheAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(CacheJetCacheAutoConfiguration.class);
 
-  @PostConstruct
-  public void postConstruct() {
-    log.debug("[GstDev Cloud] |- SDK [Cache JetCache] Auto Configure.");
-  }
+    @PostConstruct
+    public void postConstruct() {
+        log.debug("[GstDev Cloud] |- SDK [Cache JetCache] Auto Configure.");
+    }
 
-  @Bean(
-    name = {"jcCacheManager"},
-    destroyMethod = "close"
-  )
-  @ConditionalOnMissingBean
-  public SimpleCacheManager cacheManager(@Autowired SpringConfigProvider springConfigProvider) {
-    SimpleCacheManager cacheManager = new SimpleCacheManager();
-    cacheManager.setCacheBuilderTemplate(springConfigProvider.getCacheBuilderTemplate());
-    return cacheManager;
-  }
+    @Bean(
+        name = {"jcCacheManager"},
+        destroyMethod = "close"
+    )
+    @ConditionalOnMissingBean
+    public SimpleCacheManager cacheManager(@Autowired SpringConfigProvider springConfigProvider) {
+        SimpleCacheManager cacheManager = new SimpleCacheManager();
+        cacheManager.setCacheBuilderTemplate(springConfigProvider.getCacheBuilderTemplate());
+        return cacheManager;
+    }
 
-  @Bean
-  public JetCacheCreateCacheFactory jetCacheCreateCacheFactory(@Qualifier("jcCacheManager") CacheManager cacheManager, CacheProperties cacheProperties) {
-    JetCacheCreateCacheFactory factory = new JetCacheCreateCacheFactory(cacheManager, cacheProperties);
-    JetCacheUtils.setJetCacheCreateCacheFactory(factory);
-    log.trace("[GstDev Cloud] |- Bean [Jet Cache Create Cache Factory] Auto Configure.");
-    return factory;
-  }
+    @Bean
+    public JetCacheCreateCacheFactory jetCacheCreateCacheFactory(@Qualifier("jcCacheManager") CacheManager cacheManager, CacheProperties cacheProperties) {
+        JetCacheCreateCacheFactory factory = new JetCacheCreateCacheFactory(cacheManager, cacheProperties);
+        JetCacheUtils.setJetCacheCreateCacheFactory(factory);
+        log.trace("[GstDev Cloud] |- Bean [Jet Cache Create Cache Factory] Auto Configure.");
+        return factory;
+    }
 
-  @Bean
-  @Primary
-  @ConditionalOnMissingBean
-  public FrameCacheManager herodotusCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory, CacheProperties cacheProperties) {
-    FrameCacheManager herodotusCacheManager = new FrameCacheManager(jetCacheCreateCacheFactory, cacheProperties);
-    herodotusCacheManager.setAllowNullValues(cacheProperties.getAllowNullValues());
-    log.trace("[GstDev Cloud] |- Bean [Jet Cache GstDev Cloud Cache Manager] Auto Configure.");
-    return herodotusCacheManager;
-  }
+    @Bean
+    @Primary
+    @ConditionalOnMissingBean
+    public FrameCacheManager frameCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory, CacheProperties cacheProperties) {
+        FrameCacheManager frameCacheManager = new FrameCacheManager(jetCacheCreateCacheFactory, cacheProperties);
+        frameCacheManager.setAllowNullValues(cacheProperties.getAllowNullValues());
+        log.trace("[GstDev Cloud] |- Bean [Jet Cache GstDev Cloud Cache Manager] Auto Configure.");
+        return frameCacheManager;
+    }
 }

@@ -168,7 +168,7 @@ public class HeaderUtils {
    * @param httpServletRequest {@link HttpServletRequest}
    * @return 是否包含 X_FRAME_SESSION_ID 请求头
    */
-  public static boolean hasHerodotusSessionIdHeader(HttpServletRequest httpServletRequest) {
+  public static boolean hasFrameSessionIdHeader(HttpServletRequest httpServletRequest) {
     return hasHeader(httpServletRequest, X_FRAME_SESSION_ID);
   }
 
@@ -178,7 +178,7 @@ public class HeaderUtils {
    * @param serverHttpRequest {@link ServerHttpRequest}
    * @return 是否包含 X_FRAME_SESSION_ID 请求头
    */
-  public static boolean hasHerodotusSessionIdHeader(ServerHttpRequest serverHttpRequest) {
+  public static boolean hasFrameSessionIdHeader(ServerHttpRequest serverHttpRequest) {
     return hasHeader(serverHttpRequest, X_FRAME_SESSION_ID);
   }
 
@@ -188,7 +188,7 @@ public class HeaderUtils {
    * @param httpInputMessage {@link HttpInputMessage}
    * @return 是否包含 X_FRAME_SESSION_ID 请求头
    */
-  public static boolean hasHerodotusSessionIdHeader(HttpInputMessage httpInputMessage) {
+  public static boolean hasFrameSessionIdHeader(HttpInputMessage httpInputMessage) {
     return hasHeader(httpInputMessage.getHeaders(), X_FRAME_SESSION_ID);
   }
 

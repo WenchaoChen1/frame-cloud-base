@@ -39,7 +39,7 @@ public class FrameRegionFactory extends RegionFactoryTemplate {
 
   @Override
   protected void prepareForUse(SessionFactoryOptions settings, Map configValues) {
-    this.cacheManager = SpringUtil.getBean("herodotusCacheManager");
+    this.cacheManager = SpringUtil.getBean("frameCacheManager");
   }
 
   @Override

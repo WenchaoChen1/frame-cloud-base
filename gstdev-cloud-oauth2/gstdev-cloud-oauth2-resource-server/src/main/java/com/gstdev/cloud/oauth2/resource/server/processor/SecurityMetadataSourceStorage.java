@@ -120,10 +120,10 @@ public class SecurityMetadataSourceStorage {
      * 如果缓存中不存在以{@link RequestMatcher}为Key的数据，那么添加数据
      * 如果缓存中存在以{@link RequestMatcher}为Key的数据，那么合并数据
      *
-     * @param herodotusRequest 请求匹配对象 {@link FrameRequest}
+     * @param request 请求匹配对象 {@link FrameRequest}
      * @param configAttributes 权限配置 {@link ConfigAttribute}
      */
-    private void appendToCompatible(FrameRequest herodotusRequest, List<FrameConfigAttribute> configAttributes) {
+    private void appendToCompatible(FrameRequest request, List<FrameConfigAttribute> configAttributes) {
         LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> compatible = this.getCompatible();
 //        compatible.merge(requestMatcher, configAttributes, (oldConfigAttributes, newConfigAttributes) -> {
 //            newConfigAttributes.addAll(oldConfigAttributes);
@@ -131,8 +131,8 @@ public class SecurityMetadataSourceStorage {
 //        });
 
         // 使用merge会让整个功能的设计更加复杂，暂时改为直接覆盖已有数据，后续视情况再做变更。
-        compatible.put(herodotusRequest, configAttributes);
-        log.trace("[GstDev Cloud] |- Append [{}] to Compatible cache, current size is [{}]", herodotusRequest, compatible.size());
+        compatible.put(request, configAttributes);
+        log.trace("[GstDev Cloud] |- Append [{}] to Compatible cache, current size is [{}]", request, compatible.size());
         writeToCompatible(compatible);
     }
 
