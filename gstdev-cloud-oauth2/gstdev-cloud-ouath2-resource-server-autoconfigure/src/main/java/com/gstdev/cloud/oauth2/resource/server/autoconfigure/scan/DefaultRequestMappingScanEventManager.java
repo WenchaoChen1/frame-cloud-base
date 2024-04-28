@@ -34,7 +34,7 @@ public class DefaultRequestMappingScanEventManager implements RequestMappingScan
 
     @Override
     public String getDestinationServiceName() {
-        return ServiceContextHolder.getInstance().getUpmsServiceName();
+        return ServiceContextHolder.getInstance().getSystemServiceName();
     }
 
     @Override

@@ -15,7 +15,7 @@ import com.gstdev.cloud.message.core.logic.strategy.AccountStatusEventManager;
 public class DefaultAccountStatusEventManager implements AccountStatusEventManager {
   @Override
   public String getDestinationServiceName() {
-    return ServiceContextHolder.getInstance().getUpmsServiceName();
+    return ServiceContextHolder.getInstance().getSystemServiceName();
   }
 
   @Override
