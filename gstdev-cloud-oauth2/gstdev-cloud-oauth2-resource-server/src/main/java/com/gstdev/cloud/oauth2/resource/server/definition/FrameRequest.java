@@ -14,7 +14,7 @@ import java.io.Serializable;
  * <p>
  * 基于 AntPathRequestMatcher 代码，扩展了一些方法，解决原有 AntPathRequestMatcher 使用不方便问题。
  */
-public final class HerodotusRequest implements Serializable {
+public final class FrameRequest implements Serializable {
 
   private String pattern;
 
@@ -22,7 +22,7 @@ public final class HerodotusRequest implements Serializable {
 
   private boolean hasWildcard;
 
-  public HerodotusRequest() {
+  public FrameRequest() {
   }
 
   /**
@@ -31,7 +31,7 @@ public final class HerodotusRequest implements Serializable {
    *
    * @param pattern the ant pattern to use for matching
    */
-  public HerodotusRequest(String pattern) {
+  public FrameRequest(String pattern) {
     this(pattern, null);
   }
 
@@ -43,7 +43,7 @@ public final class HerodotusRequest implements Serializable {
    * @param httpMethod the HTTP method. The {@code matches} method will return false if
    *                   the incoming request doesn't have the same method.
    */
-  public HerodotusRequest(String pattern, String httpMethod) {
+  public FrameRequest(String pattern, String httpMethod) {
     Assert.hasText(pattern, "Pattern cannot be null or empty");
     this.pattern = pattern;
     this.hasWildcard = containSpecialCharacters(pattern);
@@ -95,7 +95,7 @@ public final class HerodotusRequest implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HerodotusRequest that = (HerodotusRequest) o;
+    FrameRequest that = (FrameRequest) o;
     return Objects.equal(pattern, that.pattern) && Objects.equal(httpMethod, that.httpMethod);
   }
 

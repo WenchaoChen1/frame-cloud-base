@@ -25,15 +25,15 @@ import org.springframework.security.oauth2.server.resource.introspection.BadOpaq
 import org.springframework.security.oauth2.server.resource.introspection.OAuth2IntrospectionException;
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
 
-public class HerodotusBearerTokenResolver implements BearerTokenResolver {
+public class FrameBearerTokenResolver implements BearerTokenResolver {
 
-    private static final Logger log = LoggerFactory.getLogger(HerodotusBearerTokenResolver.class);
+    private static final Logger log = LoggerFactory.getLogger(FrameBearerTokenResolver.class);
 
     private final JwtDecoder jwtDecoder;
     private final OpaqueTokenIntrospector opaqueTokenIntrospector;
     private final boolean isRemoteValidate;
 
-    public HerodotusBearerTokenResolver(JwtDecoder jwtDecoder, OpaqueTokenIntrospector opaqueTokenIntrospector, boolean isRemoteValidate) {
+    public FrameBearerTokenResolver(JwtDecoder jwtDecoder, OpaqueTokenIntrospector opaqueTokenIntrospector, boolean isRemoteValidate) {
         this.jwtDecoder = jwtDecoder;
         this.opaqueTokenIntrospector = opaqueTokenIntrospector;
         this.isRemoteValidate = isRemoteValidate;

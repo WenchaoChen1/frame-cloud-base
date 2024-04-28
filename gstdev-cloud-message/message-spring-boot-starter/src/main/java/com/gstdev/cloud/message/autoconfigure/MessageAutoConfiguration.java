@@ -2,8 +2,8 @@ package com.gstdev.cloud.message.autoconfigure;
 
 import com.gstdev.cloud.base.definition.function.ErrorCodeMapperBuilderCustomizer;
 import com.gstdev.cloud.message.autoconfigure.customizer.MessageErrorCodeMapperBuilderCustomizer;
-import com.gstdev.cloud.message.mqtt.annotation.EnableHerodotusMqtt;
-import com.gstdev.cloud.message.websocket.annotation.EnableHerodotusWebSocket;
+import com.gstdev.cloud.message.mqtt.annotation.EnablecFrameMqtt;
+import com.gstdev.cloud.message.websocket.annotation.EnableFrameWebSocket;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,8 +17,8 @@ import org.springframework.context.annotation.Bean;
  * @date : 2022/2/4 17:08
  */
 @AutoConfiguration
-@EnableHerodotusWebSocket
-@EnableHerodotusMqtt
+@EnableFrameWebSocket
+@EnablecFrameMqtt
 public class MessageAutoConfiguration {
 
   private static final Logger log = LoggerFactory.getLogger(MessageAutoConfiguration.class);

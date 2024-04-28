@@ -19,11 +19,11 @@ import java.util.stream.Collectors;
  * @author : cc
  * @date : 2022/4/1 15:21
  */
-public class HerodotusClientDetailsService implements EnhanceClientDetailsService {
+public class FrameClientDetailsService implements EnhanceClientDetailsService {
 
   private final OAuth2ApplicationService applicationService;
 
-  public HerodotusClientDetailsService(OAuth2ApplicationService applicationService) {
+  public FrameClientDetailsService(OAuth2ApplicationService applicationService) {
     this.applicationService = applicationService;
   }
 

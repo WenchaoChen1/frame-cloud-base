@@ -1,6 +1,6 @@
 package com.gstdev.cloud.message.mqtt.gateway;
 
-import com.gstdev.cloud.message.core.constants.HerodotusChannels;
+import com.gstdev.cloud.message.core.constants.FrameChannels;
 import org.springframework.integration.annotation.MessagingGateway;
 import org.springframework.integration.mqtt.support.MqttHeaders;
 import org.springframework.messaging.handler.annotation.Header;
@@ -11,7 +11,7 @@ import org.springframework.messaging.handler.annotation.Header;
  * @author : cc
  * @date : 2023/9/11 16:10
  */
-@MessagingGateway(defaultRequestChannel = HerodotusChannels.MQTT_DEFAULT_OUTBOUND_CHANNEL)
+@MessagingGateway(defaultRequestChannel = FrameChannels.MQTT_DEFAULT_OUTBOUND_CHANNEL)
 public interface MessageSendingGateway {
 
   /**

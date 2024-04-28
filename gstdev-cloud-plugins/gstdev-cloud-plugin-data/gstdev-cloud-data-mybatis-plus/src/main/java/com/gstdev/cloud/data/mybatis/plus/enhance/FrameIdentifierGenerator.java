@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @date : 2021/8/28 15:52
  */
 @Component
-public class HerodotusIdentifierGenerator implements IdentifierGenerator {
+public class FrameIdentifierGenerator implements IdentifierGenerator {
 
   @Override
   public Number nextId(Object entity) {

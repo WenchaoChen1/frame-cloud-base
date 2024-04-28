@@ -15,5 +15,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Import(MybatisPlusConfiguration.class)
-public @interface EnableHerodotusMybatisPlus {
+public @interface EnableFrameMybatisPlus {
 }

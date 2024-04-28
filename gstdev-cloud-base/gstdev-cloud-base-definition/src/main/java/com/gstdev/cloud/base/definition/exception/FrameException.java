@@ -4,7 +4,7 @@ import com.gstdev.cloud.base.definition.domain.Feedback;
 import com.gstdev.cloud.base.definition.domain.Result;
 
 /**
- * <p>Description: 核心 HerodotusException 定义 </p>
+ * <p>Description: 核心 FrameException 定义 </p>
  *
  * @author : cc
  * @date : 2022/3/8 9:06

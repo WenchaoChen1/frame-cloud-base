@@ -1,6 +1,6 @@
 package com.gstdev.cloud.data.tenant.configuration;
 
-import com.gstdev.cloud.data.tenant.hibernate.HerodotusTenantIdentifierResolver;
+import com.gstdev.cloud.data.tenant.hibernate.FrameTenantIdentifierResolver;
 import jakarta.annotation.PostConstruct;
 import org.hibernate.context.spi.CurrentTenantIdentifierResolver;
 import org.slf4j.Logger;
@@ -26,7 +26,7 @@ public class DiscriminatorApproachConfiguration {
 
   @Bean
   public CurrentTenantIdentifierResolver currentTenantIdentifierResolver() {
-    HerodotusTenantIdentifierResolver herodotusTenantIdentifierResolver = new HerodotusTenantIdentifierResolver();
+    FrameTenantIdentifierResolver herodotusTenantIdentifierResolver = new FrameTenantIdentifierResolver();
     log.debug("[GstDev Cloud] |- Bean [Current Tenant Identifier Resolver] Auto Configure.");
     return herodotusTenantIdentifierResolver;
   }

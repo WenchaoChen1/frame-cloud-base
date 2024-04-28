@@ -31,12 +31,12 @@ import java.util.UUID;
  */
 public class JpaRegisteredClientRepository implements RegisteredClientRepository {
 
-  private final FrameRegisteredClientService herodotusRegisteredClientService;
+  private final FrameRegisteredClientService frameRegisteredClientService;
   private final Converter<FrameRegisteredClient, RegisteredClient> frameToOAuth2Converter;
   private final Converter<RegisteredClient, FrameRegisteredClient> oauth2ToHerodotusConverter;
 
   public JpaRegisteredClientRepository(FrameRegisteredClientService herodotusRegisteredClientService, PasswordEncoder passwordEncoder) {
-    this.herodotusRegisteredClientService = herodotusRegisteredClientService;
+    this.frameRegisteredClientService = herodotusRegisteredClientService;
     OAuth2JacksonProcessor jacksonProcessor = new OAuth2JacksonProcessor();
     this.frameToOAuth2Converter = new FrameToOAuth2RegisteredClientConverter(jacksonProcessor);
     this.oauth2ToHerodotusConverter = new OAuth2ToFrameRegisteredClientConverter(jacksonProcessor, passwordEncoder);
@@ -56,12 +56,12 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
 
   @Override
   public void save(RegisteredClient registeredClient) {
-    this.herodotusRegisteredClientService.save(toEntity(registeredClient));
+    this.frameRegisteredClientService.save(toEntity(registeredClient));
   }
 
   @Override
   public RegisteredClient findById(String id) {
-    FrameRegisteredClient herodotusRegisteredClient = this.herodotusRegisteredClientService.findById(id);
+    FrameRegisteredClient herodotusRegisteredClient = this.frameRegisteredClientService.findById(id);
     if (ObjectUtils.isNotEmpty(herodotusRegisteredClient)) {
       return toObject(herodotusRegisteredClient);
     }
@@ -70,11 +70,11 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
 
   @Override
   public RegisteredClient findByClientId(String clientId) {
-    return this.herodotusRegisteredClientService.findByClientId(clientId).map(this::toObject).orElse(null);
+    return this.frameRegisteredClientService.findByClientId(clientId).map(this::toObject).orElse(null);
   }
 
   public void remove(String id) {
-    this.herodotusRegisteredClientService.deleteById(id);
+    this.frameRegisteredClientService.deleteById(id);
   }
 
   private RegisteredClient toObject(FrameRegisteredClient herodotusRegisteredClient) {

@@ -1,7 +1,7 @@
 package com.gstdev.cloud.data.mybatis.plus.configuration;
 
 import com.gstdev.cloud.data.core.constants.DataConstants;
-import com.gstdev.cloud.data.mybatis.plus.enhance.HerodotusIdentifierGenerator;
+import com.gstdev.cloud.data.mybatis.plus.enhance.FrameIdentifierGenerator;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.core.incrementer.IdentifierGenerator;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
@@ -68,7 +68,7 @@ public class MybatisPlusConfiguration {
 
   @Bean
   public IdentifierGenerator identifierGenerator() {
-    HerodotusIdentifierGenerator herodotusIdentifierGenerator = new HerodotusIdentifierGenerator();
+    FrameIdentifierGenerator herodotusIdentifierGenerator = new FrameIdentifierGenerator();
     log.trace("[GstDev Cloud] |- Bean [GstDev Cloud Identifier Generator] Auto Configure.");
     return herodotusIdentifierGenerator;
   }

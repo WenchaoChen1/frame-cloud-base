@@ -25,7 +25,7 @@ import java.util.Map;
 /**
  * <p>Description: 自定义 TokenCustomizer </p>
  * <p>
- * 用于自定义的 Herodotus User Details 解析。如果使用 Security 默认的 <code>org.springframework.security.core.userdetails.User</code> 则不需要使用该类
+ * 用于自定义的 Frame User Details 解析。如果使用 Security 默认的 <code>org.springframework.security.core.userdetails.User</code> 则不需要使用该类
  * <p>
  * An OAuth2TokenCustomizer<JwtEncodingContext> declared with a generic type of JwtEncodingContext (implements OAuth2TokenContext) provides the ability to customize the headers and claims of a Jwt.
  *

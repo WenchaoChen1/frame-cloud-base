@@ -15,5 +15,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @ImportAutoConfiguration(CacheRedissonAutoConfiguration.class)
-public @interface EnableHerodotusRedisson {
+public @interface EnableFrameRedisson {
 }

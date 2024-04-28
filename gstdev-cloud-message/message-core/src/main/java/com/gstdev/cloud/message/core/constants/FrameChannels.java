@@ -6,7 +6,7 @@ package com.gstdev.cloud.message.core.constants;
  * @author : cc
  * @date : 2023/11/22 18:49
  */
-public interface HerodotusChannels {
+public interface FrameChannels {
 
   /**
    * Mqtt 默认入站通道

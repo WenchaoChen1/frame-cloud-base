@@ -2,8 +2,8 @@ package com.gstdev.cloud.oauth2.resource.server.processor;
 
 
 import com.gstdev.cloud.base.core.utils.type.ListUtils;
-import com.gstdev.cloud.oauth2.resource.server.definition.HerodotusConfigAttribute;
-import com.gstdev.cloud.oauth2.resource.server.definition.HerodotusRequest;
+import com.gstdev.cloud.oauth2.resource.server.definition.FrameConfigAttribute;
+import com.gstdev.cloud.oauth2.resource.server.definition.FrameRequest;
 import com.gstdev.cloud.oauth2.resource.server.properties.OAuth2AuthorizationProperties;
 import com.gstdev.cloud.oauth2.core.constants.SecurityResources;
 import com.gstdev.cloud.oauth2.core.enums.PermissionExpression;
@@ -35,7 +35,7 @@ public class SecurityMatcherConfigurer {
   private final RequestMatcher[] staticRequestMatchers;
   private final RequestMatcher[] permitAllRequestMatchers;
   private final RequestMatcher[] hasAuthenticatedRequestMatchers;
-  private final LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> permitAllAttributes;
+  private final LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> permitAllAttributes;
 
   public SecurityMatcherConfigurer(OAuth2AuthorizationProperties authorizationProperties, ResourceUrlProvider resourceUrlProvider) {
     this.authorizationProperties = authorizationProperties;
@@ -58,11 +58,11 @@ public class SecurityMatcherConfigurer {
    *
    * @return RequestMatchers 中配置的权限数据
    */
-  private LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> createPermitAllAttributes(List<String> permitAllResources) {
+  private LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> createPermitAllAttributes(List<String> permitAllResources) {
     if (CollectionUtils.isNotEmpty(permitAllResources)) {
-      LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> result = new LinkedHashMap<>();
+      LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> result = new LinkedHashMap<>();
       permitAllResources.forEach(item -> {
-        result.put(new HerodotusRequest(item), List.of(new HerodotusConfigAttribute(PermissionExpression.PERMIT_ALL.getValue())));
+        result.put(new FrameRequest(item), List.of(new FrameConfigAttribute(PermissionExpression.PERMIT_ALL.getValue())));
       });
       return result;
     }
@@ -81,7 +81,7 @@ public class SecurityMatcherConfigurer {
     return hasAuthenticatedRequestMatchers;
   }
 
-  public LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> getPermitAllAttributes() {
+  public LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> getPermitAllAttributes() {
     return permitAllAttributes;
   }
 

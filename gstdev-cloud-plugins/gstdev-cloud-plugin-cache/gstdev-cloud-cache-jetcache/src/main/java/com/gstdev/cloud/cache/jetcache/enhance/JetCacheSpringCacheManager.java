@@ -48,13 +48,13 @@ public class JetCacheSpringCacheManager implements CacheManager {
 
   protected Cache createJetCache(String name) {
     com.alicp.jetcache.Cache<Object, Object> cache = jetCacheCreateCacheFactory.create(name);
-    log.debug("[GstDev Cloud] |- CACHE - Herodotus cache [{}] is CREATED.", name);
+    log.debug("[GstDev Cloud] |- CACHE - GstDev Cloud cache [{}] is CREATED.", name);
     return new JetCacheSpringCache(name, cache, allowNullValues);
   }
 
   protected Cache createJetCache(String name, CacheSetting cacheSetting) {
     com.alicp.jetcache.Cache<Object, Object> cache = jetCacheCreateCacheFactory.create(name, allowNullValues, cacheSetting);
-    log.debug("[GstDev Cloud] |- CACHE - Herodotus cache [{}] use entity cache is CREATED.", name);
+    log.debug("[GstDev Cloud] |- CACHE - GstDev Cloud cache [{}] use entity cache is CREATED.", name);
     return new JetCacheSpringCache(name, cache, allowNullValues);
   }
 

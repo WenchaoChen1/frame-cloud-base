@@ -4,7 +4,7 @@ import com.alicp.jetcache.SimpleCacheManager;
 import com.alicp.jetcache.anno.support.SpringConfigProvider;
 import com.gstdev.cloud.cache.caffeine.configuration.CacheCaffeineConfiguration;
 import com.gstdev.cloud.cache.core.properties.CacheProperties;
-import com.gstdev.cloud.cache.jetcache.enhance.HerodotusCacheManager;
+import com.gstdev.cloud.cache.jetcache.enhance.FrameCacheManager;
 import com.gstdev.cloud.cache.jetcache.enhance.JetCacheCreateCacheFactory;
 import com.gstdev.cloud.cache.jetcache.utils.JetCacheUtils;
 import com.gstdev.cloud.cache.redis.configuration.CacheRedisConfiguration;
@@ -16,7 +16,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -71,10 +70,10 @@ public class CacheJetCacheAutoConfiguration {
   @Bean
   @Primary
   @ConditionalOnMissingBean
-  public HerodotusCacheManager herodotusCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory, CacheProperties cacheProperties) {
-    HerodotusCacheManager herodotusCacheManager = new HerodotusCacheManager(jetCacheCreateCacheFactory, cacheProperties);
+  public FrameCacheManager herodotusCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory, CacheProperties cacheProperties) {
+    FrameCacheManager herodotusCacheManager = new FrameCacheManager(jetCacheCreateCacheFactory, cacheProperties);
     herodotusCacheManager.setAllowNullValues(cacheProperties.getAllowNullValues());
-    log.trace("[GstDev Cloud] |- Bean [Jet Cache Herodotus Cache Manager] Auto Configure.");
+    log.trace("[GstDev Cloud] |- Bean [Jet Cache GstDev Cloud Cache Manager] Auto Configure.");
     return herodotusCacheManager;
   }
 }

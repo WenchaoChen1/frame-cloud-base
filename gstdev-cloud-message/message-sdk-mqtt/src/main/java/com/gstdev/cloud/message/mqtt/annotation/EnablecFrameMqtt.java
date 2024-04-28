@@ -17,5 +17,5 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Documented
 @Import(MessageMqttConfiguration.class)
-public @interface EnableHerodotusMqtt {
+public @interface EnablecFrameMqtt {
 }

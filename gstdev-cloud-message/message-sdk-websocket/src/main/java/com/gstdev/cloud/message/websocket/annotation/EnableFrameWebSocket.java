@@ -17,5 +17,5 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Documented
 @Import(MessageWebSocketConfiguration.class)
-public @interface EnableHerodotusWebSocket {
+public @interface EnableFrameWebSocket {
 }

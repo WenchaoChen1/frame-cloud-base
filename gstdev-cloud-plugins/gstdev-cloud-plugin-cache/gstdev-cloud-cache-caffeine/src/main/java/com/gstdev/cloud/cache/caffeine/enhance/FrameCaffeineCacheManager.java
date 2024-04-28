@@ -21,18 +21,18 @@ import java.util.Map;
  * @author : cc
  * @date : 2021/10/25 18:12
  */
-public class HerodotusCaffeineCacheManager extends CaffeineCacheManager {
+public class FrameCaffeineCacheManager extends CaffeineCacheManager {
 
-  private static final Logger log = LoggerFactory.getLogger(HerodotusCaffeineCacheManager.class);
+  private static final Logger log = LoggerFactory.getLogger(FrameCaffeineCacheManager.class);
 
   private final CacheProperties cacheProperties;
 
-  public HerodotusCaffeineCacheManager(CacheProperties cacheProperties) {
+  public FrameCaffeineCacheManager(CacheProperties cacheProperties) {
     this.cacheProperties = cacheProperties;
     this.setAllowNullValues(cacheProperties.getAllowNullValues());
   }
 
-  public HerodotusCaffeineCacheManager(CacheProperties cacheProperties, String... cacheNames) {
+  public FrameCaffeineCacheManager(CacheProperties cacheProperties, String... cacheNames) {
     super(cacheNames);
     this.cacheProperties = cacheProperties;
     this.setAllowNullValues(cacheProperties.getAllowNullValues());

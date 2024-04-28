@@ -78,22 +78,22 @@ public abstract class AbstractUserDetailsAuthenticationProvider extends Abstract
         UserDetails user = retrieveUser(additionalParameters);
 
         if (!user.isAccountNonLocked()) {
-            log.debug("[Herodotus] |- Failed to authenticate since user account is locked");
+            log.debug("[GstDev Cloud] |- Failed to authenticate since user account is locked");
             throw new LockedException(messages.getMessage("AbstractUserDetailsAuthenticationProvider.locked", "User account is locked"));
         }
         if (!user.isEnabled()) {
-            log.debug("[Herodotus] |- Failed to authenticate since user account is disabled");
+            log.debug("[GstDev Cloud] |- Failed to authenticate since user account is disabled");
             throw new DisabledException(messages.getMessage("AbstractUserDetailsAuthenticationProvider.disabled", "User is disabled"));
         }
         if (!user.isAccountNonExpired()) {
-            log.debug("[Herodotus] |- Failed to authenticate since user account has expired");
+            log.debug("[GstDev Cloud] |- Failed to authenticate since user account has expired");
             throw new AccountExpiredException(messages.getMessage("AbstractUserDetailsAuthenticationProvider.expired", "User account has expired"));
         }
 
         additionalAuthenticationChecks(user, additionalParameters);
 
         if (!user.isCredentialsNonExpired()) {
-            log.debug("[Herodotus] |- Failed to authenticate since user account credentials have expired");
+            log.debug("[GstDev Cloud] |- Failed to authenticate since user account credentials have expired");
             throw new CredentialsExpiredException(messages.getMessage("AbstractUserDetailsAuthenticationProvider.credentialsExpired", "User credentials have expired"));
         }
 

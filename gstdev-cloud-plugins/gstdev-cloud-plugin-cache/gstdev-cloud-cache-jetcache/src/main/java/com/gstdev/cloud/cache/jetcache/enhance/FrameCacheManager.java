@@ -17,19 +17,19 @@ import java.util.Map;
  * @author : cc
  * @date : 2022/7/23 17:02
  */
-public class HerodotusCacheManager extends JetCacheSpringCacheManager {
+public class FrameCacheManager extends JetCacheSpringCacheManager {
 
-  private static final Logger log = LoggerFactory.getLogger(HerodotusCacheManager.class);
+  private static final Logger log = LoggerFactory.getLogger(FrameCacheManager.class);
 
   private final CacheProperties cacheProperties;
 
-  public HerodotusCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory, CacheProperties cacheProperties) {
+  public FrameCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory, CacheProperties cacheProperties) {
     super(jetCacheCreateCacheFactory);
     this.cacheProperties = cacheProperties;
     this.setAllowNullValues(cacheProperties.getAllowNullValues());
   }
 
-  public HerodotusCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory, CacheProperties cacheProperties, String... cacheNames) {
+  public FrameCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory, CacheProperties cacheProperties, String... cacheNames) {
     super(jetCacheCreateCacheFactory, cacheNames);
     this.cacheProperties = cacheProperties;
   }

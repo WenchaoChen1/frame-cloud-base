@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 
 /**
- * <p>Description: OAuth2 HerodotusPermission Dto </p>
+ * <p>Description: OAuth2 FramePermission Dto </p>
  *
  * @author : cc
  * @date : 2022/4/1 13:55

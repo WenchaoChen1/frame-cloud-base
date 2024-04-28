@@ -21,9 +21,9 @@ import java.io.Serializable;
  * 基于 AntPathRequestMatcher 代码，扩展了一些方法，解决原有 AntPathRequestMatcher 使用不方便问题。
  *
  */
-public final class HerodotusRequestMatcher implements RequestMatcher, Serializable {
+public final class FrameRequestMatcher implements RequestMatcher, Serializable {
 
-    private static final Logger log = LoggerFactory.getLogger(HerodotusRequestMatcher.class);
+    private static final Logger log = LoggerFactory.getLogger(FrameRequestMatcher.class);
 
     private static final String MATCH_ALL = "/**";
 
@@ -39,7 +39,7 @@ public final class HerodotusRequestMatcher implements RequestMatcher, Serializab
 
     private UrlPathHelper urlPathHelper;
 
-    public HerodotusRequestMatcher() {
+    public FrameRequestMatcher() {
     }
 
     /**
@@ -48,11 +48,11 @@ public final class HerodotusRequestMatcher implements RequestMatcher, Serializab
      *
      * @param pattern the ant pattern to use for matching
      */
-    public HerodotusRequestMatcher(String pattern) {
+    public FrameRequestMatcher(String pattern) {
         this(pattern, null);
     }
 
-    public HerodotusRequestMatcher(HerodotusRequest request) {
+    public FrameRequestMatcher(FrameRequest request) {
         this(request.getPattern(), request.getHttpMethod());
     }
 
@@ -64,7 +64,7 @@ public final class HerodotusRequestMatcher implements RequestMatcher, Serializab
      * @param httpMethod the HTTP method. The {@code matches} method will return false if
      *                   the incoming request doesn't have the same method.
      */
-    public HerodotusRequestMatcher(String pattern, String httpMethod) {
+    public FrameRequestMatcher(String pattern, String httpMethod) {
         this(pattern, httpMethod, true);
     }
 
@@ -77,7 +77,7 @@ public final class HerodotusRequestMatcher implements RequestMatcher, Serializab
      *                      the incoming request doesn't doesn't have the same method.
      * @param caseSensitive true if the matcher should consider case, else false
      */
-    public HerodotusRequestMatcher(String pattern, String httpMethod, boolean caseSensitive) {
+    public FrameRequestMatcher(String pattern, String httpMethod, boolean caseSensitive) {
         this(pattern, httpMethod, caseSensitive, null);
     }
 
@@ -92,8 +92,8 @@ public final class HerodotusRequestMatcher implements RequestMatcher, Serializab
      * @param urlPathHelper if non-null, will be used for extracting the path from the
      *                      HttpServletRequest
      */
-    public HerodotusRequestMatcher(String pattern, String httpMethod, boolean caseSensitive,
-                                   UrlPathHelper urlPathHelper) {
+    public FrameRequestMatcher(String pattern, String httpMethod, boolean caseSensitive,
+                               UrlPathHelper urlPathHelper) {
         Assert.hasText(pattern, "Pattern cannot be null or empty");
         this.caseSensitive = caseSensitive;
         this.hasWildcard = containSpecialCharacters(pattern);
@@ -153,7 +153,7 @@ public final class HerodotusRequestMatcher implements RequestMatcher, Serializab
         return this.matcher.matches(url);
     }
 
-    public boolean matches(HerodotusRequest request) {
+    public boolean matches(FrameRequest request) {
 
         if (StringUtils.isNotBlank(this.httpMethod) && StringUtils.isNotBlank(request.getHttpMethod())
                 && !StringUtils.equalsIgnoreCase(this.httpMethod, request.getHttpMethod())) {
@@ -221,7 +221,7 @@ public final class HerodotusRequestMatcher implements RequestMatcher, Serializab
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        HerodotusRequestMatcher that = (HerodotusRequestMatcher) o;
+        FrameRequestMatcher that = (FrameRequestMatcher) o;
         return caseSensitive == that.caseSensitive && Objects.equal(pattern, that.pattern) && Objects.equal(httpMethod, that.httpMethod);
     }
 

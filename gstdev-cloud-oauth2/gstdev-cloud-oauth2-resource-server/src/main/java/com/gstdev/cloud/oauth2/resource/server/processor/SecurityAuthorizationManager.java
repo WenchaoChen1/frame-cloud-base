@@ -9,9 +9,9 @@
 package com.gstdev.cloud.oauth2.resource.server.processor;
 
 import com.gstdev.cloud.base.core.utils.http.HeaderUtils;
-import com.gstdev.cloud.oauth2.resource.server.definition.HerodotusConfigAttribute;
-import com.gstdev.cloud.oauth2.resource.server.definition.HerodotusRequest;
-import com.gstdev.cloud.oauth2.resource.server.definition.HerodotusRequestMatcher;
+import com.gstdev.cloud.oauth2.resource.server.definition.FrameConfigAttribute;
+import com.gstdev.cloud.oauth2.resource.server.definition.FrameRequest;
+import com.gstdev.cloud.oauth2.resource.server.definition.FrameRequestMatcher;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
@@ -86,7 +86,7 @@ public class SecurityAuthorizationManager implements AuthorizationManager<Reques
         }
 
         // 获取资源的权限配置
-        List<HerodotusConfigAttribute> configAttributes = findConfigAttribute(url, method, request);
+        List<FrameConfigAttribute> configAttributes = findConfigAttribute(url, method, request);
         if (CollectionUtils.isEmpty(configAttributes)) {
             log.warn("[GstDev Cloud] |- NO PRIVILEGES : [{}].", url);
 
@@ -102,7 +102,7 @@ public class SecurityAuthorizationManager implements AuthorizationManager<Reques
         }
 
         // 根据权限配置进行授权判断
-        for (HerodotusConfigAttribute configAttribute : configAttributes) {
+        for (FrameConfigAttribute configAttribute : configAttributes) {
             WebExpressionAuthorizationManager webExpressionAuthorizationManager = new WebExpressionAuthorizationManager(configAttribute.getAttribute());
             AuthorizationDecision decision = webExpressionAuthorizationManager.check(authentication, object);
             if (decision.isGranted()) {
@@ -115,22 +115,22 @@ public class SecurityAuthorizationManager implements AuthorizationManager<Reques
     }
 
     // 根据URL和HTTP方法查找资源的权限配置
-    private List<HerodotusConfigAttribute> findConfigAttribute(String url, String method, HttpServletRequest request) {
+    private List<FrameConfigAttribute> findConfigAttribute(String url, String method, HttpServletRequest request) {
 
         log.debug("[GstDev Cloud] |- Current Request is : [{}] - [{}]", url, method);
 
         // 从本地存储中获取资源的权限配置
-        List<HerodotusConfigAttribute> configAttributes = this.securityMetadataSourceStorage.getConfigAttribute(url, method);
+        List<FrameConfigAttribute> configAttributes = this.securityMetadataSourceStorage.getConfigAttribute(url, method);
         if (CollectionUtils.isNotEmpty(configAttributes)) {
             log.debug("[GstDev Cloud] |- Get configAttributes from local storage for : [{}] - [{}]", url, method);
             return configAttributes;
         } else {
             // 从兼容性存储中查找具有通配符路径的资源的权限配置
-            LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> compatible = this.securityMetadataSourceStorage.getCompatible();
+            LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> compatible = this.securityMetadataSourceStorage.getCompatible();
             if (MapUtils.isNotEmpty(compatible)) {
                 // 支持含有**通配符的路径搜索
-                for (Map.Entry<HerodotusRequest, List<HerodotusConfigAttribute>> entry : compatible.entrySet()) {
-                    HerodotusRequestMatcher requestMatcher = new HerodotusRequestMatcher(entry.getKey());
+                for (Map.Entry<FrameRequest, List<FrameConfigAttribute>> entry : compatible.entrySet()) {
+                    FrameRequestMatcher requestMatcher = new FrameRequestMatcher(entry.getKey());
                     if (requestMatcher.matches(request)) {
                         log.debug("[GstDev Cloud] |- Request match the wildcard [{}] - [{}]", entry.getKey(), entry.getValue());
                         return entry.getValue();

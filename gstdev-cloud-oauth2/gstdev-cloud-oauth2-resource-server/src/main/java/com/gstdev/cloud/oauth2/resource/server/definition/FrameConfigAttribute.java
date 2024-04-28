@@ -14,21 +14,21 @@ import java.util.List;
  * <p>
  * 自定义SecurityConfig，主要为了构建无参数构造函数，以解决序列化出错问题
  */
-public class HerodotusConfigAttribute implements ConfigAttribute {
+public class FrameConfigAttribute implements ConfigAttribute {
 
   private String attribute;
 
-  public HerodotusConfigAttribute() {
+  public FrameConfigAttribute() {
   }
 
-  public HerodotusConfigAttribute(String config) {
+  public FrameConfigAttribute(String config) {
     Assert.hasText(config, "You must provide a configuration attribute");
     this.attribute = config;
   }
 
-  public static HerodotusConfigAttribute create(String attribute) {
+  public static FrameConfigAttribute create(String attribute) {
     Assert.notNull(attribute, "You must supply an array of attribute names");
-    return new HerodotusConfigAttribute(attribute.trim());
+    return new FrameConfigAttribute(attribute.trim());
   }
 
   public static List<ConfigAttribute> createListFromCommaDelimitedString(String access) {
@@ -39,7 +39,7 @@ public class HerodotusConfigAttribute implements ConfigAttribute {
     Assert.notNull(attributeNames, "You must supply an array of attribute names");
     List<ConfigAttribute> attributes = new ArrayList<>(attributeNames.length);
     for (String attribute : attributeNames) {
-      attributes.add(new HerodotusConfigAttribute(attribute.trim()));
+      attributes.add(new FrameConfigAttribute(attribute.trim()));
     }
     return attributes;
   }
@@ -56,7 +56,7 @@ public class HerodotusConfigAttribute implements ConfigAttribute {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HerodotusConfigAttribute that = (HerodotusConfigAttribute) o;
+    FrameConfigAttribute that = (FrameConfigAttribute) o;
     return Objects.equal(attribute, that.attribute);
   }
 

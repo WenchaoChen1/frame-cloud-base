@@ -1,12 +1,3 @@
-// ====================================================
-//
-// This file is part of the Riching Cloud Platform.
-//
-// Create by Riching Tech <support@richingtech.com>
-// Copyright (c) 2020-2025 richingtech.com
-//
-// ====================================================
-
 package com.gstdev.cloud.oauth2.management.domain.base;
 
 import lombok.Getter;

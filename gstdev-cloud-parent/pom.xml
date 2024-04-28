@@ -23,40 +23,4 @@
     </dependency>
   </dependencies>
 
-<!--  <profiles>-->
-<!--    <profile>-->
-<!--      <id>development</id>-->
-<!--      <activation>-->
-<!--        <activeByDefault>true</activeByDefault>-->
-<!--      </activation>-->
-<!--      <properties>-->
-<!--        <profile.name>development</profile.name>-->
-<!--        <config.namespace>riching-cloud-development</config.namespace>-->
-<!--        <config.server-addr>127.0.0.1:8848</config.server-addr>-->
-<!--        <discovery.server-addr>127.0.0.1:8848</discovery.server-addr>-->
-<!--        <sentinel.server-addr>127.0.0.1:8858</sentinel.server-addr>-->
-<!--      </properties>-->
-<!--    </profile>-->
-<!--    <profile>-->
-<!--      <id>production</id>-->
-<!--      <properties>-->
-<!--        <profile.name>production</profile.name>-->
-<!--        <config.namespace>riching-cloud-production</config.namespace>-->
-<!--        <config.server-addr>127.0.0.1:8848</config.server-addr>-->
-<!--        <discovery.server-addr>127.0.0.1:8848</discovery.server-addr>-->
-<!--        <sentinel.server-addr>127.0.0.1:8858</sentinel.server-addr>-->
-<!--      </properties>-->
-<!--    </profile>-->
-<!--    <profile>-->
-<!--      <id>docker</id>-->
-<!--      <properties>-->
-<!--        <profile.name>docker</profile.name>-->
-<!--        <config.namespace>riching-cloud-docker</config.namespace>-->
-<!--        <config.server-addr>127.0.0.1:8848</config.server-addr>-->
-<!--        <discovery.server-addr>127.0.0.1:8848</discovery.server-addr>-->
-<!--        <sentinel.server-addr>127.0.0.1:8858</sentinel.server-addr>-->
-<!--      </properties>-->
-<!--    </profile>-->
-<!--  </profiles>-->
-
 </project>

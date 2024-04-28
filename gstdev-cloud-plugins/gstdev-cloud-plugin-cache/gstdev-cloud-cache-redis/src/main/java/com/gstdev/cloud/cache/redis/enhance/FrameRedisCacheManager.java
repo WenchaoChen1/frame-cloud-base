@@ -22,33 +22,33 @@ import java.util.Map;
  * @author : cc
  * @date : 2021/10/25 20:49
  */
-public class HerodotusRedisCacheManager extends RedisCacheManager {
+public class FrameRedisCacheManager extends RedisCacheManager {
 
-  private static final Logger log = LoggerFactory.getLogger(HerodotusRedisCacheManager.class);
+  private static final Logger log = LoggerFactory.getLogger(FrameRedisCacheManager.class);
 
   private CacheProperties cacheProperties;
 
-  public HerodotusRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, CacheProperties cacheProperties) {
+  public FrameRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, CacheProperties cacheProperties) {
     super(cacheWriter, defaultCacheConfiguration);
     this.cacheProperties = cacheProperties;
   }
 
-  public HerodotusRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, CacheProperties cacheProperties, String... initialCacheNames) {
+  public FrameRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, CacheProperties cacheProperties, String... initialCacheNames) {
     super(cacheWriter, defaultCacheConfiguration, initialCacheNames);
     this.cacheProperties = cacheProperties;
   }
 
-  public HerodotusRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, boolean allowInFlightCacheCreation, CacheProperties cacheProperties, String... initialCacheNames) {
+  public FrameRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, boolean allowInFlightCacheCreation, CacheProperties cacheProperties, String... initialCacheNames) {
     super(cacheWriter, defaultCacheConfiguration, allowInFlightCacheCreation, initialCacheNames);
     this.cacheProperties = cacheProperties;
   }
 
-  public HerodotusRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, Map<String, RedisCacheConfiguration> initialCacheConfigurations, CacheProperties cacheProperties) {
+  public FrameRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, Map<String, RedisCacheConfiguration> initialCacheConfigurations, CacheProperties cacheProperties) {
     super(cacheWriter, defaultCacheConfiguration, initialCacheConfigurations);
     this.cacheProperties = cacheProperties;
   }
 
-  public HerodotusRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, Map<String, RedisCacheConfiguration> initialCacheConfigurations, boolean allowInFlightCacheCreation) {
+  public FrameRedisCacheManager(RedisCacheWriter cacheWriter, RedisCacheConfiguration defaultCacheConfiguration, Map<String, RedisCacheConfiguration> initialCacheConfigurations, boolean allowInFlightCacheCreation) {
     super(cacheWriter, defaultCacheConfiguration, initialCacheConfigurations, allowInFlightCacheCreation);
   }
 

@@ -31,12 +31,12 @@ public class FrameAuthorizationUuidGeneratorType extends AbstractUuidGenerator {
       throw new HibernateException(new NullPointerException());
     }
 
-    FrameAuthorization HerodotusAuthorization = (FrameAuthorization) object;
+    FrameAuthorization authorization = (FrameAuthorization) object;
 
-    if (StringUtils.isEmpty(HerodotusAuthorization.getId())) {
+    if (StringUtils.isEmpty(authorization.getId())) {
       return super.generate(session, object);
     } else {
-      return HerodotusAuthorization.getId();
+      return authorization.getId();
     }
   }
 }

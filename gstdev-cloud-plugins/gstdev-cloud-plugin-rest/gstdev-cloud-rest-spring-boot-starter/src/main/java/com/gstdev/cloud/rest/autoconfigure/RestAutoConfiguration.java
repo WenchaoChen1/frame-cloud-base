@@ -47,7 +47,7 @@ public class RestAutoConfiguration implements ApplicationContextAware {
     public void setApplicationContext(@Nonnull ApplicationContext applicationContext) throws BeansException {
         this.serviceContextHolder.setApplicationContext(applicationContext);
         this.serviceContextHolder.setApplicationName(RestPropertyFinder.getApplicationName(applicationContext));
-        log.debug("[GstDev Cloud] |- HERODOTUS ApplicationContext initialization completed.");
+        log.debug("[GstDev Cloud] |- Frame ApplicationContext initialization completed.");
     }
 
 //    @Bean

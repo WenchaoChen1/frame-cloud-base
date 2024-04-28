@@ -6,12 +6,11 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
 import com.gstdev.cloud.cache.core.properties.CacheProperties;
-import com.gstdev.cloud.cache.redis.enhance.HerodotusRedisCacheManager;
+import com.gstdev.cloud.cache.redis.enhance.FrameRedisCacheManager;
 import com.gstdev.cloud.cache.redis.utils.JacksonObjectMapper;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -141,7 +140,7 @@ public class CacheRedisConfiguration {
       redisCacheConfiguration = redisCacheConfiguration.disableCachingNullValues();
     }
 
-    HerodotusRedisCacheManager herodotusRedisCacheManager = new HerodotusRedisCacheManager(redisCacheWriter, redisCacheConfiguration, cacheProperties);
+    FrameRedisCacheManager herodotusRedisCacheManager = new FrameRedisCacheManager(redisCacheWriter, redisCacheConfiguration, cacheProperties);
     herodotusRedisCacheManager.setTransactionAware(false);
     herodotusRedisCacheManager.afterPropertiesSet();
     log.trace("[GstDev Cloud] |- Bean [Redis Cache Manager] Auto Configure.");

@@ -36,7 +36,7 @@ import java.util.*;
  * @author : cc
  * @date : 2022/10/10 14:34
  */
-public class HerodotusOpaqueTokenIntrospector implements OpaqueTokenIntrospector {
+public class FrameOpaqueTokenIntrospector implements OpaqueTokenIntrospector {
 
   private static final ParameterizedTypeReference<Map<String, Object>> STRING_OBJECT_MAP = new ParameterizedTypeReference<Map<String, Object>>() {
   };
@@ -47,7 +47,7 @@ public class HerodotusOpaqueTokenIntrospector implements OpaqueTokenIntrospector
 
   private Converter<String, RequestEntity<?>> requestEntityConverter;
 
-  public HerodotusOpaqueTokenIntrospector(OAuth2ResourceServerProperties resourceServerProperties) {
+  public FrameOpaqueTokenIntrospector(OAuth2ResourceServerProperties resourceServerProperties) {
     this(getIntrospectionUri(resourceServerProperties),
       resourceServerProperties.getOpaquetoken().getClientId(),
       resourceServerProperties.getOpaquetoken().getClientSecret());
@@ -60,7 +60,7 @@ public class HerodotusOpaqueTokenIntrospector implements OpaqueTokenIntrospector
    * @param clientId         The client id authorized to introspect
    * @param clientSecret     The client's secret
    */
-  public HerodotusOpaqueTokenIntrospector(String introspectionUri, String clientId, String clientSecret) {
+  public FrameOpaqueTokenIntrospector(String introspectionUri, String clientId, String clientSecret) {
     Assert.notNull(introspectionUri, "introspectionUri cannot be null");
     Assert.notNull(clientId, "clientId cannot be null");
     Assert.notNull(clientSecret, "clientSecret cannot be null");
@@ -79,7 +79,7 @@ public class HerodotusOpaqueTokenIntrospector implements OpaqueTokenIntrospector
    * @param introspectionUri The introspection endpoint uri
    * @param restOperations   The client for performing the introspection request
    */
-  public HerodotusOpaqueTokenIntrospector(String introspectionUri, RestOperations restOperations) {
+  public FrameOpaqueTokenIntrospector(String introspectionUri, RestOperations restOperations) {
     Assert.notNull(introspectionUri, "introspectionUri cannot be null");
     Assert.notNull(restOperations, "restOperations cannot be null");
     this.requestEntityConverter = this.defaultRequestEntityConverter(URI.create(introspectionUri));

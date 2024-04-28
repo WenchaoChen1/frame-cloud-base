@@ -54,6 +54,6 @@ public class OAuth2ResourceServerConfigurerCustomer implements Customizer<OAuth2
     public BearerTokenResolver createBearerTokenResolver() {
         // TODO
 //        return new HerodotusBearerTokenResolver(this.jwtDecoder, this.opaqueTokenIntrospector, this.isRemoteValidate());
-        return new HerodotusBearerTokenResolver(this.jwtDecoder, null, this.isRemoteValidate());
+        return new FrameBearerTokenResolver(this.jwtDecoder, null, this.isRemoteValidate());
     }
 }

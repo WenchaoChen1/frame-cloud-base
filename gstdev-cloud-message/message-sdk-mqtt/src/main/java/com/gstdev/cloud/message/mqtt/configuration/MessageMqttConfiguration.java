@@ -2,7 +2,7 @@ package com.gstdev.cloud.message.mqtt.configuration;
 
 import com.gstdev.cloud.base.core.utils.type.ListUtils;
 import com.gstdev.cloud.base.core.utils.type.NumberUtils;
-import com.gstdev.cloud.message.core.constants.HerodotusChannels;
+import com.gstdev.cloud.message.core.constants.FrameChannels;
 import com.gstdev.cloud.message.mqtt.annotation.ConditionalOnMqttEnabled;
 import com.gstdev.cloud.message.mqtt.properties.MqttProperties;
 import jakarta.annotation.PostConstruct;
@@ -61,12 +61,12 @@ public class MessageMqttConfiguration {
     log.debug("[GstDev Cloud] |- SDK [Message Mqtt] Auto Configure.");
   }
 
-  @Bean(name = HerodotusChannels.MQTT_DEFAULT_INBOUND_CHANNEL)
+  @Bean(name = FrameChannels.MQTT_DEFAULT_INBOUND_CHANNEL)
   public MessageChannel mqttDefaultInboundChannel() {
     return MessageChannels.publishSubscribe().getObject();
   }
 
-  @Bean(name = HerodotusChannels.MQTT_DEFAULT_OUTBOUND_CHANNEL)
+  @Bean(name = FrameChannels.MQTT_DEFAULT_OUTBOUND_CHANNEL)
   public MessageChannel mqttDefaultOutboundChannel() {
     return MessageChannels.direct().getObject();
   }
@@ -91,7 +91,7 @@ public class MessageMqttConfiguration {
   }
 
   @Bean
-  public MessageProducer mqttDefaultInbound(ClientManager<IMqttAsyncClient, MqttConnectionOptions> clientManager, @Qualifier(HerodotusChannels.MQTT_DEFAULT_INBOUND_CHANNEL) MessageChannel mqttDefaultInboundChannel, MqttProperties mqttProperties) {
+  public MessageProducer mqttDefaultInbound(ClientManager<IMqttAsyncClient, MqttConnectionOptions> clientManager, @Qualifier(FrameChannels.MQTT_DEFAULT_INBOUND_CHANNEL) MessageChannel mqttDefaultInboundChannel, MqttProperties mqttProperties) {
     Assert.notNull(mqttProperties.getDefaultSubscribes(), "'Property Subscribes' cannot be null");
     Mqttv5PahoMessageDrivenChannelAdapter adapter = new Mqttv5PahoMessageDrivenChannelAdapter(clientManager, ListUtils.toStringArray(mqttProperties.getDefaultSubscribes()));
     adapter.setPayloadType(String.class);
@@ -102,7 +102,7 @@ public class MessageMqttConfiguration {
   }
 
   @Bean
-  @ServiceActivator(inputChannel = HerodotusChannels.MQTT_DEFAULT_OUTBOUND_CHANNEL)
+  @ServiceActivator(inputChannel = FrameChannels.MQTT_DEFAULT_OUTBOUND_CHANNEL)
   public MessageHandler mqttDefaultOutbound(ClientManager<IMqttAsyncClient, MqttConnectionOptions> clientManager, MqttProperties mqttProperties) {
     Mqttv5PahoMessageHandler handler = new Mqttv5PahoMessageHandler(clientManager);
     handler.setDefaultTopic(mqttProperties.getDefaultTopic());

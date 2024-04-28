@@ -19,9 +19,9 @@ import java.util.Map;
  * @date : 2022/9/8 18:14
  */
 @Component
-public class HerodotusTenantIdentifierResolver implements CurrentTenantIdentifierResolver, HibernatePropertiesCustomizer {
+public class FrameTenantIdentifierResolver implements CurrentTenantIdentifierResolver, HibernatePropertiesCustomizer {
 
-  private static final Logger log = LoggerFactory.getLogger(HerodotusTenantIdentifierResolver.class);
+  private static final Logger log = LoggerFactory.getLogger(FrameTenantIdentifierResolver.class);
 
   @Override
   public String resolveCurrentTenantIdentifier() {

@@ -12,9 +12,9 @@ import com.gstdev.cloud.cache.jetcache.utils.JetCacheUtils;
 import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
 import com.alicp.jetcache.Cache;
 import com.alicp.jetcache.anno.CacheType;
-import com.gstdev.cloud.oauth2.resource.server.definition.HerodotusConfigAttribute;
-import com.gstdev.cloud.oauth2.resource.server.definition.HerodotusRequest;
-import com.gstdev.cloud.oauth2.resource.server.definition.HerodotusRequestMatcher;
+import com.gstdev.cloud.oauth2.resource.server.definition.FrameConfigAttribute;
+import com.gstdev.cloud.oauth2.resource.server.definition.FrameRequest;
+import com.gstdev.cloud.oauth2.resource.server.definition.FrameRequestMatcher;
 import org.apache.commons.collections4.MapUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,12 +38,12 @@ public class SecurityMetadataSourceStorage {
      * 模式匹配权限缓存。主要存储 包含 "*"、"?" 和 "{"、"}" 等特殊字符的路径权限。
      * 该种权限，需要通过遍历，利用 AntPathRequestMatcher 机制进行匹配
      */
-    private final Cache<String, LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>>> compatible;
+    private final Cache<String, LinkedHashMap<FrameRequest, List<FrameConfigAttribute>>> compatible;
     /**
      * 直接索引权限缓存，主要存储全路径权限
      * 该种权限，直接通过 Map Key 进行获取
      */
-    private final Cache<HerodotusRequest, List<HerodotusConfigAttribute>> indexable;
+    private final Cache<FrameRequest, List<FrameConfigAttribute>> indexable;
 
     public SecurityMetadataSourceStorage() {
         this.compatible = JetCacheUtils.create(OAuth2Constants.CACHE_NAME_SECURITY_METADATA_COMPATIBLE, CacheType.BOTH, null, true, true);
@@ -55,8 +55,8 @@ public class SecurityMetadataSourceStorage {
      *
      * @return 需要进行模式匹配的权限数据
      */
-    private LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> readFromCompatible() {
-        LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> compatible = this.compatible.get(KEY_COMPATIBLE);
+    private LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> readFromCompatible() {
+        LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> compatible = this.compatible.get(KEY_COMPATIBLE);
         if (MapUtils.isNotEmpty(compatible)) {
             return compatible;
         }
@@ -69,27 +69,27 @@ public class SecurityMetadataSourceStorage {
      *
      * @param compatible 请求路径和权限配置属性映射Map
      */
-    private void writeToCompatible(LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> compatible) {
+    private void writeToCompatible(LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> compatible) {
         this.compatible.put(KEY_COMPATIBLE, compatible);
     }
 
     /**
      * 从 indexable 缓存中读取数据
      *
-     * @param herodotusRequest 自定义扩展的 AntPathRequestMatchers {@link HerodotusRequest}
+     * @param frameRequest 自定义扩展的 AntPathRequestMatchers {@link FrameRequest}
      * @return 权限配置属性对象集合
      */
-    private List<HerodotusConfigAttribute> readFromIndexable(HerodotusRequest herodotusRequest) {
-        return this.indexable.get(herodotusRequest);
+    private List<FrameConfigAttribute> readFromIndexable(FrameRequest frameRequest) {
+        return this.indexable.get(frameRequest);
     }
 
     /**
      * 写入 indexable 缓存
      *
-     * @param herodotusRequest 自定义扩展的 AntPathRequestMatchers {@link HerodotusRequest}
+     * @param herodotusRequest 自定义扩展的 AntPathRequestMatchers {@link FrameRequest}
      * @param configAttributes 权限配置属性
      */
-    private void writeToIndexable(HerodotusRequest herodotusRequest, List<HerodotusConfigAttribute> configAttributes) {
+    private void writeToIndexable(FrameRequest herodotusRequest, List<FrameConfigAttribute> configAttributes) {
         this.indexable.put(herodotusRequest, configAttributes);
     }
 
@@ -100,8 +100,8 @@ public class SecurityMetadataSourceStorage {
      * @param method 请求 method
      * @return 与请求url 和 method 匹配的权限数据，或者是空集合
      */
-    public List<HerodotusConfigAttribute> getConfigAttribute(String url, String method) {
-        HerodotusRequest herodotusRequest = new HerodotusRequest(url, method);
+    public List<FrameConfigAttribute> getConfigAttribute(String url, String method) {
+        FrameRequest herodotusRequest = new FrameRequest(url, method);
         return readFromIndexable(herodotusRequest);
     }
 
@@ -110,7 +110,7 @@ public class SecurityMetadataSourceStorage {
      *
      * @return 如果缓存中存在，则返回请求权限映射Map集合，如果不存在则返回一个空的{@link LinkedHashMap}
      */
-    public LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> getCompatible() {
+    public LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> getCompatible() {
         return readFromCompatible();
     }
 
@@ -120,11 +120,11 @@ public class SecurityMetadataSourceStorage {
      * 如果缓存中不存在以{@link RequestMatcher}为Key的数据，那么添加数据
      * 如果缓存中存在以{@link RequestMatcher}为Key的数据，那么合并数据
      *
-     * @param herodotusRequest 请求匹配对象 {@link HerodotusRequest}
+     * @param herodotusRequest 请求匹配对象 {@link FrameRequest}
      * @param configAttributes 权限配置 {@link ConfigAttribute}
      */
-    private void appendToCompatible(HerodotusRequest herodotusRequest, List<HerodotusConfigAttribute> configAttributes) {
-        LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> compatible = this.getCompatible();
+    private void appendToCompatible(FrameRequest herodotusRequest, List<FrameConfigAttribute> configAttributes) {
+        LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> compatible = this.getCompatible();
 //        compatible.merge(requestMatcher, configAttributes, (oldConfigAttributes, newConfigAttributes) -> {
 //            newConfigAttributes.addAll(oldConfigAttributes);
 //            return newConfigAttributes;
@@ -144,20 +144,20 @@ public class SecurityMetadataSourceStorage {
      *
      * @param configAttributes 请求权限映射Map
      */
-    private void appendToCompatible(LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> configAttributes) {
+    private void appendToCompatible(LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> configAttributes) {
         configAttributes.forEach(this::appendToCompatible);
     }
 
     /**
      * 向 indexable 缓存中添加需请求权限映射。
      * <p>
-     * 如果缓存中不存在以{@link HerodotusRequest}为Key的数据，那么添加数据
-     * 如果缓存中存在以{@link HerodotusRequest}为Key的数据，那么合并数据
+     * 如果缓存中不存在以{@link FrameRequest}为Key的数据，那么添加数据
+     * 如果缓存中存在以{@link FrameRequest}为Key的数据，那么合并数据
      *
-     * @param herodotusRequest 请求匹配对象 {@link HerodotusRequest}
-     * @param configAttributes 权限配置 {@link HerodotusConfigAttribute}
+     * @param herodotusRequest 请求匹配对象 {@link FrameRequest}
+     * @param configAttributes 权限配置 {@link FrameConfigAttribute}
      */
-    private void appendToIndexable(HerodotusRequest herodotusRequest, List<HerodotusConfigAttribute> configAttributes) {
+    private void appendToIndexable(FrameRequest herodotusRequest, List<FrameConfigAttribute> configAttributes) {
         writeToIndexable(herodotusRequest, configAttributes);
     }
 
@@ -166,7 +166,7 @@ public class SecurityMetadataSourceStorage {
      *
      * @param configAttributes 请求权限映射Map
      */
-    private void appendToIndexable(LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> configAttributes) {
+    private void appendToIndexable(LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> configAttributes) {
         configAttributes.forEach(this::appendToIndexable);
     }
 
@@ -176,7 +176,7 @@ public class SecurityMetadataSourceStorage {
      * @param configAttributes 权限数据
      * @param isIndexable      true 存入 indexable cache；false 存入 compatible cache
      */
-    public void addToStorage(LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> configAttributes, boolean isIndexable) {
+    public void addToStorage(LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> configAttributes, boolean isIndexable) {
         if (MapUtils.isNotEmpty(configAttributes)) {
             if (isIndexable) {
                 appendToIndexable(configAttributes);
@@ -194,8 +194,8 @@ public class SecurityMetadataSourceStorage {
      * @param configAttributes 权限数据
      * @param isIndexable      true 存入 indexable cache；false 存入 compatible cache
      */
-    public void addToStorage(LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> matchers, LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> configAttributes, boolean isIndexable) {
-        LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> result = new LinkedHashMap<>();
+    public void addToStorage(LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> matchers, LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> configAttributes, boolean isIndexable) {
+        LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> result = new LinkedHashMap<>();
         if (MapUtils.isNotEmpty(matchers) && MapUtils.isNotEmpty(configAttributes)) {
             result = checkConflict(matchers, configAttributes);
         }
@@ -212,13 +212,13 @@ public class SecurityMetadataSourceStorage {
      * @param configAttributes 权限数据
      * @return 去除冲突的权限数据
      */
-    private LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> checkConflict(LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> matchers, LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> configAttributes) {
+    private LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> checkConflict(LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> matchers, LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> configAttributes) {
 
-        LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> result = new LinkedHashMap<>(configAttributes);
+        LinkedHashMap<FrameRequest, List<FrameConfigAttribute>> result = new LinkedHashMap<>(configAttributes);
 
-        for (HerodotusRequest matcher : matchers.keySet()) {
-            for (HerodotusRequest item : configAttributes.keySet()) {
-                HerodotusRequestMatcher requestMatcher = new HerodotusRequestMatcher(matcher);
+        for (FrameRequest matcher : matchers.keySet()) {
+            for (FrameRequest item : configAttributes.keySet()) {
+                FrameRequestMatcher requestMatcher = new FrameRequestMatcher(matcher);
                 if (requestMatcher.matches(item)) {
                     result.remove(item);
                     log.trace("[GstDev Cloud] |- Pattern [{}] is conflict with [{}], so remove it.", item.getPattern(), matcher.getPattern());

@@ -1,6 +1,6 @@
 package com.gstdev.cloud.cache.caffeine.configuration;
 
-import com.gstdev.cloud.cache.caffeine.enhance.HerodotusCaffeineCacheManager;
+import com.gstdev.cloud.cache.caffeine.enhance.FrameCaffeineCacheManager;
 import com.gstdev.cloud.cache.core.properties.CacheProperties;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import jakarta.annotation.PostConstruct;
@@ -48,7 +48,7 @@ public class CacheCaffeineConfiguration {
   @Bean
   @ConditionalOnMissingBean(CaffeineCacheManager.class)
   public CaffeineCacheManager caffeineCacheManager(Caffeine<Object, Object> caffeine) {
-    HerodotusCaffeineCacheManager herodotusCaffeineCacheManager = new HerodotusCaffeineCacheManager(cacheProperties);
+    FrameCaffeineCacheManager herodotusCaffeineCacheManager = new FrameCaffeineCacheManager(cacheProperties);
     herodotusCaffeineCacheManager.setCaffeine(caffeine);
     log.trace("[GstDev Cloud] |- Bean [Caffeine Cache Manager] Auto Configure.");
     return herodotusCaffeineCacheManager;
