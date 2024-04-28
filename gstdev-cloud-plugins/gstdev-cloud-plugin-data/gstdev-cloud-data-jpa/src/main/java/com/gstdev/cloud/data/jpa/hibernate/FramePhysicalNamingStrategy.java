@@ -10,7 +10,7 @@ import org.hibernate.engine.jdbc.env.spi.JdbcEnvironment;
  * @author : cc
  * @date : 2019/11/15 10:34
  */
-public class HerodotusPhysicalNamingStrategy extends PhysicalNamingStrategyStandardImpl {
+public class FramePhysicalNamingStrategy extends PhysicalNamingStrategyStandardImpl {
 
   @Override
   public Identifier toPhysicalColumnName(Identifier name, JdbcEnvironment context) {

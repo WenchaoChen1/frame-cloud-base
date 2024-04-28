@@ -18,16 +18,16 @@ import org.springframework.cache.Cache;
  * @author : cc
  * @date : 2021/7/12 22:06
  */
-public class HerodotusDomainDataStorageAccess implements DomainDataStorageAccess {
+public class FrameDomainDataStorageAccess implements DomainDataStorageAccess {
 
-  private static final Logger log = LoggerFactory.getLogger(HerodotusDomainDataStorageAccess.class);
+  private static final Logger log = LoggerFactory.getLogger(FrameDomainDataStorageAccess.class);
 
   private Cache cache;
 
-  public HerodotusDomainDataStorageAccess() {
+  public FrameDomainDataStorageAccess() {
   }
 
-  public HerodotusDomainDataStorageAccess(Cache cache) {
+  public FrameDomainDataStorageAccess(Cache cache) {
     this.cache = cache;
   }
 

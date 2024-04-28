@@ -42,7 +42,7 @@ public class ScanProperties {
   }
 
   public List<String> getScanGroupIds() {
-    List<String> defaultGroupIds = Stream.of("cn.herodotus").collect(Collectors.toList());
+    List<String> defaultGroupIds = Stream.of("com.gstdev.cloud").collect(Collectors.toList());
 
     if (CollectionUtils.isEmpty(this.scanGroupIds)) {
       this.scanGroupIds = new ArrayList<>();

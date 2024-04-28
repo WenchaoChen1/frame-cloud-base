@@ -84,7 +84,6 @@ public class RequestMappingScanner implements ApplicationListener<ApplicationRea
           if (isExcludedRequestMapping(handlerMethod)) {
             continue;
           }
-
           // 4.2、拼装扫描信息
           RequestMapping requestMapping = createRequestMapping(serviceId, requestMappingInfo, handlerMethod);
           if (ObjectUtils.isEmpty(requestMapping)) {

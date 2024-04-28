@@ -1,12 +1,20 @@
 package com.gstdev.cloud.oauth2.resource.server.autoconfigure;
 
 
+import com.gstdev.cloud.message.core.logic.strategy.RequestMappingScanEventManager;
+import com.gstdev.cloud.oauth2.resource.server.autoconfigure.scan.DefaultRequestMappingScanEventManager;
 import com.gstdev.cloud.oauth2.resource.server.configuration.OAuth2AuthorizationConfiguration;
+import com.gstdev.cloud.oauth2.resource.server.processor.SecurityMetadataSourceAnalyzer;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.cloud.bus.jackson.RemoteApplicationEventScan;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * <p>Description: OAuth2 资源服务器自动配置模块 </p>
@@ -17,13 +25,13 @@ import org.springframework.context.annotation.Import;
  * @date : 2023/10/28 14:22
  */
 @AutoConfiguration
-//@EnableAsync
-//@EnableAspectJAutoProxy(exposeProxy = true, proxyTargetClass = true)
+@EnableAsync
+@EnableAspectJAutoProxy(exposeProxy = true, proxyTargetClass = true)
 @Import({OAuth2AuthorizationConfiguration.class})
 //@ComponentScan(basePackageClasses = SecurityGlobalExceptionHandler.class)
-//@RemoteApplicationEventScan({
-//        "com.gstdev.cloud.oauth2.resource.autoconfigure.bus"
-//})
+@RemoteApplicationEventScan({
+        "com.gstdev.cloud.oauth2.resource.server.autoconfigure.bus"
+})
 public class OAuth2ResourceServerAutoConfiguration {
 
   private static final Logger log = LoggerFactory.getLogger(OAuth2ResourceServerAutoConfiguration.class);
@@ -41,11 +49,11 @@ public class OAuth2ResourceServerAutoConfiguration {
 //        return listener;
 //    }
 //
-//    @Bean
-//    @ConditionalOnMissingBean
-//    public RequestMappingScanEventManager requestMappingScanEventManager(SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer) {
-//        DefaultRequestMappingScanEventManager manager = new DefaultRequestMappingScanEventManager(securityMetadataSourceAnalyzer);
-//        log.trace("[GstDev Cloud] |- Bean [Request Mapping Scan Manager] Auto Configure.");
-//        return manager;
-//    }
+    @Bean
+    @ConditionalOnMissingBean
+    public RequestMappingScanEventManager requestMappingScanEventManager(SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer) {
+        DefaultRequestMappingScanEventManager manager = new DefaultRequestMappingScanEventManager(securityMetadataSourceAnalyzer);
+        log.trace("[GstDev Cloud] |- Bean [Request Mapping Scan Manager] Auto Configure.");
+        return manager;
+    }
 }

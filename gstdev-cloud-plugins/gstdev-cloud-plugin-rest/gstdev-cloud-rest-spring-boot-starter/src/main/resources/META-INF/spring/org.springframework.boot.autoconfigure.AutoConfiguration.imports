@@ -1,5 +1,5 @@
-#com.gstdev.cloud.rest.autoconfigure.RestAutoConfiguration
+com.gstdev.cloud.rest.autoconfigure.RestAutoConfiguration
 com.gstdev.cloud.rest.autoconfigure.RestWebMvcAutoConfiguration
 #com.gstdev.cloud.rest.autoconfigure.RestCryptoAutoConfiguration
 com.gstdev.cloud.rest.autoconfigure.RestTemplateAutoConfiguration
-#com.gstdev.cloud.rest.autoconfigure.RestServiceAutoConfiguration
+com.gstdev.cloud.rest.autoconfigure.RestServiceAutoConfiguration

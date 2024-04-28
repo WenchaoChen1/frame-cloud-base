@@ -18,23 +18,23 @@ import java.util.Map;
  * @author : cc
  * @date : 2021/7/12 22:04
  */
-public class HerodotusRegionFactory extends RegionFactoryTemplate {
+public class FrameRegionFactory extends RegionFactoryTemplate {
 
   private CacheManager cacheManager;
 
   @Override
   protected StorageAccess createQueryResultsRegionStorageAccess(String regionName, SessionFactoryImplementor sessionFactory) {
-    return new HerodotusDomainDataStorageAccess(cacheManager.getCache(regionName));
+    return new FrameDomainDataStorageAccess(cacheManager.getCache(regionName));
   }
 
   @Override
   protected StorageAccess createTimestampsRegionStorageAccess(String regionName, SessionFactoryImplementor sessionFactory) {
-    return new HerodotusDomainDataStorageAccess(cacheManager.getCache(regionName));
+    return new FrameDomainDataStorageAccess(cacheManager.getCache(regionName));
   }
 
   @Override
   protected DomainDataStorageAccess createDomainDataStorageAccess(DomainDataRegionConfig regionConfig, DomainDataRegionBuildingContext buildingContext) {
-    return new HerodotusDomainDataStorageAccess(cacheManager.getCache(regionConfig.getRegionName()));
+    return new FrameDomainDataStorageAccess(cacheManager.getCache(regionConfig.getRegionName()));
   }
 
   @Override
