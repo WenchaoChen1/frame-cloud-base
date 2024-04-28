@@ -1,235 +1,242 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>统一认证登录</title>
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="no-cache" http-equiv="Pragma">
-  <meta content="no-cache" http-equiv="Cache-Control">
-  <meta content="0" http-equiv="Expires">
+    <title>统一认证登录</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="no-cache" http-equiv="Pragma">
+    <meta content="no-cache" http-equiv="Cache-Control">
+    <meta content="0" http-equiv="Expires">
 
-  <link rel="stylesheet" th:href="@{/plugins/cloud-admin/css/cloud-admin.css}" type="text/css">
-  <link href="/webjars/bootstrap/css/bootstrap.css" rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.css}"
-        type="text/css"/>
-  <!-- Font Awesome -->
-  <link href="/webjars/font-awesome/css/fontawesome.min.css" rel="stylesheet" th:href="@{/webjars/font-awesome/css/fontawesome.min.css}"
-        type="text/css">
-  <link href="/webjars/font-awesome/css/solid.min.css" rel="stylesheet" th:href="@{/webjars/font-awesome/css/solid.min.css}"
-        type="text/css">
-  <link href="/webjars/font-awesome/css/v4-font-face.min.css" rel="stylesheet" th:href="@{/webjars/font-awesome/css/v4-font-face.min.css}"
-        type="text/css">
-  <!-- UNIFORM -->
-  <link href="/webjars/uniform/themes/default/css/uniform.default.min.css" rel="stylesheet" th:href="@{/webjars/uniform/themes/default/css/uniform.default.min.css}"
-        type="text/css"/>
-  <!-- ANIMATE -->
-  <link href="/webjars/animate.css/animate.min.css" rel="stylesheet" th:href="@{/webjars/animate.css/animate.min.css}"
-        type="text/css"/>
+    <link rel="stylesheet" th:href="@{/plugins/cloud-admin/css/cloud-admin.css}" type="text/css">
+    <link href="/webjars/bootstrap/css/bootstrap.css" rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.css}"
+          type="text/css"/>
+    <!-- Font Awesome -->
+    <link href="/webjars/font-awesome/css/fontawesome.min.css" rel="stylesheet"
+          th:href="@{/webjars/font-awesome/css/fontawesome.min.css}"
+          type="text/css">
+    <link href="/webjars/font-awesome/css/solid.min.css" rel="stylesheet"
+          th:href="@{/webjars/font-awesome/css/solid.min.css}"
+          type="text/css">
+    <link href="/webjars/font-awesome/css/v4-font-face.min.css" rel="stylesheet"
+          th:href="@{/webjars/font-awesome/css/v4-font-face.min.css}"
+          type="text/css">
+    <!-- UNIFORM -->
+    <link href="/webjars/uniform/themes/default/css/uniform.default.min.css" rel="stylesheet"
+          th:href="@{/webjars/uniform/themes/default/css/uniform.default.min.css}"
+          type="text/css"/>
+    <!-- ANIMATE -->
+    <link href="/webjars/animate.css/animate.min.css" rel="stylesheet" th:href="@{/webjars/animate.css/animate.min.css}"
+          type="text/css"/>
 
-  <style>
-    #vrifyCodeImg {
-      display: block;
-      width: 100%;
-      height: 34px;
-      vertical-align: middle;
-    }
-  </style>
+    <style>
+        #vrifyCodeImg {
+            display: block;
+            width: 100%;
+            height: 34px;
+            vertical-align: middle;
+        }
+    </style>
 </head>
 <body class="login">
 <!-- PAGE -->
 <section id="page">
-  <!-- HEADER -->
-  <header>
-    <!-- NAV-BAR -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-          <div id="logo">
-            <a href="index.html"><img alt="logo name" height="40"
-                                      th:src="@{/plugins/cloud-admin/img/logo/logo.png}"/></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--/NAV-BAR -->
-  </header>
-  <!--/HEADER -->
-  <!-- LOGIN -->
-  <section class="visible" id="login_bg">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-          <div class="login-box" id="login-input">
-            <h2 class="bigintro">账号登录</h2>
-            <div class="divide-40"></div>
-            <div class="alert alert-block alert-danger" th:if="${message} != null">
-              <p th:inline="text">[[${message}]]</p>
-            </div>
-            <form id="form" role="form">
-              <div class="form-group">
-                <label for="tank">用户名</label>
-                <i class="fa fa-user"></i>
-                <input class="form-control" id="tank" name="tank" type="text">
-              </div>
-              <div class="form-group">
-                <label for="fighter">密码</label>
-                <i class="fa fa-lock"></i>
-                <input class="form-control" id="fighter" name="fighter" type="password">
-              </div>
-              <div class="form-group" th:if="${hide_verification_code} == false">
-                <div class="row">
-                  <div class="col-md-7">
-                    <label for="missile">验证码</label>
-                    <i class="fa fa-qrcode"></i>
-                    <input class="form-control" id="missile" name="missile" type="text">
-                  </div>
-                  <div class="col-md-5">
-                    <label for="vrifyCodeImg">&nbsp;</label>
-                    <img alt="点击刷新" id="vrifyCodeImg" onclick="refresh()" src="" style="margin: 0px"/>
-                  </div>
+    <!-- HEADER -->
+    <header>
+        <!-- NAV-BAR -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div id="logo">
+                        <a href="index.html"><img alt="logo name" height="40"
+                                                  th:src="@{/plugins/cloud-admin/img/logo/logo.png}"/></a>
+                    </div>
                 </div>
-              </div>
-            </form>
-            <form id="login-form" method="POST" role="form" th:action="@{/login}">
-              <div>
-                <input id="symmetric" name="symmetric" th:value="${soup_spoon}" type="hidden">
-                <input id="verification_category" name="verification_category" th:value="${verification_category}"
-                       type="hidden">
-                <input th:id="${vulgar_tycoon}" th:name="${vulgar_tycoon}" type="hidden">
-                <input th:id="${beast}" th:name="${beast}" type="hidden">
-                <input th:id="${graphic}" th:name="${graphic}" type="hidden">
-                <th:block th:each="map : ${hidden_inputs}">
-                  <input th:name="${map.key}" th:value="${map.value}" type="hidden"/>
-                </th:block>
-              </div>
-              <div>
-                <label class="checkbox">
-                  <input class="uniform" th:id="${anubis}" th:name="${anubis}" type="checkbox" value="true">下次自动登录
-                </label>
-                <button class="btn btn-danger" id="disco" type="button">登录</button>
-              </div>
-            </form>
-            <!-- SOCIAL LOGIN -->
-            <div class="divide-20"></div>
-            <!--                        <div class="center">-->
-            <!--                            <strong>第三方账号登录</strong>-->
-            <!--                        </div>-->
-            <!--                        <div class="divide-20"></div>-->
-            <!--                        <div class="social-login center">-->
-            <!--                            <a class="btn btn-primary btn-lg">-->
-            <!--                                <i class="fa fa-facebook"></i>-->
-            <!--                            </a>-->
-            <!--                            <a class="btn btn-info btn-lg">-->
-            <!--                                <i class="fa fa-twitter"></i>-->
-            <!--                            </a>-->
-            <!--                            <a class="btn btn-danger btn-lg">-->
-            <!--                                <i class="fa fa-google-plus"></i>-->
-            <!--                            </a>-->
-            <!--                        </div>-->
-            <!-- /SOCIAL LOGIN -->
-            <div class="login-helpers">
-              <a href="#" onclick="swapScreen('forgot_bg');return false;">忘记密码?</a> <br> 还没有系统账号?
-              <!--                            <a href="#" onclick="swapScreen('register_bg');return false;">立即注册!</a>-->
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <!--/LOGIN -->
-  <!-- REGISTER -->
-  <!--    <section id="register_bg" class="font-400">-->
-  <!--        <div class="container">-->
-  <!--            <div class="row">-->
-  <!--                <div class="col-md-4 col-md-offset-4">-->
-  <!--                    <div class="login-box">-->
-  <!--                        <h2 class="bigintro">Register</h2>-->
-  <!--                        <div class="divide-40"></div>-->
-  <!--                        <form role="form">-->
-  <!--                            <div class="form-group">-->
-  <!--                                <label for="exampleInputName">Full Name</label>-->
-  <!--                                <i class="fa fa-font"></i>-->
-  <!--                                <input type="text" class="form-control" id="exampleInputName">-->
-  <!--                            </div>-->
-  <!--                            <div class="form-group">-->
-  <!--                                <label for="exampleInputUsername">Username</label>-->
-  <!--                                <i class="fa fa-user"></i>-->
-  <!--                                <input type="text" class="form-control" id="exampleInputUsername">-->
-  <!--                            </div>-->
-  <!--                            <div class="form-group">-->
-  <!--                                <label for="exampleInputEmail1">Email address</label>-->
-  <!--                                <i class="fa fa-envelope"></i>-->
-  <!--                                <input type="email" class="form-control" id="exampleInputEmail2">-->
-  <!--                            </div>-->
-  <!--                            <div class="form-group">-->
-  <!--                                <label for="exampleInputPassword1">Password</label>-->
-  <!--                                <i class="fa fa-lock"></i>-->
-  <!--                                <input type="password" class="form-control" id="exampleInputPassword1">-->
-  <!--                            </div>-->
-  <!--                            <div class="form-group">-->
-  <!--                                <label for="exampleInputPassword2">Repeat Password</label>-->
-  <!--                                <i class="fa fa-check-square-o"></i>-->
-  <!--                                <input type="password" class="form-control" id="exampleInputPassword2">-->
-  <!--                            </div>-->
-  <!--                            <div>-->
-  <!--                                <label class="checkbox"> <input type="checkbox" class="uniform" value=""> I agree to the-->
-  <!--                                    <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>-->
-  <!--                                <button type="submit" class="btn btn-success">Sign Up</button>-->
-  <!--                            </div>-->
-  <!--                        </form>-->
-  <!--                        &lt;!&ndash; SOCIAL REGISTER &ndash;&gt;-->
-  <!--                        <div class="divide-20"></div>-->
-  <!--                        <div class="center">-->
-  <!--                            <strong>Or register using your social account</strong>-->
-  <!--                        </div>-->
-  <!--                        <div class="divide-20"></div>-->
-  <!--                        <div class="social-login center">-->
-  <!--                            <a class="btn btn-primary btn-lg">-->
-  <!--                                <i class="fa fa-facebook"></i>-->
-  <!--                            </a>-->
-  <!--                            <a class="btn btn-info btn-lg">-->
-  <!--                                <i class="fa fa-twitter"></i>-->
-  <!--                            </a>-->
-  <!--                            <a class="btn btn-danger btn-lg">-->
-  <!--                                <i class="fa fa-google-plus"></i>-->
-  <!--                            </a>-->
-  <!--                        </div>-->
-  <!--                        &lt;!&ndash; /SOCIAL REGISTER &ndash;&gt;-->
-  <!--                        <div class="login-helpers">-->
-  <!--                            <a href="#" onclick="swapScreen('login_bg');return false;"> Back to Login</a> <br>-->
-  <!--                        </div>-->
-  <!--                    </div>-->
-  <!--                </div>-->
-  <!--            </div>-->
-  <!--        </div>-->
-  <!--    </section>-->
-  <!--/REGISTER -->
-  <!-- FORGOT PASSWORD -->
-  <section id="forgot_bg">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-          <div class="login-box">
-            <h2 class="bigintro">Reset Password</h2>
-            <div class="divide-40"></div>
-            <form role="form">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Enter your Email address</label>
-                <i class="fa fa-envelope"></i>
-                <input class="form-control" id="exampleInputEmail1" type="email">
-              </div>
-              <div>
-                <button class="btn btn-info" type="submit">Send Me Reset Instructions</button>
-              </div>
-            </form>
-            <div class="login-helpers">
-              <a href="#" onclick="swapScreen('login_bg');return false;">Back to Login</a> <br>
+        <!--/NAV-BAR -->
+    </header>
+    <!--/HEADER -->
+    <!-- LOGIN -->
+    <section class="visible" id="login_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="login-box" id="login-input">
+                        <h2 class="bigintro">账号登录</h2>
+                        <div class="divide-40"></div>
+                        <div class="alert alert-block alert-danger" th:if="${message} != null">
+                            <p th:inline="text">[[${message}]]</p>
+                        </div>
+                        <form id="form" role="form">
+                            <div class="form-group">
+                                <label for="tank">用户名</label>
+                                <i class="fa fa-user"></i>
+                                <input class="form-control" id="tank" name="tank" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="fighter">密码</label>
+                                <i class="fa fa-lock"></i>
+                                <input class="form-control" id="fighter" name="fighter" type="password">
+                            </div>
+                            <div class="form-group" th:if="${hide_verification_code} == false">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <label for="missile">验证码</label>
+                                        <i class="fa fa-qrcode"></i>
+                                        <input class="form-control" id="missile" name="missile" type="text">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="vrifyCodeImg">&nbsp;</label>
+                                        <img alt="点击刷新" id="vrifyCodeImg" onclick="refresh()" src=""
+                                             style="margin: 0px"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <form id="login-form" method="POST" role="form" th:action="@{/login}">
+                            <div>
+                                <input id="symmetric" name="symmetric" th:value="${soup_spoon}" type="hidden">
+                                <input id="verification_category" name="verification_category"
+                                       th:value="${verification_category}"
+                                       type="hidden">
+                                <input th:id="${vulgar_tycoon}" th:name="${vulgar_tycoon}" type="hidden">
+                                <input th:id="${beast}" th:name="${beast}" type="hidden">
+                                <input th:id="${graphic}" th:name="${graphic}" type="hidden">
+                                <th:block th:each="map : ${hidden_inputs}">
+                                    <input th:name="${map.key}" th:value="${map.value}" type="hidden"/>
+                                </th:block>
+                            </div>
+                            <div>
+                                <label class="checkbox">
+                                    <input class="uniform" th:id="${anubis}" th:name="${anubis}" type="checkbox"
+                                           value="true">下次自动登录
+                                </label>
+                                <button class="btn btn-danger" id="disco" type="button">登录</button>
+                            </div>
+                        </form>
+                        <!-- SOCIAL LOGIN -->
+                        <div class="divide-20"></div>
+                        <!--                        <div class="center">-->
+                        <!--                            <strong>第三方账号登录</strong>-->
+                        <!--                        </div>-->
+                        <!--                        <div class="divide-20"></div>-->
+                        <!--                        <div class="social-login center">-->
+                        <!--                            <a class="btn btn-primary btn-lg">-->
+                        <!--                                <i class="fa fa-facebook"></i>-->
+                        <!--                            </a>-->
+                        <!--                            <a class="btn btn-info btn-lg">-->
+                        <!--                                <i class="fa fa-twitter"></i>-->
+                        <!--                            </a>-->
+                        <!--                            <a class="btn btn-danger btn-lg">-->
+                        <!--                                <i class="fa fa-google-plus"></i>-->
+                        <!--                            </a>-->
+                        <!--                        </div>-->
+                        <!-- /SOCIAL LOGIN -->
+                        <div class="login-helpers">
+                            <a href="#" onclick="swapScreen('forgot_bg');return false;">忘记密码?</a> <br> 还没有系统账号?
+                            <!--                            <a href="#" onclick="swapScreen('register_bg');return false;">立即注册!</a>-->
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <!-- FORGOT PASSWORD -->
+    </section>
+    <!--/LOGIN -->
+    <!-- REGISTER -->
+    <!--    <section id="register_bg" class="font-400">-->
+    <!--        <div class="container">-->
+    <!--            <div class="row">-->
+    <!--                <div class="col-md-4 col-md-offset-4">-->
+    <!--                    <div class="login-box">-->
+    <!--                        <h2 class="bigintro">Register</h2>-->
+    <!--                        <div class="divide-40"></div>-->
+    <!--                        <form role="form">-->
+    <!--                            <div class="form-group">-->
+    <!--                                <label for="exampleInputName">Full Name</label>-->
+    <!--                                <i class="fa fa-font"></i>-->
+    <!--                                <input type="text" class="form-control" id="exampleInputName">-->
+    <!--                            </div>-->
+    <!--                            <div class="form-group">-->
+    <!--                                <label for="exampleInputUsername">Username</label>-->
+    <!--                                <i class="fa fa-user"></i>-->
+    <!--                                <input type="text" class="form-control" id="exampleInputUsername">-->
+    <!--                            </div>-->
+    <!--                            <div class="form-group">-->
+    <!--                                <label for="exampleInputEmail1">Email address</label>-->
+    <!--                                <i class="fa fa-envelope"></i>-->
+    <!--                                <input type="email" class="form-control" id="exampleInputEmail2">-->
+    <!--                            </div>-->
+    <!--                            <div class="form-group">-->
+    <!--                                <label for="exampleInputPassword1">Password</label>-->
+    <!--                                <i class="fa fa-lock"></i>-->
+    <!--                                <input type="password" class="form-control" id="exampleInputPassword1">-->
+    <!--                            </div>-->
+    <!--                            <div class="form-group">-->
+    <!--                                <label for="exampleInputPassword2">Repeat Password</label>-->
+    <!--                                <i class="fa fa-check-square-o"></i>-->
+    <!--                                <input type="password" class="form-control" id="exampleInputPassword2">-->
+    <!--                            </div>-->
+    <!--                            <div>-->
+    <!--                                <label class="checkbox"> <input type="checkbox" class="uniform" value=""> I agree to the-->
+    <!--                                    <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>-->
+    <!--                                <button type="submit" class="btn btn-success">Sign Up</button>-->
+    <!--                            </div>-->
+    <!--                        </form>-->
+    <!--                        &lt;!&ndash; SOCIAL REGISTER &ndash;&gt;-->
+    <!--                        <div class="divide-20"></div>-->
+    <!--                        <div class="center">-->
+    <!--                            <strong>Or register using your social account</strong>-->
+    <!--                        </div>-->
+    <!--                        <div class="divide-20"></div>-->
+    <!--                        <div class="social-login center">-->
+    <!--                            <a class="btn btn-primary btn-lg">-->
+    <!--                                <i class="fa fa-facebook"></i>-->
+    <!--                            </a>-->
+    <!--                            <a class="btn btn-info btn-lg">-->
+    <!--                                <i class="fa fa-twitter"></i>-->
+    <!--                            </a>-->
+    <!--                            <a class="btn btn-danger btn-lg">-->
+    <!--                                <i class="fa fa-google-plus"></i>-->
+    <!--                            </a>-->
+    <!--                        </div>-->
+    <!--                        &lt;!&ndash; /SOCIAL REGISTER &ndash;&gt;-->
+    <!--                        <div class="login-helpers">-->
+    <!--                            <a href="#" onclick="swapScreen('login_bg');return false;"> Back to Login</a> <br>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </section>-->
+    <!--/REGISTER -->
+    <!-- FORGOT PASSWORD -->
+    <section id="forgot_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="login-box">
+                        <h2 class="bigintro">Reset Password</h2>
+                        <div class="divide-40"></div>
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Enter your Email address</label>
+                                <i class="fa fa-envelope"></i>
+                                <input class="form-control" id="exampleInputEmail1" type="email">
+                            </div>
+                            <div>
+                                <button class="btn btn-info" type="submit">Send Me Reset Instructions</button>
+                            </div>
+                        </form>
+                        <div class="login-helpers">
+                            <a href="#" onclick="swapScreen('login_bg');return false;">Back to Login</a> <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FORGOT PASSWORD -->
 </section>
 <!--/PAGE -->
 <!-- Placed at the end of the document so the pages load faster -->
@@ -239,7 +246,8 @@
 <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"
         type="text/javascript"></script>
 <!-- BACKSTRETCH -->
-<script src="/webjars/jquery-backstretch/jquery.backstretch.min.js" th:src="@{/webjars/jquery-backstretch/jquery.backstretch.min.js}"
+<script src="/webjars/jquery-backstretch/jquery.backstretch.min.js"
+        th:src="@{/webjars/jquery-backstretch/jquery.backstretch.min.js}"
         type="text/javascript"></script>
 <!-- UNIFORM -->
 <script src="/webjars/uniform/jquery.uniform.min.js" th:src="@{/webjars/uniform/jquery.uniform.min.js}"
@@ -256,79 +264,79 @@
 
 <script type="text/javascript">
 
-  let verification_category = '[[${verification_category}]]';
+    let verification_category = '[[${verification_category}]]';
 
-  window.onload = function () {
-    $.SECURITY.informations();
-    loadCaptcha();
-  };
+    window.onload = function () {
+        $.SECURITY.informations();
+        loadCaptcha();
+    };
 
-  function login() {
+    function login() {
 
-    let tank = $('#tank').val();
-    let fighter = $('#fighter').val();
-    let missile = $('#missile').val();
-    let symmetric = $('#symmetric').val();
+        let tank = $('#tank').val();
+        let fighter = $('#fighter').val();
+        let missile = $('#missile').val();
+        let symmetric = $('#symmetric').val();
 
-    let data = $.SECURITY.encryptFormData(tank, fighter, missile, symmetric)
+        let data = $.SECURITY.encryptFormData(tank, fighter, missile, symmetric)
 
-    let vulgarTycoon = '#' + '[[${vulgar_tycoon}]]';
-    let beast = '#' + '[[${beast}]]';
-    let graphic = '#' + '[[${graphic}]]';
+        let vulgarTycoon = '#' + '[[${vulgar_tycoon}]]';
+        let beast = '#' + '[[${beast}]]';
+        let graphic = '#' + '[[${graphic}]]';
 
-    $(vulgarTycoon).val(data.encryptTank);
-    $(beast).val(data.encryptFighter);
-    $(graphic).val(data.encryptMissile);
+        $(vulgarTycoon).val(data.encryptTank);
+        $(beast).val(data.encryptFighter);
+        $(graphic).val(data.encryptMissile);
 
-    $('#login-form').submit();
-  }
-
-  function loadCaptcha() {
-    let url = '[[${contextPath}]]/open/captcha'
-    let sessionId = '[[${sessionId}]]';
-    $.http.get(url, {identity: sessionId, category: verification_category}, 'json')
-      .then(result => {
-        let src = result.data.graphicImageBase64;
-        $('#vrifyCodeImg').attr('src', src);
-      })
-      .catch(error => {
-        $.information.error(error);
-      });
-  }
-
-  function refresh() {
-    // let src = '[[${contextPath}]]/defaultKaptcha?d='+new Date()*1;
-    // $('#vrifyCodeImg').attr('src', src);
-    loadCaptcha();
-  }
-
-  function swapScreen(id) {
-    jQuery('.visible').removeClass('visible animated fadeInUp');
-    jQuery('#' + id).addClass('visible animated fadeInUp');
-  }
-
-  $('#disco').click(function () {
-    login();
-  });
-
-  jQuery(document).ready(function () {
-
-    $.backstretch([
-      "[[${contextPath}]]/plugins/cloud-admin/img/login/1.jpg"
-      , "[[${contextPath}]]/plugins/cloud-admin/img/login/2.jpg"
-      , "[[${contextPath}]]/plugins/cloud-admin/img/login/3.jpg"
-      , "[[${contextPath}]]/plugins/cloud-admin/img/login/4.jpg"
-    ], {duration: 3000, fade: 750});
-
-    App.setPage("login_bg");  //Set current page
-    App.init(); //Initialise plugins and elements
-  });
-
-  jQuery(document).keydown(function (event) {
-    if (event.keyCode === 13) {
-      $('#disco').click();
+        $('#login-form').submit();
     }
-  });
+
+    function loadCaptcha() {
+        let url = '[[${contextPath}]]/open/captcha'
+        let sessionId = '[[${sessionId}]]';
+        $.http.get(url, {identity: sessionId, category: verification_category}, 'json')
+            .then(result => {
+                let src = result.data.graphicImageBase64;
+                $('#vrifyCodeImg').attr('src', src);
+            })
+            .catch(error => {
+                $.information.error(error);
+            });
+    }
+
+    function refresh() {
+        // let src = '[[${contextPath}]]/defaultKaptcha?d='+new Date()*1;
+        // $('#vrifyCodeImg').attr('src', src);
+        loadCaptcha();
+    }
+
+    function swapScreen(id) {
+        jQuery('.visible').removeClass('visible animated fadeInUp');
+        jQuery('#' + id).addClass('visible animated fadeInUp');
+    }
+
+    $('#disco').click(function () {
+        login();
+    });
+
+    jQuery(document).ready(function () {
+
+        $.backstretch([
+            "[[${contextPath}]]/plugins/cloud-admin/img/login/1.jpg"
+            , "[[${contextPath}]]/plugins/cloud-admin/img/login/2.jpg"
+            , "[[${contextPath}]]/plugins/cloud-admin/img/login/3.jpg"
+            , "[[${contextPath}]]/plugins/cloud-admin/img/login/4.jpg"
+        ], {duration: 3000, fade: 750});
+
+        App.setPage("login_bg");  //Set current page
+        App.init(); //Initialise plugins and elements
+    });
+
+    jQuery(document).keydown(function (event) {
+        if (event.keyCode === 13) {
+            $('#disco').click();
+        }
+    });
 </script>
 </body>
 </html>

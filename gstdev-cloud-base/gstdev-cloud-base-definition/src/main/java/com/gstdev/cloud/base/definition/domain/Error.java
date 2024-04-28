@@ -22,64 +22,64 @@ import java.io.Serializable;
  */
 @Schema(title = "响应错误详情", description = "为兼容Validation而增加的Validation错误信息实体")
 public class Error implements Serializable {
-  @Schema(title = "Exception完整信息", type = "string")
-  private String resource;
+    @Schema(title = "Exception完整信息", type = "string")
+    private String resource;
 
-  @Schema(title = "额外的错误信息，目前主要是Validation的Message")
-  private String message;
+    @Schema(title = "额外的错误信息，目前主要是Validation的Message")
+    private String message;
 
-  @Schema(title = "额外的错误代码，目前主要是Validation的Code")
-  private String code;
+    @Schema(title = "额外的错误代码，目前主要是Validation的Code")
+    private String code;
 
-  @Schema(title = "额外的错误字段，目前主要是Validation的Field")
-  private String field;
+    @Schema(title = "额外的错误字段，目前主要是Validation的Field")
+    private String field;
 
-  @Schema(title = "错误堆栈信息")
-  private StackTraceElement[] stackTrace;
+    @Schema(title = "错误堆栈信息")
+    private StackTraceElement[] stackTrace;
 
 
-  public String getResource() {
-    return resource;
-  }
+    public String getResource() {
+        return resource;
+    }
 
-  public void setResource(String resource) {
-    this.resource = resource;
-  }
+    public void setResource(String resource) {
+        this.resource = resource;
+    }
 
-  public String getField() {
-    return field;
-  }
+    public String getField() {
+        return field;
+    }
 
-  public void setField(String field) {
-    this.field = field;
-  }
+    public void setField(String field) {
+        this.field = field;
+    }
 
-  public String getCode() {
-    return code;
-  }
+    public String getCode() {
+        return code;
+    }
 
-  public void setCode(String code) {
-    this.code = code;
-  }
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-  public String getMessage() {
-    return message;
-  }
+    public String getMessage() {
+        return message;
+    }
 
-  public void setMessage(String message) {
-    this.message = message;
-  }
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
-  public StackTraceElement[] getStackTrace() {
-    return stackTrace;
-  }
+    public StackTraceElement[] getStackTrace() {
+        return stackTrace;
+    }
 
-  public void setStackTrace(StackTraceElement[] stackTrace) {
-    this.stackTrace = stackTrace;
-  }
+    public void setStackTrace(StackTraceElement[] stackTrace) {
+        this.stackTrace = stackTrace;
+    }
 
-  @Override
-  public String toString() {
-    return ToStringBuilder.reflectionToString(this);
-  }
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
+    }
 }

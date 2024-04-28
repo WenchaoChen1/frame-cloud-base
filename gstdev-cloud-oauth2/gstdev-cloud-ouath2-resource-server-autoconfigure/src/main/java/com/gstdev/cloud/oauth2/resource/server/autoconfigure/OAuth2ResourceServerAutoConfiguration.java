@@ -30,18 +30,18 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @Import({OAuth2AuthorizationConfiguration.class})
 //@ComponentScan(basePackageClasses = SecurityGlobalExceptionHandler.class)
 @RemoteApplicationEventScan({
-        "com.gstdev.cloud.oauth2.resource.server.autoconfigure.bus"
+    "com.gstdev.cloud.oauth2.resource.server.autoconfigure.bus"
 })
 public class OAuth2ResourceServerAutoConfiguration {
 
-  private static final Logger log = LoggerFactory.getLogger(OAuth2ResourceServerAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(OAuth2ResourceServerAutoConfiguration.class);
 
-  @PostConstruct
-  public void postConstruct() {
-    log.info("[GstDev Cloud] |- Module [OAuth2 Resource Server Starter] Auto Configure.");
-  }
+    @PostConstruct
+    public void postConstruct() {
+        log.info("[GstDev Cloud] |- Module [OAuth2 Resource Server Starter] Auto Configure.");
+    }
 
-//    @Bean
+    //    @Bean
 //    @ConditionalOnMissingBean
 //    public RemoteSecurityMetadataSyncListener remoteSecurityMetadataSyncListener(SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer, ServiceMatcher serviceMatcher) {
 //        RemoteSecurityMetadataSyncListener listener = new RemoteSecurityMetadataSyncListener(securityMetadataSourceAnalyzer, serviceMatcher);

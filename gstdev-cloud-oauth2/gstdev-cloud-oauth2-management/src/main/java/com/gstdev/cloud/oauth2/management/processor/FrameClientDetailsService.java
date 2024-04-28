@@ -21,31 +21,31 @@ import java.util.stream.Collectors;
  */
 public class FrameClientDetailsService implements EnhanceClientDetailsService {
 
-  private final OAuth2ApplicationService applicationService;
+    private final OAuth2ApplicationService applicationService;
 
-  public FrameClientDetailsService(OAuth2ApplicationService applicationService) {
-    this.applicationService = applicationService;
-  }
-
-  @Override
-  public Set<FrameGrantedAuthority> findAuthoritiesById(String clientId) {
-
-    OAuth2Application application = applicationService.findByClientId(clientId);
-    if (ObjectUtils.isNotEmpty(application)) {
-      Set<OAuth2Scope> scopes = application.getScopes();
-      Set<FrameGrantedAuthority> result = new HashSet<>();
-      if (CollectionUtils.isNotEmpty(scopes)) {
-        for (OAuth2Scope scope : scopes) {
-          Set<OAuth2Permission> permissions = scope.getPermissions();
-          if (CollectionUtils.isNotEmpty(permissions)) {
-            Set<FrameGrantedAuthority> grantedAuthorities = permissions.stream().map(item -> new FrameGrantedAuthority(item.getPermissionCode())).collect(Collectors.toSet());
-            result.addAll(grantedAuthorities);
-          }
-        }
-      }
-      return result;
+    public FrameClientDetailsService(OAuth2ApplicationService applicationService) {
+        this.applicationService = applicationService;
     }
 
-    return new HashSet<>();
-  }
+    @Override
+    public Set<FrameGrantedAuthority> findAuthoritiesById(String clientId) {
+
+        OAuth2Application application = applicationService.findByClientId(clientId);
+        if (ObjectUtils.isNotEmpty(application)) {
+            Set<OAuth2Scope> scopes = application.getScopes();
+            Set<FrameGrantedAuthority> result = new HashSet<>();
+            if (CollectionUtils.isNotEmpty(scopes)) {
+                for (OAuth2Scope scope : scopes) {
+                    Set<OAuth2Permission> permissions = scope.getPermissions();
+                    if (CollectionUtils.isNotEmpty(permissions)) {
+                        Set<FrameGrantedAuthority> grantedAuthorities = permissions.stream().map(item -> new FrameGrantedAuthority(item.getPermissionCode())).collect(Collectors.toSet());
+                        result.addAll(grantedAuthorities);
+                    }
+                }
+            }
+            return result;
+        }
+
+        return new HashSet<>();
+    }
 }

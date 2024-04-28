@@ -20,23 +20,23 @@ import java.lang.reflect.Member;
  */
 public class FrameAuthorizationUuidGeneratorType extends AbstractUuidGenerator {
 
-  public FrameAuthorizationUuidGeneratorType(FrameAuthorizationUuidGenerator config, Member idMember, CustomIdGeneratorCreationContext creationContext) {
-    super(idMember);
-  }
-
-  @Override
-  public Object generate(SharedSessionContractImplementor session, Object object) throws HibernateException {
-
-    if (ObjectUtils.isEmpty(object)) {
-      throw new HibernateException(new NullPointerException());
+    public FrameAuthorizationUuidGeneratorType(FrameAuthorizationUuidGenerator config, Member idMember, CustomIdGeneratorCreationContext creationContext) {
+        super(idMember);
     }
 
-    FrameAuthorization authorization = (FrameAuthorization) object;
+    @Override
+    public Object generate(SharedSessionContractImplementor session, Object object) throws HibernateException {
 
-    if (StringUtils.isEmpty(authorization.getId())) {
-      return super.generate(session, object);
-    } else {
-      return authorization.getId();
+        if (ObjectUtils.isEmpty(object)) {
+            throw new HibernateException(new NullPointerException());
+        }
+
+        FrameAuthorization authorization = (FrameAuthorization) object;
+
+        if (StringUtils.isEmpty(authorization.getId())) {
+            return super.generate(session, object);
+        } else {
+            return authorization.getId();
+        }
     }
-  }
 }

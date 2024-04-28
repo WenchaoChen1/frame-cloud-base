@@ -21,20 +21,20 @@ import org.dromara.hutool.core.data.id.IdUtil;
  */
 public class LockedUserDetailsStampManager extends AbstractStampManager<String, String> {
 
-  private final OAuth2AuthenticationProperties authenticationProperties;
+    private final OAuth2AuthenticationProperties authenticationProperties;
 
-  public LockedUserDetailsStampManager(OAuth2AuthenticationProperties authenticationProperties) {
-    super(OAuth2Constants.CACHE_NAME_TOKEN_LOCKED_USER_DETAIL);
-    this.authenticationProperties = authenticationProperties;
-  }
+    public LockedUserDetailsStampManager(OAuth2AuthenticationProperties authenticationProperties) {
+        super(OAuth2Constants.CACHE_NAME_TOKEN_LOCKED_USER_DETAIL);
+        this.authenticationProperties = authenticationProperties;
+    }
 
-  @Override
-  public String nextStamp(String key) {
-    return IdUtil.fastSimpleUUID();
-  }
+    @Override
+    public String nextStamp(String key) {
+        return IdUtil.fastSimpleUUID();
+    }
 
-  @Override
-  public void afterPropertiesSet() throws Exception {
-    super.setExpire(authenticationProperties.getSignInFailureLimited().getExpire());
-  }
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        super.setExpire(authenticationProperties.getSignInFailureLimited().getExpire());
+    }
 }

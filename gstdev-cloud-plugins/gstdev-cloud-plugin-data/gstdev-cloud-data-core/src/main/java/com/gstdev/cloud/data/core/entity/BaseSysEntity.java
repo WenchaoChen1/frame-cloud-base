@@ -15,55 +15,55 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseSysEntity extends BaseEntity {
 
-  @Schema(name = "数据状态")
-  @Column(name = "status")
-  @Enumerated(EnumType.ORDINAL)
-  private DataItemStatus status = DataItemStatus.ENABLE;
+    @Schema(name = "数据状态")
+    @Column(name = "status")
+    @Enumerated(EnumType.ORDINAL)
+    private DataItemStatus status = DataItemStatus.ENABLE;
 
-  @Schema(name = "是否为保留数据", description = "True 为不能删，False为可以删除")
-  @Column(name = "is_reserved")
-  private Boolean reserved = Boolean.FALSE;
+    @Schema(name = "是否为保留数据", description = "True 为不能删，False为可以删除")
+    @Column(name = "is_reserved")
+    private Boolean reserved = Boolean.FALSE;
 
-  @Schema(name = "版本号")
-  @Column(name = "reversion")
-  private Integer reversion = 0;
+    @Schema(name = "版本号")
+    @Column(name = "reversion")
+    private Integer reversion = 0;
 
-  /**
-   * 角色描述,UI界面显示使用
-   */
-  @Schema(name = "备注")
-  @Column(name = "description", length = 512)
-  private String description;
+    /**
+     * 角色描述,UI界面显示使用
+     */
+    @Schema(name = "备注")
+    @Column(name = "description", length = 512)
+    private String description;
 
-  public DataItemStatus getStatus() {
-    return status;
-  }
+    public DataItemStatus getStatus() {
+        return status;
+    }
 
-  public void setStatus(DataItemStatus status) {
-    this.status = status;
-  }
+    public void setStatus(DataItemStatus status) {
+        this.status = status;
+    }
 
-  public Boolean getReserved() {
-    return reserved;
-  }
+    public Boolean getReserved() {
+        return reserved;
+    }
 
-  public void setReserved(Boolean reserved) {
-    this.reserved = reserved;
-  }
+    public void setReserved(Boolean reserved) {
+        this.reserved = reserved;
+    }
 
-  public String getDescription() {
-    return description;
-  }
+    public String getDescription() {
+        return description;
+    }
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-  public Integer getReversion() {
-    return reversion;
-  }
+    public Integer getReversion() {
+        return reversion;
+    }
 
-  public void setReversion(Integer reversion) {
-    this.reversion = reversion;
-  }
+    public void setReversion(Integer reversion) {
+        this.reversion = reversion;
+    }
 }

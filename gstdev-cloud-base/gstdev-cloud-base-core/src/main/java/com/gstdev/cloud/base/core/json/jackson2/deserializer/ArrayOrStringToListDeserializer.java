@@ -23,26 +23,26 @@ import java.util.List;
  */
 public class ArrayOrStringToListDeserializer extends StdDeserializer<List<String>> {
 
-  public ArrayOrStringToListDeserializer() {
-    super(List.class);
-  }
-
-  public JavaType getValueType() {
-    return TypeFactory.defaultInstance().constructType(String.class);
-  }
-
-  @Override
-  public List<String> deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
-    JsonToken token = jsonParser.getCurrentToken();
-    if (token.isScalarValue()) {
-      String value = jsonParser.getText();
-      value = value.replaceAll("\\s+", ",");
-      return new ArrayList<>(Arrays.asList(StringUtils.commaDelimitedListToStringArray(value)));
-    } else {
-      return jsonParser.readValueAs(new TypeReference<List<String>>() {
-      });
+    public ArrayOrStringToListDeserializer() {
+        super(List.class);
     }
-  }
+
+    public JavaType getValueType() {
+        return TypeFactory.defaultInstance().constructType(String.class);
+    }
+
+    @Override
+    public List<String> deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
+        JsonToken token = jsonParser.getCurrentToken();
+        if (token.isScalarValue()) {
+            String value = jsonParser.getText();
+            value = value.replaceAll("\\s+", ",");
+            return new ArrayList<>(Arrays.asList(StringUtils.commaDelimitedListToStringArray(value)));
+        } else {
+            return jsonParser.readValueAs(new TypeReference<List<String>>() {
+            });
+        }
+    }
 
 
 }

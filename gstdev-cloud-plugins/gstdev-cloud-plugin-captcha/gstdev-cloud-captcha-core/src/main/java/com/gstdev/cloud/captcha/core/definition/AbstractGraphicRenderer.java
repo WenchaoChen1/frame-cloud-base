@@ -23,84 +23,84 @@ import java.awt.*;
  */
 public abstract class AbstractGraphicRenderer extends AbstractRenderer<String, String> {
 
-  private GraphicCaptcha graphicCaptcha;
+    private GraphicCaptcha graphicCaptcha;
 
-  public AbstractGraphicRenderer() {
-    super(CaptchaConstants.CACHE_NAME_CAPTCHA_GRAPHIC);
-  }
-
-  protected Font getFont() {
-    return this.getResourceProvider().getGraphicFont();
-  }
-
-  protected int getWidth() {
-    return this.getCaptchaProperties().getGraphics().getWidth();
-  }
-
-  protected int getHeight() {
-    return this.getCaptchaProperties().getGraphics().getHeight();
-  }
-
-  protected int getLength() {
-    return this.getCaptchaProperties().getGraphics().getLength();
-  }
-
-  @Override
-  public Captcha getCapcha(String key) {
-    String identity = key;
-    if (StringUtils.isBlank(identity)) {
-      identity = IdUtil.fastUUID();
+    public AbstractGraphicRenderer() {
+        super(CaptchaConstants.CACHE_NAME_CAPTCHA_GRAPHIC);
     }
 
-    this.create(identity);
-    return getGraphicCaptcha();
-  }
-
-  @Override
-  public boolean verify(Verification verification) {
-
-    if (ObjectUtils.isEmpty(verification) || StringUtils.isEmpty(verification.getIdentity())) {
-      throw new CaptchaParameterIllegalException("Parameter value is illegal");
+    protected Font getFont() {
+        return this.getResourceProvider().getGraphicFont();
     }
 
-    if (StringUtils.isEmpty(verification.getCharacters())) {
-      throw new CaptchaIsEmptyException("Captcha is empty");
+    protected int getWidth() {
+        return this.getCaptchaProperties().getGraphics().getWidth();
     }
 
-    String store = this.get(verification.getIdentity());
-    if (StringUtils.isEmpty(store)) {
-      throw new CaptchaHasExpiredException("Stamp is invalid!");
+    protected int getHeight() {
+        return this.getCaptchaProperties().getGraphics().getHeight();
     }
 
-    this.delete(verification.getIdentity());
-
-    String real = verification.getCharacters();
-
-    if (!StringUtils.equalsIgnoreCase(store, real)) {
-      throw new CaptchaMismatchException();
+    protected int getLength() {
+        return this.getCaptchaProperties().getGraphics().getLength();
     }
 
-    return true;
-  }
+    @Override
+    public Captcha getCapcha(String key) {
+        String identity = key;
+        if (StringUtils.isBlank(identity)) {
+            identity = IdUtil.fastUUID();
+        }
 
-  private GraphicCaptcha getGraphicCaptcha() {
-    return graphicCaptcha;
-  }
+        this.create(identity);
+        return getGraphicCaptcha();
+    }
 
-  protected void setGraphicCaptcha(GraphicCaptcha graphicCaptcha) {
-    this.graphicCaptcha = graphicCaptcha;
-  }
+    @Override
+    public boolean verify(Verification verification) {
 
-  @Override
-  public String nextStamp(String key) {
-    Metadata metadata = draw();
+        if (ObjectUtils.isEmpty(verification) || StringUtils.isEmpty(verification.getIdentity())) {
+            throw new CaptchaParameterIllegalException("Parameter value is illegal");
+        }
 
-    GraphicCaptcha graphicCaptcha = new GraphicCaptcha();
-    graphicCaptcha.setIdentity(key);
-    graphicCaptcha.setGraphicImageBase64(metadata.getGraphicImageBase64());
-    graphicCaptcha.setCategory(getCategory());
-    this.setGraphicCaptcha(graphicCaptcha);
+        if (StringUtils.isEmpty(verification.getCharacters())) {
+            throw new CaptchaIsEmptyException("Captcha is empty");
+        }
 
-    return metadata.getCharacters();
-  }
+        String store = this.get(verification.getIdentity());
+        if (StringUtils.isEmpty(store)) {
+            throw new CaptchaHasExpiredException("Stamp is invalid!");
+        }
+
+        this.delete(verification.getIdentity());
+
+        String real = verification.getCharacters();
+
+        if (!StringUtils.equalsIgnoreCase(store, real)) {
+            throw new CaptchaMismatchException();
+        }
+
+        return true;
+    }
+
+    private GraphicCaptcha getGraphicCaptcha() {
+        return graphicCaptcha;
+    }
+
+    protected void setGraphicCaptcha(GraphicCaptcha graphicCaptcha) {
+        this.graphicCaptcha = graphicCaptcha;
+    }
+
+    @Override
+    public String nextStamp(String key) {
+        Metadata metadata = draw();
+
+        GraphicCaptcha graphicCaptcha = new GraphicCaptcha();
+        graphicCaptcha.setIdentity(key);
+        graphicCaptcha.setGraphicImageBase64(metadata.getGraphicImageBase64());
+        graphicCaptcha.setCategory(getCategory());
+        this.setGraphicCaptcha(graphicCaptcha);
+
+        return metadata.getCharacters();
+    }
 }

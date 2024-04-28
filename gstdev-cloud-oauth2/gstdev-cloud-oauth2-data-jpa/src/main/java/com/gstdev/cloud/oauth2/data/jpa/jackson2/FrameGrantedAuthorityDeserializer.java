@@ -18,11 +18,11 @@ import java.io.IOException;
  * @date : 2022/3/17 20:28
  */
 public class FrameGrantedAuthorityDeserializer extends JsonDeserializer<FrameGrantedAuthority> {
-  @Override
-  public FrameGrantedAuthority deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JacksonException {
-    ObjectMapper mapper = (ObjectMapper) jp.getCodec();
-    JsonNode jsonNode = mapper.readTree(jp);
-    String authority = JsonNodeUtils.findStringValue(jsonNode, "authority");
-    return new FrameGrantedAuthority(authority);
-  }
+    @Override
+    public FrameGrantedAuthority deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JacksonException {
+        ObjectMapper mapper = (ObjectMapper) jp.getCodec();
+        JsonNode jsonNode = mapper.readTree(jp);
+        String authority = JsonNodeUtils.findStringValue(jsonNode, "authority");
+        return new FrameGrantedAuthority(authority);
+    }
 }

@@ -25,18 +25,18 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties(ScanProperties.class)
 public class RestScanConfiguration {
 
-  private static final Logger log = LoggerFactory.getLogger(RestScanConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(RestScanConfiguration.class);
 
-  @PostConstruct
-  public void postConstruct() {
-    log.debug("[GstDev Cloud] |- SDK [Rest Scan] Auto Configure.");
-  }
+    @PostConstruct
+    public void postConstruct() {
+        log.debug("[GstDev Cloud] |- SDK [Rest Scan] Auto Configure.");
+    }
 
-  @Bean
-  @ConditionalOnMissingBean
-  public RequestMappingScanner requestMappingScanner(ScanProperties scanProperties, RequestMappingScanEventManager requestMappingScanManager) {
-    RequestMappingScanner requestMappingScanner = new RequestMappingScanner(scanProperties, requestMappingScanManager);
-    log.trace("[GstDev Cloud] |- Bean [Request Mapping Scanner] Auto Configure.");
-    return requestMappingScanner;
-  }
+    @Bean
+    @ConditionalOnMissingBean
+    public RequestMappingScanner requestMappingScanner(ScanProperties scanProperties, RequestMappingScanEventManager requestMappingScanManager) {
+        RequestMappingScanner requestMappingScanner = new RequestMappingScanner(scanProperties, requestMappingScanManager);
+        log.trace("[GstDev Cloud] |- Bean [Request Mapping Scanner] Auto Configure.");
+        return requestMappingScanner;
+    }
 }

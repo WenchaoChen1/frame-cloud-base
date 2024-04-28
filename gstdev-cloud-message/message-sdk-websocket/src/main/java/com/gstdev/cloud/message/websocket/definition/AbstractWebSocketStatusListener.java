@@ -18,34 +18,34 @@ import org.springframework.context.ApplicationListener;
  */
 public abstract class AbstractWebSocketStatusListener<E extends ApplicationEvent> implements ApplicationListener<E> {
 
-  private static final Logger log = LoggerFactory.getLogger(AbstractWebSocketStatusListener.class);
+    private static final Logger log = LoggerFactory.getLogger(AbstractWebSocketStatusListener.class);
 
-  private final WebSocketMessageSender webSocketMessageSender;
+    private final WebSocketMessageSender webSocketMessageSender;
 
-  public AbstractWebSocketStatusListener(WebSocketMessageSender webSocketMessageSender) {
-    this.webSocketMessageSender = webSocketMessageSender;
-  }
-
-  private void changeStatus(WebSocketPrincipal principal, boolean isOnline) {
-    if (ObjectUtils.isNotEmpty(principal)) {
-
-      RedisBitMapUtils.setBit(MessageConstants.REDIS_CURRENT_ONLINE_USER, principal.getName(), isOnline);
-
-      String status = isOnline ? "Online" : "Offline";
-
-      log.debug("[GstDev Cloud] |- WebSocket user [{}] is [{}].", principal, status);
-
-      int count = WebSocketUtils.getOnlineCount();
-
-      webSocketMessageSender.online(count);
+    public AbstractWebSocketStatusListener(WebSocketMessageSender webSocketMessageSender) {
+        this.webSocketMessageSender = webSocketMessageSender;
     }
-  }
 
-  protected void connected(WebSocketPrincipal principal) {
-    changeStatus(principal, true);
-  }
+    private void changeStatus(WebSocketPrincipal principal, boolean isOnline) {
+        if (ObjectUtils.isNotEmpty(principal)) {
 
-  protected void disconnected(WebSocketPrincipal principal) {
-    changeStatus(principal, false);
-  }
+            RedisBitMapUtils.setBit(MessageConstants.REDIS_CURRENT_ONLINE_USER, principal.getName(), isOnline);
+
+            String status = isOnline ? "Online" : "Offline";
+
+            log.debug("[GstDev Cloud] |- WebSocket user [{}] is [{}].", principal, status);
+
+            int count = WebSocketUtils.getOnlineCount();
+
+            webSocketMessageSender.online(count);
+        }
+    }
+
+    protected void connected(WebSocketPrincipal principal) {
+        changeStatus(principal, true);
+    }
+
+    protected void disconnected(WebSocketPrincipal principal) {
+        changeStatus(principal, false);
+    }
 }

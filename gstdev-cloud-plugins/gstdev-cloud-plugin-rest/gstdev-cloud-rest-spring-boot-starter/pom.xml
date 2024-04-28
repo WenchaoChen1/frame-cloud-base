@@ -2,54 +2,54 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>com.gstdev.cloud</groupId>
-    <artifactId>gstdev-cloud-plugin-rest</artifactId>
-    <version>2024.0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
-  <packaging>jar</packaging>
-
-
-  <artifactId>gstdev-cloud-rest-spring-boot-starter</artifactId>
+    <parent>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-plugin-rest</artifactId>
+        <version>2024.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <packaging>jar</packaging>
 
 
-  <description>基于 Spring Authorization Server 的 Dante Cloud 基础核心组件模块</description>
+    <artifactId>gstdev-cloud-rest-spring-boot-starter</artifactId>
 
-  <dependencies>
 
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-rest-service</artifactId>
-    </dependency>
+    <description>基于 Spring Authorization Server 的 Dante Cloud 基础核心组件模块</description>
 
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-rest-protect</artifactId>
-    </dependency>
+    <dependencies>
 
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-captcha</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-rest-service</artifactId>
+        </dependency>
 
-    <!--        <dependency>-->
-    <!--              <groupId>com.gstdev.cloud</groupId>-->
-    <!--            <artifactId>data-spring-boot-starter</artifactId>-->
-    <!--        </dependency>-->
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-rest-protect</artifactId>
+        </dependency>
 
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-web-server-spring-boot-starter</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-starter-captcha</artifactId>
+        </dependency>
 
-    <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>webjars-locator-core</artifactId>
-    </dependency>
+        <!--        <dependency>-->
+        <!--              <groupId>com.gstdev.cloud</groupId>-->
+        <!--            <artifactId>data-spring-boot-starter</artifactId>-->
+        <!--        </dependency>-->
 
-  </dependencies>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-web-server-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator-core</artifactId>
+        </dependency>
+
+    </dependencies>
 
 </project>

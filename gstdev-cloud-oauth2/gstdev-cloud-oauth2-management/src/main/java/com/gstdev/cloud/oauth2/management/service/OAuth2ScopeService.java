@@ -16,9 +16,9 @@ import java.util.Set;
  * @date : 2020/3/19 17:00
  */
 @Service
-public class OAuth2ScopeService extends BaseServiceImpl<OAuth2Scope, String,OAuth2ScopeRepository> {
+public class OAuth2ScopeService extends BaseServiceImpl<OAuth2Scope, String, OAuth2ScopeRepository> {
 
-    private  OAuth2ScopeRepository oauthScopesRepository;
+    private OAuth2ScopeRepository oauthScopesRepository;
 
     public OAuth2ScopeService(OAuth2ScopeRepository oauthScopesRepository) {
         super(oauthScopesRepository);

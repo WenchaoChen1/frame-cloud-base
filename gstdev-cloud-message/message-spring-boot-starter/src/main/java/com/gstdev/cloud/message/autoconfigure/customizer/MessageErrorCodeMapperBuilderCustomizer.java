@@ -13,13 +13,13 @@ import org.springframework.core.Ordered;
  * @date : 2023/9/26 23:27
  */
 public class MessageErrorCodeMapperBuilderCustomizer implements ErrorCodeMapperBuilderCustomizer, Ordered {
-  @Override
-  public void customize(ErrorCodeMapperBuilder builder) {
-    builder.notAcceptable(MessageErrorCodes.ILLEGAL_CHANNEL, MessageErrorCodes.PRINCIPAL_NOT_FOUND);
-  }
+    @Override
+    public void customize(ErrorCodeMapperBuilder builder) {
+        builder.notAcceptable(MessageErrorCodes.ILLEGAL_CHANNEL, MessageErrorCodes.PRINCIPAL_NOT_FOUND);
+    }
 
-  @Override
-  public int getOrder() {
-    return ErrorCodeMapperBuilderOrdered.MESSAGE;
-  }
+    @Override
+    public int getOrder() {
+        return ErrorCodeMapperBuilderOrdered.MESSAGE;
+    }
 }

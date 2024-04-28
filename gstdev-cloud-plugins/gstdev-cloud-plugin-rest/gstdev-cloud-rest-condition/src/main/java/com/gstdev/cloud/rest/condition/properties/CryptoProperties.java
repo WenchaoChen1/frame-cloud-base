@@ -14,23 +14,23 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = RestConstants.PROPERTY_PREFIX_CRYPTO)
 public class CryptoProperties {
 
-  /**
-   * 加密算法策略，默认：国密算法
-   */
-  private CryptoStrategy cryptoStrategy = CryptoStrategy.SM;
+    /**
+     * 加密算法策略，默认：国密算法
+     */
+    private CryptoStrategy cryptoStrategy = CryptoStrategy.SM;
 
-  public CryptoStrategy getCryptoStrategy() {
-    return cryptoStrategy;
-  }
+    public CryptoStrategy getCryptoStrategy() {
+        return cryptoStrategy;
+    }
 
-  public void setCryptoStrategy(CryptoStrategy cryptoStrategy) {
-    this.cryptoStrategy = cryptoStrategy;
-  }
+    public void setCryptoStrategy(CryptoStrategy cryptoStrategy) {
+        this.cryptoStrategy = cryptoStrategy;
+    }
 
-  @Override
-  public String toString() {
-    return MoreObjects.toStringHelper(this)
-      .add("strategy", cryptoStrategy)
-      .toString();
-  }
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+            .add("strategy", cryptoStrategy)
+            .toString();
+    }
 }

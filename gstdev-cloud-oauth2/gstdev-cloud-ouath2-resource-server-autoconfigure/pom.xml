@@ -1,70 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <name>GstDev Cloud :: OAuth2 :: Resource Server Autoconfigure</name>
-  <description>GstDev Cloud OAuth2 资源服务器必要组件模块</description>
+    <modelVersion>4.0.0</modelVersion>
+    <name>GstDev Cloud :: OAuth2 :: Resource Server Autoconfigure</name>
+    <description>GstDev Cloud OAuth2 资源服务器必要组件模块</description>
 
-  <artifactId>gstdev-cloud-ouath2-resource-server-autoconfigure</artifactId>
-  <packaging>jar</packaging>
+    <artifactId>gstdev-cloud-ouath2-resource-server-autoconfigure</artifactId>
+    <packaging>jar</packaging>
 
-  <parent>
-    <groupId>com.gstdev.cloud</groupId>
-    <artifactId>gstdev-cloud-oauth2</artifactId>
-    <version>2024.0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
+    <parent>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-oauth2</artifactId>
+        <version>2024.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
-  <dependencies>
+    <dependencies>
 
-      <dependency>
-          <groupId>com.gstdev.cloud</groupId>
-          <artifactId>gstdev-cloud-rest-spring-boot-starter</artifactId>
-      </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-rest-spring-boot-starter</artifactId>
+        </dependency>
 
-      <dependency>
-          <groupId>com.gstdev.cloud</groupId>
-          <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>
-      </dependency>
-      <dependency>
-          <groupId>com.gstdev.cloud</groupId>
-          <artifactId>message-kafka-spring-boot-starter</artifactId>
-      </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>message-kafka-spring-boot-starter</artifactId>
+        </dependency>
 
 
+        <!--      -->
+        <!--    <dependency>-->
+        <!--      <groupId>com.gstdev.cloud</groupId>-->
+        <!--      <artifactId>gstdev-cloud-starter-captcha</artifactId>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>com.gstdev.cloud</groupId>-->
+        <!--      <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>-->
+        <!--    </dependency>-->
 
-<!--      -->
-<!--    <dependency>-->
-<!--      <groupId>com.gstdev.cloud</groupId>-->
-<!--      <artifactId>gstdev-cloud-starter-captcha</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>com.gstdev.cloud</groupId>-->
-<!--      <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>-->
-<!--    </dependency>-->
+        <!--    &lt;!&ndash; GstDevCloud related dependencies &ndash;&gt;-->
+        <!--    <dependency>-->
+        <!--      <groupId>com.gstdev.cloud</groupId>-->
+        <!--        <artifactId>gstdev-cloud-base-core</artifactId>-->
+        <!--    </dependency>-->
 
-<!--    &lt;!&ndash; GstDevCloud related dependencies &ndash;&gt;-->
-<!--    <dependency>-->
-<!--      <groupId>com.gstdev.cloud</groupId>-->
-<!--        <artifactId>gstdev-cloud-base-core</artifactId>-->
-<!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.projectlombok</groupId>-->
+        <!--      <artifactId>lombok</artifactId>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.springframework.security</groupId>-->
+        <!--      <artifactId>spring-security-web</artifactId>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.springframework.boot</groupId>-->
+        <!--      <artifactId>spring-boot-starter-security</artifactId>-->
+        <!--    </dependency>-->
+        <!--    <dependency>-->
+        <!--      <groupId>org.springframework.security</groupId>-->
+        <!--      <artifactId>spring-security-oauth2-jose</artifactId>-->
+        <!--    </dependency>-->
 
-<!--    <dependency>-->
-<!--      <groupId>org.projectlombok</groupId>-->
-<!--      <artifactId>lombok</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.security</groupId>-->
-<!--      <artifactId>spring-security-web</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.boot</groupId>-->
-<!--      <artifactId>spring-boot-starter-security</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.security</groupId>-->
-<!--      <artifactId>spring-security-oauth2-jose</artifactId>-->
-<!--    </dependency>-->
-
-  </dependencies>
+    </dependencies>
 </project>

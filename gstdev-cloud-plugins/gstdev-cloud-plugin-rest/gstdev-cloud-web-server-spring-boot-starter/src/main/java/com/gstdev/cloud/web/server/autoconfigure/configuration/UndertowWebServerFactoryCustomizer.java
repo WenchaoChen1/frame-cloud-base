@@ -18,20 +18,20 @@ import org.springframework.context.annotation.Configuration;
 @Configuration(proxyBeanMethods = false)
 public class UndertowWebServerFactoryCustomizer implements WebServerFactoryCustomizer<UndertowServletWebServerFactory> {
 
-  private static final Logger log = LoggerFactory.getLogger(UndertowWebServerFactoryCustomizer.class);
+    private static final Logger log = LoggerFactory.getLogger(UndertowWebServerFactoryCustomizer.class);
 
-  @PostConstruct
-  public void postConstruct() {
-    log.debug("[GstDev Cloud] |- SDK [Undertow WebServer Factory Customizer] Auto Configure.");
-  }
+    @PostConstruct
+    public void postConstruct() {
+        log.debug("[GstDev Cloud] |- SDK [Undertow WebServer Factory Customizer] Auto Configure.");
+    }
 
-  @Override
-  public void customize(UndertowServletWebServerFactory factory) {
+    @Override
+    public void customize(UndertowServletWebServerFactory factory) {
 
-    factory.addDeploymentInfoCustomizers(deploymentInfo -> {
-      WebSocketDeploymentInfo webSocketDeploymentInfo = new WebSocketDeploymentInfo();
-      webSocketDeploymentInfo.setBuffers(new DefaultByteBufferPool(false, 1024));
-      deploymentInfo.addServletContextAttribute(WebSocketDeploymentInfo.ATTRIBUTE_NAME, webSocketDeploymentInfo);
-    });
-  }
+        factory.addDeploymentInfoCustomizers(deploymentInfo -> {
+            WebSocketDeploymentInfo webSocketDeploymentInfo = new WebSocketDeploymentInfo();
+            webSocketDeploymentInfo.setBuffers(new DefaultByteBufferPool(false, 1024));
+            deploymentInfo.addServletContextAttribute(WebSocketDeploymentInfo.ATTRIBUTE_NAME, webSocketDeploymentInfo);
+        });
+    }
 }

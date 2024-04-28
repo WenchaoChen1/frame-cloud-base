@@ -15,19 +15,19 @@ import org.dromara.hutool.swing.captcha.CircleCaptcha;
  */
 public class CircleCaptchaRenderer extends AbstractGraphicRenderer {
 
-  @Override
-  public Metadata draw() {
-    CircleCaptcha circleCaptcha = CaptchaUtil.ofCircleCaptcha(this.getWidth(), this.getHeight(), this.getLength(), 20);
-    circleCaptcha.setFont(this.getFont());
+    @Override
+    public Metadata draw() {
+        CircleCaptcha circleCaptcha = CaptchaUtil.ofCircleCaptcha(this.getWidth(), this.getHeight(), this.getLength(), 20);
+        circleCaptcha.setFont(this.getFont());
 
-    Metadata metadata = new Metadata();
-    metadata.setGraphicImageBase64(circleCaptcha.getImageBase64Data());
-    metadata.setCharacters(circleCaptcha.getCode());
-    return metadata;
-  }
+        Metadata metadata = new Metadata();
+        metadata.setGraphicImageBase64(circleCaptcha.getImageBase64Data());
+        metadata.setCharacters(circleCaptcha.getCode());
+        return metadata;
+    }
 
-  @Override
-  public String getCategory() {
-    return CaptchaCategory.HUTOOL_CIRCLE.getConstant();
-  }
+    @Override
+    public String getCategory() {
+        return CaptchaCategory.HUTOOL_CIRCLE.getConstant();
+    }
 }

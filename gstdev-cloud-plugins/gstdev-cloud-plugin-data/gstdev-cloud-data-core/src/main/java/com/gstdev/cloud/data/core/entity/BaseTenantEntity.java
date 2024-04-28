@@ -19,7 +19,7 @@ import jakarta.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class BaseTenantEntity extends AbstractEntity {
 
-  @Schema(name = "租户ID", description = "Partitioned 类型租户ID")
-  @Column(name = "tenant_id", length = 20)
-  private String tenantId = DefaultConstants.TENANT_ID;
+    @Schema(name = "租户ID", description = "Partitioned 类型租户ID")
+    @Column(name = "tenant_id", length = 20)
+    private String tenantId = DefaultConstants.TENANT_ID;
 }

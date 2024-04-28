@@ -25,33 +25,33 @@ import org.springframework.lang.Nullable;
  */
 //public class OAuth2PasswordAuthenticationConverter implements AuthenticationConverter {
 public final class OAuth2PasswordAuthenticationConverter extends AbstractAuthenticationConverter {
-//public class OAuth2PasswordAuthenticationConverter implements AuthenticationConverter {
-  public OAuth2PasswordAuthenticationConverter(HttpCryptoProcessor httpCryptoProcessor) {
-    super(httpCryptoProcessor);
-  }
-
-  @Nullable
-  @Override
-  public Authentication convert(HttpServletRequest request) {
-    // grant_type (REQUIRED)
-    String grantType = request.getParameter(OAuth2ParameterNames.GRANT_TYPE);
-    if (!FrameGrantType.PASSWORD.getValue().equals(grantType)) {
-      return null;
+    //public class OAuth2PasswordAuthenticationConverter implements AuthenticationConverter {
+    public OAuth2PasswordAuthenticationConverter(HttpCryptoProcessor httpCryptoProcessor) {
+        super(httpCryptoProcessor);
     }
-    // 参数提取验证
-    MultiValueMap<String, String> parameters = OAuth2EndpointUtils.getParameters(request);
 
-    // scope (OPTIONAL)令牌申请访问范围验证
-    String scope = OAuth2EndpointUtils.checkOptionalParameter(parameters, OAuth2ParameterNames.SCOPE);
+    @Nullable
+    @Override
+    public Authentication convert(HttpServletRequest request) {
+        // grant_type (REQUIRED)
+        String grantType = request.getParameter(OAuth2ParameterNames.GRANT_TYPE);
+        if (!FrameGrantType.PASSWORD.getValue().equals(grantType)) {
+            return null;
+        }
+        // 参数提取验证
+        MultiValueMap<String, String> parameters = OAuth2EndpointUtils.getParameters(request);
 
-    // username (REQUIRED) 用户名验证
-    OAuth2EndpointUtils.checkRequiredParameter(parameters, OAuth2ParameterNames.USERNAME);
+        // scope (OPTIONAL)令牌申请访问范围验证
+        String scope = OAuth2EndpointUtils.checkOptionalParameter(parameters, OAuth2ParameterNames.SCOPE);
 
-    // password (REQUIRED) 密码验证
-    OAuth2EndpointUtils.checkRequiredParameter(parameters, OAuth2ParameterNames.PASSWORD);
+        // username (REQUIRED) 用户名验证
+        OAuth2EndpointUtils.checkRequiredParameter(parameters, OAuth2ParameterNames.USERNAME);
 
-    return new OAuth2PasswordAuthenticationToken(getClientPrincipal(), getRequestedScopes(scope), getAdditionalParameters(request, parameters));
-  }
+        // password (REQUIRED) 密码验证
+        OAuth2EndpointUtils.checkRequiredParameter(parameters, OAuth2ParameterNames.PASSWORD);
+
+        return new OAuth2PasswordAuthenticationToken(getClientPrincipal(), getRequestedScopes(scope), getAdditionalParameters(request, parameters));
+    }
 
 
 //  @Override

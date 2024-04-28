@@ -17,27 +17,27 @@ import java.util.Collection;
 
 @Getter
 public class QRAuthenticationToken extends PreAuthenticatedAuthenticationToken {
-  private String type;
-  private String clientId;
-  private String code;
+    private String type;
+    private String clientId;
+    private String code;
 
 
-  public QRAuthenticationToken(Object principal, Object credentials, Collection<? extends GrantedAuthority> authorities) {
-    super(principal, credentials, authorities);
-  }
+    public QRAuthenticationToken(Object principal, Object credentials, Collection<? extends GrantedAuthority> authorities) {
+        super(principal, credentials, authorities);
+    }
 
-  public QRAuthenticationToken(Object principal, Object credentials) {
-    super(principal, credentials, null);
-    setAuthenticated(false);
-  }
+    public QRAuthenticationToken(Object principal, Object credentials) {
+        super(principal, credentials, null);
+        setAuthenticated(false);
+    }
 
-  public QRAuthenticationToken(String type, String clientId, String code) {
-    super(clientId, code, null);
+    public QRAuthenticationToken(String type, String clientId, String code) {
+        super(clientId, code, null);
 
-    this.type = type;
-    this.clientId = clientId;
-    this.code = code;
+        this.type = type;
+        this.clientId = clientId;
+        this.code = code;
 
-    setAuthenticated(false);
-  }
+        setAuthenticated(false);
+    }
 }

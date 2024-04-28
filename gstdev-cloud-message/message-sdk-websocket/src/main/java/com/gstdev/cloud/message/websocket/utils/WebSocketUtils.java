@@ -17,24 +17,24 @@ import org.springframework.http.server.ServletServerHttpResponse;
  */
 public class WebSocketUtils {
 
-  public static HttpServletRequest getHttpServletRequest(ServerHttpRequest serverHttpRequest) {
-    if (serverHttpRequest instanceof ServletServerHttpRequest request) {
-      return request.getServletRequest();
+    public static HttpServletRequest getHttpServletRequest(ServerHttpRequest serverHttpRequest) {
+        if (serverHttpRequest instanceof ServletServerHttpRequest request) {
+            return request.getServletRequest();
+        }
+
+        return null;
     }
 
-    return null;
-  }
+    public static HttpServletResponse getHttpServletResponse(ServerHttpResponse serverHttpResponse) {
+        if (serverHttpResponse instanceof ServletServerHttpResponse response) {
+            return response.getServletResponse();
+        }
 
-  public static HttpServletResponse getHttpServletResponse(ServerHttpResponse serverHttpResponse) {
-    if (serverHttpResponse instanceof ServletServerHttpResponse response) {
-      return response.getServletResponse();
+        return null;
     }
 
-    return null;
-  }
-
-  public static int getOnlineCount() {
-    Long count = RedisBitMapUtils.bitCount(MessageConstants.REDIS_CURRENT_ONLINE_USER);
-    return count.intValue();
-  }
+    public static int getOnlineCount() {
+        Long count = RedisBitMapUtils.bitCount(MessageConstants.REDIS_CURRENT_ONLINE_USER);
+        return count.intValue();
+    }
 }

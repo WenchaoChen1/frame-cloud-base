@@ -44,49 +44,49 @@ import java.util.List;
 @EnableWebSecurity
 public class DefaultSecurityConfiguration {
 
-  private static final Logger log = LoggerFactory.getLogger(DefaultSecurityConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(DefaultSecurityConfiguration.class);
 
-  @Bean
-  public UrlBasedCorsConfigurationSource configurationSource() {
-    CorsConfiguration corsConfiguration = new CorsConfiguration();
-    corsConfiguration.addAllowedOrigin("*");
-    corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
-    corsConfiguration.setAllowedHeaders(List.of("*"));
-    corsConfiguration.setMaxAge(3600L);
+    @Bean
+    public UrlBasedCorsConfigurationSource configurationSource() {
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.addAllowedOrigin("*");
+        corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
+        corsConfiguration.setAllowedHeaders(List.of("*"));
+        corsConfiguration.setMaxAge(3600L);
 
-    UrlBasedCorsConfigurationSource corsConfigurationSource = new UrlBasedCorsConfigurationSource();
-    corsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
+        UrlBasedCorsConfigurationSource corsConfigurationSource = new UrlBasedCorsConfigurationSource();
+        corsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
 
-    return corsConfigurationSource;
-  }
+        return corsConfigurationSource;
+    }
 
-  /**
-   * 配置 请求授权
-   *
-   * @param http
-   * @return
-   * @throws Exception
-   */
-  @Bean
-  @Order
-  @SneakyThrows
-  public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http,
-                                                        UserDetailsService userDetailsService,
-                                                        OAuth2AuthenticationProperties authenticationProperties,
-                                                        CaptchaRendererFactory captchaRendererFactory,
+    /**
+     * 配置 请求授权
+     *
+     * @param http
+     * @return
+     * @throws Exception
+     */
+    @Bean
+    @Order
+    @SneakyThrows
+    public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http,
+                                                          UserDetailsService userDetailsService,
+                                                          OAuth2AuthenticationProperties authenticationProperties,
+                                                          CaptchaRendererFactory captchaRendererFactory,
 //                                                        OAuth2SessionManagementConfigurerCustomer oauth2SessionManagementConfigurerCustomer,
-                                                        OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer,
-                                                        OAuth2AuthorizeHttpRequestsConfigurerCustomer oauth2AuthorizeHttpRequestsConfigurerCustomer,
-                                                        UrlBasedCorsConfigurationSource configurationSource) {
+                                                          OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer,
+                                                          OAuth2AuthorizeHttpRequestsConfigurerCustomer oauth2AuthorizeHttpRequestsConfigurerCustomer,
+                                                          UrlBasedCorsConfigurationSource configurationSource) {
 //    http
 //      //表单login处理重定向到登录页面
 //      //授权服务器过滤器链
 //      .formLogin(Customizer.withDefaults());
-    // 禁用CSRF 开启跨域
+        // 禁用CSRF 开启跨域
 //    http.csrf(AbstractHttpConfigurer::disable).cors(AbstractHttpConfigurer::disable);
-    // TODO 不知道做什么的
-    http.csrf(c -> c.disable()).cors(cors -> cors.configurationSource(configurationSource));
-    // @formatter:off
+        // TODO 不知道做什么的
+        http.csrf(c -> c.disable()).cors(cors -> cors.configurationSource(configurationSource));
+        // @formatter:off
     http
       .authorizeHttpRequests(oauth2AuthorizeHttpRequestsConfigurerCustomer)
 //      .sessionManagement(oauth2SessionManagementConfigurerCustomer)

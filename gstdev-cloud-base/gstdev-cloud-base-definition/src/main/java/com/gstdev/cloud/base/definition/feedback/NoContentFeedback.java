@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
  * @date : 2023/9/26 10:11
  */
 public class NoContentFeedback extends Feedback {
-  public NoContentFeedback(String value) {
-    super(value, HttpStatus.NO_CONTENT);
-  }
+    public NoContentFeedback(String value) {
+        super(value, HttpStatus.NO_CONTENT);
+    }
 }

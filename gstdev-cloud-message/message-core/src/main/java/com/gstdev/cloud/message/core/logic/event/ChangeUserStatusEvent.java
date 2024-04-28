@@ -13,11 +13,11 @@ import java.time.Clock;
  */
 public class ChangeUserStatusEvent extends AbstractApplicationEvent<UserStatus> {
 
-  public ChangeUserStatusEvent(UserStatus data) {
-    super(data);
-  }
+    public ChangeUserStatusEvent(UserStatus data) {
+        super(data);
+    }
 
-  public ChangeUserStatusEvent(UserStatus data, Clock clock) {
-    super(data, clock);
-  }
+    public ChangeUserStatusEvent(UserStatus data, Clock clock) {
+        super(data, clock);
+    }
 }

@@ -3,23 +3,23 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
-  <name>GstDev Cloud :: Starter :: Storage :: Minio</name>
-  <description>${project.name}</description>
-  <artifactId>gstdev-cloud-starter-storage-minio</artifactId>
+    <modelVersion>4.0.0</modelVersion>
+    <name>GstDev Cloud :: Starter :: Storage :: Minio</name>
+    <description>${project.name}</description>
+    <artifactId>gstdev-cloud-starter-storage-minio</artifactId>
 
-  <parent>
-    <groupId>com.gstdev.cloud</groupId>
-    <artifactId>gstdev-cloud-starter-storage</artifactId>
-    <version>2024.0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
+    <parent>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-starter-storage</artifactId>
+        <version>2024.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
-  <dependencies>
-    <!-- stoeage aliyun related dependencies -->
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-storage-minio</artifactId>
-    </dependency>
-  </dependencies>
+    <dependencies>
+        <!-- stoeage aliyun related dependencies -->
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-storage-minio</artifactId>
+        </dependency>
+    </dependencies>
 </project>

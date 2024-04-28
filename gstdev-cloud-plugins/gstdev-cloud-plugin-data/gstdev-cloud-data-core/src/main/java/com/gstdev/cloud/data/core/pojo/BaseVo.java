@@ -7,5 +7,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BaseVo implements BaseVoInterface {
-  String id;
+    String id;
 }

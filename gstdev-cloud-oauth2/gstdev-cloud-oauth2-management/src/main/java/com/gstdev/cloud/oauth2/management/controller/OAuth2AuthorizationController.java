@@ -62,7 +62,6 @@ public class OAuth2AuthorizationController implements Controller<FrameAuthorizat
     }
 
 
-
     @AccessLimited
     @Operation(summary = "分页查询数据", description = "通过pageNumber和pageSize获取分页数据",
         responses = {

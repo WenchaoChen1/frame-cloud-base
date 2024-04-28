@@ -59,9 +59,9 @@ public abstract class BaseController<E extends Entity, ID extends Serializable, 
         @Parameter(name = "pager", required = true, in = ParameterIn.QUERY, description = "分页Bo对象", schema = @Schema(implementation = Pager.class))
     })
     @GetMapping
-    public Result<Map<String, Object>> findByPage(@Validated  Pageable pageable) {
+    public Result<Map<String, Object>> findByPage(@Validated Pageable pageable) {
         if (pageable.getSort().isSorted()) {
-            return Controller.super.findByPage(pageable.getPageNumber(), pageable.getPageSize(),pageable.getSort());
+            return Controller.super.findByPage(pageable.getPageNumber(), pageable.getPageSize(), pageable.getSort());
         } else {
             return Controller.super.findByPage(pageable.getPageNumber(), pageable.getPageSize());
         }

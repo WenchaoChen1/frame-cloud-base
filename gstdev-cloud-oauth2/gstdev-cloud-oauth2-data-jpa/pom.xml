@@ -28,14 +28,14 @@
             <artifactId>spring-security-oauth2-authorization-server</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.gstdev.cloud</groupId>-->
-<!--            <artifactId>gstdev-cloud-data-core</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.gstdev.cloud</groupId>-->
-<!--            <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.gstdev.cloud</groupId>-->
+        <!--            <artifactId>gstdev-cloud-data-core</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.gstdev.cloud</groupId>-->
+        <!--            <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>-->
+        <!--        </dependency>-->
 
 
     </dependencies>

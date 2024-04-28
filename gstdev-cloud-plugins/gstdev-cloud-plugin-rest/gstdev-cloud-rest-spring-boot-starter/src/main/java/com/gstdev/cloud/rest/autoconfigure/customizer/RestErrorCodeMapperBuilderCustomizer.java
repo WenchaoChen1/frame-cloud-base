@@ -13,18 +13,18 @@ import org.springframework.core.Ordered;
  * @date : 2023/9/26 23:20
  */
 public class RestErrorCodeMapperBuilderCustomizer implements ErrorCodeMapperBuilderCustomizer, Ordered {
-  @Override
-  public void customize(ErrorCodeMapperBuilder builder) {
-    builder.notAcceptable(
-      RestErrorCodes.SESSION_INVALID,
-      RestErrorCodes.REPEAT_SUBMISSION,
-      RestErrorCodes.FREQUENT_REQUESTS,
-      RestErrorCodes.FEIGN_DECODER_IO_EXCEPTION
-    );
-  }
+    @Override
+    public void customize(ErrorCodeMapperBuilder builder) {
+        builder.notAcceptable(
+            RestErrorCodes.SESSION_INVALID,
+            RestErrorCodes.REPEAT_SUBMISSION,
+            RestErrorCodes.FREQUENT_REQUESTS,
+            RestErrorCodes.FEIGN_DECODER_IO_EXCEPTION
+        );
+    }
 
-  @Override
-  public int getOrder() {
-    return ErrorCodeMapperBuilderOrdered.REST;
-  }
+    @Override
+    public int getOrder() {
+        return ErrorCodeMapperBuilderOrdered.REST;
+    }
 }

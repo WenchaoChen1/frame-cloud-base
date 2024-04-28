@@ -17,14 +17,14 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  */
 public class LocalDataAccessCondition implements Condition {
 
-  private static final Logger log = LoggerFactory.getLogger(LocalDataAccessCondition.class);
+    private static final Logger log = LoggerFactory.getLogger(LocalDataAccessCondition.class);
 
-  @SuppressWarnings("NullableProblems")
-  @Override
-  public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
-    String property = RestPropertyFinder.getDataAccessStrategy(conditionContext);
-    boolean result = StringUtils.isNotBlank(property) && StringUtils.equalsIgnoreCase(property, Target.LOCAL.name());
-    log.debug("[GstDev Cloud] |- Condition [Local Data Access] value is [{}]", result);
-    return result;
-  }
+    @SuppressWarnings("NullableProblems")
+    @Override
+    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
+        String property = RestPropertyFinder.getDataAccessStrategy(conditionContext);
+        boolean result = StringUtils.isNotBlank(property) && StringUtils.equalsIgnoreCase(property, Target.LOCAL.name());
+        log.debug("[GstDev Cloud] |- Condition [Local Data Access] value is [{}]", result);
+        return result;
+    }
 }

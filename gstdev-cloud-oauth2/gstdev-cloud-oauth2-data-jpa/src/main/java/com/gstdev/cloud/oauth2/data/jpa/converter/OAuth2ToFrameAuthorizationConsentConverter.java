@@ -16,18 +16,18 @@ import java.util.Set;
  * @date : 2023/5/21 21:05
  */
 public class OAuth2ToFrameAuthorizationConsentConverter implements Converter<OAuth2AuthorizationConsent, FrameAuthorizationConsent> {
-  @Override
-  public FrameAuthorizationConsent convert(OAuth2AuthorizationConsent authorizationConsent) {
-    FrameAuthorizationConsent entity = new FrameAuthorizationConsent();
-    entity.setRegisteredClientId(authorizationConsent.getRegisteredClientId());
-    entity.setPrincipalName(authorizationConsent.getPrincipalName());
+    @Override
+    public FrameAuthorizationConsent convert(OAuth2AuthorizationConsent authorizationConsent) {
+        FrameAuthorizationConsent entity = new FrameAuthorizationConsent();
+        entity.setRegisteredClientId(authorizationConsent.getRegisteredClientId());
+        entity.setPrincipalName(authorizationConsent.getPrincipalName());
 
-    Set<String> authorities = new HashSet<>();
-    for (GrantedAuthority authority : authorizationConsent.getAuthorities()) {
-      authorities.add(authority.getAuthority());
+        Set<String> authorities = new HashSet<>();
+        for (GrantedAuthority authority : authorizationConsent.getAuthorities()) {
+            authorities.add(authority.getAuthority());
+        }
+        entity.setAuthorities(StringUtils.collectionToCommaDelimitedString(authorities));
+
+        return entity;
     }
-    entity.setAuthorities(StringUtils.collectionToCommaDelimitedString(authorities));
-
-    return entity;
-  }
 }

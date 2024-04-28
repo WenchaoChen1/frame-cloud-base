@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/authorize/product")
 @Tags({
-  @Tag(name = "OAuth2 认证服务接口"),
-  @Tag(name = "物联网管理接口"),
-  @Tag(name = "物联网产品接口")
+    @Tag(name = "OAuth2 认证服务接口"),
+    @Tag(name = "物联网管理接口"),
+    @Tag(name = "物联网产品接口")
 })
-public class OAuth2ProductController extends BaseController<OAuth2Product, String,OAuth2ProductService> {
+public class OAuth2ProductController extends BaseController<OAuth2Product, String, OAuth2ProductService> {
 
 
     public OAuth2ProductController(OAuth2ProductService service) {

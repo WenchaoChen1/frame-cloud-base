@@ -14,16 +14,16 @@ import org.hibernate.annotations.UuidGenerator;
 @MappedSuperclass
 public abstract class DefaultSysEntity extends BaseSysEntity {
 
-  @Id
-  @UuidGenerator
-  @Column(name = "id", length = 64)
-  private String id;
+    @Id
+    @UuidGenerator
+    @Column(name = "id", length = 64)
+    private String id;
 
-  public String getId() {
-    return id;
-  }
+    public String getId() {
+        return id;
+    }
 
-  public void setId(String id) {
-    this.id = id;
-  }
+    public void setId(String id) {
+        this.id = id;
+    }
 }

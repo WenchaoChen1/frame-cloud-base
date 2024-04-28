@@ -16,59 +16,59 @@ import java.util.List;
  */
 public class FrameConfigAttribute implements ConfigAttribute {
 
-  private String attribute;
+    private String attribute;
 
-  public FrameConfigAttribute() {
-  }
-
-  public FrameConfigAttribute(String config) {
-    Assert.hasText(config, "You must provide a configuration attribute");
-    this.attribute = config;
-  }
-
-  public static FrameConfigAttribute create(String attribute) {
-    Assert.notNull(attribute, "You must supply an array of attribute names");
-    return new FrameConfigAttribute(attribute.trim());
-  }
-
-  public static List<ConfigAttribute> createListFromCommaDelimitedString(String access) {
-    return createList(StringUtils.commaDelimitedListToStringArray(access));
-  }
-
-  public static List<ConfigAttribute> createList(String... attributeNames) {
-    Assert.notNull(attributeNames, "You must supply an array of attribute names");
-    List<ConfigAttribute> attributes = new ArrayList<>(attributeNames.length);
-    for (String attribute : attributeNames) {
-      attributes.add(new FrameConfigAttribute(attribute.trim()));
+    public FrameConfigAttribute() {
     }
-    return attributes;
-  }
 
-  public String getAttribute() {
-    return this.attribute;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public FrameConfigAttribute(String config) {
+        Assert.hasText(config, "You must provide a configuration attribute");
+        this.attribute = config;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public static FrameConfigAttribute create(String attribute) {
+        Assert.notNull(attribute, "You must supply an array of attribute names");
+        return new FrameConfigAttribute(attribute.trim());
     }
-    FrameConfigAttribute that = (FrameConfigAttribute) o;
-    return Objects.equal(attribute, that.attribute);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hashCode(attribute);
-  }
+    public static List<ConfigAttribute> createListFromCommaDelimitedString(String access) {
+        return createList(StringUtils.commaDelimitedListToStringArray(access));
+    }
 
-  @Override
-  public String toString() {
-    return MoreObjects.toStringHelper(this)
-      .add("attrib", attribute)
-      .toString();
-  }
+    public static List<ConfigAttribute> createList(String... attributeNames) {
+        Assert.notNull(attributeNames, "You must supply an array of attribute names");
+        List<ConfigAttribute> attributes = new ArrayList<>(attributeNames.length);
+        for (String attribute : attributeNames) {
+            attributes.add(new FrameConfigAttribute(attribute.trim()));
+        }
+        return attributes;
+    }
+
+    public String getAttribute() {
+        return this.attribute;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        FrameConfigAttribute that = (FrameConfigAttribute) o;
+        return Objects.equal(attribute, that.attribute);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(attribute);
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+            .add("attrib", attribute)
+            .toString();
+    }
 }

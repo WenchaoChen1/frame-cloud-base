@@ -66,8 +66,10 @@ public class OAuth2AuthenticationConfiguration {
         log.trace("[GstDev Cloud] |- Bean [SignIn Failure Limited Stamp Manager] Auto Configure.");
         return manager;
     }
+
     /**
      * 创建一个 OAuth2FormLoginConfigurerCustomizer 实例，用于自定义OAuth2表单登录配置。
+     *
      * @param authenticationProperties OAuth2认证配置属性
      * @return OAuth2FormLoginConfigurerCustomizer 实例
      */
@@ -81,6 +83,7 @@ public class OAuth2AuthenticationConfiguration {
 
     /**
      * 创建一个 OAuth2TokenCustomizer 实例，用于定制化OAuth2 JWT Token，例如添加额外信息或验证规则。
+     *
      * @return OAuth2TokenCustomizer 实例
      */
     @Bean
@@ -92,6 +95,7 @@ public class OAuth2AuthenticationConfiguration {
 
     /**
      * 创建一个 OAuth2TokenCustomizer 实例，用于定制化不透明令牌。
+     *
      * @return OAuth2TokenCustomizer 实例
      */
     @Bean

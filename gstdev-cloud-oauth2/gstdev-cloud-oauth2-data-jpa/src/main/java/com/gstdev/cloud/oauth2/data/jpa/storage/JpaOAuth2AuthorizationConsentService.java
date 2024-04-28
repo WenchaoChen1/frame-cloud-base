@@ -17,38 +17,38 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
  */
 public class JpaOAuth2AuthorizationConsentService implements OAuth2AuthorizationConsentService {
 
-  private final FrameAuthorizationConsentService authorizationConsentService;
-  private final Converter<FrameAuthorizationConsent, OAuth2AuthorizationConsent> frameToOAuth2Converter;
-  private final Converter<OAuth2AuthorizationConsent, FrameAuthorizationConsent> oauth2ToherodotusConverter;
+    private final FrameAuthorizationConsentService authorizationConsentService;
+    private final Converter<FrameAuthorizationConsent, OAuth2AuthorizationConsent> frameToOAuth2Converter;
+    private final Converter<OAuth2AuthorizationConsent, FrameAuthorizationConsent> oauth2ToherodotusConverter;
 
-  public JpaOAuth2AuthorizationConsentService(FrameAuthorizationConsentService authorizationConsentService, RegisteredClientRepository registeredClientRepository) {
-    this.authorizationConsentService = authorizationConsentService;
-    this.frameToOAuth2Converter = new FrameToOAuth2AuthorizationConsentConverter(registeredClientRepository);
-    this.oauth2ToherodotusConverter = new OAuth2ToFrameAuthorizationConsentConverter();
-  }
+    public JpaOAuth2AuthorizationConsentService(FrameAuthorizationConsentService authorizationConsentService, RegisteredClientRepository registeredClientRepository) {
+        this.authorizationConsentService = authorizationConsentService;
+        this.frameToOAuth2Converter = new FrameToOAuth2AuthorizationConsentConverter(registeredClientRepository);
+        this.oauth2ToherodotusConverter = new OAuth2ToFrameAuthorizationConsentConverter();
+    }
 
-  @Override
-  public void save(OAuth2AuthorizationConsent authorizationConsent) {
-    this.authorizationConsentService.save(toEntity(authorizationConsent));
-  }
+    @Override
+    public void save(OAuth2AuthorizationConsent authorizationConsent) {
+        this.authorizationConsentService.save(toEntity(authorizationConsent));
+    }
 
-  @Override
-  public void remove(OAuth2AuthorizationConsent authorizationConsent) {
-    this.authorizationConsentService.deleteByRegisteredClientIdAndPrincipalName(
-      authorizationConsent.getRegisteredClientId(), authorizationConsent.getPrincipalName());
-  }
+    @Override
+    public void remove(OAuth2AuthorizationConsent authorizationConsent) {
+        this.authorizationConsentService.deleteByRegisteredClientIdAndPrincipalName(
+            authorizationConsent.getRegisteredClientId(), authorizationConsent.getPrincipalName());
+    }
 
-  @Override
-  public OAuth2AuthorizationConsent findById(String registeredClientId, String principalName) {
-    return this.authorizationConsentService.findByRegisteredClientIdAndPrincipalName(
-      registeredClientId, principalName).map(this::toObject).orElse(null);
-  }
+    @Override
+    public OAuth2AuthorizationConsent findById(String registeredClientId, String principalName) {
+        return this.authorizationConsentService.findByRegisteredClientIdAndPrincipalName(
+            registeredClientId, principalName).map(this::toObject).orElse(null);
+    }
 
-  private OAuth2AuthorizationConsent toObject(FrameAuthorizationConsent authorizationConsent) {
-    return frameToOAuth2Converter.convert(authorizationConsent);
-  }
+    private OAuth2AuthorizationConsent toObject(FrameAuthorizationConsent authorizationConsent) {
+        return frameToOAuth2Converter.convert(authorizationConsent);
+    }
 
-  private FrameAuthorizationConsent toEntity(OAuth2AuthorizationConsent authorizationConsent) {
-    return oauth2ToherodotusConverter.convert(authorizationConsent);
-  }
+    private FrameAuthorizationConsent toEntity(OAuth2AuthorizationConsent authorizationConsent) {
+        return oauth2ToherodotusConverter.convert(authorizationConsent);
+    }
 }

@@ -11,32 +11,32 @@ import com.gstdev.cloud.base.definition.domain.Result;
  */
 public abstract class AbstractRuntimeException extends RuntimeException implements FrameException {
 
-  public AbstractRuntimeException() {
-    super();
-  }
+    public AbstractRuntimeException() {
+        super();
+    }
 
-  public AbstractRuntimeException(String message) {
-    super(message);
-  }
+    public AbstractRuntimeException(String message) {
+        super(message);
+    }
 
-  public AbstractRuntimeException(String message, Throwable cause) {
-    super(message, cause);
-  }
+    public AbstractRuntimeException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-  public AbstractRuntimeException(Throwable cause) {
-    super(cause);
-  }
+    public AbstractRuntimeException(Throwable cause) {
+        super(cause);
+    }
 
-  protected AbstractRuntimeException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-    super(message, cause, enableSuppression, writableStackTrace);
-  }
+    protected AbstractRuntimeException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
 
-  @Override
-  public Result<String> getResult() {
-    Result<String> result = Result.failure(getFeedback());
-    result.setMessage(super.getMessage());
-    result.stackTrace(super.getStackTrace());
-    result.detail(super.getMessage());
-    return result;
-  }
+    @Override
+    public Result<String> getResult() {
+        Result<String> result = Result.failure(getFeedback());
+        result.setMessage(super.getMessage());
+        result.stackTrace(super.getStackTrace());
+        result.detail(super.getMessage());
+        return result;
+    }
 }

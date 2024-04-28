@@ -18,12 +18,12 @@ import java.util.Optional;
 @Repository
 public interface FrameRegisteredClientRepository extends BaseRepository<FrameRegisteredClient, String> {
 
-  /**
-   * 根据 ClientId 查询 RegisteredClient
-   *
-   * @param clientId OAuth2 客户端ID
-   * @return OAuth2 客户端配置
-   */
-  @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
-  Optional<FrameRegisteredClient> findByClientId(String clientId);
+    /**
+     * 根据 ClientId 查询 RegisteredClient
+     *
+     * @param clientId OAuth2 客户端ID
+     * @return OAuth2 客户端配置
+     */
+    @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
+    Optional<FrameRegisteredClient> findByClientId(String clientId);
 }

@@ -11,16 +11,16 @@ import com.gstdev.cloud.base.definition.domain.Feedback;
  */
 public class OAuth2CaptchaMismatchException extends OAuth2CaptchaException {
 
-  public OAuth2CaptchaMismatchException(String msg, Throwable cause) {
-    super(msg, cause);
-  }
+    public OAuth2CaptchaMismatchException(String msg, Throwable cause) {
+        super(msg, cause);
+    }
 
-  public OAuth2CaptchaMismatchException(String msg) {
-    super(msg);
-  }
+    public OAuth2CaptchaMismatchException(String msg) {
+        super(msg);
+    }
 
-  @Override
-  public Feedback getFeedback() {
-    return CaptchaErrorCodes.CAPTCHA_MISMATCH;
-  }
+    @Override
+    public Feedback getFeedback() {
+        return CaptchaErrorCodes.CAPTCHA_MISMATCH;
+    }
 }

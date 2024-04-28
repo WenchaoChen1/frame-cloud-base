@@ -12,11 +12,11 @@ import java.time.Clock;
  */
 public class MqttMessageSendingEvent extends AbstractApplicationEvent<MqttMessage> {
 
-  public MqttMessageSendingEvent(MqttMessage data) {
-    super(data);
-  }
+    public MqttMessageSendingEvent(MqttMessage data) {
+        super(data);
+    }
 
-  public MqttMessageSendingEvent(MqttMessage data, Clock clock) {
-    super(data, clock);
-  }
+    public MqttMessageSendingEvent(MqttMessage data, Clock clock) {
+        super(data, clock);
+    }
 }

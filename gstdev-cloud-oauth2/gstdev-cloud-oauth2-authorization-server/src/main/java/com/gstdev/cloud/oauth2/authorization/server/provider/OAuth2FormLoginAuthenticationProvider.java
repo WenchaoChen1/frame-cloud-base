@@ -39,57 +39,57 @@ import org.springframework.security.core.userdetails.UserDetails;
  */
 public class OAuth2FormLoginAuthenticationProvider extends DaoAuthenticationProvider {
 
-  private static final Logger log = LoggerFactory.getLogger(OAuth2FormLoginAuthenticationProvider.class);
+    private static final Logger log = LoggerFactory.getLogger(OAuth2FormLoginAuthenticationProvider.class);
 
-  private final CaptchaRendererFactory captchaRendererFactory;
+    private final CaptchaRendererFactory captchaRendererFactory;
 
-  public OAuth2FormLoginAuthenticationProvider(CaptchaRendererFactory captchaRendererFactory) {
-    super();
-    this.captchaRendererFactory = captchaRendererFactory;
-  }
-
-  @Override
-  protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
-    Object details = authentication.getDetails();
-
-    if (ObjectUtils.isNotEmpty(details) && details instanceof FormLoginWebAuthenticationDetails formLoginWebAuthenticationDetails) {
-
-      if (!formLoginWebAuthenticationDetails.getClosed()) {
-
-        String code = formLoginWebAuthenticationDetails.getCode();
-        String category = formLoginWebAuthenticationDetails.getCategory();
-        String identity = formLoginWebAuthenticationDetails.getIdentity();
-
-        if (StringUtils.isBlank(code)) {
-          throw new OAuth2CaptchaIsEmptyException("Captcha is empty.");
-        }
-
-        try {
-          Verification verification = new Verification();
-          verification.setCharacters(code);
-          verification.setCategory(category);
-          verification.setIdentity(identity);
-          captchaRendererFactory.verify(verification);
-        } catch (CaptchaParameterIllegalException e) {
-          throw new OAuth2CaptchaArgumentIllegalException("Captcha argument is illegal!");
-        } catch (CaptchaHasExpiredException e) {
-          throw new OAuth2CaptchaHasExpiredException("Captcha is expired!");
-        } catch (CaptchaMismatchException e) {
-          throw new OAuth2CaptchaMismatchException("Captcha is mismatch!");
-        } catch (CaptchaIsEmptyException e) {
-          throw new OAuth2CaptchaIsEmptyException("Captcha is empty!");
-        }
-      }
+    public OAuth2FormLoginAuthenticationProvider(CaptchaRendererFactory captchaRendererFactory) {
+        super();
+        this.captchaRendererFactory = captchaRendererFactory;
     }
 
-    super.additionalAuthenticationChecks(userDetails, authentication);
-  }
+    @Override
+    protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
+        Object details = authentication.getDetails();
 
-  @Override
-  public boolean supports(Class<?> authentication) {
-    //返回true后才会执行上面的authenticate方法,这步能确保authentication能正确转换类型
-    boolean supports = (OAuth2FormLoginAuthenticationToken.class.isAssignableFrom(authentication));
-    log.trace("[GstDev Cloud] |- Form Login Authentication is supports! [{}]", supports);
-    return supports;
-  }
+        if (ObjectUtils.isNotEmpty(details) && details instanceof FormLoginWebAuthenticationDetails formLoginWebAuthenticationDetails) {
+
+            if (!formLoginWebAuthenticationDetails.getClosed()) {
+
+                String code = formLoginWebAuthenticationDetails.getCode();
+                String category = formLoginWebAuthenticationDetails.getCategory();
+                String identity = formLoginWebAuthenticationDetails.getIdentity();
+
+                if (StringUtils.isBlank(code)) {
+                    throw new OAuth2CaptchaIsEmptyException("Captcha is empty.");
+                }
+
+                try {
+                    Verification verification = new Verification();
+                    verification.setCharacters(code);
+                    verification.setCategory(category);
+                    verification.setIdentity(identity);
+                    captchaRendererFactory.verify(verification);
+                } catch (CaptchaParameterIllegalException e) {
+                    throw new OAuth2CaptchaArgumentIllegalException("Captcha argument is illegal!");
+                } catch (CaptchaHasExpiredException e) {
+                    throw new OAuth2CaptchaHasExpiredException("Captcha is expired!");
+                } catch (CaptchaMismatchException e) {
+                    throw new OAuth2CaptchaMismatchException("Captcha is mismatch!");
+                } catch (CaptchaIsEmptyException e) {
+                    throw new OAuth2CaptchaIsEmptyException("Captcha is empty!");
+                }
+            }
+        }
+
+        super.additionalAuthenticationChecks(userDetails, authentication);
+    }
+
+    @Override
+    public boolean supports(Class<?> authentication) {
+        //返回true后才会执行上面的authenticate方法,这步能确保authentication能正确转换类型
+        boolean supports = (OAuth2FormLoginAuthenticationToken.class.isAssignableFrom(authentication));
+        log.trace("[GstDev Cloud] |- Form Login Authentication is supports! [{}]", supports);
+        return supports;
+    }
 }

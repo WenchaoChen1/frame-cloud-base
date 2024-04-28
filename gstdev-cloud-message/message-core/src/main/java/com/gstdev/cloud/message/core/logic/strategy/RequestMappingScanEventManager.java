@@ -18,49 +18,49 @@ import java.util.Map;
  */
 public interface RequestMappingScanEventManager extends ApplicationStrategyEventManager<List<RequestMapping>> {
 
-  /**
-   * 获取是否执行扫描的标记注解。
-   *
-   * @return 标记注解
-   */
-  Class<? extends Annotation> getScanAnnotationClass();
+    /**
+     * 获取是否执行扫描的标记注解。
+     *
+     * @return 标记注解
+     */
+    Class<? extends Annotation> getScanAnnotationClass();
 
-  /**
-   * 执行本地数据存储
-   *
-   * @param requestMappings 扫描到的RequestMapping
-   */
-  void postLocalStorage(List<RequestMapping> requestMappings);
+    /**
+     * 执行本地数据存储
+     *
+     * @param requestMappings 扫描到的RequestMapping
+     */
+    void postLocalStorage(List<RequestMapping> requestMappings);
 
-  /**
-   * 发布远程事件，传送RequestMapping
-   *
-   * @param requestMappings 扫描到的RequestMapping
-   */
-  @Override
-  default void postProcess(List<RequestMapping> requestMappings) {
-    postLocalStorage(requestMappings);
-    ApplicationStrategyEventManager.super.postProcess(requestMappings);
-  }
-
-  /**
-   * 是否满足执行扫描的条件。
-   * 根据扫描标记注解 {@link #getScanAnnotationClass()} 以及 是否是分布式架构 决定是否执行接口的扫描。
-   * <p>
-   * 分布式架构根据注解判断是否扫描，单体架构直接扫描即可无须判断
-   *
-   * @return true 执行， false 不执行
-   */
-  default boolean isPerformScan() {
-    if (ServiceContextHolder.getInstance().isDistributedArchitecture()) {
-      if (ObjectUtils.isEmpty(getScanAnnotationClass())) {
-        return false;
-      }
-
-      Map<String, Object> content = ServiceContextHolder.getInstance().getApplicationContext().getBeansWithAnnotation(getScanAnnotationClass());
-      return !MapUtils.isEmpty(content);
+    /**
+     * 发布远程事件，传送RequestMapping
+     *
+     * @param requestMappings 扫描到的RequestMapping
+     */
+    @Override
+    default void postProcess(List<RequestMapping> requestMappings) {
+        postLocalStorage(requestMappings);
+        ApplicationStrategyEventManager.super.postProcess(requestMappings);
     }
 
-    return true;
-  }
+    /**
+     * 是否满足执行扫描的条件。
+     * 根据扫描标记注解 {@link #getScanAnnotationClass()} 以及 是否是分布式架构 决定是否执行接口的扫描。
+     * <p>
+     * 分布式架构根据注解判断是否扫描，单体架构直接扫描即可无须判断
+     *
+     * @return true 执行， false 不执行
+     */
+    default boolean isPerformScan() {
+        if (ServiceContextHolder.getInstance().isDistributedArchitecture()) {
+            if (ObjectUtils.isEmpty(getScanAnnotationClass())) {
+                return false;
+            }
+
+            Map<String, Object> content = ServiceContextHolder.getInstance().getApplicationContext().getBeansWithAnnotation(getScanAnnotationClass());
+            return !MapUtils.isEmpty(content);
+        }
+
+        return true;
+    }
 }

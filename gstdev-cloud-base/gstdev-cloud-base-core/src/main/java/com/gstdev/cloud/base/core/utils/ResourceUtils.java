@@ -25,134 +25,134 @@ import java.net.URL;
  */
 public class ResourceUtils {
 
-  private static final Logger log = LoggerFactory.getLogger(ResourceUtils.class);
+    private static final Logger log = LoggerFactory.getLogger(ResourceUtils.class);
 
-  private static volatile ResourceUtils INSTANCE;
+    private static volatile ResourceUtils INSTANCE;
 
-  private final PathMatchingResourcePatternResolver pathMatchingResourcePatternResolver;
+    private final PathMatchingResourcePatternResolver pathMatchingResourcePatternResolver;
 
-  private ResourceUtils() {
-    this.pathMatchingResourcePatternResolver = new PathMatchingResourcePatternResolver();
-  }
+    private ResourceUtils() {
+        this.pathMatchingResourcePatternResolver = new PathMatchingResourcePatternResolver();
+    }
 
-  private static ResourceUtils getInstance() {
-    if (ObjectUtils.isEmpty(INSTANCE)) {
-      synchronized (ResourceUtils.class) {
+    private static ResourceUtils getInstance() {
         if (ObjectUtils.isEmpty(INSTANCE)) {
-          INSTANCE = new ResourceUtils();
+            synchronized (ResourceUtils.class) {
+                if (ObjectUtils.isEmpty(INSTANCE)) {
+                    INSTANCE = new ResourceUtils();
+                }
+            }
         }
-      }
+
+        return INSTANCE;
     }
 
-    return INSTANCE;
-  }
-
-  private static PathMatchingResourcePatternResolver getResolver() {
-    return getInstance().getPathMatchingResourcePatternResolver();
-  }
-
-  public static Resource getResource(String location) {
-    return getResolver().getResource(location);
-  }
-
-  public static File getFile(String location) throws IOException {
-    return getResource(location).getFile();
-  }
-
-  public static InputStream getInputStream(String location) throws IOException {
-    return getResource(location).getInputStream();
-  }
-
-  public static String getFilename(String location) {
-    return getResource(location).getFilename();
-  }
-
-  public static URI getURI(String location) throws IOException {
-    return getResource(location).getURI();
-  }
-
-  public static URL getURL(String location) throws IOException {
-    return getResource(location).getURL();
-  }
-
-  public static long contentLength(String location) throws IOException {
-    return getResource(location).contentLength();
-  }
-
-  public static long lastModified(String location) throws IOException {
-    return getResource(location).lastModified();
-  }
-
-  public static boolean exists(String location) {
-    return getResource(location).exists();
-  }
-
-  public static boolean isFile(String location) {
-    return getResource(location).isFile();
-  }
-
-  public static boolean isReadable(String location) {
-    return getResource(location).isReadable();
-  }
-
-  public static boolean isOpen(String location) {
-    return ResourceUtils.getResource(location).isOpen();
-  }
-
-  public static Resource[] getResources(String locationPattern) throws IOException {
-    return getResolver().getResources(locationPattern);
-  }
-
-  public static boolean isUrl(String location) {
-    return org.springframework.util.ResourceUtils.isUrl(location);
-  }
-
-  public static boolean isClasspathUrl(String location) {
-    return StringUtils.startsWith(location, ResourceLoader.CLASSPATH_URL_PREFIX);
-  }
-
-  public static boolean isClasspathAllUrl(String location) {
-    return StringUtils.startsWith(location, ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX);
-  }
-
-  public static boolean isJarUrl(URL url) {
-    return org.springframework.util.ResourceUtils.isJarURL(url);
-  }
-
-  public static boolean isFileUrl(URL url) {
-    return org.springframework.util.ResourceUtils.isFileURL(url);
-  }
-
-  /**
-   * 将 {@link Resource} 转换为 byte
-   *
-   * @param resource 资源 {@link Resource}
-   * @return byte 数组
-   */
-  public static byte[] toBytes(Resource resource) {
-    try {
-      InputStream inputStream = resource.getInputStream();
-      return FileCopyUtils.copyToByteArray(inputStream);
-    } catch (IOException e) {
-      log.error("[GstDev Cloud] |- Converter resource to byte[] error!", e);
-      return null;
+    private static PathMatchingResourcePatternResolver getResolver() {
+        return getInstance().getPathMatchingResourcePatternResolver();
     }
-  }
 
-  /**
-   * 将 {@link Resource} 转换为 Base64 数据。
-   * <p>
-   * 例如：将图片类型的 Resource 转换为可以直接在前端展现的 Base64 数据
-   *
-   * @param resource 资源 {@link Resource}
-   * @return Base64 类型的字符串
-   */
-  public static String toBase64(Resource resource) {
-    byte[] bytes = toBytes(resource);
-    return Base64.encode(bytes);
-  }
+    public static Resource getResource(String location) {
+        return getResolver().getResource(location);
+    }
 
-  private PathMatchingResourcePatternResolver getPathMatchingResourcePatternResolver() {
-    return this.pathMatchingResourcePatternResolver;
-  }
+    public static File getFile(String location) throws IOException {
+        return getResource(location).getFile();
+    }
+
+    public static InputStream getInputStream(String location) throws IOException {
+        return getResource(location).getInputStream();
+    }
+
+    public static String getFilename(String location) {
+        return getResource(location).getFilename();
+    }
+
+    public static URI getURI(String location) throws IOException {
+        return getResource(location).getURI();
+    }
+
+    public static URL getURL(String location) throws IOException {
+        return getResource(location).getURL();
+    }
+
+    public static long contentLength(String location) throws IOException {
+        return getResource(location).contentLength();
+    }
+
+    public static long lastModified(String location) throws IOException {
+        return getResource(location).lastModified();
+    }
+
+    public static boolean exists(String location) {
+        return getResource(location).exists();
+    }
+
+    public static boolean isFile(String location) {
+        return getResource(location).isFile();
+    }
+
+    public static boolean isReadable(String location) {
+        return getResource(location).isReadable();
+    }
+
+    public static boolean isOpen(String location) {
+        return ResourceUtils.getResource(location).isOpen();
+    }
+
+    public static Resource[] getResources(String locationPattern) throws IOException {
+        return getResolver().getResources(locationPattern);
+    }
+
+    public static boolean isUrl(String location) {
+        return org.springframework.util.ResourceUtils.isUrl(location);
+    }
+
+    public static boolean isClasspathUrl(String location) {
+        return StringUtils.startsWith(location, ResourceLoader.CLASSPATH_URL_PREFIX);
+    }
+
+    public static boolean isClasspathAllUrl(String location) {
+        return StringUtils.startsWith(location, ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX);
+    }
+
+    public static boolean isJarUrl(URL url) {
+        return org.springframework.util.ResourceUtils.isJarURL(url);
+    }
+
+    public static boolean isFileUrl(URL url) {
+        return org.springframework.util.ResourceUtils.isFileURL(url);
+    }
+
+    /**
+     * 将 {@link Resource} 转换为 byte
+     *
+     * @param resource 资源 {@link Resource}
+     * @return byte 数组
+     */
+    public static byte[] toBytes(Resource resource) {
+        try {
+            InputStream inputStream = resource.getInputStream();
+            return FileCopyUtils.copyToByteArray(inputStream);
+        } catch (IOException e) {
+            log.error("[GstDev Cloud] |- Converter resource to byte[] error!", e);
+            return null;
+        }
+    }
+
+    /**
+     * 将 {@link Resource} 转换为 Base64 数据。
+     * <p>
+     * 例如：将图片类型的 Resource 转换为可以直接在前端展现的 Base64 数据
+     *
+     * @param resource 资源 {@link Resource}
+     * @return Base64 类型的字符串
+     */
+    public static String toBase64(Resource resource) {
+        byte[] bytes = toBytes(resource);
+        return Base64.encode(bytes);
+    }
+
+    private PathMatchingResourcePatternResolver getPathMatchingResourcePatternResolver() {
+        return this.pathMatchingResourcePatternResolver;
+    }
 }

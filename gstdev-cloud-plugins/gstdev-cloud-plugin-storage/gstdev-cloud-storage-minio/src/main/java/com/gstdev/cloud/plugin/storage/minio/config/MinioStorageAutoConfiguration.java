@@ -23,12 +23,12 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnProperty(prefix = "gstdev.cloud.storage.minio", name = {"endpoint", "accessKey", "secretKey"})
 public class MinioStorageAutoConfiguration {
 
-  @Autowired
-  private MinioStorageProperties properties;
+    @Autowired
+    private MinioStorageProperties properties;
 
-  @Bean
-  @ConditionalOnMissingBean
-  public StorageService storageService() {
-    return new MinioStorageService(properties.getEndpoint(), properties.getAccessKey(), properties.getSecretKey());
-  }
+    @Bean
+    @ConditionalOnMissingBean
+    public StorageService storageService() {
+        return new MinioStorageService(properties.getEndpoint(), properties.getAccessKey(), properties.getSecretKey());
+    }
 }

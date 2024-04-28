@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
  * @date : 2023/9/26 8:54
  */
 public class NotImplementedFeedback extends Feedback {
-  public NotImplementedFeedback(String value) {
-    super(value, HttpStatus.NOT_IMPLEMENTED);
-  }
+    public NotImplementedFeedback(String value) {
+        super(value, HttpStatus.NOT_IMPLEMENTED);
+    }
 }

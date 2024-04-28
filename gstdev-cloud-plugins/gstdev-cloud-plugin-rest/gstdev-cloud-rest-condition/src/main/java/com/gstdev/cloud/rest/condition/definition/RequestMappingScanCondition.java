@@ -15,13 +15,13 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  */
 public class RequestMappingScanCondition implements Condition {
 
-  private static final Logger log = LoggerFactory.getLogger(RequestMappingScanCondition.class);
+    private static final Logger log = LoggerFactory.getLogger(RequestMappingScanCondition.class);
 
-  @SuppressWarnings("NullableProblems")
-  @Override
-  public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
-    boolean result = RestPropertyFinder.isScanEnabled(conditionContext);
-    log.debug("[GstDev Cloud] |- Condition [Request Mapping Scan] value is [{}]", result);
-    return result;
-  }
+    @SuppressWarnings("NullableProblems")
+    @Override
+    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
+        boolean result = RestPropertyFinder.isScanEnabled(conditionContext);
+        log.debug("[GstDev Cloud] |- Condition [Request Mapping Scan] value is [{}]", result);
+        return result;
+    }
 }

@@ -23,12 +23,12 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnProperty(prefix = "gstdev.cloud.storage.huawei", name = {"endpoint", "accessKey", "secretKey"})
 public class HuaweiStorageAutoConfiguration {
 
-  @Autowired
-  private HuaweiStorageProperties properties;
+    @Autowired
+    private HuaweiStorageProperties properties;
 
-  @Bean
-  @ConditionalOnMissingBean
-  public StorageService storageService() {
-    return new HuaweiStorageService(properties.getEndpoint(), properties.getAccessKey(), properties.getSecretKey());
-  }
+    @Bean
+    @ConditionalOnMissingBean
+    public StorageService storageService() {
+        return new HuaweiStorageService(properties.getEndpoint(), properties.getAccessKey(), properties.getSecretKey());
+    }
 }

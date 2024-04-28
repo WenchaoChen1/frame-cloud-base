@@ -25,22 +25,22 @@ import org.springframework.context.annotation.Import;
 //})
 @AutoConfiguration
 @Import({
-  OAuth2ManagementConfiguration.class
+    OAuth2ManagementConfiguration.class
 })
 public class OAuth2AuthorizationServerAutoConfiguration {
 
-  private static final Logger log = LoggerFactory.getLogger(OAuth2AuthorizationServerAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(OAuth2AuthorizationServerAutoConfiguration.class);
 
-  @PostConstruct
-  public void postConstruct() {
-    log.info("[GstDev Cloud] |- Module [OAuth2 Authorization Server Starter] Auto Configure.");
-  }
+    @PostConstruct
+    public void postConstruct() {
+        log.info("[GstDev Cloud] |- Module [OAuth2 Authorization Server Starter] Auto Configure.");
+    }
 
-  @Bean
-  public AccountStatusEventManager accountStatusEventManager() {
-    DefaultAccountStatusEventManager manager = new DefaultAccountStatusEventManager();
-    log.trace("[GstDev Cloud] |- Bean [GstDev Cloud Account Status Event Manager] Auto Configure.");
-    return manager;
-  }
+    @Bean
+    public AccountStatusEventManager accountStatusEventManager() {
+        DefaultAccountStatusEventManager manager = new DefaultAccountStatusEventManager();
+        log.trace("[GstDev Cloud] |- Bean [GstDev Cloud Account Status Event Manager] Auto Configure.");
+        return manager;
+    }
 
 }

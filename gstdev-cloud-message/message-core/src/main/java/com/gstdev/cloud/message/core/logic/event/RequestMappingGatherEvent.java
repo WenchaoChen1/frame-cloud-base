@@ -14,11 +14,11 @@ import java.util.List;
  */
 public class RequestMappingGatherEvent extends AbstractApplicationEvent<List<RequestMapping>> {
 
-  public RequestMappingGatherEvent(List<RequestMapping> data) {
-    super(data);
-  }
+    public RequestMappingGatherEvent(List<RequestMapping> data) {
+        super(data);
+    }
 
-  public RequestMappingGatherEvent(List<RequestMapping> data, Clock clock) {
-    super(data, clock);
-  }
+    public RequestMappingGatherEvent(List<RequestMapping> data, Clock clock) {
+        super(data, clock);
+    }
 }

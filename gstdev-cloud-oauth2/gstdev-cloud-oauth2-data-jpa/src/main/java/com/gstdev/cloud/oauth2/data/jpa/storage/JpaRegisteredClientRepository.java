@@ -31,62 +31,62 @@ import java.util.UUID;
  */
 public class JpaRegisteredClientRepository implements RegisteredClientRepository {
 
-  private final FrameRegisteredClientService frameRegisteredClientService;
-  private final Converter<FrameRegisteredClient, RegisteredClient> frameToOAuth2Converter;
-  private final Converter<RegisteredClient, FrameRegisteredClient> oauth2ToHerodotusConverter;
+    private final FrameRegisteredClientService frameRegisteredClientService;
+    private final Converter<FrameRegisteredClient, RegisteredClient> frameToOAuth2Converter;
+    private final Converter<RegisteredClient, FrameRegisteredClient> oauth2ToHerodotusConverter;
 
-  public JpaRegisteredClientRepository(FrameRegisteredClientService herodotusRegisteredClientService, PasswordEncoder passwordEncoder) {
-    this.frameRegisteredClientService = herodotusRegisteredClientService;
-    OAuth2JacksonProcessor jacksonProcessor = new OAuth2JacksonProcessor();
-    this.frameToOAuth2Converter = new FrameToOAuth2RegisteredClientConverter(jacksonProcessor);
-    this.oauth2ToHerodotusConverter = new OAuth2ToFrameRegisteredClientConverter(jacksonProcessor, passwordEncoder);
-  }
-
-  @PostConstruct
-  public void init() {
-    System.out.println("aaaaaaaaaaaa");
-    List<RegisteredClient> registeredClients = this.registryCloents();
-    for (RegisteredClient registeredClient : registeredClients) {
-      RegisteredClient registeredClientId = this.findByClientId(registeredClient.getClientId());
-      if (registeredClientId == null) {
-        this.save(registeredClient);
-      }
+    public JpaRegisteredClientRepository(FrameRegisteredClientService herodotusRegisteredClientService, PasswordEncoder passwordEncoder) {
+        this.frameRegisteredClientService = herodotusRegisteredClientService;
+        OAuth2JacksonProcessor jacksonProcessor = new OAuth2JacksonProcessor();
+        this.frameToOAuth2Converter = new FrameToOAuth2RegisteredClientConverter(jacksonProcessor);
+        this.oauth2ToHerodotusConverter = new OAuth2ToFrameRegisteredClientConverter(jacksonProcessor, passwordEncoder);
     }
-  }
 
-  @Override
-  public void save(RegisteredClient registeredClient) {
-    this.frameRegisteredClientService.save(toEntity(registeredClient));
-  }
-
-  @Override
-  public RegisteredClient findById(String id) {
-    FrameRegisteredClient herodotusRegisteredClient = this.frameRegisteredClientService.findById(id);
-    if (ObjectUtils.isNotEmpty(herodotusRegisteredClient)) {
-      return toObject(herodotusRegisteredClient);
+    @PostConstruct
+    public void init() {
+        System.out.println("aaaaaaaaaaaa");
+        List<RegisteredClient> registeredClients = this.registryCloents();
+        for (RegisteredClient registeredClient : registeredClients) {
+            RegisteredClient registeredClientId = this.findByClientId(registeredClient.getClientId());
+            if (registeredClientId == null) {
+                this.save(registeredClient);
+            }
+        }
     }
-    return null;
-  }
 
-  @Override
-  public RegisteredClient findByClientId(String clientId) {
-    return this.frameRegisteredClientService.findByClientId(clientId).map(this::toObject).orElse(null);
-  }
+    @Override
+    public void save(RegisteredClient registeredClient) {
+        this.frameRegisteredClientService.save(toEntity(registeredClient));
+    }
 
-  public void remove(String id) {
-    this.frameRegisteredClientService.deleteById(id);
-  }
+    @Override
+    public RegisteredClient findById(String id) {
+        FrameRegisteredClient herodotusRegisteredClient = this.frameRegisteredClientService.findById(id);
+        if (ObjectUtils.isNotEmpty(herodotusRegisteredClient)) {
+            return toObject(herodotusRegisteredClient);
+        }
+        return null;
+    }
 
-  private RegisteredClient toObject(FrameRegisteredClient herodotusRegisteredClient) {
-    return frameToOAuth2Converter.convert(herodotusRegisteredClient);
-  }
+    @Override
+    public RegisteredClient findByClientId(String clientId) {
+        return this.frameRegisteredClientService.findByClientId(clientId).map(this::toObject).orElse(null);
+    }
 
-  private FrameRegisteredClient toEntity(RegisteredClient registeredClient) {
-    return oauth2ToHerodotusConverter.convert(registeredClient);
-  }
+    public void remove(String id) {
+        this.frameRegisteredClientService.deleteById(id);
+    }
+
+    private RegisteredClient toObject(FrameRegisteredClient herodotusRegisteredClient) {
+        return frameToOAuth2Converter.convert(herodotusRegisteredClient);
+    }
+
+    private FrameRegisteredClient toEntity(RegisteredClient registeredClient) {
+        return oauth2ToHerodotusConverter.convert(registeredClient);
+    }
 
 
-  public List<RegisteredClient> registryCloents() {
+    public List<RegisteredClient> registryCloents() {
 
              /*
          客户端在数据库中记录的区别
@@ -96,7 +96,7 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
          client_name：客户端的名称，可以省略
          client_secret：密码
          */
-    //    /** 此处保留作为client入库代码案例
+        //    /** 此处保留作为client入库代码案例
 //     RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
 //     .clientId("messaging-client")
 //     .clientSecret("secret")
@@ -111,18 +111,18 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
 //     .scope("message.write")
 //     .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
 //     .build();
-    RegisteredClient oidcClient = RegisteredClient.withId(UUID.randomUUID().toString())
-      .clientId("oidc-client")
-      .clientSecret("{noop}secret")
-      .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-      .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-      .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-      .redirectUri("http://127.0.0.1:8080/login/oauth2/code/oidc-client")
-      .postLogoutRedirectUri("http://127.0.0.1:8080/")
-      .scope(OidcScopes.OPENID)
-      .scope(OidcScopes.PROFILE)
-      .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
-      .build();
+        RegisteredClient oidcClient = RegisteredClient.withId(UUID.randomUUID().toString())
+            .clientId("oidc-client")
+            .clientSecret("{noop}secret")
+            .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+            .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+            .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+            .redirectUri("http://127.0.0.1:8080/login/oauth2/code/oidc-client")
+            .postLogoutRedirectUri("http://127.0.0.1:8080/")
+            .scope(OidcScopes.OPENID)
+            .scope(OidcScopes.PROFILE)
+            .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
+            .build();
         /*
           如果使用明文，客户端认证时会自动升级加密方式，换句话说直接修改客户端密码，所以直接使用 bcrypt 加密避免不必要的麻烦
           官方ISSUE： https://github.com/spring-projects/spring-authorization-server/issues/1099

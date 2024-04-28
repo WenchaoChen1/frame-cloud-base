@@ -26,60 +26,60 @@ import java.util.Set;
  * @date : 2022/3/1 18:06
  */
 @Service
-public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application, String,OAuth2ApplicationRepository> {
+public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application, String, OAuth2ApplicationRepository> {
 
-  private static final Logger log = LoggerFactory.getLogger(OAuth2ApplicationService.class);
+    private static final Logger log = LoggerFactory.getLogger(OAuth2ApplicationService.class);
 
-  private final RegisteredClientRepository registeredClientRepository;
-  private final FrameRegisteredClientRepository frameRegisteredClientRepository;
-  private  OAuth2ApplicationRepository applicationRepository;
-  private final Converter<OAuth2Application, RegisteredClient> objectConverter;
+    private final RegisteredClientRepository registeredClientRepository;
+    private final FrameRegisteredClientRepository frameRegisteredClientRepository;
+    private OAuth2ApplicationRepository applicationRepository;
+    private final Converter<OAuth2Application, RegisteredClient> objectConverter;
 
-  public OAuth2ApplicationService(RegisteredClientRepository registeredClientRepository, RegisteredClientRepository registeredClientRepository1, FrameRegisteredClientRepository frameRegisteredClientRepository, OAuth2ApplicationRepository applicationRepository) {
-      super(applicationRepository);
-      this.registeredClientRepository = registeredClientRepository1;
-      this.frameRegisteredClientRepository = frameRegisteredClientRepository;
-    this.objectConverter = new OAuth2ApplicationToRegisteredClientConverter();
-  }
-
-
-  @Override
-  public OAuth2Application saveAndFlush(OAuth2Application entity) {
-    OAuth2Application application = super.saveAndFlush(entity);
-    if (ObjectUtils.isNotEmpty(application)) {
-      registeredClientRepository.save(objectConverter.convert(application));
-      log.debug("[GstDev Cloud] |- OAuth2ApplicationService saveOrUpdate.");
-      return application;
-    } else {
-      log.error("[GstDev Cloud] |- OAuth2ApplicationService saveOrUpdate error, rollback data!");
-      throw new NullPointerException("save or update OAuth2Application failed");
-    }
-  }
-
-  @Transactional(rollbackFor = TransactionalRollbackException.class)
-  @Override
-  public void deleteById(String id) {
-    super.deleteById(id);
-    frameRegisteredClientRepository.deleteById(id);
-  }
-
-  @Transactional(rollbackFor = TransactionalRollbackException.class)
-  public OAuth2Application authorize(String applicationId, String[] scopeIds) {
-
-    Set<OAuth2Scope> scopes = new HashSet<>();
-    for (String scopeId : scopeIds) {
-      OAuth2Scope scope = new OAuth2Scope();
-      scope.setScopeId(scopeId);
-      scopes.add(scope);
+    public OAuth2ApplicationService(RegisteredClientRepository registeredClientRepository, RegisteredClientRepository registeredClientRepository1, FrameRegisteredClientRepository frameRegisteredClientRepository, OAuth2ApplicationRepository applicationRepository) {
+        super(applicationRepository);
+        this.registeredClientRepository = registeredClientRepository1;
+        this.frameRegisteredClientRepository = frameRegisteredClientRepository;
+        this.objectConverter = new OAuth2ApplicationToRegisteredClientConverter();
     }
 
-    OAuth2Application oldApplication = findById(applicationId);
-    oldApplication.setScopes(scopes);
 
-    return saveAndFlush(oldApplication);
-  }
+    @Override
+    public OAuth2Application saveAndFlush(OAuth2Application entity) {
+        OAuth2Application application = super.saveAndFlush(entity);
+        if (ObjectUtils.isNotEmpty(application)) {
+            registeredClientRepository.save(objectConverter.convert(application));
+            log.debug("[GstDev Cloud] |- OAuth2ApplicationService saveOrUpdate.");
+            return application;
+        } else {
+            log.error("[GstDev Cloud] |- OAuth2ApplicationService saveOrUpdate error, rollback data!");
+            throw new NullPointerException("save or update OAuth2Application failed");
+        }
+    }
 
-  public OAuth2Application findByClientId(String clientId) {
-    return applicationRepository.findByClientId(clientId);
-  }
+    @Transactional(rollbackFor = TransactionalRollbackException.class)
+    @Override
+    public void deleteById(String id) {
+        super.deleteById(id);
+        frameRegisteredClientRepository.deleteById(id);
+    }
+
+    @Transactional(rollbackFor = TransactionalRollbackException.class)
+    public OAuth2Application authorize(String applicationId, String[] scopeIds) {
+
+        Set<OAuth2Scope> scopes = new HashSet<>();
+        for (String scopeId : scopeIds) {
+            OAuth2Scope scope = new OAuth2Scope();
+            scope.setScopeId(scopeId);
+            scopes.add(scope);
+        }
+
+        OAuth2Application oldApplication = findById(applicationId);
+        oldApplication.setScopes(scopes);
+
+        return saveAndFlush(oldApplication);
+    }
+
+    public OAuth2Application findByClientId(String clientId) {
+        return applicationRepository.findByClientId(clientId);
+    }
 }

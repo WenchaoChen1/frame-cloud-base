@@ -17,34 +17,34 @@ import java.util.Date;
  * @date : 2023/2/26 20:30
  */
 public abstract class BaseMongoEntity extends AbstractEntity {
-  @Schema(title = "数据创建时间")
-  @Column(name = "create_time", updatable = false)
-  @CreatedDate
-  @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT)
-  private Date createTime = new Date();
-  @Schema(title = "数据更新时间")
-  @Column(name = "update_time")
-  @LastModifiedDate
-  @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT)
-  private Date updateTime = new Date();
+    @Schema(title = "数据创建时间")
+    @Column(name = "create_time", updatable = false)
+    @CreatedDate
+    @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT)
+    private Date createTime = new Date();
+    @Schema(title = "数据更新时间")
+    @Column(name = "update_time")
+    @LastModifiedDate
+    @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT)
+    private Date updateTime = new Date();
 
-  public abstract String getId();
+    public abstract String getId();
 
-  public abstract void setId(String id);
+    public abstract void setId(String id);
 
-  public Date getCreateTime() {
-    return createTime;
-  }
+    public Date getCreateTime() {
+        return createTime;
+    }
 
-  public void setCreateTime(Date createTime) {
-    this.createTime = createTime;
-  }
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
-  public Date getUpdateTime() {
-    return updateTime;
-  }
+    public Date getUpdateTime() {
+        return updateTime;
+    }
 
-  public void setUpdateTime(Date updateTime) {
-    this.updateTime = updateTime;
-  }
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 }

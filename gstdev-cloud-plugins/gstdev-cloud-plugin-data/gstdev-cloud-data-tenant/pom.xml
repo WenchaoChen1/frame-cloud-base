@@ -2,30 +2,30 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <name>GstDev Cloud :: Data :: Tenant</name>
-  <artifactId>gstdev-cloud-data-tenant</artifactId>
-  <packaging>jar</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <name>GstDev Cloud :: Data :: Tenant</name>
+    <artifactId>gstdev-cloud-data-tenant</artifactId>
+    <packaging>jar</packaging>
 
-  <parent>
-    <groupId>com.gstdev.cloud</groupId>
-    <artifactId>gstdev-cloud-plugin-data</artifactId>
-    <version>2024.0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
+    <parent>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-plugin-data</artifactId>
+        <version>2024.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
-  <description>GstDev Cloud 基于 JPA 的多租户核心组件模块</description>
+    <description>GstDev Cloud 基于 JPA 的多租户核心组件模块</description>
 
-  <dependencies>
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-data-core</artifactId>
-    </dependency>
+    <dependencies>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-data-core</artifactId>
+        </dependency>
 
-    <dependency>
-      <groupId>com.zaxxer</groupId>
-      <artifactId>HikariCP</artifactId>
-    </dependency>
-  </dependencies>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

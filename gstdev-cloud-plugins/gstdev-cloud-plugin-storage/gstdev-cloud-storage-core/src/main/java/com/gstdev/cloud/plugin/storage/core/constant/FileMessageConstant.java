@@ -14,23 +14,23 @@ package com.gstdev.cloud.plugin.storage.core.constant;
  */
 public class FileMessageConstant {
 
-  /**
-   * 文件上传失败,请检查配置信息
-   */
-  public static final String ERROR_FILE_UPDATE = "hfle.error.file.upload";
-  /**
-   * 下载文件失败
-   */
-  public static final String ERROR_DOWNLOAD_FILE = "hfle.error.download.file";
-  /**
-   * 删除文件失败
-   */
-  public static final String ERROR_DELETE_FILE = "hfle.error.delete.file";
-  /**
-   * 桶不存在
-   */
-  public static final String BUCKET_NOT_EXISTS = "hfle.error.bucket_not_exists";
+    /**
+     * 文件上传失败,请检查配置信息
+     */
+    public static final String ERROR_FILE_UPDATE = "hfle.error.file.upload";
+    /**
+     * 下载文件失败
+     */
+    public static final String ERROR_DOWNLOAD_FILE = "hfle.error.download.file";
+    /**
+     * 删除文件失败
+     */
+    public static final String ERROR_DELETE_FILE = "hfle.error.delete.file";
+    /**
+     * 桶不存在
+     */
+    public static final String BUCKET_NOT_EXISTS = "hfle.error.bucket_not_exists";
 
-  private FileMessageConstant() {
-  }
+    private FileMessageConstant() {
+    }
 }

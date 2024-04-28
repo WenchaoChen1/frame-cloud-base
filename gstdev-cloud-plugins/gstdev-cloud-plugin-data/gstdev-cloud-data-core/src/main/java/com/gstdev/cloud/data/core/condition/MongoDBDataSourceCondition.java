@@ -18,14 +18,14 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  */
 public class MongoDBDataSourceCondition implements Condition {
 
-  private static final Logger log = LoggerFactory.getLogger(MongoDBDataSourceCondition.class);
+    private static final Logger log = LoggerFactory.getLogger(MongoDBDataSourceCondition.class);
 
-  @SuppressWarnings("NullableProblems")
-  @Override
-  public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
-    String property = PropertyResolver.getProperty(conditionContext, DataConstants.ITEM_DATA_DATA_SOURCE);
-    boolean result = StringUtils.isNotBlank(property) && StringUtils.equalsIgnoreCase(property, DataSource.MONGODB.name());
-    log.debug("[GstDev Cloud] |- Condition [MongoDB Data Source] value is [{}]", result);
-    return result;
-  }
+    @SuppressWarnings("NullableProblems")
+    @Override
+    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
+        String property = PropertyResolver.getProperty(conditionContext, DataConstants.ITEM_DATA_DATA_SOURCE);
+        boolean result = StringUtils.isNotBlank(property) && StringUtils.equalsIgnoreCase(property, DataSource.MONGODB.name());
+        log.debug("[GstDev Cloud] |- Condition [MongoDB Data Source] value is [{}]", result);
+        return result;
+    }
 }

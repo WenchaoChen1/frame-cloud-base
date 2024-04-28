@@ -29,7 +29,6 @@ import java.util.List;
 import java.util.Map;
 
 
-
 /**
  * <p>Description: 抽象的用户认证Provider </p>
  * <p>

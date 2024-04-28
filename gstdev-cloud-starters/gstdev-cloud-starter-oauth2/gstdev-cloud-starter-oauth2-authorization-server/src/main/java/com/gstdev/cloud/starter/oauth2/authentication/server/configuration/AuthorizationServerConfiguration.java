@@ -71,89 +71,89 @@ import java.util.UUID;
 //@Import({OAuth2AuthorizationConfiguration.class, OAuth2AuthenticationConfiguration.class})
 public class AuthorizationServerConfiguration {
 
-  /**
-   * 授权配置
-   * // @Order 表示加载优先级；HIGHEST_PRECEDENCE为最高优先级
-   *
-   * @param http
-   * @return
-   * @throws Exception
-   */
-  @Bean
-  @Order(Ordered.HIGHEST_PRECEDENCE)
-  @SneakyThrows
-  public SecurityFilterChain authorizationServerSecurityFilterChain(
-    HttpSecurity http,
-    PasswordEncoder passwordEncoder,
-    UserDetailsService userDetailsService,
+    /**
+     * 授权配置
+     * // @Order 表示加载优先级；HIGHEST_PRECEDENCE为最高优先级
+     *
+     * @param http
+     * @return
+     * @throws Exception
+     */
+    @Bean
+    @Order(Ordered.HIGHEST_PRECEDENCE)
+    @SneakyThrows
+    public SecurityFilterChain authorizationServerSecurityFilterChain(
+        HttpSecurity http,
+        PasswordEncoder passwordEncoder,
+        UserDetailsService userDetailsService,
 //    ClientDetailsService clientDetailsService,
-    HttpCryptoProcessor httpCryptoProcessor,
+        HttpCryptoProcessor httpCryptoProcessor,
 //    OidcClientRegistrationResponseHandler oidcClientRegistrationResponseHandler,
-    OAuth2AuthenticationProperties oauth2AuthenticationProperties,
-    OAuth2DeviceVerificationResponseHandler oauth2DeviceVerificationResponseHandler,
-    OAuth2FormLoginConfigurerCustomizer oauth2FormLoginConfigurerCustomizer,
+        OAuth2AuthenticationProperties oauth2AuthenticationProperties,
+        OAuth2DeviceVerificationResponseHandler oauth2DeviceVerificationResponseHandler,
+        OAuth2FormLoginConfigurerCustomizer oauth2FormLoginConfigurerCustomizer,
 //    OAuth2SessionManagementConfigurerCustomer oauth2sessionManagementConfigurerCustomer,
-    OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer
-  ) {
-    log.debug("[GstDev Cloud] |- Bean [Authorization Server Security Filter Chain] Auto Configure.");
+        OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer
+    ) {
+        log.debug("[GstDev Cloud] |- Bean [Authorization Server Security Filter Chain] Auto Configure.");
 
-    //是一个便利 ( static) 实用程序方法，它将默认的 OAuth2 安全配置应用于HttpSecurity.
+        //是一个便利 ( static) 实用程序方法，它将默认的 OAuth2 安全配置应用于HttpSecurity.
         OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
 
 //    SessionRegistry sessionRegistry = OAuth2ConfigurerUtils.getOptionalBean(http, SessionRegistry.class);
 
-    //提供完全自定义 OAuth2 授权服务器安全配置的能力。它允许您指定要使用的核心组件 - 例如，RegisteredClientRepository、
-    // OAuth2AuthorizationService、OAuth2TokenGenerator和其他。此外，它还允许您自定义协议端点的请求处理逻辑 -
-    // 例如，授权端点、设备授权端点、设备验证端点、令牌端点、令牌内省端点等。
+        //提供完全自定义 OAuth2 授权服务器安全配置的能力。它允许您指定要使用的核心组件 - 例如，RegisteredClientRepository、
+        // OAuth2AuthorizationService、OAuth2TokenGenerator和其他。此外，它还允许您自定义协议端点的请求处理逻辑 -
+        // 例如，授权端点、设备授权端点、设备验证端点、令牌端点、令牌内省端点等。
 //    DefaultAuthenticationFailureHandler errorResponseHandler = new DefaultAuthenticationFailureHandler();
-      OAuth2AuthenticationFailureResponseHandler errorResponseHandler = new OAuth2AuthenticationFailureResponseHandler();
+        OAuth2AuthenticationFailureResponseHandler errorResponseHandler = new OAuth2AuthenticationFailureResponseHandler();
 //    DefaultAuthenticationSuccessHandler successResponseHandler = new DefaultAuthenticationSuccessHandler();
 //    DefaultAccessDeniedHandler accessDeniedHandler = new DefaultAccessDeniedHandler();
 //    DefaultAuthenticationEntryPoint authenticationEntryPoint = new DefaultAuthenticationEntryPoint();
-    OAuth2AuthorizationServerConfigurer authorizationServerConfigurer = http.getConfigurer(OAuth2AuthorizationServerConfigurer.class);
+        OAuth2AuthorizationServerConfigurer authorizationServerConfigurer = http.getConfigurer(OAuth2AuthorizationServerConfigurer.class);
 //    authorizationServerConfigurer.registeredClientRepository(registeredClientRepository);
 //    authorizationServerConfigurer.authorizationService(authorizationService);
 //    authorizationServerConfigurer.authorizationConsentService(authorizationConsentService);
 //    authorizationServerConfigurer.authorizationServerSettings(authorizationServerSettings);
 //    authorizationServerConfigurer.tokenGenerator(tokenGenerator);
-    authorizationServerConfigurer.clientAuthentication(clientAuthentication -> {
-      clientAuthentication.errorResponseHandler(errorResponseHandler);//（AuthenticationFailureHandler后处理器）用于处理失败的客户端身份验证并返回OAuth2Error响应。
+        authorizationServerConfigurer.clientAuthentication(clientAuthentication -> {
+            clientAuthentication.errorResponseHandler(errorResponseHandler);//（AuthenticationFailureHandler后处理器）用于处理失败的客户端身份验证并返回OAuth2Error响应。
 //        clientAuthentication.authenticationProviders(new OAuth2ClientCredentialsAuthenticationProviderConsumer(httpSecurity, clientDetailsService));
-    });
-    authorizationServerConfigurer.authorizationEndpoint(authorizationEndpoint -> {
-      authorizationEndpoint.errorResponseHandler(errorResponseHandler);
-        authorizationEndpoint.consentPage(DefaultConstants.AUTHORIZATION_CONSENT_URI);
-    });
-    authorizationServerConfigurer.deviceAuthorizationEndpoint(deviceAuthorizationEndpoint -> {
-      deviceAuthorizationEndpoint.errorResponseHandler(errorResponseHandler);
-        deviceAuthorizationEndpoint.verificationUri(DefaultConstants.DEVICE_ACTIVATION_URI);
+        });
+        authorizationServerConfigurer.authorizationEndpoint(authorizationEndpoint -> {
+            authorizationEndpoint.errorResponseHandler(errorResponseHandler);
+            authorizationEndpoint.consentPage(DefaultConstants.AUTHORIZATION_CONSENT_URI);
+        });
+        authorizationServerConfigurer.deviceAuthorizationEndpoint(deviceAuthorizationEndpoint -> {
+            deviceAuthorizationEndpoint.errorResponseHandler(errorResponseHandler);
+            deviceAuthorizationEndpoint.verificationUri(DefaultConstants.DEVICE_ACTIVATION_URI);
 
-    });
-    authorizationServerConfigurer.deviceVerificationEndpoint(deviceVerificationEndpoint -> {
-      deviceVerificationEndpoint.errorResponseHandler(errorResponseHandler);
-        deviceVerificationEndpoint.consentPage(DefaultConstants.AUTHORIZATION_CONSENT_URI);
-        deviceVerificationEndpoint.deviceVerificationResponseHandler(oauth2DeviceVerificationResponseHandler);
-    });
+        });
+        authorizationServerConfigurer.deviceVerificationEndpoint(deviceVerificationEndpoint -> {
+            deviceVerificationEndpoint.errorResponseHandler(errorResponseHandler);
+            deviceVerificationEndpoint.consentPage(DefaultConstants.AUTHORIZATION_CONSENT_URI);
+            deviceVerificationEndpoint.deviceVerificationResponseHandler(oauth2DeviceVerificationResponseHandler);
+        });
 
-    authorizationServerConfigurer.tokenEndpoint(tokenEndpoint -> {
-      AuthenticationConverter delegatingAuthenticationConverter = new DelegatingAuthenticationConverter(Arrays.asList(
-        new OAuth2AuthorizationCodeAuthenticationConverter()
-        , new OAuth2RefreshTokenAuthenticationConverter()
-        , new OAuth2ClientCredentialsAuthenticationConverter()
-        //TODO 多加的
-        , new OAuth2DeviceCodeAuthenticationConverter()
-        //自定义授权模式转换器(Converter)
-        , new OAuth2PasswordAuthenticationConverter(httpCryptoProcessor)
+        authorizationServerConfigurer.tokenEndpoint(tokenEndpoint -> {
+            AuthenticationConverter delegatingAuthenticationConverter = new DelegatingAuthenticationConverter(Arrays.asList(
+                new OAuth2AuthorizationCodeAuthenticationConverter()
+                , new OAuth2RefreshTokenAuthenticationConverter()
+                , new OAuth2ClientCredentialsAuthenticationConverter()
+                //TODO 多加的
+                , new OAuth2DeviceCodeAuthenticationConverter()
+                //自定义授权模式转换器(Converter)
+                , new OAuth2PasswordAuthenticationConverter(httpCryptoProcessor)
 //        new OAuth2SocialCredentialsAuthenticationConverter(httpCryptoProcessor))
-      ));
-      tokenEndpoint.accessTokenRequestConverter(delegatingAuthenticationConverter);
-      tokenEndpoint.accessTokenResponseHandler(new OAuth2AccessTokenResponseHandler(httpCryptoProcessor));
+            ));
+            tokenEndpoint.accessTokenRequestConverter(delegatingAuthenticationConverter);
+            tokenEndpoint.accessTokenResponseHandler(new OAuth2AccessTokenResponseHandler(httpCryptoProcessor));
 //      tokenEndpoint.authenticationProviders(new OAuth2AuthorizationCodeAuthenticationProviderConsumer(http, sessionRegistry));
-      tokenEndpoint.authenticationProviders(new OAuth2AuthorizationCodeAuthenticationProviderConsumer(http));
-      tokenEndpoint.errorResponseHandler(errorResponseHandler);// 自定义失败响应
-    });
-    authorizationServerConfigurer.tokenIntrospectionEndpoint(tokenIntrospectionEndpoint -> tokenIntrospectionEndpoint.errorResponseHandler(errorResponseHandler));
-    authorizationServerConfigurer.tokenRevocationEndpoint(tokenRevocationEndpoint -> tokenRevocationEndpoint.errorResponseHandler(errorResponseHandler));
+            tokenEndpoint.authenticationProviders(new OAuth2AuthorizationCodeAuthenticationProviderConsumer(http));
+            tokenEndpoint.errorResponseHandler(errorResponseHandler);// 自定义失败响应
+        });
+        authorizationServerConfigurer.tokenIntrospectionEndpoint(tokenIntrospectionEndpoint -> tokenIntrospectionEndpoint.errorResponseHandler(errorResponseHandler));
+        authorizationServerConfigurer.tokenRevocationEndpoint(tokenRevocationEndpoint -> tokenRevocationEndpoint.errorResponseHandler(errorResponseHandler));
 //    authorizationServerConfigurer.authorizationServerMetadataEndpoint(authorizationServerMetadataEndpoint -> {
 //    });
 //    authorizationServerConfigurer.oidc(oidc -> oidc
@@ -166,41 +166,41 @@ public class AuthorizationServerConfiguration {
 //      .clientRegistrationEndpoint(clientRegistrationEndpoint -> {
 //      })
 //    );
-    // Enable OpenID Connect 1.0
-    authorizationServerConfigurer.oidc(Customizer.withDefaults());
+        // Enable OpenID Connect 1.0
+        authorizationServerConfigurer.oidc(Customizer.withDefaults());
 
 
 //    RequestMatcher endpointsMatcher = authorizationServerConfigurer.getEndpointsMatcher();
-    // 仅拦截 OAuth2 Authorization Server 的相关 endpoint
+        // 仅拦截 OAuth2 Authorization Server 的相关 endpoint
 //    http.securityMatcher(endpointsMatcher)
-    http
-      // 开启请求认证
+        http
+            // 开启请求认证
 //      .authorizeHttpRequests(authorizeRequests -> authorizeRequests.anyRequest().authenticated())
-      // 禁用对 OAuth2 Authorization Server 相关 endpoint 的 CSRF 防御
+            // 禁用对 OAuth2 Authorization Server 相关 endpoint 的 CSRF 防御
 //      .csrf(csrf -> csrf.ignoringRequestMatchers(endpointsMatcher))
-      .formLogin(oauth2FormLoginConfigurerCustomizer)
+            .formLogin(oauth2FormLoginConfigurerCustomizer)
 //      .sessionManagement(oauth2sessionManagementConfigurerCustomer)
 //      .addFilterBefore(new MultiTenantFilter(), AuthorizationFilter.class)
-      // 接受用户信息和/或客户端注册的访问令牌
-      .oauth2ResourceServer(oauth2ResourceServerConfigurerCustomer)
+            // 接受用户信息和/或客户端注册的访问令牌
+            .oauth2ResourceServer(oauth2ResourceServerConfigurerCustomer)
 //      .with(new OAuth2AuthenticationProviderConfigurer(sessionRegistry, passwordEncoder, userDetailsService, oauth2AuthenticationProperties), (configurer) -> {});
-      .with(new OAuth2AuthenticationProviderConfigurer(passwordEncoder, userDetailsService, oauth2AuthenticationProperties), (configurer) -> {
-      });
+            .with(new OAuth2AuthenticationProviderConfigurer(passwordEncoder, userDetailsService, oauth2AuthenticationProperties), (configurer) -> {
+            });
 
-    return http.build();
-  }
+        return http.build();
+    }
 
-  /**
-   * AuthorizationServerSettings是必需的组件。
-   * AuthorizationServerSettings包含 OAuth2 授权服务器的配置设置。它指定URI协议端点以及颁发者标识符。协议端点的默认值URI如下
-   *
-   * @param authorizationServerProperties
-   * @return
-   */
-  @Bean
-  public AuthorizationServerSettings authorizationServerSettings(OAuth2AuthenticationProperties authorizationServerProperties) {
-    OAuth2AuthenticationProperties.AuthorizationServerSettings authorizationServerSettings = authorizationServerProperties.getAuthorizationServerSettings();
-    // @formatter:off
+    /**
+     * AuthorizationServerSettings是必需的组件。
+     * AuthorizationServerSettings包含 OAuth2 授权服务器的配置设置。它指定URI协议端点以及颁发者标识符。协议端点的默认值URI如下
+     *
+     * @param authorizationServerProperties
+     * @return
+     */
+    @Bean
+    public AuthorizationServerSettings authorizationServerSettings(OAuth2AuthenticationProperties authorizationServerProperties) {
+        OAuth2AuthenticationProperties.AuthorizationServerSettings authorizationServerSettings = authorizationServerProperties.getAuthorizationServerSettings();
+        // @formatter:off
     return AuthorizationServerSettings.builder()
       .issuer(authorizationServerSettings.getIssuerUri())
       .authorizationEndpoint(authorizationServerSettings.getAuthorizationEndpoint())
@@ -217,7 +217,7 @@ public class AuthorizationServerConfiguration {
       .oidcClientRegistrationEndpoint(authorizationServerSettings.getOidcClientRegistrationEndpoint())
       .build();
     // @formatter:on
-  }
+    }
 
 //  @Bean
 //  public RegisteredClientRepository registeredClientRepository(JdbcTemplate jdbcTemplate,PasswordEncoder passwordEncoder) {
@@ -264,53 +264,53 @@ public class AuthorizationServerConfiguration {
 //    return new InMemoryOAuth2AuthorizationConsentService();
 //  }
 
-  /**
-   * 加载jwk资源
-   * 用于生成令牌
-   *
-   * @return
-   */
-  @Bean
-  @SneakyThrows
-  public JWKSource<SecurityContext> jwkSource(OAuth2AuthorizationProperties authorizationProperties) {
+    /**
+     * 加载jwk资源
+     * 用于生成令牌
+     *
+     * @return
+     */
+    @Bean
+    @SneakyThrows
+    public JWKSource<SecurityContext> jwkSource(OAuth2AuthorizationProperties authorizationProperties) {
 
-    OAuth2AuthorizationProperties.Jwk jwk = authorizationProperties.getJwk();
+        OAuth2AuthorizationProperties.Jwk jwk = authorizationProperties.getJwk();
 
-    KeyPair keyPair = null;
-    if (jwk.getCertificate() == Certificate.CUSTOM) {
-      try {
-        Resource[] resource = ResourceUtils.getResources(jwk.getJksKeyStore());
-        if (ArrayUtils.isNotEmpty(resource)) {
-          KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(resource[0], jwk.getJksStorePassword().toCharArray());
-          keyPair = keyStoreKeyFactory.getKeyPair(jwk.getJksKeyAlias(), jwk.getJksKeyPassword().toCharArray());
+        KeyPair keyPair = null;
+        if (jwk.getCertificate() == Certificate.CUSTOM) {
+            try {
+                Resource[] resource = ResourceUtils.getResources(jwk.getJksKeyStore());
+                if (ArrayUtils.isNotEmpty(resource)) {
+                    KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(resource[0], jwk.getJksStorePassword().toCharArray());
+                    keyPair = keyStoreKeyFactory.getKeyPair(jwk.getJksKeyAlias(), jwk.getJksKeyPassword().toCharArray());
+                }
+            } catch (IOException e) {
+                log.error("[GstDev Cloud] |- Read custom certificate under resource folder error!", e);
+            }
+
+        } else {
+            KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+            keyPairGenerator.initialize(2048);
+            keyPair = keyPairGenerator.generateKeyPair();
         }
-      } catch (IOException e) {
-        log.error("[GstDev Cloud] |- Read custom certificate under resource folder error!", e);
-      }
 
-    } else {
-      KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
-      keyPairGenerator.initialize(2048);
-      keyPair = keyPairGenerator.generateKeyPair();
+        RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
+        RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
+        RSAKey rsaKey = new RSAKey.Builder(publicKey)
+            .privateKey(privateKey)
+            .keyID(UUID.randomUUID().toString())
+            .build();
+        JWKSet jwkSet = new JWKSet(rsaKey);
+        return (jwkSelector, securityContext) -> jwkSelector.select(jwkSet);
     }
 
-    RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
-    RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
-    RSAKey rsaKey = new RSAKey.Builder(publicKey)
-      .privateKey(privateKey)
-      .keyID(UUID.randomUUID().toString())
-      .build();
-    JWKSet jwkSet = new JWKSet(rsaKey);
-    return (jwkSelector, securityContext) -> jwkSelector.select(jwkSet);
-  }
-
-  /**
-   * jwt 解码
-   */
-  @Bean
-  public JwtDecoder jwtDecoder(JWKSource<SecurityContext> jwkSource) {
-    return OAuth2AuthorizationServerConfiguration.jwtDecoder(jwkSource);
-  }
+    /**
+     * jwt 解码
+     */
+    @Bean
+    public JwtDecoder jwtDecoder(JWKSource<SecurityContext> jwkSource) {
+        return OAuth2AuthorizationServerConfiguration.jwtDecoder(jwkSource);
+    }
 
 
 }

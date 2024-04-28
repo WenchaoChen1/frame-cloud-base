@@ -13,20 +13,20 @@ import org.springframework.core.Ordered;
  * @date : 2023/9/25 15:31
  */
 public class CaptchaErrorCodeMapperBuilderCustomizer implements ErrorCodeMapperBuilderCustomizer, Ordered {
-  @Override
-  public void customize(ErrorCodeMapperBuilder builder) {
-    builder.notAcceptable(
-      CaptchaErrorCodes.CAPTCHA_CATEGORY_IS_INCORRECT,
-      CaptchaErrorCodes.CAPTCHA_HANDLER_NOT_EXIST,
-      CaptchaErrorCodes.CAPTCHA_HAS_EXPIRED,
-      CaptchaErrorCodes.CAPTCHA_IS_EMPTY,
-      CaptchaErrorCodes.CAPTCHA_MISMATCH,
-      CaptchaErrorCodes.CAPTCHA_PARAMETER_ILLEGAL
-    );
-  }
+    @Override
+    public void customize(ErrorCodeMapperBuilder builder) {
+        builder.notAcceptable(
+            CaptchaErrorCodes.CAPTCHA_CATEGORY_IS_INCORRECT,
+            CaptchaErrorCodes.CAPTCHA_HANDLER_NOT_EXIST,
+            CaptchaErrorCodes.CAPTCHA_HAS_EXPIRED,
+            CaptchaErrorCodes.CAPTCHA_IS_EMPTY,
+            CaptchaErrorCodes.CAPTCHA_MISMATCH,
+            CaptchaErrorCodes.CAPTCHA_PARAMETER_ILLEGAL
+        );
+    }
 
-  @Override
-  public int getOrder() {
-    return ErrorCodeMapperBuilderOrdered.CAPTCHA;
-  }
+    @Override
+    public int getOrder() {
+        return ErrorCodeMapperBuilderOrdered.CAPTCHA;
+    }
 }

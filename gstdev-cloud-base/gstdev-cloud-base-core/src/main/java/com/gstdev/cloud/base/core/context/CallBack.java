@@ -11,10 +11,10 @@ package com.gstdev.cloud.base.core.context;
 
 public interface CallBack {
 
-  void executor();
+    void executor();
 
-  default String getCallBackName() {
-    return Thread.currentThread().getId() + ":" + this.getClass().getName();
-  }
+    default String getCallBackName() {
+        return Thread.currentThread().getId() + ":" + this.getClass().getName();
+    }
 }
 

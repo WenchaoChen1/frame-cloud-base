@@ -81,112 +81,112 @@ import com.gstdev.cloud.base.definition.feedback.*;
  */
 public interface ErrorCodes {
 
-  /**
-   * 200
-   */
-  OkFeedback OK = new OkFeedback("成功");
-  /**
-   * 204
-   */
-  NoContentFeedback NO_CONTENT = new NoContentFeedback("无内容");
-  /**
-   * 401.** 未经授权 Unauthorized	请求要求用户的身份认证
-   */
-  UnauthorizedFeedback UNAUTHORIZED = new UnauthorizedFeedback("未经授权");
-  UnauthorizedFeedback ACCESS_DENIED = new UnauthorizedFeedback("您没有权限，拒绝访问");
-  UnauthorizedFeedback ACCOUNT_DISABLED = new UnauthorizedFeedback("该账户已经被禁用");
-  UnauthorizedFeedback ACCOUNT_ENDPOINT_LIMITED = new UnauthorizedFeedback("您已经使用其它终端登录,请先退出其它终端");
-  UnauthorizedFeedback ACCOUNT_EXPIRED = new UnauthorizedFeedback("该账户已经过期");
-  UnauthorizedFeedback ACCOUNT_LOCKED = new UnauthorizedFeedback("该账户已经被锁定");
-  UnauthorizedFeedback BAD_CREDENTIALS = new UnauthorizedFeedback("用户名或密码错误");
-  UnauthorizedFeedback CREDENTIALS_EXPIRED = new UnauthorizedFeedback("该账户密码凭证已过期");
-  UnauthorizedFeedback INVALID_CLIENT = new UnauthorizedFeedback("客户端身份验证失败或数据库未初始化");
-  UnauthorizedFeedback INVALID_TOKEN = new UnauthorizedFeedback("提供的访问令牌已过期、吊销、格式错误或无效");
-  UnauthorizedFeedback INVALID_GRANT = new UnauthorizedFeedback("提供的授权授予或刷新令牌无效、已过期或已撤销");
-  UnauthorizedFeedback UNAUTHORIZED_CLIENT = new UnauthorizedFeedback("客户端无权使用此方法请求授权码或访问令牌");
-  UnauthorizedFeedback USERNAME_NOT_FOUND = new UnauthorizedFeedback("用户名或密码错误");
-  UnauthorizedFeedback SESSION_EXPIRED = new UnauthorizedFeedback("Session 已过期，请刷新页面后再使用");
+    /**
+     * 200
+     */
+    OkFeedback OK = new OkFeedback("成功");
+    /**
+     * 204
+     */
+    NoContentFeedback NO_CONTENT = new NoContentFeedback("无内容");
+    /**
+     * 401.** 未经授权 Unauthorized	请求要求用户的身份认证
+     */
+    UnauthorizedFeedback UNAUTHORIZED = new UnauthorizedFeedback("未经授权");
+    UnauthorizedFeedback ACCESS_DENIED = new UnauthorizedFeedback("您没有权限，拒绝访问");
+    UnauthorizedFeedback ACCOUNT_DISABLED = new UnauthorizedFeedback("该账户已经被禁用");
+    UnauthorizedFeedback ACCOUNT_ENDPOINT_LIMITED = new UnauthorizedFeedback("您已经使用其它终端登录,请先退出其它终端");
+    UnauthorizedFeedback ACCOUNT_EXPIRED = new UnauthorizedFeedback("该账户已经过期");
+    UnauthorizedFeedback ACCOUNT_LOCKED = new UnauthorizedFeedback("该账户已经被锁定");
+    UnauthorizedFeedback BAD_CREDENTIALS = new UnauthorizedFeedback("用户名或密码错误");
+    UnauthorizedFeedback CREDENTIALS_EXPIRED = new UnauthorizedFeedback("该账户密码凭证已过期");
+    UnauthorizedFeedback INVALID_CLIENT = new UnauthorizedFeedback("客户端身份验证失败或数据库未初始化");
+    UnauthorizedFeedback INVALID_TOKEN = new UnauthorizedFeedback("提供的访问令牌已过期、吊销、格式错误或无效");
+    UnauthorizedFeedback INVALID_GRANT = new UnauthorizedFeedback("提供的授权授予或刷新令牌无效、已过期或已撤销");
+    UnauthorizedFeedback UNAUTHORIZED_CLIENT = new UnauthorizedFeedback("客户端无权使用此方法请求授权码或访问令牌");
+    UnauthorizedFeedback USERNAME_NOT_FOUND = new UnauthorizedFeedback("用户名或密码错误");
+    UnauthorizedFeedback SESSION_EXPIRED = new UnauthorizedFeedback("Session 已过期，请刷新页面后再使用");
 
-  /**
-   * 403.** 禁止的请求，与403对应
-   */
-  ForbiddenFeedback FORBIDDEN = new ForbiddenFeedback("禁止的请求");
-  ForbiddenFeedback INSUFFICIENT_SCOPE = new ForbiddenFeedback("TOKEN权限不足，您需要更高级别的权限");
-  ForbiddenFeedback SQL_INJECTION_REQUEST = new ForbiddenFeedback("疑似SQL注入请求");
+    /**
+     * 403.** 禁止的请求，与403对应
+     */
+    ForbiddenFeedback FORBIDDEN = new ForbiddenFeedback("禁止的请求");
+    ForbiddenFeedback INSUFFICIENT_SCOPE = new ForbiddenFeedback("TOKEN权限不足，您需要更高级别的权限");
+    ForbiddenFeedback SQL_INJECTION_REQUEST = new ForbiddenFeedback("疑似SQL注入请求");
 
-  /**
-   * 405.** 方法不允许 与405对应
-   */
-  MethodNotAllowedFeedback METHOD_NOT_ALLOWED = new MethodNotAllowedFeedback("方法不允许");
-  MethodNotAllowedFeedback HTTP_REQUEST_METHOD_NOT_SUPPORTED = new MethodNotAllowedFeedback("请求使用的方法类型不支持");
+    /**
+     * 405.** 方法不允许 与405对应
+     */
+    MethodNotAllowedFeedback METHOD_NOT_ALLOWED = new MethodNotAllowedFeedback("方法不允许");
+    MethodNotAllowedFeedback HTTP_REQUEST_METHOD_NOT_SUPPORTED = new MethodNotAllowedFeedback("请求使用的方法类型不支持");
 
-  /**
-   * 406.** 不接受的请求，与406对应
-   */
-  NotAcceptableFeedback NOT_ACCEPTABLE = new NotAcceptableFeedback("不接受的请求");
-  NotAcceptableFeedback UNSUPPORTED_GRANT_TYPE = new NotAcceptableFeedback("授权服务器不支持授权授予类型");
-  NotAcceptableFeedback UNSUPPORTED_RESPONSE_TYPE = new NotAcceptableFeedback("授权服务器不支持使用此方法获取授权代码或访问令牌");
-  NotAcceptableFeedback UNSUPPORTED_TOKEN_TYPE = new NotAcceptableFeedback("授权服务器不支持撤销提供的令牌类型");
+    /**
+     * 406.** 不接受的请求，与406对应
+     */
+    NotAcceptableFeedback NOT_ACCEPTABLE = new NotAcceptableFeedback("不接受的请求");
+    NotAcceptableFeedback UNSUPPORTED_GRANT_TYPE = new NotAcceptableFeedback("授权服务器不支持授权授予类型");
+    NotAcceptableFeedback UNSUPPORTED_RESPONSE_TYPE = new NotAcceptableFeedback("授权服务器不支持使用此方法获取授权代码或访问令牌");
+    NotAcceptableFeedback UNSUPPORTED_TOKEN_TYPE = new NotAcceptableFeedback("授权服务器不支持撤销提供的令牌类型");
 
-  /**
-   * 412.* 未经授权 Precondition Failed 客户端请求信息的先决条件错误
-   */
-  PreconditionFailedFeedback PRECONDITION_FAILED = new PreconditionFailedFeedback("户端请求信息的先决条件错误");
-  PreconditionFailedFeedback INVALID_REDIRECT_URI = new PreconditionFailedFeedback("OAuth2 URI 重定向的值无效");
-  PreconditionFailedFeedback INVALID_REQUEST = new PreconditionFailedFeedback("无效的请求，参数使用错误或无效.");
-  PreconditionFailedFeedback INVALID_SCOPE = new PreconditionFailedFeedback("授权范围错误");
-  PreconditionFailedFeedback METHOD_ARGUMENT_NOT_VALID = new PreconditionFailedFeedback("接口参数校验失败，参数使用错误或者未接收到参数");
+    /**
+     * 412.* 未经授权 Precondition Failed 客户端请求信息的先决条件错误
+     */
+    PreconditionFailedFeedback PRECONDITION_FAILED = new PreconditionFailedFeedback("户端请求信息的先决条件错误");
+    PreconditionFailedFeedback INVALID_REDIRECT_URI = new PreconditionFailedFeedback("OAuth2 URI 重定向的值无效");
+    PreconditionFailedFeedback INVALID_REQUEST = new PreconditionFailedFeedback("无效的请求，参数使用错误或无效.");
+    PreconditionFailedFeedback INVALID_SCOPE = new PreconditionFailedFeedback("授权范围错误");
+    PreconditionFailedFeedback METHOD_ARGUMENT_NOT_VALID = new PreconditionFailedFeedback("接口参数校验失败，参数使用错误或者未接收到参数");
 
-  /**
-   * 415.* Unsupported Media Type	服务器无法处理请求附带的媒体格式
-   */
-  UnsupportedMediaTypeFeedback UNSUPPORTED_MEDIA_TYPE = new UnsupportedMediaTypeFeedback("服务器无法处理请求附带的媒体格式");
-  UnsupportedMediaTypeFeedback HTTP_MEDIA_TYPE_NOT_ACCEPTABLE = new UnsupportedMediaTypeFeedback("不支持的 Media Type");
+    /**
+     * 415.* Unsupported Media Type	服务器无法处理请求附带的媒体格式
+     */
+    UnsupportedMediaTypeFeedback UNSUPPORTED_MEDIA_TYPE = new UnsupportedMediaTypeFeedback("服务器无法处理请求附带的媒体格式");
+    UnsupportedMediaTypeFeedback HTTP_MEDIA_TYPE_NOT_ACCEPTABLE = new UnsupportedMediaTypeFeedback("不支持的 Media Type");
 
-  /**
-   * 500.* Internal Server Error	服务器内部错误，无法完成请求
-   */
-  InternalServerErrorFeedback INTERNAL_SERVER_ERROR = new InternalServerErrorFeedback("服务器内部错误，无法完成请求");
-  InternalServerErrorFeedback SERVER_ERROR = new InternalServerErrorFeedback("授权服务器遇到意外情况，无法满足请求");
-  InternalServerErrorFeedback HTTP_MESSAGE_NOT_READABLE_EXCEPTION = new InternalServerErrorFeedback("JSON字符串反序列化为实体出错！");
-  InternalServerErrorFeedback ILLEGAL_ARGUMENT_EXCEPTION = new InternalServerErrorFeedback("参数不合法错误，请仔细确认参数使用是否正确。");
-  InternalServerErrorFeedback IO_EXCEPTION = new InternalServerErrorFeedback("IO异常");
-  InternalServerErrorFeedback MISSING_SERVLET_REQUEST_PARAMETER_EXCEPTION = new InternalServerErrorFeedback("接口参数使用错误或必要参数缺失，请查阅接口文档！");
-  InternalServerErrorFeedback NULL_POINTER_EXCEPTION = new InternalServerErrorFeedback("后台代码执行过程中出现了空值");
-  InternalServerErrorFeedback TYPE_MISMATCH_EXCEPTION = new InternalServerErrorFeedback("类型不匹配");
-  InternalServerErrorFeedback BORROW_OBJECT_FROM_POOL_ERROR_EXCEPTION = new InternalServerErrorFeedback("从对象池中获取对象错误");
+    /**
+     * 500.* Internal Server Error	服务器内部错误，无法完成请求
+     */
+    InternalServerErrorFeedback INTERNAL_SERVER_ERROR = new InternalServerErrorFeedback("服务器内部错误，无法完成请求");
+    InternalServerErrorFeedback SERVER_ERROR = new InternalServerErrorFeedback("授权服务器遇到意外情况，无法满足请求");
+    InternalServerErrorFeedback HTTP_MESSAGE_NOT_READABLE_EXCEPTION = new InternalServerErrorFeedback("JSON字符串反序列化为实体出错！");
+    InternalServerErrorFeedback ILLEGAL_ARGUMENT_EXCEPTION = new InternalServerErrorFeedback("参数不合法错误，请仔细确认参数使用是否正确。");
+    InternalServerErrorFeedback IO_EXCEPTION = new InternalServerErrorFeedback("IO异常");
+    InternalServerErrorFeedback MISSING_SERVLET_REQUEST_PARAMETER_EXCEPTION = new InternalServerErrorFeedback("接口参数使用错误或必要参数缺失，请查阅接口文档！");
+    InternalServerErrorFeedback NULL_POINTER_EXCEPTION = new InternalServerErrorFeedback("后台代码执行过程中出现了空值");
+    InternalServerErrorFeedback TYPE_MISMATCH_EXCEPTION = new InternalServerErrorFeedback("类型不匹配");
+    InternalServerErrorFeedback BORROW_OBJECT_FROM_POOL_ERROR_EXCEPTION = new InternalServerErrorFeedback("从对象池中获取对象错误");
 
-  /**
-   * 501. Not Implemented	服务器不支持请求的功能，无法完成请求
-   */
-  NotImplementedFeedback NOT_IMPLEMENTED = new NotImplementedFeedback("服务器不支持请求的功能，无法完成请求");
-  NotImplementedFeedback DISCOVERED_UNRECORDED_ERROR_EXCEPTION = new NotImplementedFeedback("发现尚未记录的 Exception 错误,建议在错误体系中添加或者提 ISSUE 给原作者");
-  NotImplementedFeedback PROPERTY_VALUE_IS_NOT_SET_EXCEPTION = new NotImplementedFeedback("必要的Property配置属性值没有设置");
-  NotImplementedFeedback URL_FORMAT_INCORRECT_EXCEPTION = new NotImplementedFeedback("URL格式错误或者缺少Http协议头");
-  NotImplementedFeedback ILLEGAL_SYMMETRIC_KEY = new NotImplementedFeedback("静态AES加密算法KEY非法");
+    /**
+     * 501. Not Implemented	服务器不支持请求的功能，无法完成请求
+     */
+    NotImplementedFeedback NOT_IMPLEMENTED = new NotImplementedFeedback("服务器不支持请求的功能，无法完成请求");
+    NotImplementedFeedback DISCOVERED_UNRECORDED_ERROR_EXCEPTION = new NotImplementedFeedback("发现尚未记录的 Exception 错误,建议在错误体系中添加或者提 ISSUE 给原作者");
+    NotImplementedFeedback PROPERTY_VALUE_IS_NOT_SET_EXCEPTION = new NotImplementedFeedback("必要的Property配置属性值没有设置");
+    NotImplementedFeedback URL_FORMAT_INCORRECT_EXCEPTION = new NotImplementedFeedback("URL格式错误或者缺少Http协议头");
+    NotImplementedFeedback ILLEGAL_SYMMETRIC_KEY = new NotImplementedFeedback("静态AES加密算法KEY非法");
 
-  /**
-   * 503.* Service Unavailable	由于超载或系统维护，服务器暂时的无法处理客户端的请求。延时的长度可包含在服务器的Retry-After头信息中
-   */
-  ServiceUnavailableFeedback SERVICE_UNAVAILABLE = new ServiceUnavailableFeedback("服务不可用");
-  ServiceUnavailableFeedback COOKIE_THEFT = new ServiceUnavailableFeedback("Cookie 信息不安全");
-  ServiceUnavailableFeedback INVALID_COOKIE = new ServiceUnavailableFeedback("不可用的 Cookie 信息");
-  ServiceUnavailableFeedback PROVIDER_NOT_FOUND = new ServiceUnavailableFeedback("授权服务器代码逻辑配置错误");
-  ServiceUnavailableFeedback TEMPORARILY_UNAVAILABLE = new ServiceUnavailableFeedback("由于服务器临时超载或维护，授权服务器当前无法处理该请求");
-  ServiceUnavailableFeedback SEARCH_IP_LOCATION = new ServiceUnavailableFeedback("搜索 IP 定位出现读取错误，服务器当前无法处理该请求");
-  ServiceUnavailableFeedback OPEN_API_REQUEST_FAILURE = new ServiceUnavailableFeedback("基础设施 Open Api 调用请求失败");
+    /**
+     * 503.* Service Unavailable	由于超载或系统维护，服务器暂时的无法处理客户端的请求。延时的长度可包含在服务器的Retry-After头信息中
+     */
+    ServiceUnavailableFeedback SERVICE_UNAVAILABLE = new ServiceUnavailableFeedback("服务不可用");
+    ServiceUnavailableFeedback COOKIE_THEFT = new ServiceUnavailableFeedback("Cookie 信息不安全");
+    ServiceUnavailableFeedback INVALID_COOKIE = new ServiceUnavailableFeedback("不可用的 Cookie 信息");
+    ServiceUnavailableFeedback PROVIDER_NOT_FOUND = new ServiceUnavailableFeedback("授权服务器代码逻辑配置错误");
+    ServiceUnavailableFeedback TEMPORARILY_UNAVAILABLE = new ServiceUnavailableFeedback("由于服务器临时超载或维护，授权服务器当前无法处理该请求");
+    ServiceUnavailableFeedback SEARCH_IP_LOCATION = new ServiceUnavailableFeedback("搜索 IP 定位出现读取错误，服务器当前无法处理该请求");
+    ServiceUnavailableFeedback OPEN_API_REQUEST_FAILURE = new ServiceUnavailableFeedback("基础设施 Open Api 调用请求失败");
 
-  /**
-   * 6*.* 为数据操作相关错误
-   */
-  CustomizeFeedback TRANSACTION_ROLLBACK = new CustomizeFeedback("数据事务处理失败，数据回滚", 6);
-  CustomizeFeedback BAD_SQL_GRAMMAR = new CustomizeFeedback("低级SQL语法错误，检查SQL能否正常运行或者字段名称是否正确", 6);
-  CustomizeFeedback DATA_INTEGRITY_VIOLATION = new CustomizeFeedback("该数据正在被其它数据引用，请先删除引用关系，再进行数据删除操作", 6);
+    /**
+     * 6*.* 为数据操作相关错误
+     */
+    CustomizeFeedback TRANSACTION_ROLLBACK = new CustomizeFeedback("数据事务处理失败，数据回滚", 6);
+    CustomizeFeedback BAD_SQL_GRAMMAR = new CustomizeFeedback("低级SQL语法错误，检查SQL能否正常运行或者字段名称是否正确", 6);
+    CustomizeFeedback DATA_INTEGRITY_VIOLATION = new CustomizeFeedback("该数据正在被其它数据引用，请先删除引用关系，再进行数据删除操作", 6);
 
-  /**
-   * 7*.* 基础设施交互错误
-   * 71.* Redis 操作出现错误
-   * 72.* Cache 操作出现错误
-   */
-  CustomizeFeedback PIPELINE_INVALID_COMMANDS = new CustomizeFeedback("Redis管道包含一个或多个无效命令", 7);
+    /**
+     * 7*.* 基础设施交互错误
+     * 71.* Redis 操作出现错误
+     * 72.* Cache 操作出现错误
+     */
+    CustomizeFeedback PIPELINE_INVALID_COMMANDS = new CustomizeFeedback("Redis管道包含一个或多个无效命令", 7);
 }

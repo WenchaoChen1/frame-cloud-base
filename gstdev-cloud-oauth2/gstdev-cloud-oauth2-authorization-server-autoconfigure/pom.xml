@@ -22,10 +22,10 @@
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-oauth2-management</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.gstdev.cloud</groupId>-->
-<!--            <artifactId>gstdev-cloud-data-tenant</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.gstdev.cloud</groupId>-->
+        <!--            <artifactId>gstdev-cloud-data-tenant</artifactId>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-ouath2-resource-server-autoconfigure</artifactId>

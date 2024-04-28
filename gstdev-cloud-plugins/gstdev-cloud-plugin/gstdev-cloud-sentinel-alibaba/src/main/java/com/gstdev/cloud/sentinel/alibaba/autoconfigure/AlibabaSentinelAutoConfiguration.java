@@ -28,7 +28,6 @@ import org.springframework.web.reactive.function.server.ServerResponse;
  * @author : cc
  * @date : 2022/2/5 17:57
  * @see <a href="https://blog.csdn.net/ttzommed/article/details/90669320">参考文档</a>
- *
  */
 @AutoConfiguration
 @ConditionalOnClass
@@ -75,9 +74,9 @@ public class AlibabaSentinelAutoConfiguration {
         @Bean
         public BlockRequestHandler webfluxBlockExceptionHandler() {
             return (exchange, t) ->
-                    ServerResponse.status(HttpStatus.TOO_MANY_REQUESTS)
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .body(BodyInserters.fromValue(Result.failure(t.getMessage())));
+                ServerResponse.status(HttpStatus.TOO_MANY_REQUESTS)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(BodyInserters.fromValue(Result.failure(t.getMessage())));
         }
     }
 }

@@ -21,7 +21,7 @@ public abstract class BaseTreeController<E extends BaseTreeEntityINT<ID>
     , S extends BaseTreeService<E, ID, D, II, UI, PQC, FQC>
     , M extends BaseTreeVoMapper<V, D>
     , V extends BaseTreeVoInterface & BaseVoInterface
-    , D extends BaseTreeDtoInterface<D,ID> & BaseDtoInterface<ID>
+    , D extends BaseTreeDtoInterface<D, ID> & BaseDtoInterface<ID>
     , II extends BaseTreeInsertInputInterface & BaseInsertInputInterface
     , UI extends BaseTreeUpdateInputInterface & BaseUpdateInputInterface
     , PQC extends BaseTreePageQueryCriteriaInterface & BasePageQueryCriteriaInterface

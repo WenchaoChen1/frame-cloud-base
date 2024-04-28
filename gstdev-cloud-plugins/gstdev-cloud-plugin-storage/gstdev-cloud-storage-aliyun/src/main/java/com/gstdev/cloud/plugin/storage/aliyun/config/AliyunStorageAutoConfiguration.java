@@ -24,12 +24,12 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnProperty(prefix = "gstdev.cloud.storage.aliyun", name = {"endpoint", "accessKeyId", "accessKeySecret"})
 public class AliyunStorageAutoConfiguration {
 
-  @Autowired
-  private AliyunStorageProperties properties;
+    @Autowired
+    private AliyunStorageProperties properties;
 
-  @Bean
-  @ConditionalOnMissingBean
-  public StorageService storageService() {
-    return new AliyunStorageService(properties.getEndpoint(), properties.getAccessKeyId(), properties.getAccessKeySecret());
-  }
+    @Bean
+    @ConditionalOnMissingBean
+    public StorageService storageService() {
+        return new AliyunStorageService(properties.getEndpoint(), properties.getAccessKeyId(), properties.getAccessKeySecret());
+    }
 }

@@ -19,9 +19,9 @@ import java.io.Serializable;
 @Data
 public class FileBucket implements Serializable {
 
-  private static final long serialVersionUID = -2444518301828409607L;
+    private static final long serialVersionUID = -2444518301828409607L;
 
-  private String name;
+    private String name;
 
-  private String location;
+    private String location;
 }

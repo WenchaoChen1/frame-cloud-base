@@ -11,11 +11,11 @@ import java.time.Clock;
  * @date : 2023/10/26 15:16
  */
 public class TemplateMessageSendingEvent<T extends TemplateMessage> extends AbstractApplicationEvent<T> {
-  public TemplateMessageSendingEvent(T data) {
-    super(data);
-  }
+    public TemplateMessageSendingEvent(T data) {
+        super(data);
+    }
 
-  public TemplateMessageSendingEvent(T data, Clock clock) {
-    super(data, clock);
-  }
+    public TemplateMessageSendingEvent(T data, Clock clock) {
+        super(data, clock);
+    }
 }

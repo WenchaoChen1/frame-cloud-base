@@ -11,16 +11,16 @@ import com.gstdev.cloud.base.definition.domain.Feedback;
  */
 public class OAuth2CaptchaHasExpiredException extends OAuth2CaptchaException {
 
-  public OAuth2CaptchaHasExpiredException(String msg, Throwable cause) {
-    super(msg, cause);
-  }
+    public OAuth2CaptchaHasExpiredException(String msg, Throwable cause) {
+        super(msg, cause);
+    }
 
-  public OAuth2CaptchaHasExpiredException(String msg) {
-    super(msg);
-  }
+    public OAuth2CaptchaHasExpiredException(String msg) {
+        super(msg);
+    }
 
-  @Override
-  public Feedback getFeedback() {
-    return CaptchaErrorCodes.CAPTCHA_HAS_EXPIRED;
-  }
+    @Override
+    public Feedback getFeedback() {
+        return CaptchaErrorCodes.CAPTCHA_HAS_EXPIRED;
+    }
 }

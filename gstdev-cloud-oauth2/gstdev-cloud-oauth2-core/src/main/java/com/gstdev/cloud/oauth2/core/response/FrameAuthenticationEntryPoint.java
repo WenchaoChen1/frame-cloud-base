@@ -28,10 +28,10 @@ import java.io.IOException;
  */
 public class FrameAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
-  @Override
-  public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
-    Result<String> result = SecurityGlobalExceptionHandler.resolveSecurityException(authException, request.getRequestURI());
-    response.setStatus(result.getStatus());
-    WebUtils.renderJson(response, result);
-  }
+    @Override
+    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+        Result<String> result = SecurityGlobalExceptionHandler.resolveSecurityException(authException, request.getRequestURI());
+        response.setStatus(result.getStatus());
+        WebUtils.renderJson(response, result);
+    }
 }

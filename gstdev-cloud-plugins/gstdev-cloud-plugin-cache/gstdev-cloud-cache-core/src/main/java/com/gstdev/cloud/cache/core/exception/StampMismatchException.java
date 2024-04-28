@@ -12,28 +12,28 @@ import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
  */
 public class StampMismatchException extends PlatformRuntimeException {
 
-  public StampMismatchException() {
-    super();
-  }
+    public StampMismatchException() {
+        super();
+    }
 
-  public StampMismatchException(String message) {
-    super(message);
-  }
+    public StampMismatchException(String message) {
+        super(message);
+    }
 
-  public StampMismatchException(String message, Throwable cause) {
-    super(message, cause);
-  }
+    public StampMismatchException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-  public StampMismatchException(Throwable cause) {
-    super(cause);
-  }
+    public StampMismatchException(Throwable cause) {
+        super(cause);
+    }
 
-  protected StampMismatchException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-    super(message, cause, enableSuppression, writableStackTrace);
-  }
+    protected StampMismatchException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
 
-  @Override
-  public Feedback getFeedback() {
-    return CacheErrorCodes.STAMP_MISMATCH;
-  }
+    @Override
+    public Feedback getFeedback() {
+        return CacheErrorCodes.STAMP_MISMATCH;
+    }
 }

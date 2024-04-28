@@ -23,26 +23,26 @@ import java.util.Set;
  */
 public class ArrayOrStringToSetDeserializer extends StdDeserializer<Set<String>> {
 
-  public ArrayOrStringToSetDeserializer() {
-    super(Set.class);
-  }
-
-  public JavaType getValueType() {
-    return TypeFactory.defaultInstance().constructType(String.class);
-  }
-
-  @Override
-  public Set<String> deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
-    JsonToken token = jsonParser.getCurrentToken();
-    if (token.isScalarValue()) {
-      String value = jsonParser.getText();
-      value = value.replaceAll("\\s+", ",");
-      return new LinkedHashSet<>(Arrays.asList(StringUtils.commaDelimitedListToStringArray(value)));
-    } else {
-      return jsonParser.readValueAs(new TypeReference<Set<String>>() {
-      });
+    public ArrayOrStringToSetDeserializer() {
+        super(Set.class);
     }
-  }
+
+    public JavaType getValueType() {
+        return TypeFactory.defaultInstance().constructType(String.class);
+    }
+
+    @Override
+    public Set<String> deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
+        JsonToken token = jsonParser.getCurrentToken();
+        if (token.isScalarValue()) {
+            String value = jsonParser.getText();
+            value = value.replaceAll("\\s+", ",");
+            return new LinkedHashSet<>(Arrays.asList(StringUtils.commaDelimitedListToStringArray(value)));
+        } else {
+            return jsonParser.readValueAs(new TypeReference<Set<String>>() {
+            });
+        }
+    }
 
 
 }

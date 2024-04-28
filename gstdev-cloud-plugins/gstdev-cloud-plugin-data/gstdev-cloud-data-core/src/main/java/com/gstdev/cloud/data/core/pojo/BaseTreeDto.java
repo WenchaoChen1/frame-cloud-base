@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 //public class BaseTreeDto<D extends BaseDto> extends BaseDto  {
-public class BaseTreeDto<D extends BaseDto & TreeNode<String, D>> extends BaseDto implements TreeNode<String, D>, BaseTreeDtoInterface<D,String> {
+public class BaseTreeDto<D extends BaseDto & TreeNode<String, D>> extends BaseDto implements TreeNode<String, D>, BaseTreeDtoInterface<D, String> {
     public List<D> children;
     String parentId;
 

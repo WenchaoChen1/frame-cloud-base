@@ -64,7 +64,6 @@ public class ServiceContextHolder {
     private ApplicationContext applicationContext;
 
 
-
     /**
      * 认证中心服务名称
      */

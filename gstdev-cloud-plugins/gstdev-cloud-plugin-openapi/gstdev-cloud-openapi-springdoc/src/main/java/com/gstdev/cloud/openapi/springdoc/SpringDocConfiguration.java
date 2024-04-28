@@ -36,43 +36,43 @@ import org.springframework.context.annotation.Configuration;
 //})
 public class SpringDocConfiguration {
 
-  private static final Logger log = LoggerFactory.getLogger(SpringDocConfiguration.class);
-  private final SpringDocProperties springDocProperties;
+    private static final Logger log = LoggerFactory.getLogger(SpringDocConfiguration.class);
+    private final SpringDocProperties springDocProperties;
 
-  public SpringDocConfiguration(SpringDocProperties springDocProperties) {
-    this.springDocProperties = springDocProperties;
-  }
+    public SpringDocConfiguration(SpringDocProperties springDocProperties) {
+        this.springDocProperties = springDocProperties;
+    }
 
-  @PostConstruct
-  public void postConstruct() {
-    log.debug("[GstDev Cloud] |- Module [Open Api] Auto Configure.");
-  }
+    @PostConstruct
+    public void postConstruct() {
+        log.debug("[GstDev Cloud] |- Module [Open Api] Auto Configure.");
+    }
 
-  @Bean
-  @ConditionalOnMissingBean
-  public OpenApiServerResolver openApiServerResolver() {
-    OpenApiServerResolver resolver = () -> {
-      Server server = new Server();
-      server.setUrl(ServiceContextHolder.getInstance().getUrl());
-        Server server1 = new Server();
-        server1.setUrl(ServiceContextHolder.getInstance().getUrl());
-      return ImmutableList.of(server);
-    };
-    log.trace("[GstDev Cloud] |- Bean [Open Api Server Resolver] Auto Configure.");
-    return resolver;
-  }
+    @Bean
+    @ConditionalOnMissingBean
+    public OpenApiServerResolver openApiServerResolver() {
+        OpenApiServerResolver resolver = () -> {
+            Server server = new Server();
+            server.setUrl(ServiceContextHolder.getInstance().getUrl());
+            Server server1 = new Server();
+            server1.setUrl(ServiceContextHolder.getInstance().getUrl());
+            return ImmutableList.of(server);
+        };
+        log.trace("[GstDev Cloud] |- Bean [Open Api Server Resolver] Auto Configure.");
+        return resolver;
+    }
 
-  @Bean
-  @ConditionalOnMissingBean
-  public OpenAPI createOpenApi(OpenApiServerResolver openApiServerResolver) {
-    return new OpenAPI()
-      .servers(openApiServerResolver.getServers())
-      .info(new Info().title("GstDev Cloud")
-        .description("GstDev Cloud Microservices Architecture")
-        .version("Swagger V3")
-        .license(new License().name("Apache 2.0").url("http://www.apache.org/licenses/")))
-      .externalDocs(new ExternalDocumentation()
-        .description("GstDev Cloud Documentation")
-        .url(" https://www.gstdev.com"));
-  }
+    @Bean
+    @ConditionalOnMissingBean
+    public OpenAPI createOpenApi(OpenApiServerResolver openApiServerResolver) {
+        return new OpenAPI()
+            .servers(openApiServerResolver.getServers())
+            .info(new Info().title("GstDev Cloud")
+                .description("GstDev Cloud Microservices Architecture")
+                .version("Swagger V3")
+                .license(new License().name("Apache 2.0").url("http://www.apache.org/licenses/")))
+            .externalDocs(new ExternalDocumentation()
+                .description("GstDev Cloud Documentation")
+                .url(" https://www.gstdev.com"));
+    }
 }

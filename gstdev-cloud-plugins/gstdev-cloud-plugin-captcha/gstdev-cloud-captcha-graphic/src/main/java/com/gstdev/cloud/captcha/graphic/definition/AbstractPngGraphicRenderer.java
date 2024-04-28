@@ -14,18 +14,18 @@ import java.awt.image.BufferedImage;
  */
 public abstract class AbstractPngGraphicRenderer extends AbstractBaseGraphicRenderer {
 
-  @Override
-  public Metadata draw() {
-    String[] drawCharacters = this.getDrawCharacters();
+    @Override
+    public Metadata draw() {
+        String[] drawCharacters = this.getDrawCharacters();
 
-    BufferedImage bufferedImage = createPngBufferedImage(drawCharacters);
+        BufferedImage bufferedImage = createPngBufferedImage(drawCharacters);
 
-    String characters = StringUtils.join(drawCharacters, SymbolConstants.BLANK);
+        String characters = StringUtils.join(drawCharacters, SymbolConstants.BLANK);
 
-    Metadata metadata = new Metadata();
-    metadata.setGraphicImageBase64(toBase64(bufferedImage));
-    metadata.setCharacters(characters);
+        Metadata metadata = new Metadata();
+        metadata.setGraphicImageBase64(toBase64(bufferedImage));
+        metadata.setCharacters(characters);
 
-    return metadata;
-  }
+        return metadata;
+    }
 }

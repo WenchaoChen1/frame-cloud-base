@@ -15,36 +15,36 @@ import org.springframework.http.HttpStatus;
 @Getter
 public class BadRequestException extends RuntimeException {
 
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  private Integer status = HttpStatus.BAD_REQUEST.value();
+    private Integer status = HttpStatus.BAD_REQUEST.value();
 
-  public BadRequestException(String msg) {
-    super(msg);
-  }
+    public BadRequestException(String msg) {
+        super(msg);
+    }
 
-  public BadRequestException(HttpStatus status, String msg) {
-    super(msg);
-    this.status = status.value();
-  }
+    public BadRequestException(HttpStatus status, String msg) {
+        super(msg);
+        this.status = status.value();
+    }
 
-  public BadRequestException(Exception ex) {
-    ex.printStackTrace();
-  }
+    public BadRequestException(Exception ex) {
+        ex.printStackTrace();
+    }
 
-  public BadRequestException(HttpStatus status, Exception ex) {
-    this.status = status.value();
-    ex.printStackTrace();
-  }
+    public BadRequestException(HttpStatus status, Exception ex) {
+        this.status = status.value();
+        ex.printStackTrace();
+    }
 
-  public BadRequestException(String msg, Exception ex) {
-    super(msg);
-    ex.printStackTrace();
-  }
+    public BadRequestException(String msg, Exception ex) {
+        super(msg);
+        ex.printStackTrace();
+    }
 
-  public BadRequestException(HttpStatus status, String msg, Exception ex) {
-    super(msg);
-    this.status = status.value();
-    ex.printStackTrace();
-  }
+    public BadRequestException(HttpStatus status, String msg, Exception ex) {
+        super(msg);
+        this.status = status.value();
+        ex.printStackTrace();
+    }
 }

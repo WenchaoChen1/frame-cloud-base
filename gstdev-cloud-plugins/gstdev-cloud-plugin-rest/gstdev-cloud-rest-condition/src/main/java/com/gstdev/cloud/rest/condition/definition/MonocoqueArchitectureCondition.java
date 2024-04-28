@@ -17,14 +17,14 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  */
 public class MonocoqueArchitectureCondition implements Condition {
 
-  private static final Logger log = LoggerFactory.getLogger(MonocoqueArchitectureCondition.class);
+    private static final Logger log = LoggerFactory.getLogger(MonocoqueArchitectureCondition.class);
 
-  @SuppressWarnings("NullableProblems")
-  @Override
-  public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
-    String property = RestPropertyFinder.getArchitecture(conditionContext);
-    boolean result = StringUtils.isNotBlank(property) && StringUtils.equalsIgnoreCase(property, Architecture.MONOCOQUE.name());
-    log.debug("[GstDev Cloud] |- Condition [Monocoque Architecture] value is [{}]", result);
-    return result;
-  }
+    @SuppressWarnings("NullableProblems")
+    @Override
+    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
+        String property = RestPropertyFinder.getArchitecture(conditionContext);
+        boolean result = StringUtils.isNotBlank(property) && StringUtils.equalsIgnoreCase(property, Architecture.MONOCOQUE.name());
+        log.debug("[GstDev Cloud] |- Condition [Monocoque Architecture] value is [{}]", result);
+        return result;
+    }
 }

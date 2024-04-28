@@ -15,18 +15,18 @@ import java.awt.*;
 //@Component
 public class ChineseGifCaptchaRenderer extends AbstractGifGraphicRenderer {
 
-  @Override
-  public String getCategory() {
-    return CaptchaCategory.CHINESE_GIF.getConstant();
-  }
+    @Override
+    public String getCategory() {
+        return CaptchaCategory.CHINESE_GIF.getConstant();
+    }
 
-  @Override
-  protected String[] getDrawCharacters() {
-    return this.getWordCharacters();
-  }
+    @Override
+    protected String[] getDrawCharacters() {
+        return this.getWordCharacters();
+    }
 
-  @Override
-  protected Font getFont() {
-    return this.getResourceProvider().getChineseFont();
-  }
+    @Override
+    protected Font getFont() {
+        return this.getResourceProvider().getChineseFont();
+    }
 }

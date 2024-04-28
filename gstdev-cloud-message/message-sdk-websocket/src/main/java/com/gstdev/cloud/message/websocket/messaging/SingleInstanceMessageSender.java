@@ -9,7 +9,7 @@ import com.gstdev.cloud.message.websocket.definition.AbstractWebSocketMessageSen
  * @date : 2023/10/26 23:31
  */
 public class SingleInstanceMessageSender extends AbstractWebSocketMessageSender {
-  public SingleInstanceMessageSender(WebSocketMessagingTemplate webSocketMessagingTemplate) {
-    super(webSocketMessagingTemplate);
-  }
+    public SingleInstanceMessageSender(WebSocketMessagingTemplate webSocketMessagingTemplate) {
+        super(webSocketMessagingTemplate);
+    }
 }

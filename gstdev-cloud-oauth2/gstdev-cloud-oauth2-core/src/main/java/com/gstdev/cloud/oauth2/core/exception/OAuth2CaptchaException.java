@@ -20,24 +20,24 @@ import org.springframework.security.core.Authentication;
  */
 public class OAuth2CaptchaException extends AccountStatusException implements FrameException {
 
-  public OAuth2CaptchaException(String msg) {
-    super(msg);
-  }
+    public OAuth2CaptchaException(String msg) {
+        super(msg);
+    }
 
-  public OAuth2CaptchaException(String msg, Throwable cause) {
-    super(msg, cause);
-  }
+    public OAuth2CaptchaException(String msg, Throwable cause) {
+        super(msg, cause);
+    }
 
-  @Override
-  public Feedback getFeedback() {
-    return ErrorCodes.INTERNAL_SERVER_ERROR;
-  }
+    @Override
+    public Feedback getFeedback() {
+        return ErrorCodes.INTERNAL_SERVER_ERROR;
+    }
 
-  @Override
-  public Result<String> getResult() {
-    Result<String> result = Result.failure(getFeedback());
-    result.stackTrace(super.getStackTrace());
-    result.detail(super.getMessage());
-    return result;
-  }
+    @Override
+    public Result<String> getResult() {
+        Result<String> result = Result.failure(getFeedback());
+        result.stackTrace(super.getStackTrace());
+        result.detail(super.getMessage());
+        return result;
+    }
 }

@@ -12,28 +12,28 @@ import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
  */
 public class StampDeleteFailedException extends PlatformRuntimeException {
 
-  public StampDeleteFailedException() {
-    super();
-  }
+    public StampDeleteFailedException() {
+        super();
+    }
 
-  public StampDeleteFailedException(String message) {
-    super(message);
-  }
+    public StampDeleteFailedException(String message) {
+        super(message);
+    }
 
-  public StampDeleteFailedException(String message, Throwable cause) {
-    super(message, cause);
-  }
+    public StampDeleteFailedException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-  public StampDeleteFailedException(Throwable cause) {
-    super(cause);
-  }
+    public StampDeleteFailedException(Throwable cause) {
+        super(cause);
+    }
 
-  protected StampDeleteFailedException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-    super(message, cause, enableSuppression, writableStackTrace);
-  }
+    protected StampDeleteFailedException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
 
-  @Override
-  public Feedback getFeedback() {
-    return CacheErrorCodes.STAMP_DELETE_FAILED;
-  }
+    @Override
+    public Feedback getFeedback() {
+        return CacheErrorCodes.STAMP_DELETE_FAILED;
+    }
 }

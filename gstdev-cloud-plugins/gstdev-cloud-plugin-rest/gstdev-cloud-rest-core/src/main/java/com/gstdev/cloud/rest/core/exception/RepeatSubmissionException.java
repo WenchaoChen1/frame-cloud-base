@@ -11,27 +11,27 @@ import com.gstdev.cloud.base.definition.domain.Feedback;
  */
 public class RepeatSubmissionException extends IllegalOperationException {
 
-  public RepeatSubmissionException() {
-  }
+    public RepeatSubmissionException() {
+    }
 
-  public RepeatSubmissionException(String message) {
-    super(message);
-  }
+    public RepeatSubmissionException(String message) {
+        super(message);
+    }
 
-  public RepeatSubmissionException(String message, Throwable cause) {
-    super(message, cause);
-  }
+    public RepeatSubmissionException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-  public RepeatSubmissionException(Throwable cause) {
-    super(cause);
-  }
+    public RepeatSubmissionException(Throwable cause) {
+        super(cause);
+    }
 
-  public RepeatSubmissionException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-    super(message, cause, enableSuppression, writableStackTrace);
-  }
+    public RepeatSubmissionException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
 
-  @Override
-  public Feedback getFeedback() {
-    return RestErrorCodes.REPEAT_SUBMISSION;
-  }
+    @Override
+    public Feedback getFeedback() {
+        return RestErrorCodes.REPEAT_SUBMISSION;
+    }
 }

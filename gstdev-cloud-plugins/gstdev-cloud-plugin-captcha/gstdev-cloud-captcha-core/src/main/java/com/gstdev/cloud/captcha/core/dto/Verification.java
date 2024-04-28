@@ -14,67 +14,67 @@ import java.util.List;
  */
 public class Verification extends Captcha {
 
-  /**
-   * 滑块拼图验证参数
-   */
-  private Coordinate coordinate;
-  /**
-   * 文字点选验证参数
-   */
-  private List<Coordinate> coordinates;
-  /**
-   * 图形验证码验证参数
-   */
-  private String characters;
+    /**
+     * 滑块拼图验证参数
+     */
+    private Coordinate coordinate;
+    /**
+     * 文字点选验证参数
+     */
+    private List<Coordinate> coordinates;
+    /**
+     * 图形验证码验证参数
+     */
+    private String characters;
 
-  public Verification() {
-  }
-
-  public Coordinate getCoordinate() {
-    return coordinate;
-  }
-
-  public void setCoordinate(Coordinate coordinate) {
-    this.coordinate = coordinate;
-  }
-
-  public List<Coordinate> getCoordinates() {
-    return coordinates;
-  }
-
-  public void setCoordinates(List<Coordinate> coordinates) {
-    this.coordinates = coordinates;
-  }
-
-  public String getCharacters() {
-    return characters;
-  }
-
-  public void setCharacters(String characters) {
-    this.characters = characters;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public Verification() {
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public Coordinate getCoordinate() {
+        return coordinate;
     }
-    Verification that = (Verification) o;
-    return Objects.equal(characters, that.characters);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hashCode(characters);
-  }
+    public void setCoordinate(Coordinate coordinate) {
+        this.coordinate = coordinate;
+    }
 
-  @Override
-  public String toString() {
-    return MoreObjects.toStringHelper(this)
-      .add("characters", characters)
-      .toString();
-  }
+    public List<Coordinate> getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(List<Coordinate> coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public String getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(String characters) {
+        this.characters = characters;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Verification that = (Verification) o;
+        return Objects.equal(characters, that.characters);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(characters);
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+            .add("characters", characters)
+            .toString();
+    }
 }

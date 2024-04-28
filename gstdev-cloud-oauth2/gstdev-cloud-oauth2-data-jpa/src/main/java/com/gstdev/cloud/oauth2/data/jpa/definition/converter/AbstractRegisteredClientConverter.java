@@ -12,12 +12,12 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
  */
 public abstract class AbstractRegisteredClientConverter<S extends RegisteredClientDetails> extends AbstractOAuth2EntityConverter<S, RegisteredClient> implements RegisteredClientConverter<S> {
 
-  public AbstractRegisteredClientConverter(OAuth2JacksonProcessor jacksonProcessor) {
-    super(jacksonProcessor);
-  }
+    public AbstractRegisteredClientConverter(OAuth2JacksonProcessor jacksonProcessor) {
+        super(jacksonProcessor);
+    }
 
-  @Override
-  public RegisteredClient convert(S details) {
-    return RegisteredClientConverter.super.convert(details);
-  }
+    @Override
+    public RegisteredClient convert(S details) {
+        return RegisteredClientConverter.super.convert(details);
+    }
 }

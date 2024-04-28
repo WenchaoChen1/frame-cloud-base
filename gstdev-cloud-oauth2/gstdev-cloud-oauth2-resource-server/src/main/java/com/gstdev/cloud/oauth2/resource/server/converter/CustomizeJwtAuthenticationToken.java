@@ -27,12 +27,13 @@ public class CustomizeJwtAuthenticationToken extends AbstractOAuth2TokenAuthenti
     }
 
     public CustomizeJwtAuthenticationToken(Jwt jwt, Collection<? extends GrantedAuthority> authorities, String name) {
-        super(jwt,authorities);
+        super(jwt, authorities);
         this.setAuthenticated(true);
         this.name = name;
     }
+
     public CustomizeJwtAuthenticationToken(Jwt jwt, Object principal, Collection<? extends GrantedAuthority> authorities, String name) {
-        super(jwt,principal,jwt,authorities);
+        super(jwt, principal, jwt, authorities);
         this.setAuthenticated(true);
         this.name = name;
     }

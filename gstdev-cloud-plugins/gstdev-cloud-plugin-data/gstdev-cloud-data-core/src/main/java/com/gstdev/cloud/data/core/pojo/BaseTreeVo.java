@@ -11,6 +11,6 @@ import java.util.List;
 public class BaseTreeVo<V> extends BaseVo implements BaseTreeVoInterface {
 
 
-  List<V> children;
+    List<V> children;
 
 }

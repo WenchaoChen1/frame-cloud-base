@@ -33,74 +33,74 @@ import java.io.IOException;
  */
 public class OAuth2FormLoginAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-  private static final Logger log = LoggerFactory.getLogger(OAuth2FormLoginAuthenticationFilter.class);
-  private boolean postOnly = true;
+    private static final Logger log = LoggerFactory.getLogger(OAuth2FormLoginAuthenticationFilter.class);
+    private boolean postOnly = true;
 
-  public OAuth2FormLoginAuthenticationFilter() {
-    super();
-  }
-
-  public OAuth2FormLoginAuthenticationFilter(AuthenticationManager authenticationManager) {
-    super(authenticationManager);
-  }
-
-  @Override
-  public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-    if (this.postOnly && !request.getMethod().equals("POST")) {
-      throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
-    }
-    OAuth2FormLoginAuthenticationToken authRequest = getAuthenticationToken(request);
-
-    // Allow subclasses to set the "details" property
-    setDetails(request, authRequest);
-
-    return this.getAuthenticationManager().authenticate(authRequest);
-  }
-
-  private OAuth2FormLoginAuthenticationToken getAuthenticationToken(
-    HttpServletRequest request) {
-
-    String username = obtainUsername(request);
-    String password = obtainPassword(request);
-    String key = request.getParameter("symmetric");
-
-    if (StringUtils.isBlank(username)) {
-      username = "";
+    public OAuth2FormLoginAuthenticationFilter() {
+        super();
     }
 
-    if (StringUtils.isBlank(password)) {
-      password = "";
+    public OAuth2FormLoginAuthenticationFilter(AuthenticationManager authenticationManager) {
+        super(authenticationManager);
     }
 
-    if (StringUtils.isNotBlank(key) && StringUtils.isNotBlank(username) && StringUtils.isNotBlank(password)) {
-      byte[] byteKey = SymmetricUtils.getDecryptedSymmetricKey(key);
-      username = SymmetricUtils.decrypt(username, byteKey);
-      password = SymmetricUtils.decrypt(password, byteKey);
-      log.debug("[GstDev Cloud] |- Decrypt Username is : [{}], Password is : [{}]", username, password);
+    @Override
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+        if (this.postOnly && !request.getMethod().equals("POST")) {
+            throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
+        }
+        OAuth2FormLoginAuthenticationToken authRequest = getAuthenticationToken(request);
+
+        // Allow subclasses to set the "details" property
+        setDetails(request, authRequest);
+
+        return this.getAuthenticationManager().authenticate(authRequest);
     }
 
-    return new OAuth2FormLoginAuthenticationToken(username, password);
-  }
+    private OAuth2FormLoginAuthenticationToken getAuthenticationToken(
+        HttpServletRequest request) {
 
-  @Override
-  public void setPostOnly(boolean postOnly) {
-    super.setPostOnly(postOnly);
-    this.postOnly = postOnly;
-  }
+        String username = obtainUsername(request);
+        String password = obtainPassword(request);
+        String key = request.getParameter("symmetric");
 
-  /**
-   * 重写该方法，避免在日志Debug级别会输出错误信息的问题。
-   *
-   * @param request  请求
-   * @param response 响应
-   * @param failed   失败内容
-   * @throws IOException      IOException
-   * @throws ServletException ServletException
-   */
-  @Override
-  protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
-    SecurityContextHolder.clearContext();
-    getRememberMeServices().loginFail(request, response);
-    getFailureHandler().onAuthenticationFailure(request, response, failed);
-  }
+        if (StringUtils.isBlank(username)) {
+            username = "";
+        }
+
+        if (StringUtils.isBlank(password)) {
+            password = "";
+        }
+
+        if (StringUtils.isNotBlank(key) && StringUtils.isNotBlank(username) && StringUtils.isNotBlank(password)) {
+            byte[] byteKey = SymmetricUtils.getDecryptedSymmetricKey(key);
+            username = SymmetricUtils.decrypt(username, byteKey);
+            password = SymmetricUtils.decrypt(password, byteKey);
+            log.debug("[GstDev Cloud] |- Decrypt Username is : [{}], Password is : [{}]", username, password);
+        }
+
+        return new OAuth2FormLoginAuthenticationToken(username, password);
+    }
+
+    @Override
+    public void setPostOnly(boolean postOnly) {
+        super.setPostOnly(postOnly);
+        this.postOnly = postOnly;
+    }
+
+    /**
+     * 重写该方法，避免在日志Debug级别会输出错误信息的问题。
+     *
+     * @param request  请求
+     * @param response 响应
+     * @param failed   失败内容
+     * @throws IOException      IOException
+     * @throws ServletException ServletException
+     */
+    @Override
+    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
+        SecurityContextHolder.clearContext();
+        getRememberMeServices().loginFail(request, response);
+        getFailureHandler().onAuthenticationFailure(request, response, failed);
+    }
 }

@@ -10,31 +10,31 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "gstdev.cloud.swagger")
 public class SwaggerProperties {
 
-  private String title = SwaggerDefaults.TITLE;
+    private String title = SwaggerDefaults.TITLE;
 
-  private String description = SwaggerDefaults.DESCRIPTION;
+    private String description = SwaggerDefaults.DESCRIPTION;
 
-  private String version = SwaggerDefaults.VERSION;
+    private String version = SwaggerDefaults.VERSION;
 
-  private String termsOfServiceUrl = SwaggerDefaults.TERMS_OF_SERVICE_URL;
+    private String termsOfServiceUrl = SwaggerDefaults.TERMS_OF_SERVICE_URL;
 
-  private String contactName = SwaggerDefaults.CONTACT_NAME;
+    private String contactName = SwaggerDefaults.CONTACT_NAME;
 
-  private String contactUrl = SwaggerDefaults.CONTACT_URL;
+    private String contactUrl = SwaggerDefaults.CONTACT_URL;
 
-  private String contactEmail = SwaggerDefaults.CONTACT_EMAIL;
+    private String contactEmail = SwaggerDefaults.CONTACT_EMAIL;
 
-  private String license = SwaggerDefaults.LICENSE;
+    private String license = SwaggerDefaults.LICENSE;
 
-  private String licenseUrl = SwaggerDefaults.LICENSE_URL;
+    private String licenseUrl = SwaggerDefaults.LICENSE_URL;
 
-  private String defaultIncludePattern = SwaggerDefaults.DEFAULT_INCLUDE_PATTERN;
+    private String defaultIncludePattern = SwaggerDefaults.DEFAULT_INCLUDE_PATTERN;
 
-  private String host = SwaggerDefaults.HOST;
+    private String host = SwaggerDefaults.HOST;
 
-  private String[] protocols = SwaggerDefaults.PROTOCOLS;
+    private String[] protocols = SwaggerDefaults.PROTOCOLS;
 
-  private boolean useDefaultResponseMessages = SwaggerDefaults.USE_DEFAULT_RESPONSE_MESSAGES;
+    private boolean useDefaultResponseMessages = SwaggerDefaults.USE_DEFAULT_RESPONSE_MESSAGES;
 
-  private boolean enabled = SwaggerDefaults.ENABLED;
+    private boolean enabled = SwaggerDefaults.ENABLED;
 }

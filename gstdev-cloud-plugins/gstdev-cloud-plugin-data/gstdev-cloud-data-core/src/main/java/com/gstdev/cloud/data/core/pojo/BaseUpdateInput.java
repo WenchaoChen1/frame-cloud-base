@@ -9,5 +9,5 @@ import lombok.Setter;
 @Setter
 public class BaseUpdateInput implements BaseUpdateInputInterface {
 
-  String id;
+    String id;
 }

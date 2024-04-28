@@ -15,41 +15,41 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = RestConstants.PROPERTY_PREFIX_PLATFORM)
 public class PlatformProperties {
 
-  /**
-   * 平台架构类型，默认：DISTRIBUTED（分布式架构）
-   */
-  private Architecture architecture = Architecture.DISTRIBUTED;
-  /**
-   * 数据访问策略，默认：远程
-   */
-  private Target dataAccessStrategy = Target.REMOTE;
+    /**
+     * 平台架构类型，默认：DISTRIBUTED（分布式架构）
+     */
+    private Architecture architecture = Architecture.DISTRIBUTED;
+    /**
+     * 数据访问策略，默认：远程
+     */
+    private Target dataAccessStrategy = Target.REMOTE;
 
-  /**
-   * 接口地址默认采用的Http协议类型
-   */
-  private Protocol protocol = Protocol.HTTP;
+    /**
+     * 接口地址默认采用的Http协议类型
+     */
+    private Protocol protocol = Protocol.HTTP;
 
-  public Architecture getArchitecture() {
-    return architecture;
-  }
+    public Architecture getArchitecture() {
+        return architecture;
+    }
 
-  public void setArchitecture(Architecture architecture) {
-    this.architecture = architecture;
-  }
+    public void setArchitecture(Architecture architecture) {
+        this.architecture = architecture;
+    }
 
-  public Target getDataAccessStrategy() {
-    return dataAccessStrategy;
-  }
+    public Target getDataAccessStrategy() {
+        return dataAccessStrategy;
+    }
 
-  public void setDataAccessStrategy(Target dataAccessStrategy) {
-    this.dataAccessStrategy = dataAccessStrategy;
-  }
+    public void setDataAccessStrategy(Target dataAccessStrategy) {
+        this.dataAccessStrategy = dataAccessStrategy;
+    }
 
-  public Protocol getProtocol() {
-    return protocol;
-  }
+    public Protocol getProtocol() {
+        return protocol;
+    }
 
-  public void setProtocol(Protocol protocol) {
-    this.protocol = protocol;
-  }
+    public void setProtocol(Protocol protocol) {
+        this.protocol = protocol;
+    }
 }

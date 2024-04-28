@@ -14,43 +14,43 @@ import org.springframework.context.annotation.ConditionContext;
  */
 public class RestPropertyFinder {
 
-  public static String getApplicationName(ApplicationContext applicationContext) {
-    return PropertyResolver.getProperty(applicationContext.getEnvironment(), BaseConstants.ITEM_SPRING_APPLICATION_NAME);
-  }
+    public static String getApplicationName(ApplicationContext applicationContext) {
+        return PropertyResolver.getProperty(applicationContext.getEnvironment(), BaseConstants.ITEM_SPRING_APPLICATION_NAME);
+    }
 
-  public static String getCryptoStrategy(ConditionContext conditionContext, String defaultValue) {
-    return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PROTECT_CRYPTO_STRATEGY, defaultValue);
-  }
+    public static String getCryptoStrategy(ConditionContext conditionContext, String defaultValue) {
+        return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PROTECT_CRYPTO_STRATEGY, defaultValue);
+    }
 
-  public static String getCryptoStrategy(ConditionContext conditionContext) {
-    return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PROTECT_CRYPTO_STRATEGY);
-  }
+    public static String getCryptoStrategy(ConditionContext conditionContext) {
+        return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PROTECT_CRYPTO_STRATEGY);
+    }
 
-  public static boolean isScanEnabled(ConditionContext conditionContext) {
-    return PropertyResolver.getBoolean(conditionContext, RestConstants.ITEM_SCAN_ENABLED);
-  }
+    public static boolean isScanEnabled(ConditionContext conditionContext) {
+        return PropertyResolver.getBoolean(conditionContext, RestConstants.ITEM_SCAN_ENABLED);
+    }
 
-  public static boolean isOpenFeignHttp2ClientEnabled(ConditionContext conditionContext) {
-    return PropertyResolver.getBoolean(conditionContext, RestConstants.ITEM_OPENFEIGN_HTTP2CLIENT_ENABLED);
-  }
+    public static boolean isOpenFeignHttp2ClientEnabled(ConditionContext conditionContext) {
+        return PropertyResolver.getBoolean(conditionContext, RestConstants.ITEM_OPENFEIGN_HTTP2CLIENT_ENABLED);
+    }
 
-  public static boolean isOpenFeignHttpClient5Enabled(ConditionContext conditionContext) {
-    return PropertyResolver.getBoolean(conditionContext, RestConstants.ITEM_OPENFEIGN_HTTPCLIENT5_ENABLED);
-  }
+    public static boolean isOpenFeignHttpClient5Enabled(ConditionContext conditionContext) {
+        return PropertyResolver.getBoolean(conditionContext, RestConstants.ITEM_OPENFEIGN_HTTPCLIENT5_ENABLED);
+    }
 
-  public static String getDataAccessStrategy(ConditionContext conditionContext, String defaultValue) {
-    return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PLATFORM_DATA_ACCESS_STRATEGY, defaultValue);
-  }
+    public static String getDataAccessStrategy(ConditionContext conditionContext, String defaultValue) {
+        return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PLATFORM_DATA_ACCESS_STRATEGY, defaultValue);
+    }
 
-  public static String getDataAccessStrategy(ConditionContext conditionContext) {
-    return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PLATFORM_DATA_ACCESS_STRATEGY);
-  }
+    public static String getDataAccessStrategy(ConditionContext conditionContext) {
+        return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PLATFORM_DATA_ACCESS_STRATEGY);
+    }
 
-  public static String getArchitecture(ConditionContext conditionContext, String defaultValue) {
-    return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PLATFORM_ARCHITECTURE, defaultValue);
-  }
+    public static String getArchitecture(ConditionContext conditionContext, String defaultValue) {
+        return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PLATFORM_ARCHITECTURE, defaultValue);
+    }
 
-  public static String getArchitecture(ConditionContext conditionContext) {
-    return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PLATFORM_ARCHITECTURE);
-  }
+    public static String getArchitecture(ConditionContext conditionContext) {
+        return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PLATFORM_ARCHITECTURE);
+    }
 }

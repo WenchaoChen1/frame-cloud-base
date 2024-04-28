@@ -24,52 +24,52 @@ import org.springframework.context.annotation.Configuration;
 @Configuration(proxyBeanMethods = false)
 public class CryptoStrategyConfiguration {
 
-  private static final Logger log = LoggerFactory.getLogger(CryptoStrategyConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(CryptoStrategyConfiguration.class);
 
-  @PostConstruct
-  public void postConstruct() {
-    log.debug("[GstDev Cloud] |- SDK [Protect Crypto Strategy] Auto Configure.");
-  }
-
-  @Configuration(proxyBeanMethods = false)
-  @ConditionalOnSMCrypto
-  static class SMCryptoConfiguration {
-
-    @Bean
-    @ConditionalOnMissingBean
-    public AsymmetricCryptoProcessor sm2CryptoProcessor() {
-      SM2CryptoProcessor sm2CryptoProcessor = new SM2CryptoProcessor();
-      log.trace("[GstDev Cloud] |- Strategy [SM Asymmetric SM2 Crypto Processor] Auto Configure.");
-      return sm2CryptoProcessor;
+    @PostConstruct
+    public void postConstruct() {
+        log.debug("[GstDev Cloud] |- SDK [Protect Crypto Strategy] Auto Configure.");
     }
 
-    @Bean
-    @ConditionalOnMissingBean
-    public SymmetricCryptoProcessor sm4CryptoProcessor() {
-      SM4CryptoProcessor sm4CryptoProcessor = new SM4CryptoProcessor();
-      log.trace("[GstDev Cloud] |- Strategy [SM Symmetric SM4 Crypto Processor] Auto Configure.");
-      return sm4CryptoProcessor;
-    }
-  }
+    @Configuration(proxyBeanMethods = false)
+    @ConditionalOnSMCrypto
+    static class SMCryptoConfiguration {
 
-  @Configuration(proxyBeanMethods = false)
-  @ConditionalOnStandardCrypto
-  static class StandardCryptoConfiguration {
+        @Bean
+        @ConditionalOnMissingBean
+        public AsymmetricCryptoProcessor sm2CryptoProcessor() {
+            SM2CryptoProcessor sm2CryptoProcessor = new SM2CryptoProcessor();
+            log.trace("[GstDev Cloud] |- Strategy [SM Asymmetric SM2 Crypto Processor] Auto Configure.");
+            return sm2CryptoProcessor;
+        }
 
-    @Bean
-    @ConditionalOnMissingBean
-    public AsymmetricCryptoProcessor rsaCryptoProcessor() {
-      RSACryptoProcessor rsaCryptoProcessor = new RSACryptoProcessor();
-      log.trace("[GstDev Cloud] |- Strategy [Standard Asymmetric RSA Crypto Processor] Auto Configure.");
-      return rsaCryptoProcessor;
+        @Bean
+        @ConditionalOnMissingBean
+        public SymmetricCryptoProcessor sm4CryptoProcessor() {
+            SM4CryptoProcessor sm4CryptoProcessor = new SM4CryptoProcessor();
+            log.trace("[GstDev Cloud] |- Strategy [SM Symmetric SM4 Crypto Processor] Auto Configure.");
+            return sm4CryptoProcessor;
+        }
     }
 
-    @Bean
-    @ConditionalOnMissingBean
-    public SymmetricCryptoProcessor aesCryptoProcessor() {
-      AESCryptoProcessor aesCryptoProcessor = new AESCryptoProcessor();
-      log.trace("[GstDev Cloud] |- Strategy [Standard Symmetric AES Crypto Processor] Auto Configure.");
-      return aesCryptoProcessor;
+    @Configuration(proxyBeanMethods = false)
+    @ConditionalOnStandardCrypto
+    static class StandardCryptoConfiguration {
+
+        @Bean
+        @ConditionalOnMissingBean
+        public AsymmetricCryptoProcessor rsaCryptoProcessor() {
+            RSACryptoProcessor rsaCryptoProcessor = new RSACryptoProcessor();
+            log.trace("[GstDev Cloud] |- Strategy [Standard Asymmetric RSA Crypto Processor] Auto Configure.");
+            return rsaCryptoProcessor;
+        }
+
+        @Bean
+        @ConditionalOnMissingBean
+        public SymmetricCryptoProcessor aesCryptoProcessor() {
+            AESCryptoProcessor aesCryptoProcessor = new AESCryptoProcessor();
+            log.trace("[GstDev Cloud] |- Strategy [Standard Symmetric AES Crypto Processor] Auto Configure.");
+            return aesCryptoProcessor;
+        }
     }
-  }
 }

@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
  * @date : 2023/9/26 10:07
  */
 public class OkFeedback extends Feedback {
-  public OkFeedback(String value) {
-    super(value, HttpStatus.OK);
-  }
+    public OkFeedback(String value) {
+        super(value, HttpStatus.OK);
+    }
 }

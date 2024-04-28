@@ -23,12 +23,12 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnProperty(prefix = "gstdev.cloud.storage.aws", name = {"endpoint", "accessKey", "secretKey"})
 public class AwsStorageAutoConfiguration {
 
-  @Autowired
-  private AwsStorageProperties properties;
+    @Autowired
+    private AwsStorageProperties properties;
 
-  @Bean
-  @ConditionalOnMissingBean
-  public StorageService storageService() {
-    return new AwsStorageService(properties.getEndpoint(), properties.getAccessKey(), properties.getSecretKey());
-  }
+    @Bean
+    @ConditionalOnMissingBean
+    public StorageService storageService() {
+        return new AwsStorageService(properties.getEndpoint(), properties.getAccessKey(), properties.getSecretKey());
+    }
 }

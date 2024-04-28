@@ -25,51 +25,51 @@ import org.springframework.context.annotation.Configuration;
 @Configuration(proxyBeanMethods = false)
 public class MybatisPlusConfiguration {
 
-  private static final Logger log = LoggerFactory.getLogger(MybatisPlusConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(MybatisPlusConfiguration.class);
 
-  @Value(DataConstants.ANNOTATION_SQL_INIT_PLATFORM)
-  private String platform;
+    @Value(DataConstants.ANNOTATION_SQL_INIT_PLATFORM)
+    private String platform;
 
-  @PostConstruct
-  public void postConstruct() {
-    log.debug("[GstDev Cloud] |- SDK [Data Mybatis Plus] Auto Configure.");
-  }
-
-  private DbType parseDbType() {
-    if (StringUtils.isNotBlank(platform)) {
-      DbType type = DbType.getDbType(platform);
-      if (ObjectUtils.isNotEmpty(type)) {
-        return type;
-      }
+    @PostConstruct
+    public void postConstruct() {
+        log.debug("[GstDev Cloud] |- SDK [Data Mybatis Plus] Auto Configure.");
     }
 
-    return DbType.POSTGRE_SQL;
-  }
+    private DbType parseDbType() {
+        if (StringUtils.isNotBlank(platform)) {
+            DbType type = DbType.getDbType(platform);
+            if (ObjectUtils.isNotEmpty(type)) {
+                return type;
+            }
+        }
 
-  /**
-   * 防止 修改与删除时对全表进行操作
-   *
-   * @return {@link MybatisPlusInterceptor}
-   */
-  @Bean
-  public MybatisPlusInterceptor mybatisPlusInterceptor() {
-    MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
-    mybatisPlusInterceptor.addInnerInterceptor(new PaginationInnerInterceptor(parseDbType()));
-    log.trace("[GstDev Cloud] |- Bean [Mybatis Plus Interceptor] Auto Configure.");
-    return mybatisPlusInterceptor;
-  }
+        return DbType.POSTGRE_SQL;
+    }
 
-  @Bean
-  public BlockAttackInnerInterceptor blockAttackInnerInterceptor() {
-    BlockAttackInnerInterceptor blockAttackInnerInterceptor = new BlockAttackInnerInterceptor();
-    log.trace("[GstDev Cloud] |- Bean [Block Attack Inner Interceptor] Auto Configure.");
-    return blockAttackInnerInterceptor;
-  }
+    /**
+     * 防止 修改与删除时对全表进行操作
+     *
+     * @return {@link MybatisPlusInterceptor}
+     */
+    @Bean
+    public MybatisPlusInterceptor mybatisPlusInterceptor() {
+        MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
+        mybatisPlusInterceptor.addInnerInterceptor(new PaginationInnerInterceptor(parseDbType()));
+        log.trace("[GstDev Cloud] |- Bean [Mybatis Plus Interceptor] Auto Configure.");
+        return mybatisPlusInterceptor;
+    }
 
-  @Bean
-  public IdentifierGenerator identifierGenerator() {
-    FrameIdentifierGenerator herodotusIdentifierGenerator = new FrameIdentifierGenerator();
-    log.trace("[GstDev Cloud] |- Bean [GstDev Cloud Identifier Generator] Auto Configure.");
-    return herodotusIdentifierGenerator;
-  }
+    @Bean
+    public BlockAttackInnerInterceptor blockAttackInnerInterceptor() {
+        BlockAttackInnerInterceptor blockAttackInnerInterceptor = new BlockAttackInnerInterceptor();
+        log.trace("[GstDev Cloud] |- Bean [Block Attack Inner Interceptor] Auto Configure.");
+        return blockAttackInnerInterceptor;
+    }
+
+    @Bean
+    public IdentifierGenerator identifierGenerator() {
+        FrameIdentifierGenerator herodotusIdentifierGenerator = new FrameIdentifierGenerator();
+        log.trace("[GstDev Cloud] |- Bean [GstDev Cloud Identifier Generator] Auto Configure.");
+        return herodotusIdentifierGenerator;
+    }
 }

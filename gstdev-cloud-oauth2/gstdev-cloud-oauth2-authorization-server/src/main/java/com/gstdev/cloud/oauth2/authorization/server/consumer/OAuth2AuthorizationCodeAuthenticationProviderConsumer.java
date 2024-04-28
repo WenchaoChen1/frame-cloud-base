@@ -23,26 +23,26 @@ import java.util.function.Consumer;
  **/
 
 public class OAuth2AuthorizationCodeAuthenticationProviderConsumer implements Consumer<List<AuthenticationProvider>> {
-  private static final Logger log = LoggerFactory.getLogger(OAuth2AuthorizationCodeAuthenticationProviderConsumer.class);
-  private final HttpSecurity httpSecurity;
+    private static final Logger log = LoggerFactory.getLogger(OAuth2AuthorizationCodeAuthenticationProviderConsumer.class);
+    private final HttpSecurity httpSecurity;
 //  private final SessionRegistry sessionRegistry;
 
-  //  public OAuth2AuthorizationCodeAuthenticationProviderConsumer(HttpSecurity httpSecurity, SessionRegistry sessionRegistry) {
-  public OAuth2AuthorizationCodeAuthenticationProviderConsumer(HttpSecurity httpSecurity) {
-    this.httpSecurity = httpSecurity;
+    //  public OAuth2AuthorizationCodeAuthenticationProviderConsumer(HttpSecurity httpSecurity, SessionRegistry sessionRegistry) {
+    public OAuth2AuthorizationCodeAuthenticationProviderConsumer(HttpSecurity httpSecurity) {
+        this.httpSecurity = httpSecurity;
 //    this.sessionRegistry = sessionRegistry;
-  }
+    }
 
-  public void accept(List<AuthenticationProvider> authenticationProviders) {
-    authenticationProviders.removeIf((authenticationProvider) -> {
-      return authenticationProvider instanceof OAuth2AuthorizationCodeAuthenticationProvider;
-    });
-    OAuth2AuthorizationService authorizationService = OAuth2ConfigurerUtils.getAuthorizationService(this.httpSecurity);
-    OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator = OAuth2ConfigurerUtils.getTokenGenerator(this.httpSecurity);
-    com.gstdev.cloud.oauth2.authorization.server.provider.OAuth2AuthorizationCodeAuthenticationProvider provider
-      = new com.gstdev.cloud.oauth2.authorization.server.provider.OAuth2AuthorizationCodeAuthenticationProvider(authorizationService, tokenGenerator);
+    public void accept(List<AuthenticationProvider> authenticationProviders) {
+        authenticationProviders.removeIf((authenticationProvider) -> {
+            return authenticationProvider instanceof OAuth2AuthorizationCodeAuthenticationProvider;
+        });
+        OAuth2AuthorizationService authorizationService = OAuth2ConfigurerUtils.getAuthorizationService(this.httpSecurity);
+        OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator = OAuth2ConfigurerUtils.getTokenGenerator(this.httpSecurity);
+        com.gstdev.cloud.oauth2.authorization.server.provider.OAuth2AuthorizationCodeAuthenticationProvider provider
+            = new com.gstdev.cloud.oauth2.authorization.server.provider.OAuth2AuthorizationCodeAuthenticationProvider(authorizationService, tokenGenerator);
 //    provider.setSessionRegistry(this.sessionRegistry);
-    log.debug("[GstDev Cloud] |- Custom OAuth2AuthorizationCodeAuthenticationProvider is in effect!");
-    authenticationProviders.add(provider);
-  }
+        log.debug("[GstDev Cloud] |- Custom OAuth2AuthorizationCodeAuthenticationProvider is in effect!");
+        authenticationProviders.add(provider);
+    }
 }

@@ -13,13 +13,13 @@ import org.springframework.stereotype.Component;
 //@Component
 public class SpecCaptchaRenderer extends AbstractPngGraphicRenderer {
 
-  @Override
-  public String getCategory() {
-    return CaptchaCategory.SPEC.getConstant();
-  }
+    @Override
+    public String getCategory() {
+        return CaptchaCategory.SPEC.getConstant();
+    }
 
-  @Override
-  protected String[] getDrawCharacters() {
-    return this.getCharCharacters();
-  }
+    @Override
+    protected String[] getDrawCharacters() {
+        return this.getCharCharacters();
+    }
 }

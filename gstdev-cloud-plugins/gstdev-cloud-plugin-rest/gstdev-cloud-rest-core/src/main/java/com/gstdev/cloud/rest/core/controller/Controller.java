@@ -217,12 +217,13 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
         Page<E> pages = getService().findByPage(pageNumber, pageSize, direction, properties);
         return result(pages);
     }
+
     /**
      * 查询分页数据
      *
      * @param pageNumber 当前页码, 起始页码 0
      * @param pageSize   每页显示的数据条数
-     * @param sort  排序的属性名称
+     * @param sort       排序的属性名称
      * @return 分页数据
      */
     default Result<Map<String, Object>> findByPage(Integer pageNumber, Integer pageSize, Sort sort) {

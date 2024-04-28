@@ -35,52 +35,52 @@ import java.util.Set;
 
 
 public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
-  private static final Logger log = LoggerFactory.getLogger(OAuth2PasswordAuthenticationProvider.class);
-  private static final String ERROR_URI = "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2";
-  private final OAuth2AuthorizationService authorizationService;
-  private final OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator;
-  private SessionRegistry sessionRegistry;
+    private static final Logger log = LoggerFactory.getLogger(OAuth2PasswordAuthenticationProvider.class);
+    private static final String ERROR_URI = "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2";
+    private final OAuth2AuthorizationService authorizationService;
+    private final OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator;
+    private SessionRegistry sessionRegistry;
 
-  /**
-   * Constructs an {@code OAuth2ClientCredentialsAuthenticationProvider} using the provided parameters.
-   *
-   * @param authorizationService the authorization service
-   * @param tokenGenerator       – the token generator
-   */
-  public OAuth2PasswordAuthenticationProvider(OAuth2AuthorizationService authorizationService, OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator, UserDetailsService userDetailsService, OAuth2AuthenticationProperties complianceProperties) {
-    super(authorizationService, userDetailsService, complianceProperties);
-    Assert.notNull(tokenGenerator, "tokenGenerator cannot be null");
-    this.authorizationService = authorizationService;
-    this.tokenGenerator = tokenGenerator;
-  }
-
-  protected void additionalAuthenticationChecks(UserDetails userDetails, Map<String, Object> additionalParameters) throws AuthenticationException {
-    String presentedPassword = (String) additionalParameters.get(OAuth2ParameterNames.PASSWORD);
-    if (!this.getPasswordEncoder().matches(presentedPassword, userDetails.getPassword())) {
-      log.debug("[GstDev Cloud] |- Failed to authenticate since password does not match stored value");
-      throw new BadCredentialsException("Bad credentials");
+    /**
+     * Constructs an {@code OAuth2ClientCredentialsAuthenticationProvider} using the provided parameters.
+     *
+     * @param authorizationService the authorization service
+     * @param tokenGenerator       – the token generator
+     */
+    public OAuth2PasswordAuthenticationProvider(OAuth2AuthorizationService authorizationService, OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator, UserDetailsService userDetailsService, OAuth2AuthenticationProperties complianceProperties) {
+        super(authorizationService, userDetailsService, complianceProperties);
+        Assert.notNull(tokenGenerator, "tokenGenerator cannot be null");
+        this.authorizationService = authorizationService;
+        this.tokenGenerator = tokenGenerator;
     }
-  }
 
-  protected UserDetails retrieveUser(Map<String, Object> additionalParameters) throws AuthenticationException {
-    String username = (String) additionalParameters.get(OAuth2ParameterNames.USERNAME);
-    try {
-      EnhanceUserDetailsService enhanceUserDetailsService = getUserDetailsService();
-      UserDetails userDetails = enhanceUserDetailsService.loadUserByUsername(username);
-      if (userDetails == null) {
-        throw new InternalAuthenticationServiceException(
-          "UserDetailsService returned null, which is an interface contract violation");
-      }
-      return userDetails;
-    } catch (UsernameNotFoundException ex) {
-      log.error("[GstDev Cloud] |- User name can not found ：[{}]", username);
-      throw ex;
-    } catch (InternalAuthenticationServiceException ex) {
-      throw ex;
-    } catch (Exception ex) {
-      throw new InternalAuthenticationServiceException(ex.getMessage(), ex);
+    protected void additionalAuthenticationChecks(UserDetails userDetails, Map<String, Object> additionalParameters) throws AuthenticationException {
+        String presentedPassword = (String) additionalParameters.get(OAuth2ParameterNames.PASSWORD);
+        if (!this.getPasswordEncoder().matches(presentedPassword, userDetails.getPassword())) {
+            log.debug("[GstDev Cloud] |- Failed to authenticate since password does not match stored value");
+            throw new BadCredentialsException("Bad credentials");
+        }
     }
-  }
+
+    protected UserDetails retrieveUser(Map<String, Object> additionalParameters) throws AuthenticationException {
+        String username = (String) additionalParameters.get(OAuth2ParameterNames.USERNAME);
+        try {
+            EnhanceUserDetailsService enhanceUserDetailsService = getUserDetailsService();
+            UserDetails userDetails = enhanceUserDetailsService.loadUserByUsername(username);
+            if (userDetails == null) {
+                throw new InternalAuthenticationServiceException(
+                    "UserDetailsService returned null, which is an interface contract violation");
+            }
+            return userDetails;
+        } catch (UsernameNotFoundException ex) {
+            log.error("[GstDev Cloud] |- User name can not found ：[{}]", username);
+            throw ex;
+        } catch (InternalAuthenticationServiceException ex) {
+            throw ex;
+        } catch (Exception ex) {
+            throw new InternalAuthenticationServiceException(ex.getMessage(), ex);
+        }
+    }
 
 //  public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 //    OAuth2PasswordAuthenticationToken resourceOwnerPasswordAuthentication = (OAuth2PasswordAuthenticationToken) authentication;
@@ -117,30 +117,30 @@ public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAut
 //  }
 
 
-  @Override
-  public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-    OAuth2PasswordAuthenticationToken resourceOwnerPasswordAuthentication = (OAuth2PasswordAuthenticationToken) authentication;
+    @Override
+    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+        OAuth2PasswordAuthenticationToken resourceOwnerPasswordAuthentication = (OAuth2PasswordAuthenticationToken) authentication;
 
-    OAuth2ClientAuthenticationToken clientPrincipal =
-      OAuth2AuthenticationProviderUtils.getAuthenticatedClientElseThrowInvalidClient(resourceOwnerPasswordAuthentication);
-    RegisteredClient registeredClient = clientPrincipal.getRegisteredClient();
+        OAuth2ClientAuthenticationToken clientPrincipal =
+            OAuth2AuthenticationProviderUtils.getAuthenticatedClientElseThrowInvalidClient(resourceOwnerPasswordAuthentication);
+        RegisteredClient registeredClient = clientPrincipal.getRegisteredClient();
 
-    if (!registeredClient.getAuthorizationGrantTypes().contains(FrameGrantType.PASSWORD)) {
-      throw new OAuth2AuthenticationException(OAuth2ErrorCodes.UNAUTHORIZED_CLIENT);
-    }
+        if (!registeredClient.getAuthorizationGrantTypes().contains(FrameGrantType.PASSWORD)) {
+            throw new OAuth2AuthenticationException(OAuth2ErrorCodes.UNAUTHORIZED_CLIENT);
+        }
 
-    Authentication principal = getUsernamePasswordAuthentication(resourceOwnerPasswordAuthentication.getAdditionalParameters(), registeredClient.getId());
+        Authentication principal = getUsernamePasswordAuthentication(resourceOwnerPasswordAuthentication.getAdditionalParameters(), registeredClient.getId());
 
-    // Default to configured scopes
-    Set<String> authorizedScopes = validateScopes(resourceOwnerPasswordAuthentication.getScopes(), registeredClient);
+        // Default to configured scopes
+        Set<String> authorizedScopes = validateScopes(resourceOwnerPasswordAuthentication.getScopes(), registeredClient);
 
-    OAuth2Authorization.Builder authorizationBuilder = OAuth2Authorization.withRegisteredClient(registeredClient)
-      .principalName(principal.getName())
-      .authorizationGrantType(FrameGrantType.PASSWORD)
-      .authorizedScopes(authorizedScopes)
-      .attribute(Principal.class.getName(), principal);
+        OAuth2Authorization.Builder authorizationBuilder = OAuth2Authorization.withRegisteredClient(registeredClient)
+            .principalName(principal.getName())
+            .authorizationGrantType(FrameGrantType.PASSWORD)
+            .authorizedScopes(authorizedScopes)
+            .attribute(Principal.class.getName(), principal);
 
-    // @formatter:off
+        // @formatter:off
     DefaultOAuth2TokenContext.Builder tokenContextBuilder = DefaultOAuth2TokenContext.builder()
       .registeredClient(registeredClient)
       .principal(principal)
@@ -151,46 +151,46 @@ public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAut
       .authorizationGrant(resourceOwnerPasswordAuthentication);
     // @formatter:on
 
-    // ----- Access token -----
-    OAuth2AccessToken accessToken = createOAuth2AccessToken(tokenContextBuilder, authorizationBuilder, this.tokenGenerator, ERROR_URI);
+        // ----- Access token -----
+        OAuth2AccessToken accessToken = createOAuth2AccessToken(tokenContextBuilder, authorizationBuilder, this.tokenGenerator, ERROR_URI);
 
-    // ----- Refresh token -----
-    OAuth2RefreshToken refreshToken = creatOAuth2RefreshToken(tokenContextBuilder, authorizationBuilder, this.tokenGenerator, ERROR_URI, clientPrincipal, registeredClient);
+        // ----- Refresh token -----
+        OAuth2RefreshToken refreshToken = creatOAuth2RefreshToken(tokenContextBuilder, authorizationBuilder, this.tokenGenerator, ERROR_URI, clientPrincipal, registeredClient);
 
-    // ----- ID token -----
+        // ----- ID token -----
 //    OidcIdToken idToken = createOidcIdToken(principal, sessionRegistry, tokenContextBuilder, authorizationBuilder, this.tokenGenerator, ERROR_URI, resourceOwnerPasswordAuthentication.getScopes());
-    OidcIdToken idToken = createOidcIdToken(principal, null, tokenContextBuilder, authorizationBuilder, this.tokenGenerator, ERROR_URI, resourceOwnerPasswordAuthentication.getScopes());
+        OidcIdToken idToken = createOidcIdToken(principal, null, tokenContextBuilder, authorizationBuilder, this.tokenGenerator, ERROR_URI, resourceOwnerPasswordAuthentication.getScopes());
 
-    OAuth2Authorization authorization = authorizationBuilder.build();
+        OAuth2Authorization authorization = authorizationBuilder.build();
 
-    this.authorizationService.save(authorization);
+        this.authorizationService.save(authorization);
 
-    log.debug("[GstDev Cloud] |- Resource Owner Password returning OAuth2AccessTokenAuthenticationToken.");
+        log.debug("[GstDev Cloud] |- Resource Owner Password returning OAuth2AccessTokenAuthenticationToken.");
 
-    Map<String, Object> additionalParameters = idTokenAdditionalParameters(idToken);
+        Map<String, Object> additionalParameters = idTokenAdditionalParameters(idToken);
 
-    OAuth2AccessTokenAuthenticationToken accessTokenAuthenticationToken = new OAuth2AccessTokenAuthenticationToken(
-      registeredClient, clientPrincipal, accessToken, refreshToken, additionalParameters);
-    return createOAuth2AccessTokenAuthenticationToken(principal, accessTokenAuthenticationToken);
-  }
+        OAuth2AccessTokenAuthenticationToken accessTokenAuthenticationToken = new OAuth2AccessTokenAuthenticationToken(
+            registeredClient, clientPrincipal, accessToken, refreshToken, additionalParameters);
+        return createOAuth2AccessTokenAuthenticationToken(principal, accessTokenAuthenticationToken);
+    }
 
-  /**
-   * Sets the {@link SessionRegistry} used to track OpenID Connect sessions.
-   *
-   * @param sessionRegistry the {@link SessionRegistry} used to track OpenID Connect sessions
-   * @since 1.1.1
-   */
-  public void setSessionRegistry(SessionRegistry sessionRegistry) {
-    Assert.notNull(sessionRegistry, "sessionRegistry cannot be null");
-    this.sessionRegistry = sessionRegistry;
-  }
+    /**
+     * Sets the {@link SessionRegistry} used to track OpenID Connect sessions.
+     *
+     * @param sessionRegistry the {@link SessionRegistry} used to track OpenID Connect sessions
+     * @since 1.1.1
+     */
+    public void setSessionRegistry(SessionRegistry sessionRegistry) {
+        Assert.notNull(sessionRegistry, "sessionRegistry cannot be null");
+        this.sessionRegistry = sessionRegistry;
+    }
 
-  @Override
-  public boolean supports(Class<?> authentication) {
-    boolean supports = OAuth2PasswordAuthenticationToken.class.isAssignableFrom(authentication);
-    log.trace("[GstDev Cloud] |- Resource Owner Password Authentication is supports! [{}]", supports);
-    return supports;
-  }
+    @Override
+    public boolean supports(Class<?> authentication) {
+        boolean supports = OAuth2PasswordAuthenticationToken.class.isAssignableFrom(authentication);
+        log.trace("[GstDev Cloud] |- Resource Owner Password Authentication is supports! [{}]", supports);
+        return supports;
+    }
 
 
 }

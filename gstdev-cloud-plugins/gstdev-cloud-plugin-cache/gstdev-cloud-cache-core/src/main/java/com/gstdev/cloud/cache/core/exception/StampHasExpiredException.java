@@ -12,28 +12,28 @@ import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
  */
 public class StampHasExpiredException extends PlatformRuntimeException {
 
-  public StampHasExpiredException() {
-    super();
-  }
+    public StampHasExpiredException() {
+        super();
+    }
 
-  public StampHasExpiredException(String message) {
-    super(message);
-  }
+    public StampHasExpiredException(String message) {
+        super(message);
+    }
 
-  public StampHasExpiredException(String message, Throwable cause) {
-    super(message, cause);
-  }
+    public StampHasExpiredException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-  public StampHasExpiredException(Throwable cause) {
-    super(cause);
-  }
+    public StampHasExpiredException(Throwable cause) {
+        super(cause);
+    }
 
-  protected StampHasExpiredException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-    super(message, cause, enableSuppression, writableStackTrace);
-  }
+    protected StampHasExpiredException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
 
-  @Override
-  public Feedback getFeedback() {
-    return CacheErrorCodes.STAMP_HAS_EXPIRED;
-  }
+    @Override
+    public Feedback getFeedback() {
+        return CacheErrorCodes.STAMP_HAS_EXPIRED;
+    }
 }

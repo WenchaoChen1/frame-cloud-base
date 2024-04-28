@@ -34,18 +34,18 @@ import java.util.Optional;
 public class AwsStorageService extends AbstractFileService implements StorageService {
 //  private AwsConfig awsConfig;
 
-  private String endpoint;
-  private String accessKey;
-  private String secretKey;
+    private String endpoint;
+    private String accessKey;
+    private String secretKey;
 
-  public AwsStorageService(String endpoint, String accessKey, String secretKey) {
-    this.endpoint = endpoint;
-    this.accessKey = accessKey;
-    this.secretKey = secretKey;
-  }
+    public AwsStorageService(String endpoint, String accessKey, String secretKey) {
+        this.endpoint = endpoint;
+        this.accessKey = accessKey;
+        this.secretKey = secretKey;
+    }
 
-  @Override
-  public void createBucket(String bucketName) {
+    @Override
+    public void createBucket(String bucketName) {
 //    try {
 //      client = getClient();
 //
@@ -74,90 +74,90 @@ public class AwsStorageService extends AbstractFileService implements StorageSer
 //    } catch (Exception ex) {
 //      log.info("创建Bucket失败");
 //    }
-  }
+    }
 
-  @Override
-  public void removeBucket(String bucketName) {
+    @Override
+    public void removeBucket(String bucketName) {
 //    try {
 //      getClient().removeBucket(bucketName);
 //    } catch (Exception ex) {
 //      log.info("删除Bucket失败");
 //    }
-  }
-
-  @Override
-  public Optional<FileBucket> getBucket(String bucketName) {
-    return null;
-  }
-
-  @Override
-  public List<FileBucket> listBuckets() {
-    return null;
-  }
-
-  @Override
-  public String getObjectURL(String bucketName, String objectName, Integer expires) {
-    if (expires <= 0) {
-      String[] segements = endpoint.split("://");
-      return segements[0] + "://" + segements[1] + "/" + bucketName + "/" + objectName;
     }
 
-    String url = null;
+    @Override
+    public Optional<FileBucket> getBucket(String bucketName) {
+        return null;
+    }
+
+    @Override
+    public List<FileBucket> listBuckets() {
+        return null;
+    }
+
+    @Override
+    public String getObjectURL(String bucketName, String objectName, Integer expires) {
+        if (expires <= 0) {
+            String[] segements = endpoint.split("://");
+            return segements[0] + "://" + segements[1] + "/" + bucketName + "/" + objectName;
+        }
+
+        String url = null;
 
 //    try {
 //      url = getClient().presignedGetObject(bucketName, objectName);
-    url = getClient().generatePresignedUrl(new GeneratePresignedUrlRequest(bucketName, objectName)).toString();
+        url = getClient().generatePresignedUrl(new GeneratePresignedUrlRequest(bucketName, objectName)).toString();
 //    } catch (Exception ex) {
 //      log.info("获得FileObject失败");
 //    }
 
-    return url;
-  }
+        return url;
+    }
 
-  @Override
-  public FileObject stateObjectInfo(String bucketName, String objectName) {
-    return null;
-  }
+    @Override
+    public FileObject stateObjectInfo(String bucketName, String objectName) {
+        return null;
+    }
 
-  @Override
-  public void putObject(String bucketName, String objectName, InputStream stream, long size, String contentType) {
-    try {
+    @Override
+    public void putObject(String bucketName, String objectName, InputStream stream, long size, String contentType) {
+        try {
 //      PutObjectOptions options = new PutObjectOptions(size, -1);
 //      options.setContentType(contentType);
 //
 //      getClient().putObject(bucketName, objectName, stream, options);
 //      String key = BUCKET_NAME_URL_STRING+objectName;
-      PutObjectRequest request = new PutObjectRequest(bucketName, objectName, stream, null);
-      request.withCannedAcl(CannedAccessControlList.PublicRead);
-      PutObjectResult putObjectResult = getClient().putObject(request);
-    } catch (Exception ex) {
-      log.info("创建FileObject失败", ex);
+            PutObjectRequest request = new PutObjectRequest(bucketName, objectName, stream, null);
+            request.withCannedAcl(CannedAccessControlList.PublicRead);
+            PutObjectResult putObjectResult = getClient().putObject(request);
+        } catch (Exception ex) {
+            log.info("创建FileObject失败", ex);
+        }
     }
-  }
 
-  @Override
-  public void removeObject(String bucketName, String objectName) {
-    try {
-      getClient().deleteObject(new DeleteObjectRequest(bucketName, objectName));
+    @Override
+    public void removeObject(String bucketName, String objectName) {
+        try {
+            getClient().deleteObject(new DeleteObjectRequest(bucketName, objectName));
 //      getClient().removeObject(bucketName, objectName);
-    } catch (Exception ex) {
-      log.info("删除FileObject失败");
+        } catch (Exception ex) {
+            log.info("删除FileObject失败");
+        }
     }
-  }
 
-  @Override
-  public InputStream getObject(String bucketName, String objectName) {
-    try {
-      return getClient().getObject(new GetObjectRequest(bucketName, objectName)).getObjectContent();
+    @Override
+    public InputStream getObject(String bucketName, String objectName) {
+        try {
+            return getClient().getObject(new GetObjectRequest(bucketName, objectName)).getObjectContent();
 //      return getClient().getObject(bucketName, objectName);
-    } catch (Exception ex) {
-      log.info("删除FileObject失败");
+        } catch (Exception ex) {
+            log.info("删除FileObject失败");
+        }
+
+        return null;
     }
 
-    return null;
-  }
-
-  //  private MinioClient getClient() {
+    //  private MinioClient getClient() {
 //
 //    if (client == null) {
 //      try {
@@ -168,15 +168,15 @@ public class AwsStorageService extends AbstractFileService implements StorageSer
 //    }
 //    return client;
 //  }
-  private AmazonS3 getClient() {
-    if (ObjectUtils.isEmpty(accessKey) && ObjectUtils.isEmpty(secretKey)) {
-      return AmazonS3ClientBuilder.standard()
-        .withRegion(Regions.US_EAST_1)
-        .build();
+    private AmazonS3 getClient() {
+        if (ObjectUtils.isEmpty(accessKey) && ObjectUtils.isEmpty(secretKey)) {
+            return AmazonS3ClientBuilder.standard()
+                .withRegion(Regions.US_EAST_1)
+                .build();
+        }
+        return AmazonS3ClientBuilder.standard()
+            .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKey, secretKey)))
+            .withRegion(Regions.US_EAST_1)
+            .build();
     }
-    return AmazonS3ClientBuilder.standard()
-      .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKey, secretKey)))
-      .withRegion(Regions.US_EAST_1)
-      .build();
-  }
 }

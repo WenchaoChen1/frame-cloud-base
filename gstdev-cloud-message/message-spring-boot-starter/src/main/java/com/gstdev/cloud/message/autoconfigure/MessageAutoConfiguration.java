@@ -21,17 +21,17 @@ import org.springframework.context.annotation.Bean;
 @EnablecFrameMqtt
 public class MessageAutoConfiguration {
 
-  private static final Logger log = LoggerFactory.getLogger(MessageAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(MessageAutoConfiguration.class);
 
-  @PostConstruct
-  public void postConstruct() {
-    log.info("[GstDev Cloud] |- Module [Message Starter] Auto Configure.");
-  }
+    @PostConstruct
+    public void postConstruct() {
+        log.info("[GstDev Cloud] |- Module [Message Starter] Auto Configure.");
+    }
 
-  @Bean
-  public ErrorCodeMapperBuilderCustomizer messageErrorCodeMapperBuilderCustomizer() {
-    MessageErrorCodeMapperBuilderCustomizer customizer = new MessageErrorCodeMapperBuilderCustomizer();
-    log.debug("[GstDev Cloud] |- Strategy [Message ErrorCodeMapper Builder Customizer] Auto Configure.");
-    return customizer;
-  }
+    @Bean
+    public ErrorCodeMapperBuilderCustomizer messageErrorCodeMapperBuilderCustomizer() {
+        MessageErrorCodeMapperBuilderCustomizer customizer = new MessageErrorCodeMapperBuilderCustomizer();
+        log.debug("[GstDev Cloud] |- Strategy [Message ErrorCodeMapper Builder Customizer] Auto Configure.");
+        return customizer;
+    }
 }

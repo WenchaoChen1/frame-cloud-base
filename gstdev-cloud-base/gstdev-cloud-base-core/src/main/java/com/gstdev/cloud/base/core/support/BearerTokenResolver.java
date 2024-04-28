@@ -10,5 +10,5 @@ import com.gstdev.cloud.base.definition.domain.oauth2.PrincipalDetails;
  */
 public interface BearerTokenResolver {
 
-  PrincipalDetails resolve(String token);
+    PrincipalDetails resolve(String token);
 }

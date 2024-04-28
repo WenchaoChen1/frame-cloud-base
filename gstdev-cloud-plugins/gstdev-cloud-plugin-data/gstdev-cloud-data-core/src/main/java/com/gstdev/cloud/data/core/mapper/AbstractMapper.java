@@ -16,21 +16,21 @@ import java.util.List;
 
 public interface AbstractMapper<D, E> {
 
-  E toEntity(D dto);
+    E toEntity(D dto);
 
-  D toDto(E entity);
+    D toDto(E entity);
 
-  List<E> toEntity(List<D> dtoList);
+    List<E> toEntity(List<D> dtoList);
 
-  List<D> toDto(List<E> entityList);
+    List<D> toDto(List<E> entityList);
 
-  default Page<E> toEntity(Page<D> page) {
-    List<E> responses = toEntity(page.getContent());
-    return new PageImpl<>(responses, page.getPageable(), page.getTotalElements());
-  }
+    default Page<E> toEntity(Page<D> page) {
+        List<E> responses = toEntity(page.getContent());
+        return new PageImpl<>(responses, page.getPageable(), page.getTotalElements());
+    }
 
-  default Page<D> toDto(Page<E> page) {
-    List<D> responses = toDto(page.getContent());
-    return new PageImpl<>(responses, page.getPageable(), page.getTotalElements());
-  }
+    default Page<D> toDto(Page<E> page) {
+        List<D> responses = toDto(page.getContent());
+        return new PageImpl<>(responses, page.getPageable(), page.getTotalElements());
+    }
 }

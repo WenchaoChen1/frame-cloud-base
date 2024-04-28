@@ -12,11 +12,11 @@ import java.time.Clock;
  */
 public class AccountReleaseFromCacheEvent extends AbstractApplicationEvent<String> {
 
-  public AccountReleaseFromCacheEvent(String data) {
-    super(data);
-  }
+    public AccountReleaseFromCacheEvent(String data) {
+        super(data);
+    }
 
-  public AccountReleaseFromCacheEvent(String data, Clock clock) {
-    super(data, clock);
-  }
+    public AccountReleaseFromCacheEvent(String data, Clock clock) {
+        super(data, clock);
+    }
 }

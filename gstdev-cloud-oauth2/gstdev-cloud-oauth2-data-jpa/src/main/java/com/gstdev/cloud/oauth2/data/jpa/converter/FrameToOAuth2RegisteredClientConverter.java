@@ -18,24 +18,24 @@ import java.util.Set;
  */
 public class FrameToOAuth2RegisteredClientConverter extends AbstractRegisteredClientConverter<FrameRegisteredClient> {
 
-  public FrameToOAuth2RegisteredClientConverter(OAuth2JacksonProcessor jacksonProcessor) {
-    super(jacksonProcessor);
-  }
+    public FrameToOAuth2RegisteredClientConverter(OAuth2JacksonProcessor jacksonProcessor) {
+        super(jacksonProcessor);
+    }
 
-  @Override
-  public Set<String> getScopes(FrameRegisteredClient details) {
-    return StringUtils.commaDelimitedListToSet(details.getScopes());
-  }
+    @Override
+    public Set<String> getScopes(FrameRegisteredClient details) {
+        return StringUtils.commaDelimitedListToSet(details.getScopes());
+    }
 
-  @Override
-  public ClientSettings getClientSettings(FrameRegisteredClient details) {
-    Map<String, Object> clientSettingsMap = parseMap(details.getClientSettings());
-    return ClientSettings.withSettings(clientSettingsMap).build();
-  }
+    @Override
+    public ClientSettings getClientSettings(FrameRegisteredClient details) {
+        Map<String, Object> clientSettingsMap = parseMap(details.getClientSettings());
+        return ClientSettings.withSettings(clientSettingsMap).build();
+    }
 
-  @Override
-  public TokenSettings getTokenSettings(FrameRegisteredClient details) {
-    Map<String, Object> tokenSettingsMap = parseMap(details.getTokenSettings());
-    return TokenSettings.withSettings(tokenSettingsMap).build();
-  }
+    @Override
+    public TokenSettings getTokenSettings(FrameRegisteredClient details) {
+        Map<String, Object> tokenSettingsMap = parseMap(details.getTokenSettings());
+        return TokenSettings.withSettings(tokenSettingsMap).build();
+    }
 }

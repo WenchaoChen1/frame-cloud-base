@@ -13,30 +13,30 @@ import java.util.List;
  */
 public abstract class AbstractCollectionChangeContext extends AbstractApplicationContextAware {
 
-  private List<String> before;
-  private List<String> after;
+    private List<String> before;
+    private List<String> after;
 
-  public void setBefore(List<String> before) {
-    this.before = before;
-  }
-
-  public void setAfter(List<String> after) {
-    this.after = after;
-  }
-
-  protected List<String> getChangedItems() {
-    if (CollectionUtils.isNotEmpty(this.before) && CollectionUtils.isNotEmpty(this.after)) {
-      return new ArrayList<>(CollectionUtils.disjunction(this.before, this.after));
+    public void setBefore(List<String> before) {
+        this.before = before;
     }
 
-    if (CollectionUtils.isNotEmpty(this.before) && CollectionUtils.isEmpty(this.after)) {
-      return this.before;
+    public void setAfter(List<String> after) {
+        this.after = after;
     }
 
-    if (CollectionUtils.isEmpty(this.before) && CollectionUtils.isNotEmpty(this.after)) {
-      return this.after;
-    }
+    protected List<String> getChangedItems() {
+        if (CollectionUtils.isNotEmpty(this.before) && CollectionUtils.isNotEmpty(this.after)) {
+            return new ArrayList<>(CollectionUtils.disjunction(this.before, this.after));
+        }
 
-    return new ArrayList<>();
-  }
+        if (CollectionUtils.isNotEmpty(this.before) && CollectionUtils.isEmpty(this.after)) {
+            return this.before;
+        }
+
+        if (CollectionUtils.isEmpty(this.before) && CollectionUtils.isNotEmpty(this.after)) {
+            return this.after;
+        }
+
+        return new ArrayList<>();
+    }
 }

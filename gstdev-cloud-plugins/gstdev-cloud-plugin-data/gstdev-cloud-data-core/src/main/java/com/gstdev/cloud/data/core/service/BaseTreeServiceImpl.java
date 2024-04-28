@@ -28,7 +28,7 @@ public abstract class BaseTreeServiceImpl<E extends BaseTreeEntityINT<ID>
     , ID extends Serializable
     , R extends BaseTreeRepository<E, ID>
     , M extends BaseTreeMapper<E, D, II, UI>
-    , D extends BaseTreeDtoInterface<D,ID> & BaseDtoInterface<ID>
+    , D extends BaseTreeDtoInterface<D, ID> & BaseDtoInterface<ID>
     , II extends BaseTreeInsertInputInterface & BaseInsertInputInterface
     , UI extends BaseTreeUpdateInputInterface & BaseUpdateInputInterface
     , PQC extends BaseTreePageQueryCriteriaInterface & BasePageQueryCriteriaInterface

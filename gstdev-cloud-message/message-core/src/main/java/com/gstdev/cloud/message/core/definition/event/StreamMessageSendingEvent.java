@@ -11,11 +11,11 @@ import java.time.Clock;
  * @date : 2023/10/26 15:17
  */
 public class StreamMessageSendingEvent<T extends StreamMessage> extends AbstractApplicationEvent<T> {
-  public StreamMessageSendingEvent(T data) {
-    super(data);
-  }
+    public StreamMessageSendingEvent(T data) {
+        super(data);
+    }
 
-  public StreamMessageSendingEvent(T data, Clock clock) {
-    super(data, clock);
-  }
+    public StreamMessageSendingEvent(T data, Clock clock) {
+        super(data, clock);
+    }
 }

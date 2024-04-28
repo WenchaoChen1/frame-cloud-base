@@ -10,5 +10,5 @@ import com.fasterxml.jackson.core.Version;
  */
 public class Jackson2Constants {
 
-  public static final Version VERSION = new Version(2, 14, 2, null, null, null);
+    public static final Version VERSION = new Version(2, 14, 2, null, null, null);
 }

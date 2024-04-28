@@ -22,63 +22,63 @@ import java.awt.image.BufferedImage;
 //@Component
 public class ArithmeticCaptchaRenderer extends AbstractBaseGraphicRenderer {
 
-  private static final Logger log = LoggerFactory.getLogger(ArithmeticCaptchaRenderer.class);
+    private static final Logger log = LoggerFactory.getLogger(ArithmeticCaptchaRenderer.class);
 
-  private int complexity = 2;
-  /**
-   * 计算结果
-   */
-  private String computedResult;
+    private int complexity = 2;
+    /**
+     * 计算结果
+     */
+    private String computedResult;
 
-  @Override
-  public String getCategory() {
-    return CaptchaCategory.ARITHMETIC.getConstant();
-  }
+    @Override
+    public String getCategory() {
+        return CaptchaCategory.ARITHMETIC.getConstant();
+    }
 
-  @Override
-  protected String[] getDrawCharacters() {
-    StringBuilder builder = new StringBuilder();
-    for (int i = 0; i < complexity; i++) {
-      builder.append(RandomProvider.randomInt(10));
-      if (i < complexity - 1) {
-        int type = RandomProvider.randomInt(1, 4);
-        if (type == 1) {
-          builder.append("+");
-        } else if (type == 2) {
-          builder.append("-");
-        } else if (type == 3) {
-          builder.append("x");
+    @Override
+    protected String[] getDrawCharacters() {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < complexity; i++) {
+            builder.append(RandomProvider.randomInt(10));
+            if (i < complexity - 1) {
+                int type = RandomProvider.randomInt(1, 4);
+                if (type == 1) {
+                    builder.append("+");
+                } else if (type == 2) {
+                    builder.append("-");
+                } else if (type == 3) {
+                    builder.append("x");
+                }
+            }
         }
-      }
+        ScriptEngineManager manager = new ScriptEngineManager();
+        ScriptEngine engine = manager.getEngineByName("javascript");
+
+        try {
+            computedResult = String.valueOf(engine.eval(builder.toString().replaceAll("x", "*")));
+        } catch (ScriptException e) {
+            log.error("[GstDev Cloud] |- Arithmetic png captcha eval expression error！", e);
+        }
+
+        builder.append("=?");
+
+        String result = builder.toString();
+        return result.split(RegexPool.ALL_CHARACTERS);
     }
-    ScriptEngineManager manager = new ScriptEngineManager();
-    ScriptEngine engine = manager.getEngineByName("javascript");
 
-    try {
-      computedResult = String.valueOf(engine.eval(builder.toString().replaceAll("x", "*")));
-    } catch (ScriptException e) {
-      log.error("[GstDev Cloud] |- Arithmetic png captcha eval expression error！", e);
+    @Override
+    public Metadata draw() {
+        String[] drawContent = getDrawCharacters();
+        BufferedImage bufferedImage = createArithmeticBufferedImage(drawContent);
+
+        Metadata metadata = new Metadata();
+        metadata.setGraphicImageBase64(toBase64(bufferedImage));
+        metadata.setCharacters(this.computedResult);
+        return metadata;
     }
 
-    builder.append("=?");
-
-    String result = builder.toString();
-    return result.split(RegexPool.ALL_CHARACTERS);
-  }
-
-  @Override
-  public Metadata draw() {
-    String[] drawContent = getDrawCharacters();
-    BufferedImage bufferedImage = createArithmeticBufferedImage(drawContent);
-
-    Metadata metadata = new Metadata();
-    metadata.setGraphicImageBase64(toBase64(bufferedImage));
-    metadata.setCharacters(this.computedResult);
-    return metadata;
-  }
-
-  @Override
-  public void afterPropertiesSet() throws Exception {
-    this.complexity = this.getCaptchaProperties().getGraphics().getComplexity();
-  }
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        this.complexity = this.getCaptchaProperties().getGraphics().getComplexity();
+    }
 }

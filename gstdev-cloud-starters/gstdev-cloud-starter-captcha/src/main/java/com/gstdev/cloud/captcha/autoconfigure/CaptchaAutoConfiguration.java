@@ -26,34 +26,34 @@ import org.springframework.context.annotation.DependsOn;
 @EnableConfigurationProperties(CaptchaProperties.class)
 public class CaptchaAutoConfiguration {
 
-  private static final Logger log = LoggerFactory.getLogger(CaptchaAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(CaptchaAutoConfiguration.class);
 
-  @PostConstruct
-  public void postConstruct() {
-    log.info("[GstDev Cloud] |- Module [Captcha Starter] Auto Configure.");
-  }
+    @PostConstruct
+    public void postConstruct() {
+        log.info("[GstDev Cloud] |- Module [Captcha Starter] Auto Configure.");
+    }
 
-  @Bean
-  @ConditionalOnMissingBean
-  public ResourceProvider resourceProvider(CaptchaProperties captchaProperties) {
-    ResourceProvider resourceProvider = new ResourceProvider(captchaProperties);
-    log.trace("[GstDev Cloud] |- Bean [Resource Provider] Auto Configure.");
-    return resourceProvider;
-  }
+    @Bean
+    @ConditionalOnMissingBean
+    public ResourceProvider resourceProvider(CaptchaProperties captchaProperties) {
+        ResourceProvider resourceProvider = new ResourceProvider(captchaProperties);
+        log.trace("[GstDev Cloud] |- Bean [Resource Provider] Auto Configure.");
+        return resourceProvider;
+    }
 
-  @Bean
-  @ConditionalOnMissingBean
-  @DependsOn("jetCacheCreateCacheFactory")
-  public CaptchaRendererFactory captchaRendererFactory() {
-    CaptchaRendererFactory captchaRendererFactory = new CaptchaRendererFactory();
-    log.trace("[GstDev Cloud] |- Bean [Captcha Renderer Factory] Auto Configure.");
-    return captchaRendererFactory;
-  }
+    @Bean
+    @ConditionalOnMissingBean
+    @DependsOn("jetCacheCreateCacheFactory")
+    public CaptchaRendererFactory captchaRendererFactory() {
+        CaptchaRendererFactory captchaRendererFactory = new CaptchaRendererFactory();
+        log.trace("[GstDev Cloud] |- Bean [Captcha Renderer Factory] Auto Configure.");
+        return captchaRendererFactory;
+    }
 
-  @Bean
-  public ErrorCodeMapperBuilderCustomizer captchaErrorCodeMapperBuilderCustomizer() {
-    CaptchaErrorCodeMapperBuilderCustomizer customizer = new CaptchaErrorCodeMapperBuilderCustomizer();
-    log.debug("[GstDev Cloud] |- Strategy [Captcha ErrorCodeMapper Builder Customizer] Auto Configure.");
-    return customizer;
-  }
+    @Bean
+    public ErrorCodeMapperBuilderCustomizer captchaErrorCodeMapperBuilderCustomizer() {
+        CaptchaErrorCodeMapperBuilderCustomizer customizer = new CaptchaErrorCodeMapperBuilderCustomizer();
+        log.debug("[GstDev Cloud] |- Strategy [Captcha ErrorCodeMapper Builder Customizer] Auto Configure.");
+        return customizer;
+    }
 }

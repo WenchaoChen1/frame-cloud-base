@@ -8,23 +8,23 @@ package com.gstdev.cloud.cache.core.exception;
  */
 public class MaximumLimitExceededException extends Exception {
 
-  public MaximumLimitExceededException() {
-    super();
-  }
+    public MaximumLimitExceededException() {
+        super();
+    }
 
-  public MaximumLimitExceededException(String message) {
-    super(message);
-  }
+    public MaximumLimitExceededException(String message) {
+        super(message);
+    }
 
-  public MaximumLimitExceededException(String message, Throwable cause) {
-    super(message, cause);
-  }
+    public MaximumLimitExceededException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-  public MaximumLimitExceededException(Throwable cause) {
-    super(cause);
-  }
+    public MaximumLimitExceededException(Throwable cause) {
+        super(cause);
+    }
 
-  protected MaximumLimitExceededException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-    super(message, cause, enableSuppression, writableStackTrace);
-  }
+    protected MaximumLimitExceededException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
 }

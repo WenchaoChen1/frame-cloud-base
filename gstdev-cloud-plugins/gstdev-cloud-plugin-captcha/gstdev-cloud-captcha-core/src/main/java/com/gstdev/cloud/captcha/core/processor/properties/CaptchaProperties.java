@@ -15,314 +15,314 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = CaptchaConstants.PROPERTY_PREFIX_CAPTCHA)
 public class CaptchaProperties {
 
-  private Graphics graphics = new Graphics();
-  /**
-   * 水印配置
-   */
-  private Watermark watermark = new Watermark();
-  /**
-   * 滑块拼图验证码配置
-   */
-  private Jigsaw jigsaw = new Jigsaw();
-  /**
-   * 文字点选验证码配置
-   */
-  private WordClick wordClick = new WordClick();
-
-  public Graphics getGraphics() {
-    return graphics;
-  }
-
-  public void setGraphics(Graphics graphics) {
-    this.graphics = graphics;
-  }
-
-  public Watermark getWatermark() {
-    return watermark;
-  }
-
-  public void setWatermark(Watermark watermark) {
-    this.watermark = watermark;
-  }
-
-  public Jigsaw getJigsaw() {
-    return jigsaw;
-  }
-
-  public void setJigsaw(Jigsaw jigsaw) {
-    this.jigsaw = jigsaw;
-  }
-
-  public WordClick getWordClick() {
-    return wordClick;
-  }
-
-  public void setWordClick(WordClick wordClick) {
-    this.wordClick = wordClick;
-  }
-
-  public static class Graphics {
+    private Graphics graphics = new Graphics();
     /**
-     * 验证码字符个数
+     * 水印配置
      */
-    private int length = 5;
+    private Watermark watermark = new Watermark();
     /**
-     * 验证码显示宽度
+     * 滑块拼图验证码配置
      */
-    private int width = 130;
+    private Jigsaw jigsaw = new Jigsaw();
     /**
-     * 验证码显示高度
+     * 文字点选验证码配置
      */
-    private int height = 48;
-    /**
-     * 算数类型验证码算法复杂度
-     */
-    private int complexity = 2;
-    /**
-     * 字符类型
-     */
-    private CaptchaCharacter letter = CaptchaCharacter.NUM_AND_CHAR;
+    private WordClick wordClick = new WordClick();
 
-    private CaptchaFont font = CaptchaFont.LEXOGRAPHER;
-
-    public int getLength() {
-      return length;
+    public Graphics getGraphics() {
+        return graphics;
     }
 
-    public void setLength(int length) {
-      this.length = length;
+    public void setGraphics(Graphics graphics) {
+        this.graphics = graphics;
     }
 
-    public int getWidth() {
-      return width;
+    public Watermark getWatermark() {
+        return watermark;
     }
 
-    public void setWidth(int width) {
-      this.width = width;
+    public void setWatermark(Watermark watermark) {
+        this.watermark = watermark;
     }
 
-    public int getHeight() {
-      return height;
+    public Jigsaw getJigsaw() {
+        return jigsaw;
     }
 
-    public void setHeight(int height) {
-      this.height = height;
+    public void setJigsaw(Jigsaw jigsaw) {
+        this.jigsaw = jigsaw;
     }
 
-    public CaptchaFont getFont() {
-      return font;
+    public WordClick getWordClick() {
+        return wordClick;
     }
 
-    public void setFont(CaptchaFont captchaFont) {
-      this.font = captchaFont;
+    public void setWordClick(WordClick wordClick) {
+        this.wordClick = wordClick;
     }
 
-    public CaptchaCharacter getLetter() {
-      return letter;
-    }
+    public static class Graphics {
+        /**
+         * 验证码字符个数
+         */
+        private int length = 5;
+        /**
+         * 验证码显示宽度
+         */
+        private int width = 130;
+        /**
+         * 验证码显示高度
+         */
+        private int height = 48;
+        /**
+         * 算数类型验证码算法复杂度
+         */
+        private int complexity = 2;
+        /**
+         * 字符类型
+         */
+        private CaptchaCharacter letter = CaptchaCharacter.NUM_AND_CHAR;
 
-    public void setLetter(CaptchaCharacter letter) {
-      this.letter = letter;
-    }
+        private CaptchaFont font = CaptchaFont.LEXOGRAPHER;
 
-    public int getComplexity() {
-      return complexity;
-    }
+        public int getLength() {
+            return length;
+        }
 
-    public void setComplexity(int complexity) {
-      this.complexity = complexity;
-    }
-  }
+        public void setLength(int length) {
+            this.length = length;
+        }
 
-  /**
-   * 右下角水印文字(我的水印)
-   */
-  public static class Watermark {
-    /**
-     * 水印内容
-     */
-    private String content = "Dante Cloud";
-    /**
-     * 水印字体
-     */
-    private String fontName = "WenQuanZhengHei.ttf";
-    /**
-     * 字体样式： 0:PLAIN; 1:BOLD; 2:ITALI；
-     */
-    private FontStyle fontStyle = FontStyle.BOLD;
+        public int getWidth() {
+            return width;
+        }
+
+        public void setWidth(int width) {
+            this.width = width;
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        public void setHeight(int height) {
+            this.height = height;
+        }
+
+        public CaptchaFont getFont() {
+            return font;
+        }
+
+        public void setFont(CaptchaFont captchaFont) {
+            this.font = captchaFont;
+        }
+
+        public CaptchaCharacter getLetter() {
+            return letter;
+        }
+
+        public void setLetter(CaptchaCharacter letter) {
+            this.letter = letter;
+        }
+
+        public int getComplexity() {
+            return complexity;
+        }
+
+        public void setComplexity(int complexity) {
+            this.complexity = complexity;
+        }
+    }
 
     /**
-     * 水印文字中，汉字的大小，默认：25
+     * 右下角水印文字(我的水印)
      */
-    private Integer fontSize = 25;
+    public static class Watermark {
+        /**
+         * 水印内容
+         */
+        private String content = "Dante Cloud";
+        /**
+         * 水印字体
+         */
+        private String fontName = "WenQuanZhengHei.ttf";
+        /**
+         * 字体样式： 0:PLAIN; 1:BOLD; 2:ITALI；
+         */
+        private FontStyle fontStyle = FontStyle.BOLD;
 
-    public String getContent() {
-      return content;
+        /**
+         * 水印文字中，汉字的大小，默认：25
+         */
+        private Integer fontSize = 25;
+
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+
+        public String getFontName() {
+            return fontName;
+        }
+
+        public void setFontName(String fontName) {
+            this.fontName = fontName;
+        }
+
+        public Integer getFontSize() {
+            return fontSize;
+        }
+
+        public void setFontSize(Integer fontSize) {
+            this.fontSize = fontSize;
+        }
+
+        public FontStyle getFontStyle() {
+            return fontStyle;
+        }
+
+        public void setFontStyle(FontStyle fontStyle) {
+            this.fontStyle = fontStyle;
+        }
     }
-
-    public void setContent(String content) {
-      this.content = content;
-    }
-
-    public String getFontName() {
-      return fontName;
-    }
-
-    public void setFontName(String fontName) {
-      this.fontName = fontName;
-    }
-
-    public Integer getFontSize() {
-      return fontSize;
-    }
-
-    public void setFontSize(Integer fontSize) {
-      this.fontSize = fontSize;
-    }
-
-    public FontStyle getFontStyle() {
-      return fontStyle;
-    }
-
-    public void setFontStyle(FontStyle fontStyle) {
-      this.fontStyle = fontStyle;
-    }
-  }
-
-  /**
-   * 拼图滑块验证码
-   */
-  public static class Jigsaw {
-    /**
-     * 拼图滑块验证码原图资源路径，格式：classpath:/xxx
-     */
-    private String originalResource = "classpath*:images/jigsaw/original/*.png";
-    /**
-     * 拼图滑块验证码拼图模版资源路径，格式：classpath:/xxx
-     */
-    private String templateResource = "classpath*:images/jigsaw/template/*.png";
-
-    /**
-     * 滑动干扰项, 可选值为(0/1/2), 默认值为：0，即无干扰项
-     */
-    private Integer interference = 0;
-
-    /**
-     * 偏差值，滑动结果与标准结果间可接受的偏差值。默认：5
-     */
-    private Integer deviation = 5;
-
-    public String getOriginalResource() {
-      return originalResource;
-    }
-
-    public void setOriginalResource(String originalResource) {
-      this.originalResource = originalResource;
-    }
-
-    public String getTemplateResource() {
-      return templateResource;
-    }
-
-    public void setTemplateResource(String templateResource) {
-      this.templateResource = templateResource;
-    }
-
-    public Integer getInterference() {
-      return interference;
-    }
-
-    public void setInterference(Integer interference) {
-      this.interference = interference;
-    }
-
-    public Integer getDeviation() {
-      return deviation;
-    }
-
-    public void setDeviation(Integer deviation) {
-      this.deviation = deviation;
-    }
-  }
-
-  /**
-   * 文字点选验证码
-   */
-  public static class WordClick {
 
     /**
-     * 文字点选验证码资源路径，格式：classpath:/xxx
+     * 拼图滑块验证码
      */
-    private String imageResource = "classpath*:images/word-click/*.png";
+    public static class Jigsaw {
+        /**
+         * 拼图滑块验证码原图资源路径，格式：classpath:/xxx
+         */
+        private String originalResource = "classpath*:images/jigsaw/original/*.png";
+        /**
+         * 拼图滑块验证码拼图模版资源路径，格式：classpath:/xxx
+         */
+        private String templateResource = "classpath*:images/jigsaw/template/*.png";
+
+        /**
+         * 滑动干扰项, 可选值为(0/1/2), 默认值为：0，即无干扰项
+         */
+        private Integer interference = 0;
+
+        /**
+         * 偏差值，滑动结果与标准结果间可接受的偏差值。默认：5
+         */
+        private Integer deviation = 5;
+
+        public String getOriginalResource() {
+            return originalResource;
+        }
+
+        public void setOriginalResource(String originalResource) {
+            this.originalResource = originalResource;
+        }
+
+        public String getTemplateResource() {
+            return templateResource;
+        }
+
+        public void setTemplateResource(String templateResource) {
+            this.templateResource = templateResource;
+        }
+
+        public Integer getInterference() {
+            return interference;
+        }
+
+        public void setInterference(Integer interference) {
+            this.interference = interference;
+        }
+
+        public Integer getDeviation() {
+            return deviation;
+        }
+
+        public void setDeviation(Integer deviation) {
+            this.deviation = deviation;
+        }
+    }
 
     /**
-     * 文字点选验证码文字个数
+     * 文字点选验证码
      */
-    private Integer wordCount = 5;
-    /**
-     * 随机颜色
-     */
-    private boolean randomColor = true;
-    /**
-     * 字体样式： 0:PLAIN; 1:BOLD; 2:ITALI；
-     */
-    private FontStyle fontStyle = FontStyle.BOLD;
-    /**
-     * 水印字体
-     */
-    private String fontName = "WenQuanZhengHei.ttf";
-    /**
-     * 文字点选验证码资源路径字体大小
-     */
-    private Integer fontSize = 25;
+    public static class WordClick {
 
-    public String getImageResource() {
-      return imageResource;
-    }
+        /**
+         * 文字点选验证码资源路径，格式：classpath:/xxx
+         */
+        private String imageResource = "classpath*:images/word-click/*.png";
 
-    public void setImageResource(String imageResource) {
-      this.imageResource = imageResource;
-    }
+        /**
+         * 文字点选验证码文字个数
+         */
+        private Integer wordCount = 5;
+        /**
+         * 随机颜色
+         */
+        private boolean randomColor = true;
+        /**
+         * 字体样式： 0:PLAIN; 1:BOLD; 2:ITALI；
+         */
+        private FontStyle fontStyle = FontStyle.BOLD;
+        /**
+         * 水印字体
+         */
+        private String fontName = "WenQuanZhengHei.ttf";
+        /**
+         * 文字点选验证码资源路径字体大小
+         */
+        private Integer fontSize = 25;
 
-    public Integer getWordCount() {
-      return wordCount;
-    }
+        public String getImageResource() {
+            return imageResource;
+        }
 
-    public void setWordCount(Integer wordCount) {
-      this.wordCount = wordCount;
-    }
+        public void setImageResource(String imageResource) {
+            this.imageResource = imageResource;
+        }
 
-    public Integer getFontSize() {
-      return fontSize;
-    }
+        public Integer getWordCount() {
+            return wordCount;
+        }
 
-    public void setFontSize(Integer fontSize) {
-      this.fontSize = fontSize;
-    }
+        public void setWordCount(Integer wordCount) {
+            this.wordCount = wordCount;
+        }
 
-    public boolean isRandomColor() {
-      return randomColor;
-    }
+        public Integer getFontSize() {
+            return fontSize;
+        }
 
-    public void setRandomColor(boolean randomColor) {
-      this.randomColor = randomColor;
-    }
+        public void setFontSize(Integer fontSize) {
+            this.fontSize = fontSize;
+        }
 
-    public String getFontName() {
-      return fontName;
-    }
+        public boolean isRandomColor() {
+            return randomColor;
+        }
 
-    public void setFontName(String fontName) {
-      this.fontName = fontName;
-    }
+        public void setRandomColor(boolean randomColor) {
+            this.randomColor = randomColor;
+        }
 
-    public FontStyle getFontStyle() {
-      return fontStyle;
-    }
+        public String getFontName() {
+            return fontName;
+        }
 
-    public void setFontStyle(FontStyle fontStyle) {
-      this.fontStyle = fontStyle;
+        public void setFontName(String fontName) {
+            this.fontName = fontName;
+        }
+
+        public FontStyle getFontStyle() {
+            return fontStyle;
+        }
+
+        public void setFontStyle(FontStyle fontStyle) {
+            this.fontStyle = fontStyle;
+        }
     }
-  }
 }
 

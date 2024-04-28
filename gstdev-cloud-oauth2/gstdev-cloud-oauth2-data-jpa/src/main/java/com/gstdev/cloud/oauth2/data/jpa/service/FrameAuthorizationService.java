@@ -106,7 +106,7 @@ public class FrameAuthorizationService extends BaseServiceImpl<FrameAuthorizatio
     }
 
     public List<FrameAuthorization> findAvailableAuthorizations(String registeredClientId, String principalName) {
-        List<FrameAuthorization> authorizations = getRepository().findAllByRegisteredClientIdAndPrincipalNameAndAccessTokenExpiresAtAfter(registeredClientId, principalName,Instant.now());
+        List<FrameAuthorization> authorizations = getRepository().findAllByRegisteredClientIdAndPrincipalNameAndAccessTokenExpiresAtAfter(registeredClientId, principalName, Instant.now());
         log.debug("[GstDev Cloud] |- GstDevAuthorization Service findAvailableAuthorizations.");
         return authorizations;
     }

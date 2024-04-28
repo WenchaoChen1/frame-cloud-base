@@ -21,36 +21,36 @@ import org.springframework.context.annotation.Configuration;
 @Configuration(proxyBeanMethods = false)
 public class CacheCaffeineConfiguration {
 
-  private static final Logger log = LoggerFactory.getLogger(CacheCaffeineConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(CacheCaffeineConfiguration.class);
 
-  private final CacheProperties cacheProperties;
+    private final CacheProperties cacheProperties;
 
-  public CacheCaffeineConfiguration(CacheProperties cacheProperties) {
-    this.cacheProperties = cacheProperties;
-  }
+    public CacheCaffeineConfiguration(CacheProperties cacheProperties) {
+        this.cacheProperties = cacheProperties;
+    }
 
-  @PostConstruct
-  public void postConstruct() {
-    log.debug("[GstDev Cloud] |- SDK [Cache Caffeine] Auto Configure.");
-  }
+    @PostConstruct
+    public void postConstruct() {
+        log.debug("[GstDev Cloud] |- SDK [Cache Caffeine] Auto Configure.");
+    }
 
-  @Bean
-  public Caffeine<Object, Object> caffeine() {
-    Caffeine<Object, Object> caffeine = Caffeine
-      .newBuilder()
-      .expireAfterWrite(ObjectUtils.isNotEmpty(cacheProperties.getLocalExpire()) ? cacheProperties.getLocalExpire() : cacheProperties.getExpire());
+    @Bean
+    public Caffeine<Object, Object> caffeine() {
+        Caffeine<Object, Object> caffeine = Caffeine
+            .newBuilder()
+            .expireAfterWrite(ObjectUtils.isNotEmpty(cacheProperties.getLocalExpire()) ? cacheProperties.getLocalExpire() : cacheProperties.getExpire());
 
-    log.trace("[GstDev Cloud] |- Bean [Caffeine] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Caffeine] Auto Configure.");
 
-    return caffeine;
-  }
+        return caffeine;
+    }
 
-  @Bean
-  @ConditionalOnMissingBean(CaffeineCacheManager.class)
-  public CaffeineCacheManager caffeineCacheManager(Caffeine<Object, Object> caffeine) {
-    FrameCaffeineCacheManager herodotusCaffeineCacheManager = new FrameCaffeineCacheManager(cacheProperties);
-    herodotusCaffeineCacheManager.setCaffeine(caffeine);
-    log.trace("[GstDev Cloud] |- Bean [Caffeine Cache Manager] Auto Configure.");
-    return herodotusCaffeineCacheManager;
-  }
+    @Bean
+    @ConditionalOnMissingBean(CaffeineCacheManager.class)
+    public CaffeineCacheManager caffeineCacheManager(Caffeine<Object, Object> caffeine) {
+        FrameCaffeineCacheManager herodotusCaffeineCacheManager = new FrameCaffeineCacheManager(cacheProperties);
+        herodotusCaffeineCacheManager.setCaffeine(caffeine);
+        log.trace("[GstDev Cloud] |- Bean [Caffeine Cache Manager] Auto Configure.");
+        return herodotusCaffeineCacheManager;
+    }
 }

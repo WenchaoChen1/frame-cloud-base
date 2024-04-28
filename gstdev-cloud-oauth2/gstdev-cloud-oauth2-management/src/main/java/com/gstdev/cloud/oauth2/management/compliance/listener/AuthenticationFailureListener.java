@@ -27,73 +27,73 @@ import java.util.Map;
  */
 public class AuthenticationFailureListener implements ApplicationListener<AbstractAuthenticationFailureEvent> {
 
-  private static final Logger log = LoggerFactory.getLogger(AuthenticationFailureListener.class);
+    private static final Logger log = LoggerFactory.getLogger(AuthenticationFailureListener.class);
 
-  private final SignInFailureLimitedStampManager stampManager;
-  private final OAuth2AccountStatusManager accountStatusManager;
+    private final SignInFailureLimitedStampManager stampManager;
+    private final OAuth2AccountStatusManager accountStatusManager;
 
-  public AuthenticationFailureListener(SignInFailureLimitedStampManager stampManager, OAuth2AccountStatusManager accountStatusManager) {
-    this.stampManager = stampManager;
-    this.accountStatusManager = accountStatusManager;
-  }
-
-  @Override
-  public void onApplicationEvent(AbstractAuthenticationFailureEvent event) {
-
-    log.debug("[GstDev Cloud] |- User sign in catch failure event : [{}].", event.getClass().getName());
-
-    if (event instanceof AuthenticationFailureBadCredentialsEvent) {
-      Authentication authentication = event.getAuthentication();
-
-      String username = null;
-
-      if (authentication instanceof OAuth2AuthorizationGrantAuthenticationToken) {
-
-        log.debug("[GstDev Cloud] |- Toke object in failure event  is OAuth2AuthorizationGrantAuthenticationToken");
-
-        OAuth2AuthorizationGrantAuthenticationToken token = (OAuth2AuthorizationGrantAuthenticationToken) authentication;
-        Map<String, Object> params = token.getAdditionalParameters();
-        username = getPrincipal(params);
-      }
-
-      if (authentication instanceof UsernamePasswordAuthenticationToken) {
-
-        log.debug("[GstDev Cloud] |- Toke object in failure event  is UsernamePasswordAuthenticationToken");
-
-        UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
-        Object principal = token.getPrincipal();
-        if (principal instanceof String) {
-          username = (String) principal;
-        }
-      }
-
-      if (StringUtils.isNotBlank(username)) {
-
-        log.debug("[GstDev Cloud] |- Parse the user name in failure event is [{}].", username);
-
-        int maxTimes = stampManager.getAuthenticationProperties().getSignInFailureLimited().getMaxTimes();
-        Duration expire = stampManager.getAuthenticationProperties().getSignInFailureLimited().getExpire();
-        try {
-          int times = stampManager.counting(username, maxTimes, expire, true, "AuthenticationFailureListener");
-          log.debug("[GstDev Cloud] |- Sign in user input password error [{}] items", times);
-        } catch (MaximumLimitExceededException e) {
-          log.warn("[GstDev Cloud] |- User [{}] password error [{}] items, LOCK ACCOUNT!", username, maxTimes);
-          accountStatusManager.lock(username);
-        }
-      }
-    }
-  }
-
-  private String getPrincipal(Map<String, Object> params) {
-    if (MapUtils.isNotEmpty(params)) {
-      if (params.containsKey(OAuth2ParameterNames.USERNAME)) {
-        Object value = params.get(OAuth2ParameterNames.USERNAME);
-        if (ObjectUtils.isNotEmpty(value)) {
-          return (String) value;
-        }
-      }
+    public AuthenticationFailureListener(SignInFailureLimitedStampManager stampManager, OAuth2AccountStatusManager accountStatusManager) {
+        this.stampManager = stampManager;
+        this.accountStatusManager = accountStatusManager;
     }
 
-    return null;
-  }
+    @Override
+    public void onApplicationEvent(AbstractAuthenticationFailureEvent event) {
+
+        log.debug("[GstDev Cloud] |- User sign in catch failure event : [{}].", event.getClass().getName());
+
+        if (event instanceof AuthenticationFailureBadCredentialsEvent) {
+            Authentication authentication = event.getAuthentication();
+
+            String username = null;
+
+            if (authentication instanceof OAuth2AuthorizationGrantAuthenticationToken) {
+
+                log.debug("[GstDev Cloud] |- Toke object in failure event  is OAuth2AuthorizationGrantAuthenticationToken");
+
+                OAuth2AuthorizationGrantAuthenticationToken token = (OAuth2AuthorizationGrantAuthenticationToken) authentication;
+                Map<String, Object> params = token.getAdditionalParameters();
+                username = getPrincipal(params);
+            }
+
+            if (authentication instanceof UsernamePasswordAuthenticationToken) {
+
+                log.debug("[GstDev Cloud] |- Toke object in failure event  is UsernamePasswordAuthenticationToken");
+
+                UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
+                Object principal = token.getPrincipal();
+                if (principal instanceof String) {
+                    username = (String) principal;
+                }
+            }
+
+            if (StringUtils.isNotBlank(username)) {
+
+                log.debug("[GstDev Cloud] |- Parse the user name in failure event is [{}].", username);
+
+                int maxTimes = stampManager.getAuthenticationProperties().getSignInFailureLimited().getMaxTimes();
+                Duration expire = stampManager.getAuthenticationProperties().getSignInFailureLimited().getExpire();
+                try {
+                    int times = stampManager.counting(username, maxTimes, expire, true, "AuthenticationFailureListener");
+                    log.debug("[GstDev Cloud] |- Sign in user input password error [{}] items", times);
+                } catch (MaximumLimitExceededException e) {
+                    log.warn("[GstDev Cloud] |- User [{}] password error [{}] items, LOCK ACCOUNT!", username, maxTimes);
+                    accountStatusManager.lock(username);
+                }
+            }
+        }
+    }
+
+    private String getPrincipal(Map<String, Object> params) {
+        if (MapUtils.isNotEmpty(params)) {
+            if (params.containsKey(OAuth2ParameterNames.USERNAME)) {
+                Object value = params.get(OAuth2ParameterNames.USERNAME);
+                if (ObjectUtils.isNotEmpty(value)) {
+                    return (String) value;
+                }
+            }
+        }
+
+        return null;
+    }
 }

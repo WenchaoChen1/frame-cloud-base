@@ -18,31 +18,31 @@ import com.gstdev.cloud.base.definition.domain.base.AbstractEntity;
  */
 public class SignInErrorStatus extends AbstractEntity {
 
-  private int errorTimes;
-  private int remainTimes;
-  private Boolean locked;
+    private int errorTimes;
+    private int remainTimes;
+    private Boolean locked;
 
-  public int getErrorTimes() {
-    return errorTimes;
-  }
+    public int getErrorTimes() {
+        return errorTimes;
+    }
 
-  public void setErrorTimes(int errorTimes) {
-    this.errorTimes = errorTimes;
-  }
+    public void setErrorTimes(int errorTimes) {
+        this.errorTimes = errorTimes;
+    }
 
-  public int getRemainTimes() {
-    return remainTimes;
-  }
+    public int getRemainTimes() {
+        return remainTimes;
+    }
 
-  public void setRemainTimes(int remainTimes) {
-    this.remainTimes = remainTimes;
-  }
+    public void setRemainTimes(int remainTimes) {
+        this.remainTimes = remainTimes;
+    }
 
-  public Boolean getLocked() {
-    return locked;
-  }
+    public Boolean getLocked() {
+        return locked;
+    }
 
-  public void setLocked(Boolean locked) {
-    this.locked = locked;
-  }
+    public void setLocked(Boolean locked) {
+        this.locked = locked;
+    }
 }

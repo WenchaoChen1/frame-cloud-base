@@ -23,89 +23,89 @@ import java.util.concurrent.TimeUnit;
  */
 public abstract class AbstractStampManager<K, V> implements StampManager<K, V> {
 
-  private static final Duration DEFAULT_EXPIRE = Duration.ofMinutes(30);
+    private static final Duration DEFAULT_EXPIRE = Duration.ofMinutes(30);
 
-  private String cacheName;
-  private CacheType cacheType;
-  private Duration expire;
-  private Cache<K, V> cache;
+    private String cacheName;
+    private CacheType cacheType;
+    private Duration expire;
+    private Cache<K, V> cache;
 
-  public AbstractStampManager(String cacheName) {
-    this(cacheName, CacheType.BOTH);
-  }
-
-  public AbstractStampManager(String cacheName, CacheType cacheType) {
-    this(cacheName, cacheType, DEFAULT_EXPIRE);
-  }
-
-  public AbstractStampManager(String cacheName, CacheType cacheType, Duration expire) {
-    this.cacheName = cacheName;
-    this.cacheType = cacheType;
-    this.expire = expire;
-    this.cache = JetCacheUtils.create(this.cacheName, this.cacheType, this.expire);
-  }
-
-  /**
-   * 指定数据存储缓存
-   *
-   * @return {@link Cache}
-   */
-  protected Cache<K, V> getCache() {
-    return this.cache;
-  }
-
-  @Override
-  public Duration getExpire() {
-    return this.expire;
-  }
-
-  public void setExpire(Duration expire) {
-    this.expire = expire;
-  }
-
-  @Override
-  public boolean check(K key, V value) {
-    if (ObjectUtils.isEmpty(value)) {
-      throw new StampParameterIllegalException("Parameter Stamp value is null");
+    public AbstractStampManager(String cacheName) {
+        this(cacheName, CacheType.BOTH);
     }
 
-    V storedStamp = this.get(key);
-    if (ObjectUtils.isEmpty(storedStamp)) {
-      throw new StampHasExpiredException("Stamp is invalid!");
+    public AbstractStampManager(String cacheName, CacheType cacheType) {
+        this(cacheName, cacheType, DEFAULT_EXPIRE);
     }
 
-    if (ObjectUtils.notEqual(storedStamp, value)) {
-      throw new StampMismatchException("Stamp is mismathch!");
+    public AbstractStampManager(String cacheName, CacheType cacheType, Duration expire) {
+        this.cacheName = cacheName;
+        this.cacheType = cacheType;
+        this.expire = expire;
+        this.cache = JetCacheUtils.create(this.cacheName, this.cacheType, this.expire);
     }
 
-    return true;
-  }
-
-  @Override
-  public V get(K key) {
-    return this.getCache().get(key);
-  }
-
-  @Override
-  public void delete(K key) throws StampDeleteFailedException {
-    boolean result = this.getCache().remove(key);
-    if (!result) {
-      throw new StampDeleteFailedException("Delete Stamp From Storage Failed");
+    /**
+     * 指定数据存储缓存
+     *
+     * @return {@link Cache}
+     */
+    protected Cache<K, V> getCache() {
+        return this.cache;
     }
-  }
 
-  @Override
-  public void put(K key, V value, long expireAfterWrite, TimeUnit timeUnit) {
-    this.getCache().put(key, value, expireAfterWrite, timeUnit);
-  }
+    @Override
+    public Duration getExpire() {
+        return this.expire;
+    }
 
-  @Override
-  public AutoReleaseLock lock(K key, long expire, TimeUnit timeUnit) {
-    return this.getCache().tryLock(key, expire, timeUnit);
-  }
+    public void setExpire(Duration expire) {
+        this.expire = expire;
+    }
 
-  @Override
-  public boolean lockAndRun(K key, long expire, TimeUnit timeUnit, Runnable action) {
-    return this.getCache().tryLockAndRun(key, expire, timeUnit, action);
-  }
+    @Override
+    public boolean check(K key, V value) {
+        if (ObjectUtils.isEmpty(value)) {
+            throw new StampParameterIllegalException("Parameter Stamp value is null");
+        }
+
+        V storedStamp = this.get(key);
+        if (ObjectUtils.isEmpty(storedStamp)) {
+            throw new StampHasExpiredException("Stamp is invalid!");
+        }
+
+        if (ObjectUtils.notEqual(storedStamp, value)) {
+            throw new StampMismatchException("Stamp is mismathch!");
+        }
+
+        return true;
+    }
+
+    @Override
+    public V get(K key) {
+        return this.getCache().get(key);
+    }
+
+    @Override
+    public void delete(K key) throws StampDeleteFailedException {
+        boolean result = this.getCache().remove(key);
+        if (!result) {
+            throw new StampDeleteFailedException("Delete Stamp From Storage Failed");
+        }
+    }
+
+    @Override
+    public void put(K key, V value, long expireAfterWrite, TimeUnit timeUnit) {
+        this.getCache().put(key, value, expireAfterWrite, timeUnit);
+    }
+
+    @Override
+    public AutoReleaseLock lock(K key, long expire, TimeUnit timeUnit) {
+        return this.getCache().tryLock(key, expire, timeUnit);
+    }
+
+    @Override
+    public boolean lockAndRun(K key, long expire, TimeUnit timeUnit, Runnable action) {
+        return this.getCache().tryLockAndRun(key, expire, timeUnit, action);
+    }
 }

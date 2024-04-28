@@ -5,31 +5,31 @@
 <title layout:fragment="title">设备激活成功</title>
 
 <div layout:fragment="content">
-  <div class="col">
-    <q-icon color="green" name="mdi-progress-check" size="100px"/>
-  </div>
-  <div class="col">
-    <div class="text-h5 text-weight-bolder">
-      祝贺你，一切就绪！
+    <div class="col">
+        <q-icon color="green" name="mdi-progress-check" size="100px"/>
     </div>
-  </div>
-  <div class="col">
-    <div class="text-subtitle2">您的设备现在已连接。</div>
-  </div>
+    <div class="col">
+        <div class="text-h5 text-weight-bolder">
+            祝贺你，一切就绪！
+        </div>
+    </div>
+    <div class="col">
+        <div class="text-subtitle2">您的设备现在已连接。</div>
+    </div>
 </div>
 
 <th:block layout:fragment="script">
-  <script>
-    const app = Vue.createApp({
-      setup() {
-        return {};
-      },
-    });
+    <script>
+        const app = Vue.createApp({
+            setup() {
+                return {};
+            },
+        });
 
-    app.use(Quasar);
-    Quasar.iconSet.set(Quasar.iconSet.svgMdiV7);
-    app.mount("#q-app");
-  </script>
+        app.use(Quasar);
+        Quasar.iconSet.set(Quasar.iconSet.svgMdiV7);
+        app.mount("#q-app");
+    </script>
 </th:block>
 </body>
 </html>

@@ -22,31 +22,31 @@ import java.util.concurrent.ConcurrentHashMap;
 //@Component
 public class CaptchaRendererFactory {
 
-  @Autowired
-  private final Map<String, Renderer> handlers = new ConcurrentHashMap<>(8);
+    @Autowired
+    private final Map<String, Renderer> handlers = new ConcurrentHashMap<>(8);
 
-  public Renderer getRenderer(String category) {
-    CaptchaCategory captchaCategory = CaptchaCategory.getCaptchaCategory(category);
+    public Renderer getRenderer(String category) {
+        CaptchaCategory captchaCategory = CaptchaCategory.getCaptchaCategory(category);
 
-    if (ObjectUtils.isEmpty(captchaCategory)) {
-      throw new CaptchaCategoryIsIncorrectException("Captcha category is incorrect.");
+        if (ObjectUtils.isEmpty(captchaCategory)) {
+            throw new CaptchaCategoryIsIncorrectException("Captcha category is incorrect.");
+        }
+
+        Renderer renderer = handlers.get(captchaCategory.getConstant());
+        if (ObjectUtils.isEmpty(renderer)) {
+            throw new CaptchaHandlerNotExistException();
+        }
+
+        return renderer;
     }
 
-    Renderer renderer = handlers.get(captchaCategory.getConstant());
-    if (ObjectUtils.isEmpty(renderer)) {
-      throw new CaptchaHandlerNotExistException();
+    public Captcha getCaptcha(String identity, String category) {
+        Renderer renderer = getRenderer(category);
+        return renderer.getCapcha(identity);
     }
 
-    return renderer;
-  }
-
-  public Captcha getCaptcha(String identity, String category) {
-    Renderer renderer = getRenderer(category);
-    return renderer.getCapcha(identity);
-  }
-
-  public boolean verify(Verification verification) {
-    Renderer renderer = getRenderer(verification.getCategory());
-    return renderer.verify(verification);
-  }
+    public boolean verify(Verification verification) {
+        Renderer renderer = getRenderer(verification.getCategory());
+        return renderer.verify(verification);
+    }
 }

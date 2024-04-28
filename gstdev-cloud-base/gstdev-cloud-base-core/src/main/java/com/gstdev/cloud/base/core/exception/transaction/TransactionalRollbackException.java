@@ -13,28 +13,28 @@ import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
  */
 public class TransactionalRollbackException extends PlatformRuntimeException {
 
-  public TransactionalRollbackException() {
-    super();
-  }
+    public TransactionalRollbackException() {
+        super();
+    }
 
-  public TransactionalRollbackException(String message) {
-    super(message);
-  }
+    public TransactionalRollbackException(String message) {
+        super(message);
+    }
 
-  public TransactionalRollbackException(String message, Throwable cause) {
-    super(message, cause);
-  }
+    public TransactionalRollbackException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-  public TransactionalRollbackException(Throwable cause) {
-    super(cause);
-  }
+    public TransactionalRollbackException(Throwable cause) {
+        super(cause);
+    }
 
-  protected TransactionalRollbackException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-    super(message, cause, enableSuppression, writableStackTrace);
-  }
+    protected TransactionalRollbackException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
 
-  @Override
-  public Feedback getFeedback() {
-    return ErrorCodes.TRANSACTION_ROLLBACK;
-  }
+    @Override
+    public Feedback getFeedback() {
+        return ErrorCodes.TRANSACTION_ROLLBACK;
+    }
 }

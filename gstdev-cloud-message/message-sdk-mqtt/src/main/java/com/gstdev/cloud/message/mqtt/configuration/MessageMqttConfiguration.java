@@ -47,71 +47,71 @@ import java.nio.charset.StandardCharsets;
 @ConditionalOnMqttEnabled
 @EnableConfigurationProperties(MqttProperties.class)
 @IntegrationComponentScan(basePackages = {
-  "com.gstdev.cloud.message.mqtt.gateway",
+    "com.gstdev.cloud.message.mqtt.gateway",
 })
 @ComponentScan(basePackages = {
-  "com.gstdev.cloud.message.mqtt.messaging",
+    "com.gstdev.cloud.message.mqtt.messaging",
 })
 public class MessageMqttConfiguration {
 
-  private static final Logger log = LoggerFactory.getLogger(MessageMqttConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(MessageMqttConfiguration.class);
 
-  @PostConstruct
-  public void postConstruct() {
-    log.debug("[GstDev Cloud] |- SDK [Message Mqtt] Auto Configure.");
-  }
+    @PostConstruct
+    public void postConstruct() {
+        log.debug("[GstDev Cloud] |- SDK [Message Mqtt] Auto Configure.");
+    }
 
-  @Bean(name = FrameChannels.MQTT_DEFAULT_INBOUND_CHANNEL)
-  public MessageChannel mqttDefaultInboundChannel() {
-    return MessageChannels.publishSubscribe().getObject();
-  }
+    @Bean(name = FrameChannels.MQTT_DEFAULT_INBOUND_CHANNEL)
+    public MessageChannel mqttDefaultInboundChannel() {
+        return MessageChannels.publishSubscribe().getObject();
+    }
 
-  @Bean(name = FrameChannels.MQTT_DEFAULT_OUTBOUND_CHANNEL)
-  public MessageChannel mqttDefaultOutboundChannel() {
-    return MessageChannels.direct().getObject();
-  }
+    @Bean(name = FrameChannels.MQTT_DEFAULT_OUTBOUND_CHANNEL)
+    public MessageChannel mqttDefaultOutboundChannel() {
+        return MessageChannels.direct().getObject();
+    }
 
-  @Bean
-  public ClientManager<IMqttAsyncClient, MqttConnectionOptions> clientManager(MqttProperties mqttProperties) {
-    MqttConnectionOptions options = new MqttConnectionOptions();
-    options.setUserName(mqttProperties.getUsername());
-    options.setPassword(ByteUtil.toBytes(mqttProperties.getPassword(), StandardCharsets.UTF_8));
-    options.setCleanStart(mqttProperties.getCleanStart());
-    options.setKeepAliveInterval(NumberUtils.longToInt(mqttProperties.getKeepAliveInterval().getSeconds()));
-    options.setServerURIs(ListUtils.toStringArray(mqttProperties.getServerUrls()));
-    options.setAutomaticReconnect(mqttProperties.getAutomaticReconnect());
-    options.setAutomaticReconnectDelay(
-      NumberUtils.longToInt(mqttProperties.getAutomaticReconnectMinDelay().getSeconds()),
-      NumberUtils.longToInt(mqttProperties.getAutomaticReconnectMaxDelay().getSeconds()));
-    Mqttv5ClientManager clientManager = new Mqttv5ClientManager(options, mqttProperties.getClientId());
-    clientManager.setPersistence(new MqttDefaultFilePersistence());
+    @Bean
+    public ClientManager<IMqttAsyncClient, MqttConnectionOptions> clientManager(MqttProperties mqttProperties) {
+        MqttConnectionOptions options = new MqttConnectionOptions();
+        options.setUserName(mqttProperties.getUsername());
+        options.setPassword(ByteUtil.toBytes(mqttProperties.getPassword(), StandardCharsets.UTF_8));
+        options.setCleanStart(mqttProperties.getCleanStart());
+        options.setKeepAliveInterval(NumberUtils.longToInt(mqttProperties.getKeepAliveInterval().getSeconds()));
+        options.setServerURIs(ListUtils.toStringArray(mqttProperties.getServerUrls()));
+        options.setAutomaticReconnect(mqttProperties.getAutomaticReconnect());
+        options.setAutomaticReconnectDelay(
+            NumberUtils.longToInt(mqttProperties.getAutomaticReconnectMinDelay().getSeconds()),
+            NumberUtils.longToInt(mqttProperties.getAutomaticReconnectMaxDelay().getSeconds()));
+        Mqttv5ClientManager clientManager = new Mqttv5ClientManager(options, mqttProperties.getClientId());
+        clientManager.setPersistence(new MqttDefaultFilePersistence());
 
-    log.trace("[GstDev Cloud] |- Bean [Mqtt Connection Options] Auto Configure.");
-    return clientManager;
-  }
+        log.trace("[GstDev Cloud] |- Bean [Mqtt Connection Options] Auto Configure.");
+        return clientManager;
+    }
 
-  @Bean
-  public MessageProducer mqttDefaultInbound(ClientManager<IMqttAsyncClient, MqttConnectionOptions> clientManager, @Qualifier(FrameChannels.MQTT_DEFAULT_INBOUND_CHANNEL) MessageChannel mqttDefaultInboundChannel, MqttProperties mqttProperties) {
-    Assert.notNull(mqttProperties.getDefaultSubscribes(), "'Property Subscribes' cannot be null");
-    Mqttv5PahoMessageDrivenChannelAdapter adapter = new Mqttv5PahoMessageDrivenChannelAdapter(clientManager, ListUtils.toStringArray(mqttProperties.getDefaultSubscribes()));
-    adapter.setPayloadType(String.class);
-    adapter.setManualAcks(false);
-    adapter.setOutputChannel(mqttDefaultInboundChannel);
-    log.trace("[GstDev Cloud] |- Bean [Mqtt v5 Paho Message Driven Channel Adapter] Auto Configure.");
-    return adapter;
-  }
+    @Bean
+    public MessageProducer mqttDefaultInbound(ClientManager<IMqttAsyncClient, MqttConnectionOptions> clientManager, @Qualifier(FrameChannels.MQTT_DEFAULT_INBOUND_CHANNEL) MessageChannel mqttDefaultInboundChannel, MqttProperties mqttProperties) {
+        Assert.notNull(mqttProperties.getDefaultSubscribes(), "'Property Subscribes' cannot be null");
+        Mqttv5PahoMessageDrivenChannelAdapter adapter = new Mqttv5PahoMessageDrivenChannelAdapter(clientManager, ListUtils.toStringArray(mqttProperties.getDefaultSubscribes()));
+        adapter.setPayloadType(String.class);
+        adapter.setManualAcks(false);
+        adapter.setOutputChannel(mqttDefaultInboundChannel);
+        log.trace("[GstDev Cloud] |- Bean [Mqtt v5 Paho Message Driven Channel Adapter] Auto Configure.");
+        return adapter;
+    }
 
-  @Bean
-  @ServiceActivator(inputChannel = FrameChannels.MQTT_DEFAULT_OUTBOUND_CHANNEL)
-  public MessageHandler mqttDefaultOutbound(ClientManager<IMqttAsyncClient, MqttConnectionOptions> clientManager, MqttProperties mqttProperties) {
-    Mqttv5PahoMessageHandler handler = new Mqttv5PahoMessageHandler(clientManager);
-    handler.setDefaultTopic(mqttProperties.getDefaultTopic());
-    handler.setDefaultQos(mqttProperties.getDefaultQos());
-    handler.setAsync(true);
-    handler.setAsyncEvents(true);
-    log.trace("[GstDev Cloud] |- Bean [Mqtt v5 Paho Message Handler] Auto Configure.");
-    return handler;
-  }
+    @Bean
+    @ServiceActivator(inputChannel = FrameChannels.MQTT_DEFAULT_OUTBOUND_CHANNEL)
+    public MessageHandler mqttDefaultOutbound(ClientManager<IMqttAsyncClient, MqttConnectionOptions> clientManager, MqttProperties mqttProperties) {
+        Mqttv5PahoMessageHandler handler = new Mqttv5PahoMessageHandler(clientManager);
+        handler.setDefaultTopic(mqttProperties.getDefaultTopic());
+        handler.setDefaultQos(mqttProperties.getDefaultQos());
+        handler.setAsync(true);
+        handler.setAsyncEvents(true);
+        log.trace("[GstDev Cloud] |- Bean [Mqtt v5 Paho Message Handler] Auto Configure.");
+        return handler;
+    }
 }
 
 

@@ -12,19 +12,19 @@ import java.util.List;
  */
 public class ArrayUtils {
 
-  /**
-   * 将字符串数组转换成字符串List
-   *
-   * @param array 字符串数组
-   * @return 字符串List
-   */
-  public static List<String> toStringList(String[] array) {
-    if (org.apache.commons.lang3.ArrayUtils.isNotEmpty(array)) {
-      List<String> list = new ArrayList<>(array.length);
-      Collections.addAll(list, array);
-      return list;
-    } else {
-      return new ArrayList<>();
+    /**
+     * 将字符串数组转换成字符串List
+     *
+     * @param array 字符串数组
+     * @return 字符串List
+     */
+    public static List<String> toStringList(String[] array) {
+        if (org.apache.commons.lang3.ArrayUtils.isNotEmpty(array)) {
+            List<String> list = new ArrayList<>(array.length);
+            Collections.addAll(list, array);
+            return list;
+        } else {
+            return new ArrayList<>();
+        }
     }
-  }
 }

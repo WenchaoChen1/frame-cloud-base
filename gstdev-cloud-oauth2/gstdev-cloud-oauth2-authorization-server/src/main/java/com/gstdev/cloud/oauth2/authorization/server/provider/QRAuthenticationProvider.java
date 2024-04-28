@@ -16,18 +16,18 @@ import org.springframework.security.core.AuthenticationException;
 
 public class QRAuthenticationProvider implements AuthenticationProvider, InitializingBean {
 
-  @Override
-  public void afterPropertiesSet() throws Exception {
+    @Override
+    public void afterPropertiesSet() throws Exception {
 
-  }
+    }
 
-  @Override
-  public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-    return null;
-  }
+    @Override
+    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+        return null;
+    }
 
-  @Override
-  public boolean supports(Class<?> authentication) {
-    return false;
-  }
+    @Override
+    public boolean supports(Class<?> authentication) {
+        return false;
+    }
 }

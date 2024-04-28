@@ -16,10 +16,10 @@ public class Oauth2AuthorizationVo implements Serializable {
     private String id;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date  accessTokenExpiresAt;
+    private Date accessTokenExpiresAt;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date  accessTokenIssuedAt;
+    private Date accessTokenIssuedAt;
     private String accessTokenMetadata;
     private String accessTokenScopes;
     private String accessTokenType;
@@ -27,48 +27,48 @@ public class Oauth2AuthorizationVo implements Serializable {
     private String attributes;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date  authorizationCodeExpiresAt;
+    private Date authorizationCodeExpiresAt;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date  authorizationCodeIssuedAt;
+    private Date authorizationCodeIssuedAt;
     private String authorizationCodeMetadata;
     private String authorizationCodeValue;
     private String authorizationGrantType;
     private String authorizedScopes;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date  deviceCodeExpiresAt;
+    private Date deviceCodeExpiresAt;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date  deviceCodeIssuedAt;
+    private Date deviceCodeIssuedAt;
     private String deviceCodeMetadata;
     private String deviceCodeValue;
     private String oidcIdTokenClaims;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date  oidcIdTokenExpiresAt;
+    private Date oidcIdTokenExpiresAt;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date  oidcIdTokenIssuedAt;
+    private Date oidcIdTokenIssuedAt;
     private String oidcIdTokenMetadata;
     private String oidcIdTokenValue;
     private String principalName;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date  refreshTokenExpiresAt;
+    private Date refreshTokenExpiresAt;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date  refreshTokenIssuedAt;
+    private Date refreshTokenIssuedAt;
     private String refreshTokenMetadata;
     private String refreshTokenValue;
     private String registeredClientId;
     private String state;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date  userCodeExpiresAt;
+    private Date userCodeExpiresAt;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date  userCodeIssuedAt;
+    private Date userCodeIssuedAt;
     private String userCodeMetadata;
     private String userCodeValue;
 

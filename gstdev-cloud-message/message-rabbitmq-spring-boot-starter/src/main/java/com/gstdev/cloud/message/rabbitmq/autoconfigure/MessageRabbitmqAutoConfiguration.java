@@ -14,10 +14,10 @@ import org.springframework.boot.autoconfigure.AutoConfiguration;
 @AutoConfiguration
 public class MessageRabbitmqAutoConfiguration {
 
-  private static final Logger log = LoggerFactory.getLogger(MessageRabbitmqAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(MessageRabbitmqAutoConfiguration.class);
 
-  @PostConstruct
-  public void postConstruct() {
-    log.info("[GstDev Cloud] |- Module [Message RabbiMQ Starter] Auto Configure.");
-  }
+    @PostConstruct
+    public void postConstruct() {
+        log.info("[GstDev Cloud] |- Module [Message RabbiMQ Starter] Auto Configure.");
+    }
 }

@@ -19,22 +19,22 @@ import java.util.Optional;
 
 public interface StorageService {
 
-  void createBucket(String bucketName);
+    void createBucket(String bucketName);
 
-  void removeBucket(String bucketName);
+    void removeBucket(String bucketName);
 
-  Optional<FileBucket> getBucket(String bucketName);
+    Optional<FileBucket> getBucket(String bucketName);
 
-  List<FileBucket> listBuckets();
+    List<FileBucket> listBuckets();
 
-  String getObjectURL(String bucketName, String objectName, Integer expires);
+    String getObjectURL(String bucketName, String objectName, Integer expires);
 
-  FileObject stateObjectInfo(String bucketName, String objectName);
+    FileObject stateObjectInfo(String bucketName, String objectName);
 
-  void putObject(String bucketName, String objectName, InputStream stream, long size, String contentType);
+    void putObject(String bucketName, String objectName, InputStream stream, long size, String contentType);
 
-  void removeObject(String bucketName, String objectName);
+    void removeObject(String bucketName, String objectName);
 
-  InputStream getObject(String bucketName, String objectName);
+    InputStream getObject(String bucketName, String objectName);
 
 }

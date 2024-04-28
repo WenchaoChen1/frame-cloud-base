@@ -18,14 +18,14 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  */
 public class SingleWebSocketInstanceCondition implements Condition {
 
-  private static final Logger log = LoggerFactory.getLogger(SingleWebSocketInstanceCondition.class);
+    private static final Logger log = LoggerFactory.getLogger(SingleWebSocketInstanceCondition.class);
 
-  @SuppressWarnings("NullableProblems")
-  @Override
-  public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata metadata) {
-    String property = PropertyResolver.getProperty(conditionContext, MessageConstants.ITEM_WEBSOCKET_MULTIPLE_INSTANCE, InstanceMode.SINGLE.name());
-    boolean result = StringUtils.equalsIgnoreCase(property, InstanceMode.SINGLE.name());
-    log.debug("[GstDev Cloud] |- Condition [Single Web Socket Instance] value is [{}]", result);
-    return result;
-  }
+    @SuppressWarnings("NullableProblems")
+    @Override
+    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata metadata) {
+        String property = PropertyResolver.getProperty(conditionContext, MessageConstants.ITEM_WEBSOCKET_MULTIPLE_INSTANCE, InstanceMode.SINGLE.name());
+        boolean result = StringUtils.equalsIgnoreCase(property, InstanceMode.SINGLE.name());
+        log.debug("[GstDev Cloud] |- Condition [Single Web Socket Instance] value is [{}]", result);
+        return result;
+    }
 }

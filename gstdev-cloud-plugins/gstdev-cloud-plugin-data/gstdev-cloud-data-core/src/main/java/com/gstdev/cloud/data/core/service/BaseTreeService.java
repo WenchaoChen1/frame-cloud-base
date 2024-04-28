@@ -16,8 +16,8 @@ import java.util.List;
  */
 public interface BaseTreeService<E extends BaseTreeEntityINT<ID>
     , ID extends Serializable
-    , D extends BaseTreeDtoInterface<D,ID> & BaseDtoInterface<ID>
-    , II extends  BaseTreeInsertInputInterface & BaseInsertInputInterface
+    , D extends BaseTreeDtoInterface<D, ID> & BaseDtoInterface<ID>
+    , II extends BaseTreeInsertInputInterface & BaseInsertInputInterface
     , UI extends BaseTreeUpdateInputInterface & BaseUpdateInputInterface
     , PQC extends BaseTreePageQueryCriteriaInterface & BasePageQueryCriteriaInterface
     , FQC extends BaseTreeFindAllByQueryCriteriaInterface & BaseFindAllByQueryCriteriaInterface

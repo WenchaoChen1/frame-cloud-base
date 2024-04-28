@@ -3,30 +3,30 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
-  <name>GstDev Cloud :: Starters :: Storage</name>
-  <description>${project.name}</description>
-  <artifactId>gstdev-cloud-starter-storage</artifactId>
-  <packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <name>GstDev Cloud :: Starters :: Storage</name>
+    <description>${project.name}</description>
+    <artifactId>gstdev-cloud-starter-storage</artifactId>
+    <packaging>pom</packaging>
 
-  <parent>
-    <groupId>com.gstdev.cloud</groupId>
-    <artifactId>gstdev-cloud-starters</artifactId>
-    <version>2024.0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
+    <parent>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-starters</artifactId>
+        <version>2024.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
-  <properties>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
-  </properties>
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
 
-  <modules>
-    <module>gstdev-cloud-starter-storage-core</module>
-    <module>gstdev-cloud-starter-storage-minio</module>
-    <module>gstdev-cloud-starter-storage-aliyun</module>
-    <module>gstdev-cloud-starter-storage-huawei</module>
-    <module>gstdev-cloud-starter-storage-aws</module>
-  </modules>
+    <modules>
+        <module>gstdev-cloud-starter-storage-core</module>
+        <module>gstdev-cloud-starter-storage-minio</module>
+        <module>gstdev-cloud-starter-storage-aliyun</module>
+        <module>gstdev-cloud-starter-storage-huawei</module>
+        <module>gstdev-cloud-starter-storage-aws</module>
+    </modules>
 
 </project>

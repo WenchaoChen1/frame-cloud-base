@@ -14,21 +14,21 @@ import java.util.concurrent.TimeUnit;
  */
 public class SimpleCaffeineCache {
 
-  private final Cache<String, String> cache;
+    private final Cache<String, String> cache;
 
-  public SimpleCaffeineCache(Duration duration) {
-    this.cache = Caffeine.newBuilder().expireAfterWrite(duration).build();
-  }
+    public SimpleCaffeineCache(Duration duration) {
+        this.cache = Caffeine.newBuilder().expireAfterWrite(duration).build();
+    }
 
-  public SimpleCaffeineCache(long duration, TimeUnit unit) {
-    this.cache = Caffeine.newBuilder().expireAfterWrite(duration, unit).build();
-  }
+    public SimpleCaffeineCache(long duration, TimeUnit unit) {
+        this.cache = Caffeine.newBuilder().expireAfterWrite(duration, unit).build();
+    }
 
-  public void put(String key, String value) {
-    cache.put(key, value);
-  }
+    public void put(String key, String value) {
+        cache.put(key, value);
+    }
 
-  public String get(String key) {
-    return cache.getIfPresent(key);
-  }
+    public String get(String key) {
+        return cache.getIfPresent(key);
+    }
 }

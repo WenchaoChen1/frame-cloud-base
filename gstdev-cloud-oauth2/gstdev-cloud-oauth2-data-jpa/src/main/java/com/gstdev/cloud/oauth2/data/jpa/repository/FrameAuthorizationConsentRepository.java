@@ -19,21 +19,21 @@ import java.util.Optional;
 @Repository
 public interface FrameAuthorizationConsentRepository extends BaseRepository<FrameAuthorizationConsent, FrameAuthorizationConsentId> {
 
-  /**
-   * 根据 client id 和 principalName 查询 OAuth2 确认信息
-   *
-   * @param registeredClientId 注册OAuth2客户端ID
-   * @param principalName      用户名
-   * @return OAuth2 认证确认信息 {@link FrameAuthorizationConsent}
-   */
-  @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
-  Optional<FrameAuthorizationConsent> findByRegisteredClientIdAndPrincipalName(String registeredClientId, String principalName);
+    /**
+     * 根据 client id 和 principalName 查询 OAuth2 确认信息
+     *
+     * @param registeredClientId 注册OAuth2客户端ID
+     * @param principalName      用户名
+     * @return OAuth2 认证确认信息 {@link FrameAuthorizationConsent}
+     */
+    @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
+    Optional<FrameAuthorizationConsent> findByRegisteredClientIdAndPrincipalName(String registeredClientId, String principalName);
 
-  /**
-   * 根据 client id 和 principalName 删除 OAuth2 确认信息
-   *
-   * @param registeredClientId 注册OAuth2客户端ID
-   * @param principalName      用户名
-   */
-  void deleteByRegisteredClientIdAndPrincipalName(String registeredClientId, String principalName);
+    /**
+     * 根据 client id 和 principalName 删除 OAuth2 确认信息
+     *
+     * @param registeredClientId 注册OAuth2客户端ID
+     * @param principalName      用户名
+     */
+    void deleteByRegisteredClientIdAndPrincipalName(String registeredClientId, String principalName);
 }

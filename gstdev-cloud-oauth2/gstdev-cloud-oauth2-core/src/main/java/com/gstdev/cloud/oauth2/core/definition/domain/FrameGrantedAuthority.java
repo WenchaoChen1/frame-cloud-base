@@ -12,45 +12,45 @@ import org.springframework.security.core.GrantedAuthority;
  */
 public class FrameGrantedAuthority implements GrantedAuthority {
 
-  private String authority;
+    private String authority;
 
-  public FrameGrantedAuthority() {
-  }
-
-  public FrameGrantedAuthority(String authority) {
-    this.authority = authority;
-  }
-
-  @Override
-  public String getAuthority() {
-    return this.authority;
-  }
-
-  public void setAuthority(String authority) {
-    this.authority = authority;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public FrameGrantedAuthority() {
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public FrameGrantedAuthority(String authority) {
+        this.authority = authority;
     }
-    FrameGrantedAuthority that = (FrameGrantedAuthority) o;
-    return Objects.equal(authority, that.authority);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hashCode(authority);
-  }
+    @Override
+    public String getAuthority() {
+        return this.authority;
+    }
 
-  @Override
-  public String toString() {
-    return MoreObjects.toStringHelper(this)
-      .add("authority", authority)
-      .toString();
-  }
+    public void setAuthority(String authority) {
+        this.authority = authority;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        FrameGrantedAuthority that = (FrameGrantedAuthority) o;
+        return Objects.equal(authority, that.authority);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(authority);
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+            .add("authority", authority)
+            .toString();
+    }
 }

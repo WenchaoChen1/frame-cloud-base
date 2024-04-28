@@ -13,12 +13,12 @@ import org.springframework.stereotype.Service;
  * @date : 2023/5/15 16:33
  */
 @Service
-public class OAuth2ProductService extends BaseServiceImpl<OAuth2Product, String,OAuth2ProductRepository> {
+public class OAuth2ProductService extends BaseServiceImpl<OAuth2Product, String, OAuth2ProductRepository> {
 
-  private  OAuth2ProductRepository productRepository;
+    private OAuth2ProductRepository productRepository;
 
-  public OAuth2ProductService(OAuth2ProductRepository productRepository) {
-      super(productRepository);
-  }
+    public OAuth2ProductService(OAuth2ProductRepository productRepository) {
+        super(productRepository);
+    }
 
 }

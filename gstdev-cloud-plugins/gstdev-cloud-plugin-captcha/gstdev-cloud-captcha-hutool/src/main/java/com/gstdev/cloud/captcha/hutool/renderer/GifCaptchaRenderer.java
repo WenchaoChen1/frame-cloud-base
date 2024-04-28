@@ -14,19 +14,19 @@ import org.dromara.hutool.swing.captcha.GifCaptcha;
  */
 public class GifCaptchaRenderer extends AbstractGraphicRenderer {
 
-  @Override
-  public Metadata draw() {
-    GifCaptcha gifCaptcha = CaptchaUtil.ofGifCaptcha(this.getWidth(), this.getHeight(), this.getLength());
-    gifCaptcha.setFont(this.getFont());
+    @Override
+    public Metadata draw() {
+        GifCaptcha gifCaptcha = CaptchaUtil.ofGifCaptcha(this.getWidth(), this.getHeight(), this.getLength());
+        gifCaptcha.setFont(this.getFont());
 
-    Metadata metadata = new Metadata();
-    metadata.setGraphicImageBase64(gifCaptcha.getImageBase64Data());
-    metadata.setCharacters(gifCaptcha.getCode());
-    return metadata;
-  }
+        Metadata metadata = new Metadata();
+        metadata.setGraphicImageBase64(gifCaptcha.getImageBase64Data());
+        metadata.setCharacters(gifCaptcha.getCode());
+        return metadata;
+    }
 
-  @Override
-  public String getCategory() {
-    return CaptchaCategory.HUTOOL_GIF.getConstant();
-  }
+    @Override
+    public String getCategory() {
+        return CaptchaCategory.HUTOOL_GIF.getConstant();
+    }
 }

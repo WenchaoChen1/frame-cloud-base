@@ -13,7 +13,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.Instant ;
+import java.time.Instant;
 
 /**
  * <p>Description: 多实例共用 RegisteredClient属性 </p>
@@ -24,88 +24,88 @@ import java.time.Instant ;
 @MappedSuperclass
 public abstract class AbstractRegisteredClient extends BaseSysEntity implements RegisteredClientDetails {
 
-  @Schema(name = "客户端ID发布日期", title = "客户端发布日期")
-  @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT, locale = "GMT+8", shape = JsonFormat.Shape.STRING)
-  @Column(name = "client_id_issued_at", nullable = false, updatable = false)
-  @CreationTimestamp
-  private Instant  clientIdIssuedAt;
+    @Schema(name = "客户端ID发布日期", title = "客户端发布日期")
+    @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT, locale = "GMT+8", shape = JsonFormat.Shape.STRING)
+    @Column(name = "client_id_issued_at", nullable = false, updatable = false)
+    @CreationTimestamp
+    private Instant clientIdIssuedAt;
 
-  @Schema(name = "客户端秘钥过期时间", title = "客户端秘钥过期时间")
-  @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT, locale = "GMT+8", shape = JsonFormat.Shape.STRING)
-  @Column(name = "client_secret_expires_at")
-  private Instant  clientSecretExpiresAt;
+    @Schema(name = "客户端秘钥过期时间", title = "客户端秘钥过期时间")
+    @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT, locale = "GMT+8", shape = JsonFormat.Shape.STRING)
+    @Column(name = "client_secret_expires_at")
+    private Instant clientSecretExpiresAt;
 
-  @Schema(name = "客户端认证模式", title = "支持多个值，以逗号分隔", requiredMode = Schema.RequiredMode.REQUIRED)
-  @Column(name = "client_authentication_methods", nullable = false, length = 1000)
-  @JsonDeserialize(using = SetToCommaDelimitedStringDeserializer.class)
-  @JsonSerialize(using = CommaDelimitedStringToSetSerializer.class)
-  private String clientAuthenticationMethods;
+    @Schema(name = "客户端认证模式", title = "支持多个值，以逗号分隔", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Column(name = "client_authentication_methods", nullable = false, length = 1000)
+    @JsonDeserialize(using = SetToCommaDelimitedStringDeserializer.class)
+    @JsonSerialize(using = CommaDelimitedStringToSetSerializer.class)
+    private String clientAuthenticationMethods;
 
-  @Schema(name = "认证模式", title = "支持多个值，以逗号分隔", requiredMode = Schema.RequiredMode.REQUIRED)
-  @Column(name = "authorization_grant_types", nullable = false, length = 1000)
-  @JsonDeserialize(using = SetToCommaDelimitedStringDeserializer.class)
-  @JsonSerialize(using = CommaDelimitedStringToSetSerializer.class)
-  private String authorizationGrantTypes;
+    @Schema(name = "认证模式", title = "支持多个值，以逗号分隔", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Column(name = "authorization_grant_types", nullable = false, length = 1000)
+    @JsonDeserialize(using = SetToCommaDelimitedStringDeserializer.class)
+    @JsonSerialize(using = CommaDelimitedStringToSetSerializer.class)
+    private String authorizationGrantTypes;
 
-  @Schema(name = "回调地址", title = "支持多个值，以逗号分隔")
-  @Column(name = "redirect_uris", length = 1000)
-  private String redirectUris;
+    @Schema(name = "回调地址", title = "支持多个值，以逗号分隔")
+    @Column(name = "redirect_uris", length = 1000)
+    private String redirectUris;
 
-  @Schema(name = "OIDC Logout 回调地址", title = "支持多个值，以逗号分隔")
-  @Column(name = "post_logout_redirect_uris", length = 1000)
-  private String postLogoutRedirectUris;
+    @Schema(name = "OIDC Logout 回调地址", title = "支持多个值，以逗号分隔")
+    @Column(name = "post_logout_redirect_uris", length = 1000)
+    private String postLogoutRedirectUris;
 
-  @Override
-  public Instant  getClientIdIssuedAt() {
-    return clientIdIssuedAt;
-  }
+    @Override
+    public Instant getClientIdIssuedAt() {
+        return clientIdIssuedAt;
+    }
 
-  public void setClientIdIssuedAt(Instant  clientIdIssuedAt) {
-    this.clientIdIssuedAt = clientIdIssuedAt;
-  }
+    public void setClientIdIssuedAt(Instant clientIdIssuedAt) {
+        this.clientIdIssuedAt = clientIdIssuedAt;
+    }
 
-  @Override
-  public Instant  getClientSecretExpiresAt() {
-    return clientSecretExpiresAt;
-  }
+    @Override
+    public Instant getClientSecretExpiresAt() {
+        return clientSecretExpiresAt;
+    }
 
-  public void setClientSecretExpiresAt(Instant  clientSecretExpiresAt) {
-    this.clientSecretExpiresAt = clientSecretExpiresAt;
-  }
+    public void setClientSecretExpiresAt(Instant clientSecretExpiresAt) {
+        this.clientSecretExpiresAt = clientSecretExpiresAt;
+    }
 
-  @Override
-  public String getClientAuthenticationMethods() {
-    return clientAuthenticationMethods;
-  }
+    @Override
+    public String getClientAuthenticationMethods() {
+        return clientAuthenticationMethods;
+    }
 
-  public void setClientAuthenticationMethods(String clientAuthenticationMethods) {
-    this.clientAuthenticationMethods = clientAuthenticationMethods;
-  }
+    public void setClientAuthenticationMethods(String clientAuthenticationMethods) {
+        this.clientAuthenticationMethods = clientAuthenticationMethods;
+    }
 
-  @Override
-  public String getAuthorizationGrantTypes() {
-    return authorizationGrantTypes;
-  }
+    @Override
+    public String getAuthorizationGrantTypes() {
+        return authorizationGrantTypes;
+    }
 
-  public void setAuthorizationGrantTypes(String authorizationGrantTypes) {
-    this.authorizationGrantTypes = authorizationGrantTypes;
-  }
+    public void setAuthorizationGrantTypes(String authorizationGrantTypes) {
+        this.authorizationGrantTypes = authorizationGrantTypes;
+    }
 
-  @Override
-  public String getRedirectUris() {
-    return redirectUris;
-  }
+    @Override
+    public String getRedirectUris() {
+        return redirectUris;
+    }
 
-  public void setRedirectUris(String redirectUris) {
-    this.redirectUris = redirectUris;
-  }
+    public void setRedirectUris(String redirectUris) {
+        this.redirectUris = redirectUris;
+    }
 
-  @Override
-  public String getPostLogoutRedirectUris() {
-    return postLogoutRedirectUris;
-  }
+    @Override
+    public String getPostLogoutRedirectUris() {
+        return postLogoutRedirectUris;
+    }
 
-  public void setPostLogoutRedirectUris(String postLogoutRedirectUris) {
-    this.postLogoutRedirectUris = postLogoutRedirectUris;
-  }
+    public void setPostLogoutRedirectUris(String postLogoutRedirectUris) {
+        this.postLogoutRedirectUris = postLogoutRedirectUris;
+    }
 }

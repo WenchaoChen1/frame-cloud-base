@@ -20,7 +20,7 @@ import org.springframework.security.core.AuthenticationException;
  */
 public interface StrategyUserDetailsService {
 
-  DefaultSecurityUser findUserDetailsByUsername(String username) throws AuthenticationException;
+    DefaultSecurityUser findUserDetailsByUsername(String username) throws AuthenticationException;
 
-  DefaultSecurityUser findUserDetailsBySocial(String source, AccessPrincipal accessPrincipal) throws AuthenticationException;
+    DefaultSecurityUser findUserDetailsBySocial(String source, AccessPrincipal accessPrincipal) throws AuthenticationException;
 }

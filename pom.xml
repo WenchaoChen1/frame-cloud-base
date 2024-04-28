@@ -85,19 +85,19 @@
         </repository>
     </repositories>
 
-<!--    <distributionManagement>-->
-<!--        &lt;!&ndash;正式版本&ndash;&gt;-->
-<!--        <repository>-->
-<!--            &lt;!&ndash;必须与 settings.xml 的 id 一致&ndash;&gt;-->
-<!--            <id>riching-repository-maven</id>-->
-<!--            <name>Riching Maven Releases Repository</name>-->
-<!--            <url>https://nexus.esapiens.ai/repository/maven-releases/</url>-->
-<!--        </repository>-->
-<!--        &lt;!&ndash;快照&ndash;&gt;-->
-<!--        <snapshotRepository>-->
-<!--            <id>riching-repository-maven-snapshots</id>-->
-<!--            <name>Riching Maven Snapshot Repository</name>-->
-<!--            <url>https://nexus.esapiens.ai/repository/maven-snapshots/</url>-->
-<!--        </snapshotRepository>-->
-<!--    </distributionManagement>-->
+    <!--    <distributionManagement>-->
+    <!--        &lt;!&ndash;正式版本&ndash;&gt;-->
+    <!--        <repository>-->
+    <!--            &lt;!&ndash;必须与 settings.xml 的 id 一致&ndash;&gt;-->
+    <!--            <id>riching-repository-maven</id>-->
+    <!--            <name>Riching Maven Releases Repository</name>-->
+    <!--            <url>https://nexus.esapiens.ai/repository/maven-releases/</url>-->
+    <!--        </repository>-->
+    <!--        &lt;!&ndash;快照&ndash;&gt;-->
+    <!--        <snapshotRepository>-->
+    <!--            <id>riching-repository-maven-snapshots</id>-->
+    <!--            <name>Riching Maven Snapshot Repository</name>-->
+    <!--            <url>https://nexus.esapiens.ai/repository/maven-snapshots/</url>-->
+    <!--        </snapshotRepository>-->
+    <!--    </distributionManagement>-->
 </project>

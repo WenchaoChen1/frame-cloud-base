@@ -18,7 +18,9 @@ import java.util.List;
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface Oauth2AuthorizationVoMapper extends BaseVoMapper<Oauth2AuthorizationVo, Oauth2AuthorizationDto> {
     Oauth2AuthorizationVo entityToVo(FrameAuthorization entity);
+
     List<Oauth2AuthorizationVo> entityToVo(List<FrameAuthorization> entity);
+
     default Page<Oauth2AuthorizationVo> entityToVo(Page<FrameAuthorization> page) {
         List<Oauth2AuthorizationVo> responses = this.entityToVo(page.getContent());
         return new PageImpl(responses, page.getPageable(), page.getTotalElements());

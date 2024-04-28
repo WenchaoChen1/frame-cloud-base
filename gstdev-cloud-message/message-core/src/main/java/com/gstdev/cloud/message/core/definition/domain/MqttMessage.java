@@ -10,60 +10,60 @@ import com.google.common.base.MoreObjects;
  */
 public class MqttMessage implements Message {
 
-  private String topic;
-  private String responseTopic;
-  private String correlationData;
-  private Integer qos;
-  private String payload;
+    private String topic;
+    private String responseTopic;
+    private String correlationData;
+    private Integer qos;
+    private String payload;
 
-  public String getTopic() {
-    return topic;
-  }
+    public String getTopic() {
+        return topic;
+    }
 
-  public void setTopic(String topic) {
-    this.topic = topic;
-  }
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
 
-  public String getResponseTopic() {
-    return responseTopic;
-  }
+    public String getResponseTopic() {
+        return responseTopic;
+    }
 
-  public void setResponseTopic(String responseTopic) {
-    this.responseTopic = responseTopic;
-  }
+    public void setResponseTopic(String responseTopic) {
+        this.responseTopic = responseTopic;
+    }
 
-  public String getCorrelationData() {
-    return correlationData;
-  }
+    public String getCorrelationData() {
+        return correlationData;
+    }
 
-  public void setCorrelationData(String correlationData) {
-    this.correlationData = correlationData;
-  }
+    public void setCorrelationData(String correlationData) {
+        this.correlationData = correlationData;
+    }
 
-  public Integer getQos() {
-    return qos;
-  }
+    public Integer getQos() {
+        return qos;
+    }
 
-  public void setQos(Integer qos) {
-    this.qos = qos;
-  }
+    public void setQos(Integer qos) {
+        this.qos = qos;
+    }
 
-  public String getPayload() {
-    return payload;
-  }
+    public String getPayload() {
+        return payload;
+    }
 
-  public void setPayload(String payload) {
-    this.payload = payload;
-  }
+    public void setPayload(String payload) {
+        this.payload = payload;
+    }
 
-  @Override
-  public String toString() {
-    return MoreObjects.toStringHelper(this)
-      .add("topic", topic)
-      .add("responseTopic", responseTopic)
-      .add("correlationData", correlationData)
-      .add("qos", qos)
-      .add("payload", payload)
-      .toString();
-  }
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+            .add("topic", topic)
+            .add("responseTopic", responseTopic)
+            .add("correlationData", correlationData)
+            .add("qos", qos)
+            .add("payload", payload)
+            .toString();
+    }
 }

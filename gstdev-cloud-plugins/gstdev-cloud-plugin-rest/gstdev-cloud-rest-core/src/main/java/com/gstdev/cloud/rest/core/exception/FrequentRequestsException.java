@@ -11,27 +11,27 @@ import com.gstdev.cloud.base.definition.domain.Feedback;
  */
 public class FrequentRequestsException extends IllegalOperationException {
 
-  public FrequentRequestsException() {
-  }
+    public FrequentRequestsException() {
+    }
 
-  public FrequentRequestsException(String message) {
-    super(message);
-  }
+    public FrequentRequestsException(String message) {
+        super(message);
+    }
 
-  public FrequentRequestsException(String message, Throwable cause) {
-    super(message, cause);
-  }
+    public FrequentRequestsException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-  public FrequentRequestsException(Throwable cause) {
-    super(cause);
-  }
+    public FrequentRequestsException(Throwable cause) {
+        super(cause);
+    }
 
-  public FrequentRequestsException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-    super(message, cause, enableSuppression, writableStackTrace);
-  }
+    public FrequentRequestsException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
 
-  @Override
-  public Feedback getFeedback() {
-    return RestErrorCodes.FREQUENT_REQUESTS;
-  }
+    @Override
+    public Feedback getFeedback() {
+        return RestErrorCodes.FREQUENT_REQUESTS;
+    }
 }

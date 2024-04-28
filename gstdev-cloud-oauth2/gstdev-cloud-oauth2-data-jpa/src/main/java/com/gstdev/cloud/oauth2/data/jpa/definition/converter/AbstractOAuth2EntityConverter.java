@@ -13,17 +13,17 @@ import java.util.Map;
  */
 public abstract class AbstractOAuth2EntityConverter<S, T> implements Converter<S, T> {
 
-  private final OAuth2JacksonProcessor jacksonProcessor;
+    private final OAuth2JacksonProcessor jacksonProcessor;
 
-  public AbstractOAuth2EntityConverter(OAuth2JacksonProcessor jacksonProcessor) {
-    this.jacksonProcessor = jacksonProcessor;
-  }
+    public AbstractOAuth2EntityConverter(OAuth2JacksonProcessor jacksonProcessor) {
+        this.jacksonProcessor = jacksonProcessor;
+    }
 
-  protected Map<String, Object> parseMap(String data) {
-    return jacksonProcessor.parseMap(data);
-  }
+    protected Map<String, Object> parseMap(String data) {
+        return jacksonProcessor.parseMap(data);
+    }
 
-  protected String writeMap(Map<String, Object> data) {
-    return jacksonProcessor.writeMap(data);
-  }
+    protected String writeMap(Map<String, Object> data) {
+        return jacksonProcessor.writeMap(data);
+    }
 }

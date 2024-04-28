@@ -2,21 +2,21 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <name>GstDev Cloud :: Starter :: Oauth2</name>
-  <description>${project.name}</description>
-  <artifactId>gstdev-cloud-starter-oauth2</artifactId>
-  <packaging>pom</packaging>
-  <parent>
-    <groupId>com.gstdev.cloud</groupId>
-    <artifactId>gstdev-cloud-starters</artifactId>
-    <version>2024.0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
+    <name>GstDev Cloud :: Starter :: Oauth2</name>
+    <description>${project.name}</description>
+    <artifactId>gstdev-cloud-starter-oauth2</artifactId>
+    <packaging>pom</packaging>
+    <parent>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-starters</artifactId>
+        <version>2024.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
-  <modules>
-    <module>gstdev-cloud-starter-oauth2-authorization-server</module>
-    <module>gstdev-cloud-starter-oauth2-resource-server</module>
-  </modules>
+    <modules>
+        <module>gstdev-cloud-starter-oauth2-authorization-server</module>
+        <module>gstdev-cloud-starter-oauth2-resource-server</module>
+    </modules>
 </project>

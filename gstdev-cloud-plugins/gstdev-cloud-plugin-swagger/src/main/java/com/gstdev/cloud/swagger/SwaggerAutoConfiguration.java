@@ -26,15 +26,15 @@ import java.util.HashSet;
 @ConditionalOnProperty(prefix = "gstdev.cloud.swagger", value = "enabled", matchIfMissing = true)
 @EnableOpenApi
 public class SwaggerAutoConfiguration {
-  private final SwaggerProperties properties;
+    private final SwaggerProperties properties;
 
-  public SwaggerAutoConfiguration(SwaggerProperties properties) {
-    this.properties = properties;
-  }
+    public SwaggerAutoConfiguration(SwaggerProperties properties) {
+        this.properties = properties;
+    }
 
-  @Bean
-  public Docket swaggerApiDocket() {
-    // @formatter:off
+    @Bean
+    public Docket swaggerApiDocket() {
+        // @formatter:off
     ApiInfo apiInfo = new ApiInfoBuilder()
       .title(properties.getTitle())
       .description(properties.getDescription())
@@ -44,9 +44,9 @@ public class SwaggerAutoConfiguration {
       .build();
     // @formatter:on
 
-    Docket docket = createDocket();
+        Docket docket = createDocket();
 
-    // @formatter:off
+        // @formatter:off
     docket.apiInfo(apiInfo)
       .useDefaultResponseMessages(properties.isUseDefaultResponseMessages())
       .host(properties.getHost())
@@ -59,20 +59,20 @@ public class SwaggerAutoConfiguration {
       .build();
     // @formatter:on
 
-    return docket;
-  }
+        return docket;
+    }
 
-  @Bean
-  public ViewResolver getViewResolver() {
-    log.info("[GstDev Cloud] |- Swagger start.");
-    InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-    resolver.setPrefix("/WEB-INF/");
-    resolver.setSuffix(".html");
+    @Bean
+    public ViewResolver getViewResolver() {
+        log.info("[GstDev Cloud] |- Swagger start.");
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/");
+        resolver.setSuffix(".html");
 
-    return resolver;
-  }
+        return resolver;
+    }
 
-  private Docket createDocket() {
-    return new Docket(DocumentationType.OAS_30);
-  }
+    private Docket createDocket() {
+        return new Docket(DocumentationType.OAS_30);
+    }
 }

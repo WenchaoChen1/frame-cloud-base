@@ -17,17 +17,17 @@ import org.springframework.context.annotation.Configuration;
 @Configuration(proxyBeanMethods = false)
 public class DiscriminatorApproachConfiguration {
 
-  private static final Logger log = LoggerFactory.getLogger(DiscriminatorApproachConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(DiscriminatorApproachConfiguration.class);
 
-  @PostConstruct
-  public void postConstruct() {
-    log.debug("[GstDev Cloud] |- SDK [Discriminator Approach] Auto Configure.");
-  }
+    @PostConstruct
+    public void postConstruct() {
+        log.debug("[GstDev Cloud] |- SDK [Discriminator Approach] Auto Configure.");
+    }
 
-  @Bean
-  public CurrentTenantIdentifierResolver currentTenantIdentifierResolver() {
-    FrameTenantIdentifierResolver herodotusTenantIdentifierResolver = new FrameTenantIdentifierResolver();
-    log.debug("[GstDev Cloud] |- Bean [Current Tenant Identifier Resolver] Auto Configure.");
-    return herodotusTenantIdentifierResolver;
-  }
+    @Bean
+    public CurrentTenantIdentifierResolver currentTenantIdentifierResolver() {
+        FrameTenantIdentifierResolver herodotusTenantIdentifierResolver = new FrameTenantIdentifierResolver();
+        log.debug("[GstDev Cloud] |- Bean [Current Tenant Identifier Resolver] Auto Configure.");
+        return herodotusTenantIdentifierResolver;
+    }
 }

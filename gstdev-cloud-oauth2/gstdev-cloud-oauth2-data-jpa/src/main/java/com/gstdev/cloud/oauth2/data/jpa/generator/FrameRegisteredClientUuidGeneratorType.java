@@ -20,22 +20,22 @@ import java.lang.reflect.Member;
  */
 public class FrameRegisteredClientUuidGeneratorType extends AbstractUuidGenerator {
 
-  public FrameRegisteredClientUuidGeneratorType(FrameRegisteredClientUuidGenerator config, Member idMember, CustomIdGeneratorCreationContext creationContext) {
-    super(idMember);
-  }
-
-  @Override
-  public Object generate(SharedSessionContractImplementor session, Object object) throws HibernateException {
-    if (ObjectUtils.isEmpty(object)) {
-      throw new HibernateException(new NullPointerException());
+    public FrameRegisteredClientUuidGeneratorType(FrameRegisteredClientUuidGenerator config, Member idMember, CustomIdGeneratorCreationContext creationContext) {
+        super(idMember);
     }
 
-    FrameRegisteredClient frameRegisteredClient = (FrameRegisteredClient) object;
+    @Override
+    public Object generate(SharedSessionContractImplementor session, Object object) throws HibernateException {
+        if (ObjectUtils.isEmpty(object)) {
+            throw new HibernateException(new NullPointerException());
+        }
 
-    if (StringUtils.isEmpty(frameRegisteredClient.getId())) {
-      return super.generate(session, object);
-    } else {
-      return frameRegisteredClient.getId();
+        FrameRegisteredClient frameRegisteredClient = (FrameRegisteredClient) object;
+
+        if (StringUtils.isEmpty(frameRegisteredClient.getId())) {
+            return super.generate(session, object);
+        } else {
+            return frameRegisteredClient.getId();
+        }
     }
-  }
 }

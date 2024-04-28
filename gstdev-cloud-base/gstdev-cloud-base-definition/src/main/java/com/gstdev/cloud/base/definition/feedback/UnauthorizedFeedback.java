@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
  * @date : 2023/9/26 8:48
  */
 public class UnauthorizedFeedback extends Feedback {
-  public UnauthorizedFeedback(String value) {
-    super(value, HttpStatus.UNAUTHORIZED);
-  }
+    public UnauthorizedFeedback(String value) {
+        super(value, HttpStatus.UNAUTHORIZED);
+    }
 }

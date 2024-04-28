@@ -16,13 +16,13 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  */
 public class AutoUnlockUserAccountCondition implements Condition {
 
-  private static final Logger log = LoggerFactory.getLogger(AutoUnlockUserAccountCondition.class);
+    private static final Logger log = LoggerFactory.getLogger(AutoUnlockUserAccountCondition.class);
 
-  @SuppressWarnings("NullableProblems")
-  @Override
-  public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata metadata) {
-    boolean result = PropertyResolver.getBoolean(conditionContext, OAuth2Constants.ITEM_COMPLIANCE_AUTO_UNLOCK, true);
-    log.debug("[GstDev Cloud] |- Condition [Auto Unlock User Account] value is [{}]", result);
-    return result;
-  }
+    @SuppressWarnings("NullableProblems")
+    @Override
+    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata metadata) {
+        boolean result = PropertyResolver.getBoolean(conditionContext, OAuth2Constants.ITEM_COMPLIANCE_AUTO_UNLOCK, true);
+        log.debug("[GstDev Cloud] |- Condition [Auto Unlock User Account] value is [{}]", result);
+        return result;
+    }
 }

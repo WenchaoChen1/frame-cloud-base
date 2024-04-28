@@ -25,46 +25,46 @@ import org.springframework.web.context.request.ServletRequestAttributes;
  */
 public class AuthenticationSuccessListener implements ApplicationListener<AuthenticationSuccessEvent> {
 
-  private static final Logger log = LoggerFactory.getLogger(AuthenticationSuccessListener.class);
+    private static final Logger log = LoggerFactory.getLogger(AuthenticationSuccessListener.class);
 
-  private final SignInFailureLimitedStampManager stampManager;
-  private final OAuth2ComplianceService complianceService;
+    private final SignInFailureLimitedStampManager stampManager;
+    private final OAuth2ComplianceService complianceService;
 
-  public AuthenticationSuccessListener(SignInFailureLimitedStampManager stampManager, OAuth2ComplianceService complianceService) {
-    this.stampManager = stampManager;
-    this.complianceService = complianceService;
-  }
-
-  @Override
-  public void onApplicationEvent(AuthenticationSuccessEvent event) {
-
-    Authentication authentication = event.getAuthentication();
-
-    if (authentication instanceof OAuth2AccessTokenAuthenticationToken authenticationToken) {
-      Object details = authentication.getDetails();
-
-      String username = null;
-      if (ObjectUtils.isNotEmpty(details) && details instanceof PrincipalDetails user) {
-        username = user.getUsername();
-      }
-
-      String clientId = authenticationToken.getRegisteredClient().getId();
-
-      RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-      if (ObjectUtils.isNotEmpty(requestAttributes) && requestAttributes instanceof ServletRequestAttributes servletRequestAttributes) {
-        HttpServletRequest request = servletRequestAttributes.getRequest();
-
-        if (ObjectUtils.isNotEmpty(request) && StringUtils.isNotBlank(username)) {
-          complianceService.save(username, clientId, "用户登录", request);
-          String key = SecureUtil.md5(username);
-          boolean hasKey = stampManager.containKey(key);
-          if (hasKey) {
-            stampManager.delete(key);
-          }
-        }
-      } else {
-        log.warn("[GstDev Cloud] |- Can not get request and user name, skip!");
-      }
+    public AuthenticationSuccessListener(SignInFailureLimitedStampManager stampManager, OAuth2ComplianceService complianceService) {
+        this.stampManager = stampManager;
+        this.complianceService = complianceService;
     }
-  }
+
+    @Override
+    public void onApplicationEvent(AuthenticationSuccessEvent event) {
+
+        Authentication authentication = event.getAuthentication();
+
+        if (authentication instanceof OAuth2AccessTokenAuthenticationToken authenticationToken) {
+            Object details = authentication.getDetails();
+
+            String username = null;
+            if (ObjectUtils.isNotEmpty(details) && details instanceof PrincipalDetails user) {
+                username = user.getUsername();
+            }
+
+            String clientId = authenticationToken.getRegisteredClient().getId();
+
+            RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
+            if (ObjectUtils.isNotEmpty(requestAttributes) && requestAttributes instanceof ServletRequestAttributes servletRequestAttributes) {
+                HttpServletRequest request = servletRequestAttributes.getRequest();
+
+                if (ObjectUtils.isNotEmpty(request) && StringUtils.isNotBlank(username)) {
+                    complianceService.save(username, clientId, "用户登录", request);
+                    String key = SecureUtil.md5(username);
+                    boolean hasKey = stampManager.containKey(key);
+                    if (hasKey) {
+                        stampManager.delete(key);
+                    }
+                }
+            } else {
+                log.warn("[GstDev Cloud] |- Can not get request and user name, skip!");
+            }
+        }
+    }
 }

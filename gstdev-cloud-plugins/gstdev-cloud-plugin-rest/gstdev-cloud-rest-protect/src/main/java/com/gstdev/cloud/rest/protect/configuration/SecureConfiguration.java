@@ -25,12 +25,12 @@ import org.springframework.context.annotation.Import;
 @AutoConfiguration(after = {CacheJetCacheAutoConfiguration.class})
 public class SecureConfiguration {
 
-  private static final Logger log = LoggerFactory.getLogger(SecureConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(SecureConfiguration.class);
 
-  @PostConstruct
-  public void postConstruct() {
-    log.debug("[GstDev Cloud] |- SDK [Protect Secure] Auto Configure.");
-  }
+    @PostConstruct
+    public void postConstruct() {
+        log.debug("[GstDev Cloud] |- SDK [Protect Secure] Auto Configure.");
+    }
 
 //  @Bean
 //  @ConditionalOnMissingBean

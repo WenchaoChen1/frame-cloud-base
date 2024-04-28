@@ -124,14 +124,14 @@ public class SecurityAttribute implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("attributeId", attributeId)
-                .add("attributeCode", attributeCode)
-                .add("attributeName", attributeName)
-                .add("authorities", webExpression)
-                .add("permissions", permissions)
-                .add("url", url)
-                .add("requestMethod", requestMethod)
-                .add("serviceId", serviceId)
-                .toString();
+            .add("attributeId", attributeId)
+            .add("attributeCode", attributeCode)
+            .add("attributeName", attributeName)
+            .add("authorities", webExpression)
+            .add("permissions", permissions)
+            .add("url", url)
+            .add("requestMethod", requestMethod)
+            .add("serviceId", serviceId)
+            .toString();
     }
 }

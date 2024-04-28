@@ -19,15 +19,15 @@ import java.util.Set;
  * @date : 2022/2/22 15:49
  */
 public class OAuth2PasswordAuthenticationToken extends OAuth2AuthorizationGrantAuthenticationToken {
-  private final Set<String> scopes;
+    private final Set<String> scopes;
 
-  public OAuth2PasswordAuthenticationToken(Authentication clientPrincipal, @Nullable Set<String> scopes, @Nullable Map<String, Object> additionalParameters) {
-    super(FrameGrantType.PASSWORD, clientPrincipal, additionalParameters);
-    Assert.notNull(clientPrincipal, "clientPrincipal cannot be null");
-    this.scopes = Collections.unmodifiableSet(CollectionUtils.isNotEmpty(scopes) ? new HashSet<>(scopes) : Collections.emptySet());
-  }
+    public OAuth2PasswordAuthenticationToken(Authentication clientPrincipal, @Nullable Set<String> scopes, @Nullable Map<String, Object> additionalParameters) {
+        super(FrameGrantType.PASSWORD, clientPrincipal, additionalParameters);
+        Assert.notNull(clientPrincipal, "clientPrincipal cannot be null");
+        this.scopes = Collections.unmodifiableSet(CollectionUtils.isNotEmpty(scopes) ? new HashSet<>(scopes) : Collections.emptySet());
+    }
 
-  public Set<String> getScopes() {
-    return this.scopes;
-  }
+    public Set<String> getScopes() {
+        return this.scopes;
+    }
 }

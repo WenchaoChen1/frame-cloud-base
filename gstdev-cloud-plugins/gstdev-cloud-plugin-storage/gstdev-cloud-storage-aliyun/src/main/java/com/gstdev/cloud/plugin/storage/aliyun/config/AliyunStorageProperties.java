@@ -17,9 +17,9 @@ import lombok.Data;
 @ConfigurationProperties(prefix = "gstdev.cloud.storage.aliyun", ignoreUnknownFields = true)
 public class AliyunStorageProperties {
 
-  private String endpoint;
+    private String endpoint;
 
-  private String accessKeyId;
+    private String accessKeyId;
 
-  private String accessKeySecret;
+    private String accessKeySecret;
 }

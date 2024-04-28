@@ -15,15 +15,15 @@ import org.springframework.security.jackson2.SecurityJackson2Modules;
  */
 public class FrameJackson2Module extends SimpleModule {
 
-  public FrameJackson2Module() {
-    super(FrameJackson2Module.class.getName(), Jackson2Constants.VERSION);
-  }
+    public FrameJackson2Module() {
+        super(FrameJackson2Module.class.getName(), Jackson2Constants.VERSION);
+    }
 
-  @Override
-  public void setupModule(SetupContext context) {
-    SecurityJackson2Modules.enableDefaultTyping(context.getOwner());
-    context.setMixInAnnotations(DefaultSecurityUser.class, FrameUserMixin.class);
-    context.setMixInAnnotations(FrameGrantedAuthority.class, FrameGrantedAuthorityMixin.class);
-    context.setMixInAnnotations(FormLoginWebAuthenticationDetails.class, FormLoginWebAuthenticationDetailsMixin.class);
-  }
+    @Override
+    public void setupModule(SetupContext context) {
+        SecurityJackson2Modules.enableDefaultTyping(context.getOwner());
+        context.setMixInAnnotations(DefaultSecurityUser.class, FrameUserMixin.class);
+        context.setMixInAnnotations(FrameGrantedAuthority.class, FrameGrantedAuthorityMixin.class);
+        context.setMixInAnnotations(FormLoginWebAuthenticationDetails.class, FormLoginWebAuthenticationDetailsMixin.class);
+    }
 }

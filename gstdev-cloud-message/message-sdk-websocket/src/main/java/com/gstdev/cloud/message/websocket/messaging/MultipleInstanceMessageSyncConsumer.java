@@ -14,18 +14,18 @@ import java.util.function.Consumer;
  */
 public class MultipleInstanceMessageSyncConsumer implements Consumer<WebSocketMessage> {
 
-  private final WebSocketMessagingTemplate webSocketMessagingTemplate;
+    private final WebSocketMessagingTemplate webSocketMessagingTemplate;
 
-  public MultipleInstanceMessageSyncConsumer(WebSocketMessagingTemplate webSocketMessagingTemplate) {
-    this.webSocketMessagingTemplate = webSocketMessagingTemplate;
-  }
-
-  @Override
-  public void accept(WebSocketMessage webSocketMessage) {
-    if (StringUtils.equals(webSocketMessage.getUser(), MessageConstants.MESSAGE_TO_ALL)) {
-      webSocketMessagingTemplate.broadcast(webSocketMessage.getDestination(), webSocketMessage.getPayload());
-    } else {
-      webSocketMessagingTemplate.pointToPoint(webSocketMessage.getUser(), webSocketMessage.getDestination(), webSocketMessage.getPayload());
+    public MultipleInstanceMessageSyncConsumer(WebSocketMessagingTemplate webSocketMessagingTemplate) {
+        this.webSocketMessagingTemplate = webSocketMessagingTemplate;
     }
-  }
+
+    @Override
+    public void accept(WebSocketMessage webSocketMessage) {
+        if (StringUtils.equals(webSocketMessage.getUser(), MessageConstants.MESSAGE_TO_ALL)) {
+            webSocketMessagingTemplate.broadcast(webSocketMessage.getDestination(), webSocketMessage.getPayload());
+        } else {
+            webSocketMessagingTemplate.pointToPoint(webSocketMessage.getUser(), webSocketMessage.getDestination(), webSocketMessage.getPayload());
+        }
+    }
 }

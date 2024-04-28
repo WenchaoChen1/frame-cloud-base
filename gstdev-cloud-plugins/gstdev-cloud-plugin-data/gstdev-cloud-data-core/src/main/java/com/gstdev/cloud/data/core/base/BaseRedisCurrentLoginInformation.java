@@ -3,9 +3,9 @@ package com.gstdev.cloud.data.core.base;
 
 public interface BaseRedisCurrentLoginInformation {
 
-  String getCurrentLoginAccountId();
+    String getCurrentLoginAccountId();
 
-  String getCurrentLoginTenantId();
+    String getCurrentLoginTenantId();
 
 //  CurrentLoginInformation getCurrentLoginInformation();
 }

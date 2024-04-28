@@ -2,51 +2,51 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>gstdev-cloud-cache-jetcache</artifactId>
+    <artifactId>gstdev-cloud-cache-jetcache</artifactId>
 
-  <name>GstDev Cloud :: Cache :: Jetcache</name>
-  <description>${project.name}</description>
-  <parent>
-    <artifactId>gstdev-cloud-plugin-cache</artifactId>
-    <groupId>com.gstdev.cloud</groupId>
-    <version>2024.0.1-SNAPSHOT</version>
-  </parent>
+    <name>GstDev Cloud :: Cache :: Jetcache</name>
+    <description>${project.name}</description>
+    <parent>
+        <artifactId>gstdev-cloud-plugin-cache</artifactId>
+        <groupId>com.gstdev.cloud</groupId>
+        <version>2024.0.1-SNAPSHOT</version>
+    </parent>
 
 
-  <dependencies>
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-cache-caffeine</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-cache-redis</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.alicp.jetcache</groupId>
-      <artifactId>jetcache-starter-redis-lettuce</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.alicp.jetcache</groupId>
-      <artifactId>jetcache-autoconfigure</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.alicp.jetcache</groupId>
-      <artifactId>jetcache-anno</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.alicp.jetcache</groupId>
-      <artifactId>jetcache-redis-lettuce</artifactId>
-    </dependency>
+    <dependencies>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-cache-caffeine</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-cache-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alicp.jetcache</groupId>
+            <artifactId>jetcache-starter-redis-lettuce</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alicp.jetcache</groupId>
+            <artifactId>jetcache-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alicp.jetcache</groupId>
+            <artifactId>jetcache-anno</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alicp.jetcache</groupId>
+            <artifactId>jetcache-redis-lettuce</artifactId>
+        </dependency>
 
-    <!--    <dependency>-->
-    <!--      <groupId>org.mybatis</groupId>-->
-    <!--      <artifactId>mybatis</artifactId>-->
-    <!--      <scope>compile</scope>-->
-    <!--      <optional>true</optional>-->
-    <!--    </dependency>-->
-  </dependencies>
+        <!--    <dependency>-->
+        <!--      <groupId>org.mybatis</groupId>-->
+        <!--      <artifactId>mybatis</artifactId>-->
+        <!--      <scope>compile</scope>-->
+        <!--      <optional>true</optional>-->
+        <!--    </dependency>-->
+    </dependencies>
 
 </project>

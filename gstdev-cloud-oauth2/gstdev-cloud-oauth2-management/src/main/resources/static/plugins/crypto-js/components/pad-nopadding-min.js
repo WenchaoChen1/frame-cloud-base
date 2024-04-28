@@ -5,7 +5,7 @@ code.google.com/p/crypto-js
 code.google.com/p/crypto-js/wiki/License
 */
 CryptoJS.pad.NoPadding = {
-  pad: function () {
-  }, unpad: function () {
-  }
+    pad: function () {
+    }, unpad: function () {
+    }
 };

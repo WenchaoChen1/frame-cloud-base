@@ -35,169 +35,169 @@ import lombok.Data;
 @AllArgsConstructor
 public class AliyunStorageService extends AbstractFileService implements StorageService {
 
-  final static Logger log = Logger.getLogger(AliyunStorageService.class.getName());
+    final static Logger log = Logger.getLogger(AliyunStorageService.class.getName());
 
-  private String endpoint;
-  private String accessKeyId;
-  private String accessKeySecret;
+    private String endpoint;
+    private String accessKeyId;
+    private String accessKeySecret;
 
-  @Override
-  public void createBucket(String bucketName) {
-    OSS ossClient = getClient();
+    @Override
+    public void createBucket(String bucketName) {
+        OSS ossClient = getClient();
 
-    try {
-      if (ossClient.doesBucketExist(bucketName)) {
-        log.info(bucketName + "存储空间已经存在");
-      } else {
-        ossClient.createBucket(bucketName);
-        ossClient.setBucketAcl(bucketName, CannedAccessControlList.PublicRead);
-      }
-    } catch (OSSException oe) {
-      oe.printStackTrace();
-    } catch (ClientException ce) {
-      ce.printStackTrace();
-    } catch (Exception e) {
-      e.printStackTrace();
-    } finally {
-      ossClient.shutdown();
-    }
-  }
-
-  @Override
-  public void removeBucket(String bucketName) {
-    OSS ossClient = getClient();
-
-    try {
-      if (ossClient.doesBucketExist(bucketName)) {
-        ossClient.deleteBucket(bucketName);
-      } else {
-        log.info(bucketName + "存储空间不存在");
-      }
-    } catch (OSSException oe) {
-      oe.printStackTrace();
-    } catch (ClientException ce) {
-      ce.printStackTrace();
-    } catch (Exception e) {
-      e.printStackTrace();
-    } finally {
-      ossClient.shutdown();
-    }
-  }
-
-  @Override
-  public Optional<FileBucket> getBucket(String bucketName) {
-    OSS ossClient = getClient();
-
-    try {
-      if (ossClient.doesBucketExist(bucketName)) {
-        BucketInfo ossBucketInfo = ossClient.getBucketInfo(bucketName);
-        Bucket ossBucket = ossBucketInfo.getBucket();
-
-        return Optional.of(FileBucket.builder().name(ossBucket.getName()).build());
-      } else {
-        // Log Exception
-      }
-    } catch (OSSException oe) {
-      oe.printStackTrace();
-    } catch (ClientException ce) {
-      ce.printStackTrace();
-    } catch (Exception e) {
-      e.printStackTrace();
-    } finally {
-      ossClient.shutdown();
+        try {
+            if (ossClient.doesBucketExist(bucketName)) {
+                log.info(bucketName + "存储空间已经存在");
+            } else {
+                ossClient.createBucket(bucketName);
+                ossClient.setBucketAcl(bucketName, CannedAccessControlList.PublicRead);
+            }
+        } catch (OSSException oe) {
+            oe.printStackTrace();
+        } catch (ClientException ce) {
+            ce.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            ossClient.shutdown();
+        }
     }
 
-    return null;
-  }
+    @Override
+    public void removeBucket(String bucketName) {
+        OSS ossClient = getClient();
 
-  @Override
-  public List<FileBucket> listBuckets() {
-    return null;
-  }
-
-  @Override
-  public String getObjectURL(String bucketName, String objectName, Integer expires) {
-    if (expires <= 0) {
-      String[] segements = endpoint.split("://");
-      return segements[0] + "://" + bucketName + "." + segements[1] + "/" + objectName;
+        try {
+            if (ossClient.doesBucketExist(bucketName)) {
+                ossClient.deleteBucket(bucketName);
+            } else {
+                log.info(bucketName + "存储空间不存在");
+            }
+        } catch (OSSException oe) {
+            oe.printStackTrace();
+        } catch (ClientException ce) {
+            ce.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            ossClient.shutdown();
+        }
     }
 
-    OSS ossClient = getClient();
+    @Override
+    public Optional<FileBucket> getBucket(String bucketName) {
+        OSS ossClient = getClient();
 
-    try {
-      if (ossClient.doesObjectExist(bucketName, objectName)) {
-        URL url = ossClient.generatePresignedUrl(bucketName, objectName, new Date(new Date().getTime() + expires));
-        return url.toString();
-      } else {
-        log.info(objectName + "文件不存在");
-      }
-    } catch (OSSException oe) {
-      oe.printStackTrace();
-    } catch (ClientException ce) {
-      ce.printStackTrace();
-    } catch (Exception e) {
-      e.printStackTrace();
-    } finally {
-      ossClient.shutdown();
+        try {
+            if (ossClient.doesBucketExist(bucketName)) {
+                BucketInfo ossBucketInfo = ossClient.getBucketInfo(bucketName);
+                Bucket ossBucket = ossBucketInfo.getBucket();
+
+                return Optional.of(FileBucket.builder().name(ossBucket.getName()).build());
+            } else {
+                // Log Exception
+            }
+        } catch (OSSException oe) {
+            oe.printStackTrace();
+        } catch (ClientException ce) {
+            ce.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            ossClient.shutdown();
+        }
+
+        return null;
     }
 
-    return null;
-  }
-
-  @Override
-  public FileObject stateObjectInfo(String bucketName, String objectName) {
-    return null;
-  }
-
-  @Override
-  public void putObject(String bucketName, String objectName, InputStream stream, long size, String contentType) {
-    OSS ossClient = getClient();
-
-    try {
-      ObjectMetadata objectMetadata = new ObjectMetadata();
-      objectMetadata.setContentType(contentType.replaceAll("image/jpeg", "image/jpg"));
-      objectMetadata.setContentLength(size);
-
-      ossClient.putObject(bucketName, objectName, stream, objectMetadata);
-      ossClient.setObjectAcl(bucketName, objectName, CannedAccessControlList.PublicRead);
-    } catch (OSSException oe) {
-      oe.printStackTrace();
-    } catch (ClientException ce) {
-      ce.printStackTrace();
-    } catch (Exception e) {
-      e.printStackTrace();
-    } finally {
-      ossClient.shutdown();
+    @Override
+    public List<FileBucket> listBuckets() {
+        return null;
     }
-  }
 
-  @Override
-  public void removeObject(String bucketName, String objectName) {
-    OSS ossClient = getClient();
+    @Override
+    public String getObjectURL(String bucketName, String objectName, Integer expires) {
+        if (expires <= 0) {
+            String[] segements = endpoint.split("://");
+            return segements[0] + "://" + bucketName + "." + segements[1] + "/" + objectName;
+        }
 
-    try {
-      if (ossClient.doesObjectExist(bucketName, objectName)) {
-        ossClient.deleteObject(bucketName, objectName);
-      } else {
-        log.info(objectName + "文件不存在");
-      }
-    } catch (OSSException oe) {
-      oe.printStackTrace();
-    } catch (ClientException ce) {
-      ce.printStackTrace();
-    } catch (Exception e) {
-      e.printStackTrace();
-    } finally {
-      ossClient.shutdown();
+        OSS ossClient = getClient();
+
+        try {
+            if (ossClient.doesObjectExist(bucketName, objectName)) {
+                URL url = ossClient.generatePresignedUrl(bucketName, objectName, new Date(new Date().getTime() + expires));
+                return url.toString();
+            } else {
+                log.info(objectName + "文件不存在");
+            }
+        } catch (OSSException oe) {
+            oe.printStackTrace();
+        } catch (ClientException ce) {
+            ce.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            ossClient.shutdown();
+        }
+
+        return null;
     }
-  }
 
-  @Override
-  public InputStream getObject(String bucketName, String objectName) {
-    return null;
-  }
+    @Override
+    public FileObject stateObjectInfo(String bucketName, String objectName) {
+        return null;
+    }
 
-  private OSS getClient() {
-    return new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
-  }
+    @Override
+    public void putObject(String bucketName, String objectName, InputStream stream, long size, String contentType) {
+        OSS ossClient = getClient();
+
+        try {
+            ObjectMetadata objectMetadata = new ObjectMetadata();
+            objectMetadata.setContentType(contentType.replaceAll("image/jpeg", "image/jpg"));
+            objectMetadata.setContentLength(size);
+
+            ossClient.putObject(bucketName, objectName, stream, objectMetadata);
+            ossClient.setObjectAcl(bucketName, objectName, CannedAccessControlList.PublicRead);
+        } catch (OSSException oe) {
+            oe.printStackTrace();
+        } catch (ClientException ce) {
+            ce.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            ossClient.shutdown();
+        }
+    }
+
+    @Override
+    public void removeObject(String bucketName, String objectName) {
+        OSS ossClient = getClient();
+
+        try {
+            if (ossClient.doesObjectExist(bucketName, objectName)) {
+                ossClient.deleteObject(bucketName, objectName);
+            } else {
+                log.info(objectName + "文件不存在");
+            }
+        } catch (OSSException oe) {
+            oe.printStackTrace();
+        } catch (ClientException ce) {
+            ce.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            ossClient.shutdown();
+        }
+    }
+
+    @Override
+    public InputStream getObject(String bucketName, String objectName) {
+        return null;
+    }
+
+    private OSS getClient() {
+        return new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+    }
 }

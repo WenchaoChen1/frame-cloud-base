@@ -13,11 +13,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OAuth2ApplicationRepository extends BaseRepository<OAuth2Application, String> {
 
-  /**
-   * 根据 Client ID 查询 OAuth2Application
-   *
-   * @param clientId OAuth2Application 中的 clientId
-   * @return {@link OAuth2Application}
-   */
-  OAuth2Application findByClientId(String clientId);
+    /**
+     * 根据 Client ID 查询 OAuth2Application
+     *
+     * @param clientId OAuth2Application 中的 clientId
+     * @return {@link OAuth2Application}
+     */
+    OAuth2Application findByClientId(String clientId);
 }

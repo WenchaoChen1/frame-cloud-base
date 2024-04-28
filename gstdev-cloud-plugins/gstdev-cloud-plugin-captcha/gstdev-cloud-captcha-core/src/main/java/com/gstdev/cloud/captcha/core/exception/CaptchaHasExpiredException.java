@@ -13,28 +13,28 @@ import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
  */
 public class CaptchaHasExpiredException extends PlatformRuntimeException {
 
-  public CaptchaHasExpiredException() {
-    super();
-  }
+    public CaptchaHasExpiredException() {
+        super();
+    }
 
-  public CaptchaHasExpiredException(String message) {
-    super(message);
-  }
+    public CaptchaHasExpiredException(String message) {
+        super(message);
+    }
 
-  public CaptchaHasExpiredException(String message, Throwable cause) {
-    super(message, cause);
-  }
+    public CaptchaHasExpiredException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-  public CaptchaHasExpiredException(Throwable cause) {
-    super(cause);
-  }
+    public CaptchaHasExpiredException(Throwable cause) {
+        super(cause);
+    }
 
-  protected CaptchaHasExpiredException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-    super(message, cause, enableSuppression, writableStackTrace);
-  }
+    protected CaptchaHasExpiredException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
 
-  @Override
-  public Feedback getFeedback() {
-    return CaptchaErrorCodes.CAPTCHA_HAS_EXPIRED;
-  }
+    @Override
+    public Feedback getFeedback() {
+        return CaptchaErrorCodes.CAPTCHA_HAS_EXPIRED;
+    }
 }

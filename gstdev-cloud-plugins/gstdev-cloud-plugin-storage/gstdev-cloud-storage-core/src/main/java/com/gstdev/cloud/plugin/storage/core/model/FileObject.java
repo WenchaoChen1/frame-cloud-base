@@ -16,21 +16,21 @@ import java.io.Serializable;
 @Data
 public class FileObject implements Serializable {
 
-  private static final long serialVersionUID = -2733279188828202835L;
+    private static final long serialVersionUID = -2733279188828202835L;
 
-  private String hash;
+    private String hash;
 
-  private String bucketName;
+    private String bucketName;
 
-  private String name;
+    private String name;
 
-  private String originalName;
+    private String originalName;
 
-  private String link;
+    private String link;
 
-  private String contentType;
+    private String contentType;
 
-  private long length;
+    private long length;
 
-  private String etag;
+    private String etag;
 }

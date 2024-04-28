@@ -12,16 +12,16 @@ import com.gstdev.cloud.base.definition.domain.Feedback;
  */
 public class IllegalSymmetricKeyException extends PlatformAuthenticationException {
 
-  public IllegalSymmetricKeyException(String msg, Throwable cause) {
-    super(msg, cause);
-  }
+    public IllegalSymmetricKeyException(String msg, Throwable cause) {
+        super(msg, cause);
+    }
 
-  public IllegalSymmetricKeyException(String msg) {
-    super(msg);
-  }
+    public IllegalSymmetricKeyException(String msg) {
+        super(msg);
+    }
 
-  @Override
-  public Feedback getFeedback() {
-    return ErrorCodes.ILLEGAL_SYMMETRIC_KEY;
-  }
+    @Override
+    public Feedback getFeedback() {
+        return ErrorCodes.ILLEGAL_SYMMETRIC_KEY;
+    }
 }

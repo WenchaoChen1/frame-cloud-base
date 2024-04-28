@@ -2,22 +2,22 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <parent>
-    <artifactId>gstdev-cloud-starter-openapi</artifactId>
-    <groupId>com.gstdev.cloud</groupId>
-    <version>2024.0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
-  <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>gstdev-cloud-starter-openapi</artifactId>
+        <groupId>com.gstdev.cloud</groupId>
+        <version>2024.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
+    <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
 
 
-  <dependencies>
-    <!--     Swagger related dependencies -->
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-openapi-springdoc</artifactId>
-    </dependency>
-  </dependencies>
+    <dependencies>
+        <!--     Swagger related dependencies -->
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-openapi-springdoc</artifactId>
+        </dependency>
+    </dependencies>
 </project>

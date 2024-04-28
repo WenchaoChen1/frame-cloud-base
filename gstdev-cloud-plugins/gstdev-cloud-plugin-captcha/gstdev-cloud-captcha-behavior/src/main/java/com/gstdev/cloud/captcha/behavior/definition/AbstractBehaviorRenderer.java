@@ -17,60 +17,60 @@ import java.time.Duration;
  */
 public abstract class AbstractBehaviorRenderer<K, V> extends AbstractRenderer<K, V> {
 
-  public AbstractBehaviorRenderer(String cacheName) {
-    super(cacheName);
-  }
-
-  public AbstractBehaviorRenderer(String cacheName, CacheType cacheType) {
-    super(cacheName, cacheType);
-  }
-
-  public AbstractBehaviorRenderer(String cacheName, CacheType cacheType, Duration expire) {
-    super(cacheName, cacheType, expire);
-  }
-
-  protected int getEnOrZhLength(String s) {
-    int enCount = 0;
-    int zhCount = 0;
-    for (int i = 0; i < s.length(); i++) {
-      int length = String.valueOf(s.charAt(i)).getBytes(StandardCharsets.UTF_8).length;
-      if (length > 1) {
-        zhCount++;
-      } else {
-        enCount++;
-      }
+    public AbstractBehaviorRenderer(String cacheName) {
+        super(cacheName);
     }
-    int zhOffset = getHalfWatermarkFontSize() * zhCount + 5;
-    int enOffset = enCount * 8;
-    return zhOffset + enOffset;
-  }
 
-  private int getWatermarkFontSize() {
-    return getCaptchaProperties().getWatermark().getFontSize();
-  }
+    public AbstractBehaviorRenderer(String cacheName, CacheType cacheType) {
+        super(cacheName, cacheType);
+    }
 
-  private int getHalfWatermarkFontSize() {
-    return getWatermarkFontSize() / 2;
-  }
+    public AbstractBehaviorRenderer(String cacheName, CacheType cacheType, Duration expire) {
+        super(cacheName, cacheType, expire);
+    }
 
-  protected void addWatermark(Graphics graphics, int width, int height) {
-    int fontSize = getHalfWatermarkFontSize();
-    Font watermakFont = this.getResourceProvider().getWaterMarkFont(fontSize);
-    graphics.setFont(watermakFont);
-    graphics.setColor(Color.white);
-    String content = this.getCaptchaProperties().getWatermark().getContent();
-    graphics.drawString(content, width - getEnOrZhLength(content), height - getHalfWatermarkFontSize() + 7);
-  }
+    protected int getEnOrZhLength(String s) {
+        int enCount = 0;
+        int zhCount = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int length = String.valueOf(s.charAt(i)).getBytes(StandardCharsets.UTF_8).length;
+            if (length > 1) {
+                zhCount++;
+            } else {
+                enCount++;
+            }
+        }
+        int zhOffset = getHalfWatermarkFontSize() * zhCount + 5;
+        int enOffset = enCount * 8;
+        return zhOffset + enOffset;
+    }
 
-  protected boolean isUnderOffset(int actualValue, int standardValue, int threshold) {
-    return actualValue < standardValue - threshold;
-  }
+    private int getWatermarkFontSize() {
+        return getCaptchaProperties().getWatermark().getFontSize();
+    }
 
-  protected boolean isOverOffset(int actualValue, int standardValue, int threshold) {
-    return actualValue > standardValue + threshold;
-  }
+    private int getHalfWatermarkFontSize() {
+        return getWatermarkFontSize() / 2;
+    }
 
-  protected boolean isDeflected(int actualValue, int standardValue, int threshold) {
-    return isUnderOffset(actualValue, standardValue, threshold) || isOverOffset(actualValue, standardValue, threshold);
-  }
+    protected void addWatermark(Graphics graphics, int width, int height) {
+        int fontSize = getHalfWatermarkFontSize();
+        Font watermakFont = this.getResourceProvider().getWaterMarkFont(fontSize);
+        graphics.setFont(watermakFont);
+        graphics.setColor(Color.white);
+        String content = this.getCaptchaProperties().getWatermark().getContent();
+        graphics.drawString(content, width - getEnOrZhLength(content), height - getHalfWatermarkFontSize() + 7);
+    }
+
+    protected boolean isUnderOffset(int actualValue, int standardValue, int threshold) {
+        return actualValue < standardValue - threshold;
+    }
+
+    protected boolean isOverOffset(int actualValue, int standardValue, int threshold) {
+        return actualValue > standardValue + threshold;
+    }
+
+    protected boolean isDeflected(int actualValue, int standardValue, int threshold) {
+        return isUnderOffset(actualValue, standardValue, threshold) || isOverOffset(actualValue, standardValue, threshold);
+    }
 }

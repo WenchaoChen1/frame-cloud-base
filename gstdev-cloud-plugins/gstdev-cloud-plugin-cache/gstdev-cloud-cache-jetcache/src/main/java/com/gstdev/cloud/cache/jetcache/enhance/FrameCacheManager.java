@@ -19,32 +19,32 @@ import java.util.Map;
  */
 public class FrameCacheManager extends JetCacheSpringCacheManager {
 
-  private static final Logger log = LoggerFactory.getLogger(FrameCacheManager.class);
+    private static final Logger log = LoggerFactory.getLogger(FrameCacheManager.class);
 
-  private final CacheProperties cacheProperties;
+    private final CacheProperties cacheProperties;
 
-  public FrameCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory, CacheProperties cacheProperties) {
-    super(jetCacheCreateCacheFactory);
-    this.cacheProperties = cacheProperties;
-    this.setAllowNullValues(cacheProperties.getAllowNullValues());
-  }
-
-  public FrameCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory, CacheProperties cacheProperties, String... cacheNames) {
-    super(jetCacheCreateCacheFactory, cacheNames);
-    this.cacheProperties = cacheProperties;
-  }
-
-  @Override
-  protected Cache createJetCache(String name) {
-    Map<String, CacheSetting> instances = cacheProperties.getInstances();
-    if (MapUtils.isNotEmpty(instances)) {
-      String key = StringUtils.replace(name, SymbolConstants.COLON, cacheProperties.getSeparator());
-      if (instances.containsKey(key)) {
-        CacheSetting cacheSetting = instances.get(key);
-        log.debug("[GstDev Cloud] |- CACHE - Cache [{}] is set to use INSTANCE cache.", name);
-        return super.createJetCache(name, cacheSetting);
-      }
+    public FrameCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory, CacheProperties cacheProperties) {
+        super(jetCacheCreateCacheFactory);
+        this.cacheProperties = cacheProperties;
+        this.setAllowNullValues(cacheProperties.getAllowNullValues());
     }
-    return super.createJetCache(name);
-  }
+
+    public FrameCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory, CacheProperties cacheProperties, String... cacheNames) {
+        super(jetCacheCreateCacheFactory, cacheNames);
+        this.cacheProperties = cacheProperties;
+    }
+
+    @Override
+    protected Cache createJetCache(String name) {
+        Map<String, CacheSetting> instances = cacheProperties.getInstances();
+        if (MapUtils.isNotEmpty(instances)) {
+            String key = StringUtils.replace(name, SymbolConstants.COLON, cacheProperties.getSeparator());
+            if (instances.containsKey(key)) {
+                CacheSetting cacheSetting = instances.get(key);
+                log.debug("[GstDev Cloud] |- CACHE - Cache [{}] is set to use INSTANCE cache.", name);
+                return super.createJetCache(name, cacheSetting);
+            }
+        }
+        return super.createJetCache(name);
+    }
 }

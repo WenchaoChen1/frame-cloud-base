@@ -16,9 +16,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "gstdev.cloud.storage.minio", ignoreUnknownFields = true)
 public class MinioStorageProperties {
 
-  private String endpoint;
+    private String endpoint;
 
-  private String accessKey;
+    private String accessKey;
 
-  private String secretKey;
+    private String secretKey;
 }

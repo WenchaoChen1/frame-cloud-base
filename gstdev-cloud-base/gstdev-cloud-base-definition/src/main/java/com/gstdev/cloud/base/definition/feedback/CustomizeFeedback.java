@@ -14,7 +14,7 @@ import org.springframework.http.HttpStatus;
  * @date : 2023/9/26 15:41
  */
 public class CustomizeFeedback extends Feedback {
-  public CustomizeFeedback(String value, int custom) {
-    super(value, HttpStatus.INTERNAL_SERVER_ERROR, custom);
-  }
+    public CustomizeFeedback(String value, int custom) {
+        super(value, HttpStatus.INTERNAL_SERVER_ERROR, custom);
+    }
 }

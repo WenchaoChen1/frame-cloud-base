@@ -7,16 +7,16 @@ package com.gstdev.cloud.data.core.enums;
  * @date : 2023/3/28 23:32
  */
 public enum MultiTenantApproach {
-  /**
-   * 共享数据库，独立Schema，共享数据表
-   */
-  DISCRIMINATOR,
-  /**
-   * 共享数据库，独立Schema
-   */
-  SCHEMA,
-  /**
-   * 独立数据库
-   */
-  DATABASE;
+    /**
+     * 共享数据库，独立Schema，共享数据表
+     */
+    DISCRIMINATOR,
+    /**
+     * 共享数据库，独立Schema
+     */
+    SCHEMA,
+    /**
+     * 独立数据库
+     */
+    DATABASE;
 }

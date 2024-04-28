@@ -8,5 +8,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BaseDto implements BaseDtoInterface<String> {
-  String id;
+    String id;
 }

@@ -16,21 +16,21 @@ import org.springframework.stereotype.Component;
 //@Im
 @Component
 public class OAuth2AuthorizeHttpRequestsConfigurerCustomer implements Customizer<AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry> {
-  private final SecurityMatcherConfigurer securityMatcherConfigurer;
+    private final SecurityMatcherConfigurer securityMatcherConfigurer;
 //  private final SecurityAuthorizationManager securityAuthorizationManager;
 
-  public OAuth2AuthorizeHttpRequestsConfigurerCustomer(SecurityMatcherConfigurer securityMatcherConfigurer) {
-    this.securityMatcherConfigurer = securityMatcherConfigurer;
-  }
+    public OAuth2AuthorizeHttpRequestsConfigurerCustomer(SecurityMatcherConfigurer securityMatcherConfigurer) {
+        this.securityMatcherConfigurer = securityMatcherConfigurer;
+    }
 
-  public void customize(AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry configurer) {
+    public void customize(AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry configurer) {
 
-    configurer
-      .requestMatchers(securityMatcherConfigurer.getStaticRequestMatchers()).permitAll()
-      .requestMatchers(securityMatcherConfigurer.getPermitAllRequestMatchers()).permitAll()
+        configurer
+            .requestMatchers(securityMatcherConfigurer.getStaticRequestMatchers()).permitAll()
+            .requestMatchers(securityMatcherConfigurer.getPermitAllRequestMatchers()).permitAll()
 //      .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
 //      .anyRequest().access(securityAuthorizationManager);
-      .anyRequest().authenticated();
+            .anyRequest().authenticated();
 
-  }
+    }
 }

@@ -22,7 +22,7 @@ import org.springframework.security.config.annotation.web.configurers.FormLoginC
  */
 public class OAuth2FormLoginConfigurerCustomizer implements Customizer<FormLoginConfigurer<HttpSecurity>> {
 
-  private final OAuth2AuthenticationProperties authenticationProperties;
+    private final OAuth2AuthenticationProperties authenticationProperties;
 
     // 构造函数，接收 OAuth2AuthenticationProperties 对象
     public OAuth2FormLoginConfigurerCustomizer(OAuth2AuthenticationProperties authenticationProperties) {

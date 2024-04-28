@@ -18,21 +18,21 @@ import java.time.Instant;
  */
 public interface RegisteredClientDetails {
 
-  String getId();
+    String getId();
 
-  String getClientId();
+    String getClientId();
 
-  Instant getClientIdIssuedAt();
+    Instant getClientIdIssuedAt();
 
-  String getClientSecret();
+    String getClientSecret();
 
-  Instant  getClientSecretExpiresAt();
+    Instant getClientSecretExpiresAt();
 
-  String getClientAuthenticationMethods();
+    String getClientAuthenticationMethods();
 
-  String getAuthorizationGrantTypes();
+    String getAuthorizationGrantTypes();
 
-  String getRedirectUris();
+    String getRedirectUris();
 
-  String getPostLogoutRedirectUris();
+    String getPostLogoutRedirectUris();
 }

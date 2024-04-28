@@ -20,13 +20,14 @@ import java.util.List;
  * @date : 2021/7/14 14:32
  */
 @Transactional
-public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable, R extends BaseRepository<E,ID>> implements BaseService<E, ID> {
+public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable, R extends BaseRepository<E, ID>> implements BaseService<E, ID> {
 
     protected String like(String property) {
         return SymbolConstants.PERCENT + property + SymbolConstants.PERCENT;
     }
 
     private R baseRepository;
+
     /**
      * 获取Repository
      *

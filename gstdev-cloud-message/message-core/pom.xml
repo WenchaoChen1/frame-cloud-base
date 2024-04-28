@@ -2,25 +2,25 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <artifactId>gstdev-cloud-message</artifactId>
-    <groupId>com.gstdev.cloud</groupId>
-    <version>2024.0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
-  <packaging>jar</packaging>
-  <artifactId>message-core</artifactId>
+    <parent>
+        <artifactId>gstdev-cloud-message</artifactId>
+        <groupId>com.gstdev.cloud</groupId>
+        <version>2024.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <packaging>jar</packaging>
+    <artifactId>message-core</artifactId>
 
 
-  <description>基于 Spring Authorization Server 的 Dante Cloud 基础核心组件模块</description>
+    <description>基于 Spring Authorization Server 的 Dante Cloud 基础核心组件模块</description>
 
-  <dependencies>
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-data-core</artifactId>
-    </dependency>
-  </dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-data-core</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

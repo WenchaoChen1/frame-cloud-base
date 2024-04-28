@@ -20,28 +20,28 @@ import org.springframework.context.annotation.DependsOn;
 @AutoConfiguration(after = CaptchaAutoConfiguration.class)
 public class BehaviorCaptchaAutoConfiguration {
 
-  private static final Logger log = LoggerFactory.getLogger(BehaviorCaptchaAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(BehaviorCaptchaAutoConfiguration.class);
 
-  @PostConstruct
-  public void postConstruct() {
-    log.info("[GstDev Cloud] |- Module [Captcha Behavior] Auto Configure.");
-  }
+    @PostConstruct
+    public void postConstruct() {
+        log.info("[GstDev Cloud] |- Module [Captcha Behavior] Auto Configure.");
+    }
 
-  @Bean(CaptchaCategory.JIGSAW_CAPTCHA)
-  @DependsOn("jetCacheCreateCacheFactory")
-  public JigsawCaptchaRenderer jigsawCaptchaRenderer(ResourceProvider resourceProvider) {
-    JigsawCaptchaRenderer jigsawCaptchaRenderer = new JigsawCaptchaRenderer();
-    jigsawCaptchaRenderer.setResourceProvider(resourceProvider);
-    log.trace("[GstDev Cloud] |- Bean [Jigsaw Captcha Renderer] Auto Configure.");
-    return jigsawCaptchaRenderer;
-  }
+    @Bean(CaptchaCategory.JIGSAW_CAPTCHA)
+    @DependsOn("jetCacheCreateCacheFactory")
+    public JigsawCaptchaRenderer jigsawCaptchaRenderer(ResourceProvider resourceProvider) {
+        JigsawCaptchaRenderer jigsawCaptchaRenderer = new JigsawCaptchaRenderer();
+        jigsawCaptchaRenderer.setResourceProvider(resourceProvider);
+        log.trace("[GstDev Cloud] |- Bean [Jigsaw Captcha Renderer] Auto Configure.");
+        return jigsawCaptchaRenderer;
+    }
 
-  @Bean(CaptchaCategory.WORD_CLICK_CAPTCHA)
-  @DependsOn("jetCacheCreateCacheFactory")
-  public WordClickCaptchaRenderer wordClickCaptchaRenderer(ResourceProvider resourceProvider) {
-    WordClickCaptchaRenderer wordClickCaptchaRenderer = new WordClickCaptchaRenderer();
-    wordClickCaptchaRenderer.setResourceProvider(resourceProvider);
-    log.trace("[GstDev Cloud] |- Bean [Word Click Captcha Renderer] Auto Configure.");
-    return wordClickCaptchaRenderer;
-  }
+    @Bean(CaptchaCategory.WORD_CLICK_CAPTCHA)
+    @DependsOn("jetCacheCreateCacheFactory")
+    public WordClickCaptchaRenderer wordClickCaptchaRenderer(ResourceProvider resourceProvider) {
+        WordClickCaptchaRenderer wordClickCaptchaRenderer = new WordClickCaptchaRenderer();
+        wordClickCaptchaRenderer.setResourceProvider(resourceProvider);
+        log.trace("[GstDev Cloud] |- Bean [Word Click Captcha Renderer] Auto Configure.");
+        return wordClickCaptchaRenderer;
+    }
 }

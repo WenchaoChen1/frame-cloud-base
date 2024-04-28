@@ -2,31 +2,31 @@ package com.gstdev.cloud.swagger;
 
 public interface SwaggerDefaults {
 
-  String TITLE = "Application API";
+    String TITLE = "Application API";
 
-  String DESCRIPTION = "API documentation";
+    String DESCRIPTION = "API documentation";
 
-  String VERSION = "0.0.1";
+    String VERSION = "0.0.1";
 
-  String TERMS_OF_SERVICE_URL = null;
+    String TERMS_OF_SERVICE_URL = null;
 
-  String CONTACT_NAME = null;
+    String CONTACT_NAME = null;
 
-  String CONTACT_URL = null;
+    String CONTACT_URL = null;
 
-  String CONTACT_EMAIL = null;
+    String CONTACT_EMAIL = null;
 
-  String LICENSE = null;
+    String LICENSE = null;
 
-  String LICENSE_URL = null;
+    String LICENSE_URL = null;
 
-  String DEFAULT_INCLUDE_PATTERN = "/api/.*";
+    String DEFAULT_INCLUDE_PATTERN = "/api/.*";
 
-  String HOST = null;
+    String HOST = null;
 
-  String[] PROTOCOLS = {};
+    String[] PROTOCOLS = {};
 
-  boolean USE_DEFAULT_RESPONSE_MESSAGES = true;
+    boolean USE_DEFAULT_RESPONSE_MESSAGES = true;
 
-  boolean ENABLED = true;
+    boolean ENABLED = true;
 }

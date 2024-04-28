@@ -86,7 +86,7 @@ public class SecurityMetadataSourceStorage {
     /**
      * 写入 indexable 缓存
      *
-     * @param frameRequest 自定义扩展的 AntPathRequestMatchers {@link FrameRequest}
+     * @param frameRequest     自定义扩展的 AntPathRequestMatchers {@link FrameRequest}
      * @param configAttributes 权限配置属性
      */
     private void writeToIndexable(FrameRequest frameRequest, List<FrameConfigAttribute> configAttributes) {
@@ -120,7 +120,7 @@ public class SecurityMetadataSourceStorage {
      * 如果缓存中不存在以{@link RequestMatcher}为Key的数据，那么添加数据
      * 如果缓存中存在以{@link RequestMatcher}为Key的数据，那么合并数据
      *
-     * @param request 请求匹配对象 {@link FrameRequest}
+     * @param request          请求匹配对象 {@link FrameRequest}
      * @param configAttributes 权限配置 {@link ConfigAttribute}
      */
     private void appendToCompatible(FrameRequest request, List<FrameConfigAttribute> configAttributes) {

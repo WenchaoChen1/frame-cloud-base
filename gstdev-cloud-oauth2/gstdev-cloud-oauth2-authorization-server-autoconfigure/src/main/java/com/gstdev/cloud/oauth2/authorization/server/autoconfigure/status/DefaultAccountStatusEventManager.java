@@ -13,18 +13,18 @@ import com.gstdev.cloud.message.core.logic.strategy.AccountStatusEventManager;
  * @date : 2022/7/10 17:25
  */
 public class DefaultAccountStatusEventManager implements AccountStatusEventManager {
-  @Override
-  public String getDestinationServiceName() {
-    return ServiceContextHolder.getInstance().getSystemServiceName();
-  }
+    @Override
+    public String getDestinationServiceName() {
+        return ServiceContextHolder.getInstance().getSystemServiceName();
+    }
 
-  @Override
-  public void postLocalProcess(UserStatus data) {
-    publishEvent(new ChangeUserStatusEvent(data));
-  }
+    @Override
+    public void postLocalProcess(UserStatus data) {
+        publishEvent(new ChangeUserStatusEvent(data));
+    }
 
-  @Override
-  public void postRemoteProcess(String data, String originService, String destinationService) {
+    @Override
+    public void postRemoteProcess(String data, String originService, String destinationService) {
 //        publishEvent(new RemoteChangeUserStatusEvent(data, originService, destinationService));
-  }
+    }
 }

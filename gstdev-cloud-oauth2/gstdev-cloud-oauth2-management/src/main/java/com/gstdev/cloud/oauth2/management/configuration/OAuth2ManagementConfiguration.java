@@ -27,46 +27,46 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Configuration(proxyBeanMethods = false)
 @Import({OAuth2DataJpaConfiguration.class, OAuth2AuthenticationConfiguration.class, OAuth2ComplianceConfiguration.class})
 @EntityScan(basePackages = {
-  "com.gstdev.cloud.oauth2.management.entity"
+    "com.gstdev.cloud.oauth2.management.entity"
 })
 @EnableJpaRepositories(basePackages = {
-  "com.gstdev.cloud.oauth2.management.repository",
+    "com.gstdev.cloud.oauth2.management.repository",
 })
 @ComponentScan(basePackages = {
-  "com.gstdev.cloud.oauth2.management.service",
-  "com.gstdev.cloud.oauth2.management.controller",
+    "com.gstdev.cloud.oauth2.management.service",
+    "com.gstdev.cloud.oauth2.management.controller",
 })
 public class OAuth2ManagementConfiguration {
 
-  private static final Logger log = LoggerFactory.getLogger(OAuth2ManagementConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(OAuth2ManagementConfiguration.class);
 
-  @PostConstruct
-  public void postConstruct() {
-    log.debug("[GstDev Cloud] |- Module [OAuth2 Management] Auto Configure.");
-  }
+    @PostConstruct
+    public void postConstruct() {
+        log.debug("[GstDev Cloud] |- Module [OAuth2 Management] Auto Configure.");
+    }
 
-  @Bean
-  @ConditionalOnMissingBean
-  public AuthenticationSuccessListener authenticationSuccessListener(SignInFailureLimitedStampManager stampManager, OAuth2ComplianceService complianceService, OAuth2DeviceService deviceService) {
-    AuthenticationSuccessListener listener = new AuthenticationSuccessListener(stampManager, complianceService);
-    log.trace("[GstDev Cloud] |- Bean [OAuth2 Authentication Success Listener] Auto Configure.");
-    return listener;
-  }
+    @Bean
+    @ConditionalOnMissingBean
+    public AuthenticationSuccessListener authenticationSuccessListener(SignInFailureLimitedStampManager stampManager, OAuth2ComplianceService complianceService, OAuth2DeviceService deviceService) {
+        AuthenticationSuccessListener listener = new AuthenticationSuccessListener(stampManager, complianceService);
+        log.trace("[GstDev Cloud] |- Bean [OAuth2 Authentication Success Listener] Auto Configure.");
+        return listener;
+    }
 
-  @Bean
-  @ConditionalOnMissingBean
-  public OAuth2DeviceVerificationResponseHandler oauth2DeviceVerificationResponseHandler(OAuth2DeviceService oauth2DeviceService) {
-    OAuth2DeviceVerificationResponseHandler handler = new OAuth2DeviceVerificationResponseHandler(oauth2DeviceService);
-    log.trace("[GstDev Cloud] |- Bean [OAuth2 Device Verification Response Handler] Auto Configure.");
-    return handler;
-  }
+    @Bean
+    @ConditionalOnMissingBean
+    public OAuth2DeviceVerificationResponseHandler oauth2DeviceVerificationResponseHandler(OAuth2DeviceService oauth2DeviceService) {
+        OAuth2DeviceVerificationResponseHandler handler = new OAuth2DeviceVerificationResponseHandler(oauth2DeviceService);
+        log.trace("[GstDev Cloud] |- Bean [OAuth2 Device Verification Response Handler] Auto Configure.");
+        return handler;
+    }
 
-  @Bean
-  @ConditionalOnMissingBean
-  public OidcClientRegistrationResponseHandler oidcClientRegistrationResponseHandler(OAuth2DeviceService oauth2DeviceService) {
-    OidcClientRegistrationResponseHandler handler = new OidcClientRegistrationResponseHandler(oauth2DeviceService);
-    log.trace("[GstDev Cloud] |- Bean [Oidc Client Registration Response Handler] Auto Configure.");
-    return handler;
-  }
+    @Bean
+    @ConditionalOnMissingBean
+    public OidcClientRegistrationResponseHandler oidcClientRegistrationResponseHandler(OAuth2DeviceService oauth2DeviceService) {
+        OidcClientRegistrationResponseHandler handler = new OidcClientRegistrationResponseHandler(oauth2DeviceService);
+        log.trace("[GstDev Cloud] |- Bean [Oidc Client Registration Response Handler] Auto Configure.");
+        return handler;
+    }
 
 }

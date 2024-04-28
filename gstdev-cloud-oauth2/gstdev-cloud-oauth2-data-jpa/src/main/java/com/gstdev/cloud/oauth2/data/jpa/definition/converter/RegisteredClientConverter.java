@@ -19,40 +19,40 @@ import java.util.Set;
  */
 public interface RegisteredClientConverter<S extends RegisteredClientDetails> extends Converter<S, RegisteredClient> {
 
-  Set<String> getScopes(S details);
+    Set<String> getScopes(S details);
 
-  ClientSettings getClientSettings(S details);
+    ClientSettings getClientSettings(S details);
 
-  TokenSettings getTokenSettings(S details);
+    TokenSettings getTokenSettings(S details);
 
-  @Override
-  default RegisteredClient convert(S details) {
-    Set<String> clientScopes = getScopes(details);
-    ClientSettings clientSettings = getClientSettings(details);
-    TokenSettings tokenSettings = getTokenSettings(details);
+    @Override
+    default RegisteredClient convert(S details) {
+        Set<String> clientScopes = getScopes(details);
+        ClientSettings clientSettings = getClientSettings(details);
+        TokenSettings tokenSettings = getTokenSettings(details);
 
-    Set<String> clientAuthenticationMethods = StringUtils.commaDelimitedListToSet(details.getClientAuthenticationMethods());
-    Set<String> authorizationGrantTypes = StringUtils.commaDelimitedListToSet(details.getAuthorizationGrantTypes());
-    Set<String> redirectUris = StringUtils.commaDelimitedListToSet(details.getRedirectUris());
-    Set<String> postLogoutRedirectUris = StringUtils.commaDelimitedListToSet(details.getPostLogoutRedirectUris());
+        Set<String> clientAuthenticationMethods = StringUtils.commaDelimitedListToSet(details.getClientAuthenticationMethods());
+        Set<String> authorizationGrantTypes = StringUtils.commaDelimitedListToSet(details.getAuthorizationGrantTypes());
+        Set<String> redirectUris = StringUtils.commaDelimitedListToSet(details.getRedirectUris());
+        Set<String> postLogoutRedirectUris = StringUtils.commaDelimitedListToSet(details.getPostLogoutRedirectUris());
 
-    return RegisteredClient.withId(details.getId())
-      .clientId(details.getClientId())
-      .clientIdIssuedAt(DateUtil.toInstant(details.getClientIdIssuedAt()))
-      .clientSecret(details.getClientSecret())
-      .clientSecretExpiresAt(DateUtil.toInstant(details.getClientSecretExpiresAt()))
-      .clientName(details.getId())
-      .clientAuthenticationMethods(authenticationMethods ->
-        clientAuthenticationMethods.forEach(authenticationMethod ->
-          authenticationMethods.add(OAuth2AuthorizationUtils.resolveClientAuthenticationMethod(authenticationMethod))))
-      .authorizationGrantTypes((grantTypes) ->
-        authorizationGrantTypes.forEach(grantType ->
-          grantTypes.add(OAuth2AuthorizationUtils.resolveAuthorizationGrantType(grantType))))
-      .redirectUris((uris) -> uris.addAll(redirectUris))
-      .postLogoutRedirectUris((uris) -> uris.addAll(postLogoutRedirectUris))
-      .scopes((scopes) -> scopes.addAll(clientScopes))
-      .clientSettings(clientSettings)
-      .tokenSettings(tokenSettings)
-      .build();
-  }
+        return RegisteredClient.withId(details.getId())
+            .clientId(details.getClientId())
+            .clientIdIssuedAt(DateUtil.toInstant(details.getClientIdIssuedAt()))
+            .clientSecret(details.getClientSecret())
+            .clientSecretExpiresAt(DateUtil.toInstant(details.getClientSecretExpiresAt()))
+            .clientName(details.getId())
+            .clientAuthenticationMethods(authenticationMethods ->
+                clientAuthenticationMethods.forEach(authenticationMethod ->
+                    authenticationMethods.add(OAuth2AuthorizationUtils.resolveClientAuthenticationMethod(authenticationMethod))))
+            .authorizationGrantTypes((grantTypes) ->
+                authorizationGrantTypes.forEach(grantType ->
+                    grantTypes.add(OAuth2AuthorizationUtils.resolveAuthorizationGrantType(grantType))))
+            .redirectUris((uris) -> uris.addAll(redirectUris))
+            .postLogoutRedirectUris((uris) -> uris.addAll(postLogoutRedirectUris))
+            .scopes((scopes) -> scopes.addAll(clientScopes))
+            .clientSettings(clientSettings)
+            .tokenSettings(tokenSettings)
+            .build();
+    }
 }

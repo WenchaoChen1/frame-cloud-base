@@ -27,7 +27,6 @@ public interface POJOController<E extends BasePOJOEntityINT<ID>
     M getMapper();
 
 
-
     default Result<V> insertToResult(II var1) {
 //    try {
         return getMapper().toVo(getService().insertToResult(var1));

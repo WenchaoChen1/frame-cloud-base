@@ -21,14 +21,14 @@ import java.util.Set;
 
 public class PasswordAuthenticationToken extends OAuth2AuthorizationGrantAuthenticationToken {
 
-  private final Set<String> scopes;
+    private final Set<String> scopes;
 
-  public PasswordAuthenticationToken(Authentication clientPrincipal, @Nullable Set<String> scopes, @Nullable Map<String, Object> additionalParameters) {
-    super(AuthorizationGrantType.PASSWORD, clientPrincipal, additionalParameters);
-    this.scopes = Collections.unmodifiableSet(scopes != null ? new HashSet<>(scopes) : Collections.emptySet());
-  }
+    public PasswordAuthenticationToken(Authentication clientPrincipal, @Nullable Set<String> scopes, @Nullable Map<String, Object> additionalParameters) {
+        super(AuthorizationGrantType.PASSWORD, clientPrincipal, additionalParameters);
+        this.scopes = Collections.unmodifiableSet(scopes != null ? new HashSet<>(scopes) : Collections.emptySet());
+    }
 
-  public Set<String> getScopes() {
-    return this.scopes;
-  }
+    public Set<String> getScopes() {
+        return this.scopes;
+    }
 }

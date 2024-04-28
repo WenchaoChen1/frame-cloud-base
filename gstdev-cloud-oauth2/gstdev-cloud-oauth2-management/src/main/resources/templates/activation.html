@@ -6,45 +6,46 @@
 <title layout:fragment="title">设备激活</title>
 
 <div layout:fragment="content">
-  <div class="col">
-    <div class="text-h4 text-weight-bolder">设备激活</div>
-  </div>
-  <div class="col">
-    <div class="text-subtitle2">
-      请输入您设备上显示的代码
+    <div class="col">
+        <div class="text-h4 text-weight-bolder">设备激活</div>
     </div>
-  </div>
-  <div class="col" style="width: 90%">
-    <form method="post" th:action="@{/oauth2/device_verification}">
-      <div class="column items-center q-mb-md">
-        <div class="col" style="width: 90%">
-          <q-input :rules="[ val => val !== null && val !== '' || '请输入激活码' ]" dense fill-mask mask="XXXX - XXXX" name="user_code" outlined
-                   v-model="code"/>
+    <div class="col">
+        <div class="text-subtitle2">
+            请输入您设备上显示的代码
         </div>
-        <div class="col" style="width: 90%">
-          <q-btn class="full-width" color="primary" label="继续" type="submit"/>
-        </div>
-      </div>
-    </form>
-  </div>
+    </div>
+    <div class="col" style="width: 90%">
+        <form method="post" th:action="@{/oauth2/device_verification}">
+            <div class="column items-center q-mb-md">
+                <div class="col" style="width: 90%">
+                    <q-input :rules="[ val => val !== null && val !== '' || '请输入激活码' ]" dense fill-mask
+                             mask="XXXX - XXXX" name="user_code" outlined
+                             v-model="code"/>
+                </div>
+                <div class="col" style="width: 90%">
+                    <q-btn class="full-width" color="primary" label="继续" type="submit"/>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 
 <th:block layout:fragment="script">
-  <script>
-    const app = Vue.createApp({
-      setup() {
-        code = Vue.ref("");
+    <script>
+        const app = Vue.createApp({
+            setup() {
+                code = Vue.ref("");
 
-        return {
-          code,
-        };
-      },
-    });
+                return {
+                    code,
+                };
+            },
+        });
 
-    app.use(Quasar);
-    Quasar.iconSet.set(Quasar.iconSet.svgMdiV7);
-    app.mount("#q-app");
-  </script>
+        app.use(Quasar);
+        Quasar.iconSet.set(Quasar.iconSet.svgMdiV7);
+        app.mount("#q-app");
+    </script>
 </th:block>
 </body>
 </html>

@@ -10,14 +10,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class ChildMeta extends BaseMeta {
 
-  @JsonProperty("isDetailContent")
-  private Boolean detailContent;
+    @JsonProperty("isDetailContent")
+    private Boolean detailContent;
 
-  public Boolean getDetailContent() {
-    return detailContent;
-  }
+    public Boolean getDetailContent() {
+        return detailContent;
+    }
 
-  public void setDetailContent(Boolean detailContent) {
-    this.detailContent = detailContent;
-  }
+    public void setDetailContent(Boolean detailContent) {
+        this.detailContent = detailContent;
+    }
 }
