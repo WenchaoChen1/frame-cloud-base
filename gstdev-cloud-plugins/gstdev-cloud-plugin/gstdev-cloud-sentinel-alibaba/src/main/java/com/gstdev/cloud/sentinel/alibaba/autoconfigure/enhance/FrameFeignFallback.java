@@ -17,15 +17,15 @@ import java.lang.reflect.Method;
  * @author : cc
  * @date : 2022/5/30 15:12
  */
-public class BaseFeignFallback<T> implements MethodInterceptor {
+public class FrameFeignFallback<T> implements MethodInterceptor {
 
-    private static final Logger log = LoggerFactory.getLogger(BaseFeignFallback.class);
+    private static final Logger log = LoggerFactory.getLogger(FrameFeignFallback.class);
 
     private final Class<T> targetType;
     private final String targetName;
     private final Throwable cause;
 
-    public BaseFeignFallback(Class<T> targetType, String targetName, Throwable cause) {
+    public FrameFeignFallback(Class<T> targetType, String targetName, Throwable cause) {
         this.targetType = targetType;
         this.targetName = targetName;
         this.cause = cause;
@@ -50,7 +50,7 @@ public class BaseFeignFallback<T> implements MethodInterceptor {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        BaseFeignFallback<?> that = (BaseFeignFallback<?>) o;
+        FrameFeignFallback<?> that = (FrameFeignFallback<?>) o;
         return Objects.equal(targetType, that.targetType);
     }
 

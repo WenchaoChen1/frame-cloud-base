@@ -28,11 +28,11 @@ import java.util.Map;
  *
  * @author cc
  */
-public final class BaseSentinelFeign {
+public final class FrameSentinelFeign {
 
     private static final String FEIGN_LAZY_ATTR_RESOLUTION = "spring.cloud.openfeign.lazy-attributes-resolution";
 
-    private BaseSentinelFeign() {
+    private FrameSentinelFeign() {
 
     }
 
@@ -92,16 +92,16 @@ public final class BaseSentinelFeign {
                     // check fallback and fallbackFactory properties
                     if (void.class != fallback) {
                         fallbackInstance = getFromContext(beanName, "fallback", fallback, target.type());
-                        return new BaseSentinelInvocationHandler(target, dispatch, new FallbackFactory.Default(fallbackInstance));
+                        return new FrameSentinelInvocationHandler(target, dispatch, new FallbackFactory.Default(fallbackInstance));
                     }
                     if (void.class != fallbackFactory) {
                         fallbackFactoryInstance = (FallbackFactory) getFromContext(beanName, "fallbackFactory", fallbackFactory, FallbackFactory.class);
-                        return new BaseSentinelInvocationHandler(target, dispatch, fallbackFactoryInstance);
+                        return new FrameSentinelInvocationHandler(target, dispatch, fallbackFactoryInstance);
                     }
 
                     // 默认的 fallbackFactory
-                    BaseFallbackFactory herodotusFallbackFactory = new BaseFallbackFactory(target);
-                    return new BaseSentinelInvocationHandler(target, dispatch, herodotusFallbackFactory);
+                    FrameFallbackFactory frameFallbackFactory = new FrameFallbackFactory(target);
+                    return new FrameSentinelInvocationHandler(target, dispatch, frameFallbackFactory);
                 }
 
                 private Object getFromContext(String name, String type, Class fallbackType, Class targetType) {

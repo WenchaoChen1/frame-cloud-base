@@ -10,11 +10,11 @@ import org.springframework.cloud.openfeign.FallbackFactory;
  * @author : cc
  * @date : 2022/5/30 15:09
  */
-public class BaseFallbackFactory<T> implements FallbackFactory<T> {
+public class FrameFallbackFactory<T> implements FallbackFactory<T> {
 
     private final Target<T> target;
 
-    public BaseFallbackFactory(Target<T> target) {
+    public FrameFallbackFactory(Target<T> target) {
         this.target = target;
     }
 
@@ -26,7 +26,7 @@ public class BaseFallbackFactory<T> implements FallbackFactory<T> {
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(targetType);
         enhancer.setUseCache(true);
-        enhancer.setCallback(new BaseFeignFallback<>(targetType, targetName, cause));
+        enhancer.setCallback(new FrameFeignFallback<>(targetType, targetName, cause));
         return (T) enhancer.create();
     }
 

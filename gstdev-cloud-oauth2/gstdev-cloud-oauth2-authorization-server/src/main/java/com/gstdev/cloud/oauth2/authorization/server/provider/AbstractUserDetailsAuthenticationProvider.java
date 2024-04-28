@@ -114,7 +114,7 @@ public abstract class AbstractUserDetailsAuthenticationProvider extends Abstract
 //                        if (ObjectUtils.isNotEmpty(refreshToken)) {
 //                            authorization = OAuth2AuthenticationProviderUtils.invalidate(authorization, refreshToken.getToken());
 //                        }
-//                        log.debug("[Herodotus] |- Sign in user [{}] with token id [{}] will be kicked out.", user.getUsername(), authorization.getId());
+//                        log.debug("[Gstdev Cloud] |- Sign in user [{}] with token id [{}] will be kicked out.", user.getUsername(), authorization.getId());
 //                        jpaOAuth2AuthorizationService.save(authorization);
 //                    });
 //                }

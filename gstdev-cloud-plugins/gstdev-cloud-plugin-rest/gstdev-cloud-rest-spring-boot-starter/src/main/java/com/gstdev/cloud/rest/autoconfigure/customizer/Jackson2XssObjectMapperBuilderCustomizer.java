@@ -1,7 +1,6 @@
 //package cn.herodotus.engine.rest.autoconfigure.customizer;
 //
 //import com.gstdev.cloud.commons.ass.core.json.jackson2.Jackson2CustomizerOrder;
-//import cn.herodotus.engine.rest.protect.jackson2.XssStringJsonDeserializer;
 //import com.fasterxml.jackson.databind.Module;
 //import com.fasterxml.jackson.databind.module.SimpleModule;
 //import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;

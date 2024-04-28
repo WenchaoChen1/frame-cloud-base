@@ -61,9 +61,9 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
 
     @Override
     public RegisteredClient findById(String id) {
-        FrameRegisteredClient herodotusRegisteredClient = this.frameRegisteredClientService.findById(id);
-        if (ObjectUtils.isNotEmpty(herodotusRegisteredClient)) {
-            return toObject(herodotusRegisteredClient);
+        FrameRegisteredClient registeredClient = this.frameRegisteredClientService.findById(id);
+        if (ObjectUtils.isNotEmpty(registeredClient)) {
+            return toObject(registeredClient);
         }
         return null;
     }
@@ -77,8 +77,8 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
         this.frameRegisteredClientService.deleteById(id);
     }
 
-    private RegisteredClient toObject(FrameRegisteredClient herodotusRegisteredClient) {
-        return frameToOAuth2Converter.convert(herodotusRegisteredClient);
+    private RegisteredClient toObject(FrameRegisteredClient registeredClient) {
+        return frameToOAuth2Converter.convert(registeredClient);
     }
 
     private FrameRegisteredClient toEntity(RegisteredClient registeredClient) {

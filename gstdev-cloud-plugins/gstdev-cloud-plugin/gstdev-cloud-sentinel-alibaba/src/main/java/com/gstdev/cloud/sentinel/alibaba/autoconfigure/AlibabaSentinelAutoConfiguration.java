@@ -4,7 +4,7 @@ import com.alibaba.csp.sentinel.adapter.spring.webflux.callback.BlockRequestHand
 import com.alibaba.csp.sentinel.adapter.spring.webmvc.callback.BlockExceptionHandler;
 import com.gstdev.cloud.base.core.json.jackson2.utils.Jackson2Utils;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.sentinel.alibaba.autoconfigure.enhance.BaseSentinelFeign;
+import com.gstdev.cloud.sentinel.alibaba.autoconfigure.enhance.FrameSentinelFeign;
 import feign.Feign;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
@@ -45,7 +45,7 @@ public class AlibabaSentinelAutoConfiguration {
     @ConditionalOnMissingBean
     @ConditionalOnProperty(name = "feign.sentinel.enabled")
     public Feign.Builder feignSentinelBuilder() {
-        return BaseSentinelFeign.builder();
+        return FrameSentinelFeign.builder();
     }
 
     /**

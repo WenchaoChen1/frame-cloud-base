@@ -101,8 +101,8 @@ public class SecurityMetadataSourceStorage {
      * @return 与请求url 和 method 匹配的权限数据，或者是空集合
      */
     public List<FrameConfigAttribute> getConfigAttribute(String url, String method) {
-        FrameRequest herodotusRequest = new FrameRequest(url, method);
-        return readFromIndexable(herodotusRequest);
+        FrameRequest request = new FrameRequest(url, method);
+        return readFromIndexable(request);
     }
 
     /**

@@ -82,7 +82,7 @@ public interface BaseConstants {
     String PASSWORD = "password";
     String SOCIAL_CREDENTIALS = "social_credentials";
 
-    String OPEN_API_SECURITY_SCHEME_BEARER_NAME = "HERODOTUS_AUTH";
+    String OPEN_API_SECURITY_SCHEME_BEARER_NAME = "FRAME_AUTH";
 
     String BEARER_TYPE = "Bearer";
     String BEARER_TOKEN = BEARER_TYPE + SymbolConstants.SPACE;

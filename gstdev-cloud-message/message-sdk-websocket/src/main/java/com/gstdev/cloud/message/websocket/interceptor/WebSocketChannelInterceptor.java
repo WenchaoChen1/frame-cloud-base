@@ -148,7 +148,7 @@ public class WebSocketChannelInterceptor implements ChannelInterceptor {
      *
      * @param message {@link Message}
      * @param channel {@link MessageChannel}
-     * @param ex      失败时抛出的 HerodotusException
+     * @param ex      失败时抛出的 FrameException
      */
     @Override
     public void afterReceiveCompletion(Message<?> message, MessageChannel channel, Exception ex) {

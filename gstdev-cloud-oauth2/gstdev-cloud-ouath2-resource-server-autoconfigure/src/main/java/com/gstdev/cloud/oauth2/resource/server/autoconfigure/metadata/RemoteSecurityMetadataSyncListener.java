@@ -1,9 +1,5 @@
 //package com.gstdev.cloud.oauth2.resource.server.autoconfigure.metadata;
 //
-//import cn.herodotus.engine.assistant.core.json.jackson2.utils.Jackson2Utils;
-//import cn.herodotus.engine.oauth2.resource.autoconfigure.bus.RemoteSecurityMetadataSyncEvent;
-//import cn.herodotus.engine.oauth2.authorization.processor.SecurityMetadataSourceAnalyzer;
-//import cn.herodotus.engine.oauth2.core.definition.domain.SecurityAttribute;
 //import org.apache.commons.collections4.CollectionUtils;
 //import org.apache.commons.lang3.StringUtils;
 //import org.slf4j.Logger;

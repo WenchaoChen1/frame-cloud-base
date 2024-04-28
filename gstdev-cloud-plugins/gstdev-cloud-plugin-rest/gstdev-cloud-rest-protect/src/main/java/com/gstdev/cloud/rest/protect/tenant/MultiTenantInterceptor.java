@@ -36,7 +36,7 @@
 //    String herodotusSessionId = HeaderUtils.getFrameSessionId(request);
 //
 //    log.debug("[GstDev Cloud] |- SESSION ID for [{}] is : [{}].", path, sessionId);
-//    log.debug("[GstDev Cloud] |- SESSION ID of HERODOTUS for [{}] is : [{}].", path, herodotusSessionId);
+//    log.debug("[GstDev Cloud] |- SESSION ID of Frame for [{}] is : [{}].", path, herodotusSessionId);
 //
 //    return true;
 //  }

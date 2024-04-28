@@ -25,7 +25,7 @@ import static feign.Util.checkNotNull;
 /**
  * {@link InvocationHandler} handle invocation that protected by Sentinel.
  */
-public class BaseSentinelInvocationHandler implements InvocationHandler {
+public class FrameSentinelInvocationHandler implements InvocationHandler {
 
     private final Target<?> target;
 
@@ -35,14 +35,14 @@ public class BaseSentinelInvocationHandler implements InvocationHandler {
 
     private Map<Method, Method> fallbackMethodMap;
 
-    BaseSentinelInvocationHandler(Target<?> target, Map<Method, MethodHandler> dispatch, FallbackFactory<?> fallbackFactory) {
+    FrameSentinelInvocationHandler(Target<?> target, Map<Method, MethodHandler> dispatch, FallbackFactory<?> fallbackFactory) {
         this.target = checkNotNull(target, "target");
         this.dispatch = checkNotNull(dispatch, "dispatch");
         this.fallbackFactory = fallbackFactory;
         this.fallbackMethodMap = toFallbackMethod(dispatch);
     }
 
-    BaseSentinelInvocationHandler(Target<?> target, Map<Method, MethodHandler> dispatch) {
+    FrameSentinelInvocationHandler(Target<?> target, Map<Method, MethodHandler> dispatch) {
         this.target = checkNotNull(target, "target");
         this.dispatch = checkNotNull(dispatch, "dispatch");
     }
@@ -131,7 +131,7 @@ public class BaseSentinelInvocationHandler implements InvocationHandler {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof BaseSentinelInvocationHandler sentinelInvocationHandler) {
+        if (obj instanceof FrameSentinelInvocationHandler sentinelInvocationHandler) {
             return target.equals(sentinelInvocationHandler.target);
         }
         return false;
