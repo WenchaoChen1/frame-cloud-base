@@ -22,7 +22,7 @@ import jakarta.validation.constraints.NotBlank;
 public class SignInErrorPrompt extends BaseDto {
 
     @NotBlank(message = "登录用户名不能为空")
-    @Schema(name = "登录用户名", title = "必须是有效的用户名")
+    @Schema(title = "登录用户名", description = "必须是有效的用户名")
     private String username;
 
     public String getUsername() {

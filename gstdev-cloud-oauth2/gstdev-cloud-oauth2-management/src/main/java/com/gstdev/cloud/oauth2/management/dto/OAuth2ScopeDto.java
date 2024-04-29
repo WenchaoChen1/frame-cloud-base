@@ -13,14 +13,14 @@ import java.util.Set;
  * @author : cc
  * @date : 2022/4/1 13:55
  */
-@Schema(name = "OAuth2 范围请求 Dto")
+@Schema(title = "OAuth2 范围请求 Dto")
 public class OAuth2ScopeDto {
 
-    @Schema(name = "范围ID")
+    @Schema(title = "范围ID")
     @NotNull(message = "范围ID不能为空")
     private String scopeId;
 
-    @Schema(name = "范围权限列表")
+    @Schema(title = "范围权限列表")
     private Set<OAuth2PermissionDto> permissions = new HashSet<>();
 
     public String getScopeId() {

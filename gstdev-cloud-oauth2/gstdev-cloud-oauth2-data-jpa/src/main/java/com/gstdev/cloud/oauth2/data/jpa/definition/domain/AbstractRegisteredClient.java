@@ -24,34 +24,34 @@ import java.time.Instant;
 @MappedSuperclass
 public abstract class AbstractRegisteredClient extends BaseSysEntity implements RegisteredClientDetails {
 
-    @Schema(name = "客户端ID发布日期", title = "客户端发布日期")
+    @Schema(title = "客户端ID发布日期", description = "客户端发布日期")
     @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT, locale = "GMT+8", shape = JsonFormat.Shape.STRING)
     @Column(name = "client_id_issued_at", nullable = false, updatable = false)
     @CreationTimestamp
     private Instant clientIdIssuedAt;
 
-    @Schema(name = "客户端秘钥过期时间", title = "客户端秘钥过期时间")
+    @Schema(title = "客户端秘钥过期时间", description = "客户端秘钥过期时间")
     @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT, locale = "GMT+8", shape = JsonFormat.Shape.STRING)
     @Column(name = "client_secret_expires_at")
     private Instant clientSecretExpiresAt;
 
-    @Schema(name = "客户端认证模式", title = "支持多个值，以逗号分隔", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(title = "客户端认证模式", description = "支持多个值，以逗号分隔", requiredMode = Schema.RequiredMode.REQUIRED)
     @Column(name = "client_authentication_methods", nullable = false, length = 1000)
     @JsonDeserialize(using = SetToCommaDelimitedStringDeserializer.class)
     @JsonSerialize(using = CommaDelimitedStringToSetSerializer.class)
     private String clientAuthenticationMethods;
 
-    @Schema(name = "认证模式", title = "支持多个值，以逗号分隔", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(title = "认证模式", description = "支持多个值，以逗号分隔", requiredMode = Schema.RequiredMode.REQUIRED)
     @Column(name = "authorization_grant_types", nullable = false, length = 1000)
     @JsonDeserialize(using = SetToCommaDelimitedStringDeserializer.class)
     @JsonSerialize(using = CommaDelimitedStringToSetSerializer.class)
     private String authorizationGrantTypes;
 
-    @Schema(name = "回调地址", title = "支持多个值，以逗号分隔")
+    @Schema(title = "回调地址", description = "支持多个值，以逗号分隔")
     @Column(name = "redirect_uris", length = 1000)
     private String redirectUris;
 
-    @Schema(name = "OIDC Logout 回调地址", title = "支持多个值，以逗号分隔")
+    @Schema(title = "OIDC Logout 回调地址", description = "支持多个值，以逗号分隔")
     @Column(name = "post_logout_redirect_uris", length = 1000)
     private String postLogoutRedirectUris;
 

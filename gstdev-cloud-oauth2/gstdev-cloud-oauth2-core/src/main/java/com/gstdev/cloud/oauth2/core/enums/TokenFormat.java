@@ -17,7 +17,7 @@ import java.util.Map;
  * @author : cc
  * @date : 2022/3/25 0:02
  */
-@Schema(name = "令牌格式")
+@Schema(title = "令牌格式")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum TokenFormat implements BaseUiEnum<Integer> {
 

@@ -19,7 +19,7 @@ import java.util.Map;
  * @author : cc
  * @date : 2022/3/2 16:15
  */
-@Schema(name = "签名算法")
+@Schema(title = "签名算法")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum SignatureJwsAlgorithm implements BaseUiEnum<Integer> {
 
@@ -78,7 +78,7 @@ public enum SignatureJwsAlgorithm implements BaseUiEnum<Integer> {
 
     @Schema(title = "枚举值")
     private final Integer value;
-    @Schema(name = "文字")
+    @Schema(title = "文字")
     private final String description;
 
     SignatureJwsAlgorithm(Integer value, String description) {

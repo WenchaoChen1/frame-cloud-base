@@ -24,28 +24,28 @@ import java.util.Set;
 @MappedSuperclass
 public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredClient {
 
-    @Schema(name = "客户端Id", title = "默认为系统自动生成")
+    @Schema(title = "客户端Id", description = "默认为系统自动生成")
     @Column(name = "client_id", length = 100)
     private String clientId = IdUtil.fastSimpleUUID();
 
-    @Schema(name = "客户端秘钥", title = "这里存储的客户端秘钥是明文，方便使用。默认为系统自动生成")
+    @Schema(title = "客户端秘钥", description = "这里存储的客户端秘钥是明文，方便使用。默认为系统自动生成")
     @Column(name = "client_secret", length = 100)
     private String clientSecret = IdUtil.fastSimpleUUID();
 
     /* --- ClientSettings Begin --- */
-    @Schema(name = "是否需要证明Key", title = "如果客户端在执行授权码授予流时需要提供验证密钥质询和验证器, 默认False")
+    @Schema(title = "是否需要证明Key", description = "如果客户端在执行授权码授予流时需要提供验证密钥质询和验证器, 默认False")
     @Column(name = "require_proof_key")
     private Boolean requireProofKey = Boolean.FALSE;
 
-    @Schema(name = "是否需要认证确认", title = "如果客户端在执行授权码授予流时需要提供验证密钥质询和验证器, 默认False")
+    @Schema(title = "是否需要认证确认", description = "如果客户端在执行授权码授予流时需要提供验证密钥质询和验证器, 默认False")
     @Column(name = "require_authorization_consent")
     private Boolean requireAuthorizationConsent = Boolean.TRUE;
 
-    @Schema(name = "客户端JSON Web密钥集的URL", title = "客户端JSON Web密钥集的URL")
+    @Schema(title = "客户端JSON Web密钥集的URL", description = "客户端JSON Web密钥集的URL")
     @Column(name = "jwk_set_url", length = 1000)
     private String jwkSetUrl;
 
-    @Schema(name = "JWT 签名算法", title = "仅在 clientAuthenticationMethods 为 private_key_jwt 和 client_secret_jwt 方法下使用")
+    @Schema(title = "JWT 签名算法", description = "仅在 clientAuthenticationMethods 为 private_key_jwt 和 client_secret_jwt 方法下使用")
     @Column(name = "signing_algorithm")
     @Enumerated(EnumType.ORDINAL)
     private AllJwsAlgorithm authenticationSigningAlgorithm;
@@ -53,32 +53,32 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
 
 
     /* --- TokenSettings Begin --- */
-    @Schema(name = "授权码有效时间", title = "默认5分钟，使用 Duration 时间格式")
+    @Schema(title = "授权码有效时间", description = "默认5分钟，使用 Duration 时间格式")
     @Column(name = "authorization_code_validity")
     private Duration authorizationCodeValidity = Duration.ofMinutes(5);
 
-    @Schema(name = "激活码有效时间", title = "默认5分钟，使用 Duration 时间格式")
+    @Schema(title = "激活码有效时间", description = "默认5分钟，使用 Duration 时间格式")
     @Column(name = "device_code_validity")
     private Duration deviceCodeValidity = Duration.ofMinutes(5);
 
-    @Schema(name = "AccessToken 有效时间", title = "默认5分钟，使用 Duration 时间格式")
+    @Schema(title = "AccessToken 有效时间", description = "默认5分钟，使用 Duration 时间格式")
     @Column(name = "access_token_validity")
     private Duration accessTokenValidity = Duration.ofMinutes(5);
 
-    @Schema(name = "RefreshToken 有效时间", title = "默认60分钟，使用 Duration 时间格式")
+    @Schema(title = "RefreshToken 有效时间", description = "默认60分钟，使用 Duration 时间格式")
     @Column(name = "refresh_token_validity")
     private Duration refreshTokenValidity = Duration.ofMinutes(60);
 
-    @Schema(name = "Access Token 格式", title = "OAuth 2.0令牌的标准数据格式")
+    @Schema(title = "Access Token 格式", description = "OAuth 2.0令牌的标准数据格式")
     @Column(name = "access_token_format")
     @Enumerated(EnumType.ORDINAL)
     private TokenFormat accessTokenFormat = TokenFormat.REFERENCE;
 
-    @Schema(name = "是否重用 Refresh Token", title = "默认值 True")
+    @Schema(title = "是否重用 Refresh Token", description = "默认值 True")
     @Column(name = "reuse_refresh_tokens")
     private Boolean reuseRefreshTokens = Boolean.TRUE;
 
-    @Schema(name = "IdToken 签名算法", title = "JWT 算法用于签名 ID Token， 默认值 RS256")
+    @Schema(title = "IdToken 签名算法", description = "JWT 算法用于签名 ID Token， 默认值 RS256")
     @Column(name = "signature_algorithm")
     @Enumerated(EnumType.ORDINAL)
     private SignatureJwsAlgorithm idTokenSignatureAlgorithmJwsAlgorithm = SignatureJwsAlgorithm.RS256;

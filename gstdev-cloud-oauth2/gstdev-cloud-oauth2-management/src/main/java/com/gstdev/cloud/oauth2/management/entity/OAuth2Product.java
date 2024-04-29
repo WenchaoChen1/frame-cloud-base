@@ -14,7 +14,7 @@ import org.hibernate.annotations.UuidGenerator;
  * @author : cc
  * @date : 2023/5/15 14:26
  */
-@Schema(name = "物联网产品")
+@Schema(title = "物联网产品")
 @Entity
 @Table(name = "oauth2_product", uniqueConstraints = {@UniqueConstraint(columnNames = {"product_key"})},
     indexes = {@Index(name = "oauth2_product_pid_idx", columnList = "product_id"), @Index(name = "oauth2_product_ipk_idx", columnList = "product_key")})

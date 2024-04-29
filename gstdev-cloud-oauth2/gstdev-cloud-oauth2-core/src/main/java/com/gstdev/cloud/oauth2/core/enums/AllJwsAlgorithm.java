@@ -17,7 +17,7 @@ import java.util.Map;
  * @author : cc
  * @date : 2023/12/12 19:48
  */
-@Schema(name = "全部Jws加密算法")
+@Schema(title = "全部Jws加密算法")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum AllJwsAlgorithm implements BaseUiEnum<Integer> {
 
@@ -90,7 +90,7 @@ public enum AllJwsAlgorithm implements BaseUiEnum<Integer> {
 
     @Schema(title = "枚举值")
     private final Integer value;
-    @Schema(name = "文字")
+    @Schema(title = "文字")
     private final String description;
 
     AllJwsAlgorithm(Integer value, String description) {

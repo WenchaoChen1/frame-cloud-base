@@ -23,33 +23,33 @@ import org.hibernate.annotations.UuidGenerator;
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = DataConstants.REGION_SYS_TENANT_DATASOURCE)
 public class SysTenantDataSource extends BaseSysEntity {
 
-    @Schema(name = "租户数据源主键")
+    @Schema(title = "租户数据源主键")
     @Id
     @UuidGenerator
     @Column(name = "datasource_id", length = 64)
     private String datasourceId;
 
-    @Schema(name = "租户ID", description = "租户的唯一标识")
+    @Schema(title = "租户ID", description = "租户的唯一标识")
     @Column(name = "tenant_id", length = 64, unique = true)
     private String tenantId;
 
-    @Schema(name = "数据库用户名")
+    @Schema(title = "数据库用户名")
     @Column(name = "user_name", length = 100)
     private String username;
 
-    @Schema(name = "数据库密码")
+    @Schema(title = "数据库密码")
     @Column(name = "password", length = 100)
     private String password;
 
-    @Schema(name = "数据库驱动")
+    @Schema(title = "数据库驱动")
     @Column(name = "driver_class_name", length = 64)
     private String driverClassName;
 
-    @Schema(name = "数据库连接")
+    @Schema(title = "数据库连接")
     @Column(name = "url", length = 1000)
     private String url;
 
-    @Schema(name = "是否已经初始化", description = "默认值 false")
+    @Schema(title = "是否已经初始化", description = "默认值 false")
     private Boolean initialize = false;
 
     public String getDatasourceId() {

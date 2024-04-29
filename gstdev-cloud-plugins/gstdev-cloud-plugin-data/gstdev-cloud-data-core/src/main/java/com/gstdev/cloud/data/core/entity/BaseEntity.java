@@ -60,29 +60,29 @@ public abstract class BaseEntity extends AbstractEntity {
 //    public ID getId() {
 //        return null;
 //    }
-    //  @Schema(name = "数据创建时间")
+    //  @Schema(title = "数据创建时间")
 //  @Column(name = "create_time", updatable = false)
 //  @CreatedDate
 //  @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT)
 //  private Date createTime = new Date();
 //
-//  @Schema(name = "数据更新时间")
+//  @Schema(title = "数据更新时间")
 //  @Column(name = "update_time")
 //  @LastModifiedDate
 //  @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT)
 //  private Date updateTime = new Date();
 //
-//  @Schema(name = "创建人")
+//  @Schema(title = "创建人")
 //  @Column(name = "create_by")
 //  @CreatedBy
 //  private String createBy;
 //
-//  @Schema(name = "最后修改")
+//  @Schema(title = "最后修改")
 //  @Column(name = "update_by")
 //  @LastModifiedBy
 //  private String updateBy;
 //
-//  @Schema(name = "排序值")
+//  @Schema(title = "排序值")
 //  @Column(name = "ranking")
 //  private Integer ranking = 0;
 //

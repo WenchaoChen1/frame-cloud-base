@@ -17,7 +17,7 @@ import java.util.Map;
  * @author : cc
  * @date : 2022/7/21 16:29
  */
-@Schema(name = "令牌格式")
+@Schema(title = "令牌格式")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ServerDevice implements BaseUiEnum<Integer> {
 
@@ -45,7 +45,7 @@ public enum ServerDevice implements BaseUiEnum<Integer> {
 
     @Schema(title = "枚举值")
     private final Integer value;
-    @Schema(name = "文字")
+    @Schema(title = "文字")
     private final String description;
 
     ServerDevice(Integer value, String description) {

@@ -19,7 +19,7 @@ import java.util.Set;
  * @author : cc
  * @date : 2023/5/15 14:26
  */
-@Schema(name = "物联网设备")
+@Schema(title = "物联网设备")
 @Entity
 @Table(name = "oauth2_device",
     uniqueConstraints = {@UniqueConstraint(columnNames = {"device_name"})},
@@ -31,25 +31,25 @@ import java.util.Set;
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_DEVICE)
 public class OAuth2Device extends AbstractOAuth2RegisteredClient {
 
-    @Schema(name = "设备ID")
+    @Schema(title = "设备ID")
     @Id
     @UuidGenerator
     @Column(name = "device_id", length = 64)
     private String deviceId;
 
-    @Schema(name = "设备名称")
+    @Schema(title = "设备名称")
     @Column(name = "device_name", length = 64, unique = true)
     private String deviceName;
 
-    @Schema(name = "产品ID")
+    @Schema(title = "产品ID")
     @Column(name = "product_id", length = 64)
     private String productId;
 
-    @Schema(name = "是否已激活", title = "设备是否已经激活状态标记，默认值false，即未激活")
+    @Schema(title = "是否已激活", description = "设备是否已经激活状态标记，默认值false，即未激活")
     @Column(name = "is_activated")
     private Boolean activated = Boolean.FALSE;
 
-    @Schema(name = "设备对应Scope", title = "传递设备对应Scope ID数组")
+    @Schema(title = "设备对应Scope", description = "传递设备对应Scope ID数组")
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_APPLICATION_SCOPE)
     @ManyToMany(fetch = FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)

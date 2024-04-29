@@ -12,31 +12,31 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 public class DialogueMessage extends BaseEntity {
 
-    @Schema(name = "对话详情ID")
+    @Schema(title = "对话详情ID")
     private String detailId;
 
-    @Schema(name = "接收人ID")
+    @Schema(title = "接收人ID")
     private String receiverId;
 
-    @Schema(name = "接收人名称", title = "冗余信息，增加该字段减少重复查询")
+    @Schema(title = "接收人名称", description = "冗余信息，增加该字段减少重复查询")
     private String receiverName;
 
-    @Schema(name = "发送人头像")
+    @Schema(title = "发送人头像")
     private String receiverAvatar;
 
-    @Schema(name = "公告内容")
+    @Schema(title = "公告内容")
     private String content;
 
-    @Schema(name = "对话ID")
+    @Schema(title = "对话ID")
     private String dialogueId;
 
-    @Schema(name = "发送人ID")
+    @Schema(title = "发送人ID")
     private String senderId;
 
-    @Schema(name = "发送人名称", title = "冗余信息，增加该字段减少重复查询")
+    @Schema(title = "发送人名称", description = "冗余信息，增加该字段减少重复查询")
     private String senderName;
 
-    @Schema(name = "发送人头像")
+    @Schema(title = "发送人头像")
     private String senderAvatar;
 
     public String getDetailId() {

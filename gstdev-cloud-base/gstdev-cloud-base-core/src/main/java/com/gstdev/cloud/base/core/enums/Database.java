@@ -52,7 +52,7 @@ public enum Database implements BaseUiEnum<Integer> {
 
     @Schema(title = "枚举值")
     private final Integer value;
-    @Schema(name = "文字")
+    @Schema(title = "文字")
     private final String description;
 
     Database(Integer value, String description) {

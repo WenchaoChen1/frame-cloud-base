@@ -13,6 +13,7 @@ import org.dromara.hutool.core.tree.TreeNode;
 import org.dromara.hutool.core.tree.TreeUtil;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.io.Serializable;
@@ -228,6 +229,16 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
      */
     default Result<Map<String, Object>> findByPage(Integer pageNumber, Integer pageSize, Sort sort) {
         Page<E> pages = getService().findByPage(pageNumber, pageSize, sort);
+        return result(pages);
+    }
+    /**
+     * 查询分页数据
+     *
+     * @param pageable 分页
+     * @return 分页数据
+     */
+    default Result<Map<String, Object>> findByPage(Pageable pageable) {
+        Page<E> pages = getService().findByPage(pageable);
         return result(pages);
     }
 

@@ -24,7 +24,7 @@ import java.util.Set;
  * @author : cc
  * @date : 2022/3/1 16:45
  */
-@Schema(name = "OAuth2应用实体")
+@Schema(title = "OAuth2应用实体")
 @Entity
 @Table(name = "oauth2_application", indexes = {
     @Index(name = "oauth2_application_id_idx", columnList = "application_id"),
@@ -33,35 +33,35 @@ import java.util.Set;
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_APPLICATION)
 public class OAuth2Application extends AbstractOAuth2RegisteredClient {
 
-    @Schema(name = "应用ID")
+    @Schema(title = "应用ID")
     @Id
     @UuidGenerator
     @Column(name = "application_id", length = 64)
     private String applicationId;
 
-    @Schema(name = "应用名称", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(title = "应用名称", requiredMode = Schema.RequiredMode.REQUIRED)
     @NotBlank(message = "应用名称不能为空")
     @Column(name = "application_name", length = 128)
     private String applicationName;
 
-    @Schema(name = "应用简称", title = "应用的简称、别名、缩写等信息")
+    @Schema(title = "应用简称", description = "应用的简称、别名、缩写等信息")
     @Column(name = "abbreviation", length = 64)
     private String abbreviation;
 
-    @Schema(name = "Logo", title = "Logo存储信息，可以是URL或者路径等")
+    @Schema(title = "Logo", description = "Logo存储信息，可以是URL或者路径等")
     @Column(name = "logo", length = 1024)
     private String logo;
 
-    @Schema(name = "主页信息", title = "应用相关的主页信息方便查询")
+    @Schema(title = "主页信息", description = "应用相关的主页信息方便查询")
     @Column(name = "homepage", length = 1024)
     private String homepage;
 
-    @Schema(name = "应用类型", title = "用于区分不同类型的应用")
+    @Schema(title = "应用类型", description = "用于区分不同类型的应用")
     @Column(name = "application_type")
     @Enumerated(EnumType.ORDINAL)
     private ApplicationType applicationType = ApplicationType.WEB;
 
-    @Schema(name = "应用对应Scope", title = "传递应用对应Scope ID数组")
+    @Schema(title = "应用对应Scope", description = "传递应用对应Scope ID数组")
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_APPLICATION_SCOPE)
     @ManyToMany(fetch = FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)

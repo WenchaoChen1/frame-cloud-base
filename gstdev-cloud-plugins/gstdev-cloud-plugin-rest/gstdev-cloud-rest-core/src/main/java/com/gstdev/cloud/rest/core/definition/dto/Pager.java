@@ -17,13 +17,13 @@ public class Pager extends Sorter {
 
     @NotNull(message = "页码不能为空")
     @Min(value = 0, message = "页码不能为负")
-    @Schema(name = "页码", type = "integer", minimum = "0", defaultValue = "0")
+    @Schema(title = "页码", type = "integer", minimum = "0", defaultValue = "0")
     private Integer pageNumber = 0;
 
     @NotNull(message = "每页条数不能为空")
     @Min(value = 1, message = "每页条数至少为1条")
     @Max(value = 1000, message = "每页条数不能超过1000")
-    @Schema(name = "每页数据条数", type = "integer", minimum = "0", maximum = "1000", defaultValue = "10")
+    @Schema(title = "每页数据条数", type = "integer", minimum = "0", maximum = "1000", defaultValue = "10",description = "")
     private Integer pageSize = 10;
 
     public Integer getPageNumber() {

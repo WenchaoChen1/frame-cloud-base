@@ -11,18 +11,18 @@ import jakarta.validation.constraints.NotNull;
  * @author : cc
  * @date : 2022/4/1 13:55
  */
-@Schema(name = "OAuth2 权限请求 Dto")
+@Schema(title = "OAuth2 权限请求 Dto")
 public class OAuth2PermissionDto extends BaseDto {
 
-    @Schema(name = "权限ID")
+    @Schema(title = "权限ID")
     @NotNull(message = "权限ID不能为空")
     private String permissionId;
 
-    @Schema(name = "权限代码")
+    @Schema(title = "权限代码")
     @NotNull(message = "权限代码不能为空")
     private String permissionCode;
 
-    @Schema(name = "服务ID")
+    @Schema(title = "服务ID")
     @NotNull(message = "服务ID不能为空")
     private String permissionName;
 

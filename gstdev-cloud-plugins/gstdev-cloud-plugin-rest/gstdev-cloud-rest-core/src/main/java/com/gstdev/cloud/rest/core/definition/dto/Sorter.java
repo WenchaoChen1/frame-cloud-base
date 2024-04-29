@@ -14,10 +14,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 public class Sorter extends AbstractDto {
 
     @EnumeratedValue(names = {"ASC", "DESC"}, message = "排序方式的值只能是大写 ASC 或者 DESC")
-    @Schema(name = "排序方向", title = "排序方向的值只能是大写 ASC 或者 DESC, 默认值：DESC", defaultValue = "DESC")
+    @Schema(title = "排序方向", description = "排序方向的值只能是大写 ASC 或者 DESC, 默认值：DESC", defaultValue = "DESC")
     private String direction = "DESC";
 
-    @Schema(name = "属性值", title = "指定排序的字段名称")
+    @Schema(title = "属性值", description = "指定排序的字段名称")
     private String[] properties;
 
     public String getDirection() {
