@@ -80,28 +80,27 @@ public abstract class BaseDtoServiceImpl<E extends Entity
         return getMapper().toDto(findAll(sort));
     }
 
-//    /**
-//     * 查询全部数据
-//     *
-//     * @param specification {@link Specification}
-//     * @return 全部数据列表
-//     */
-//    @Override
-//    public List<D> findAllToDto(Specification<E> specification) {
-//        return getMapper().toDto(findAll(specification));
-//    }
-//
-//    /**
-//     * 查询全部数据
-//     *
-//     * @param specification {@link Specification}
-//     * @param sort          {@link Sort}
-//     * @return 全部数据列表
-//     */
-//    @Override
-//    public List<D> findAllToDto(Specification<E> specification, Sort sort) {
-//        return getMapper().toDto(findAll(specification, sort));
-//    }
+    /**
+     * 查询全部数据
+     *
+     * @param specification {@link Specification}
+     * @return 全部数据列表
+     */
+    @Override
+    public List<D> findAllToDto(Specification<E> specification) {
+        return getMapper().toDto(findAll(specification));
+    }
+    /**
+     * 查询全部数据
+     *
+     * @param specification {@link Specification}
+     * @param sort          {@link Sort}
+     * @return 全部数据列表
+     */
+    @Override
+    public List<D> findAllToDto(Specification<E> specification, Sort sort) {
+        return getMapper().toDto(findAll(specification, sort));
+    }
 
     /**
      * 查询分页数据
@@ -171,23 +170,23 @@ public abstract class BaseDtoServiceImpl<E extends Entity
      * @param pageable      {@link Pageable}
      * @return 分页数据
      */
-//    @Override
-//    public Page<D> findByPageToDto(Specification<E> specification, Pageable pageable) {
-//        return getMapper().toDto(findByPage(specification, pageable));
-//    }
+    @Override
+    public Page<D> findByPageToDto(Specification<E> specification, Pageable pageable) {
+        return getMapper().toDto(findByPage(specification, pageable));
+    }
 
-//    /**
-//     * 查询分页数据
-//     *
-//     * @param specification {@link Specification}
-//     * @param pageNumber    当前页码, 起始页码 0
-//     * @param pageSize      每页显示的数据条数
-//     * @return 分页数据
-//     */
-//    @Override
-//    public Page<D> findByPageToDto(Specification<E> specification, int pageNumber, int pageSize) {
-//        return getMapper().toDto(findByPage(specification, PageRequest.of(pageNumber, pageSize));
-//    }
+    /**
+     * 查询分页数据
+     *
+     * @param specification {@link Specification}
+     * @param pageNumber    当前页码, 起始页码 0
+     * @param pageSize      每页显示的数据条数
+     * @return 分页数据
+     */
+    @Override
+    public Page<D> findByPageToDto(Specification<E> specification, int pageNumber, int pageSize) {
+        return getMapper().toDto(findByPage(specification, PageRequest.of(pageNumber, pageSize)));
+    }
 
     /**
      * 查询分页数据

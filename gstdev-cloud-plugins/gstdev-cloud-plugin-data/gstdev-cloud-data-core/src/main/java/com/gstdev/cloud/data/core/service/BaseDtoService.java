@@ -51,7 +51,7 @@ public interface BaseDtoService<E extends Entity
      * @param specification {@link Specification}
      * @return 全部数据列表
      */
-//    List<D> findAllToDto(Specification<E> specification);
+    List<D> findAllToDto(Specification<E> specification);
 //    List<D> findAllToDto(Specification<D> specification);
 
     /**
@@ -61,7 +61,7 @@ public interface BaseDtoService<E extends Entity
      * @param sort          {@link Sort}
      * @return 全部数据列表
      */
-//    List<D> findAllToDto(Specification<E> specification, Sort sort);
+    List<D> findAllToDto(Specification<E> specification, Sort sort);
 //    List<D> findAllToDto(Specification<D> specification, Sort sort);
 
     /**
@@ -117,7 +117,7 @@ public interface BaseDtoService<E extends Entity
      * @param pageable      {@link Pageable}
      * @return 分页数据
      */
-//    Page<D> findByPageToDto(Specification<E> specification, Pageable pageable);
+    Page<D> findByPageToDto(Specification<E> specification, Pageable pageable);
 //    Page<D> findByPageToDto(Specification<D> specification, Pageable pageable);
 
     /**
@@ -128,7 +128,7 @@ public interface BaseDtoService<E extends Entity
      * @param pageSize      每页显示的数据条数
      * @return 分页数据
      */
-//    Page<D> findByPageToDto(Specification<E> specification, int pageNumber, int pageSize);
+    Page<D> findByPageToDto(Specification<E> specification, int pageNumber, int pageSize);
 //    Page<D> findByPageToDto(Specification<D> specification, int pageNumber, int pageSize);
 
     /**
