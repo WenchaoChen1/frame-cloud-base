@@ -15,5 +15,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @ImportAutoConfiguration(CacheJetCacheAutoConfiguration.class)
-public @interface EnableHerodotusJetCache {
+public @interface EnableFrameJetCache {
 }
