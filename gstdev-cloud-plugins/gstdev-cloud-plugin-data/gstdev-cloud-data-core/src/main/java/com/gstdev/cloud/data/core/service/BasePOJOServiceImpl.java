@@ -4,13 +4,11 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.base.definition.domain.base.pojo.*;
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntityINT;
-import com.gstdev.cloud.data.core.mapper.BaseMapper;
+import com.gstdev.cloud.data.core.mapper.BasePOJOMapper;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
@@ -33,29 +31,17 @@ import java.util.Optional;
 public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
     , ID extends Serializable
     , R extends BaseRepository<E, ID>
-    , M extends BaseMapper<E, D, II, UI>
+    , M extends BasePOJOMapper<E, D, II, UI>
     , D extends BaseDtoInterface<ID>
     , II extends BaseInsertInputInterface
     , UI extends BaseUpdateInputInterface
     , PQC extends BasePageQueryCriteriaInterface
-    , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseServiceImpl<E, ID, R> implements BasePOJOService<E, ID, D, II, UI, PQC, FQC> {
-
-
-    private M mapper;
-
+    , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseDtoServiceImpl<E, ID, R, M, D> implements BasePOJOService<E, ID, D, II, UI, PQC, FQC> {
 
     public BasePOJOServiceImpl(R repository, M mapper) {
-        super(repository);
-        this.mapper = mapper;
+        super(repository,mapper);
     }
 
-    public M getMapper() {
-        return mapper;
-    }
-
-    public void setMapper(M mapper) {
-        this.mapper = mapper;
-    }
 //
 //    public RCLI getRedisCurrentLoginInformation() {
 //        return redisCurrentLoginInformation;
@@ -77,25 +63,25 @@ public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
 //    }
 
 
-    @Transactional
-    public E insert(E var) {
-//        var.setCreatedBy(getRedisCurrentLoginInformation().getCurrentLoginAccountId());
-        return save(var);
-    }
+//    @Transactional
+//    public E insert(E var) {
+////        var.setCreatedBy(getRedisCurrentLoginInformation().getCurrentLoginAccountId());
+//        return save(var);
+//    }
+//
+//    @Transactional
+//    public List<E> insertAll(List<E> e) {
+//        List<E> es = new ArrayList<>();
+//        for (E e1 : e) {
+//            es.add(insert(e1));
+//        }
+//        return es;
+//    }
 
-    @Transactional
-    public List<E> insertAll(List<E> e) {
-        List<E> es = new ArrayList<>();
-        for (E e1 : e) {
-            es.add(insert(e1));
-        }
-        return es;
-    }
-
-    @Transactional
-    public D insertToDto(E e) {
-        return getMapper().toDto(insert(e));
-    }
+//    @Transactional
+//    public D insertToDto(E e) {
+//        return getMapper().toDto(insert(e));
+//    }
 
     @Override
     @Transactional
@@ -104,10 +90,10 @@ public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
         return Result.success(insertToDto(e));
     }
 
-    @Transactional
-    public List<D> insertAllToDto(List<E> e) {
-        return getMapper().toDto(insertAll(e));
-    }
+//    @Transactional
+//    public List<D> insertAllToDto(List<E> e) {
+//        return getMapper().toDto(insertAll(e));
+//    }
 
     @Override
     @Transactional
@@ -115,26 +101,26 @@ public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
         List<E> e = toEntityInsert(varInsertInput);
         return Result.success(insertAllToDto(e));
     }
+//
+//    @Transactional
+//    public E update(E e) {
+//        return save(e);
+//    }
+//
+//    @Transactional
+//    public List<E> updateAll(List<E> e) {
+//        List<E> es = new ArrayList<>();
+//        for (E e1 : e) {
+//            es.add(update(e1));
+//        }
+//        return es;
+//    }
 
-    @Transactional
-    public E update(E e) {
-        return save(e);
-    }
 
-    @Transactional
-    public List<E> updateAll(List<E> e) {
-        List<E> es = new ArrayList<>();
-        for (E e1 : e) {
-            es.add(update(e1));
-        }
-        return es;
-    }
-
-
-    @Transactional
-    public D updateToDto(E e) {
-        return getMapper().toDto(save(e));
-    }
+//    @Transactional
+//    public D updateToDto(E e) {
+//        return getMapper().toDto(save(e));
+//    }
 
     @Override
     @Transactional
@@ -142,10 +128,10 @@ public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
         return Result.success(updateToDto(toEntityUpdate(varUpdateInput)));
     }
 
-    @Transactional
-    public List<D> updateAllToDto(List<E> e) {
-        return getMapper().toDto(updateAll(e));
-    }
+//    @Transactional
+//    public List<D> updateAllToDto(List<E> e) {
+//        return getMapper().toDto(updateAll(e));
+//    }
 
     @Override
     @Transactional

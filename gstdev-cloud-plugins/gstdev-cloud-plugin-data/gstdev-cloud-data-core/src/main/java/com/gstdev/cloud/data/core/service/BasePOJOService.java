@@ -22,7 +22,7 @@ public interface BasePOJOService<E extends BasePOJOEntityINT<ID>
     , II extends BaseInsertInputInterface
     , UI extends BaseUpdateInputInterface
     , PQC extends BasePageQueryCriteriaInterface
-    , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseService<E, ID> {
+    , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseDtoService<E, ID, D> {
 
     Result<D> insertToResult(II var1);
 
@@ -38,7 +38,7 @@ public interface BasePOJOService<E extends BasePOJOEntityINT<ID>
 
     Page<D> page(PQC queryCriteria, Pageable pageable);
 
-    D findByIdToDto(ID id);
+//    D findByIdToDto(ID id);
 
     Result<D> findByIdToResult(ID id);
 

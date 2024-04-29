@@ -55,7 +55,7 @@ public abstract class BaseController<E extends Entity, ID extends Serializable, 
             @ApiResponse(responseCode = "500", description = "查询失败")
         })
     @Parameters({
-        @Parameter(name = "pager", required = true, in = ParameterIn.QUERY, description = "分页Bo对象", schema = @Schema(implementation = BasePage.class))
+        @Parameter(name = "page", required = true, in = ParameterIn.QUERY, description = "分页Bo对象", schema = @Schema(implementation = BasePage.class))
     })
     @GetMapping
     public Result<Map<String, Object>> findByPage(@Validated BasePage page) {

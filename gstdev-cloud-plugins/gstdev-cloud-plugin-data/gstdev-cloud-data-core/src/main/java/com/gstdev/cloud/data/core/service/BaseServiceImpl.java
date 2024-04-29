@@ -14,6 +14,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -324,6 +325,35 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable,
     @Override
     public List<E> saveAllAndFlush(List<E> entities) {
         return getRepository().saveAllAndFlush(entities);
+    }
+
+
+    @Override
+    public E insert(E var) {
+        return save(var);
+    }
+
+    @Override
+    public List<E> insertAll(List<E> e) {
+        List<E> es = new ArrayList<>();
+        for (E e1 : e) {
+            es.add(insert(e1));
+        }
+        return es;
+    }
+
+    @Override
+    public E update(E e) {
+        return save(e);
+    }
+
+    @Override
+    public List<E> updateAll(List<E> e) {
+        List<E> es = new ArrayList<>();
+        for (E e1 : e) {
+            es.add(update(e1));
+        }
+        return es;
     }
 
     /**

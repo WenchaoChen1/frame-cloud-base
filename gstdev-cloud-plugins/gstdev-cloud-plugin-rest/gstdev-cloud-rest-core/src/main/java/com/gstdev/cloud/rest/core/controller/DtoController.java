@@ -31,7 +31,11 @@ import java.util.stream.Collectors;
  * @author : cc
  * @date : 2020/4/29 18:56
  */
-public interface Controller<E extends Entity, ID extends Serializable, S extends BaseService<E, ID>> {
+public interface DtoController<E extends Entity
+    , ID extends Serializable
+    , S extends BaseService<E, ID>
+    , D
+    > extends Controller<E, ID, S> {
 
     /**
      * 获取Service
@@ -232,7 +236,7 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
      *
      * @param pageNumber 当前页码, 起始页码 0
      * @param pageSize   每页显示的数据条数
-     * @param direction  {@link org.springframework.data.domain.Sort.Direction}
+     * @param direction  {@link Sort.Direction}
      * @param properties 排序的属性名称
      * @return 分页数据
      */
