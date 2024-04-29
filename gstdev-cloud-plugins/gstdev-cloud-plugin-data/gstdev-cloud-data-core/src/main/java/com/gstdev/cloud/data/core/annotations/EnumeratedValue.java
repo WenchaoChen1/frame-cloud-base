@@ -1,6 +1,6 @@
-package com.gstdev.cloud.rest.core.annotation;
+package com.gstdev.cloud.data.core.annotations;
 
-import com.gstdev.cloud.rest.core.validation.EnumeratedValueValidator;
+import com.gstdev.cloud.data.core.validation.EnumeratedValueValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 

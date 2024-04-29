@@ -1,6 +1,7 @@
 package com.gstdev.cloud.data.core.service;
 
 import com.gstdev.cloud.base.definition.domain.base.Entity;
+import com.gstdev.cloud.data.core.utils.BasePage;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -80,6 +81,13 @@ public interface BaseService<E extends Entity, ID extends Serializable> {
      * @return 分页数据
      */
     Page<E> findByPage(Pageable pageable);
+    /**
+     * 查询分页数据
+     *
+     * @param page {@link BasePage}
+     * @return 分页数据
+     */
+    Page<E> findByPage(BasePage page);
 
     /**
      * 查询分页数据

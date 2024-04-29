@@ -1,8 +1,11 @@
 package com.gstdev.cloud.data.core.service;
 
 import com.gstdev.cloud.base.definition.constants.SymbolConstants;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.base.definition.domain.base.Entity;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
+import com.gstdev.cloud.data.core.utils.BasePage;
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -137,6 +140,22 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable,
     @Override
     public Page<E> findByPage(Pageable pageable) {
         return getRepository().findAll(pageable);
+    }
+
+    /**
+     * 查询分页数据
+     *
+     * @param page 页
+     * @return 分页数据
+     */
+    @Override
+    public Page<E> findByPage(BasePage page) {
+        if (ArrayUtils.isNotEmpty(page.getProperties())) {
+            Sort.Direction direction = Sort.Direction.valueOf(page.getDirection());
+            return findByPage(page.getPageNumber(), page.getPageSize(), direction, page.getProperties());
+        } else {
+            return findByPage(page.getPageNumber(), page.getPageSize());
+        }
     }
 
     /**

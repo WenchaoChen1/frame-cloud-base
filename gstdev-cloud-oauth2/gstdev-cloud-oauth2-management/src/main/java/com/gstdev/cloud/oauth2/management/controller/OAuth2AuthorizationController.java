@@ -7,7 +7,7 @@ import com.gstdev.cloud.oauth2.management.mapper.vo.Oauth2AuthorizationVoMapper;
 import com.gstdev.cloud.rest.core.annotation.AccessLimited;
 import com.gstdev.cloud.rest.core.annotation.Idempotent;
 import com.gstdev.cloud.rest.core.controller.Controller;
-import com.gstdev.cloud.rest.core.definition.dto.Pager;
+import com.gstdev.cloud.data.core.utils.BasePage;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -18,9 +18,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.annotation.Resource;
-import org.apache.commons.lang3.ArrayUtils;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Sort;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -70,18 +67,11 @@ public class OAuth2AuthorizationController implements Controller<FrameAuthorizat
             @ApiResponse(responseCode = "500", description = "查询失败")
         })
     @Parameters({
-        @Parameter(name = "pager", required = true, in = ParameterIn.QUERY, description = "分页Bo对象", schema = @Schema(implementation = Pager.class))
+        @Parameter(name = "pager", required = true, in = ParameterIn.QUERY, description = "分页Bo对象", schema = @Schema(implementation = BasePage.class))
     })
     @GetMapping
-    public Result<Object> findByPage(@Validated Pager pager) {
-        if (ArrayUtils.isNotEmpty(pager.getProperties())) {
-            Sort.Direction direction = Sort.Direction.valueOf(pager.getDirection());
-            Page<FrameAuthorization> pages = getService().findByPage(pager.getPageNumber(), pager.getPageSize(), direction, pager.getProperties());
-            return Result.success(oauth2AuthorizationVoMapper.entityToVo(pages));
-        } else {
-            Page<FrameAuthorization> pages = getService().findByPage(pager.getPageNumber(), pager.getPageSize());
-            return Result.success(oauth2AuthorizationVoMapper.entityToVo(pages));
-        }
+    public Result<Map<String, Object>> findByPage(@Validated BasePage page) {
+        return Result.success((Map<String, Object>) oauth2AuthorizationVoMapper.entityToVo(getService().findByPage(page)));
     }
 
 

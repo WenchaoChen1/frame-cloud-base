@@ -4,6 +4,7 @@ import com.gstdev.cloud.base.definition.constants.DefaultConstants;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.base.definition.domain.base.Entity;
 import com.gstdev.cloud.data.core.service.BaseService;
+import com.gstdev.cloud.data.core.utils.BasePage;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ArrayUtils;
@@ -216,6 +217,17 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
      */
     default Result<Map<String, Object>> findByPage(Integer pageNumber, Integer pageSize, Sort.Direction direction, String... properties) {
         Page<E> pages = getService().findByPage(pageNumber, pageSize, direction, properties);
+        return result(pages);
+    }
+    /**
+     * 查询分页数据
+     *
+     * @param page 当前页码, 起始页码 0
+     * @return 分页数据
+     */
+    default Result<Map<String, Object>> findByPage(BasePage page) {
+
+        Page<E> pages = getService().findByPage(page);
         return result(pages);
     }
 

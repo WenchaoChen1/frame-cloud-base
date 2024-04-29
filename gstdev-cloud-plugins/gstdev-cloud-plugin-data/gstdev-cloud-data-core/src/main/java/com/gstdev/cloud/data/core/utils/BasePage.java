@@ -1,4 +1,4 @@
-package com.gstdev.cloud.rest.core.definition.dto;
+package com.gstdev.cloud.data.core.utils;
 
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -13,7 +13,7 @@ import jakarta.validation.constraints.NotNull;
  * @date : 2021/8/18 12:24
  */
 @Schema(title = "分页参数BO对象")
-public class Pager extends Sorter {
+public class BasePage extends BaseSort {
 
     @NotNull(message = "页码不能为空")
     @Min(value = 0, message = "页码不能为负")

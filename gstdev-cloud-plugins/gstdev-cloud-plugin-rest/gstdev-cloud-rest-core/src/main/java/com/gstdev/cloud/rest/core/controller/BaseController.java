@@ -5,7 +5,7 @@ import com.gstdev.cloud.base.definition.domain.base.Entity;
 import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.rest.core.annotation.AccessLimited;
 import com.gstdev.cloud.rest.core.annotation.Idempotent;
-import com.gstdev.cloud.rest.core.definition.dto.Pager;
+import com.gstdev.cloud.data.core.utils.BasePage;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -14,7 +14,6 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.apache.commons.lang3.ArrayUtils;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -56,14 +55,16 @@ public abstract class BaseController<E extends Entity, ID extends Serializable, 
             @ApiResponse(responseCode = "500", description = "查询失败")
         })
     @Parameters({
-        @Parameter(name = "pager", required = true, in = ParameterIn.QUERY, description = "分页Bo对象", schema = @Schema(implementation = Pager.class))
+        @Parameter(name = "pager", required = true, in = ParameterIn.QUERY, description = "分页Bo对象", schema = @Schema(implementation = BasePage.class))
     })
     @GetMapping
-    public Result<Map<String, Object>> findByPage(@Validated Pageable pageable) {
-        if (pageable.getSort().isSorted()) {
-            return Controller.super.findByPage(pageable.getPageNumber(), pageable.getPageSize(), pageable.getSort());
+    public Result<Map<String, Object>> findByPage(@Validated BasePage page) {
+        if (ArrayUtils.isNotEmpty(page.getProperties())) {
+            Sort.Direction direction = Sort.Direction.valueOf(page.getDirection());
+            return Controller.super.findByPage(page.getPageNumber(), page.getPageSize(), direction, page.getProperties());
+//            return Controller.super.findByPage(page.getPageNumber(), page.getPageSize(), pageable.getSort());
         } else {
-            return Controller.super.findByPage(pageable.getPageNumber(), pageable.getPageSize());
+            return Controller.super.findByPage(page.getPageNumber(), page.getPageSize());
         }
     }
 
