@@ -5,6 +5,7 @@ import com.gstdev.cloud.cache.jetcache.autoconfigure.CacheJetCacheAutoConfigurat
 import com.gstdev.cloud.oauth2.resource.server.auditing.SecurityAuditorAware;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
+import com.gstdev.cloud.oauth2.resource.server.processor.SecurityAuthorizationManager;
 import com.gstdev.cloud.oauth2.resource.server.processor.SecurityMatcherConfigurer;
 import com.gstdev.cloud.oauth2.resource.server.processor.SecurityMetadataSourceAnalyzer;
 import com.gstdev.cloud.oauth2.resource.server.processor.SecurityMetadataSourceStorage;
@@ -63,20 +64,18 @@ public class OAuth2AuthorizationConfiguration {
         return securityMatcherConfigurer;
     }
 
-    //  @Bean
-//  @ConditionalOnMissingBean
-//  public SecurityAuthorizationManager securityAuthorizationManager(SecurityMetadataSourceStorage securityMetadataSourceStorage, SecurityMatcherConfigurer securityMatcherConfigurer) {
-//    SecurityAuthorizationManager securityAuthorizationManager = new SecurityAuthorizationManager(securityMetadataSourceStorage, securityMatcherConfigurer);
-//    log.trace("[GstDev Cloud] |- Bean [Authorization Manager] Auto Configure.");
-//    return securityAuthorizationManager;
-//  }
-//
     @Bean
     @ConditionalOnMissingBean
-//  public OAuth2AuthorizeHttpRequestsConfigurerCustomer authorizeHttpRequestsConfigurerCustomer(SecurityMatcherConfigurer securityMatcherConfigurer, SecurityAuthorizationManager securityAuthorizationManager) {
-    public OAuth2AuthorizeHttpRequestsConfigurerCustomer authorizeHttpRequestsConfigurerCustomer(SecurityMatcherConfigurer securityMatcherConfigurer) {
-//    OAuth2AuthorizeHttpRequestsConfigurerCustomer OAuth2AuthorizeHttpRequestsConfigurerCustomer = new OAuth2AuthorizeHttpRequestsConfigurerCustomer(securityMatcherConfigurer, securityAuthorizationManager);
-        OAuth2AuthorizeHttpRequestsConfigurerCustomer OAuth2AuthorizeHttpRequestsConfigurerCustomer = new OAuth2AuthorizeHttpRequestsConfigurerCustomer(securityMatcherConfigurer);
+    public SecurityAuthorizationManager securityAuthorizationManager(SecurityMetadataSourceStorage securityMetadataSourceStorage, SecurityMatcherConfigurer securityMatcherConfigurer) {
+        SecurityAuthorizationManager securityAuthorizationManager = new SecurityAuthorizationManager(securityMetadataSourceStorage, securityMatcherConfigurer);
+        log.trace("[GstDev Cloud] |- Bean [Authorization Manager] Auto Configure.");
+        return securityAuthorizationManager;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public OAuth2AuthorizeHttpRequestsConfigurerCustomer authorizeHttpRequestsConfigurerCustomer(SecurityMatcherConfigurer securityMatcherConfigurer, SecurityAuthorizationManager securityAuthorizationManager) {
+        OAuth2AuthorizeHttpRequestsConfigurerCustomer OAuth2AuthorizeHttpRequestsConfigurerCustomer = new OAuth2AuthorizeHttpRequestsConfigurerCustomer(securityMatcherConfigurer, securityAuthorizationManager);
         log.trace("[GstDev Cloud] |- Bean [Authorize Http Requests Configurer Customer] Auto Configure.");
         return OAuth2AuthorizeHttpRequestsConfigurerCustomer;
     }
@@ -90,7 +89,6 @@ public class OAuth2AuthorizationConfiguration {
         return securityMetadataSourceAnalyzer;
     }
 
-    //
     @Bean
     @ConditionalOnMissingBean
     public OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer(OAuth2AuthorizationProperties authorizationProperties, JwtDecoder jwtDecoder, OAuth2ResourceServerProperties resourceServerProperties) {

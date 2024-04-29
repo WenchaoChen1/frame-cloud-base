@@ -1,6 +1,8 @@
 package com.gstdev.cloud.oauth2.resource.server.customizer;
 
+import com.gstdev.cloud.oauth2.resource.server.processor.SecurityAuthorizationManager;
 import com.gstdev.cloud.oauth2.resource.server.processor.SecurityMatcherConfigurer;
+import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
@@ -14,13 +16,14 @@ import org.springframework.stereotype.Component;
  **/
 // TODO 单独注入
 //@Im
-@Component
+//@Component
 public class OAuth2AuthorizeHttpRequestsConfigurerCustomer implements Customizer<AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry> {
     private final SecurityMatcherConfigurer securityMatcherConfigurer;
-//  private final SecurityAuthorizationManager securityAuthorizationManager;
+    private final SecurityAuthorizationManager securityAuthorizationManager;
 
-    public OAuth2AuthorizeHttpRequestsConfigurerCustomer(SecurityMatcherConfigurer securityMatcherConfigurer) {
+    public OAuth2AuthorizeHttpRequestsConfigurerCustomer(SecurityMatcherConfigurer securityMatcherConfigurer, SecurityAuthorizationManager securityAuthorizationManager) {
         this.securityMatcherConfigurer = securityMatcherConfigurer;
+        this.securityAuthorizationManager = securityAuthorizationManager;
     }
 
     public void customize(AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry configurer) {
@@ -28,9 +31,9 @@ public class OAuth2AuthorizeHttpRequestsConfigurerCustomer implements Customizer
         configurer
             .requestMatchers(securityMatcherConfigurer.getStaticRequestMatchers()).permitAll()
             .requestMatchers(securityMatcherConfigurer.getPermitAllRequestMatchers()).permitAll()
-//      .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
-//      .anyRequest().access(securityAuthorizationManager);
-            .anyRequest().authenticated();
+            .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
+            .anyRequest().access(securityAuthorizationManager);
+//            .anyRequest().authenticated();
 
     }
 }

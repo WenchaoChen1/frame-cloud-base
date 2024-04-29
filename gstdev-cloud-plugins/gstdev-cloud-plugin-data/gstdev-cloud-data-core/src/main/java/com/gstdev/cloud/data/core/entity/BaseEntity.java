@@ -9,6 +9,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
@@ -29,33 +33,37 @@ public abstract class BaseEntity extends AbstractEntity {
 
     @JsonSerialize(using = InstantSerializer.class)
     @Column(name = "created_at", updatable = false)
+    @CreatedDate
     private Instant createdAt;
+    @CreatedBy
     @JsonIgnore
     @Column(name = "created_by", length = 36, updatable = false)
     private String createdBy;
 
     @JsonIgnore
+    @LastModifiedDate
     @JsonSerialize(using = InstantSerializer.class)
     @Column(name = "updated_at")
     private Instant updatedAt;
+    @LastModifiedBy
     @JsonIgnore
     @Column(name = "updated_by", length = 36)
     private String updatedBy;
 
 
-    @PrePersist
-    public void addAuditInfo() {
+//    @PrePersist
+//    public void addAuditInfo() {
 //        createdAt = Instant.now();
-//    createdBy = SecurityUtils.getUserId();
+////    createdBy = SecurityUtils.getUserId();
 //        updatedAt = Instant.now();
-//    updatedBy = SecurityUtils.getUserId();
-    }
-
-    @PreUpdate
-    public void updateAuditInfo() {
-        updatedAt = Instant.now();
-//    updatedBy = SecurityUtils.getUserId();
-    }
+////    updatedBy = SecurityUtils.getUserId();
+//    }
+//
+//    @PreUpdate
+//    public void updateAuditInfo() {
+//        updatedAt = Instant.now();
+////    updatedBy = SecurityUtils.getUserId();
+//    }
 
 //    public ID getId() {
 //        return null;
@@ -89,51 +97,5 @@ public abstract class BaseEntity extends AbstractEntity {
 //  public Date getCreateTime() {
 //    return createTime;
 //  }
-//
-//  public void setCreateTime(Date createTime) {
-//    this.createTime = createTime;
-//  }
-//
-//  public Date getUpdateTime() {
-//    return updateTime;
-//  }
-//
-//  public void setUpdateTime(Date updateTime) {
-//    this.updateTime = updateTime;
-//  }
-//
-//  public Integer getRanking() {
-//    return ranking;
-//  }
-//
-//  public void setRanking(Integer ranking) {
-//    this.ranking = ranking;
-//  }
-//
-//  public String getCreateBy() {
-//    return createBy;
-//  }
-//
-//  public void setCreateBy(String createBy) {
-//    this.createBy = createBy;
-//  }
-//
-//  public String getUpdateBy() {
-//    return updateBy;
-//  }
-//
-//  public void setUpdateBy(String updateBy) {
-//    this.updateBy = updateBy;
-//  }
-//
-//  @Override
-//  public String toString() {
-//    return MoreObjects.toStringHelper(this)
-//      .add("createTime", createTime)
-//      .add("updateTime", updateTime)
-//      .add("createBy", createBy)
-//      .add("updateBy", updateBy)
-//      .add("ranking", ranking)
-//      .toString();
-//  }
+
 }
