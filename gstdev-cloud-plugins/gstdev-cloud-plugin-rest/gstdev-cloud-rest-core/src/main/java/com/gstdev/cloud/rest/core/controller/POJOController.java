@@ -20,7 +20,7 @@ public interface POJOController<E extends BasePOJOEntityINT<ID>
     , II extends BaseInsertInputInterface
     , UI extends BaseUpdateInputInterface
     , PQC extends BasePageQueryCriteriaInterface
-    , FQC extends BaseFindAllByQueryCriteriaInterface> extends Controller<E, ID, S> {
+    , FQC extends BaseFindAllByQueryCriteriaInterface> extends DtoController<E, ID, S, D> {
 
     S getService();
 
