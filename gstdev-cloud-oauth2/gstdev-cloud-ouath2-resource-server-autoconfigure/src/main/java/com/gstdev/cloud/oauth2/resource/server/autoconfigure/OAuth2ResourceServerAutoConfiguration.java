@@ -2,6 +2,7 @@ package com.gstdev.cloud.oauth2.resource.server.autoconfigure;
 
 
 import com.gstdev.cloud.message.core.logic.strategy.RequestMappingScanEventManager;
+import com.gstdev.cloud.oauth2.resource.server.autoconfigure.metadata.RemoteSecurityMetadataSyncListener;
 import com.gstdev.cloud.oauth2.resource.server.autoconfigure.scan.DefaultRequestMappingScanEventManager;
 import com.gstdev.cloud.oauth2.resource.server.configuration.OAuth2AuthorizationConfiguration;
 import com.gstdev.cloud.oauth2.resource.server.processor.SecurityMetadataSourceAnalyzer;
@@ -10,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.cloud.bus.ServiceMatcher;
 import org.springframework.cloud.bus.jackson.RemoteApplicationEventScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -41,14 +43,14 @@ public class OAuth2ResourceServerAutoConfiguration {
         log.info("[GstDev Cloud] |- Module [OAuth2 Resource Server Starter] Auto Configure.");
     }
 
-    //    @Bean
-//    @ConditionalOnMissingBean
-//    public RemoteSecurityMetadataSyncListener remoteSecurityMetadataSyncListener(SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer, ServiceMatcher serviceMatcher) {
-//        RemoteSecurityMetadataSyncListener listener = new RemoteSecurityMetadataSyncListener(securityMetadataSourceAnalyzer, serviceMatcher);
-//        log.trace("[GstDev Cloud] |- Bean [Security Metadata Refresh Listener] Auto Configure.");
-//        return listener;
-//    }
-//
+    @Bean
+    @ConditionalOnMissingBean
+    public RemoteSecurityMetadataSyncListener remoteSecurityMetadataSyncListener(SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer, ServiceMatcher serviceMatcher) {
+        RemoteSecurityMetadataSyncListener listener = new RemoteSecurityMetadataSyncListener(securityMetadataSourceAnalyzer, serviceMatcher);
+        log.trace("[GstDev Cloud] |- Bean [Security Metadata Refresh Listener] Auto Configure.");
+        return listener;
+    }
+
     @Bean
     @ConditionalOnMissingBean
     public RequestMappingScanEventManager requestMappingScanEventManager(SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer) {
