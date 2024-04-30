@@ -90,10 +90,7 @@ public class SecurityAuthorizationManager implements AuthorizationManager<Reques
         }
 
         // 获取资源的权限配置
-        List<FrameConfigAttribute> configAttributes
-
-
-            = findConfigAttribute(url, method, request);
+        List<FrameConfigAttribute> configAttributes = findConfigAttribute(url, method, request);
         if (CollectionUtils.isEmpty(configAttributes)) {
             log.warn("[GstDev Cloud] |- NO PRIVILEGES : [{}].", url);
 
