@@ -57,8 +57,12 @@ public class SecurityAuthorizationManager implements AuthorizationManager<Reques
 
         final HttpServletRequest request = object.getRequest();
 
-        String url = request.getRequestURI();
+//        String url = request.getRequestURI();
         String method = request.getMethod();
+
+//        String pathInfo = request.getPathInfo();
+//        String contextPath = request.getContextPath();
+        String url = request.getServletPath();
 
         // 检查是否为静态资源，如果是，则直接放行
         if (securityMatcherConfigurer.isStaticResources(url)) {
@@ -86,7 +90,10 @@ public class SecurityAuthorizationManager implements AuthorizationManager<Reques
         }
 
         // 获取资源的权限配置
-        List<FrameConfigAttribute> configAttributes = findConfigAttribute(url, method, request);
+        List<FrameConfigAttribute> configAttributes
+
+
+            = findConfigAttribute(url, method, request);
         if (CollectionUtils.isEmpty(configAttributes)) {
             log.warn("[GstDev Cloud] |- NO PRIVILEGES : [{}].", url);
 
