@@ -1,4 +1,4 @@
-package com.gstdev.cloud.rest.core.annotation;
+package com.gstdev.cloud.springframework.openfeign.annotation;
 
 import java.lang.annotation.*;
 

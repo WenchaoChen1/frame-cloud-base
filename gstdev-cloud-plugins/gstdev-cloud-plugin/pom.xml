@@ -16,5 +16,6 @@
 
     <modules>
         <module>gstdev-cloud-sentinel-alibaba</module>
+        <module>gstdev-cloud-springframework-openfeign</module>
     </modules>
 </project>

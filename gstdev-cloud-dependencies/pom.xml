@@ -396,6 +396,12 @@
                 <artifactId>gstdev-cloud-sentinel-alibaba</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
+            <!--=========================================== plugins-sentinel ===================================-->
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-springframework-openfeign</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
 
             <!-- starters -->
             <dependency>
