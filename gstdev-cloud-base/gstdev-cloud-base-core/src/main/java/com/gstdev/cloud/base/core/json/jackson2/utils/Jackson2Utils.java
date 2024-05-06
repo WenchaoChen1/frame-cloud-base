@@ -33,7 +33,19 @@ public class Jackson2Utils {
     @Autowired
     private ObjectMapper objectMapper;
 
+    public Jackson2Utils(ObjectMapper objectMapper) {
+        if (ObjectUtils.isNotEmpty(objectMapper)) {
+            OBJECT_MAPPER = objectMapper;
+        } else {
+            OBJECT_MAPPER = new ObjectMapper();
+        }
+    }
     public static ObjectMapper getObjectMapper() {
+        if(ObjectUtils.isNotEmpty(OBJECT_MAPPER)){
+            return OBJECT_MAPPER;
+        }else {
+            OBJECT_MAPPER = new ObjectMapper();
+        }
         return OBJECT_MAPPER;
     }
 
