@@ -29,7 +29,7 @@ public class FeignRequestInterceptor implements RequestInterceptor {
     @Override
     public void apply(RequestTemplate requestTemplate) {
         HttpServletRequest httpServletRequest = getHttpServletRequest();
-
+        System.out.println("aaaaaaaaaaaa"+requestTemplate.url());
         if (httpServletRequest != null) {
             Map<String, String> headers = JakartaServletUtil.getHeaderMap(httpServletRequest);
             // 传递所有请求头,防止部分丢失

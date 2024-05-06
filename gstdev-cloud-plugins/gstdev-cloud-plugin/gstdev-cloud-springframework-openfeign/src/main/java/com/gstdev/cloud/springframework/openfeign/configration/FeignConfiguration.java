@@ -26,38 +26,38 @@ import java.util.concurrent.TimeUnit;
  * <p> Description : 自定义通用的Feign Fallback处理工厂(基于Sentinel) </p>
  * <p>
  *
- * @see <a href="https://blog.csdn.net/ttzommed/article/details/90669320">参考文档</a>
+ * @see <a href="https://blog.csdn.net/weixin_36244726/article/details/103953852">参考文档</a>
  */
 @Configuration(proxyBeanMethods = false)
 public class FeignConfiguration {
 
-//  private static final Logger log = LoggerFactory.getLogger(FeignConfiguration.class);
-//
-//  @Autowired(required = false)
-//  private List<AnnotatedParameterProcessor> parameterProcessors = new ArrayList<>();
-//
-//  @Autowired(required = false)
-//  private FeignClientProperties feignClientProperties;
-//
-//  @Bean
-//  public Contract feignContract(ConversionService feignConversionService) {
-//    boolean decodeSlash = feignClientProperties == null || feignClientProperties.isDecodeSlash();
-//    log.info("[GstDev Cloud] |- Bean [GstDev Cloud FeignInnerContract] Auto Configure.");
-//    return new FeignInnerContract(parameterProcessors, feignConversionService, decodeSlash);
-//  }
-//
-//  @Bean
-//  @ConditionalOnMissingBean(FeignRequestInterceptor.class)
-//  public RequestInterceptor feignRequestInterceptor() {
-//    FeignRequestInterceptor feignRequestInterceptor = new FeignRequestInterceptor();
-//    log.trace("[GstDev Cloud] |- Bean [Feign Request Interceptor] Auto Configure.");
-//    return feignRequestInterceptor;
-//  }
-//
-//  @Bean
-//  public ErrorDecoder errorDecoder() {
-//    return new FeignErrorDecoder();
-//  }
+  private static final Logger log = LoggerFactory.getLogger(FeignConfiguration.class);
+
+  @Autowired(required = false)
+  private List<AnnotatedParameterProcessor> parameterProcessors = new ArrayList<>();
+
+  @Autowired(required = false)
+  private FeignClientProperties feignClientProperties;
+
+  @Bean
+  public Contract feignContract(ConversionService feignConversionService) {
+    boolean decodeSlash = feignClientProperties == null || feignClientProperties.isDecodeSlash();
+    log.info("[GstDev Cloud] |- Bean [GstDev Cloud FeignInnerContract] Auto Configure.");
+    return new FeignInnerContract(parameterProcessors, feignConversionService, decodeSlash);
+  }
+
+  @Bean
+  @ConditionalOnMissingBean(FeignRequestInterceptor.class)
+  public RequestInterceptor feignRequestInterceptor() {
+    FeignRequestInterceptor feignRequestInterceptor = new FeignRequestInterceptor();
+    log.trace("[GstDev Cloud] |- Bean [Feign Request Interceptor] Auto Configure.");
+    return feignRequestInterceptor;
+  }
+
+  @Bean
+  public ErrorDecoder errorDecoder() {
+    return new FeignErrorDecoder();
+  }
 
   /**
    * Feign Logger 配置
@@ -99,13 +99,13 @@ public class FeignConfiguration {
    *
    * @see <a href="https://blog.csdn.net/weixin_36244726/article/details/103953852"></a>
    */
-//  @Bean
-//  public Request.Options options() {
-//    return new Request.Options(10, TimeUnit.SECONDS, 60, TimeUnit.SECONDS, true);
-//  }
-//
-//  @Bean
-//  public Retryer feignRetryer() {
-//    return new Retryer.Default();
-//  }
+  @Bean
+  public Request.Options options() {
+    return new Request.Options(10, TimeUnit.SECONDS, 60, TimeUnit.SECONDS, true);
+  }
+
+  @Bean
+  public Retryer feignRetryer() {
+    return new Retryer.Default();
+  }
 }
