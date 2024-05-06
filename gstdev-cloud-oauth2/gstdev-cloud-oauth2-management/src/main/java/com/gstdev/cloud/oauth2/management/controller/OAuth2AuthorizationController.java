@@ -3,6 +3,7 @@ package com.gstdev.cloud.oauth2.management.controller;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.oauth2.data.jpa.entity.FrameAuthorization;
 import com.gstdev.cloud.oauth2.data.jpa.service.FrameAuthorizationService;
+import com.gstdev.cloud.oauth2.management.domain.base.Oauth2AuthorizationVo;
 import com.gstdev.cloud.oauth2.management.mapper.vo.Oauth2AuthorizationVoMapper;
 import com.gstdev.cloud.rest.core.annotation.AccessLimited;
 import com.gstdev.cloud.rest.core.annotation.Idempotent;
@@ -18,6 +19,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.annotation.Resource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -70,8 +73,8 @@ public class OAuth2AuthorizationController implements Controller<FrameAuthorizat
         @Parameter(name = "pager", required = true, in = ParameterIn.QUERY, description = "分页Bo对象", schema = @Schema(implementation = BasePage.class))
     })
     @GetMapping
-    public Result<Map<String, Object>> findByPage(@Validated BasePage page) {
-        return Result.success((Map<String, Object>) oauth2AuthorizationVoMapper.entityToVo(getService().findByPage(page)));
+    public Result<Page<Oauth2AuthorizationVo>> findByPageToResult(@Validated BasePage page) {
+        return Result.success(oauth2AuthorizationVoMapper.entityToVo(getService().findByPage(page)));
     }
 
 

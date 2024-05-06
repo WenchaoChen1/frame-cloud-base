@@ -23,7 +23,7 @@ public interface Oauth2AuthorizationVoMapper extends BaseVoMapper<Oauth2Authoriz
 
     default Page<Oauth2AuthorizationVo> entityToVo(Page<FrameAuthorization> page) {
         List<Oauth2AuthorizationVo> responses = this.entityToVo(page.getContent());
-        return new PageImpl(responses, page.getPageable(), page.getTotalElements());
+        return new PageImpl<>(responses, page.getPageable(), page.getTotalElements());
     }
 }
 
