@@ -58,7 +58,8 @@ public class GlobalExceptionHandler {
 
     public static Result<String> resolveException(Exception ex, String path) {
 
-        log.trace("[GstDev Cloud] |- Global Exception Handler, Path : [{}], Exception：", path, ex);
+//        log.trace("[GstDev Cloud] |- Global Exception Handler, Path : [{}], Exception：", path, ex);
+        log.error("[GstDev Cloud] |- Global Exception Handler, Path : [{}], Exception：", path, ex);
 
         if (ex instanceof FrameException exception) {
             Result<String> result = exception.getResult();
