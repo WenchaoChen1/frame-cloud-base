@@ -44,7 +44,6 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
 
     @PostConstruct
     public void init() {
-        System.out.println("aaaaaaaaaaaa");
         List<RegisteredClient> registeredClients = this.registryCloents();
         for (RegisteredClient registeredClient : registeredClients) {
             RegisteredClient registeredClientId = this.findByClientId(registeredClient.getClientId());
