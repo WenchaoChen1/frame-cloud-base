@@ -102,14 +102,7 @@ public class AuthorizationServerConfiguration {
 
 //    SessionRegistry sessionRegistry = OAuth2ConfigurerUtils.getOptionalBean(http, SessionRegistry.class);
 
-        //提供完全自定义 OAuth2 授权服务器安全配置的能力。它允许您指定要使用的核心组件 - 例如，RegisteredClientRepository、
-        // OAuth2AuthorizationService、OAuth2TokenGenerator和其他。此外，它还允许您自定义协议端点的请求处理逻辑 -
-        // 例如，授权端点、设备授权端点、设备验证端点、令牌端点、令牌内省端点等。
-//    DefaultAuthenticationFailureHandler errorResponseHandler = new DefaultAuthenticationFailureHandler();
         OAuth2AuthenticationFailureResponseHandler errorResponseHandler = new OAuth2AuthenticationFailureResponseHandler();
-//    DefaultAuthenticationSuccessHandler successResponseHandler = new DefaultAuthenticationSuccessHandler();
-//    DefaultAccessDeniedHandler accessDeniedHandler = new DefaultAccessDeniedHandler();
-//    DefaultAuthenticationEntryPoint authenticationEntryPoint = new DefaultAuthenticationEntryPoint();
         OAuth2AuthorizationServerConfigurer authorizationServerConfigurer = http.getConfigurer(OAuth2AuthorizationServerConfigurer.class);
 //    authorizationServerConfigurer.registeredClientRepository(registeredClientRepository);
 //    authorizationServerConfigurer.authorizationService(authorizationService);
