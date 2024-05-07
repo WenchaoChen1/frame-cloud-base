@@ -2,6 +2,8 @@ package com.gstdev.cloud.oauth2.management.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.message.core.logic.event.AccountReleaseFromCacheEvent;
+import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
+import com.gstdev.cloud.oauth2.management.dto.SignOut;
 import com.gstdev.cloud.oauth2.management.service.OAuth2ComplianceService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -18,10 +20,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>Description: OAuth2 扩展 接口 </p>
@@ -54,14 +53,19 @@ public class OAuthSignOutController {
         @Parameter(name = "accessToken", required = true, description = "Access Token"),
         @Parameter(name = "Authorization", in = ParameterIn.HEADER, required = true, description = "Basic Token"),
     })
-    @PutMapping("/sign-out")
-    public Result<String> signOut(@RequestParam(name = "accessToken") @NotBlank String accessToken, HttpServletRequest request) {
-        OAuth2Authorization authorization = authorizationService.findByToken(accessToken, OAuth2TokenType.ACCESS_TOKEN);
+    @PostMapping("/sign-out")
+//    @RequestParam(name = "accessToken") @NotBlank
+    public Result<String> signOut(@RequestBody SignOut signOut, HttpServletRequest request) {
+        if (ObjectUtils.isEmpty(signOut.getAccessToken())) {
+            return Result.failure("access token is empty");
+        }
+        OAuth2Authorization authorization = authorizationService.findByToken(signOut.getAccessToken(), OAuth2TokenType.ACCESS_TOKEN);
         if (ObjectUtils.isNotEmpty(authorization)) {
             authorizationService.remove(authorization);
-            complianceService.save(authorization.getPrincipalName(), authorization.getRegisteredClientId(), "退出系统", request);
+            complianceService.save(authorization.getPrincipalName(), authorization.getRegisteredClientId(), "Logout", request);
             applicationContext.publishEvent(new AccountReleaseFromCacheEvent(authorization.getPrincipalName()));
+            return Result.success("Logout successful");
         }
-        return Result.success("注销成功");
+        return Result.failure("Opt out failed.");
     }
 }

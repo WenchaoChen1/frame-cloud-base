@@ -91,7 +91,6 @@ public class SecurityMetadataSourceStorage {
      * @param configAttributes 权限配置属性
      */
     private void writeToIndexable(FrameRequest frameRequest, List<FrameConfigAttribute> configAttributes) {
-        System.out.println("aaaaaaaaaaaaaaaaa-"+frameRequest.toString());
         this.indexable.put(frameRequest, configAttributes);
     }
 
