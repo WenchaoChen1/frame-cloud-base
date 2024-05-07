@@ -13,7 +13,9 @@ import java.util.List;
 
 public interface BaseDtoService<E extends Entity
     , ID extends Serializable
-    , D extends BaseDtoInterface<ID>> extends BaseService<E, ID> {
+//    , D extends BaseDtoInterface<ID>
+    , D
+    > extends BaseService<E, ID> {
     /**
      * 根据ID查询数据
      *

@@ -34,7 +34,10 @@ import java.util.Map;
 public abstract class BaseDtoController<E extends Entity
     , ID extends Serializable
     , S extends BaseDtoService<E, ID, D>
-    , D extends BaseDtoInterface<ID>> implements DtoController<E, ID, S,D> {
+//    , D extends BaseDtoInterface<ID>
+    , D
+    > implements DtoController<E, ID, S,D> {
+
 
     private S service;
 

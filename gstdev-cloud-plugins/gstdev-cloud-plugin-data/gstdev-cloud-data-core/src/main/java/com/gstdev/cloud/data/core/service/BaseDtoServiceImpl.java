@@ -30,7 +30,8 @@ public abstract class BaseDtoServiceImpl<E extends Entity
     , ID extends Serializable
     , R extends BaseRepository<E, ID>
     , M extends BaseDtoMapper<E, D>
-    , D extends BaseDtoInterface<ID>
+//    , D extends BaseDtoInterface<ID>
+    , D
     > extends BaseServiceImpl<E, ID, R> implements BaseDtoService<E, ID, D> {
 
     private M mapper;
