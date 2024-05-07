@@ -14,10 +14,8 @@ import org.springframework.stereotype.Component;
  * @author: wenchao.chen
  * @create: 2024/03/25 15:55
  **/
-// TODO 单独注入
-//@Im
-//@Component
 public class OAuth2AuthorizeHttpRequestsConfigurerCustomer implements Customizer<AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry> {
+
     private final SecurityMatcherConfigurer securityMatcherConfigurer;
     private final SecurityAuthorizationManager securityAuthorizationManager;
 
@@ -33,7 +31,6 @@ public class OAuth2AuthorizeHttpRequestsConfigurerCustomer implements Customizer
             .requestMatchers(securityMatcherConfigurer.getPermitAllRequestMatchers()).permitAll()
             .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
             .anyRequest().access(securityAuthorizationManager);
-//            .anyRequest().authenticated();
 
     }
 }

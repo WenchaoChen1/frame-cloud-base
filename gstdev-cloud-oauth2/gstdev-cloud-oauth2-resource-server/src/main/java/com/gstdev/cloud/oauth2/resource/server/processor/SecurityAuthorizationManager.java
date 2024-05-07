@@ -59,7 +59,6 @@ public class SecurityAuthorizationManager implements AuthorizationManager<Reques
 
 //        String url = request.getRequestURI();
         String method = request.getMethod();
-
 //        String pathInfo = request.getPathInfo();
 //        String contextPath = request.getContextPath();
         String url = request.getServletPath();
