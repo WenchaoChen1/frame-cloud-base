@@ -6,6 +6,8 @@ import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2AuthenticationPr
 import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2EndpointUtils;
 import com.gstdev.cloud.oauth2.core.constants.OAuth2ErrorKeys;
 import com.gstdev.cloud.oauth2.core.definition.service.EnhanceUserDetailsService;
+import com.gstdev.cloud.oauth2.core.exception.AccountEndpointLimitedException;
+import com.gstdev.cloud.oauth2.data.jpa.storage.JpaOAuth2AuthorizationService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
@@ -96,30 +98,30 @@ public abstract class AbstractUserDetailsAuthenticationProvider extends Abstract
             throw new CredentialsExpiredException(messages.getMessage("AbstractUserDetailsAuthenticationProvider.credentialsExpired", "User credentials have expired"));
         }
 
-//        if (authenticationProperties.getSignInEndpointLimited().getEnabled() && !authenticationProperties.getSignInKickOutLimited().getEnabled()) {
-//            if (authorizationService instanceof JpaOAuth2AuthorizationService jpaOAuth2AuthorizationService) {
-//                int count = jpaOAuth2AuthorizationService.findAuthorizationCount(registeredClientId, user.getUsername());
-//                if (count >= authenticationProperties.getSignInEndpointLimited().getMaximum()) {
-//                    throw new AccountEndpointLimitedException("Use same endpoint signIn exceed limit");
-//                }
-//            }
-//        }
-//
-//        if (!authenticationProperties.getSignInEndpointLimited().getEnabled() && authenticationProperties.getSignInKickOutLimited().getEnabled()) {
-//            if (authorizationService instanceof JpaOAuth2AuthorizationService jpaOAuth2AuthorizationService) {
-//                List<OAuth2Authorization> authorizations = jpaOAuth2AuthorizationService.findAvailableAuthorizations(registeredClientId, user.getUsername());
-//                if (CollectionUtils.isNotEmpty(authorizations)) {
-//                    authorizations.forEach(authorization -> {
-//                        OAuth2Authorization.Token<OAuth2RefreshToken> refreshToken = authorization.getToken(OAuth2RefreshToken.class);
-//                        if (ObjectUtils.isNotEmpty(refreshToken)) {
-//                            authorization = OAuth2AuthenticationProviderUtils.invalidate(authorization, refreshToken.getToken());
-//                        }
-//                        log.debug("[Gstdev Cloud] |- Sign in user [{}] with token id [{}] will be kicked out.", user.getUsername(), authorization.getId());
-//                        jpaOAuth2AuthorizationService.save(authorization);
-//                    });
-//                }
-//            }
-//        }
+        if (authenticationProperties.getSignInEndpointLimited().getEnabled() && !authenticationProperties.getSignInKickOutLimited().getEnabled()) {
+            if (authorizationService instanceof JpaOAuth2AuthorizationService jpaOAuth2AuthorizationService) {
+                int count = jpaOAuth2AuthorizationService.findAuthorizationCount(registeredClientId, user.getUsername());
+                if (count >= authenticationProperties.getSignInEndpointLimited().getMaximum()) {
+                    throw new AccountEndpointLimitedException("Use same endpoint signIn exceed limit");
+                }
+            }
+        }
+
+        if (!authenticationProperties.getSignInEndpointLimited().getEnabled() && authenticationProperties.getSignInKickOutLimited().getEnabled()) {
+            if (authorizationService instanceof JpaOAuth2AuthorizationService jpaOAuth2AuthorizationService) {
+                List<OAuth2Authorization> authorizations = jpaOAuth2AuthorizationService.findAvailableAuthorizations(registeredClientId, user.getUsername());
+                if (CollectionUtils.isNotEmpty(authorizations)) {
+                    authorizations.forEach(authorization -> {
+                        OAuth2Authorization.Token<OAuth2RefreshToken> refreshToken = authorization.getToken(OAuth2RefreshToken.class);
+                        if (ObjectUtils.isNotEmpty(refreshToken)) {
+                            authorization = OAuth2AuthenticationProviderUtils.invalidate(authorization, refreshToken.getToken());
+                        }
+                        log.debug("[Gstdev Cloud] |- Sign in user [{}] with token id [{}] will be kicked out.", user.getUsername(), authorization.getId());
+                        jpaOAuth2AuthorizationService.save(authorization);
+                    });
+                }
+            }
+        }
 
         return new UsernamePasswordAuthenticationToken(user, user.getPassword(), user.getAuthorities());
     }
