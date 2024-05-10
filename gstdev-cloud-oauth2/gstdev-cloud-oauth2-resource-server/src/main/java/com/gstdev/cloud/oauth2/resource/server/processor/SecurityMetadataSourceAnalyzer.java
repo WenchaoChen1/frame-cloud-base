@@ -28,7 +28,6 @@ import java.util.*;
  * @author : cc
  * @date : 2021/8/1 17:43
  */
-@Component
 public class SecurityMetadataSourceAnalyzer {
 
     private static final Logger log = LoggerFactory.getLogger(SecurityMetadataSourceAnalyzer.class);
