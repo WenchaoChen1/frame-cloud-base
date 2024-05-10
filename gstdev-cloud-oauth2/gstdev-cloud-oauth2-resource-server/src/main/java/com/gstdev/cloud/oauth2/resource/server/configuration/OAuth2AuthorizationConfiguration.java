@@ -2,6 +2,7 @@ package com.gstdev.cloud.oauth2.resource.server.configuration;
 
 import com.gstdev.cloud.base.core.support.BearerTokenResolver;
 import com.gstdev.cloud.cache.jetcache.autoconfigure.CacheJetCacheAutoConfiguration;
+import com.gstdev.cloud.oauth2.core.exception.SecurityGlobalExceptionHandler;
 import com.gstdev.cloud.oauth2.resource.server.auditing.SecurityAuditorAware;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
@@ -20,6 +21,7 @@ import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2Res
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
@@ -34,10 +36,10 @@ import org.springframework.web.servlet.resource.ResourceUrlProvider;
 @AutoConfiguration(after = CacheJetCacheAutoConfiguration.class)
 @EnableConfigurationProperties({OAuth2AuthorizationProperties.class})
 @EnableMethodSecurity(proxyTargetClass = true)
-//@Import({
-//  SecurityGlobalExceptionHandler.class,
+@Import({
+  SecurityGlobalExceptionHandler.class,
 //  OAuth2SessionConfiguration.class,
-//})
+})
 public class OAuth2AuthorizationConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2AuthorizationConfiguration.class);

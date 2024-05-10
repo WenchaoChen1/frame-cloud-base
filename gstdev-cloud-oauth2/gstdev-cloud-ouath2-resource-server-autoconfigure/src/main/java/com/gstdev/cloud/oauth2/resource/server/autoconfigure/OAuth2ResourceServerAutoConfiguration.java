@@ -2,6 +2,7 @@ package com.gstdev.cloud.oauth2.resource.server.autoconfigure;
 
 
 import com.gstdev.cloud.message.core.logic.strategy.RequestMappingScanEventManager;
+import com.gstdev.cloud.oauth2.core.exception.SecurityGlobalExceptionHandler;
 import com.gstdev.cloud.oauth2.resource.server.autoconfigure.metadata.RemoteSecurityMetadataSyncListener;
 import com.gstdev.cloud.oauth2.resource.server.autoconfigure.scan.DefaultRequestMappingScanEventManager;
 import com.gstdev.cloud.oauth2.resource.server.configuration.OAuth2AuthorizationConfiguration;
@@ -14,6 +15,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.cloud.bus.ServiceMatcher;
 import org.springframework.cloud.bus.jackson.RemoteApplicationEventScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -30,7 +32,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync
 @EnableAspectJAutoProxy(exposeProxy = true, proxyTargetClass = true)
 @Import({OAuth2AuthorizationConfiguration.class})
-//@ComponentScan(basePackageClasses = SecurityGlobalExceptionHandler.class)
+@ComponentScan(basePackageClasses = SecurityGlobalExceptionHandler.class)
 @RemoteApplicationEventScan({
     "com.gstdev.cloud.oauth2.resource.server.autoconfigure.bus"
 })
