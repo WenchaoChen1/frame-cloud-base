@@ -12,7 +12,6 @@ import java.awt.*;
  * @author : cc
  * @date : 2024/12/20 22:55
  */
-//@Component
 public class ChineseGifCaptchaRenderer extends AbstractGifGraphicRenderer {
 
     @Override

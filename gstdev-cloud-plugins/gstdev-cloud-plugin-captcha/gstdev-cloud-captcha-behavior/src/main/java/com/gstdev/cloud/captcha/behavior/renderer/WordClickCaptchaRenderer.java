@@ -32,7 +32,6 @@ import java.util.stream.IntStream;
  * @author : cc
  * @date : 2024/12/14 9:31
  */
-//@Component
 public class WordClickCaptchaRenderer extends AbstractBehaviorRenderer<String, List<Coordinate>> {
 
     private WordClickCaptcha wordClickCaptcha;

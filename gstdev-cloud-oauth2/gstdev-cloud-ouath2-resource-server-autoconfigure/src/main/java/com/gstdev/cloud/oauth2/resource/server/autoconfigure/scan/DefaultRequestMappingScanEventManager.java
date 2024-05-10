@@ -18,7 +18,6 @@ import java.util.List;
  * @author : cc
  * @date : 2022/1/17 0:08
  */
-//@Component
 public class DefaultRequestMappingScanEventManager implements RequestMappingScanEventManager {
 
     private final SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer;

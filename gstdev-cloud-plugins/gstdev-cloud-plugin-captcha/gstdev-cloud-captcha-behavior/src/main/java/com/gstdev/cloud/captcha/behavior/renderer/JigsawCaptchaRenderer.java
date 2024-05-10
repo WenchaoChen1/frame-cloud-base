@@ -31,7 +31,6 @@ import java.util.Objects;
  * @author : cc
  * @date : 2024/12/11 15:29
  */
-//@Component
 public class JigsawCaptchaRenderer extends AbstractBehaviorRenderer<String, Coordinate> {
 
     private static final Logger log = LoggerFactory.getLogger(JigsawCaptchaRenderer.class);

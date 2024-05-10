@@ -33,7 +33,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author : cc
  * @date : 2024/12/22 18:52
  */
-//@Component
 public class ResourceProvider implements InitializingBean {
 
     private static final Logger log = LoggerFactory.getLogger(ResourceProvider.class);

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
  * @author : cc
  * @date : 2024/12/20 20:39
  */
-//@Component
 public class SpecCaptchaRenderer extends AbstractPngGraphicRenderer {
 
     @Override

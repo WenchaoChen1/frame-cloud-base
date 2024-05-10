@@ -19,7 +19,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author : cc
  * @date : 2024/12/14 14:38
  */
-//@Component
 public class CaptchaRendererFactory {
 
     @Autowired
