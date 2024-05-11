@@ -1,0 +1,2 @@
+com.gstdev.cloud.starter.oauth2.authentication.server.configuration.AuthorizationServerConfiguration
+com.gstdev.cloud.starter.oauth2.authentication.server.configuration.DefaultSecurityConfiguration

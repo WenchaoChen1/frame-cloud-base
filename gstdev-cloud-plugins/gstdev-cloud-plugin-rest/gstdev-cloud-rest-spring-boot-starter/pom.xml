@@ -29,11 +29,16 @@
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-rest-protect</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
-            <artifactId>gstdev-cloud-starter-captcha</artifactId>
+            <artifactId>gstdev-cloud-starter-cache</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.gstdev.cloud</groupId>-->
+<!--            <artifactId>gstdev-cloud-starter-captcha</artifactId>-->
+<!--        </dependency>-->
+
+
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-springframework-openfeign</artifactId>
