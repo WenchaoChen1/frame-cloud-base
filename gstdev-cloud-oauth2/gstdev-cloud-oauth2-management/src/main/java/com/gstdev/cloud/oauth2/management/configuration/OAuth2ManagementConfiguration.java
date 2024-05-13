@@ -33,6 +33,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
     "com.gstdev.cloud.oauth2.management.repository",
 })
 @ComponentScan(basePackages = {
+    "com.gstdev.cloud.oauth2.management.mapper",
     "com.gstdev.cloud.oauth2.management.service",
     "com.gstdev.cloud.oauth2.management.controller",
 })

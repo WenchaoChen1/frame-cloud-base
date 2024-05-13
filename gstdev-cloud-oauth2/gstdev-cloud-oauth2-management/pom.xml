@@ -19,14 +19,16 @@
     <description>Gstdev Cloud 基于 Spring Authorization Server 的认证核心管理模块</description>
 
     <dependencies>
-        <dependency>
-            <groupId>com.gstdev.cloud</groupId>
-            <artifactId>gstdev-cloud-starter-captcha</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-starter-captcha</artifactId>
+        </dependency>
+
 
         <!--        <dependency>-->
         <!--            <groupId>com.gstdev.cloud</groupId>-->
