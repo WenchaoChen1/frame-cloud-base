@@ -1,4 +1,4 @@
-package com.gstdev.cloud.sentinel.alibaba.autoconfigure.enhance;
+package com.gstdev.cloud.sentinel.alibaba.configuration.enhance;
 
 import feign.Target;
 import org.springframework.cglib.proxy.Enhancer;

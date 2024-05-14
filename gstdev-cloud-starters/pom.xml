@@ -16,6 +16,7 @@
     </parent>
 
     <modules>
+        <module>gstdev-cloud-starter</module>
         <module>gstdev-cloud-starter-web</module>
         <module>gstdev-cloud-starter-swagger</module>
         <module>gstdev-cloud-starter-storage</module>

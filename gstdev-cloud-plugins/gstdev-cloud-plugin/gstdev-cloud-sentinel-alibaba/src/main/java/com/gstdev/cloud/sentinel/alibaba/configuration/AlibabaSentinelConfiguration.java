@@ -1,10 +1,10 @@
-package com.gstdev.cloud.sentinel.alibaba.autoconfigure;
+package com.gstdev.cloud.sentinel.alibaba.configuration;
 
 import com.alibaba.csp.sentinel.adapter.spring.webflux.callback.BlockRequestHandler;
 import com.alibaba.csp.sentinel.adapter.spring.webmvc.callback.BlockExceptionHandler;
 import com.gstdev.cloud.base.core.json.jackson2.utils.Jackson2Utils;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.sentinel.alibaba.autoconfigure.enhance.FrameSentinelFeign;
+import com.gstdev.cloud.sentinel.alibaba.configuration.enhance.FrameSentinelFeign;
 import feign.Feign;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
@@ -29,15 +29,15 @@ import org.springframework.web.reactive.function.server.ServerResponse;
  * @date : 2022/2/5 17:57
  * @see <a href="https://blog.csdn.net/ttzommed/article/details/90669320">参考文档</a>
  */
-@AutoConfiguration
+@Configuration(proxyBeanMethods = false)
 @ConditionalOnClass
-public class AlibabaSentinelAutoConfiguration {
+public class AlibabaSentinelConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(AlibabaSentinelAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(AlibabaSentinelConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[GstDev Cloud] |- Module [Facility Alibaba Sentinel Starter] Auto Configure.");
+        log.info("[GstDev Cloud] |- Module [Alibaba Sentinel] Configuration.");
     }
 
     @Bean

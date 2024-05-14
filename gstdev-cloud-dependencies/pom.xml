@@ -402,8 +402,19 @@
                 <artifactId>gstdev-cloud-springframework-openfeign</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
+            <!--=========================================== starters ===================================-->
 
-            <!-- starters -->
+            <!--=========================================== starter - other ===================================-->
+            <!--=========================================== starter-sentinel ===================================-->
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-sentinel-alibaba</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+
+
+
+
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
                 <artifactId>gstdev-cloud-starter-storage-core</artifactId>

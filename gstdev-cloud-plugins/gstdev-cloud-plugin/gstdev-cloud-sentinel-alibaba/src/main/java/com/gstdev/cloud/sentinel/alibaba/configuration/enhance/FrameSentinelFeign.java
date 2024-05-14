@@ -1,4 +1,4 @@
-package com.gstdev.cloud.sentinel.alibaba.autoconfigure.enhance;
+package com.gstdev.cloud.sentinel.alibaba.configuration.enhance;
 
 import com.alibaba.cloud.sentinel.feign.SentinelContractHolder;
 import com.alibaba.cloud.sentinel.feign.SentinelFeign;

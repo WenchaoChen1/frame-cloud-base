@@ -1,4 +1,4 @@
-package com.gstdev.cloud.sentinel.alibaba.autoconfigure.enhance;
+package com.gstdev.cloud.sentinel.alibaba.configuration.enhance;
 
 import com.google.common.base.Objects;
 import com.gstdev.cloud.base.core.exception.GlobalExceptionHandler;
