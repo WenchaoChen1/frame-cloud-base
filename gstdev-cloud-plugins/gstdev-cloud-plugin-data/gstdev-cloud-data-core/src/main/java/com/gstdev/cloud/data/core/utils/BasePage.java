@@ -23,11 +23,11 @@ public class BasePage extends BaseSort {
     @NotNull(message = "每页条数不能为空")
     @Min(value = 1, message = "每页条数至少为1条")
     @Max(value = 1000, message = "每页条数不能超过1000")
-    @Schema(title = "每页数据条数", type = "integer", minimum = "0", maximum = "1000", defaultValue = "10",description = "")
+    @Schema(title = "每页数据条数", type = "integer", minimum = "0", maximum = "1000", defaultValue = "10", description = "")
     private Integer pageSize = 10;
 
     public Integer getPageNumber() {
-        return pageNumber;
+        return pageNumber == 0 ? pageNumber : pageNumber - 1;
     }
 
     public void setPageNumber(Integer pageNumber) {
