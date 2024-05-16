@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <name>GstDev Cloud :: Starter :: Sentinel Alibaba</name>
+    <description>${project.name}</description>
+    <packaging>jar</packaging>
+
+    <artifactId>gstdev-cloud-starter-sentinel-alibaba</artifactId>
+
     <parent>
         <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-starter</artifactId>
         <version>2024.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <name>GstDev Cloud :: Starter :: Sentinel Alibaba</name>
-    <description>${project.name}</description>
-    <packaging>jar</packaging>
 
-    <artifactId>gstdev-cloud-starter-sentinel-alibaba</artifactId>
     <dependencies>
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
