@@ -14,6 +14,7 @@ import org.dromara.hutool.core.tree.TreeNode;
 import org.dromara.hutool.core.tree.TreeUtil;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
@@ -31,7 +32,7 @@ import java.util.stream.Collectors;
  * @author : cc
  * @date : 2020/4/29 18:56
  */
-public interface Controller<E extends Entity, ID extends Serializable, S extends BaseService<E, ID>> {
+public interface Controller<E extends Entity, ID extends Serializable, S > {
 
     /**
      * 获取Service
@@ -65,13 +66,13 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
     default <E extends Entity> Result<List<E>> result(List<E> domains) {
 
         if (null == domains) {
-            return Result.failure("查询数据失败！");
+            return Result.failure("Failed to query data!");
         }
 
         if (CollectionUtils.isNotEmpty(domains)) {
-            return Result.success("查询数据成功！", domains);
+            return Result.success("Query data successfully!", domains);
         } else {
-            return Result.empty("未查询到数据！");
+            return Result.empty("No data found!");
         }
     }
 
@@ -84,9 +85,9 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
      */
     default <T> Result<T[]> result(T[] domains) {
         if (ArrayUtils.isNotEmpty(domains)) {
-            return Result.success("查询数据成功！", domains);
+            return Result.success("Query data successfully!", domains);
         } else {
-            return Result.empty("未查询到数据！");
+            return Result.empty("No data found!");
         }
     }
 
@@ -99,13 +100,13 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
      */
     default <E extends Entity> Result<Map<String, Object>> result(Page<E> pages) {
         if (null == pages) {
-            return Result.failure("查询数据失败！");
+            return Result.failure("Failed to query data!");
         }
 
         if (CollectionUtils.isNotEmpty(pages.getContent())) {
-            return Result.success("查询数据成功！", getPageInfoMap(pages));
+            return Result.success("Query data successfully!", getPageInfoMap(pages));
         } else {
-            return Result.empty("未查询到数据！");
+            return Result.empty("No data found!");
         }
     }
 
@@ -118,13 +119,13 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
     default Result<Map<String, Object>> result(Map<String, Object> map) {
 
         if (null == map) {
-            return Result.failure("查询数据失败！");
+            return Result.failure("Failed to query data!");
         }
 
         if (MapUtils.isNotEmpty(map)) {
-            return Result.success("查询数据成功！", map);
+            return Result.success("Query data successfully!", map);
         } else {
-            return Result.empty("未查询到数据！");
+            return Result.empty("No data found!");
         }
     }
 
@@ -136,9 +137,9 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
      */
     default Result<String> result(String parameter) {
         if (ObjectUtils.isNotEmpty(parameter)) {
-            return Result.success("操作成功!", parameter);
+            return Result.success("operate successfully!", parameter);
         } else {
-            return Result.failure("操作失败!", parameter);
+            return Result.failure("operation failure!", parameter);
         }
     }
 
@@ -150,18 +151,18 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
      */
     default Result<Boolean> result(boolean status) {
         if (status) {
-            return Result.success("操作成功!", true);
+            return Result.success("operate successfully!", true);
         } else {
-            return Result.failure("操作失败!", false);
+            return Result.failure("operation failure!", false);
         }
     }
 
     default <E extends Entity> Result<List<MapTree<String>>> result(List<E> domains, Converter<E, TreeNode<String>> toTreeNode) {
         if (ObjectUtils.isNotEmpty(domains)) {
             List<TreeNode<String>> treeNodes = domains.stream().map(toTreeNode::convert).collect(Collectors.toList());
-            return Result.success("查询数据成功", TreeUtil.build(treeNodes, DefaultConstants.TREE_ROOT_ID));
+            return Result.success("Query data successfully", TreeUtil.build(treeNodes, DefaultConstants.TREE_ROOT_ID));
         } else {
-            return Result.empty("未查询到数据！");
+            return Result.empty("No data found!");
         }
     }
 

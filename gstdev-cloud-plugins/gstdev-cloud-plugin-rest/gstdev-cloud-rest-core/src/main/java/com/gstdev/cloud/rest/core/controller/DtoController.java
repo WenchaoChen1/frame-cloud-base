@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
  */
 public interface DtoController<E extends Entity
     , ID extends Serializable
-    , S extends BaseService<E, ID>
+    , S
     , D
     > extends Controller<E, ID, S> {
 

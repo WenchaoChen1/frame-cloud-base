@@ -144,7 +144,7 @@ public class Result<T> implements Serializable {
     }
 
     public static <T> Result<T> failure() {
-        return failure("操作失败！");
+        return failure("operation failure！");
     }
 
     public static <T> Result<T> empty(String message, int code, int status) {
