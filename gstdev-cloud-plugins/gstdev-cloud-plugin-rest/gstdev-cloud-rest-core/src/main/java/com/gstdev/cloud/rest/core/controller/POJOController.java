@@ -21,8 +21,8 @@ public interface POJOController<E extends BasePOJOEntityINT<ID>
     , UI extends BaseUpdateInputInterface
     , PQC extends BasePageQueryCriteriaInterface
     , FQC extends BaseFindAllByQueryCriteriaInterface> extends DtoController<E, ID, S, D> {
-
-    S getService();
+//
+//    S getService();
 
     M getMapper();
 

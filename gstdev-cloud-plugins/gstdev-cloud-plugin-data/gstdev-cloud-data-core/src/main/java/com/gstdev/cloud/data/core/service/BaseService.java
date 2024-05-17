@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface BaseService<E extends Entity, ID extends Serializable> {
+public interface BaseService<E extends Serializable, ID extends Serializable> {
     /**
      * 根据ID查询数据
      *

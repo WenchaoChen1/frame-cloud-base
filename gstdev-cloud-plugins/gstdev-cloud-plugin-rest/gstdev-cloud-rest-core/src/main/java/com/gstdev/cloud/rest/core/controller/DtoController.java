@@ -36,14 +36,12 @@ public interface DtoController<E extends Entity
     , S extends BaseService<E, ID>
     , D
     > extends Controller<E, ID, S> {
-
-    /**
-     * 获取Service
-     *
-     * @return Service
-     */
-    S getService();
-
-
+//
+//    /**
+//     * 获取Service
+//     *
+//     * @return Service
+//     */
+//    S getService();
 
 }
