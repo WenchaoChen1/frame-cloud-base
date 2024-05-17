@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
  * @author : cc
  * @date : 2020/4/29 18:56
  */
-public interface Controller<E extends Serializable, ID extends Serializable, S extends BaseService<E, ID>> {
+public interface Controller<E extends Entity, ID extends Serializable, S extends BaseService<E, ID>> {
 
     /**
      * 获取Service
@@ -48,7 +48,7 @@ public interface Controller<E extends Serializable, ID extends Serializable, S e
      * @param <E>    {@link Entity} 子类型
      * @return {@link Result} Entity
      */
-    default <E> Result<E> result(E domain) {
+    default <E extends Entity> Result<E> result(E domain) {
         if (ObjectUtils.isNotEmpty(domain)) {
             return Result.content(domain);
         } else {
@@ -63,7 +63,7 @@ public interface Controller<E extends Serializable, ID extends Serializable, S e
      * @param <E>     {@link Entity} 子类型
      * @return {@link Result} List
      */
-    default <E> Result<List<E>> result(List<E> domains) {
+    default <E extends Entity> Result<List<E>> result(List<E> domains) {
 
         if (null == domains) {
             return Result.failure("Failed to query data!");
@@ -98,7 +98,7 @@ public interface Controller<E extends Serializable, ID extends Serializable, S e
      * @param <E>   {@link Entity} 子类型
      * @return {@link Result} Map
      */
-    default <E> Result<Map<String, Object>> result(Page<E> pages) {
+    default <E extends Entity> Result<Map<String, Object>> result(Page<E> pages) {
         if (null == pages) {
             return Result.failure("Failed to query data!");
         }
@@ -157,7 +157,7 @@ public interface Controller<E extends Serializable, ID extends Serializable, S e
         }
     }
 
-    default <E> Result<List<MapTree<String>>> result(List<E> domains, Converter<E, TreeNode<String>> toTreeNode) {
+    default <E extends Entity> Result<List<MapTree<String>>> result(List<E> domains, Converter<E, TreeNode<String>> toTreeNode) {
         if (ObjectUtils.isNotEmpty(domains)) {
             List<TreeNode<String>> treeNodes = domains.stream().map(toTreeNode::convert).collect(Collectors.toList());
             return Result.success("Query data successfully", TreeUtil.build(treeNodes, DefaultConstants.TREE_ROOT_ID));
@@ -173,7 +173,7 @@ public interface Controller<E extends Serializable, ID extends Serializable, S e
      * @param <E>   {@link Entity} 子类型
      * @return Map
      */
-    default <E> Map<String, Object> getPageInfoMap(Page<E> pages) {
+    default <E extends Entity> Map<String, Object> getPageInfoMap(Page<E> pages) {
         return getPageInfoMap(pages.getContent(), pages.getTotalPages(), pages.getTotalElements());
     }
 
@@ -186,7 +186,7 @@ public interface Controller<E extends Serializable, ID extends Serializable, S e
      * @param <E>           {@link Entity} 子类型
      * @return Map
      */
-    default <E> Map<String, Object> getPageInfoMap(List<E> content, int totalPages, long totalElements) {
+    default <E extends Entity> Map<String, Object> getPageInfoMap(List<E> content, int totalPages, long totalElements) {
         Map<String, Object> result = new HashMap<>(8);
         result.put("content", content);
         result.put("totalPages", totalPages);
