@@ -62,7 +62,6 @@ public abstract class BaseController<E extends Serializable, ID extends Serializ
         if (ArrayUtils.isNotEmpty(page.getProperties())) {
             Sort.Direction direction = Sort.Direction.valueOf(page.getDirection());
             return Controller.super.findByPage(page.getPageNumber(), page.getPageSize(), direction, page.getProperties());
-//            return Controller.super.findByPage(page.getPageNumber(), page.getPageSize(), pageable.getSort());
         } else {
             return Controller.super.findByPage(page.getPageNumber(), page.getPageSize());
         }
