@@ -17,6 +17,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -44,6 +45,61 @@ public interface DtoController<E extends Entity
      * @return Service
      */
     S getService();
+
+    /**
+     * 根据ID查询数据
+     *
+     * @param id 数据ID
+     * @return 与ID对应的数据，如果不存在则返回空
+     */
+    default Result<D> findByIdToDto(ID id) {
+        D domain = getService().findByIdToDto(id);
+        return result(domain);
+    }
+
+    /**
+     * 查询全部数据
+     *
+     * @return 全部数据列表
+     */
+    default Result<List<D>> findAllToDto() {
+        List<D> domains = getService().findAllToDto();
+        return result(domains);
+    }
+
+    /**
+     * 查询全部数据
+     *
+     * @param sort {@link Sort}
+     * @return 已排序的全部数据列表
+     */
+    default Result<List<D>> findAllToDto(Sort sort) {
+        List<D> domains = getService().findAllToDto(sort);
+        return result(domains);
+    }
+
+    /**
+     * 查询全部数据
+     *
+     * @param specification {@link Specification}
+     * @return 全部数据列表
+     */
+    default Result<List<D>> findAllToDto(Specification<E> specification) {
+        List<D> domains = getService().findAllToDto(specification);
+        return result(domains);
+    }
+
+    /**
+     * 查询全部数据
+     *
+     * @param specification {@link Specification}
+     * @param sort          {@link Sort}
+     * @return 全部数据列表
+     */
+    default Result<List<D>> findAllToDto(Specification<E> specification, Sort sort) {
+        List<D> domains = getService().findAllToDto(specification, sort);
+        return result(domains);
+    }
 
     /**
      * 查询分页数据
@@ -85,14 +141,12 @@ public interface DtoController<E extends Entity
      * @param pageNumber 当前页码, 起始页码 0
      * @param pageSize   每页显示的数据条数
      * @param direction  {@link org.springframework.data.domain.Sort.Direction}
-     * @param properties 排序的属性名称
      * @return 分页数据
      */
-    default Result<Map<String, Object>> findByPageToDto(Integer pageNumber, Integer pageSize, Sort.Direction direction, String... properties) {
-        Page<D> pages = getService().findByPageToDto(pageNumber, pageSize, direction, properties);
+    default Result<Map<String, Object>> findByPageToDto(Integer pageNumber, Integer pageSize, Sort.Direction direction) {
+        Page<D> pages = getService().findByPageToDto(pageNumber, pageSize, direction);
         return result(pages);
     }
-
 
     /**
      * 查询分页数据
@@ -107,15 +161,55 @@ public interface DtoController<E extends Entity
         return result(pages);
     }
 
-
-    default Result<List<D>> findAllToDto() {
-        List<D> domains = getService().findAllToDto();
-        return result(domains);
+    /**
+     * 查询分页数据
+     *
+     * @param specification {@link Specification}
+     * @param pageNumber    当前页码, 起始页码 0
+     * @param pageSize      每页显示的数据条数
+     * @return 分页数据
+     */
+    default Result<Map<String, Object>> findByPageToDto(Specification<E> specification, Integer pageNumber, Integer pageSize) {
+        Page<D> pages = getService().findByPageToDto(specification, pageNumber, pageSize);
+        return result(pages);
     }
 
-    default Result<D> findByIdToDto(ID id) {
-        D domain = getService().findByIdToDto(id);
-        return result(domain);
+    /**
+     * 查询分页数据
+     *
+     * @param pageNumber 当前页码, 起始页码 0
+     * @param pageSize   每页显示的数据条数
+     * @param direction  {@link org.springframework.data.domain.Sort.Direction}
+     * @param properties 排序的属性名称
+     * @return 分页数据
+     */
+    default Result<Map<String, Object>> findByPageToDto(Integer pageNumber, Integer pageSize, Sort.Direction direction, String... properties) {
+        Page<D> pages = getService().findByPageToDto(pageNumber, pageSize, direction, properties);
+        return result(pages);
+    }
+
+    /**
+     * 查询分页数据
+     *
+     * @param specification {@link Specification}
+     * @param pageable      {@link Pageable}
+     * @return 分页数据
+     */
+    default Result<Map<String, Object>> findByPageToDto(Specification<E> specification, Pageable pageable) {
+        Page<D> pages = getService().findByPageToDto(specification, pageable);
+        return result(pages);
+    }
+
+    /**
+     * 保存或更新实体
+     *
+     * @param domain 实体参数
+     * @return 用Result包装的实体
+     */
+
+    default Result<D> saveOrUpdateToDto(E domain) {
+        D savedDomain = getService().saveAndFlushToDto(domain);
+        return result(savedDomain);
     }
 
 }

@@ -105,6 +105,16 @@ public interface BaseService<E extends Serializable, ID extends Serializable> {
      *
      * @param pageNumber 当前页码, 起始页码 0
      * @param pageSize   每页显示的数据条数
+     * @param direction  {@link org.springframework.data.domain.Sort.Direction}
+     * @return 分页数据
+     */
+    Page<E> findByPage(int pageNumber, int pageSize, Sort.Direction direction);
+
+    /**
+     * 查询分页数据
+     *
+     * @param pageNumber 当前页码, 起始页码 0
+     * @param pageSize   每页显示的数据条数
      * @param sort       排序
      * @return 分页数据
      */
@@ -140,15 +150,7 @@ public interface BaseService<E extends Serializable, ID extends Serializable> {
      */
     Page<E> findByPage(Specification<E> specification, int pageNumber, int pageSize);
 
-    /**
-     * 查询分页数据
-     *
-     * @param pageNumber 当前页码, 起始页码 0
-     * @param pageSize   每页显示的数据条数
-     * @param direction  {@link org.springframework.data.domain.Sort.Direction}
-     * @return 分页数据
-     */
-    Page<E> findByPage(int pageNumber, int pageSize, Sort.Direction direction);
+
 
     /**
      * 删除数据

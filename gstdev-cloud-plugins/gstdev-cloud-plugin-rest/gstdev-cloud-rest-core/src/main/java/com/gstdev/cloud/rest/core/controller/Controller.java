@@ -250,6 +250,7 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
         List<E> domains = getService().findAll();
         return result(domains);
     }
+
     /**
      * 查询全部数据
      *
@@ -260,6 +261,7 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
         List<E> domains = getService().findAll(sort);
         return result(domains);
     }
+
     /**
      * 查询全部数据
      *
@@ -270,6 +272,7 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
         List<E> domains = getService().findAll(specification);
         return result(domains);
     }
+
     /**
      * 查询全部数据
      *
@@ -278,7 +281,7 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
      * @return 全部数据列表
      */
     default Result<List<E>> findAll(Specification<E> specification, Sort sort) {
-        List<E> domains = getService().findAll(specification,sort);
+        List<E> domains = getService().findAll(specification, sort);
         return result(domains);
     }
 
@@ -321,6 +324,19 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
      *
      * @param pageNumber 当前页码, 起始页码 0
      * @param pageSize   每页显示的数据条数
+     * @param direction  {@link org.springframework.data.domain.Sort.Direction}
+     * @return 分页数据
+     */
+    default Result<Map<String, Object>> findByPage(Integer pageNumber, Integer pageSize, Sort.Direction direction) {
+        Page<E> pages = getService().findByPage(pageNumber, pageSize, direction);
+        return result(pages);
+    }
+
+    /**
+     * 查询分页数据
+     *
+     * @param pageNumber 当前页码, 起始页码 0
+     * @param pageSize   每页显示的数据条数
      * @param sort       排序的属性名称
      * @return 分页数据
      */
@@ -329,6 +345,18 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
         return result(pages);
     }
 
+    /**
+     * 查询分页数据
+     *
+     * @param specification {@link Specification}
+     * @param pageNumber    当前页码, 起始页码 0
+     * @param pageSize      每页显示的数据条数
+     * @return 分页数据
+     */
+    default Result<Map<String, Object>> findByPage(Specification<E> specification, Integer pageNumber, Integer pageSize) {
+        Page<E> pages = getService().findByPage(specification, pageNumber, pageSize);
+        return result(pages);
+    }
 
     /**
      * 查询分页数据
@@ -341,6 +369,18 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
      */
     default Result<Map<String, Object>> findByPage(Integer pageNumber, Integer pageSize, Sort.Direction direction, String... properties) {
         Page<E> pages = getService().findByPage(pageNumber, pageSize, direction, properties);
+        return result(pages);
+    }
+
+    /**
+     * 查询分页数据
+     *
+     * @param specification {@link Specification}
+     * @param pageable      {@link Pageable}
+     * @return 分页数据
+     */
+    default Result<Map<String, Object>> findByPage(Specification<E> specification, Pageable pageable) {
+        Page<E> pages = getService().findByPage(specification, pageable);
         return result(pages);
     }
 
