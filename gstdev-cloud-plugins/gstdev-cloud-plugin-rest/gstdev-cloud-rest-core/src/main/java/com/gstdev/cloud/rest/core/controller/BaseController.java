@@ -29,7 +29,7 @@ import java.util.Map;
  * @author : cc
  * @date : 2020/4/30 11:00
  */
-public abstract class BaseController<E extends Serializable, ID extends Serializable, S extends BaseService<E, ID>> implements Controller<E, ID, S> {
+public abstract class BaseController<E extends Entity, ID extends Serializable, S extends BaseService<E, ID>> implements Controller<E, ID, S> {
     private S service;
 
     public BaseController(S service) {

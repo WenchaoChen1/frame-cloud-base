@@ -17,6 +17,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -45,10 +46,10 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
      * 数据实体转换为统一响应实体
      *
      * @param domain 数据实体
-     * @param <E>    {@link Entity} 子类型
+     * @param <OE>   {@link Entity} 子类型
      * @return {@link Result} Entity
      */
-    default <E extends Entity> Result<E> result(E domain) {
+    default <OE> Result<OE> result(OE domain) {
         if (ObjectUtils.isNotEmpty(domain)) {
             return Result.content(domain);
         } else {
@@ -60,10 +61,10 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
      * 数据列表转换为统一响应实体
      *
      * @param domains 数据实体 List
-     * @param <E>     {@link Entity} 子类型
+     * @param <OE>    {@link Entity} 子类型
      * @return {@link Result} List
      */
-    default <E extends Entity> Result<List<E>> result(List<E> domains) {
+    default <OE> Result<List<OE>> result(List<OE> domains) {
 
         if (null == domains) {
             return Result.failure("Failed to query data!");
@@ -95,10 +96,10 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
      * 数据分页对象转换为统一响应实体
      *
      * @param pages 分页查询结果 {@link Page}
-     * @param <E>   {@link Entity} 子类型
+     * @param <OE>  {@link Entity} 子类型
      * @return {@link Result} Map
      */
-    default <E extends Entity> Result<Map<String, Object>> result(Page<E> pages) {
+    default <OE> Result<Map<String, Object>> result(Page<OE> pages) {
         if (null == pages) {
             return Result.failure("Failed to query data!");
         }
@@ -157,7 +158,7 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
         }
     }
 
-    default <E extends Entity> Result<List<MapTree<String>>> result(List<E> domains, Converter<E, TreeNode<String>> toTreeNode) {
+    default <OE> Result<List<MapTree<String>>> result(List<OE> domains, Converter<OE, TreeNode<String>> toTreeNode) {
         if (ObjectUtils.isNotEmpty(domains)) {
             List<TreeNode<String>> treeNodes = domains.stream().map(toTreeNode::convert).collect(Collectors.toList());
             return Result.success("Query data successfully", TreeUtil.build(treeNodes, DefaultConstants.TREE_ROOT_ID));
@@ -170,10 +171,10 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
      * Page 对象转换为 Map
      *
      * @param pages 分页查询结果 {@link Page}
-     * @param <E>   {@link Entity} 子类型
+     * @param <OE>  {@link Entity} 子类型
      * @return Map
      */
-    default <E extends Entity> Map<String, Object> getPageInfoMap(Page<E> pages) {
+    default <OE> Map<String, Object> getPageInfoMap(Page<OE> pages) {
         return getPageInfoMap(pages.getContent(), pages.getTotalPages(), pages.getTotalElements());
     }
 
@@ -183,15 +184,102 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
      * @param content       数据实体 List
      * @param totalPages    分页总页数
      * @param totalElements 总的数据条目
-     * @param <E>           {@link Entity} 子类型
+     * @param <OE>          {@link Entity} 子类型
      * @return Map
      */
-    default <E extends Entity> Map<String, Object> getPageInfoMap(List<E> content, int totalPages, long totalElements) {
+    default <OE> Map<String, Object> getPageInfoMap(List<OE> content, int totalPages, long totalElements) {
         Map<String, Object> result = new HashMap<>(8);
         result.put("content", content);
         result.put("totalPages", totalPages);
         result.put("totalElements", totalElements);
         return result;
+    }
+
+
+    //----------------------------------------------代码--------------------------------
+
+    /**
+     * 根据ID查询数据
+     *
+     * @param id 数据ID
+     * @return 与ID对应的数据，如果不存在则返回空
+     */
+    default Result<E> findById(ID id) {
+        E domain = getService().findById(id);
+        return result(domain);
+    }
+
+    /**
+     * 数据是否存在
+     *
+     * @param id 数据ID
+     * @return true 存在，false 不存在
+     */
+    default Result<Boolean> existsById(ID id) {
+        boolean b = getService().existsById(id);
+        return result(b);
+    }
+
+    /**
+     * 查询数量
+     *
+     * @return 数据数量
+     */
+    default Result<Long> count() {
+        long count = getService().count();
+        return result(count);
+    }
+
+    /**
+     * 查询数量
+     *
+     * @param specification {@link Specification}
+     * @return 数据数量
+     */
+    default Result<Long> count(Specification<E> specification) {
+        long count = getService().count(specification);
+        return result(count);
+    }
+
+    /**
+     * 查询全部数据
+     *
+     * @return 全部数据列表
+     */
+    default Result<List<E>> findAll() {
+        List<E> domains = getService().findAll();
+        return result(domains);
+    }
+    /**
+     * 查询全部数据
+     *
+     * @param sort {@link Sort}
+     * @return 已排序的全部数据列表
+     */
+    default Result<List<E>> findAll(Sort sort) {
+        List<E> domains = getService().findAll(sort);
+        return result(domains);
+    }
+    /**
+     * 查询全部数据
+     *
+     * @param specification {@link Specification}
+     * @return 全部数据列表
+     */
+    default Result<List<E>> findAll(Specification<E> specification) {
+        List<E> domains = getService().findAll(specification);
+        return result(domains);
+    }
+    /**
+     * 查询全部数据
+     *
+     * @param specification {@link Specification}
+     * @param sort          {@link Sort}
+     * @return 全部数据列表
+     */
+    default Result<List<E>> findAll(Specification<E> specification, Sort sort) {
+        List<E> domains = getService().findAll(specification,sort);
+        return result(domains);
     }
 
     /**
@@ -233,21 +321,6 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
      *
      * @param pageNumber 当前页码, 起始页码 0
      * @param pageSize   每页显示的数据条数
-     * @param direction  {@link org.springframework.data.domain.Sort.Direction}
-     * @param properties 排序的属性名称
-     * @return 分页数据
-     */
-    default Result<Map<String, Object>> findByPage(Integer pageNumber, Integer pageSize, Sort.Direction direction, String... properties) {
-        Page<E> pages = getService().findByPage(pageNumber, pageSize, direction, properties);
-        return result(pages);
-    }
-
-
-    /**
-     * 查询分页数据
-     *
-     * @param pageNumber 当前页码, 起始页码 0
-     * @param pageSize   每页显示的数据条数
      * @param sort       排序的属性名称
      * @return 分页数据
      */
@@ -257,16 +330,19 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
     }
 
 
-    default Result<List<E>> findAll() {
-        List<E> domains = getService().findAll();
-        return result(domains);
+    /**
+     * 查询分页数据
+     *
+     * @param pageNumber 当前页码, 起始页码 0
+     * @param pageSize   每页显示的数据条数
+     * @param direction  {@link org.springframework.data.domain.Sort.Direction}
+     * @param properties 排序的属性名称
+     * @return 分页数据
+     */
+    default Result<Map<String, Object>> findByPage(Integer pageNumber, Integer pageSize, Sort.Direction direction, String... properties) {
+        Page<E> pages = getService().findByPage(pageNumber, pageSize, direction, properties);
+        return result(pages);
     }
-
-    default Result<E> findById(ID id) {
-        E domain = getService().findById(id);
-        return result(domain);
-    }
-
 
     /**
      * 保存或更新实体
