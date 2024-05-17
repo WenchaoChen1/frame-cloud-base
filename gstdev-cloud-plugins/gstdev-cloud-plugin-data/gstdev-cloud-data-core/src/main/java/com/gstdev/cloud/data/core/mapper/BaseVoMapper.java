@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 
 import java.util.List;
+import java.util.function.Function;
 
 public interface BaseVoMapper<V, D> {
 
@@ -16,7 +17,8 @@ public interface BaseVoMapper<V, D> {
 
     default Page<V> toVo(Page<D> page) {
         List<V> responses = this.toVo(page.getContent());
-        return new PageImpl(responses, page.getPageable(), page.getTotalElements());
+        new PageImpl<V>(responses, page.getPageable(), page.getTotalElements());
+        return new PageImpl<V>(responses, page.getPageable(), page.getTotalElements());
     }
 
     default Result<V> toVo(Result<D> result) {

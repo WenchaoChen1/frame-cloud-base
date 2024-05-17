@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
  * @author : cc
  * @date : 2020/4/29 18:56
  */
-public interface Controller<E extends Entity, ID extends Serializable, S > {
+public interface Controller<E extends Entity, ID extends Serializable, S extends BaseService<E, ID>> {
 
     /**
      * 获取Service
