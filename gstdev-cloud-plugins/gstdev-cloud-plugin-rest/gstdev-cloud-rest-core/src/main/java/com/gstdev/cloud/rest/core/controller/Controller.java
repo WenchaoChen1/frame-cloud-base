@@ -345,18 +345,6 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
         return result(pages);
     }
 
-    /**
-     * 查询分页数据
-     *
-     * @param specification {@link Specification}
-     * @param pageNumber    当前页码, 起始页码 0
-     * @param pageSize      每页显示的数据条数
-     * @return 分页数据
-     */
-    default Result<Map<String, Object>> findByPage(Specification<E> specification, Integer pageNumber, Integer pageSize) {
-        Page<E> pages = getService().findByPage(specification, pageNumber, pageSize);
-        return result(pages);
-    }
 
     /**
      * 查询分页数据
@@ -371,6 +359,20 @@ public interface Controller<E extends Entity, ID extends Serializable, S extends
         Page<E> pages = getService().findByPage(pageNumber, pageSize, direction, properties);
         return result(pages);
     }
+
+    /**
+     * 查询分页数据
+     *
+     * @param specification {@link Specification}
+     * @param pageNumber    当前页码, 起始页码 0
+     * @param pageSize      每页显示的数据条数
+     * @return 分页数据
+     */
+    default Result<Map<String, Object>> findByPage(Specification<E> specification, Integer pageNumber, Integer pageSize) {
+        Page<E> pages = getService().findByPage(specification, pageNumber, pageSize);
+        return result(pages);
+    }
+
 
     /**
      * 查询分页数据

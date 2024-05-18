@@ -135,20 +135,21 @@ public interface BaseService<E extends Serializable, ID extends Serializable> {
      * 查询分页数据
      *
      * @param specification {@link Specification}
-     * @param pageable      {@link Pageable}
-     * @return 分页数据
-     */
-    Page<E> findByPage(Specification<E> specification, Pageable pageable);
-
-    /**
-     * 查询分页数据
-     *
-     * @param specification {@link Specification}
      * @param pageNumber    当前页码, 起始页码 0
      * @param pageSize      每页显示的数据条数
      * @return 分页数据
      */
     Page<E> findByPage(Specification<E> specification, int pageNumber, int pageSize);
+
+
+    /**
+     * 查询分页数据
+     *
+     * @param specification {@link Specification}
+     * @param pageable      {@link Pageable}
+     * @return 分页数据
+     */
+    Page<E> findByPage(Specification<E> specification, Pageable pageable);
 
 
 
@@ -221,7 +222,7 @@ public interface BaseService<E extends Serializable, ID extends Serializable> {
 
     E update(E e);
 
-    List<E> updateAll(List<E> e);
+    List<E> updateAll(List< E> e);
 
     /**
      * 刷新实体状态
