@@ -7,6 +7,7 @@ import com.gstdev.cloud.oauth2.management.converter.OAuth2ApplicationToRegistere
 import com.gstdev.cloud.oauth2.management.entity.OAuth2Application;
 import com.gstdev.cloud.oauth2.management.entity.OAuth2Scope;
 import com.gstdev.cloud.oauth2.management.repository.OAuth2ApplicationRepository;
+import com.gstdev.cloud.oauth2.management.repository.OAuth2ComplianceRepository;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +27,7 @@ import java.util.Set;
  * @date : 2022/3/1 18:06
  */
 @Service
-public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application, String, OAuth2ApplicationRepository> {
+public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application, String> {
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2ApplicationService.class);
 
@@ -39,9 +40,13 @@ public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application,
         super(applicationRepository);
         this.registeredClientRepository = registeredClientRepository1;
         this.frameRegisteredClientRepository = frameRegisteredClientRepository;
+        this.applicationRepository = applicationRepository;
         this.objectConverter = new OAuth2ApplicationToRegisteredClientConverter();
     }
 
+    public OAuth2ApplicationRepository getRepository() {
+        return applicationRepository;
+    }
 
     @Override
     public OAuth2Application saveAndFlush(OAuth2Application entity) {

@@ -32,7 +32,7 @@ public abstract class BaseDtoServiceImpl<E extends Entity
     , M extends BaseDtoMapper<E, D>
 //    , D extends BaseDtoInterface<ID>
     , D
-    > extends BaseServiceImpl<E, ID, R> implements BaseDtoService<E, ID, D> {
+    > extends BaseServiceImpl<E, ID> implements BaseDtoService<E, ID, D> {
 
     private M mapper;
 

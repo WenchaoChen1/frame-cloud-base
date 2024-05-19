@@ -19,7 +19,7 @@ import java.util.List;
  * @date : 2022/4/1 13:53
  */
 @Service
-public class OAuth2PermissionService extends BaseServiceImpl<OAuth2Permission, String, OAuth2PermissionRepository> {
+public class OAuth2PermissionService extends BaseServiceImpl<OAuth2Permission, String> {
 
     private OAuth2PermissionRepository authorityRepository;
 

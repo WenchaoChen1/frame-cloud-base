@@ -17,6 +17,7 @@ import org.springframework.cloud.openfeign.FeignClientProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.web.context.request.RequestContextListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,10 @@ public class FeignConfiguration {
     log.info("[GstDev Cloud] |- Bean [GstDev Cloud FeignInnerContract] Auto Configure.");
     return new FeignInnerContract(parameterProcessors, feignConversionService, decodeSlash);
   }
-
+    @Bean
+    public RequestContextListener requestContextListener() {
+        return new RequestContextListener();
+    }
   @Bean
   @ConditionalOnMissingBean(FeignRequestInterceptor.class)
   public RequestInterceptor feignRequestInterceptor() {

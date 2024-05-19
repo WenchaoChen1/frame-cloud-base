@@ -3,6 +3,7 @@ package com.gstdev.cloud.data.core.service;
 import com.gstdev.cloud.base.definition.constants.SymbolConstants;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.base.definition.domain.base.Entity;
+import com.gstdev.cloud.data.core.mapper.BaseServiceMapper;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import org.apache.commons.lang3.ArrayUtils;
@@ -24,25 +25,23 @@ import java.util.List;
  * @date : 2021/7/14 14:32
  */
 @Transactional
-public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable, R extends BaseRepository<E, ID>> implements BaseService<E, ID> {
+public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable> implements BaseService<E, ID> {
 
     protected String like(String property) {
         return SymbolConstants.PERCENT + property + SymbolConstants.PERCENT;
     }
-
-    private R baseRepository;
+    private BaseRepository baseRepository;
+    public BaseServiceImpl(BaseRepository baseRepository) {
+        this.baseRepository = baseRepository;
+    }
 
     /**
      * 获取Repository
      *
      * @return {@link BaseRepository}
      */
-    public R getRepository() {
+    public BaseRepository<E, ID> getRepository() {
         return baseRepository;
-    }
-
-    public BaseServiceImpl(R baseRepository) {
-        this.baseRepository = baseRepository;
     }
 
     /**
@@ -301,7 +300,7 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable,
      * @return 已经保存的实体集合
      */
     @Override
-    public <S extends E> List<S> saveAll(Iterable<S> entities) {
+    public List<E> saveAll(Iterable<E> entities) {
         return getRepository().saveAll(entities);
     }
 

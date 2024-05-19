@@ -5,6 +5,7 @@ import com.gstdev.cloud.base.core.utils.treeUtils.TreeFactory;
 import com.gstdev.cloud.base.definition.domain.base.pojo.*;
 import com.gstdev.cloud.data.core.entity.BaseTreeEntityINT;
 import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
+import com.gstdev.cloud.data.core.repository.BaseRepository;
 import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
@@ -37,6 +38,9 @@ public abstract class BaseTreeServiceImpl<E extends BaseTreeEntityINT<ID>
 
     public BaseTreeServiceImpl(R repository, M mapper) {
         super(repository, mapper);
+    }
+    public BaseTreeRepository getRepository() {
+        return null;
     }
 
     public List<E> findByParentId(ID parentId) {

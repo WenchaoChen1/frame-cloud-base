@@ -31,7 +31,7 @@ import java.util.List;
  * @date : 2022/7/7 20:37
  */
 @Service
-public class OAuth2ComplianceService extends BaseServiceImpl<OAuth2Compliance, String, OAuth2ComplianceRepository> {
+public class OAuth2ComplianceService extends BaseServiceImpl<OAuth2Compliance, String> {
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2ComplianceService.class);
 
@@ -39,11 +39,13 @@ public class OAuth2ComplianceService extends BaseServiceImpl<OAuth2Compliance, S
 
     public OAuth2ComplianceService(OAuth2ComplianceRepository complianceRepository) {
         super(complianceRepository);
+        this.complianceRepository = complianceRepository;
+
     }
 
-//  public OAuth2ComplianceRepository getRepository() {
-//    return complianceRepository;
-//  }
+  public OAuth2ComplianceRepository getRepository() {
+    return complianceRepository;
+  }
 
     public Page<OAuth2Compliance> findByCondition(int pageNumber, int pageSize, String principalName, String clientId, String ip) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize);

@@ -28,7 +28,7 @@ import java.util.Set;
  * @date : 2023/5/15 16:36
  */
 @Service
-public class OAuth2DeviceService extends BaseServiceImpl<OAuth2Device, String, OAuth2DeviceRepository> {
+public class OAuth2DeviceService extends BaseServiceImpl<OAuth2Device, String> {
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2ApplicationService.class);
 

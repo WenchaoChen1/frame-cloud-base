@@ -198,7 +198,7 @@ public interface BaseService<E extends Serializable, ID extends Serializable> {
      * @param entities 实体集合
      * @return 已经保存的实体集合
      */
-    <S extends E> List<S> saveAll(Iterable<S> entities);
+    List<E> saveAll(Iterable<E> entities);
 
     /**
      * 保存或者更新

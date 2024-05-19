@@ -9,6 +9,8 @@ import com.gstdev.cloud.data.core.repository.BaseRepository;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
@@ -39,7 +41,7 @@ public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
     , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseDtoServiceImpl<E, ID, R, M, D> implements BasePOJOService<E, ID, D, II, UI, PQC, FQC> {
 
     public BasePOJOServiceImpl(R repository, M mapper) {
-        super(repository,mapper);
+        super(repository, mapper);
     }
 
 //
@@ -164,18 +166,19 @@ public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
     public Page<D> page(PQC pageQueryCriteria, Pageable pageable) {
 //        pageable.getSort()
 //        pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(Sort.Direction.DESC, "updatedAt"));
-        Page<E> page = getRepository().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, pageQueryCriteria, criteriaBuilder), pageable);
+        Page<E> page = findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, pageQueryCriteria, criteriaBuilder), pageable);
+//        Page<E> page = getRepository().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, pageQueryCriteria, criteriaBuilder), pageable);
         return getMapper().toDto(page);
     }
 
-    public E findById(ID id) {
-        Optional<E> byId = getRepository().findById(id);
-        E e = null;
-        if (byId.isPresent()) {
-            e = byId.get();
-        }
-        return e;
-    }
+//    public E findById(ID id) {
+//        Optional<E> byId = getRepository().findById(id);
+//        E e = null;
+//        if (byId.isPresent()) {
+//            e = byId.get();
+//        }
+//        return e;
+//    }
 
     @Override
     public D findByIdToDto(ID id) {
@@ -189,7 +192,8 @@ public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
 
     @Override
     public List<D> findAllByQueryCriteriaToDto(FQC queryCriteria) {
-        return getMapper().toDto(getRepository().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder)));
+        List<E> all = findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
+        return getMapper().toDto(all);
     }
 
     @Override
@@ -223,16 +227,18 @@ public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
         if (id.equals("null")) {
             throw new PlatformRuntimeException("The primary key cannot be empty");
         }
-        Optional<E> byId = getRepository().findById(id);
-        if (byId.isEmpty()) {
-            throw new PlatformRuntimeException("The primary key cannot be empty");
-        }
-        E e = null;
-        if (byId.isPresent()) {
-            e = byId.get();
-        }
-        getMapper().copyUpdate(var1, byId.get());
-        return e;
+        E byId = findById(id);
+//        Optional<E> byId = getRepository().findById(id);
+//        if (byId.isEmpty()) {
+//            throw new PlatformRuntimeException("The primary key cannot be empty");
+//        }
+//        E e = null;
+//        if (byId.isPresent()) {
+//            e = byId.get();
+//        }
+//        getMapper().copyUpdate(var1, byId.get());
+        getMapper().copyUpdate(var1, byId);
+        return byId;
     }
 
     public List<E> toEntityUpdate(List<UI> var1) {
