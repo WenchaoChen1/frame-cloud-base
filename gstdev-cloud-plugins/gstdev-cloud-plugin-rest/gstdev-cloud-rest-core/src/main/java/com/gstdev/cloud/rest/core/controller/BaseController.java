@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.apache.commons.lang3.ArrayUtils;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -45,7 +46,6 @@ public abstract class BaseController<E extends Entity, ID extends Serializable, 
     public S getService() {
         return this.service;
     }
-
 
     @AccessLimited
     @Operation(summary = "分页查询数据", description = "通过pageNumber和pageSize获取分页数据",
