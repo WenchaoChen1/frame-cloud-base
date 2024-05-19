@@ -4,6 +4,7 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.base.definition.domain.base.pojo.*;
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntityINT;
+import com.gstdev.cloud.data.core.mapper.BaseDtoMapper;
 import com.gstdev.cloud.data.core.mapper.BasePOJOMapper;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
@@ -38,12 +39,16 @@ public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
     , II extends BaseInsertInputInterface
     , UI extends BaseUpdateInputInterface
     , PQC extends BasePageQueryCriteriaInterface
-    , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseDtoServiceImpl<E, ID, R, M, D> implements BasePOJOService<E, ID, D, II, UI, PQC, FQC> {
+    , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseDtoServiceImpl<E, ID, D> implements BasePOJOService<E, ID, D, II, UI, PQC, FQC> {
 
+    private M mapper;
     public BasePOJOServiceImpl(R repository, M mapper) {
-        super(repository, mapper);
+//        super(repository, mapper);
+        this.mapper=mapper;
     }
-
+    public M getMapper() {
+        return mapper;
+    }
 //
 //    public RCLI getRedisCurrentLoginInformation() {
 //        return redisCurrentLoginInformation;
