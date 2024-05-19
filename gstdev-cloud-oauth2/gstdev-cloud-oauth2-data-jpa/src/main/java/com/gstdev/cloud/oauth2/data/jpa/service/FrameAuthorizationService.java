@@ -1,8 +1,8 @@
 package com.gstdev.cloud.oauth2.data.jpa.service;
 
+import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.oauth2.data.jpa.entity.FrameAuthorization;
-import com.gstdev.cloud.oauth2.data.jpa.repository.FrameAuthorizationConsentRepository;
 import com.gstdev.cloud.oauth2.data.jpa.repository.FrameAuthorizationRepository;
 import jakarta.persistence.criteria.Predicate;
 import org.apache.commons.collections4.CollectionUtils;
@@ -26,7 +26,7 @@ import java.util.Optional;
  * @date : 2022/2/25 21:06
  */
 @Service
-public class FrameAuthorizationService extends BaseServiceImpl<FrameAuthorization, String> {
+public class FrameAuthorizationService extends BaseServiceImpl<FrameAuthorization, String> implements BaseService<FrameAuthorization, String> {
 
     private static final Logger log = LoggerFactory.getLogger(FrameAuthorizationService.class);
 
@@ -34,7 +34,7 @@ public class FrameAuthorizationService extends BaseServiceImpl<FrameAuthorizatio
     private FrameAuthorizationRepository frameAuthorizationRepository;
     @Autowired
     public FrameAuthorizationService(FrameAuthorizationRepository frameAuthorizationRepository) {
-        super(frameAuthorizationRepository);
+        //super(frameAuthorizationRepository);
         this.frameAuthorizationRepository=frameAuthorizationRepository;
     }
     public FrameAuthorizationRepository getRepository() {

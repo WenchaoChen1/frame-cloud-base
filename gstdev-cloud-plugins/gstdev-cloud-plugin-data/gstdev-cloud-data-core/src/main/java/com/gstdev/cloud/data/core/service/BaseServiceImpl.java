@@ -1,9 +1,7 @@
 package com.gstdev.cloud.data.core.service;
 
 import com.gstdev.cloud.base.definition.constants.SymbolConstants;
-import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.base.definition.domain.base.Entity;
-import com.gstdev.cloud.data.core.mapper.BaseServiceMapper;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import org.apache.commons.lang3.ArrayUtils;
@@ -17,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * <p>Description: 通用核心 Service </p>
@@ -25,24 +24,64 @@ import java.util.List;
  * @date : 2021/7/14 14:32
  */
 @Transactional
-public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable> implements BaseService<E, ID> {
+//public abstract class BaseServiceImpl<SE extends Entity, ID extends Serializable> implements BaseService<SE,ID>{
+public abstract class BaseServiceImpl<SE extends Entity, ID extends Serializable>{
 
     protected String like(String property) {
         return SymbolConstants.PERCENT + property + SymbolConstants.PERCENT;
     }
-    private BaseRepository baseRepository;
-    public BaseServiceImpl(BaseRepository baseRepository) {
-        this.baseRepository = baseRepository;
-    }
 
+    protected BaseRepository baseRepository;
+//    public BaseServiceImpl(BaseRepository baseRepository) {
+//        this.baseRepository = baseRepository;
+//    }
     /**
      * 获取Repository
      *
      * @return {@link BaseRepository}
      */
-    public BaseRepository<E, ID> getRepository() {
+//    public <E extends Entity, ID extends Serializable> BaseRepository<E, ID> getRepository() {
+//        return baseRepository;
+//    }
+//    public BaseRepository getRepository() {
+//        return baseRepository;
+//    }
+    public BaseRepository<SE, ID> getRepository() {
         return baseRepository;
     }
+
+    public SE toServiceEntity(SE entity) {
+        return entity;
+    }
+
+    public List<SE> toServiceEntity(List<SE> entity) {
+        return entity;
+    }
+
+    public Page<SE> toServiceEntity(Page<SE> entity) {
+        return entity;
+    }
+
+    public SE toEntity(SE sEntity) {
+        return sEntity;
+    }
+
+    public List<SE> toEntity(List<SE> sEntity) {
+        return sEntity;
+    }
+
+    public Page<SE> toEntity(Page<SE> sEntity) {
+        return sEntity;
+    }
+
+    public Iterable<SE> toEntity(Iterable<SE> sEntity) {
+        return sEntity;
+    }
+
+    public Specification<SE> toEntity(Specification<SE> sEntity) {
+        return sEntity;
+    }
+
 
     /**
      * 根据ID查询数据
@@ -50,9 +89,9 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      * @param id 数据ID
      * @return 与ID对应的数据，如果不存在则返回空
      */
-    @Override
-    public E findById(ID id) {
-        return getRepository().findById(id).orElse(null);
+    //@Override
+    public SE findById(ID id) {
+        return toServiceEntity(getRepository().findById(id).orElse(null));
     }
 
     /**
@@ -61,7 +100,7 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      * @param id 数据ID
      * @return true 存在，false 不存在
      */
-    @Override
+    //@Override
     public boolean existsById(ID id) {
         return getRepository().existsById(id);
     }
@@ -71,7 +110,7 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      *
      * @return 数据数量
      */
-    @Override
+    //@Override
     public long count() {
         return getRepository().count();
     }
@@ -82,9 +121,9 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      * @param specification {@link Specification}
      * @return 数据数量
      */
-    @Override
-    public long count(Specification<E> specification) {
-        return getRepository().count(specification);
+    //@Override
+    public long count(Specification<SE> specification) {
+        return getRepository().count(toEntity(specification));
     }
 
     /**
@@ -92,9 +131,9 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      *
      * @return 全部数据列表
      */
-    @Override
-    public List<E> findAll() {
-        return getRepository().findAll();
+    //@Override
+    public List<SE> findAll() {
+        return toServiceEntity(getRepository().findAll());
     }
 
     /**
@@ -103,9 +142,9 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      * @param sort {@link Sort}
      * @return 已排序的全部数据列表
      */
-    @Override
-    public List<E> findAll(Sort sort) {
-        return getRepository().findAll(sort);
+    //@Override
+    public List<SE> findAll(Sort sort) {
+        return toServiceEntity(getRepository().findAll(sort));
     }
 
     /**
@@ -114,9 +153,9 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      * @param specification {@link Specification}
      * @return 全部数据列表
      */
-    @Override
-    public List<E> findAll(Specification<E> specification) {
-        return getRepository().findAll(specification);
+    //@Override
+    public List<SE> findAll(Specification<SE> specification) {
+        return toServiceEntity(getRepository().findAll(toEntity(specification)));
     }
 
     /**
@@ -126,9 +165,9 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      * @param sort          {@link Sort}
      * @return 全部数据列表
      */
-    @Override
-    public List<E> findAll(Specification<E> specification, Sort sort) {
-        return getRepository().findAll(specification, sort);
+    //@Override
+    public List<SE> findAll(Specification<SE> specification, Sort sort) {
+        return toServiceEntity(getRepository().findAll(toEntity(specification), sort));
     }
 
     /**
@@ -137,9 +176,9 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      * @param pageable {@link Pageable}
      * @return 分页数据
      */
-    @Override
-    public Page<E> findByPage(Pageable pageable) {
-        return getRepository().findAll(pageable);
+    //@Override
+    public Page<SE> findByPage(Pageable pageable) {
+        return toServiceEntity(getRepository().findAll(pageable));
     }
 
     /**
@@ -148,8 +187,8 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      * @param page 页
      * @return 分页数据
      */
-    @Override
-    public Page<E> findByPage(BasePage page) {
+    //@Override
+    public Page<SE> findByPage(BasePage page) {
         if (ArrayUtils.isNotEmpty(page.getProperties())) {
             Sort.Direction direction = Sort.Direction.valueOf(page.getDirection());
             return findByPage(page.getPageNumber(), page.getPageSize(), direction, page.getProperties());
@@ -165,8 +204,8 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      * @param pageSize   每页显示的数据条数
      * @return 分页数据
      */
-    @Override
-    public Page<E> findByPage(int pageNumber, int pageSize) {
+    //@Override
+    public Page<SE> findByPage(int pageNumber, int pageSize) {
         return findByPage(PageRequest.of(pageNumber, pageSize));
     }
 
@@ -178,8 +217,8 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      * @param sort       排序
      * @return 分页数据
      */
-    @Override
-    public Page<E> findByPage(int pageNumber, int pageSize, Sort sort) {
+    //@Override
+    public Page<SE> findByPage(int pageNumber, int pageSize, Sort sort) {
         return findByPage(PageRequest.of(pageNumber, pageSize, sort));
     }
 
@@ -188,12 +227,12 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      *
      * @param pageNumber 当前页码, 起始页码 0
      * @param pageSize   每页显示的数据条数
-     * @param direction  {@link org.springframework.data.domain.Sort.Direction}
+     * @param direction  {@link Sort.Direction}
      * @param properties 排序的属性名称
      * @return 分页数据
      */
-    @Override
-    public Page<E> findByPage(int pageNumber, int pageSize, Sort.Direction direction, String... properties) {
+    //@Override
+    public Page<SE> findByPage(int pageNumber, int pageSize, Sort.Direction direction, String... properties) {
         return findByPage(PageRequest.of(pageNumber, pageSize, direction, properties));
     }
 
@@ -204,9 +243,9 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      * @param pageable      {@link Pageable}
      * @return 分页数据
      */
-    @Override
-    public Page<E> findByPage(Specification<E> specification, Pageable pageable) {
-        return getRepository().findAll(specification, pageable);
+    //@Override
+    public Page<SE> findByPage(Specification<SE> specification, Pageable pageable) {
+        return toServiceEntity(getRepository().findAll(toEntity(specification), pageable));
     }
 
     /**
@@ -217,9 +256,9 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      * @param pageSize      每页显示的数据条数
      * @return 分页数据
      */
-    @Override
-    public Page<E> findByPage(Specification<E> specification, int pageNumber, int pageSize) {
-        return getRepository().findAll(specification, PageRequest.of(pageNumber, pageSize));
+    //@Override
+    public Page<SE> findByPage(Specification<SE> specification, int pageNumber, int pageSize) {
+        return toServiceEntity(getRepository().findAll(toEntity(specification), PageRequest.of(pageNumber, pageSize)));
     }
 
     /**
@@ -227,11 +266,11 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      *
      * @param pageNumber 当前页码, 起始页码 0
      * @param pageSize   每页显示的数据条数
-     * @param direction  {@link org.springframework.data.domain.Sort.Direction}
+     * @param direction  {@link Sort.Direction}
      * @return 分页数据
      */
-    @Override
-    public Page<E> findByPage(int pageNumber, int pageSize, Sort.Direction direction) {
+    //@Override
+    public Page<SE> findByPage(int pageNumber, int pageSize, Sort.Direction direction) {
         return findByPage(PageRequest.of(pageNumber, pageSize, direction));
     }
 
@@ -241,15 +280,15 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      *
      * @param entity 数据对应实体
      */
-    @Override
-    public void delete(E entity) {
-        getRepository().delete(entity);
+    //@Override
+    public void delete(SE entity) {
+        getRepository().delete(toEntity(entity));
     }
 
     /**
      * 批量全部删除
      */
-    @Override
+    //@Override
     public void deleteAllInBatch() {
         getRepository().deleteAllInBatch();
     }
@@ -259,15 +298,15 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      *
      * @param entities 数据对应实体集合
      */
-    @Override
-    public void deleteAll(Iterable<E> entities) {
+    //@Override
+    public void deleteAll(Iterable<SE> entities) {
         getRepository().deleteAll(entities);
     }
 
     /**
      * 删除全部数据
      */
-    @Override
+    //@Override
     public void deleteAll() {
         getRepository().deleteAll();
     }
@@ -277,7 +316,7 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      *
      * @param id 数据对应ID
      */
-    @Override
+    //@Override
     public void deleteById(ID id) {
         getRepository().deleteById(id);
     }
@@ -288,9 +327,10 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      * @param domain 数据对应实体
      * @return 已保存数据
      */
-    @Override
-    public E save(E domain) {
-        return getRepository().save(domain);
+    //@Override
+    public SE save(SE domain) {
+        SE entity = toEntity(domain);
+        return toServiceEntity((SE) getRepository().save(entity));
     }
 
     /**
@@ -299,9 +339,9 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      * @param entities 实体集合
      * @return 已经保存的实体集合
      */
-    @Override
-    public List<E> saveAll(Iterable<E> entities) {
-        return getRepository().saveAll(entities);
+    //@Override
+    public List<SE> saveAll(Iterable<SE> entities) {
+        return toServiceEntity(getRepository().saveAll(toEntity(entities)));
     }
 
     /**
@@ -310,9 +350,9 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      * @param entity 实体
      * @return 保存后实体
      */
-    @Override
-    public E saveAndFlush(E entity) {
-        return getRepository().saveAndFlush(entity);
+    //@Override
+    public SE saveAndFlush(SE entity) {
+        return toServiceEntity(getRepository().saveAndFlush(toEntity(entity)));
     }
 
     /**
@@ -321,35 +361,35 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
      * @param entities 实体列表
      * @return 保存或更新后的实体
      */
-    @Override
-    public List<E> saveAllAndFlush(List<E> entities) {
-        return getRepository().saveAllAndFlush(entities);
+    //@Override
+    public List<SE> saveAllAndFlush(List<SE> entities) {
+        return toServiceEntity(getRepository().saveAllAndFlush(toEntity(entities)));
     }
 
 
-    @Override
-    public E insert(E var) {
-        return save(var);
+    //@Override
+    public SE insert(SE var) {
+        return toServiceEntity(save(toEntity(var)));
     }
 
-    @Override
-    public List<E> insertAll(List<E> e) {
-        List<E> es = new ArrayList<>();
-        for (E e1 : e) {
+    //@Override
+    public List<SE> insertAll(List<SE> e) {
+        List<SE> es = new ArrayList<>();
+        for (SE e1 : e) {
             es.add(insert(e1));
         }
         return es;
     }
 
-    @Override
-    public E update(E e) {
-        return save(e);
+    //@Override
+    public SE update(SE e) {
+        return toServiceEntity(save(toEntity(e)));
     }
 
-    @Override
-    public List<E> updateAll(List<E> e) {
-        List<E> es = new ArrayList<>();
-        for (E e1 : e) {
+    //@Override
+    public List<SE> updateAll(List<SE> e) {
+        List<SE> es = new ArrayList<>();
+        for (SE e1 : e) {
             es.add(update(e1));
         }
         return es;
@@ -358,7 +398,7 @@ public abstract class BaseServiceImpl<E extends Entity, ID extends Serializable>
     /**
      * 刷新实体状态
      */
-    @Override
+    //@Override
     public void flush() {
         getRepository().flush();
     }

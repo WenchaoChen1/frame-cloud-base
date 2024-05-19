@@ -1,13 +1,13 @@
 package com.gstdev.cloud.oauth2.management.service;
 
 import com.gstdev.cloud.base.core.exception.transaction.TransactionalRollbackException;
+import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.oauth2.data.jpa.repository.FrameRegisteredClientRepository;
 import com.gstdev.cloud.oauth2.management.converter.OAuth2ApplicationToRegisteredClientConverter;
 import com.gstdev.cloud.oauth2.management.entity.OAuth2Application;
 import com.gstdev.cloud.oauth2.management.entity.OAuth2Scope;
 import com.gstdev.cloud.oauth2.management.repository.OAuth2ApplicationRepository;
-import com.gstdev.cloud.oauth2.management.repository.OAuth2ComplianceRepository;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +27,7 @@ import java.util.Set;
  * @date : 2022/3/1 18:06
  */
 @Service
-public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application, String> {
+public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application, String> implements BaseService<OAuth2Application,String> {
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2ApplicationService.class);
 
@@ -37,7 +37,7 @@ public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application,
     private final Converter<OAuth2Application, RegisteredClient> objectConverter;
 
     public OAuth2ApplicationService(RegisteredClientRepository registeredClientRepository, RegisteredClientRepository registeredClientRepository1, FrameRegisteredClientRepository frameRegisteredClientRepository, OAuth2ApplicationRepository applicationRepository) {
-        super(applicationRepository);
+        //super(applicationRepository);
         this.registeredClientRepository = registeredClientRepository1;
         this.frameRegisteredClientRepository = frameRegisteredClientRepository;
         this.applicationRepository = applicationRepository;

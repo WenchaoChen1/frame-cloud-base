@@ -28,7 +28,7 @@ public class FrameAuthorizationConsentService extends BaseServiceImpl<FrameAutho
 
     @Autowired
     public FrameAuthorizationConsentService(FrameAuthorizationConsentRepository authorizationConsentRepository) {
-        super(authorizationConsentRepository);
+        //super(authorizationConsentRepository);
         this.authorizationConsentRepository=authorizationConsentRepository;
     }
 

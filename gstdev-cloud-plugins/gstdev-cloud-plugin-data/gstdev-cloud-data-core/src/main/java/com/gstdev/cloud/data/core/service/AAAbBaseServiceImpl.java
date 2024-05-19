@@ -2,8 +2,6 @@
 //
 //import com.gstdev.cloud.base.definition.constants.SymbolConstants;
 //import com.gstdev.cloud.base.definition.domain.base.Entity;
-//import com.gstdev.cloud.data.core.converter.BaseServiceConverter;
-//import com.gstdev.cloud.data.core.mapper.BaseServiceMapper;
 //import com.gstdev.cloud.data.core.repository.BaseRepository;
 //import com.gstdev.cloud.data.core.utils.BasePage;
 //import org.apache.commons.lang3.ArrayUtils;
@@ -17,7 +15,6 @@
 //import java.io.Serializable;
 //import java.util.ArrayList;
 //import java.util.List;
-//import java.util.Optional;
 //
 ///**
 // * <p>Description: 通用核心 Service </p>
@@ -26,62 +23,24 @@
 // * @date : 2021/7/14 14:32
 // */
 //@Transactional
-//public abstract class AAAABaseServiceImpl<SE extends Entity, ID extends Serializable> implements BaseService<SE, ID> {
+//public abstract class AAAbBaseServiceImpl<E extends Entity, ID extends Serializable> implements BaseService<E, ID> {
 //
 //    protected String like(String property) {
 //        return SymbolConstants.PERCENT + property + SymbolConstants.PERCENT;
 //    }
-//
-//    private BaseRepository baseRepository;
-//
-//    public AAAABaseServiceImpl(BaseRepository baseRepository) {
-//        this.baseRepository = baseRepository;
-//    }
+//    protected BaseRepository baseRepository;
+////    public BaseServiceImpl(BaseRepository baseRepository) {
+////        this.baseRepository = baseRepository;
+////    }
 //
 //    /**
 //     * 获取Repository
 //     *
 //     * @return {@link BaseRepository}
 //     */
-////    public <E extends Entity, ID extends Serializable> BaseRepository<E, ID> getRepository() {
-////        return baseRepository;
-////    }
-//    public  BaseRepository getRepository() {
+//    public BaseRepository<E, ID> getRepository() {
 //        return baseRepository;
 //    }
-//
-//    public <E> SE toServiceEntity(E entity) {
-//        return (SE) entity;
-//    }
-//
-//    public <E> List<SE> toServiceEntity(List<E> entity) {
-//        return (List<SE>) entity;
-//    }
-//
-//    public <E> Page<SE> toServiceEntity(Page<E> entity) {
-//        return (Page<SE>) entity;
-//    }
-//
-//    public <E> E toEntity(SE sEntity) {
-//        return (E) sEntity;
-//    }
-//
-//    public <E> List<E> toEntity(List<SE> sEntity) {
-//        return (List<E>) sEntity;
-//    }
-//
-//    public <E> Page<E> toEntity(Page<SE> sEntity) {
-//        return (Page<E>) sEntity;
-//    }
-//
-//    public <E> Iterable<E> toEntity(Iterable<SE> sEntity) {
-//        return (Iterable<E>) sEntity;
-//    }
-//
-//    public <E> Specification<E> toEntity(Specification<SE> sEntity) {
-//        return (Specification<E>) sEntity;
-//    }
-//
 //
 //    /**
 //     * 根据ID查询数据
@@ -90,8 +49,8 @@
 //     * @return 与ID对应的数据，如果不存在则返回空
 //     */
 //    @Override
-//    public SE findById(ID id) {
-//        return toServiceEntity(getRepository().findById(id).orElse(null));
+//    public E findById(ID id) {
+//        return getRepository().findById(id).orElse(null);
 //    }
 //
 //    /**
@@ -122,8 +81,8 @@
 //     * @return 数据数量
 //     */
 //    @Override
-//    public long count(Specification<SE> specification) {
-//        return getRepository().count(toEntity(specification));
+//    public long count(Specification<E> specification) {
+//        return getRepository().count(specification);
 //    }
 //
 //    /**
@@ -132,8 +91,8 @@
 //     * @return 全部数据列表
 //     */
 //    @Override
-//    public List<SE> findAll() {
-//        return toServiceEntity(getRepository().findAll());
+//    public List<E> findAll() {
+//        return getRepository().findAll();
 //    }
 //
 //    /**
@@ -143,8 +102,8 @@
 //     * @return 已排序的全部数据列表
 //     */
 //    @Override
-//    public List<SE> findAll(Sort sort) {
-//        return toServiceEntity(getRepository().findAll(sort));
+//    public List<E> findAll(Sort sort) {
+//        return getRepository().findAll(sort);
 //    }
 //
 //    /**
@@ -154,8 +113,8 @@
 //     * @return 全部数据列表
 //     */
 //    @Override
-//    public List<SE> findAll(Specification<SE> specification) {
-//        return toServiceEntity(getRepository().findAll(toEntity(specification)));
+//    public List<E> findAll(Specification<E> specification) {
+//        return getRepository().findAll(specification);
 //    }
 //
 //    /**
@@ -166,8 +125,8 @@
 //     * @return 全部数据列表
 //     */
 //    @Override
-//    public List<SE> findAll(Specification<SE> specification, Sort sort) {
-//        return toServiceEntity(getRepository().findAll(toEntity(specification), sort));
+//    public List<E> findAll(Specification<E> specification, Sort sort) {
+//        return getRepository().findAll(specification, sort);
 //    }
 //
 //    /**
@@ -177,8 +136,8 @@
 //     * @return 分页数据
 //     */
 //    @Override
-//    public Page<SE> findByPage(Pageable pageable) {
-//        return toServiceEntity(getRepository().findAll(pageable));
+//    public Page<E> findByPage(Pageable pageable) {
+//        return getRepository().findAll(pageable);
 //    }
 //
 //    /**
@@ -188,7 +147,7 @@
 //     * @return 分页数据
 //     */
 //    @Override
-//    public Page<SE> findByPage(BasePage page) {
+//    public Page<E> findByPage(BasePage page) {
 //        if (ArrayUtils.isNotEmpty(page.getProperties())) {
 //            Sort.Direction direction = Sort.Direction.valueOf(page.getDirection());
 //            return findByPage(page.getPageNumber(), page.getPageSize(), direction, page.getProperties());
@@ -205,7 +164,7 @@
 //     * @return 分页数据
 //     */
 //    @Override
-//    public Page<SE> findByPage(int pageNumber, int pageSize) {
+//    public Page<E> findByPage(int pageNumber, int pageSize) {
 //        return findByPage(PageRequest.of(pageNumber, pageSize));
 //    }
 //
@@ -218,7 +177,7 @@
 //     * @return 分页数据
 //     */
 //    @Override
-//    public Page<SE> findByPage(int pageNumber, int pageSize, Sort sort) {
+//    public Page<E> findByPage(int pageNumber, int pageSize, Sort sort) {
 //        return findByPage(PageRequest.of(pageNumber, pageSize, sort));
 //    }
 //
@@ -232,7 +191,7 @@
 //     * @return 分页数据
 //     */
 //    @Override
-//    public Page<SE> findByPage(int pageNumber, int pageSize, Sort.Direction direction, String... properties) {
+//    public Page<E> findByPage(int pageNumber, int pageSize, Sort.Direction direction, String... properties) {
 //        return findByPage(PageRequest.of(pageNumber, pageSize, direction, properties));
 //    }
 //
@@ -244,8 +203,8 @@
 //     * @return 分页数据
 //     */
 //    @Override
-//    public Page<SE> findByPage(Specification<SE> specification, Pageable pageable) {
-//        return toServiceEntity(getRepository().findAll(toEntity(specification), pageable));
+//    public Page<E> findByPage(Specification<E> specification, Pageable pageable) {
+//        return getRepository().findAll(specification, pageable);
 //    }
 //
 //    /**
@@ -257,8 +216,8 @@
 //     * @return 分页数据
 //     */
 //    @Override
-//    public Page<SE> findByPage(Specification<SE> specification, int pageNumber, int pageSize) {
-//        return toServiceEntity(getRepository().findAll(toEntity(specification), PageRequest.of(pageNumber, pageSize)));
+//    public Page<E> findByPage(Specification<E> specification, int pageNumber, int pageSize) {
+//        return getRepository().findAll(specification, PageRequest.of(pageNumber, pageSize));
 //    }
 //
 //    /**
@@ -270,7 +229,7 @@
 //     * @return 分页数据
 //     */
 //    @Override
-//    public Page<SE> findByPage(int pageNumber, int pageSize, Sort.Direction direction) {
+//    public Page<E> findByPage(int pageNumber, int pageSize, Sort.Direction direction) {
 //        return findByPage(PageRequest.of(pageNumber, pageSize, direction));
 //    }
 //
@@ -281,8 +240,8 @@
 //     * @param entity 数据对应实体
 //     */
 //    @Override
-//    public void delete(SE entity) {
-//        getRepository().delete((Entity) toEntity(entity));
+//    public void delete(E entity) {
+//        getRepository().delete(entity);
 //    }
 //
 //    /**
@@ -299,7 +258,7 @@
 //     * @param entities 数据对应实体集合
 //     */
 //    @Override
-//    public void deleteAll(Iterable<SE> entities) {
+//    public void deleteAll(Iterable<E> entities) {
 //        getRepository().deleteAll(entities);
 //    }
 //
@@ -328,9 +287,8 @@
 //     * @return 已保存数据
 //     */
 //    @Override
-//    public SE save(SE domain) {
-//        SE entity = toEntity(domain);
-//        return toServiceEntity((SE) getRepository().save(entity));
+//    public E save(E domain) {
+//        return getRepository().save(domain);
 //    }
 //
 //    /**
@@ -340,8 +298,8 @@
 //     * @return 已经保存的实体集合
 //     */
 //    @Override
-//    public List<SE> saveAll(Iterable<SE> entities) {
-//        return toServiceEntity(getRepository().saveAll(toEntity(entities)));
+//    public List<E> saveAll(Iterable<E> entities) {
+//        return getRepository().saveAll(entities);
 //    }
 //
 //    /**
@@ -351,8 +309,8 @@
 //     * @return 保存后实体
 //     */
 //    @Override
-//    public SE saveAndFlush(SE entity) {
-//        return toServiceEntity(Optional.of(getRepository().saveAndFlush(toEntity(entity))));
+//    public E saveAndFlush(E entity) {
+//        return getRepository().saveAndFlush(entity);
 //    }
 //
 //    /**
@@ -362,34 +320,34 @@
 //     * @return 保存或更新后的实体
 //     */
 //    @Override
-//    public List<SE> saveAllAndFlush(List<SE> entities) {
-//        return toServiceEntity(getRepository().saveAllAndFlush(toEntity(entities)));
+//    public List<E> saveAllAndFlush(List<E> entities) {
+//        return getRepository().saveAllAndFlush(entities);
 //    }
 //
 //
 //    @Override
-//    public SE insert(SE var) {
-//        return toServiceEntity(save(toEntity(var)));
+//    public E insert(E var) {
+//        return save(var);
 //    }
 //
 //    @Override
-//    public List<SE> insertAll(List<SE> e) {
-//        List<SE> es = new ArrayList<>();
-//        for (SE e1 : e) {
+//    public List<E> insertAll(List<E> e) {
+//        List<E> es = new ArrayList<>();
+//        for (E e1 : e) {
 //            es.add(insert(e1));
 //        }
 //        return es;
 //    }
 //
 //    @Override
-//    public SE update(SE e) {
-//        return toServiceEntity(save(toEntity(e)));
+//    public E update(E e) {
+//        return save(e);
 //    }
 //
 //    @Override
-//    public List<SE> updateAll(List<SE> e) {
-//        List<SE> es = new ArrayList<>();
-//        for (SE e1 : e) {
+//    public List<E> updateAll(List<E> e) {
+//        List<E> es = new ArrayList<>();
+//        for (E e1 : e) {
 //            es.add(update(e1));
 //        }
 //        return es;

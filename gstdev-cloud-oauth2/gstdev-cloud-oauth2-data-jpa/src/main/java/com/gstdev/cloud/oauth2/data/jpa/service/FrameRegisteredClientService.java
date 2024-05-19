@@ -2,13 +2,10 @@ package com.gstdev.cloud.oauth2.data.jpa.service;
 
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.oauth2.data.jpa.entity.FrameRegisteredClient;
-import com.gstdev.cloud.oauth2.data.jpa.repository.FrameAuthorizationConsentRepository;
-import com.gstdev.cloud.oauth2.data.jpa.repository.FrameAuthorizationRepository;
 import com.gstdev.cloud.oauth2.data.jpa.repository.FrameRegisteredClientRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -29,7 +26,7 @@ public class FrameRegisteredClientService extends BaseServiceImpl<FrameRegistere
     private FrameRegisteredClientRepository registeredClientRepository;
     @Autowired
     public FrameRegisteredClientService(FrameRegisteredClientRepository registeredClientRepository) {
-        super(registeredClientRepository);
+        //super(registeredClientRepository);
         this.registeredClientRepository=registeredClientRepository;
     }
     public FrameRegisteredClientRepository getRepository() {
