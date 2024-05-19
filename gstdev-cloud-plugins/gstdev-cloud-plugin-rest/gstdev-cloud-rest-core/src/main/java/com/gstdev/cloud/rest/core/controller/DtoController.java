@@ -37,7 +37,7 @@ public interface DtoController<E extends Entity
     , ID extends Serializable
     , S extends BaseDtoService<E, ID,D>
     , D
-    > extends Controller<E, ID, S> {
+    > extends Controller<E, ID> {
 
     /**
      * 获取Service

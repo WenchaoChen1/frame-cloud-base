@@ -38,7 +38,7 @@ import java.util.Map;
     @Tag(name = "OAuth2 认证服务接口"),
     @Tag(name = "OAuth2 认证管理接口")
 })
-public class OAuth2AuthorizationController implements Controller<FrameAuthorization, String, FrameAuthorizationService>   {
+public class OAuth2AuthorizationController implements Controller<FrameAuthorization, String>   {
 //public class OAuth2AuthorizationController implements POJOController<DefaultOauth2Authorization
 //    , String, HerodotusAuthorizationService
 //    , Oauth2AuthorizationVoMapper
