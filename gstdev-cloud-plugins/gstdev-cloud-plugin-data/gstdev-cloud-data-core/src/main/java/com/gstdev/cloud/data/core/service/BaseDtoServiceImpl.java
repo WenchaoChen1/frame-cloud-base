@@ -23,26 +23,26 @@ import java.util.List;
 @Transactional
 public abstract class BaseDtoServiceImpl<E extends Entity
     , ID extends Serializable
-//    , R extends BaseRepository<E, ID>
-//    , M extends BaseDtoMapper<E, D>
+    , R extends BaseRepository<E, ID>
+    , M extends BaseDtoMapper<E, D>
 //    , D extends BaseDtoInterface<ID>
     , D
-    > extends BaseServiceImpl<E, ID>{
+    > extends BaseServiceImpl<E, ID,R>{
 
-    private BaseDtoMapper mapper;
+    private M mapper;
 
-//    public BaseDtoServiceImpl(R repository, M mapper) {
-////        super(repository);
-//        this.mapper = mapper;
-//    }
+    public BaseDtoServiceImpl(R repository, M mapper) {
+        super(repository);
+        this.mapper = mapper;
+    }
 
-    public BaseDtoMapper<E,D> getMapper() {
+    public M getMapper() {
         return mapper;
     }
 
-//    public void setMapper(M mapper) {
-//        this.mapper = mapper;
-//    }
+    public void setMapper(M mapper) {
+        this.mapper = mapper;
+    }
 
     /**
      * 根据ID查询数据

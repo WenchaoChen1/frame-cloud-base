@@ -20,7 +20,7 @@ import java.util.Optional;
  * @date : 2022/2/25 21:02
  */
 @Service
-public class FrameAuthorizationConsentService extends BaseServiceImpl<FrameAuthorizationConsent, FrameAuthorizationConsentId> {
+public class FrameAuthorizationConsentService extends BaseServiceImpl<FrameAuthorizationConsent, FrameAuthorizationConsentId,FrameAuthorizationConsentRepository> {
 
     private static final Logger log = LoggerFactory.getLogger(FrameAuthorizationConsentService.class);
 
@@ -28,7 +28,7 @@ public class FrameAuthorizationConsentService extends BaseServiceImpl<FrameAutho
 
     @Autowired
     public FrameAuthorizationConsentService(FrameAuthorizationConsentRepository authorizationConsentRepository) {
-        //super(authorizationConsentRepository);
+        super(authorizationConsentRepository);
         this.authorizationConsentRepository=authorizationConsentRepository;
     }
 

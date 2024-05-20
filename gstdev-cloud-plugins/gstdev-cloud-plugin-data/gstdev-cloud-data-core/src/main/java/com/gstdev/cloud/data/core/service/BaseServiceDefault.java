@@ -15,7 +15,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface BaseServiceImplApi<SE extends Entity, ID extends Serializable> extends BaseService<SE, ID> {
+public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> extends BaseService<SE, ID> {
     default String like(String property) {
         return SymbolConstants.PERCENT + property + SymbolConstants.PERCENT;
     }

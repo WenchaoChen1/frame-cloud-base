@@ -39,13 +39,15 @@ public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
     , II extends BaseInsertInputInterface
     , UI extends BaseUpdateInputInterface
     , PQC extends BasePageQueryCriteriaInterface
-    , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseDtoServiceImpl<E, ID, D> implements BasePOJOService<E, ID, D, II, UI, PQC, FQC> {
+    , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseDtoServiceImpl<E, ID, R, M, D> implements BasePOJOService<E, ID, D, II, UI, PQC, FQC>,BaseService<E, ID> {
 
     private M mapper;
+
     public BasePOJOServiceImpl(R repository, M mapper) {
-//        super(repository, mapper);
-        this.mapper=mapper;
+        super(repository, mapper);
+        this.mapper = mapper;
     }
+
     public M getMapper() {
         return mapper;
     }

@@ -39,9 +39,6 @@ public abstract class BaseTreeServiceImpl<E extends BaseTreeEntityINT<ID>
     public BaseTreeServiceImpl(R repository, M mapper) {
         super(repository, mapper);
     }
-    public BaseTreeRepository getRepository() {
-        return null;
-    }
 
     public List<E> findByParentId(ID parentId) {
         List<E> byId = getRepository().findByParentId(parentId);

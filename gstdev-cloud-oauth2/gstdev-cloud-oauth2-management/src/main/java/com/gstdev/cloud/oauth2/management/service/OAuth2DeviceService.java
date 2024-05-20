@@ -29,7 +29,7 @@ import java.util.Set;
  * @date : 2023/5/15 16:36
  */
 @Service
-public class OAuth2DeviceService extends BaseServiceImpl<OAuth2Device, String> implements BaseService<OAuth2Device, String> {
+public class OAuth2DeviceService extends BaseServiceImpl<OAuth2Device, String,OAuth2DeviceRepository> implements BaseService<OAuth2Device, String> {
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2ApplicationService.class);
 
@@ -40,7 +40,7 @@ public class OAuth2DeviceService extends BaseServiceImpl<OAuth2Device, String> i
     private final Converter<RegisteredClient, OAuth2Device> registeredClientToOAuth2DeviceConverter;
 
     public OAuth2DeviceService(RegisteredClientRepository registeredClientRepository, FrameRegisteredClientRepository frameRegisteredClientRepository, OAuth2DeviceRepository deviceRepository, OAuth2ScopeService scopeService) {
-        //super(deviceRepository);
+        super(deviceRepository);
         this.registeredClientRepository = registeredClientRepository;
         this.frameRegisteredClientRepository = frameRegisteredClientRepository;
         this.oauth2DeviceToRegisteredClientConverter = new OAuth2DeviceToRegisteredClientConverter();

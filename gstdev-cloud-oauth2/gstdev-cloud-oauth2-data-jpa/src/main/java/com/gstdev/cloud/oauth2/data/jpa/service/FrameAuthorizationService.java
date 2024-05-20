@@ -26,7 +26,7 @@ import java.util.Optional;
  * @date : 2022/2/25 21:06
  */
 @Service
-public class FrameAuthorizationService extends BaseServiceImpl<FrameAuthorization, String> implements BaseService<FrameAuthorization, String> {
+public class FrameAuthorizationService extends BaseServiceImpl<FrameAuthorization, String,FrameAuthorizationRepository> implements BaseService<FrameAuthorization, String> {
 
     private static final Logger log = LoggerFactory.getLogger(FrameAuthorizationService.class);
 
@@ -34,7 +34,7 @@ public class FrameAuthorizationService extends BaseServiceImpl<FrameAuthorizatio
     private FrameAuthorizationRepository frameAuthorizationRepository;
     @Autowired
     public FrameAuthorizationService(FrameAuthorizationRepository frameAuthorizationRepository) {
-        //super(frameAuthorizationRepository);
+        super(frameAuthorizationRepository);
         this.frameAuthorizationRepository=frameAuthorizationRepository;
     }
     public FrameAuthorizationRepository getRepository() {

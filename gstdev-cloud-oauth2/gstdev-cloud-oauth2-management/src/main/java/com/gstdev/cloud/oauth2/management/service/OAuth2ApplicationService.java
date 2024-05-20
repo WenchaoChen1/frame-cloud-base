@@ -27,7 +27,7 @@ import java.util.Set;
  * @date : 2022/3/1 18:06
  */
 @Service
-public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application, String> implements BaseService<OAuth2Application,String> {
+public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application, String,OAuth2ApplicationRepository> implements BaseService<OAuth2Application,String> {
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2ApplicationService.class);
 
@@ -37,7 +37,7 @@ public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application,
     private final Converter<OAuth2Application, RegisteredClient> objectConverter;
 
     public OAuth2ApplicationService(RegisteredClientRepository registeredClientRepository, RegisteredClientRepository registeredClientRepository1, FrameRegisteredClientRepository frameRegisteredClientRepository, OAuth2ApplicationRepository applicationRepository) {
-        //super(applicationRepository);
+        super(applicationRepository);
         this.registeredClientRepository = registeredClientRepository1;
         this.frameRegisteredClientRepository = frameRegisteredClientRepository;
         this.applicationRepository = applicationRepository;
