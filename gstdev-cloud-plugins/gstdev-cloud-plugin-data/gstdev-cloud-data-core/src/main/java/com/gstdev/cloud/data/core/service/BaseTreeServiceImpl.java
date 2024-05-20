@@ -34,7 +34,7 @@ public abstract class BaseTreeServiceImpl<E extends BaseTreeEntityINT<ID>
     , UI extends BaseTreeUpdateInputInterface & BaseUpdateInputInterface
     , PQC extends BaseTreePageQueryCriteriaInterface & BasePageQueryCriteriaInterface
     , FQC extends BaseTreeFindAllByQueryCriteriaInterface & BaseFindAllByQueryCriteriaInterface>
-    extends BasePOJOServiceImpl<E, ID, R, M, D, II, UI, PQC, FQC> implements BaseTreeService<E, ID, D, II, UI, PQC, FQC> {
+    extends BasePOJOServiceImpl<E, ID, R, M, D, II, UI, PQC, FQC> implements BaseTreeServiceDefault<E, ID, D, II, UI, PQC, FQC> {
 
     public BaseTreeServiceImpl(R repository, M mapper) {
         super(repository, mapper);
