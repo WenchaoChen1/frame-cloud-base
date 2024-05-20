@@ -35,7 +35,6 @@ import java.util.stream.Collectors;
  */
 public interface DtoController<E extends Entity
     , ID extends Serializable
-    , S extends BaseDtoService<E, ID,D>
     , D
     > extends Controller<E, ID> {
 
@@ -44,7 +43,7 @@ public interface DtoController<E extends Entity
      *
      * @return Service
      */
-    S getService();
+    BaseDtoService<E, ID,D> getService();
 
     /**
      * 根据ID查询数据

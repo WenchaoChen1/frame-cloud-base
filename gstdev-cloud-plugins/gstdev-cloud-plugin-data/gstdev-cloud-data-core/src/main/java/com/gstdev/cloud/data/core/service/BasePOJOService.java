@@ -19,31 +19,32 @@ import java.util.List;
 public interface BasePOJOService<E extends BasePOJOEntityINT<ID>
     , ID extends Serializable
     , D extends BaseDtoInterface<ID>
-    , II extends BaseInsertInputInterface
-    , UI extends BaseUpdateInputInterface
-    , PQC extends BasePageQueryCriteriaInterface
-    , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseDtoService<E, ID, D> {
+//    , II extends BaseInsertInputInterface
+//    , UI extends BaseUpdateInputInterface
+//    , PQC extends BasePageQueryCriteriaInterface
+//    , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseDtoService<E, ID, D> {
+    > extends BaseDtoService<E, ID, D> {
 
-    Result<D> insertToResult(II var1);
-
-    Result<List<D>> insertAllToResult(List<II> var1);
-
-    Result<D> updateToResult(UI varUpdateInput);
-
-    Result<List<D>> updateAllToResult(List<UI> varUpdateInput);
-
-    Result<D> deleteByIdToResult(ID id);
-
-    Result<List<D>> deleteAllByIdToResult(List<ID> ids);
-
-    Page<D> page(PQC queryCriteria, Pageable pageable);
-
-//    D findByIdToDto(ID id);
-
-    Result<D> findByIdToResult(ID id);
-
-    List<D> findAllByQueryCriteriaToDto(FQC var1);
-
-    Result<List<D>> findAllByQueryCriteriaToResult(FQC var1);
+//    Result<D> insertToResult(II var1);
+//
+//    Result<List<D>> insertAllToResult(List<II> var1);
+//
+//    Result<D> updateToResult(UI varUpdateInput);
+//
+//    Result<List<D>> updateAllToResult(List<UI> varUpdateInput);
+//
+//    Result<D> deleteByIdToResult(ID id);
+//
+//    Result<List<D>> deleteAllByIdToResult(List<ID> ids);
+//
+//    Page<D> page(PQC queryCriteria, Pageable pageable);
+//
+////    D findByIdToDto(ID id);
+//
+//    Result<D> findByIdToResult(ID id);
+//
+//    List<D> findAllByQueryCriteriaToDto(FQC var1);
+//
+//    Result<List<D>> findAllByQueryCriteriaToResult(FQC var1);
 
 }

@@ -3,6 +3,7 @@ package com.gstdev.cloud.data.core.service;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.base.definition.domain.base.pojo.*;
 import com.gstdev.cloud.data.core.entity.BaseTreeEntityINT;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.io.Serializable;
 import java.util.List;
@@ -17,17 +18,13 @@ import java.util.List;
 public interface BaseTreeService<E extends BaseTreeEntityINT<ID>
     , ID extends Serializable
     , D extends BaseTreeDtoInterface<D, ID> & BaseDtoInterface<ID>
-    , II extends BaseTreeInsertInputInterface & BaseInsertInputInterface
-    , UI extends BaseTreeUpdateInputInterface & BaseUpdateInputInterface
-    , PQC extends BaseTreePageQueryCriteriaInterface & BasePageQueryCriteriaInterface
-    , FQC extends BaseTreeFindAllByQueryCriteriaInterface & BaseFindAllByQueryCriteriaInterface
-    > extends BasePOJOService<E, ID, D, II, UI, PQC, FQC> {
+    > extends BaseDtoServiceDefault<E, ID, D> {
 
     List<D> findItselfAndSubsetsToDto(ID id);
 
     List<D> findSubsetsToDto(ID id);
 
-    D findByIdToTreeToDto(String id);
+    D findByIdToTreeToDto(ID id);
 
     Result<D> findByIdToTreeToResult(ID id);
 
@@ -39,8 +36,6 @@ public interface BaseTreeService<E extends BaseTreeEntityINT<ID>
 
     Result<List<D>> findByParentIdToResult(ID parentId);
 
-    List<D> findAllByQueryCriteriaToDtoToTree(FQC queryCriteria);
-
-    Result<List<D>> findAllByQueryCriteriaToResultToTree(FQC queryCriteria);
+    List<D> findAllByQueryCriteriaToDtoToTree(Specification<E> specification);
 
 }

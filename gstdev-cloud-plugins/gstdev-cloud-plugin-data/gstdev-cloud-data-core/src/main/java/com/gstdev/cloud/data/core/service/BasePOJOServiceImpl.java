@@ -34,12 +34,13 @@ import java.util.Optional;
 public class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
     , ID extends Serializable
     , R extends BaseRepository<E, ID>
-    , M extends BasePOJOMapper<E, D, II, UI>
+    , M extends BaseDtoMapper<E, D>
     , D extends BaseDtoInterface<ID>
-    , II extends BaseInsertInputInterface
-    , UI extends BaseUpdateInputInterface
-    , PQC extends BasePageQueryCriteriaInterface
-    , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseDtoServiceImpl<E, ID, R, M, D> implements BasePOJOServiceDefault<E, ID, D, II, UI, PQC, FQC> {
+//    , II extends BaseInsertInputInterface
+//    , UI extends BaseUpdateInputInterface
+//    , PQC extends BasePageQueryCriteriaInterface
+//    , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseDtoServiceImpl<E, ID, R, M, D> implements BasePOJOServiceDefault<E, ID, D, II, UI, PQC, FQC> {
+    > extends BaseDtoServiceImpl<E, ID, R, M, D> implements BasePOJOServiceDefault<E, ID, D> {
 
     private M mapper;
 

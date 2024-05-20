@@ -9,7 +9,7 @@ import org.springframework.data.domain.PageImpl;
 import java.util.List;
 import java.util.function.Function;
 
-public interface BaseVoMapper<V, D> {
+public interface BaseVoMapper<D, V> {
 
     V toVo(D var1);
 

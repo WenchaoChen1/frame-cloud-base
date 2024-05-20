@@ -4,6 +4,6 @@ package com.gstdev.cloud.data.core.mapper;
 //    , D extends BaseTreeDtoInterface
 //    , II extends BaseTreeInsertInputInterface
 //    , UI extends BaseTreeUpdateInputInterface> extends BaseMapper<E, D, II, UI> {
-public interface BaseTreeMapper<E, D, II, UI> extends BasePOJOMapper<E, D, II, UI> {
+public interface BaseTreeMapper<E, D,V, II, UI> extends BasePOJOMapper<E, D,V, II, UI> {
 
 }

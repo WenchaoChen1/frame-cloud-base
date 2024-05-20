@@ -36,7 +36,7 @@ public abstract class BaseDtoController<E extends Entity
     , S extends BaseDtoService<E, ID, D>
 //    , D extends BaseDtoInterface<ID>
     , D
-    > implements DtoController<E, ID, S,D> {
+    > implements DtoController<E, ID, D> {
 
 
     private S service;

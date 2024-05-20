@@ -176,6 +176,12 @@ public interface BaseService<E extends Serializable, ID extends Serializable> {
      * 删除全部数据
      */
     void deleteAll();
+    /**
+     * 根据ID删除数据
+     *
+     * @param id 数据对应ID
+     */
+    void deleteAllById(List<ID> id);
 
     /**
      * 根据ID删除数据

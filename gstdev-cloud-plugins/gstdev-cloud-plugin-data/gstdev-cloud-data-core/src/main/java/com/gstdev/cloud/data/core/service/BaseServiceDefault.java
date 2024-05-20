@@ -68,6 +68,14 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      */
     //@Override
     default SE findById(ID id) {
+        //    default E findById(ID id) {
+//        Optional<E> byId = getRepository().findById(id);
+//        E e = null;
+//        if (byId.isPresent()) {
+//            e = byId.get();
+//        }
+//        return e;
+//    }
         return toServiceEntity(getRepository().findById(id).orElse(null));
     }
 
@@ -288,6 +296,15 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
         getRepository().deleteAll();
     }
 
+    /**
+     * 根据ID删除数据
+     *
+     * @param id 数据对应ID
+     */
+    //@Override
+    default void deleteAllById(List<ID> id) {
+        getRepository().deleteAllById(id);
+    }
     /**
      * 根据ID删除数据
      *
