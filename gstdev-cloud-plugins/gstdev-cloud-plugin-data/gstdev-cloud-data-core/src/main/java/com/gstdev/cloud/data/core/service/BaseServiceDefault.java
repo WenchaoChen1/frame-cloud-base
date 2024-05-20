@@ -305,6 +305,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     default void deleteAllById(List<ID> id) {
         getRepository().deleteAllById(id);
     }
+
     /**
      * 根据ID删除数据
      *

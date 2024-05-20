@@ -1,6 +1,5 @@
 package com.gstdev.cloud.data.core.service;
 
-import com.gstdev.cloud.base.definition.domain.base.Entity;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -8,7 +7,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface BaseService<E extends Serializable, ID extends Serializable> {
@@ -152,7 +150,6 @@ public interface BaseService<E extends Serializable, ID extends Serializable> {
     Page<E> findByPage(Specification<E> specification, Pageable pageable);
 
 
-
     /**
      * 删除数据
      *
@@ -176,6 +173,7 @@ public interface BaseService<E extends Serializable, ID extends Serializable> {
      * 删除全部数据
      */
     void deleteAll();
+
     /**
      * 根据ID删除数据
      *
@@ -228,7 +226,7 @@ public interface BaseService<E extends Serializable, ID extends Serializable> {
 
     E update(E e);
 
-    List<E> updateAll(List< E> e);
+    List<E> updateAll(List<E> e);
 
     /**
      * 刷新实体状态

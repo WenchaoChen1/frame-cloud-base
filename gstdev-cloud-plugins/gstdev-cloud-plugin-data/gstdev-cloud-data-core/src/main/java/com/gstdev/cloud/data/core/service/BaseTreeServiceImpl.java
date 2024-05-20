@@ -17,10 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @param <R>   xxxRepository
- * @param <M>   xxxMapper
- * @param <E>   xxx  实体类
- * @param <D>   xxxDto
+ * @param <R> xxxRepository
+ * @param <M> xxxMapper
+ * @param <E> xxx  实体类
+ * @param <D> xxxDto
  */
 public abstract class BaseTreeServiceImpl<E extends BaseTreeEntityINT<ID>
     , ID extends Serializable

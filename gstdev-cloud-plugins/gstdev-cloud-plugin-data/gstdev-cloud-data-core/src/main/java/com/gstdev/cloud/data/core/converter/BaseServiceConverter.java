@@ -6,7 +6,7 @@ import org.springframework.data.jpa.domain.Specification;
 
 import java.util.List;
 
-public class BaseServiceConverter<E, SE> implements BaseServiceMapper<E,SE> {
+public class BaseServiceConverter<E, SE> implements BaseServiceMapper<E, SE> {
     public SE toServiceEntity(E entity) {
         return (SE) entity;
     }

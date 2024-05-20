@@ -22,7 +22,7 @@ import java.util.List;
  * @date : 2021/7/14 14:32
  */
 @Transactional
-public  class BaseServiceImpl<SE extends Entity, ID extends Serializable, S extends BaseRepository<SE, ID>> implements BaseService<SE, ID>, BaseServiceDefault<SE, ID> {
+public class BaseServiceImpl<SE extends Entity, ID extends Serializable, S extends BaseRepository<SE, ID>> implements BaseService<SE, ID>, BaseServiceDefault<SE, ID> {
 
     private S baseRepository;
 

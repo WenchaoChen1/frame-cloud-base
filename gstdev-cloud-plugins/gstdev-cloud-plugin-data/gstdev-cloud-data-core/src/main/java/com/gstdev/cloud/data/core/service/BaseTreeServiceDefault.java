@@ -14,10 +14,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface BaseTreeServiceDefault <E extends BaseTreeEntityINT<ID>
+public interface BaseTreeServiceDefault<E extends BaseTreeEntityINT<ID>
     , ID extends Serializable
     , D extends BaseTreeDtoInterface<D, ID> & BaseDtoInterface<ID>
-    > extends BaseDtoServiceDefault<E, ID, D>,BaseTreeService<E,ID,D> {
+    > extends BaseDtoServiceDefault<E, ID, D>, BaseTreeService<E, ID, D> {
 
     BaseTreeRepository<E, ID> getRepository();
 

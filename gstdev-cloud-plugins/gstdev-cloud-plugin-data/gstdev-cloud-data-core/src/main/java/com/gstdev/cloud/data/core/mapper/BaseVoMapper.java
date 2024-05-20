@@ -24,6 +24,7 @@ public interface BaseVoMapper<D, V> {
         new PageImpl<V>(responses, page.getPageable(), page.getTotalElements());
         return new PageImpl<V>(responses, page.getPageable(), page.getTotalElements());
     }
+
     @Named("toResultVo")
     default Result<V> toVo(Result<D> result) {
         D data = result.getData();
@@ -31,6 +32,7 @@ public interface BaseVoMapper<D, V> {
         Result<V> of = Result.success(result.getMessage(), result.getCode(), v);
         return of;
     }
+
     @Named("toListResultVo")
     default Result<List<V>> toAllVo(Result<List<D>> result) {
         List<D> data = result.getData();

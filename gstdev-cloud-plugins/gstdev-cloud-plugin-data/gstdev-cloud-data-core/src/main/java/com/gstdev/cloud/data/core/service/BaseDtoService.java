@@ -1,7 +1,6 @@
 package com.gstdev.cloud.data.core.service;
 
 import com.gstdev.cloud.base.definition.domain.base.Entity;
-import com.gstdev.cloud.base.definition.domain.base.pojo.BaseDtoInterface;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +12,6 @@ import java.util.List;
 
 public interface BaseDtoService<E extends Entity
     , ID extends Serializable
-//    , D extends BaseDtoInterface<ID>
     , D
     > extends BaseService<E, ID> {
     /**
@@ -184,6 +182,7 @@ public interface BaseDtoService<E extends Entity
      * @return 保存后实体
      */
     D saveAndFlushToDto(E entity);
+
     D saveAndFlushToDto(D entity);
 
     /**
