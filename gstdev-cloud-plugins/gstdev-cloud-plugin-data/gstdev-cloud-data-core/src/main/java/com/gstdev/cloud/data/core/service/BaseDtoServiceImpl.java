@@ -21,13 +21,13 @@ import java.util.List;
  * @date : 2021/7/14 14:32
  */
 @Transactional
-public abstract class BaseDtoServiceImpl<E extends Entity
+public  class BaseDtoServiceImpl<E extends Entity
     , ID extends Serializable
     , R extends BaseRepository<E, ID>
     , M extends BaseDtoMapper<E, D>
 //    , D extends BaseDtoInterface<ID>
     , D
-    > extends BaseServiceImpl<E, ID,R>{
+    > extends BaseServiceImpl<E, ID,R> implements BaseDtoServiceDefault<E,ID,D>{
 
     private M mapper;
 

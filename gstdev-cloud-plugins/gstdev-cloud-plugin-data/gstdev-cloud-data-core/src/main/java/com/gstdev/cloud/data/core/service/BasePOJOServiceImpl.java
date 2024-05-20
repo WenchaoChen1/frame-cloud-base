@@ -31,7 +31,7 @@ import java.util.Optional;
  * @param <PQC> xxxPageQueryCriteria
  * @param <FQC> xxxFindAllByQueryCriteria
  */
-public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
+public class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
     , ID extends Serializable
     , R extends BaseRepository<E, ID>
     , M extends BasePOJOMapper<E, D, II, UI>
@@ -39,7 +39,7 @@ public abstract class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
     , II extends BaseInsertInputInterface
     , UI extends BaseUpdateInputInterface
     , PQC extends BasePageQueryCriteriaInterface
-    , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseDtoServiceImpl<E, ID, R, M, D> implements BasePOJOService<E, ID, D, II, UI, PQC, FQC>,BaseService<E, ID> {
+    , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseDtoServiceImpl<E, ID, R, M, D> implements BasePOJOServiceDefault<E, ID, D, II, UI, PQC, FQC> {
 
     private M mapper;
 
