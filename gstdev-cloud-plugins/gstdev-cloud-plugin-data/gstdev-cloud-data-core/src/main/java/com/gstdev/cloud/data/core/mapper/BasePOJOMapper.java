@@ -26,9 +26,6 @@ public interface BasePOJOMapper<E, D, V, II, UI> extends BaseDtoMapper<E, D>, Ba
     E toEntityUpdate(UI var1);
 
     void copyUpdate(UI var1, @MappingTarget E var2);
-    @Named("toVo")
-    V toVo(D var1);
-    @Named("toListVo")
-    List<V> toVo(List<D> var1);
+
 
 }
