@@ -36,9 +36,9 @@ public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application,
     private OAuth2ApplicationRepository applicationRepository;
     private final Converter<OAuth2Application, RegisteredClient> objectConverter;
 
-    public OAuth2ApplicationService(RegisteredClientRepository registeredClientRepository, RegisteredClientRepository registeredClientRepository1, FrameRegisteredClientRepository frameRegisteredClientRepository, OAuth2ApplicationRepository applicationRepository) {
+    public OAuth2ApplicationService(RegisteredClientRepository registeredClientRepository, FrameRegisteredClientRepository frameRegisteredClientRepository, OAuth2ApplicationRepository applicationRepository) {
         super(applicationRepository);
-        this.registeredClientRepository = registeredClientRepository1;
+        this.registeredClientRepository = registeredClientRepository;
         this.frameRegisteredClientRepository = frameRegisteredClientRepository;
         this.applicationRepository = applicationRepository;
         this.objectConverter = new OAuth2ApplicationToRegisteredClientConverter();
