@@ -2,9 +2,8 @@ package com.gstdev.cloud.rest.core.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.base.definition.domain.base.Entity;
-import com.gstdev.cloud.base.definition.domain.base.pojo.BaseDtoInterface;
+import com.gstdev.cloud.data.core.mapper.BaseVoMapper;
 import com.gstdev.cloud.data.core.service.BaseDtoService;
-import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.rest.core.annotation.AccessLimited;
 import com.gstdev.cloud.rest.core.annotation.Idempotent;
@@ -15,9 +14,7 @@ import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,23 +29,37 @@ import java.util.Map;
  * @author : cc
  * @date : 2020/4/30 11:00
  */
-public abstract class BaseDtoController<E extends Entity
+public abstract class BasevVoController<E extends Entity
     , ID extends Serializable
     , S extends BaseDtoService<E, ID, D>
-    , D
-    > implements DtoController<E, ID, D> {
-
+    , M extends BaseVoMapper<D, V>
+    , D, V
+    > implements VoController<E, ID, D, V> {
 
     private S service;
 
-    public BaseDtoController(S service) {
+    private M mapper;
+
+    public BasevVoController(S service, M mapper) {
         this.service = service;
+        this.mapper = mapper;
     }
 
+    /**
+     * 获取Service
+     *
+     * @return Service
+     */
     @Override
     public S getService() {
         return this.service;
     }
+
+    @Override
+    public M getMapper() {
+        return mapper;
+    }
+
 
     @AccessLimited
     @Operation(summary = "分页查询数据", description = "通过pageNumber和pageSize获取分页数据",
@@ -62,12 +73,7 @@ public abstract class BaseDtoController<E extends Entity
     })
     @GetMapping
     public Result<Map<String, Object>> findByPage(@Validated Pageable pageable) {
-//        if (ArrayUtils.isNotEmpty(pageable.getProperties())) {
-//            Sort.Direction direction = Sort.Direction.valueOf(pageable.getDirection());
-//            return Controller.super.findByPage(pageable.getPageNumber(), pageable.getPageSize(), direction, page.getProperties());
-//        } else {
-        return DtoController.super.findByPage(pageable);
-//        }
+        return VoController.super.findByPage(pageable);
     }
 
     @Idempotent
@@ -79,8 +85,8 @@ public abstract class BaseDtoController<E extends Entity
     })
     @PostMapping
     @Override
-    public Result<D> saveOrUpdateToDto(@RequestBody E domain) {
-        return DtoController.super.saveOrUpdateToDto(domain);
+    public Result<V> saveOrUpdateToVo(@RequestBody E domain) {
+        return  VoController.super.saveOrUpdateToVo(domain);
     }
 
     @Idempotent
@@ -93,7 +99,7 @@ public abstract class BaseDtoController<E extends Entity
     @DeleteMapping("/{id}")
     @Override
     public Result<String> delete(@PathVariable ID id) {
-        return DtoController.super.delete(id);
+        return VoController.super.delete(id);
     }
 
 }

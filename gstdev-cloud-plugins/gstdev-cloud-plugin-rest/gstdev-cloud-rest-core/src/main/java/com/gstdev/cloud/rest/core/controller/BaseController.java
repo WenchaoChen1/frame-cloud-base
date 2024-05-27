@@ -15,6 +15,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -58,13 +59,13 @@ public abstract class BaseController<E extends Entity, ID extends Serializable, 
         @Parameter(name = "page", required = true, in = ParameterIn.QUERY, description = "分页Bo对象", schema = @Schema(implementation = BasePage.class))
     })
     @GetMapping
-    public Result<Map<String, Object>> findByPage(@Validated BasePage page) {
-        if (ArrayUtils.isNotEmpty(page.getProperties())) {
-            Sort.Direction direction = Sort.Direction.valueOf(page.getDirection());
-            return Controller.super.findByPage(page.getPageNumber(), page.getPageSize(), direction, page.getProperties());
-        } else {
-            return Controller.super.findByPage(page.getPageNumber(), page.getPageSize());
-        }
+    public Result<Map<String, Object>> findByPage(@Validated Pageable pageable) {
+//        if (ArrayUtils.isNotEmpty(pageable.getProperties())) {
+//            Sort.Direction direction = Sort.Direction.valueOf(pageable.getDirection());
+//            return Controller.super.findByPage(pageable.getPageNumber(), pageable.getPageSize(), direction, page.getProperties());
+//        } else {
+            return Controller.super.findByPage(pageable);
+//        }
     }
 
     @Idempotent

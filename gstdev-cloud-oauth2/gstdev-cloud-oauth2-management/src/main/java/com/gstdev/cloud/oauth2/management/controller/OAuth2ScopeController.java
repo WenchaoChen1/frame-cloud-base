@@ -32,10 +32,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/authorize/scope")
-//@Tags({
-//    @Tag(name = "OAuth2 认证服务接口"),
-//    @Tag(name = "OAuth2 权限范围管理接口")
-//})
+
 public class OAuth2ScopeController extends BaseController<OAuth2Scope, String, OAuth2ScopeService> {
 
 
