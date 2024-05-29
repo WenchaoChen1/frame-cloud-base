@@ -2,6 +2,7 @@ package com.gstdev.cloud.data.core.enums;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.collect.ImmutableMap;
 import com.gstdev.cloud.base.definition.enums.BaseUiEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -16,6 +17,7 @@ import java.util.Map;
  */
 @Schema(title = "数据状态")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
+//@JsonDeserialize(using = DataItemStatusDeserializer.class)
 public enum DataItemStatus implements BaseUiEnum<Integer> {
 
     /**
