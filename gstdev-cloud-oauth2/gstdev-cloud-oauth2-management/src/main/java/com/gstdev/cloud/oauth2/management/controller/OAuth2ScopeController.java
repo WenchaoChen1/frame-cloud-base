@@ -84,7 +84,19 @@ public class OAuth2ScopeController extends BaseController<OAuth2Scope, String, O
         OAuth2Scope scope = getService().findByScopeCode(scopeCode);
         return result(scope);
     }
-
+    @AccessLimited
+    @Operation(summary = "根据id查询应用范围", description = "根据范围代码查询应用范围",
+        responses = {
+            @ApiResponse(description = "查询到的应用范围", content = @Content(mediaType = "application/json", schema = @Schema(implementation = OAuth2Scope.class))),
+            @ApiResponse(responseCode = "204", description = "查询成功，未查到数据"),
+            @ApiResponse(responseCode = "500", description = "查询失败")
+        }
+    )
+    @GetMapping("/get-by-id")
+    public Result<OAuth2Scope> findById(String id) {
+        OAuth2Scope scope = getService().findById(id);
+        return result(scope);
+    }
     private OAuth2Permission toEntity(OAuth2PermissionDto dto) {
         OAuth2Permission entity = new OAuth2Permission();
         entity.setPermissionId(dto.getPermissionId());

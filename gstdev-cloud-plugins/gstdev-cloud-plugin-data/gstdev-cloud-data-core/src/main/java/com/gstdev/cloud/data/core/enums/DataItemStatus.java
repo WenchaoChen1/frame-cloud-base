@@ -47,7 +47,7 @@ public enum DataItemStatus implements BaseUiEnum<Integer> {
                 ImmutableMap.<String, Object>builder()
                     .put("value", dataItemStatus.getValue())
                     .put("key", dataItemStatus.name())
-                    .put("text", dataItemStatus.getDescription())
+                    .put("description", dataItemStatus.getDescription())
                     .build());
         }
     }
