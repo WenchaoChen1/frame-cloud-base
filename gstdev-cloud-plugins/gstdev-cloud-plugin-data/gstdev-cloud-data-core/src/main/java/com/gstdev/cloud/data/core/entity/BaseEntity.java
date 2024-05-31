@@ -16,6 +16,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
+import java.util.Objects;
 
 /**
  * <p> Description : 实体通用属性 </p>
@@ -98,4 +99,17 @@ public abstract class BaseEntity extends AbstractEntity {
 //    return createTime;
 //  }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BaseEntity that = (BaseEntity) o;
+        return Objects.equals(createdAt, that.createdAt) && Objects.equals(createdBy, that.createdBy) && Objects.equals(updatedAt, that.updatedAt) && Objects.equals(updatedBy, that.updatedBy);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(createdAt, createdBy, updatedAt, updatedBy);
+    }
 }

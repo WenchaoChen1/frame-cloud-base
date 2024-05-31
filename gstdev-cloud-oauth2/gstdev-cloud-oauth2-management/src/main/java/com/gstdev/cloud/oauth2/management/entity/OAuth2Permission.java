@@ -7,6 +7,8 @@ import com.google.common.base.MoreObjects;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import java.util.Objects;
+
 /**
  * <p>Description: 客户端权限 </p>
  *
@@ -61,5 +63,19 @@ public class OAuth2Permission extends BaseSysEntity {
             .add("permissionCode", permissionCode)
             .add("permissionName", permissionName)
             .toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        OAuth2Permission that = (OAuth2Permission) o;
+        return Objects.equals(permissionId, that.permissionId) && Objects.equals(permissionCode, that.permissionCode) && Objects.equals(permissionName, that.permissionName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), permissionId, permissionCode, permissionName);
     }
 }
