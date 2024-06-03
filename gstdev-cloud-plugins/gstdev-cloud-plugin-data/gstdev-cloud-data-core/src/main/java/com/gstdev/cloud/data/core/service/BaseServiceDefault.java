@@ -237,6 +237,26 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * 查询分页数据
      *
      * @param specification {@link Specification}
+     * @param pageable      {@link Pageable}
+     * @return 分页数据
+     */
+    //@Override
+    default Page<SE> findByPage(Specification<SE> specification, BasePage pageable) {
+        PageRequest pageRequest = null;
+        if (ArrayUtils.isNotEmpty(pageable.getProperties())) {
+            Sort.Direction direction = Sort.Direction.valueOf(pageable.getDirection());
+            pageRequest = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), direction, pageable.getProperties());
+        } else {
+            pageRequest = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());
+
+        }
+        return toServiceEntity(getRepository().findAll(toEntity(specification), pageRequest));
+    }
+
+    /**
+     * 查询分页数据
+     *
+     * @param specification {@link Specification}
      * @param pageNumber    当前页码, 起始页码 0
      * @param pageSize      每页显示的数据条数
      * @return 分页数据

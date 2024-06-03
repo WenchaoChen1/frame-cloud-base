@@ -118,6 +118,7 @@ public interface BaseDtoService<E extends Entity
      * @return 分页数据
      */
     Page<D> findByPageToDto(Specification<E> specification, Pageable pageable);
+    Page<D> findByPageToDto(Specification<E> specification, BasePage pageable);
 //    Page<D> findByPageToDto(Specification<D> specification, Pageable pageable);
 
     /**

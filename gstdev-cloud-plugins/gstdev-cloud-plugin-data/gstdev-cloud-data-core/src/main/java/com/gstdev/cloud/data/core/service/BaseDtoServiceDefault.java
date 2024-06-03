@@ -148,6 +148,16 @@ public interface BaseDtoServiceDefault<E extends Entity
 //@Override
     default Page<D> findByPageToDto(Specification<E> specification, Pageable pageable) {
         return getMapper().toDto(findByPage(specification, pageable));
+    }    /**
+     * 查询分页数据
+     *
+     * @param specification {@link Specification}
+     * @param pageable      {@link BasePage}
+     * @return 分页数据
+     */
+//@Override
+    default Page<D> findByPageToDto(Specification<E> specification, BasePage pageable) {
+        return getMapper().toDto(findByPage(specification, pageable));
     }
 
     /**
