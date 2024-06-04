@@ -35,11 +35,11 @@ import java.util.Map;
 @RestController
 @RequestMapping("/open/captcha")
 @Validated
-@Tags({
-    @Tag(name = "OAuth2 认证服务器接口"),
-    @Tag(name = "OAuth2 认证服务器开放接口"),
-    @Tag(name = "验证码接口")
-})
+//@Tags({
+//    @Tag(name = "OAuth2 认证服务器接口"),
+//    @Tag(name = "OAuth2 认证服务器开放接口"),
+//    @Tag(name = "验证码接口")
+//})
 public class CaptchaController {
 
 

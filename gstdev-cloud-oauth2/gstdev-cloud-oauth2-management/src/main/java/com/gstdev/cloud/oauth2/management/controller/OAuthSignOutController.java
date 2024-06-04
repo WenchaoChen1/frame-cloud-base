@@ -30,10 +30,10 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/oauth2")
-@Tags({
-    @Tag(name = "OAuth2 认证服务接口"),
-    @Tag(name = "OAuth2 扩展接口")
-})
+//@Tags({
+//    @Tag(name = "OAuth2 认证服务接口"),
+//    @Tag(name = "OAuth2 扩展接口")
+//})
 public class OAuthSignOutController {
 
     private final OAuth2AuthorizationService authorizationService;

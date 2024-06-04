@@ -32,11 +32,11 @@ import org.springframework.web.bind.annotation.RestController;
  * @see <a href="https://conkeyn.iteye.com/blog/2296406">参考文档</a>
  */
 @RestController
-@Tags({
-    @Tag(name = "OAuth2 认证服务器接口"),
-    @Tag(name = "OAuth2 认证服务器开放接口"),
-    @Tag(name = "OAuth2 身份认证辅助接口")
-})
+//@Tags({
+//    @Tag(name = "OAuth2 认证服务器接口"),
+//    @Tag(name = "OAuth2 认证服务器开放接口"),
+//    @Tag(name = "OAuth2 身份认证辅助接口")
+//})
 public class IdentityController {
 
     private final InterfaceSecurityService interfaceSecurityService;

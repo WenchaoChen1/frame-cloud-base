@@ -29,11 +29,11 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/authorize/compliance")
-@Tags({
-    @Tag(name = "OAuth2 认证服务接口"),
-    @Tag(name = "OAuth2 应用安全合规接口"),
-    @Tag(name = "OAuth2 审计管理接口")
-})
+//@Tags({
+//    @Tag(name = "OAuth2 认证服务接口"),
+//    @Tag(name = "OAuth2 应用安全合规接口"),
+//    @Tag(name = "OAuth2 审计管理接口")
+//})
 public class OAuth2ComplianceController extends BaseController<OAuth2Compliance, String, OAuth2ComplianceService> {
 
 

@@ -32,7 +32,6 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/authorize/scope")
-
 public class OAuth2ScopeController extends BaseController<OAuth2Scope, String, OAuth2ScopeService> {
 
 

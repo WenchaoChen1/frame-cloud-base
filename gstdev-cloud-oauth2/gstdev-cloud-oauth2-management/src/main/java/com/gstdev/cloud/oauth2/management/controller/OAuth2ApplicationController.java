@@ -22,10 +22,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/authorize/application")
-@Tags({
-    @Tag(name = "OAuth2 认证服务接口"),
-    @Tag(name = "OAuth2 应用管理接口")
-})
+//@Tags({
+//    @Tag(name = "OAuth2 认证服务接口"),
+//    @Tag(name = "OAuth2 应用管理接口")
+//})
 public class OAuth2ApplicationController extends BaseController<OAuth2Application, String, OAuth2ApplicationService> {
     public OAuth2ApplicationController(OAuth2ApplicationService service) {
         super(service);

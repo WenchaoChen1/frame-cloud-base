@@ -22,11 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/authorize/device")
-@Tags({
-    @Tag(name = "OAuth2 认证服务接口"),
-    @Tag(name = "物联网管理接口"),
-    @Tag(name = "物联网设备接口")
-})
+//@Tags({
+//    @Tag(name = "OAuth2 认证服务接口"),
+//    @Tag(name = "物联网管理接口"),
+//    @Tag(name = "物联网设备接口")
+//})
 public class OAuth2DeviceController extends BaseController<OAuth2Device, String, OAuth2DeviceService> {
 
 

@@ -21,10 +21,10 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/authorize/constant")
-@Tags({
-    @Tag(name = "OAuth2 认证服务接口"),
-    @Tag(name = "常量接口")
-})
+//@Tags({
+//    @Tag(name = "OAuth2 认证服务接口"),
+//    @Tag(name = "常量接口")
+//})
 public class OAuth2ConstantController {
 
     private final OAuth2ConstantService constantService;
