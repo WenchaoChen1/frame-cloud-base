@@ -25,13 +25,15 @@ import java.time.Instant;
 public abstract class AbstractRegisteredClient extends BaseSysEntity implements RegisteredClientDetails {
 
     @Schema(title = "客户端ID发布日期", description = "客户端发布日期")
-    @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT, locale = "GMT+8", shape = JsonFormat.Shape.STRING)
+//    @JsonFormat(pattern = DefaultConstants.DATE_ISO8601_MS_WITH_ZONE_OFFSET_PATTERN, locale = "GMT+8", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DefaultConstants.DATE_UTC_MS_PATTERN, timezone = "UTC")
     @Column(name = "client_id_issued_at", nullable = false, updatable = false)
     @CreationTimestamp
     private Instant clientIdIssuedAt;
 
     @Schema(title = "客户端秘钥过期时间", description = "客户端秘钥过期时间")
-    @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT, locale = "GMT+8", shape = JsonFormat.Shape.STRING)
+//    @JsonFormat(pattern = DefaultConstants.DATE_ISO8601_MS_WITH_ZONE_OFFSET_PATTERN, locale = "GMT+8", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DefaultConstants.DATE_UTC_MS_PATTERN, timezone = "UTC")
     @Column(name = "client_secret_expires_at")
     private Instant clientSecretExpiresAt;
 

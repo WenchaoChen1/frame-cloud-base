@@ -144,6 +144,10 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
         this.authorizationCodeValidity = authorizationCodeValidity;
     }
 
+//    public void setAuthorizationCodeValidity(String authorizationCodeValidity) {
+//        this.authorizationCodeValidity = Duration.parse(authorizationCodeValidity);
+//    }
+
     public Duration getAccessTokenValidity() {
         return accessTokenValidity;
     }
@@ -151,6 +155,10 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
     public void setAccessTokenValidity(Duration accessTokenValidity) {
         this.accessTokenValidity = accessTokenValidity;
     }
+
+//    public void setAccessTokenValidity(String accessTokenValidity) {
+//        this.accessTokenValidity = Duration.parse(accessTokenValidity);
+//    }
 
     public Duration getDeviceCodeValidity() {
         return deviceCodeValidity;
@@ -160,6 +168,10 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
         this.deviceCodeValidity = deviceCodeValidity;
     }
 
+//    public void setDeviceCodeValidity(String deviceCodeValidity) {
+//        this.deviceCodeValidity = Duration.parse(deviceCodeValidity);
+//    }
+
     public Duration getRefreshTokenValidity() {
         return refreshTokenValidity;
     }
@@ -167,6 +179,9 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
     public void setRefreshTokenValidity(Duration refreshTokenValidity) {
         this.refreshTokenValidity = refreshTokenValidity;
     }
+//    public void setRefreshTokenValidity(String refreshTokenValidity) {
+//        this.refreshTokenValidity = Duration.parse(refreshTokenValidity);
+//    }
 
     public TokenFormat getAccessTokenFormat() {
         return accessTokenFormat;

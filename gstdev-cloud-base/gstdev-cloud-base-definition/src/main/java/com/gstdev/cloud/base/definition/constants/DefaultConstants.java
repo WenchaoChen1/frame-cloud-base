@@ -59,6 +59,7 @@ public interface DefaultConstants {
      * 默认的时间日期格式
      */
     String DATE_TIME_FORMAT = DatePattern.NORM_DATETIME_PATTERN;
+    String DATE_UTC_MS_PATTERN = DatePattern.UTC_MS_PATTERN;
 
 
     /**

@@ -9,10 +9,9 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.Duration;
 
 /**
  * <p>Description: OAuth2应用管理接口 </p>
@@ -40,5 +39,10 @@ public class OAuth2ApplicationController extends BaseController<OAuth2Applicatio
     public Result<OAuth2Application> authorize(@RequestParam(name = "applicationId") String scopeId, @RequestParam(name = "scopes[]") String[] scopes) {
         OAuth2Application application = getService().authorize(scopeId, scopes);
         return result(application);
+    }
+
+    @PostMapping("/aaa")
+    public Result aaa(Duration refreshTokenValidity ) {
+        return null;
     }
 }
