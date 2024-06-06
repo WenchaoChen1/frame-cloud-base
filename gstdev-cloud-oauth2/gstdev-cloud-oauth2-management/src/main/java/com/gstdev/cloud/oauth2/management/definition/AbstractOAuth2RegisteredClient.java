@@ -1,5 +1,6 @@
 package com.gstdev.cloud.oauth2.management.definition;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.oauth2.core.enums.SignatureJwsAlgorithm;
 import com.gstdev.cloud.oauth2.core.enums.TokenFormat;
 import com.gstdev.cloud.oauth2.core.enums.AllJwsAlgorithm;
@@ -54,18 +55,22 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
 
     /* --- TokenSettings Begin --- */
     @Schema(title = "授权码有效时间", description = "默认5分钟，使用 Duration 时间格式")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     @Column(name = "authorization_code_validity")
     private Duration authorizationCodeValidity = Duration.ofMinutes(5);
 
     @Schema(title = "激活码有效时间", description = "默认5分钟，使用 Duration 时间格式")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     @Column(name = "device_code_validity")
     private Duration deviceCodeValidity = Duration.ofMinutes(5);
 
     @Schema(title = "AccessToken 有效时间", description = "默认5分钟，使用 Duration 时间格式")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     @Column(name = "access_token_validity")
     private Duration accessTokenValidity = Duration.ofMinutes(5);
 
     @Schema(title = "RefreshToken 有效时间", description = "默认60分钟，使用 Duration 时间格式")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     @Column(name = "refresh_token_validity")
     private Duration refreshTokenValidity = Duration.ofMinutes(60);
 

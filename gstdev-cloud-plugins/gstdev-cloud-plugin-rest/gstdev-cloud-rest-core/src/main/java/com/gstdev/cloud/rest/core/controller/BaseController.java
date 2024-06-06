@@ -50,6 +50,17 @@ public abstract class BaseController<E extends Entity, ID extends Serializable, 
     }
 
     @AccessLimited
+    @Operation(summary = "根据id查询")
+//    @Parameters({
+//        @Parameter(name = "page", required = true, in = ParameterIn.QUERY, description = "分页Bo对象", schema = @Schema(implementation = BasePage.class))
+//    })
+    @GetMapping("/{id}")
+    public Result<E> findById(@Validated ID id) {
+        Result<E> byId = Controller.super.findById(id);
+        return byId;
+    }
+
+    @AccessLimited
     @Operation(summary = "分页查询数据", description = "通过pageNumber和pageSize获取分页数据",
         responses = {
             @ApiResponse(description = "单位列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class))),
@@ -65,8 +76,7 @@ public abstract class BaseController<E extends Entity, ID extends Serializable, 
 //            Sort.Direction direction = Sort.Direction.valueOf(pageable.getDirection());
 //            return Controller.super.findByPage(pageable.getPageNumber(), pageable.getPageSize(), direction, page.getProperties());
 //        } else {
-            return Controller.super.findByPage(pageable);
-//        }
+        return Controller.super.findByPage(pageable);
     }
 
     @Idempotent
