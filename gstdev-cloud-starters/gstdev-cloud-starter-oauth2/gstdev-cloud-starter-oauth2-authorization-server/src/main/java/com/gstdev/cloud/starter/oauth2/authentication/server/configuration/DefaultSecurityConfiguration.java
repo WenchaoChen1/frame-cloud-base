@@ -13,7 +13,7 @@ import com.gstdev.cloud.captcha.core.processor.CaptchaRendererFactory;
 import com.gstdev.cloud.oauth2.authorization.server.configurer.OAuth2FormLoginSecureConfigurer;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.core.definition.strategy.StrategyUserDetailsService;
-import com.gstdev.cloud.oauth2.management.processor.DefaultSecurityUserDetailsService;
+import com.gstdev.cloud.service.identity.processor.DefaultSecurityUserDetailsService;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
 import lombok.SneakyThrows;

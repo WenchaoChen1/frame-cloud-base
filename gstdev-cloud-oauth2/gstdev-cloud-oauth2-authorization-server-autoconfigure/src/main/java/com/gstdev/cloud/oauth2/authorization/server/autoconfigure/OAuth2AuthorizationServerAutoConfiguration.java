@@ -2,7 +2,7 @@ package com.gstdev.cloud.oauth2.authorization.server.autoconfigure;
 
 import com.gstdev.cloud.message.core.logic.strategy.AccountStatusEventManager;
 import com.gstdev.cloud.oauth2.authorization.server.autoconfigure.status.DefaultAccountStatusEventManager;
-import com.gstdev.cloud.oauth2.management.configuration.OAuth2ManagementConfiguration;
+import com.gstdev.cloud.service.identity.configuration.OAuth2ManagementConfiguration;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -19,8 +19,8 @@ import com.gstdev.cloud.oauth2.authorization.server.customizer.OAuth2FormLoginCo
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.authorization.server.response.OAuth2AuthenticationFailureResponseHandler;
 import com.gstdev.cloud.oauth2.core.enums.Certificate;
-import com.gstdev.cloud.oauth2.management.response.OAuth2AccessTokenResponseHandler;
-import com.gstdev.cloud.oauth2.management.response.OAuth2DeviceVerificationResponseHandler;
+import com.gstdev.cloud.service.identity.response.OAuth2AccessTokenResponseHandler;
+import com.gstdev.cloud.service.identity.response.OAuth2DeviceVerificationResponseHandler;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.properties.OAuth2AuthorizationProperties;
 import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;

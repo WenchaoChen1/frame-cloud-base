@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
-            <artifactId>gstdev-cloud-oauth2-management</artifactId>
+            <artifactId>gstdev-cloud-service-identity</artifactId>
         </dependency>
         <!--        <dependency>-->
         <!--            <groupId>com.gstdev.cloud</groupId>-->
