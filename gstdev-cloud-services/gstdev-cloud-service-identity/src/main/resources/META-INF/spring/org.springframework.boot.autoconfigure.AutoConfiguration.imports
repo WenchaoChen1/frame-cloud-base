@@ -1,0 +1,2 @@
+com.gstdev.cloud.service.identity.autoconfigure.OAuth2AuthorizationServerAutoConfiguration
+#com.gstdev.cloud.oauth2.authorization.server.autoconfigure.TenantDataSourceAutoConfiguration

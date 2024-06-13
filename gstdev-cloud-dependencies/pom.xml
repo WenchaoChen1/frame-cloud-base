@@ -172,20 +172,21 @@
                 <version>${gstdev-cloud.version}</version>
             </dependency>
 
+            <!--=========================================== service ===========================================-->
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-service-identity</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-service-common</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
             <!--=========================================== oauth2 ===========================================-->
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
                 <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-oauth2-authorization-server-autoconfigure</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-ouath2-resource-server-autoconfigure</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
             <dependency>
@@ -203,11 +204,7 @@
                 <artifactId>gstdev-cloud-oauth2-data-jpa</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-service-identity</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
+
             <!--=========================================== message ===========================================-->
 
             <dependency>
@@ -411,8 +408,6 @@
                 <artifactId>gstdev-cloud-starter-sentinel-alibaba</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
-
-
 
 
             <dependency>

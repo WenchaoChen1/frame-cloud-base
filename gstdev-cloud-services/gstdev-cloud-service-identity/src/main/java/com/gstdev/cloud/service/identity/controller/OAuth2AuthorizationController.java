@@ -24,8 +24,8 @@ public class OAuth2AuthorizationController extends BaseController<FrameAuthoriza
     @Resource
     private FrameAuthorizationService service;
 
-    @Resource
-    private Oauth2AuthorizationVoMapper oauth2AuthorizationVoMapper;
+//    @Resource
+//    private Oauth2AuthorizationVoMapper oauth2AuthorizationVoMapper;
 
     public OAuth2AuthorizationController(FrameAuthorizationService service) {
         super(service);

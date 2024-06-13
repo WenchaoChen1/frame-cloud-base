@@ -1,0 +1,2 @@
+com.gstdev.cloud.service.common.autoconfigure.OAuth2ResourceServerAutoConfiguration
+#com.gstdev.cloud.oauth2.resource.server.autoconfigure.StreamAdapterAutoConfiguration

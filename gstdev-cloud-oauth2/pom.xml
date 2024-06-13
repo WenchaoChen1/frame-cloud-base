@@ -16,8 +16,6 @@
     </parent>
 
     <modules>
-        <module>gstdev-cloud-oauth2-authorization-server-autoconfigure</module>
-        <module>gstdev-cloud-ouath2-resource-server-autoconfigure</module>
         <module>gstdev-cloud-oauth2-core</module>
         <module>gstdev-cloud-oauth2-authorization-server</module>
         <module>gstdev-cloud-oauth2-resource-server</module>
