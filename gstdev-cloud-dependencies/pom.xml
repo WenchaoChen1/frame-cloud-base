@@ -401,6 +401,18 @@
             </dependency>
             <!--=========================================== starters ===================================-->
 
+            <!--=========================================== starter - service ===================================-->
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-service-common</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-service-identity</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+
             <!--=========================================== starter - other ===================================-->
             <!--=========================================== starter-sentinel ===================================-->
             <dependency>
