@@ -20,6 +20,10 @@
     <dependencies>
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-starter-service-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-starter-oauth2-authorization-server</artifactId>
         </dependency>
     </dependencies>

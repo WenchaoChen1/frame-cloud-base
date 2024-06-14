@@ -15,6 +15,6 @@ public class ServiceCommonAutoConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[GstDev Cloud] |- Module [Service Commone Server Starter] Auto Configure.");
+        log.info("[GstDev Cloud] |- Module [Service Common Server Starter] Auto Configure.");
     }
 }
