@@ -1,6 +1,7 @@
 package com.gstdev.cloud.service.identity.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.service.identity.entity.OAuth2Compliance;
 import com.gstdev.cloud.service.identity.service.OAuth2ComplianceService;
 import com.gstdev.cloud.rest.core.controller.BaseController;
@@ -41,19 +42,19 @@ public class OAuth2ComplianceController extends BaseController<OAuth2Compliance,
 
     @Operation(summary = "模糊条件查询合规信息", description = "根据动态输入的字段模糊查询合规信息",
         responses = {@ApiResponse(description = "人员分页列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))})
-    @Parameters({
-        @Parameter(name = "pageNumber", required = true, description = "当前页码"),
-        @Parameter(name = "pageSize", required = true, description = "每页显示数量"),
-        @Parameter(name = "principalName", description = "用户账号"),
-        @Parameter(name = "clientId", description = "客户端ID"),
-        @Parameter(name = "ip", description = "IP地址"),
-    })
+//    @Parameters({
+//        @Parameter(name = "pageNumber", required = true, description = "当前页码"),
+//        @Parameter(name = "pageSize", required = true, description = "每页显示数量"),
+//        @Parameter(name = "principalName", description = "用户账号"),
+//        @Parameter(name = "clientId", description = "客户端ID"),
+//        @Parameter(name = "ip", description = "IP地址"),
+//    })
     @GetMapping("/condition")
-    public Result<Map<String, Object>> findByCondition(@NotBlank @RequestParam("pageNumber") Integer pageNumber,
-                                                       @NotBlank @RequestParam("pageSize") Integer pageSize,
-                                                       @RequestParam(value = "principalName", required = false) String principalName,
+    public Result<Map<String, Object>> findByCondition(@RequestParam(value = "principalName", required = false) String principalName,
                                                        @RequestParam(value = "clientId", required = false) String clientId,
-                                                       @RequestParam(value = "ip", required = false) String ip) {
+                                                       @RequestParam(value = "ip", required = false) String ip, BasePage basePage){
+        Integer pageNumber = basePage.getPageNumber();
+        Integer pageSize = basePage.getPageSize();
         Page<OAuth2Compliance> pages = getService().findByCondition(pageNumber, pageSize, principalName, clientId, ip);
         return result(pages);
     }
