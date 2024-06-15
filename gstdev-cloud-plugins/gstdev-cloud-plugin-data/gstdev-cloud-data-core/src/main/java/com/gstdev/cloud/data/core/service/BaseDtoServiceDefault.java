@@ -148,7 +148,9 @@ public interface BaseDtoServiceDefault<E extends Entity
 //@Override
     default Page<D> findByPageToDto(Specification<E> specification, Pageable pageable) {
         return getMapper().toDto(findByPage(specification, pageable));
-    }    /**
+    }
+
+    /**
      * 查询分页数据
      *
      * @param specification {@link Specification}
@@ -258,13 +260,13 @@ public interface BaseDtoServiceDefault<E extends Entity
     }
 
     //@Override
-    default List<D> insertAllToDto(List<E> e) {
-        return getMapper().toDto(insertAll(e));
+    default List<D> insertToDto(List<E> e) {
+        return getMapper().toDto(insert(e));
     }
 
     //@Override
-    default List<D> insertAllDtoToDto(List<D> e) {
-        return insertAllToDto(getMapper().toEntity(e));
+    default List<D> insertDtoToDto(List<D> e) {
+        return insertToDto(getMapper().toEntity(e));
     }
 
     //@Override
@@ -278,12 +280,31 @@ public interface BaseDtoServiceDefault<E extends Entity
     }
 
     //@Override
-    default List<D> updateAllToDto(List<E> e) {
-        return getMapper().toDto(updateAll(e));
+    default List<D> updateToDto(List<E> e) {
+        return getMapper().toDto(update(e));
     }
 
     //@Override
-    default List<D> updateAllDtoToDto(List<D> e) {
-        return getMapper().toDto(updateAll(getMapper().toEntity(e)));
+    default List<D> updateDtoToDto(List<D> e) {
+        return getMapper().toDto(update(getMapper().toEntity(e)));
+    }    //@Override
+
+    default D insertAndUpdateToDto(E e) {
+        return getMapper().toDto(insertAndUpdate(e));
+    }
+
+    //@Override
+    default D insertAndUpdateToDto(D e) {
+        return insertAndUpdateToDto(getMapper().toEntity(e));
+    }
+
+    //@Override
+    default List<D> insertAndUpdateToDto(List<E> e) {
+        return getMapper().toDto(insertAndUpdate(e));
+    }
+
+    //@Override
+    default List<D> insertAndUpdateDtoToDto(List<D> e) {
+        return getMapper().toDto(insertAndUpdate(getMapper().toEntity(e)));
     }
 }

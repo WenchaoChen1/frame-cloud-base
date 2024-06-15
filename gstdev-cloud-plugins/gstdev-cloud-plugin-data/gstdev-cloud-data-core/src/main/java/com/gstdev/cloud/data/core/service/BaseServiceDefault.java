@@ -10,10 +10,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.util.ObjectUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> extends BaseService<SE, ID> {
     default String like(String property) {
@@ -69,14 +71,15 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     //@Override
     default SE findById(ID id) {
         //    default E findById(ID id) {
-//        Optional<E> byId = getRepository().findById(id);
-//        E e = null;
+//        Optional<SE> byId = getRepository().findById(id);
+//        SE e = null;
 //        if (byId.isPresent()) {
 //            e = byId.get();
 //        }
-//        return e;
-//    }
+////        return e;
+////    }
         return toServiceEntity(getRepository().findById(id).orElse(null));
+//        return toServiceEntity(e);
     }
 
     /**
@@ -388,7 +391,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     }
 
     //@Override
-    default List<SE> insertAll(List<SE> e) {
+    default List<SE> insert(List<SE> e) {
         List<SE> es = new ArrayList<>();
         for (SE e1 : e) {
             es.add(insert(e1));
@@ -402,10 +405,23 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     }
 
     //@Override
-    default List<SE> updateAll(List<SE> e) {
+    default List<SE> update(List<SE> e) {
         List<SE> es = new ArrayList<>();
         for (SE e1 : e) {
             es.add(update(e1));
+        }
+        return es;
+    }
+
+    default SE insertAndUpdate(SE e) {
+        return toServiceEntity(save(toEntity(e)));
+    }
+
+    //@Override
+    default List<SE> insertAndUpdate(List<SE> e) {
+        List<SE> es = new ArrayList<>();
+        for (SE e1 : e) {
+            es.add(insertAndUpdate(e1));
         }
         return es;
     }

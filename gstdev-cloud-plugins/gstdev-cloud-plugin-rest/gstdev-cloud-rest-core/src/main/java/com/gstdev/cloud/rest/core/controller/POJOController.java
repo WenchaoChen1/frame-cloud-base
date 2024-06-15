@@ -33,7 +33,7 @@ public interface POJOController<E extends BasePOJOEntityINT<ID>
     }
 
     default Result<List<V>> insertAllToResult(List<II> var1) {
-        return result(getMapper().toVo(getService().insertAllToDto(toEntityInsert(var1))));
+        return result(getMapper().toVo(getService().insertToDto(toEntityInsert(var1))));
     }
 
     default Result<V> updateToResult(UI var1) {
@@ -41,7 +41,7 @@ public interface POJOController<E extends BasePOJOEntityINT<ID>
     }
 
     default Result<List<V>> updateAllToResult(List<UI> var1) {
-        return result(getMapper().toVo(getService().updateAllToDto(toEntityUpdate(var1))));
+        return result(getMapper().toVo(getService().updateToDto(toEntityUpdate(var1))));
     }
 
     default Result<V> deleteByIdToResult(ID id) {

@@ -200,16 +200,24 @@ public interface BaseDtoService<E extends Entity
 
     D insertToDto(D var);
 
-    List<D> insertAllToDto(List<E> e);
+    List<D> insertToDto(List<E> e);
 
-    List<D> insertAllDtoToDto(List<D> d);
+    List<D> insertDtoToDto(List<D> d);
 
     D updateToDto(E e);
 
     D updateToDto(D e);
 
-    List<D> updateAllToDto(List<E> e);
+    List<D> updateToDto(List<E> e);
 
-    List<D> updateAllDtoToDto(List<D> d);
+    List<D> updateDtoToDto(List<D> d);
+
+    D insertAndUpdateToDto(E e);
+
+    D insertAndUpdateToDto(D e);
+
+    List<D> insertAndUpdateToDto(List<E> e);
+
+    List<D> insertAndUpdateDtoToDto(List<D> d);
 
 }

@@ -231,11 +231,14 @@ public interface BaseService<E extends Serializable, ID extends Serializable> {
 
     E insert(E var);
 
-    List<E> insertAll(List<E> e);
+    List<E> insert(List<E> e);
 
     E update(E e);
 
-    List<E> updateAll(List<E> e);
+    List<E> update(List<E> e);
+    E insertAndUpdate(E e);
+
+    List<E> insertAndUpdate(List<E> e);
 
     /**
      * 刷新实体状态

@@ -45,6 +45,15 @@ public interface Controller<E extends Entity, ID extends Serializable> {
     /**
      * 数据实体转换为统一响应实体
      *
+     * @return {@link Result} Entity
+     */
+    default  Result result() {
+       return Result.success();
+
+    }
+    /**
+     * 数据实体转换为统一响应实体
+     *
      * @param domain 数据实体
      * @param <OE>   {@link Entity} 子类型
      * @return {@link Result} Entity
