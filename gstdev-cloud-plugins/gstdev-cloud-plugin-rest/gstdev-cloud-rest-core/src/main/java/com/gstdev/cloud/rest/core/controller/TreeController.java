@@ -22,10 +22,9 @@ public interface TreeController<E extends BaseTreeEntityINT<ID>
     , UI extends BaseTreeUpdateInputInterface & BaseUpdateInputInterface
     , PQC extends BaseTreePageQueryCriteriaInterface & BasePageQueryCriteriaInterface
     , FQC extends BaseTreeFindAllByQueryCriteriaInterface & BaseFindAllByQueryCriteriaInterface> extends POJOController<E, ID, V, D, II, UI, PQC, FQC> {
-
-
+    @Override
     BaseTreeService<E, ID, D> getService();
-
+    @Override
     BasePOJOMapper<E, D, V, II, UI> getMapper();
 
     default Result<V> findByIdToTreeToResult(ID id) {

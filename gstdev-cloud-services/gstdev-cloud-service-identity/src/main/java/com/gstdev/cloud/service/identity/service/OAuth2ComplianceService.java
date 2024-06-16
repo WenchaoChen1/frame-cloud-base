@@ -42,6 +42,7 @@ public class OAuth2ComplianceService extends BaseServiceImpl<OAuth2Compliance, S
 
     }
 
+    @Override
     public OAuth2ComplianceRepository getRepository() {
         return complianceRepository;
     }

@@ -44,6 +44,7 @@ public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application,
         this.objectConverter = new OAuth2ApplicationToRegisteredClientConverter();
     }
 
+    @Override
     public OAuth2ApplicationRepository getRepository() {
         return applicationRepository;
     }

@@ -68,7 +68,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * @param id 数据ID
      * @return 与ID对应的数据，如果不存在则返回空
      */
-    //@Override
+    @Override
     default SE findById(ID id) {
         //    default E findById(ID id) {
 //        Optional<SE> byId = getRepository().findById(id);
@@ -88,7 +88,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * @param id 数据ID
      * @return true 存在，false 不存在
      */
-    //@Override
+    @Override
     default boolean existsById(ID id) {
         return getRepository().existsById(id);
     }
@@ -98,7 +98,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      *
      * @return 数据数量
      */
-    //@Override
+    @Override
     default long count() {
         return getRepository().count();
     }
@@ -109,7 +109,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * @param specification {@link Specification}
      * @return 数据数量
      */
-    //@Override
+    @Override
     default long count(Specification<SE> specification) {
         return getRepository().count(toEntity(specification));
     }
@@ -119,7 +119,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      *
      * @return 全部数据列表
      */
-    //@Override
+    @Override
     default List<SE> findAll() {
         return toServiceEntity(getRepository().findAll());
     }
@@ -130,7 +130,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * @param sort {@link Sort}
      * @return 已排序的全部数据列表
      */
-    //@Override
+    @Override
     default List<SE> findAll(Sort sort) {
         return toServiceEntity(getRepository().findAll(sort));
     }
@@ -141,7 +141,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * @param specification {@link Specification}
      * @return 全部数据列表
      */
-    //@Override
+    @Override
     default List<SE> findAll(Specification<SE> specification) {
         return toServiceEntity(getRepository().findAll(toEntity(specification)));
     }
@@ -153,7 +153,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * @param sort          {@link Sort}
      * @return 全部数据列表
      */
-    //@Override
+    @Override
     default List<SE> findAll(Specification<SE> specification, Sort sort) {
         return toServiceEntity(getRepository().findAll(toEntity(specification), sort));
     }
@@ -164,7 +164,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * @param pageable {@link Pageable}
      * @return 分页数据
      */
-    //@Override
+    @Override
     default Page<SE> findByPage(Pageable pageable) {
         return toServiceEntity(getRepository().findAll(pageable));
     }
@@ -175,7 +175,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * @param page 页
      * @return 分页数据
      */
-    //@Override
+    @Override
     default Page<SE> findByPage(BasePage page) {
         if (ArrayUtils.isNotEmpty(page.getProperties())) {
             Sort.Direction direction = Sort.Direction.valueOf(page.getDirection());
@@ -192,7 +192,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * @param pageSize   每页显示的数据条数
      * @return 分页数据
      */
-    //@Override
+    @Override
     default Page<SE> findByPage(int pageNumber, int pageSize) {
         return findByPage(PageRequest.of(pageNumber, pageSize));
     }
@@ -205,7 +205,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * @param sort       排序
      * @return 分页数据
      */
-    //@Override
+    @Override
     default Page<SE> findByPage(int pageNumber, int pageSize, Sort sort) {
         return findByPage(PageRequest.of(pageNumber, pageSize, sort));
     }
@@ -219,7 +219,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * @param properties 排序的属性名称
      * @return 分页数据
      */
-    //@Override
+    @Override
     default Page<SE> findByPage(int pageNumber, int pageSize, Sort.Direction direction, String... properties) {
         return findByPage(PageRequest.of(pageNumber, pageSize, direction, properties));
     }
@@ -231,7 +231,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * @param pageable      {@link Pageable}
      * @return 分页数据
      */
-    //@Override
+    @Override
     default Page<SE> findByPage(Specification<SE> specification, Pageable pageable) {
         return toServiceEntity(getRepository().findAll(toEntity(specification), pageable));
     }
@@ -243,7 +243,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * @param pageable      {@link Pageable}
      * @return 分页数据
      */
-    //@Override
+    @Override
     default Page<SE> findByPage(Specification<SE> specification, BasePage pageable) {
         PageRequest pageRequest = null;
         if (ArrayUtils.isNotEmpty(pageable.getProperties())) {
@@ -264,7 +264,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * @param pageSize      每页显示的数据条数
      * @return 分页数据
      */
-    //@Override
+    @Override
     default Page<SE> findByPage(Specification<SE> specification, int pageNumber, int pageSize) {
         return toServiceEntity(getRepository().findAll(toEntity(specification), PageRequest.of(pageNumber, pageSize)));
     }
@@ -277,7 +277,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * @param direction  {@link Sort.Direction}
      * @return 分页数据
      */
-    //@Override
+    @Override
     default Page<SE> findByPage(int pageNumber, int pageSize, Sort.Direction direction) {
         return findByPage(PageRequest.of(pageNumber, pageSize, direction));
     }
@@ -288,7 +288,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      *
      * @param entity 数据对应实体
      */
-    //@Override
+    @Override
     default void delete(SE entity) {
         getRepository().delete(toEntity(entity));
     }
@@ -296,7 +296,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     /**
      * 批量全部删除
      */
-    //@Override
+    @Override
     default void deleteAllInBatch() {
         getRepository().deleteAllInBatch();
     }
@@ -306,7 +306,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      *
      * @param entities 数据对应实体集合
      */
-    //@Override
+    @Override
     default void deleteAll(Iterable<SE> entities) {
         getRepository().deleteAll(entities);
     }
@@ -314,7 +314,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     /**
      * 删除全部数据
      */
-    //@Override
+    @Override
     default void deleteAll() {
         getRepository().deleteAll();
     }
@@ -324,7 +324,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      *
      * @param id 数据对应ID
      */
-    //@Override
+    @Override
     default void deleteAllById(List<ID> id) {
         getRepository().deleteAllById(id);
     }
@@ -334,7 +334,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      *
      * @param id 数据对应ID
      */
-    //@Override
+    @Override
     default void deleteById(ID id) {
         getRepository().deleteById(id);
     }
@@ -345,7 +345,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * @param domain 数据对应实体
      * @return 已保存数据
      */
-    //@Override
+    @Override
     default SE save(SE domain) {
         SE entity = toEntity(domain);
         return toServiceEntity((SE) getRepository().save(entity));
@@ -357,7 +357,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * @param entities 实体集合
      * @return 已经保存的实体集合
      */
-    //@Override
+    @Override
     default List<SE> saveAll(Iterable<SE> entities) {
         return toServiceEntity(getRepository().saveAll(toEntity(entities)));
     }
@@ -368,7 +368,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * @param entity 实体
      * @return 保存后实体
      */
-    //@Override
+    @Override
     default SE saveAndFlush(SE entity) {
         return toServiceEntity(getRepository().saveAndFlush(toEntity(entity)));
     }
@@ -379,18 +379,18 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      * @param entities 实体列表
      * @return 保存或更新后的实体
      */
-    //@Override
+    @Override
     default List<SE> saveAllAndFlush(List<SE> entities) {
         return toServiceEntity(getRepository().saveAllAndFlush(toEntity(entities)));
     }
 
 
-    //@Override
+    @Override
     default SE insert(SE var) {
         return toServiceEntity(save(toEntity(var)));
     }
 
-    //@Override
+    @Override
     default List<SE> insert(List<SE> e) {
         List<SE> es = new ArrayList<>();
         for (SE e1 : e) {
@@ -399,12 +399,12 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
         return es;
     }
 
-    //@Override
+    @Override
     default SE update(SE e) {
         return toServiceEntity(save(toEntity(e)));
     }
 
-    //@Override
+    @Override
     default List<SE> update(List<SE> e) {
         List<SE> es = new ArrayList<>();
         for (SE e1 : e) {
@@ -412,12 +412,12 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
         }
         return es;
     }
-
+    @Override
     default SE insertAndUpdate(SE e) {
         return toServiceEntity(save(toEntity(e)));
     }
 
-    //@Override
+    @Override
     default List<SE> insertAndUpdate(List<SE> e) {
         List<SE> es = new ArrayList<>();
         for (SE e1 : e) {
@@ -429,7 +429,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     /**
      * 刷新实体状态
      */
-    //@Override
+    @Override
     default void flush() {
         getRepository().flush();
     }

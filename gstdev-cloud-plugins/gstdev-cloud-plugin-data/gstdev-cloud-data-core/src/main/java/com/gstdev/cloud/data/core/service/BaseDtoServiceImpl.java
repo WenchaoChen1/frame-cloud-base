@@ -34,7 +34,7 @@ public class BaseDtoServiceImpl<E extends Entity
         super(repository);
         this.mapper = mapper;
     }
-
+    @Override
     public M getMapper() {
         return mapper;
     }

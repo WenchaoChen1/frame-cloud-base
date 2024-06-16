@@ -37,6 +37,7 @@ public class FrameAuthorizationService extends BaseServiceImpl<FrameAuthorizatio
         super(frameAuthorizationRepository);
         this.frameAuthorizationRepository=frameAuthorizationRepository;
     }
+    @Override
     public FrameAuthorizationRepository getRepository() {
         return this.frameAuthorizationRepository;
     }

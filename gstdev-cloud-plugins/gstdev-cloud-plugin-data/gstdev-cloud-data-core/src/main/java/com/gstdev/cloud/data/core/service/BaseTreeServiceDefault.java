@@ -18,14 +18,14 @@ public interface BaseTreeServiceDefault<E extends BaseTreeEntityINT<ID>
     , ID extends Serializable
     , D extends BaseTreeDtoInterface<D, ID> & BaseDtoInterface<ID>
     > extends BaseDtoServiceDefault<E, ID, D>, BaseTreeService<E, ID, D> {
-
+    @Override
     BaseTreeRepository<E, ID> getRepository();
 
     default List<E> findByParentId(ID parentId) {
         List<E> byId = getRepository().findByParentId(parentId);
         return byId;
     }
-
+    @Override
     default List<D> findByParentIdToDto(ID parentId) {
         List<D> byId = getMapper().toDto(findByParentId(parentId));
         return byId;
@@ -42,17 +42,17 @@ public interface BaseTreeServiceDefault<E extends BaseTreeEntityINT<ID>
         }
         return subsets;
     }
-
+    @Override
     default List<D> findSubsetsToDto(ID id) {
         return getMapper().toDto(findSubsets(id));
     }
-
+    @Override
     default List<D> findItselfAndSubsetsToDto(ID id) {
         List<D> subsetsToDto = findSubsetsToDto(id);
         subsetsToDto.add(findByIdToDto(id));
         return subsetsToDto;
     }
-
+    @Override
     default D findByIdToTreeToDto(ID id) {
         D byId = findByIdToDto(id);
         List<D> children = findChildren(byId);
@@ -60,7 +60,7 @@ public interface BaseTreeServiceDefault<E extends BaseTreeEntityINT<ID>
         return byId;
     }
 
-    //@Override
+    @Override
     @Transactional()
     default Result<D> findByIdToTreeToResult(ID id) {
         return Result.success(findByIdToTreeToDto(id));
@@ -71,18 +71,18 @@ public interface BaseTreeServiceDefault<E extends BaseTreeEntityINT<ID>
         return byId.getChildren();
     }
 
-    //@Override
+    @Override
     @Transactional()
     default Result<List<D>> findByParentIdToTreeToResult(ID parentId) {
         return Result.success(findByParentIdToTreeToDto(parentId));
     }
 
-    //@Override
+    @Override
     @Transactional()
     default Result<List<D>> findByParentIdToResult(ID parentId) {
         return Result.success(findByParentIdToDto(parentId));
     }
-
+    @Override
     default List<D> findAllByQueryCriteriaToDtoToTree(Specification<E> specification) {
         List<D> allByQueryCriteriaToDto = findAllToDto(specification);
 //    List<D> ds = new TreeFactory<String, D>().buildTree(allByQueryCriteriaToDto);

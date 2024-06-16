@@ -44,6 +44,7 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
         this.tokenGenerator = tokenGenerator;
     }
 
+    @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         OAuth2AuthorizationCodeAuthenticationToken authorizationCodeAuthentication = (OAuth2AuthorizationCodeAuthenticationToken) authentication;
         OAuth2ClientAuthenticationToken clientPrincipal = OAuth2AuthenticationProviderUtils.getAuthenticatedClientElseThrowInvalidClient(authorizationCodeAuthentication);

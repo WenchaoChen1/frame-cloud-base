@@ -44,6 +44,7 @@ public class FrameConfigAttribute implements ConfigAttribute {
         return attributes;
     }
 
+    @Override
     public String getAttribute() {
         return this.attribute;
     }

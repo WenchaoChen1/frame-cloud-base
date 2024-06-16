@@ -35,6 +35,7 @@ public class BaseServiceImpl<SE extends Entity, ID extends Serializable, S exten
      *
      * @return {@link BaseRepository}
      */
+    @Override
     public S getRepository() {
         return baseRepository;
     }

@@ -33,6 +33,7 @@ public class OAuth2AuthorizationCodeAuthenticationProviderConsumer implements Co
 //    this.sessionRegistry = sessionRegistry;
     }
 
+    @Override
     public void accept(List<AuthenticationProvider> authenticationProviders) {
         authenticationProviders.removeIf((authenticationProvider) -> {
             return authenticationProvider instanceof OAuth2AuthorizationCodeAuthenticationProvider;

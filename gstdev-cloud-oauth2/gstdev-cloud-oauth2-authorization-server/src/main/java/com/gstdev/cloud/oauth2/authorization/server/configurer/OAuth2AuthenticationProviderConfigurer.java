@@ -27,6 +27,7 @@ public class OAuth2AuthenticationProviderConfigurer extends AbstractHttpConfigur
         this.authenticationProperties = authenticationProperties;
     }
 
+    @Override
     public void configure(HttpSecurity httpSecurity) throws Exception {
         OAuth2AuthorizationService authorizationService = OAuth2ConfigurerUtils.getAuthorizationService(httpSecurity);
         OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator = OAuth2ConfigurerUtils.getTokenGenerator(httpSecurity);

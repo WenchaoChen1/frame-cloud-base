@@ -29,6 +29,7 @@ public class FrameRegisteredClientService extends BaseServiceImpl<FrameRegistere
         super(registeredClientRepository);
         this.registeredClientRepository=registeredClientRepository;
     }
+    @Override
     public FrameRegisteredClientRepository getRepository() {
         return this.registeredClientRepository;
     }

@@ -32,6 +32,8 @@ public interface VoController<E extends Entity
      *
      * @return Service
      */
+
+    @Override
     BaseDtoService<E, ID, D> getService();
 
     BaseVoMapper<D, V> getMapper();

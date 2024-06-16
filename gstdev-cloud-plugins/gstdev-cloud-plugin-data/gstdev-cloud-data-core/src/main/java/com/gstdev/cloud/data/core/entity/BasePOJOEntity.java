@@ -20,7 +20,7 @@ public class BasePOJOEntity extends BaseEntity implements BasePOJOEntityINT<Stri
     @GeneratedValue(generator = "jpa-uuid")
     @Column(length = 36)
     private String id;
-
+    @Override
     public String getId() {
         return id;
     }

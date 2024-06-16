@@ -32,6 +32,7 @@ public class FrameAuthorizationConsentService extends BaseServiceImpl<FrameAutho
         this.authorizationConsentRepository=authorizationConsentRepository;
     }
 
+    @Override
     public FrameAuthorizationConsentRepository getRepository() {
         return this.authorizationConsentRepository;
     }

@@ -23,7 +23,7 @@ public class BaseTreeDto<D extends BaseDto & TreeNode<String, D>> extends BaseDt
         }
         children.add(node);
     }
-
+    @Override
     public void setChildren(List<D> children) {
         if (children == null) {
             children = new ArrayList<>();

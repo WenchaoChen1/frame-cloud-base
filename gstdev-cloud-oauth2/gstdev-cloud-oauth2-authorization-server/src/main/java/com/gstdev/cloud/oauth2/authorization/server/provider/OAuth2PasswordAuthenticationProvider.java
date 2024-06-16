@@ -54,6 +54,7 @@ public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAut
         this.tokenGenerator = tokenGenerator;
     }
 
+    @Override
     protected void additionalAuthenticationChecks(UserDetails userDetails, Map<String, Object> additionalParameters) throws AuthenticationException {
         String presentedPassword = (String) additionalParameters.get(OAuth2ParameterNames.PASSWORD);
         if (!this.getPasswordEncoder().matches(presentedPassword, userDetails.getPassword())) {
@@ -62,6 +63,7 @@ public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAut
         }
     }
 
+    @Override
     protected UserDetails retrieveUser(Map<String, Object> additionalParameters) throws AuthenticationException {
         String username = (String) additionalParameters.get(OAuth2ParameterNames.USERNAME);
         try {

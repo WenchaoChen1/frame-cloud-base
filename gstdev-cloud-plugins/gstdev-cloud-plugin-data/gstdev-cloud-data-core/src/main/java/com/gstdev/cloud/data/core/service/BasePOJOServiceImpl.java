@@ -48,7 +48,7 @@ public class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
         super(repository, mapper);
         this.mapper = mapper;
     }
-
+    @Override
     public M getMapper() {
         return mapper;
     }

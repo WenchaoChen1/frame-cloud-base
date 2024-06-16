@@ -39,10 +39,12 @@ public class CustomizeJwtAuthenticationToken extends AbstractOAuth2TokenAuthenti
     }
 
 
+    @Override
     public Map<String, Object> getTokenAttributes() {
         return ((Jwt) this.getToken()).getClaims();
     }
 
+    @Override
     public String getName() {
         return this.name;
     }

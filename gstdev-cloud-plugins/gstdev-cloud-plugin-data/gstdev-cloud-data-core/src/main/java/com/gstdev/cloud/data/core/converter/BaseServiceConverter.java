@@ -11,30 +11,37 @@ public class BaseServiceConverter<E, SE> implements BaseServiceMapper<E, SE> {
         return (SE) entity;
     }
 
+    @Override
     public List<SE> toServiceEntity(List<E> entity) {
         return (List<SE>) entity;
     }
 
+    @Override
     public Page<SE> toServiceEntity(Page<E> entity) {
         return (Page<SE>) entity;
     }
 
+    @Override
     public E toEntity(SE sEntity) {
         return (E) sEntity;
     }
 
+    @Override
     public List<E> toEntity(List<SE> sEntity) {
         return (List<E>) sEntity;
     }
 
+    @Override
     public Page<E> toEntity(Page<SE> sEntity) {
         return (Page<E>) sEntity;
     }
 
+    @Override
     public Iterable<E> toEntity(Iterable<SE> sEntity) {
         return (Iterable<E>) sEntity;
     }
 
+    @Override
     public Specification<E> toEntity(Specification<SE> sEntity) {
         return (Specification<E>) sEntity;
     }

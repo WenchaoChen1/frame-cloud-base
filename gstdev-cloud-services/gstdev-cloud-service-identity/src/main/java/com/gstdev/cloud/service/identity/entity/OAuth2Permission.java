@@ -67,9 +67,15 @@ public class OAuth2Permission extends BaseSysEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        if (!super.equals(o)) {
+            return false;
+        }
         OAuth2Permission that = (OAuth2Permission) o;
         return Objects.equals(permissionId, that.permissionId) && Objects.equals(permissionCode, that.permissionCode) && Objects.equals(permissionName, that.permissionName);
     }

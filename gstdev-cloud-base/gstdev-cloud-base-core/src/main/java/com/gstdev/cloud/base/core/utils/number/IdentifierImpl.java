@@ -43,14 +43,17 @@ public class IdentifierImpl implements Identifier {
         }
     }
 
+    @Override
     public synchronized int getMachine() {
         return this.machine;
     }
 
+    @Override
     public synchronized void setMachine(int machine) {
         this.machine = machine & 0x7F;
     }
 
+    @Override
     public synchronized long get() {
         long id = (System.currentTimeMillis() << 20) & (-1L >>> 1);
         id = id | ((this.machine & 0x7F) << 13) | (this.serial & 0x1FFF);

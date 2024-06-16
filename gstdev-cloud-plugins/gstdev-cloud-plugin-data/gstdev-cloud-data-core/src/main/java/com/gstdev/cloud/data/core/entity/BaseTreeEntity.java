@@ -16,7 +16,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public abstract class BaseTreeEntity extends BasePOJOEntity implements BaseTreeEntityINT<String> {
     @Column(name = "parent_id", length = 64, nullable = false)
     private String parentId;
-
+    @Override
     public String getParentId() {
         return parentId;
     }

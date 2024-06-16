@@ -43,6 +43,7 @@ public interface DtoController<E extends Entity
      *
      * @return Service
      */
+    @Override
     BaseDtoService<E, ID,D> getService();
 
     /**

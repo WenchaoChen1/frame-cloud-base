@@ -26,6 +26,7 @@ public interface POJOController<E extends BasePOJOEntityINT<ID>
     , PQC extends BasePageQueryCriteriaInterface
     , FQC extends BaseFindAllByQueryCriteriaInterface> extends VoController<E, ID, D, V> {
 
+    @Override
     BasePOJOMapper<E, D, V, II, UI> getMapper();
 
     default Result<V> insertToResult(II var1) {

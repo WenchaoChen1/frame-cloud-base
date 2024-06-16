@@ -24,6 +24,7 @@ public class OAuth2AuthorizeHttpRequestsConfigurerCustomer implements Customizer
         this.securityAuthorizationManager = securityAuthorizationManager;
     }
 
+    @Override
     public void customize(AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry configurer) {
 
         configurer
