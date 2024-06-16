@@ -192,6 +192,19 @@ public interface VoController<E extends Entity
         return result(pages);
     }
 
+
+    /**
+     * 查询分页数据
+     *
+     * @param specification {@link Specification}
+     * @param pageable      {@link Pageable}
+     * @return 分页数据
+     */
+    default Result<Map<String, Object>> findByPageToVo(Specification<E> specification, BasePage basePage) {
+        Page<V> pages = getMapper().toVo(getService().findByPageToDto(specification, basePage));
+        return result(pages);
+    }
+
     /**
      * 保存或更新实体
      *
