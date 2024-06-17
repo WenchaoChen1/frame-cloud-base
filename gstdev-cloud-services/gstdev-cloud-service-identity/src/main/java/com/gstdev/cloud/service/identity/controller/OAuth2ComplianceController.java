@@ -27,7 +27,7 @@ import java.util.Map;
  * @date : 2022/7/7 22:56
  */
 @RestController
-@RequestMapping("/authorize/compliance")
+@RequestMapping("/v1/authorize/compliance")
 //@Tags({
 //    @Tag(name = "OAuth2 认证服务接口"),
 //    @Tag(name = "OAuth2 应用安全合规接口"),

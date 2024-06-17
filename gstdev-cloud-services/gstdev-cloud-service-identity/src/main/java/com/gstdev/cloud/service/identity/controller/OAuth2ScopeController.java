@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
  * @date : 2020/3/25 17:10
  */
 @RestController
-@RequestMapping("/authorize/scope")
+@RequestMapping("/v1/authorize/scope")
 public class OAuth2ScopeController extends BaseController<OAuth2Scope, String, OAuth2ScopeService> {
 
 

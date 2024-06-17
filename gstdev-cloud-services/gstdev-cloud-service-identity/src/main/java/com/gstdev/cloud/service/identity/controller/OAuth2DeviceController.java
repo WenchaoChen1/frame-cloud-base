@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date : 2023/5/15 16:58
  */
 @RestController
-@RequestMapping("/authorize/device")
+@RequestMapping("/v1/authorize/device")
 //@Tags({
 //    @Tag(name = "OAuth2 认证服务接口"),
 //    @Tag(name = "物联网管理接口"),

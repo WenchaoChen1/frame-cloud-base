@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
  * @date : 2022/3/1 18:52
  */
 @RestController
-@RequestMapping("/authorize/authorization")
+@RequestMapping("/v1/authorize/authorization")
 //@Tags({
 //    @Tag(name = "OAuth2 认证服务接口"),
 //    @Tag(name = "OAuth2 认证管理接口")
