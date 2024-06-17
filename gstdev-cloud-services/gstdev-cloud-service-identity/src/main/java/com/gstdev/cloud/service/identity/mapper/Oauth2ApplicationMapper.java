@@ -10,6 +10,7 @@
 package com.gstdev.cloud.service.identity.mapper;
 
 
+import com.gstdev.cloud.service.identity.domain.application.ApplicationManageDetailVO;
 import com.gstdev.cloud.service.identity.domain.application.ApplicationManagePageVO;
 import com.gstdev.cloud.service.identity.domain.application.InsertApplicationManageIO;
 import com.gstdev.cloud.service.identity.domain.application.UpdateApplicationManageIO;
@@ -35,6 +36,7 @@ public interface Oauth2ApplicationMapper  {
     }
 
     Oauth2ApplicationVo toVo(OAuth2Application oAuth2Application);
+    ApplicationManageDetailVO toApplicationManageDetailVO(OAuth2Application oAuth2Application);
 
     OAuth2Application toEntity(InsertApplicationManageIO insertApplicationManageIO);
 

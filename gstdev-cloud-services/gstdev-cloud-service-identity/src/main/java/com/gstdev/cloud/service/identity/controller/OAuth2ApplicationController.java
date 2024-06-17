@@ -4,6 +4,7 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.Controller;
+import com.gstdev.cloud.service.identity.domain.application.ApplicationManageDetailVO;
 import com.gstdev.cloud.service.identity.domain.application.ApplicationManageQO;
 import com.gstdev.cloud.service.identity.domain.application.InsertApplicationManageIO;
 import com.gstdev.cloud.service.identity.domain.application.UpdateApplicationManageIO;
@@ -44,16 +45,6 @@ public class OAuth2ApplicationController extends BaseController<OAuth2Applicatio
     @Resource
     private Oauth2ApplicationMapper applicationMapper;
 
-    @Operation(summary = "给应用分配Scope", description = "给应用分配Scope")
-    @Parameters({
-        @Parameter(name = "appKey", required = true, description = "appKey"),
-        @Parameter(name = "scopes[]", required = true, description = "Scope对象组成的数组")
-    })
-    @PutMapping
-    public Result<OAuth2Application> authorize(@RequestParam(name = "applicationId") String scopeId, @RequestParam(name = "scopes[]") String[] scopes) {
-        OAuth2Application application = getService().authorize(scopeId, scopes);
-        return result(application);
-    }
 
     // ********************************* application Manage *****************************************
 
@@ -65,8 +56,8 @@ public class OAuth2ApplicationController extends BaseController<OAuth2Applicatio
 
     @GetMapping("/get-application-manage-detail/{id}")
     @Operation(summary = "get-application-manage-detail")
-    public Result<Oauth2ApplicationVo> getApplicationManageDetail(@PathVariable String id) {
-        return result(applicationMapper.toVo(getService().findById(id)));
+    public Result<ApplicationManageDetailVO> getApplicationManageDetail(@PathVariable String id) {
+        return result(applicationMapper.toApplicationManageDetailVO(getService().findById(id)));
     }
 
     @PostMapping("/insert-application-manage")
@@ -101,4 +92,16 @@ public class OAuth2ApplicationController extends BaseController<OAuth2Applicatio
         getService().deleteAllById(id);
         return result;
     }
+
+    @Operation(summary = "给应用分配Scope", description = "给应用分配Scope")
+    @Parameters({
+        @Parameter(name = "appKey", required = true, description = "appKey"),
+        @Parameter(name = "scopes[]", required = true, description = "Scope对象组成的数组")
+    })
+    @PutMapping("/application-manage-assign-scope")
+    public Result<OAuth2Application> authorize(@RequestParam(name = "applicationId") String scopeId, @RequestParam(name = "scopes[]") String[] scopes) {
+        OAuth2Application application = getService().authorize(scopeId, scopes);
+        return result(application);
+    }
+
 }
