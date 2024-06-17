@@ -34,6 +34,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 })
 @ComponentScan(basePackages = {
     "com.gstdev.cloud.service.identity.mapper.vo",
+    "com.gstdev.cloud.service.identity.mapper",
     "com.gstdev.cloud.service.identity.service",
     "com.gstdev.cloud.service.identity.controller",
 })

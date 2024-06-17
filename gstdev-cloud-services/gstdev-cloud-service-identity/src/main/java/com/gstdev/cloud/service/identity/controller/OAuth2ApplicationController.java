@@ -1,15 +1,28 @@
 package com.gstdev.cloud.service.identity.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.data.core.utils.BasePage;
+import com.gstdev.cloud.data.core.utils.QueryUtils;
+import com.gstdev.cloud.rest.core.controller.Controller;
+import com.gstdev.cloud.service.identity.domain.application.ApplicationManageQO;
+import com.gstdev.cloud.service.identity.domain.application.InsertApplicationManageIO;
+import com.gstdev.cloud.service.identity.domain.application.UpdateApplicationManageIO;
+import com.gstdev.cloud.service.identity.domain.base.Oauth2ApplicationVo;
 import com.gstdev.cloud.service.identity.entity.OAuth2Application;
+import com.gstdev.cloud.service.identity.mapper.Oauth2ApplicationMapper;
 import com.gstdev.cloud.service.identity.service.OAuth2ApplicationService;
 import com.gstdev.cloud.rest.core.controller.BaseController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
+import jakarta.annotation.Resource;
+import org.springframework.data.domain.Pageable;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>Description: OAuth2应用管理接口 </p>
@@ -28,6 +41,9 @@ public class OAuth2ApplicationController extends BaseController<OAuth2Applicatio
         super(service);
     }
 
+    @Resource
+    private Oauth2ApplicationMapper applicationMapper;
+
     @Operation(summary = "给应用分配Scope", description = "给应用分配Scope")
     @Parameters({
         @Parameter(name = "appKey", required = true, description = "appKey"),
@@ -39,8 +55,52 @@ public class OAuth2ApplicationController extends BaseController<OAuth2Applicatio
         return result(application);
     }
 
-    @PostMapping("/aaa")
-    public Result aaa(Duration refreshTokenValidity ) {
-        return null;
+    // ********************************* application Manage *****************************************
+
+    @GetMapping("/get-application-manage-page")
+    @Operation(summary = "获取所有的用户,分页")
+    public Result<Map<String, Object>> getApplicationManagePage(ApplicationManageQO applicationManageQO, BasePage basePage) {
+        return result(getService().findByPage((root, criteriaQuery, criteriaBuilder) -> {
+            return QueryUtils.getPredicate(root, applicationManageQO, criteriaBuilder);
+        }, basePage));
+    }
+
+    @GetMapping("/get-application-manage-detail/{id}")
+    @Operation(summary = "get-application-manage-detail")
+    public Result<Oauth2ApplicationVo> getApplicationManageDetail(@PathVariable String id) {
+        return result(applicationMapper.toVo(getService().findById(id)));
+    }
+
+    @PostMapping("/insert-application-manage")
+    @Operation(summary = "新增一条数据")
+    public Result insertApplicationManage(@RequestBody @Validated InsertApplicationManageIO insertApplicationManageIO) {
+        this.getService().insertAndUpdate(applicationMapper.toEntity(insertApplicationManageIO));
+        return result();
+    }
+
+    @PutMapping("/update-application-manage")
+    @Operation(summary = "新增一条数据")
+    public Result updateApplicationManage(@RequestBody @Validated UpdateApplicationManageIO updateApplicationManageIO) {
+        OAuth2Application application = this.getService().findById(updateApplicationManageIO.getApplicationId());
+        applicationMapper.copy(updateApplicationManageIO, application);
+        this.getService().insertAndUpdate(application);
+        return result();
+    }
+
+
+    @Operation(summary = "删除一条数据")
+    @DeleteMapping("delete-application-manage/{id}")
+    public Result deleteApplicationManage(@PathVariable String id) {
+        Result<String> result = result(String.valueOf(id));
+        getService().deleteById(id);
+        return result;
+    }
+
+    @Operation(summary = "删除多条数据")
+    @DeleteMapping("delete-all-application-manage")
+    public Result deleteAllApplicationManage(List<String> id) {
+        Result<String> result = result(String.valueOf(id));
+        getService().deleteAllById(id);
+        return result;
     }
 }
