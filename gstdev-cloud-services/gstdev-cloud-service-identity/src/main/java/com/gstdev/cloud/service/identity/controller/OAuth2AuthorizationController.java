@@ -1,11 +1,20 @@
 package com.gstdev.cloud.service.identity.controller;
 
+import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.data.core.utils.BasePage;
+import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.oauth2.data.jpa.entity.FrameAuthorization;
 import com.gstdev.cloud.oauth2.data.jpa.service.FrameAuthorizationService;
-import com.gstdev.cloud.service.identity.mapper.vo.Oauth2AuthorizationVoMapper;
 import com.gstdev.cloud.rest.core.controller.BaseController;
+import com.gstdev.cloud.rest.core.controller.Controller;
+import com.gstdev.cloud.service.identity.domain.authorization.AuthorizationManageQO;
+import com.gstdev.cloud.service.identity.mapper.Oauth2AuthorizationMapper;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>Description: OAuth2 认证管理接口 </p>
@@ -19,24 +28,46 @@ import org.springframework.web.bind.annotation.*;
 //    @Tag(name = "OAuth2 认证服务接口"),
 //    @Tag(name = "OAuth2 认证管理接口")
 //})
-public class OAuth2AuthorizationController extends BaseController<FrameAuthorization, String,FrameAuthorizationService> {
+public class OAuth2AuthorizationController implements Controller<FrameAuthorization, String> {
 
     @Resource
     private FrameAuthorizationService service;
 
-//    @Resource
-//    private Oauth2AuthorizationVoMapper oauth2AuthorizationVoMapper;
+    @Resource
+    private Oauth2AuthorizationMapper oauth2AuthorizationMapper;
 
-    public OAuth2AuthorizationController(FrameAuthorizationService service) {
-        super(service);
-    }
+//    public OAuth2AuthorizationController(FrameAuthorizationService service) {
+//        super(service);
+//    }
 
     @Override
     public FrameAuthorizationService getService() {
         return service;
     }
-//
-//
+
+
+    // ********************************* authorization Manage *****************************************
+    @GetMapping("/get-authorization-manage-page")
+    @Operation(summary = "get-authorization-manage-page")
+    public Result<Map<String, Object>> getAuthorizationManagePage(AuthorizationManageQO authorizationManageQO, BasePage basePage) {
+        return result(oauth2AuthorizationMapper.toAuthorizationManagePageVO(getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, authorizationManageQO, criteriaBuilder), basePage)));
+    }
+
+    //    @Operation(summary = "删除一条数据")
+    @DeleteMapping("delete-authorization-manage/{id}")
+    public Result deleteAuthorizationManage(@PathVariable String id) {
+        Result<String> result = result(String.valueOf(id));
+        getService().deleteById(id);
+        return result;
+    }
+
+    //    @Operation(summary = "删除多条数据")
+    @DeleteMapping("delete-all-authorization-manage")
+    public Result deleteAllAuthorizationManage(List<String> id) {
+        Result<String> result = result(String.valueOf(id));
+        getService().deleteAllById(id);
+        return result;
+    }
 //    @AccessLimited
 //    @Operation(summary = "分页查询数据", description = "通过pageNumber和pageSize获取分页数据",
 //        responses = {
