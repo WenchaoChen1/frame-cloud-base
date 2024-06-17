@@ -58,11 +58,9 @@ public class OAuth2ApplicationController extends BaseController<OAuth2Applicatio
     // ********************************* application Manage *****************************************
 
     @GetMapping("/get-application-manage-page")
-    @Operation(summary = "获取所有的用户,分页")
+    @Operation(summary = "get-application-manage-page")
     public Result<Map<String, Object>> getApplicationManagePage(ApplicationManageQO applicationManageQO, BasePage basePage) {
-        return result(getService().findByPage((root, criteriaQuery, criteriaBuilder) -> {
-            return QueryUtils.getPredicate(root, applicationManageQO, criteriaBuilder);
-        }, basePage));
+        return result(applicationMapper.toApplicationManagePageVO(getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, applicationManageQO, criteriaBuilder), basePage)));
     }
 
     @GetMapping("/get-application-manage-detail/{id}")
@@ -72,14 +70,14 @@ public class OAuth2ApplicationController extends BaseController<OAuth2Applicatio
     }
 
     @PostMapping("/insert-application-manage")
-    @Operation(summary = "新增一条数据")
+    @Operation(summary = "insert-application-manage")
     public Result insertApplicationManage(@RequestBody @Validated InsertApplicationManageIO insertApplicationManageIO) {
         this.getService().insertAndUpdate(applicationMapper.toEntity(insertApplicationManageIO));
         return result();
     }
 
     @PutMapping("/update-application-manage")
-    @Operation(summary = "新增一条数据")
+    @Operation(summary = "update-application-manage")
     public Result updateApplicationManage(@RequestBody @Validated UpdateApplicationManageIO updateApplicationManageIO) {
         OAuth2Application application = this.getService().findById(updateApplicationManageIO.getApplicationId());
         applicationMapper.copy(updateApplicationManageIO, application);
@@ -88,7 +86,7 @@ public class OAuth2ApplicationController extends BaseController<OAuth2Applicatio
     }
 
 
-    @Operation(summary = "删除一条数据")
+//    @Operation(summary = "删除一条数据")
     @DeleteMapping("delete-application-manage/{id}")
     public Result deleteApplicationManage(@PathVariable String id) {
         Result<String> result = result(String.valueOf(id));
@@ -96,7 +94,7 @@ public class OAuth2ApplicationController extends BaseController<OAuth2Applicatio
         return result;
     }
 
-    @Operation(summary = "删除多条数据")
+//    @Operation(summary = "删除多条数据")
     @DeleteMapping("delete-all-application-manage")
     public Result deleteAllApplicationManage(List<String> id) {
         Result<String> result = result(String.valueOf(id));
