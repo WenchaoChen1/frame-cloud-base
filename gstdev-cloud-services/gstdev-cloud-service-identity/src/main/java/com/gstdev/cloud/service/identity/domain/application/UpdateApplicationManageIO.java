@@ -11,9 +11,11 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.util.StringUtils;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.List;
 
 @Getter
 @Setter
@@ -51,4 +53,11 @@ public class UpdateApplicationManageIO {
     private Integer reversion;
     private String description;
 
+    public void setAuthorizationGrantTypes(List<String> authorizationGrantTypes) {
+        this.authorizationGrantTypes = StringUtils.collectionToCommaDelimitedString(authorizationGrantTypes);
+    }
+
+    public void setClientAuthenticationMethods(List<String> clientAuthenticationMethods) {
+        this.clientAuthenticationMethods = StringUtils.collectionToCommaDelimitedString(clientAuthenticationMethods);
+    }
 }
