@@ -41,4 +41,7 @@ public class ApplicationManageDetailVO {
     private Boolean reuseRefreshTokens = Boolean.TRUE;
     private SignatureJwsAlgorithm idTokenSignatureAlgorithmJwsAlgorithm = SignatureJwsAlgorithm.RS256;
 
+    private String clientId;
+    private String clientSecret;
+
 }
