@@ -32,88 +32,60 @@ import java.util.Objects;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity extends AbstractEntity {
 
+
     @JsonSerialize(using = InstantSerializer.class)
-    @Column(name = "created_at", updatable = false)
+    @Column(name = "z_created_date")
     @CreatedDate
-    private Instant createdAt;
+    private Instant createdDate;
     @CreatedBy
     @JsonIgnore
-    @Column(name = "created_by", length = 36, updatable = false)
-    private String createdBy;
+//    @Column(name = "z_created_user", length = 64, updatable = false)
+    @Column(name = "z_created_user", length = 64)
+    private String createdUser;
+//    @CreatedBy
+    @JsonIgnore
+    @Column(name = "z_created_account", length = 64)
+    private String createdAccount;
 
     @JsonIgnore
     @LastModifiedDate
     @JsonSerialize(using = InstantSerializer.class)
-    @Column(name = "updated_at")
-    private Instant updatedAt;
+    @Column(name = "z_updated_date")
+    private Instant updatedDate;
     @LastModifiedBy
     @JsonIgnore
-    @Column(name = "updated_by", length = 36)
-    private String updatedBy;
+    @Column(name = "z_updated_user", length = 64)
+    private String updatedUser;
+//    @LastModifiedBy
+    @JsonIgnore
+    @Column(name = "z_updated_account", length = 64)
+    private String updatedAccount;
 
-
+//
 //    @PrePersist
 //    public void addAuditInfo() {
-//        createdAt = Instant.now();
-////    createdBy = SecurityUtils.getUserId();
-//        updatedAt = Instant.now();
-////    updatedBy = SecurityUtils.getUserId();
+//        createdDate = Instant.now();
+//        createdUser = SecurityUtils.getUserId();
+//        updatedDate = Instant.now();
+//        updatedUser = SecurityUtils.getUserId();
 //    }
 //
 //    @PreUpdate
 //    public void updateAuditInfo() {
-//        updatedAt = Instant.now();
-////    updatedBy = SecurityUtils.getUserId();
+//        updatedDate = Instant.now();
+//        updatedUser = SecurityUtils.getUserId();
 //    }
-
-//    public ID getId() {
-//        return null;
-//    }
-    //  @Schema(title = "数据创建时间")
-//  @Column(name = "create_time", updatable = false)
-//  @CreatedDate
-//  @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT)
-//  private Date createTime = new Date();
-//
-//  @Schema(title = "数据更新时间")
-//  @Column(name = "update_time")
-//  @LastModifiedDate
-//  @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT)
-//  private Date updateTime = new Date();
-//
-//  @Schema(title = "创建人")
-//  @Column(name = "create_by")
-//  @CreatedBy
-//  private String createBy;
-//
-//  @Schema(title = "最后修改")
-//  @Column(name = "update_by")
-//  @LastModifiedBy
-//  private String updateBy;
-//
-//  @Schema(title = "排序值")
-//  @Column(name = "ranking")
-//  private Integer ranking = 0;
-//
-//  public Date getCreateTime() {
-//    return createTime;
-//  }
-
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         BaseEntity that = (BaseEntity) o;
-        return Objects.equals(createdAt, that.createdAt) && Objects.equals(createdBy, that.createdBy) && Objects.equals(updatedAt, that.updatedAt) && Objects.equals(updatedBy, that.updatedBy);
+        return Objects.equals(createdDate, that.createdDate) && Objects.equals(createdUser, that.createdUser) && Objects.equals(createdAccount, that.createdAccount) && Objects.equals(updatedDate, that.updatedDate) && Objects.equals(updatedUser, that.updatedUser) && Objects.equals(updatedAccount, that.updatedAccount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(createdAt, createdBy, updatedAt, updatedBy);
+        return Objects.hash(createdDate, createdUser, createdAccount, updatedDate, updatedUser, updatedAccount);
     }
 }
