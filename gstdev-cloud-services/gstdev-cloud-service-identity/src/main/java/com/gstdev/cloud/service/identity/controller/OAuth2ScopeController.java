@@ -85,7 +85,7 @@ public class OAuth2ScopeController implements Controller<OAuth2Scope, String> {
 
 
     //    @Operation(summary = "删除一条数据")
-    @DeleteMapping("delete-scope-manage/{id}")
+    @DeleteMapping("/delete-scope-manage/{id}")
     public Result deleteScopeManage(@PathVariable String id) {
         Result<String> result = result(String.valueOf(id));
         getService().deleteById(id);
@@ -93,7 +93,7 @@ public class OAuth2ScopeController implements Controller<OAuth2Scope, String> {
     }
 
     //    @Operation(summary = "删除多条数据")
-    @DeleteMapping("delete-all-scope-manage")
+    @DeleteMapping("/delete-all-scope-manage")
     public Result deleteAllScopeManage(List<String> id) {
         Result<String> result = result(String.valueOf(id));
         getService().deleteAllById(id);
