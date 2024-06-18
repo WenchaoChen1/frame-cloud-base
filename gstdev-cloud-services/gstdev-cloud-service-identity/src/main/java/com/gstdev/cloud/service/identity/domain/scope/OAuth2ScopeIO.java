@@ -1,6 +1,7 @@
-package com.gstdev.cloud.service.identity.dto;
+package com.gstdev.cloud.service.identity.domain.scope;
 
 import com.google.common.base.MoreObjects;
+import com.gstdev.cloud.service.identity.dto.OAuth2PermissionDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 
@@ -14,7 +15,7 @@ import java.util.Set;
  * @date : 2022/4/1 13:55
  */
 @Schema(title = "OAuth2 范围请求 Dto")
-public class OAuth2ScopeDto {
+public class OAuth2ScopeIO {
 
     @Schema(title = "范围ID")
     @NotNull(message = "范围ID不能为空")

@@ -96,6 +96,9 @@ public class OAuth2ApplicationController implements Controller<OAuth2Application
         return result;
     }
 
+    /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
+
+
     @Operation(summary = "给应用分配Scope", description = "给应用分配Scope")
     @Parameters({
         @Parameter(name = "appKey", required = true, description = "appKey"),
@@ -106,5 +109,7 @@ public class OAuth2ApplicationController implements Controller<OAuth2Application
         OAuth2Application application = getService().authorize(scopeId, scopes);
         return result(application);
     }
+
+
 
 }
