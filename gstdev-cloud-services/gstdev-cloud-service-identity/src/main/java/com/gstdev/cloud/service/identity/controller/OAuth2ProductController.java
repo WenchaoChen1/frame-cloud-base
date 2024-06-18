@@ -1,6 +1,6 @@
 package com.gstdev.cloud.service.identity.controller;
 
-import com.gstdev.cloud.service.identity.entity.OAuth2Product;
+import com.gstdev.cloud.service.identity.domain.entity.OAuth2Product;
 import com.gstdev.cloud.service.identity.service.OAuth2ProductService;
 import com.gstdev.cloud.rest.core.controller.BaseController;
 import org.springframework.web.bind.annotation.RequestMapping;

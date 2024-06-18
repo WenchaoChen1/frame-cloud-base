@@ -4,10 +4,10 @@ import com.gstdev.cloud.base.core.exception.transaction.TransactionalRollbackExc
 import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.oauth2.data.jpa.repository.FrameRegisteredClientRepository;
-import com.gstdev.cloud.service.identity.converter.OAuth2DeviceToRegisteredClientConverter;
-import com.gstdev.cloud.service.identity.converter.RegisteredClientToOAuth2DeviceConverter;
-import com.gstdev.cloud.service.identity.entity.OAuth2Device;
-import com.gstdev.cloud.service.identity.entity.OAuth2Scope;
+import com.gstdev.cloud.service.identity.domain.converter.OAuth2DeviceToRegisteredClientConverter;
+import com.gstdev.cloud.service.identity.domain.converter.RegisteredClientToOAuth2DeviceConverter;
+import com.gstdev.cloud.service.identity.domain.entity.OAuth2Device;
+import com.gstdev.cloud.service.identity.domain.entity.OAuth2Scope;
 import com.gstdev.cloud.service.identity.repository.OAuth2DeviceRepository;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;

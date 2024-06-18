@@ -2,7 +2,7 @@ package com.gstdev.cloud.service.identity.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.message.core.logic.event.AccountReleaseFromCacheEvent;
-import com.gstdev.cloud.service.identity.dto.SignOut;
+import com.gstdev.cloud.service.identity.domain.dto.SignOut;
 import com.gstdev.cloud.service.identity.service.OAuth2ComplianceService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

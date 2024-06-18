@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.identity.repository;
 
 import com.gstdev.cloud.data.core.repository.BaseRepository;
-import com.gstdev.cloud.service.identity.entity.OAuth2Device;
+import com.gstdev.cloud.service.identity.domain.entity.OAuth2Device;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

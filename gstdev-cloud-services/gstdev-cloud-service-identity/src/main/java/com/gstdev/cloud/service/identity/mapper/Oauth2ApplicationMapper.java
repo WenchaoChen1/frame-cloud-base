@@ -10,12 +10,12 @@
 package com.gstdev.cloud.service.identity.mapper;
 
 
-import com.gstdev.cloud.service.identity.domain.application.ApplicationManageDetailVO;
-import com.gstdev.cloud.service.identity.domain.application.ApplicationManagePageVO;
-import com.gstdev.cloud.service.identity.domain.application.InsertApplicationManageIO;
-import com.gstdev.cloud.service.identity.domain.application.UpdateApplicationManageIO;
+import com.gstdev.cloud.service.identity.domain.pojo.application.ApplicationManageDetailVO;
+import com.gstdev.cloud.service.identity.domain.pojo.application.ApplicationManagePageVO;
+import com.gstdev.cloud.service.identity.domain.pojo.application.InsertApplicationManageIO;
+import com.gstdev.cloud.service.identity.domain.pojo.application.UpdateApplicationManageIO;
 import com.gstdev.cloud.service.identity.domain.base.Oauth2ApplicationVo;
-import com.gstdev.cloud.service.identity.entity.OAuth2Application;
+import com.gstdev.cloud.service.identity.domain.entity.OAuth2Application;
 import org.mapstruct.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

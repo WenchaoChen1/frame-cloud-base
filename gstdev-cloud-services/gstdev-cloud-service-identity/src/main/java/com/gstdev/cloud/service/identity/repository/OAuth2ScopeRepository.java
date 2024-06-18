@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.identity.repository;
 
 import com.gstdev.cloud.data.core.repository.BaseRepository;
-import com.gstdev.cloud.service.identity.entity.OAuth2Scope;
+import com.gstdev.cloud.service.identity.domain.entity.OAuth2Scope;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

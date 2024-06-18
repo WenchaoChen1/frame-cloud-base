@@ -27,13 +27,12 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Configuration(proxyBeanMethods = false)
 @Import({OAuth2DataJpaConfiguration.class, OAuth2AuthenticationConfiguration.class, OAuth2ComplianceConfiguration.class})
 @EntityScan(basePackages = {
-    "com.gstdev.cloud.service.identity.entity"
+    "com.gstdev.cloud.service.identity.domain.entity"
 })
 @EnableJpaRepositories(basePackages = {
     "com.gstdev.cloud.service.identity.repository",
 })
 @ComponentScan(basePackages = {
-    "com.gstdev.cloud.service.identity.mapper.vo",
     "com.gstdev.cloud.service.identity.mapper",
     "com.gstdev.cloud.service.identity.service",
     "com.gstdev.cloud.service.identity.controller",

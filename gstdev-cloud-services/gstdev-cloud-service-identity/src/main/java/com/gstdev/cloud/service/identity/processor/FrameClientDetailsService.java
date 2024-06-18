@@ -2,9 +2,9 @@ package com.gstdev.cloud.service.identity.processor;
 
 import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import com.gstdev.cloud.oauth2.core.definition.service.EnhanceClientDetailsService;
-import com.gstdev.cloud.service.identity.entity.OAuth2Application;
-import com.gstdev.cloud.service.identity.entity.OAuth2Permission;
-import com.gstdev.cloud.service.identity.entity.OAuth2Scope;
+import com.gstdev.cloud.service.identity.domain.entity.OAuth2Application;
+import com.gstdev.cloud.service.identity.domain.entity.OAuth2Permission;
+import com.gstdev.cloud.service.identity.domain.entity.OAuth2Scope;
 import com.gstdev.cloud.service.identity.service.OAuth2ApplicationService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;

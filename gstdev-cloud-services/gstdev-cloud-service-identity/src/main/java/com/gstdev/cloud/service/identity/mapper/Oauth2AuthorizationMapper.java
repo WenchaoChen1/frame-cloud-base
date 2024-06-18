@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.identity.mapper;
 
 import com.gstdev.cloud.oauth2.data.jpa.entity.FrameAuthorization;
-import com.gstdev.cloud.service.identity.domain.authorization.AuthorizationManagePageVO;
+import com.gstdev.cloud.service.identity.domain.pojo.authorization.AuthorizationManagePageVO;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;

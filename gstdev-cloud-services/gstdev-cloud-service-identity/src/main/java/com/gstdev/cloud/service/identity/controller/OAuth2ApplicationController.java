@@ -1,28 +1,23 @@
 package com.gstdev.cloud.service.identity.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.Controller;
-import com.gstdev.cloud.service.identity.domain.application.ApplicationManageDetailVO;
-import com.gstdev.cloud.service.identity.domain.application.ApplicationManageQO;
-import com.gstdev.cloud.service.identity.domain.application.InsertApplicationManageIO;
-import com.gstdev.cloud.service.identity.domain.application.UpdateApplicationManageIO;
-import com.gstdev.cloud.service.identity.domain.base.Oauth2ApplicationVo;
-import com.gstdev.cloud.service.identity.entity.OAuth2Application;
+import com.gstdev.cloud.service.identity.domain.pojo.application.ApplicationManageDetailVO;
+import com.gstdev.cloud.service.identity.domain.pojo.application.ApplicationManageQO;
+import com.gstdev.cloud.service.identity.domain.pojo.application.InsertApplicationManageIO;
+import com.gstdev.cloud.service.identity.domain.pojo.application.UpdateApplicationManageIO;
+import com.gstdev.cloud.service.identity.domain.entity.OAuth2Application;
 import com.gstdev.cloud.service.identity.mapper.Oauth2ApplicationMapper;
 import com.gstdev.cloud.service.identity.service.OAuth2ApplicationService;
-import com.gstdev.cloud.rest.core.controller.BaseController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import jakarta.annotation.Resource;
-import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 

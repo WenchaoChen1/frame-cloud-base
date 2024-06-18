@@ -2,7 +2,7 @@ package com.gstdev.cloud.service.identity.service;
 
 import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
-import com.gstdev.cloud.service.identity.entity.OAuth2Product;
+import com.gstdev.cloud.service.identity.domain.entity.OAuth2Product;
 import com.gstdev.cloud.service.identity.repository.OAuth2ProductRepository;
 import org.springframework.stereotype.Service;
 

@@ -3,7 +3,7 @@ package com.gstdev.cloud.service.identity.service;
 import com.google.common.net.HttpHeaders;
 import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
-import com.gstdev.cloud.service.identity.entity.OAuth2Compliance;
+import com.gstdev.cloud.service.identity.domain.entity.OAuth2Compliance;
 import com.gstdev.cloud.service.identity.repository.OAuth2ComplianceRepository;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.servlet.http.HttpServletRequest;

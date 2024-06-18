@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.identity.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.service.identity.entity.OAuth2Device;
+import com.gstdev.cloud.service.identity.domain.entity.OAuth2Device;
 import com.gstdev.cloud.service.identity.service.OAuth2DeviceService;
 import com.gstdev.cloud.rest.core.controller.BaseController;
 import io.swagger.v3.oas.annotations.Operation;
