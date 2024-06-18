@@ -5,6 +5,10 @@ import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.oauth2.core.enums.AllJwsAlgorithm;
 import com.gstdev.cloud.oauth2.core.enums.ApplicationType;
 import com.gstdev.cloud.oauth2.core.enums.SignatureJwsAlgorithm;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,6 +44,11 @@ public class ApplicationManageDetailVO {
     private Duration deviceCodeValidity = Duration.ofMinutes(5);
     private Boolean reuseRefreshTokens = Boolean.TRUE;
     private SignatureJwsAlgorithm idTokenSignatureAlgorithmJwsAlgorithm = SignatureJwsAlgorithm.RS256;
+    private DataItemStatus status;
+    private Boolean reserved;
+    private Integer reversion;
+    private String description;
+
 
     private String clientId;
     private String clientSecret;
