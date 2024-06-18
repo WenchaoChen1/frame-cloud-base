@@ -1,10 +1,10 @@
 package com.gstdev.cloud.service.identity.service;
 
+import com.google.common.net.HttpHeaders;
 import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.service.identity.entity.OAuth2Compliance;
 import com.gstdev.cloud.service.identity.repository.OAuth2ComplianceRepository;
-import com.google.common.net.HttpHeaders;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.ObjectUtils;
@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -48,7 +49,7 @@ public class OAuth2ComplianceService extends BaseServiceImpl<OAuth2Compliance, S
     }
 
     public Page<OAuth2Compliance> findByCondition(int pageNumber, int pageSize, String principalName, String clientId, String ip) {
-        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(Sort.Direction.DESC, "created_at"));
 
         Specification<OAuth2Compliance> specification = (root, criteriaQuery, criteriaBuilder) -> {
 

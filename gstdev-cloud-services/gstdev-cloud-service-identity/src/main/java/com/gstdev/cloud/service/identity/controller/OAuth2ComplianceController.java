@@ -2,6 +2,7 @@ package com.gstdev.cloud.service.identity.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.BasePage;
+import com.gstdev.cloud.rest.core.controller.Controller;
 import com.gstdev.cloud.service.identity.entity.OAuth2Compliance;
 import com.gstdev.cloud.service.identity.service.OAuth2ComplianceService;
 import com.gstdev.cloud.rest.core.controller.BaseController;
@@ -11,6 +12,7 @@ import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.annotation.Resource;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,11 +35,14 @@ import java.util.Map;
 //    @Tag(name = "OAuth2 应用安全合规接口"),
 //    @Tag(name = "OAuth2 审计管理接口")
 //})
-public class OAuth2ComplianceController extends BaseController<OAuth2Compliance, String, OAuth2ComplianceService> {
+public class OAuth2ComplianceController implements Controller<OAuth2Compliance, String> {
 
+    @Resource
+    private OAuth2ComplianceService service;
 
-    public OAuth2ComplianceController(OAuth2ComplianceService service) {
-        super(service);
+    @Override
+    public OAuth2ComplianceService getService() {
+        return this.service;
     }
 
     @Operation(summary = "模糊条件查询合规信息", description = "根据动态输入的字段模糊查询合规信息",

@@ -1,6 +1,7 @@
 package com.gstdev.cloud.service.identity.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.Controller;
@@ -37,14 +38,16 @@ import java.util.Map;
 //    @Tag(name = "OAuth2 认证服务接口"),
 //    @Tag(name = "OAuth2 应用管理接口")
 //})
-public class OAuth2ApplicationController extends BaseController<OAuth2Application, String, OAuth2ApplicationService> {
-    public OAuth2ApplicationController(OAuth2ApplicationService service) {
-        super(service);
-    }
+public class OAuth2ApplicationController implements Controller<OAuth2Application, String> {
 
     @Resource
     private Oauth2ApplicationMapper applicationMapper;
-
+    @Resource
+    private OAuth2ApplicationService applicationService;
+    @Override
+    public OAuth2ApplicationService getService() {
+        return applicationService;
+    }
 
     // ********************************* application Manage *****************************************
 
