@@ -1,6 +1,7 @@
 package com.gstdev.cloud.service.common.autoconfigure;
 
 
+import com.gstdev.cloud.data.jpa.autoconfigure.DataJpaAutoConfiguration;
 import com.gstdev.cloud.service.common.autoconfigure.metadata.RemoteSecurityMetadataSyncListener;
 import com.gstdev.cloud.service.common.autoconfigure.scan.DefaultRequestMappingScanEventManager;
 import com.gstdev.cloud.message.core.logic.strategy.RequestMappingScanEventManager;
@@ -31,7 +32,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @AutoConfiguration
 @EnableAsync
 @EnableAspectJAutoProxy(exposeProxy = true, proxyTargetClass = true)
-@Import({OAuth2AuthorizationConfiguration.class})
+@Import({OAuth2AuthorizationConfiguration.class, DataJpaAutoConfiguration.class})
 @ComponentScan(basePackageClasses = SecurityGlobalExceptionHandler.class)
 @RemoteApplicationEventScan({
     "com.gstdev.cloud.service.common.autoconfigure.bus"
