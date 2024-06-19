@@ -49,7 +49,7 @@ public class OAuth2ComplianceService extends BaseServiceImpl<OAuth2Compliance, S
     }
 
     public Page<OAuth2Compliance> findByCondition(int pageNumber, int pageSize, String principalName, String clientId, String ip) {
-        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(Sort.Direction.DESC, "created_date"));
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(Sort.Direction.DESC, "createdDate"));
 
         Specification<OAuth2Compliance> specification = (root, criteriaQuery, criteriaBuilder) -> {
 
