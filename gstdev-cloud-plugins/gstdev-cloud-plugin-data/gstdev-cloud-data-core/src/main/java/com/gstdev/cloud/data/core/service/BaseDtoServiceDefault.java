@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
@@ -28,6 +29,7 @@ public interface BaseDtoServiceDefault<E extends Entity
      * @param id 数据ID
      * @return 与ID对应的数据，如果不存在则返回空
      */
+    @Transactional(readOnly = true)
 //@Override
     default D findByIdToDto(ID id) {
         return getMapper().toDto(findById(id));
