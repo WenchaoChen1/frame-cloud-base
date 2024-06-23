@@ -75,7 +75,7 @@ public class OAuth2ApplicationController implements Controller<OAuth2Application
     }
 
 
-//    @Operation(summary = "删除一条数据")
+    @Operation(summary = "删除一条数据")
     @DeleteMapping("/delete-application-manage/{id}")
     public Result deleteApplicationManage(@PathVariable String id) {
         Result<String> result = result(String.valueOf(id));
@@ -83,7 +83,7 @@ public class OAuth2ApplicationController implements Controller<OAuth2Application
         return result;
     }
 
-//    @Operation(summary = "删除多条数据")
+    @Operation(summary = "删除多条数据")
     @DeleteMapping("/delete-all-application-manage")
     public Result deleteAllApplicationManage(List<String> id) {
         Result<String> result = result(String.valueOf(id));

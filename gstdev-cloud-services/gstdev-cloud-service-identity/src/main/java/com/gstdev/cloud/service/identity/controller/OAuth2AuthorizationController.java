@@ -52,7 +52,7 @@ public class OAuth2AuthorizationController implements Controller<FrameAuthorizat
         return result(oauth2AuthorizationMapper.toAuthorizationManagePageVO(getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, authorizationManageQO, criteriaBuilder), basePage)));
     }
 
-    //    @Operation(summary = "删除一条数据")
+        @Operation(summary = "删除一条数据")
     @DeleteMapping("/delete-authorization-manage/{id}")
     public Result deleteAuthorizationManage(@PathVariable String id) {
         Result<String> result = result(String.valueOf(id));
@@ -60,7 +60,7 @@ public class OAuth2AuthorizationController implements Controller<FrameAuthorizat
         return result;
     }
 
-    //    @Operation(summary = "删除多条数据")
+        @Operation(summary = "删除多条数据")
     @DeleteMapping("/delete-all-authorization-manage")
     public Result deleteAllAuthorizationManage(List<String> id) {
         Result<String> result = result(String.valueOf(id));
