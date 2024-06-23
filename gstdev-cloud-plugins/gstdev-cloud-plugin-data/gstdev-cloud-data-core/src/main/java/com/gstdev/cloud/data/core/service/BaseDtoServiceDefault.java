@@ -30,7 +30,7 @@ public interface BaseDtoServiceDefault<E extends Entity
      * @return 与ID对应的数据，如果不存在则返回空
      */
     @Transactional(readOnly = true)
-//@Override
+    @Override
     default D findByIdToDto(ID id) {
         return getMapper().toDto(findById(id));
     }
@@ -40,7 +40,8 @@ public interface BaseDtoServiceDefault<E extends Entity
      *
      * @return 全部数据列表
      */
-//@Override
+    @Transactional(readOnly = true)
+    @Override
     default List<D> findAllToDto() {
         return getMapper().toDto(findAll());
     }
@@ -51,7 +52,8 @@ public interface BaseDtoServiceDefault<E extends Entity
      * @param sort {@link Sort}
      * @return 已排序的全部数据列表
      */
-//@Override
+    @Transactional(readOnly = true)
+    @Override
     default List<D> findAllToDto(Sort sort) {
         return getMapper().toDto(findAll(sort));
     }
@@ -62,7 +64,8 @@ public interface BaseDtoServiceDefault<E extends Entity
      * @param specification {@link Specification}
      * @return 全部数据列表
      */
-//@Override
+    @Transactional(readOnly = true)
+    @Override
     default List<D> findAllToDto(Specification<E> specification) {
         return getMapper().toDto(findAll(specification));
     }
@@ -74,7 +77,8 @@ public interface BaseDtoServiceDefault<E extends Entity
      * @param sort          {@link Sort}
      * @return 全部数据列表
      */
-//@Override
+    @Transactional(readOnly = true)
+    @Override
     default List<D> findAllToDto(Specification<E> specification, Sort sort) {
         return getMapper().toDto(findAll(specification, sort));
     }
@@ -85,7 +89,8 @@ public interface BaseDtoServiceDefault<E extends Entity
      * @param pageable {@link Pageable}
      * @return 分页数据
      */
-//@Override
+    @Transactional(readOnly = true)
+    @Override
     default Page<D> findByPageToDto(Pageable pageable) {
         return getMapper().toDto(findByPage(pageable));
     }
@@ -96,7 +101,8 @@ public interface BaseDtoServiceDefault<E extends Entity
      * @param page 页
      * @return 分页数据
      */
-//@Override
+    @Transactional(readOnly = true)
+    @Override
     default Page<D> findByPageToDto(BasePage page) {
         return getMapper().toDto(findByPage(page));
     }
@@ -108,7 +114,8 @@ public interface BaseDtoServiceDefault<E extends Entity
      * @param pageSize   每页显示的数据条数
      * @return 分页数据
      */
-//@Override
+    @Transactional(readOnly = true)
+    @Override
     default Page<D> findByPageToDto(int pageNumber, int pageSize) {
         return getMapper().toDto(findByPage(pageNumber, pageSize));
     }
@@ -121,7 +128,8 @@ public interface BaseDtoServiceDefault<E extends Entity
      * @param sort       排序
      * @return 分页数据
      */
-//@Override
+    @Transactional(readOnly = true)
+    @Override
     default Page<D> findByPageToDto(int pageNumber, int pageSize, Sort sort) {
         return getMapper().toDto(findByPage(pageNumber, pageSize, sort));
     }
@@ -135,7 +143,8 @@ public interface BaseDtoServiceDefault<E extends Entity
      * @param properties 排序的属性名称
      * @return 分页数据
      */
-//@Override
+    @Transactional(readOnly = true)
+    @Override
     default Page<D> findByPageToDto(int pageNumber, int pageSize, Sort.Direction direction, String... properties) {
         return getMapper().toDto(findByPage(pageNumber, pageSize, direction, properties));
     }
@@ -147,7 +156,8 @@ public interface BaseDtoServiceDefault<E extends Entity
      * @param pageable      {@link Pageable}
      * @return 分页数据
      */
-//@Override
+    @Transactional(readOnly = true)
+    @Override
     default Page<D> findByPageToDto(Specification<E> specification, Pageable pageable) {
         return getMapper().toDto(findByPage(specification, pageable));
     }
@@ -159,7 +169,8 @@ public interface BaseDtoServiceDefault<E extends Entity
      * @param pageable      {@link BasePage}
      * @return 分页数据
      */
-//@Override
+    @Transactional(readOnly = true)
+    @Override
     default Page<D> findByPageToDto(Specification<E> specification, BasePage pageable) {
         return getMapper().toDto(findByPage(specification, pageable));
     }
@@ -172,7 +183,8 @@ public interface BaseDtoServiceDefault<E extends Entity
      * @param pageSize      每页显示的数据条数
      * @return 分页数据
      */
-//@Override
+    @Transactional(readOnly = true)
+    @Override
     default Page<D> findByPageToDto(Specification<E> specification, int pageNumber, int pageSize) {
         return getMapper().toDto(findByPage(specification, PageRequest.of(pageNumber, pageSize)));
     }
@@ -185,7 +197,8 @@ public interface BaseDtoServiceDefault<E extends Entity
      * @param direction  {@link org.springframework.data.domain.Sort.Direction}
      * @return 分页数据
      */
-//@Override
+    @Transactional(readOnly = true)
+    @Override
     default Page<D> findByPageToDto(int pageNumber, int pageSize, Sort.Direction direction) {
         return getMapper().toDto(findByPage(pageNumber, pageSize, direction));
     }
@@ -197,23 +210,26 @@ public interface BaseDtoServiceDefault<E extends Entity
      * @param domain 数据对应实体
      * @return 已保存数据
      */
-//@Override
+    @Transactional
+    @Override
     default D saveToDto(E domain) {
         return getMapper().toDto(save(domain));
     }
 
-    //@Override
+    @Transactional
+    @Override
     default D saveToDto(D domain) {
         return saveToDto(getMapper().toEntity(domain));
     }
 
-//    /**
+    //    /**
 //     * 批量保存或更新数据
 //     *
 //     * @param entities 实体集合
 //     * @return 已经保存的实体集合
 //     */
-////@Override
+//@Transactional
+//    @Override
 //    default <S extends E> List<S> saveAll(Iterable<S> entities) {
 //        return getMapper().toDto(saveAll(entities));
 //    }
@@ -224,12 +240,14 @@ public interface BaseDtoServiceDefault<E extends Entity
      * @param entity 实体
      * @return 保存后实体
      */
-//@Override
+    @Transactional
+    @Override
     default D saveAndFlushToDto(E entity) {
         return getMapper().toDto(saveAndFlush(entity));
     }
 
-    //@Override
+    @Transactional
+    @Override
     default D saveAndFlushToDto(D entity) {
         return saveAndFlushToDto(getMapper().toEntity(entity));
     }
@@ -240,72 +258,87 @@ public interface BaseDtoServiceDefault<E extends Entity
      * @param entities 实体列表
      * @return 保存或更新后的实体
      */
-//@Override
+    @Transactional
+    @Override
     default List<D> saveAllAndFlushToDto(List<E> entities) {
         return getMapper().toDto(saveAllAndFlush(entities));
     }
 
-    //@Override
+    @Transactional
+    @Override
     default List<D> saveAllAndFlushDtoToDto(List<D> entities) {
         return saveAllAndFlushToDto(getMapper().toEntity(entities));
     }
 
 
-    //@Override
+    @Transactional
+    @Override
     default D insertToDto(E e) {
         return getMapper().toDto(insert(e));
     }
 
-    //@Override
+    @Transactional
+    @Override
     default D insertToDto(D e) {
         return insertToDto(getMapper().toEntity(e));
     }
 
-    //@Override
+    @Transactional
+    @Override
     default List<D> insertToDto(List<E> e) {
         return getMapper().toDto(insert(e));
     }
 
-    //@Override
+    @Transactional
+    @Override
     default List<D> insertDtoToDto(List<D> e) {
         return insertToDto(getMapper().toEntity(e));
     }
 
-    //@Override
+    @Transactional
+    @Override
     default D updateToDto(E e) {
         return getMapper().toDto(update(e));
     }
 
-    //@Override
+    @Transactional
+    @Override
     default D updateToDto(D e) {
         return updateToDto(getMapper().toEntity(e));
     }
 
-    //@Override
+    @Transactional
+    @Override
     default List<D> updateToDto(List<E> e) {
         return getMapper().toDto(update(e));
     }
 
-    //@Override
+    @Transactional
+    @Override
     default List<D> updateDtoToDto(List<D> e) {
         return getMapper().toDto(update(getMapper().toEntity(e)));
-    }    //@Override
+    }
 
+    @Transactional
+    @Override
     default D insertAndUpdateToDto(E e) {
         return getMapper().toDto(insertAndUpdate(e));
     }
 
-    //@Override
+    @Transactional
+    @Override
     default D insertAndUpdateToDto(D e) {
         return insertAndUpdateToDto(getMapper().toEntity(e));
     }
 
-    //@Override
+    @Transactional
+    @Override
     default List<D> insertAndUpdateToDto(List<E> e) {
         return getMapper().toDto(insertAndUpdate(e));
     }
 
-    //@Override
+    @Transactional
+    @Override
     default List<D> insertAndUpdateDtoToDto(List<D> e) {
         return getMapper().toDto(insertAndUpdate(getMapper().toEntity(e)));
     }
