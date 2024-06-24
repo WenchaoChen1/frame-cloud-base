@@ -93,9 +93,9 @@ public class OAuth2ScopeController implements Controller<OAuth2Scope, String> {
 
 
     @Tag(name = "Scope Manage")
-    @PostMapping("/scope-manage-assigned-permission")
-    @Operation(summary = "scope-manage-assigned-permission")
-    public Result<OAuth2Scope> scopeManageAssignedPermission(@RequestBody ScopeManageAssignedPermissionIO scopeManageAssignedPermissionIO) {
+    @PostMapping("/update-scope-manage-assigned-permission")
+    @Operation(summary = "update-scope-manage-assigned-permission")
+    public Result<OAuth2Scope> updateScopeManageAssignedPermission(@RequestBody ScopeManageAssignedPermissionIO scopeManageAssignedPermissionIO) {
 
 //        Set<OAuth2Permission> permissions = new HashSet<>();
 //        if (CollectionUtils.isNotEmpty(scope.getPermissions())) {
@@ -104,7 +104,7 @@ public class OAuth2ScopeController implements Controller<OAuth2Scope, String> {
 //
 //        OAuth2Scope result = getService().assigned(scope.getScopeId(), permissions);
 //        return result(result);
-        this.getService().scopeManageAssignedPermission(scopeManageAssignedPermissionIO);
+        this.getService().updateScopeManageAssignedPermission(scopeManageAssignedPermissionIO);
         return result();
     }
 

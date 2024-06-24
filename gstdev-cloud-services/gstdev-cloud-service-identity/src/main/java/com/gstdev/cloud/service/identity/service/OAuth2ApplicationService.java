@@ -96,7 +96,7 @@ public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application,
     }
 
     @Transactional
-    public void applicationManageAssignedScope(ApplicationManageAssignedScopeIO applicationManageAssignedScopeIO) {
+    public void updateApplicationManageAssignedScope(ApplicationManageAssignedScopeIO applicationManageAssignedScopeIO) {
         OAuth2Application application = findById(applicationManageAssignedScopeIO.getApplicationId());
         Set<OAuth2Scope> scopes = new HashSet<>();
         for (String scopeId : applicationManageAssignedScopeIO.getScopeId()) {

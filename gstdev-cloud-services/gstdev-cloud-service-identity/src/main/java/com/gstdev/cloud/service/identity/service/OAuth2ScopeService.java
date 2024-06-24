@@ -53,7 +53,7 @@ public class OAuth2ScopeService extends BaseServiceImpl<OAuth2Scope, String, OAu
     }
 
     @Transactional
-    public void scopeManageAssignedPermission(ScopeManageAssignedPermissionIO scopeManageAssignedPermissionIO) {
+    public void updateScopeManageAssignedPermission(ScopeManageAssignedPermissionIO scopeManageAssignedPermissionIO) {
         OAuth2Scope scope = findById(scopeManageAssignedPermissionIO.getScopeId());
         Set<OAuth2Permission> permissions = new HashSet<>();
         scopeManageAssignedPermissionIO.getPermissions().forEach(permissionDto -> {

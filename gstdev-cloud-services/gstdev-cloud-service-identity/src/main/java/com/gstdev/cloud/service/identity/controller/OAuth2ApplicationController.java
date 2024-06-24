@@ -95,10 +95,10 @@ public class OAuth2ApplicationController implements Controller<OAuth2Application
 
 
     @Tag(name = "Application Manage")
-    @PostMapping("/application-manage-assigned-scope")
-    @Operation(summary = "application-manage-assigned-scope")
-    public Result applicationManageAssignedScope(@RequestBody ApplicationManageAssignedScopeIO applicationManageAssignedScopeIO) {
-        this.getService().applicationManageAssignedScope(applicationManageAssignedScopeIO);
+    @PostMapping("/update-application-manage-assigned-scope")
+    @Operation(summary = "update-application-manage-assigned-scope")
+    public Result updateApplicationManageAssignedScope(@RequestBody ApplicationManageAssignedScopeIO applicationManageAssignedScopeIO) {
+        this.getService().updateApplicationManageAssignedScope(applicationManageAssignedScopeIO);
         return result();
     }
 
