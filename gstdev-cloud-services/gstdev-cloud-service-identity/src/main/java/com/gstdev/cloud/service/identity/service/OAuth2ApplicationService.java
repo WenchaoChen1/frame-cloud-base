@@ -7,7 +7,9 @@ import com.gstdev.cloud.oauth2.data.jpa.repository.FrameRegisteredClientReposito
 import com.gstdev.cloud.service.identity.domain.converter.OAuth2ApplicationToRegisteredClientConverter;
 import com.gstdev.cloud.service.identity.domain.entity.OAuth2Application;
 import com.gstdev.cloud.service.identity.domain.entity.OAuth2Scope;
+import com.gstdev.cloud.service.identity.domain.pojo.application.ApplicationManageAssignedScopeIO;
 import com.gstdev.cloud.service.identity.repository.OAuth2ApplicationRepository;
+import com.gstdev.cloud.service.identity.repository.OAuth2ScopeRepository;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +20,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * <p>Description: OAuth2ApplicationService </p>
@@ -35,13 +39,15 @@ public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application,
     private final FrameRegisteredClientRepository frameRegisteredClientRepository;
     private final Converter<OAuth2Application, RegisteredClient> objectConverter;
     private OAuth2ApplicationRepository applicationRepository;
+    private OAuth2ScopeRepository oAuth2ScopeRepository;
 
-    public OAuth2ApplicationService(RegisteredClientRepository registeredClientRepository, FrameRegisteredClientRepository frameRegisteredClientRepository, OAuth2ApplicationRepository applicationRepository) {
+    public OAuth2ApplicationService(RegisteredClientRepository registeredClientRepository, FrameRegisteredClientRepository frameRegisteredClientRepository, OAuth2ApplicationRepository applicationRepository, OAuth2ScopeRepository oAuth2ScopeRepository) {
         super(applicationRepository);
         this.registeredClientRepository = registeredClientRepository;
         this.frameRegisteredClientRepository = frameRegisteredClientRepository;
         this.applicationRepository = applicationRepository;
         this.objectConverter = new OAuth2ApplicationToRegisteredClientConverter();
+        this.oAuth2ScopeRepository = oAuth2ScopeRepository;
     }
 
     @Override
@@ -87,5 +93,21 @@ public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application,
 
     public OAuth2Application findByClientId(String clientId) {
         return applicationRepository.findByClientId(clientId);
+    }
+
+    @Transactional
+    public void applicationManageAssignedScope(ApplicationManageAssignedScopeIO applicationManageAssignedScopeIO) {
+        OAuth2Application application = findById(applicationManageAssignedScopeIO.getApplicationId());
+        Set<OAuth2Scope> scopes = new HashSet<>();
+        for (String scopeId : applicationManageAssignedScopeIO.getScopeId()) {
+            Optional<OAuth2Scope> scope = oAuth2ScopeRepository.findById(scopeId);
+            scope.ifPresent(scopes::add);
+        }
+        application.setScopes(scopes);
+        saveAndFlush(application);
+    }
+
+    public Set<String> getApplicationScopeIdByApplicationId(String id) {
+        return findById(id).getScopes().stream().map(OAuth2Scope::getScopeId).collect(Collectors.toSet());
     }
 }

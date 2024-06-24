@@ -5,21 +5,18 @@ import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.Controller;
 import com.gstdev.cloud.service.identity.domain.entity.OAuth2Application;
-import com.gstdev.cloud.service.identity.domain.pojo.application.ApplicationManageDetailVO;
-import com.gstdev.cloud.service.identity.domain.pojo.application.ApplicationManageQO;
-import com.gstdev.cloud.service.identity.domain.pojo.application.InsertApplicationManageIO;
-import com.gstdev.cloud.service.identity.domain.pojo.application.UpdateApplicationManageIO;
+import com.gstdev.cloud.service.identity.domain.pojo.application.*;
 import com.gstdev.cloud.service.identity.mapper.Oauth2ApplicationMapper;
 import com.gstdev.cloud.service.identity.service.OAuth2ApplicationService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * <p>Description: OAuth2应用管理接口 </p>
@@ -29,10 +26,6 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/v1/authorize/application")
-//@Tags({
-//    @Tag(name = "OAuth2 认证服务接口"),
-//    @Tag(name = "OAuth2 应用管理接口")
-//})
 public class OAuth2ApplicationController implements Controller<OAuth2Application, String> {
 
     @Resource
@@ -47,18 +40,21 @@ public class OAuth2ApplicationController implements Controller<OAuth2Application
 
     // ********************************* application Manage *****************************************
 
+    @Tag(name = "Application Manage")
     @GetMapping("/get-application-manage-page")
     @Operation(summary = "get-application-manage-page")
     public Result<Map<String, Object>> getApplicationManagePage(ApplicationManageQO applicationManageQO, BasePage basePage) {
         return result(applicationMapper.toApplicationManagePageVO(getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, applicationManageQO, criteriaBuilder), basePage)));
     }
 
+    @Tag(name = "Application Manage")
     @GetMapping("/get-application-manage-detail/{id}")
     @Operation(summary = "get-application-manage-detail")
     public Result<ApplicationManageDetailVO> getApplicationManageDetail(@PathVariable String id) {
         return result(applicationMapper.toApplicationManageDetailVO(getService().findById(id)));
     }
 
+    @Tag(name = "Application Manage")
     @PostMapping("/insert-application-manage")
     @Operation(summary = "insert-application-manage")
     public Result insertApplicationManage(@RequestBody @Validated InsertApplicationManageIO insertApplicationManageIO) {
@@ -66,6 +62,7 @@ public class OAuth2ApplicationController implements Controller<OAuth2Application
         return result();
     }
 
+    @Tag(name = "Application Manage")
     @PutMapping("/update-application-manage")
     @Operation(summary = "update-application-manage")
     public Result updateApplicationManage(@RequestBody @Validated UpdateApplicationManageIO updateApplicationManageIO) {
@@ -75,7 +72,7 @@ public class OAuth2ApplicationController implements Controller<OAuth2Application
         return result();
     }
 
-
+    @Tag(name = "Application Manage")
     @Operation(summary = "删除一条数据")
     @DeleteMapping("/delete-application-manage/{id}")
     public Result deleteApplicationManage(@PathVariable String id) {
@@ -84,6 +81,7 @@ public class OAuth2ApplicationController implements Controller<OAuth2Application
         return result;
     }
 
+    @Tag(name = "Application Manage")
     @Operation(summary = "删除多条数据")
     @DeleteMapping("/delete-all-application-manage")
     public Result deleteAllApplicationManage(List<String> id) {
@@ -95,16 +93,19 @@ public class OAuth2ApplicationController implements Controller<OAuth2Application
     /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
 
 
-    @Operation(summary = "给应用分配Scope", description = "给应用分配Scope")
-    @Parameters({
-            @Parameter(name = "appKey", required = true, description = "appKey"),
-            @Parameter(name = "scopes[]", required = true, description = "Scope对象组成的数组")
-    })
-    @PutMapping("/application-manage-assign-scope")
-    public Result<OAuth2Application> authorize(@RequestParam(name = "applicationId") String scopeId, @RequestParam(name = "scopes[]") String[] scopes) {
-        OAuth2Application application = getService().authorize(scopeId, scopes);
-        return result(application);
+
+    @Tag(name = "Application Manage")
+    @PostMapping("/application-manage-assigned-scope")
+    @Operation(summary = "application-manage-assigned-scope")
+    public Result applicationManageAssignedScope(@RequestBody ApplicationManageAssignedScopeIO applicationManageAssignedScopeIO) {
+        this.getService().applicationManageAssignedScope(applicationManageAssignedScopeIO);
+        return result();
     }
 
-
+    @Tag(name = "Application Manage")
+    @GetMapping("/get-application-scope-id-by-application-id/{id}")
+    @Operation(summary = "get-application-scope-id-by-application-id")
+    public Result<Set<String>> getApplicationScopeIdByApplicationId(@PathVariable String id) {
+        return result(this.getService().getApplicationScopeIdByApplicationId(id));
+    }
 }

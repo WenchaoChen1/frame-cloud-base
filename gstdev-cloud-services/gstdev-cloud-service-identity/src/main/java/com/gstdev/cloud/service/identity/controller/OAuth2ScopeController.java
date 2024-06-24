@@ -13,15 +13,12 @@ import com.gstdev.cloud.service.identity.service.OAuth2ScopeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
-import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * <p> Description : OauthScopesController </p>
@@ -98,16 +95,19 @@ public class OAuth2ScopeController implements Controller<OAuth2Scope, String> {
     @Tag(name = "Scope Manage")
     @PostMapping("/scope-manage-assigned-permission")
     @Operation(summary = "scope-manage-assigned-permission")
-    public Result<OAuth2Scope> scopeManageAssignedPermission(@RequestBody OAuth2ScopeIO scope) {
+    public Result<OAuth2Scope> scopeManageAssignedPermission(@RequestBody ScopeManageAssignedPermissionIO scopeManageAssignedPermissionIO) {
 
-        Set<OAuth2Permission> permissions = new HashSet<>();
-        if (CollectionUtils.isNotEmpty(scope.getPermissions())) {
-            permissions = scope.getPermissions().stream().map(this::toEntity).collect(Collectors.toSet());
-        }
-
-        OAuth2Scope result = getService().assigned(scope.getScopeId(), permissions);
-        return result(result);
+//        Set<OAuth2Permission> permissions = new HashSet<>();
+//        if (CollectionUtils.isNotEmpty(scope.getPermissions())) {
+//            permissions = scope.getPermissions().stream().map(this::toEntity).collect(Collectors.toSet());
+//        }
+//
+//        OAuth2Scope result = getService().assigned(scope.getScopeId(), permissions);
+//        return result(result);
+        this.getService().scopeManageAssignedPermission(scopeManageAssignedPermissionIO);
+        return result();
     }
+
 
     @Tag(name = "Scope Manage")
     @GetMapping("/get-scope-permission-id-by-scope-id/{id}")

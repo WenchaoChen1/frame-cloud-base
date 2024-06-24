@@ -15,7 +15,7 @@ import java.util.Set;
  * @date : 2022/4/1 13:55
  */
 @Schema(title = "OAuth2 范围请求 Dto")
-public class OAuth2ScopeIO {
+public class ScopeManageAssignedPermissionIO {
 
     @Schema(title = "范围ID")
     @NotNull(message = "范围ID不能为空")
