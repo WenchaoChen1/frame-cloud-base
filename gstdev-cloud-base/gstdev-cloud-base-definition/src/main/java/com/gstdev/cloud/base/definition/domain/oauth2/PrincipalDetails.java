@@ -28,6 +28,8 @@ public class PrincipalDetails {
     private Set<String> roles;
 
     private String employeeId;
+    private String accountId;
+    private String accountName;
 
     private String avatar;
 

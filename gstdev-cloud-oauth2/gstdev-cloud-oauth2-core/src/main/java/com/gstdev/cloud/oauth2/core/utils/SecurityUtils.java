@@ -8,6 +8,7 @@
 // ====================================================
 package com.gstdev.cloud.oauth2.core.utils;
 
+import com.gstdev.cloud.base.core.utils.SecurityUserDetailUtils;
 import com.gstdev.cloud.base.definition.domain.oauth2.PrincipalDetails;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import org.apache.commons.lang3.ObjectUtils;
@@ -31,7 +32,7 @@ import java.util.Map;
  * @author gengwei.zheng
  * @date 2018-3-8
  **/
-public class SecurityUtils {
+public class SecurityUtils extends SecurityUserDetailUtils {
 
     public static final String PREFIX_ROLE = "ROLE_";
     public static final String PREFIX_SCOPE = "SCOPE_";

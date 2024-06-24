@@ -3,17 +3,15 @@ package com.gstdev.cloud.data.core.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.InstantSerializer;
+import com.gstdev.cloud.base.core.utils.SecurityUserDetailUtils;
 import com.gstdev.cloud.base.definition.domain.base.AbstractEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -54,29 +52,31 @@ public abstract class BaseEntity extends AbstractEntity {
     @JsonSerialize(using = InstantSerializer.class)
     @Column(name = "z_updated_date")
     private Instant updatedDate;
-    @LastModifiedBy
+//    @LastModifiedBy
     @JsonIgnore
     @Column(name = "z_updated_user", length = 64)
     private String updatedUser;
-    //    @LastModifiedBy
     @JsonIgnore
     @Column(name = "z_updated_account", length = 64)
     private String updatedAccount;
 
-//
-//    @PrePersist
-//    public void addAuditInfo() {
-//        createdDate = Instant.now();
-//        createdUser = SecurityUtils.getUserId();
-//        updatedDate = Instant.now();
-//        updatedUser = SecurityUtils.getUserId();
-//    }
-//
-//    @PreUpdate
-//    public void updateAuditInfo() {
-//        updatedDate = Instant.now();
-//        updatedUser = SecurityUtils.getUserId();
-//    }
+
+    @PrePersist
+    public void addAuditInfo() {
+        createdDate = Instant.now();
+        createdUser = SecurityUserDetailUtils.getUserId();
+        createdAccount = SecurityUserDetailUtils.getAccountId();
+        updatedDate = Instant.now();
+        updatedUser = SecurityUserDetailUtils.getUserId();
+        updatedAccount = SecurityUserDetailUtils.getAccountId();
+    }
+
+    @PreUpdate
+    public void updateAuditInfo() {
+        updatedDate = Instant.now();
+        updatedUser = SecurityUserDetailUtils.getUserId();
+        updatedAccount = SecurityUserDetailUtils.getAccountId();
+    }
 
     @Override
     public boolean equals(Object o) {
