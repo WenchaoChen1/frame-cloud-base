@@ -4,22 +4,13 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.Controller;
-import com.gstdev.cloud.service.identity.domain.pojo.scope.ScopeManageDetailVO;
-import com.gstdev.cloud.service.identity.domain.pojo.scope.ScopeManageQO;
-import com.gstdev.cloud.service.identity.domain.pojo.scope.InsertScopeManageIO;
-import com.gstdev.cloud.service.identity.domain.pojo.scope.UpdateScopeManageIO;
 import com.gstdev.cloud.service.identity.domain.dto.OAuth2PermissionDto;
-import com.gstdev.cloud.service.identity.domain.pojo.scope.OAuth2ScopeIO;
-import com.gstdev.cloud.service.identity.domain.entity.OAuth2Scope;
 import com.gstdev.cloud.service.identity.domain.entity.OAuth2Permission;
+import com.gstdev.cloud.service.identity.domain.entity.OAuth2Scope;
+import com.gstdev.cloud.service.identity.domain.pojo.scope.*;
 import com.gstdev.cloud.service.identity.mapper.OAuth2ScopeMapper;
 import com.gstdev.cloud.service.identity.service.OAuth2ScopeService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.Parameters;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.apache.commons.collections4.CollectionUtils;
@@ -85,7 +76,7 @@ public class OAuth2ScopeController implements Controller<OAuth2Scope, String> {
     }
 
 
-        @Operation(summary = "删除一条数据")
+    @Operation(summary = "删除一条数据")
     @DeleteMapping("/delete-scope-manage/{id}")
     public Result deleteScopeManage(@PathVariable String id) {
         Result<String> result = result(String.valueOf(id));
@@ -93,7 +84,7 @@ public class OAuth2ScopeController implements Controller<OAuth2Scope, String> {
         return result;
     }
 
-        @Operation(summary = "删除多条数据")
+    @Operation(summary = "删除多条数据")
     @DeleteMapping("/delete-all-scope-manage")
     public Result deleteAllScopeManage(List<String> id) {
         Result<String> result = result(String.valueOf(id));
@@ -117,13 +108,15 @@ public class OAuth2ScopeController implements Controller<OAuth2Scope, String> {
         OAuth2Scope result = getService().assigned(scope.getScopeId(), permissions);
         return result(result);
     }
+
     @Tag(name = "Scope Manage")
     @GetMapping("/get-scope-permission-id-by-scope-id/{id}")
     @Operation(summary = "get-scope-permission-id-by-scope-id")
     public Result<Set<String>> getScopePermissionIdByScopeId(@PathVariable String id) {
         return result(this.getService().getScopePermissionIdByScopeId(id));
     }
-//
+
+    //
 //    @AccessLimited
 //    @Operation(summary = "获取全部范围", description = "获取全部范围", responses = {
 //        @ApiResponse(description = "全部数据列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Result.class))),

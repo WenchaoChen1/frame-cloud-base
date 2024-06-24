@@ -39,7 +39,6 @@ public class OAuth2ComplianceController implements Controller<OAuth2Compliance, 
     }
 
 
-
     // ********************************* application Manage *****************************************
 
 
@@ -60,8 +59,8 @@ public class OAuth2ComplianceController implements Controller<OAuth2Compliance, 
 //        return result(applicationMapper.toApplicationManagePageVO(getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, applicationManageQO, criteriaBuilder), basePage)));
 //    }
     public Result<Map<String, Object>> getApplicationManagePage(@RequestParam(value = "principalName", required = false) String principalName,
-                                                       @RequestParam(value = "clientId", required = false) String clientId,
-                                                       @RequestParam(value = "ip", required = false) String ip, BasePage basePage){
+                                                                @RequestParam(value = "clientId", required = false) String clientId,
+                                                                @RequestParam(value = "ip", required = false) String ip, BasePage basePage) {
         Integer pageNumber = basePage.getPageNumber();
         Integer pageSize = basePage.getPageSize();
         Page<OAuth2Compliance> pages = getService().findByCondition(pageNumber, pageSize, principalName, clientId, ip);

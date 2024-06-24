@@ -1,10 +1,10 @@
 package com.gstdev.cloud.service.identity.controller;
 
 
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.captcha.core.dto.Captcha;
 import com.gstdev.cloud.captcha.core.dto.Verification;
 import com.gstdev.cloud.captcha.core.processor.CaptchaRendererFactory;
-import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.rest.core.annotation.AccessLimited;
 import com.gstdev.cloud.rest.core.annotation.Crypto;
 import com.gstdev.cloud.rest.core.annotation.Idempotent;
@@ -50,10 +50,10 @@ public class CaptchaController {
 
     @AccessLimited
     @Operation(summary = "获取验证码", description = "通过传递身份信息（类似于Session标识）",
-        responses = {@ApiResponse(description = "验证码图形信息", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))})
+            responses = {@ApiResponse(description = "验证码图形信息", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))})
     @Parameters({
-        @Parameter(name = "identity", required = true, in = ParameterIn.QUERY, description = "身份信息"),
-        @Parameter(name = "category", required = true, in = ParameterIn.QUERY, description = "验证码类型")
+            @Parameter(name = "identity", required = true, in = ParameterIn.QUERY, description = "身份信息"),
+            @Parameter(name = "category", required = true, in = ParameterIn.QUERY, description = "验证码类型")
     })
     @GetMapping
     public Result<Captcha> create(@NotBlank(message = "身份信息不能为空") String identity, @NotBlank(message = "验证码类型不能为空") String category) {
@@ -68,10 +68,10 @@ public class CaptchaController {
     @Idempotent
     @Crypto(responseEncrypt = false)
     @Operation(summary = "验证码验证", description = "验证验证码返回数据是否正确。使用加密信息",
-        requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
-        responses = {@ApiResponse(description = "验证结果", content = @Content(mediaType = "application/json"))})
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
+            responses = {@ApiResponse(description = "验证结果", content = @Content(mediaType = "application/json"))})
     @Parameters({
-        @Parameter(name = "jigsawVerification", required = true, description = "验证码验证参数", schema = @Schema(implementation = Verification.class))
+            @Parameter(name = "jigsawVerification", required = true, description = "验证码验证参数", schema = @Schema(implementation = Verification.class))
     })
     @PostMapping
     public Result<Boolean> check(@Valid @RequestBody Verification verification) {

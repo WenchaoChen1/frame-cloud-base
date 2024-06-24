@@ -1,9 +1,9 @@
 package com.gstdev.cloud.service.identity.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.rest.core.controller.BaseController;
 import com.gstdev.cloud.service.identity.domain.entity.OAuth2Device;
 import com.gstdev.cloud.service.identity.service.OAuth2DeviceService;
-import com.gstdev.cloud.rest.core.controller.BaseController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -34,8 +34,8 @@ public class OAuth2DeviceController extends BaseController<OAuth2Device, String,
 
     @Operation(summary = "给设备分配Scope", description = "给设备分配Scope")
     @Parameters({
-        @Parameter(name = "deviceId", required = true, description = "设备ID"),
-        @Parameter(name = "scopes[]", required = true, description = "Scope对象组成的数组")
+            @Parameter(name = "deviceId", required = true, description = "设备ID"),
+            @Parameter(name = "scopes[]", required = true, description = "Scope对象组成的数组")
     })
     @PutMapping
     public Result<OAuth2Device> authorize(@RequestParam(name = "deviceId") String deviceId, @RequestParam(name = "scopes[]") String[] scopes) {

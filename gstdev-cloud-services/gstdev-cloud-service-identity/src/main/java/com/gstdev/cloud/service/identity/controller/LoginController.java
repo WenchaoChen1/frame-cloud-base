@@ -92,7 +92,7 @@ public class LoginController {
     private Map<String, String> hiddenInputs(HttpServletRequest request) {
         CsrfToken token = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
         return (token != null) ? Collections.singletonMap(token.getParameterName(), token.getToken())
-            : Collections.emptyMap();
+                : Collections.emptyMap();
     }
 
     private String getErrorMessage(HttpServletRequest request) {

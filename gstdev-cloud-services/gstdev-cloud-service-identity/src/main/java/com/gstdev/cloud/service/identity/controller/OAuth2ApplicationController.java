@@ -4,11 +4,11 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.Controller;
+import com.gstdev.cloud.service.identity.domain.entity.OAuth2Application;
 import com.gstdev.cloud.service.identity.domain.pojo.application.ApplicationManageDetailVO;
 import com.gstdev.cloud.service.identity.domain.pojo.application.ApplicationManageQO;
 import com.gstdev.cloud.service.identity.domain.pojo.application.InsertApplicationManageIO;
 import com.gstdev.cloud.service.identity.domain.pojo.application.UpdateApplicationManageIO;
-import com.gstdev.cloud.service.identity.domain.entity.OAuth2Application;
 import com.gstdev.cloud.service.identity.mapper.Oauth2ApplicationMapper;
 import com.gstdev.cloud.service.identity.service.OAuth2ApplicationService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -39,6 +39,7 @@ public class OAuth2ApplicationController implements Controller<OAuth2Application
     private Oauth2ApplicationMapper applicationMapper;
     @Resource
     private OAuth2ApplicationService applicationService;
+
     @Override
     public OAuth2ApplicationService getService() {
         return applicationService;
@@ -96,15 +97,14 @@ public class OAuth2ApplicationController implements Controller<OAuth2Application
 
     @Operation(summary = "给应用分配Scope", description = "给应用分配Scope")
     @Parameters({
-        @Parameter(name = "appKey", required = true, description = "appKey"),
-        @Parameter(name = "scopes[]", required = true, description = "Scope对象组成的数组")
+            @Parameter(name = "appKey", required = true, description = "appKey"),
+            @Parameter(name = "scopes[]", required = true, description = "Scope对象组成的数组")
     })
     @PutMapping("/application-manage-assign-scope")
     public Result<OAuth2Application> authorize(@RequestParam(name = "applicationId") String scopeId, @RequestParam(name = "scopes[]") String[] scopes) {
         OAuth2Application application = getService().authorize(scopeId, scopes);
         return result(application);
     }
-
 
 
 }
