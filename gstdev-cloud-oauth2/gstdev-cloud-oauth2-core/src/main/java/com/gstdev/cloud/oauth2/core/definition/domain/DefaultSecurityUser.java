@@ -71,6 +71,12 @@ public class DefaultSecurityUser implements UserDetails, CredentialsContainer {
         this(userId, username, password, true, true, true, true, authorities, roles, null, null);
     }
 
+    public DefaultSecurityUser(String userId, String username, String password, boolean enabled, boolean accountNonExpired,
+                               boolean credentialsNonExpired, boolean accountNonLocked,
+                               Collection<? extends GrantedAuthority> authorities, Set<String> roles, String employeeId, String avatar) {
+        this(userId, username,null,null, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities, roles, employeeId, avatar);
+    }
+
     /**
      * Construct the <code>User</code> with the details required by
      * <code>org.springframework.security.authentication.dao.DaoAuthenticationProvider</code>
@@ -89,13 +95,15 @@ public class DefaultSecurityUser implements UserDetails, CredentialsContainer {
      * @throws IllegalArgumentException if a <code>null</code> value was passed either as
      *                                  a parameter or as an element in the <code>GrantedAuthority</code> collection
      */
-    public DefaultSecurityUser(String userId, String username, String password, boolean enabled, boolean accountNonExpired,
+    public DefaultSecurityUser(String userId, String username, String accountId, String accountName, String password, boolean enabled, boolean accountNonExpired,
                                boolean credentialsNonExpired, boolean accountNonLocked,
                                Collection<? extends GrantedAuthority> authorities, Set<String> roles, String employeeId, String avatar) {
         Assert.isTrue(username != null && !"".equals(username) && password != null,
-                "Cannot pass null or empty values to constructor");
+            "Cannot pass null or empty values to constructor");
         this.userId = userId;
         this.username = username;
+        this.accountId = accountId;
+        this.accountName = accountName;
         this.password = password;
         this.enabled = enabled;
         this.accountNonExpired = accountNonExpired;
@@ -214,18 +222,18 @@ public class DefaultSecurityUser implements UserDetails, CredentialsContainer {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("userId", userId)
-                .add("password", "[PROTECTED]")
-                .add("username", username)
-                .add("accountNonExpired", accountNonExpired)
-                .add("accountNonLocked", accountNonLocked)
-                .add("credentialsNonExpired", credentialsNonExpired)
-                .add("enabled", enabled)
-                .add("employeeId", employeeId)
-                .add("accountId", accountId)
-                .add("accountName", accountName)
-                .add("avatar", avatar)
-                .toString();
+            .add("userId", userId)
+            .add("password", "[PROTECTED]")
+            .add("username", username)
+            .add("accountNonExpired", accountNonExpired)
+            .add("accountNonLocked", accountNonLocked)
+            .add("credentialsNonExpired", credentialsNonExpired)
+            .add("enabled", enabled)
+            .add("employeeId", employeeId)
+            .add("accountId", accountId)
+            .add("accountName", accountName)
+            .add("avatar", avatar)
+            .toString();
     }
 
     private static class AuthorityComparator implements Comparator<GrantedAuthority>, Serializable {

@@ -58,6 +58,8 @@ public class FrameUserDeserializer extends JsonDeserializer<DefaultSecurityUser>
         JsonNode passwordNode = JsonNodeUtils.readJsonNode(jsonNode, "password");
         String userId = JsonNodeUtils.findStringValue(jsonNode, "userId");
         String username = JsonNodeUtils.findStringValue(jsonNode, "username");
+        String accountId = JsonNodeUtils.findStringValue(jsonNode, "accountId");
+        String accountName = JsonNodeUtils.findStringValue(jsonNode, "accountName");
         String password = passwordNode.asText("");
         boolean enabled = JsonNodeUtils.findBooleanValue(jsonNode, "enabled");
         boolean accountNonExpired = JsonNodeUtils.findBooleanValue(jsonNode, "accountNonExpired");
@@ -65,7 +67,7 @@ public class FrameUserDeserializer extends JsonDeserializer<DefaultSecurityUser>
         boolean accountNonLocked = JsonNodeUtils.findBooleanValue(jsonNode, "accountNonLocked");
         String employeeId = JsonNodeUtils.findStringValue(jsonNode, "employeeId");
         String avatar = JsonNodeUtils.findStringValue(jsonNode, "avatar");
-        DefaultSecurityUser result = new DefaultSecurityUser(userId, username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities, roles, employeeId, avatar);
+        DefaultSecurityUser result = new DefaultSecurityUser(userId, username, accountId, accountName, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities, roles, employeeId, avatar);
         if (passwordNode.asText(null) == null) {
             result.eraseCredentials();
         }
