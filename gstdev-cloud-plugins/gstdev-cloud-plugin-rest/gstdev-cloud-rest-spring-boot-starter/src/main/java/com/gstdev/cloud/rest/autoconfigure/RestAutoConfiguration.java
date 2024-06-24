@@ -36,10 +36,10 @@ public class RestAutoConfiguration implements ApplicationContextAware {
 
     public RestAutoConfiguration(EndpointProperties endpointProperties, PlatformProperties platformProperties, ServerProperties serverProperties) {
         this.serviceContextHolder = ServiceContextHolderBuilder.builder()
-            .endpointProperties(endpointProperties)
-            .platformProperties(platformProperties)
-            .serverProperties(serverProperties)
-            .build();
+                .endpointProperties(endpointProperties)
+                .platformProperties(platformProperties)
+                .serverProperties(serverProperties)
+                .build();
         log.info("[GstDev Cloud] |- Module [Rest Starter] Auto Configure.");
     }
 

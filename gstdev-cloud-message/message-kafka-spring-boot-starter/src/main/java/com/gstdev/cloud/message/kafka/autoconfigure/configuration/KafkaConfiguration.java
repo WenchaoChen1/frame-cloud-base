@@ -23,7 +23,7 @@ import org.springframework.kafka.core.ConsumerFactory;
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnKafkaEnabled
 @EnableConfigurationProperties({
-    KafkaProperties.class
+        KafkaProperties.class
 })
 public class KafkaConfiguration {
 

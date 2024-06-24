@@ -24,7 +24,6 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.server.resource.introspection.OAuth2IntrospectionAuthenticatedPrincipal;
 
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 
@@ -84,8 +83,8 @@ public class SecurityUtils {
     public static void reloadAuthority(DefaultSecurityUser defaultSecurityUser) {
         // 重新new一个token，因为Authentication中的权限是不可变的.
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
-            defaultSecurityUser, defaultSecurityUser.getPassword(),
-            defaultSecurityUser.getAuthorities());
+                defaultSecurityUser, defaultSecurityUser.getPassword(),
+                defaultSecurityUser.getAuthorities());
         token.setDetails(getDetails());
         getSecurityContext().setAuthentication(token);
     }

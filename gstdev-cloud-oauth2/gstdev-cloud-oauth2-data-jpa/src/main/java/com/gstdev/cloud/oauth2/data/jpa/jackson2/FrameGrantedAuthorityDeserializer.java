@@ -1,13 +1,13 @@
 package com.gstdev.cloud.oauth2.data.jpa.jackson2;
 
-import com.gstdev.cloud.base.core.json.jackson2.utils.JsonNodeUtils;
-import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gstdev.cloud.base.core.json.jackson2.utils.JsonNodeUtils;
+import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 
 import java.io.IOException;
 

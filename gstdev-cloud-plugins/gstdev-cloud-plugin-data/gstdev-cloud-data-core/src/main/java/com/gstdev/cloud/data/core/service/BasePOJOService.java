@@ -1,13 +1,9 @@
 package com.gstdev.cloud.data.core.service;
 
-import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.base.definition.domain.base.pojo.*;
+import com.gstdev.cloud.base.definition.domain.base.pojo.BaseDtoInterface;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntityINT;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * @param <D>   xxxDto
@@ -17,13 +13,13 @@ import java.util.List;
  * @param <FQC> xxxFindAllByQueryCriteria
  */
 public interface BasePOJOService<E extends BasePOJOEntityINT<ID>
-    , ID extends Serializable
-    , D extends BaseDtoInterface<ID>
+        , ID extends Serializable
+        , D extends BaseDtoInterface<ID>
 //    , II extends BaseInsertInputInterface
 //    , UI extends BaseUpdateInputInterface
 //    , PQC extends BasePageQueryCriteriaInterface
 //    , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseDtoService<E, ID, D> {
-    > extends BaseDtoService<E, ID, D> {
+        > extends BaseDtoService<E, ID, D> {
 
 //    Result<D> insertToResult(II var1);
 //

@@ -9,8 +9,8 @@
 
 package com.gstdev.cloud.oauth2.authorization.server.converter;
 
-import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2EndpointUtils;
 import com.gstdev.cloud.oauth2.authorization.server.token.PasswordAuthenticationToken;
+import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2EndpointUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

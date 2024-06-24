@@ -1,7 +1,7 @@
 package com.gstdev.cloud.message.core.definition;
 
-import com.gstdev.cloud.message.core.definition.event.AbstractApplicationEvent;
 import com.gstdev.cloud.message.core.definition.domain.Message;
+import com.gstdev.cloud.message.core.definition.event.AbstractApplicationEvent;
 import org.springframework.context.ApplicationListener;
 
 /**

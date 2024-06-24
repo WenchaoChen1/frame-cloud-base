@@ -3,8 +3,6 @@ package com.gstdev.cloud.rest.core.controller;
 import com.gstdev.cloud.base.definition.constants.DefaultConstants;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.base.definition.domain.base.Entity;
-import com.gstdev.cloud.data.core.service.BaseService;
-import com.gstdev.cloud.data.core.utils.BasePage;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ArrayUtils;
@@ -14,11 +12,7 @@ import org.dromara.hutool.core.tree.TreeNode;
 import org.dromara.hutool.core.tree.TreeUtil;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,10 +34,11 @@ public interface ResultController {
      *
      * @return {@link Result} Entity
      */
-    default  Result result() {
-       return Result.success();
+    default Result result() {
+        return Result.success();
 
     }
+
     /**
      * 数据实体转换为统一响应实体
      *

@@ -112,10 +112,10 @@ public final class OAuth2ConfigurerUtils {
                 OAuth2RefreshTokenGenerator refreshTokenGenerator = new OAuth2RefreshTokenGenerator();
                 if (jwtGenerator != null) {
                     tokenGenerator = new DelegatingOAuth2TokenGenerator(
-                        jwtGenerator, accessTokenGenerator, refreshTokenGenerator);
+                            jwtGenerator, accessTokenGenerator, refreshTokenGenerator);
                 } else {
                     tokenGenerator = new DelegatingOAuth2TokenGenerator(
-                        accessTokenGenerator, refreshTokenGenerator);
+                            accessTokenGenerator, refreshTokenGenerator);
                 }
             }
             httpSecurity.setSharedObject(OAuth2TokenGenerator.class, tokenGenerator);
@@ -264,11 +264,11 @@ public final class OAuth2ConfigurerUtils {
      */
     public static <T> T getOptionalBean(HttpSecurity httpSecurity, Class<T> type) {
         Map<String, T> beansMap = BeanFactoryUtils.beansOfTypeIncludingAncestors(
-            httpSecurity.getSharedObject(ApplicationContext.class), type);
+                httpSecurity.getSharedObject(ApplicationContext.class), type);
         if (beansMap.size() > 1) {
             throw new NoUniqueBeanDefinitionException(type, beansMap.size(),
-                "Expected single matching bean of type '" + type.getName() + "' but found " +
-                    beansMap.size() + ": " + StringUtils.collectionToCommaDelimitedString(beansMap.keySet()));
+                    "Expected single matching bean of type '" + type.getName() + "' but found " +
+                            beansMap.size() + ": " + StringUtils.collectionToCommaDelimitedString(beansMap.keySet()));
         }
         return (!beansMap.isEmpty() ? beansMap.values().iterator().next() : null);
     }

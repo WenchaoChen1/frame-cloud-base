@@ -55,7 +55,7 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
         }
 
         OAuth2Authorization authorization = this.authorizationService.findByToken(
-            authorizationCodeAuthentication.getCode(), AUTHORIZATION_CODE_TOKEN_TYPE);
+                authorizationCodeAuthentication.getCode(), AUTHORIZATION_CODE_TOKEN_TYPE);
         if (authorization == null) {
             throw new OAuth2AuthenticationException(OAuth2ErrorCodes.INVALID_GRANT);
         }
@@ -65,10 +65,10 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
         }
 
         OAuth2Authorization.Token<OAuth2AuthorizationCode> authorizationCode =
-            authorization.getToken(OAuth2AuthorizationCode.class);
+                authorization.getToken(OAuth2AuthorizationCode.class);
 
         OAuth2AuthorizationRequest authorizationRequest = authorization.getAttribute(
-            OAuth2AuthorizationRequest.class.getName());
+                OAuth2AuthorizationRequest.class.getName());
 
 //      if (!registeredClient.getClientId().equals(authorizationRequest.getClientId())) {
 //        if (!authorizationCode.isInvalidated()) {
@@ -125,15 +125,15 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
         }
 
         if (StringUtils.hasText(authorizationRequest.getRedirectUri()) &&
-            !authorizationRequest.getRedirectUri().equals(authorizationCodeAuthentication.getRedirectUri())) {
+                !authorizationRequest.getRedirectUri().equals(authorizationCodeAuthentication.getRedirectUri())) {
             throw new OAuth2AuthenticationException(OAuth2ErrorCodes.INVALID_GRANT);
         }
 
         if (!authorizationCode.isActive()) {
             if (authorizationCode.isInvalidated()) {
                 OAuth2Authorization.Token<? extends OAuth2Token> token = authorization.getRefreshToken() != null ?
-                    authorization.getRefreshToken() :
-                    authorization.getAccessToken();
+                        authorization.getRefreshToken() :
+                        authorization.getAccessToken();
                 if (token != null) {
                     // Invalidate the access (and refresh) token as the client is attempting to use the authorization code more than once
                     authorization = OAuth2AuthenticationProviderUtils.invalidate(authorization, token.getToken());
@@ -187,7 +187,7 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
         }
 
         OAuth2AccessTokenAuthenticationToken accessTokenAuthenticationToken = new OAuth2AccessTokenAuthenticationToken(
-            registeredClient, clientPrincipal, accessToken, refreshToken, additionalParameters);
+                registeredClient, clientPrincipal, accessToken, refreshToken, additionalParameters);
         accessTokenAuthenticationToken.setDetails(principal);
 //       return accessTokenAuthenticationToken;
         return this.createOAuth2AccessTokenAuthenticationToken(principal, accessTokenAuthenticationToken);

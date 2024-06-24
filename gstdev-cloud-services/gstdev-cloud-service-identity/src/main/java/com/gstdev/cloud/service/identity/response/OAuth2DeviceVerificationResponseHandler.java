@@ -35,7 +35,7 @@ public class OAuth2DeviceVerificationResponseHandler extends SimpleUrlAuthentica
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 
         OAuth2DeviceVerificationAuthenticationToken deviceVerificationAuthenticationToken =
-            (OAuth2DeviceVerificationAuthenticationToken) authentication;
+                (OAuth2DeviceVerificationAuthenticationToken) authentication;
 
         log.info("[GstDev Cloud] |- Device verification authentication token is : [{}]", deviceVerificationAuthenticationToken);
 

@@ -18,7 +18,6 @@ import static org.springframework.core.annotation.AnnotatedElementUtils.findMerg
 
 /**
  * <p>Description: 自定义 Inner 处理器 </p>
- *
  */
 public class FeignInnerContract extends SpringMvcContract {
 

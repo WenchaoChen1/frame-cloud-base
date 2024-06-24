@@ -1,11 +1,11 @@
 package com.gstdev.cloud.message.websocket.configuration;
 
+import com.gstdev.cloud.base.core.support.BearerTokenResolver;
 import com.gstdev.cloud.message.core.definition.domain.WebSocketMessage;
 import com.gstdev.cloud.message.websocket.annotation.ConditionalOnMultipleWebSocketInstance;
 import com.gstdev.cloud.message.websocket.annotation.ConditionalOnSingleWebSocketInstance;
 import com.gstdev.cloud.message.websocket.definition.WebSocketMessageSender;
 import com.gstdev.cloud.message.websocket.interceptor.WebSocketAuthenticationHandshakeInterceptor;
-import com.gstdev.cloud.base.core.support.BearerTokenResolver;
 import com.gstdev.cloud.message.websocket.messaging.*;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
@@ -85,11 +85,11 @@ public class MessageWebSocketConfiguration {
 
     @Configuration(proxyBeanMethods = false)
     @Import({
-        WebSocketMessageBrokerConfiguration.class,
+            WebSocketMessageBrokerConfiguration.class,
     })
     @ComponentScan(basePackages = {
-        "com.gstdev.cloud.message.websocket.controller",
-        "com.gstdev.cloud.message.websocket.listener",
+            "com.gstdev.cloud.message.websocket.controller",
+            "com.gstdev.cloud.message.websocket.listener",
     })
     static class WebSocketConfiguration {
 

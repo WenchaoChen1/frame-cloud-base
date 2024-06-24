@@ -37,7 +37,7 @@ import org.springframework.web.servlet.resource.ResourceUrlProvider;
 @EnableConfigurationProperties({OAuth2AuthorizationProperties.class})
 @EnableMethodSecurity(proxyTargetClass = true)
 @Import({
-  SecurityGlobalExceptionHandler.class,
+        SecurityGlobalExceptionHandler.class,
 //  OAuth2SessionConfiguration.class,
 })
 public class OAuth2AuthorizationConfiguration {

@@ -31,7 +31,7 @@ public class OidcClientRegistrationResponseHandler implements AuthenticationSucc
     private final OAuth2DeviceService deviceService;
 
     private final HttpMessageConverter<OidcClientRegistration> clientRegistrationHttpMessageConverter =
-        new OidcClientRegistrationHttpMessageConverter();
+            new OidcClientRegistrationHttpMessageConverter();
 
     public OidcClientRegistrationResponseHandler(OAuth2DeviceService deviceService) {
         this.deviceService = deviceService;
@@ -42,7 +42,7 @@ public class OidcClientRegistrationResponseHandler implements AuthenticationSucc
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 
         OidcClientRegistrationAuthenticationToken clientRegistrationAuthenticationToken =
-            (OidcClientRegistrationAuthenticationToken) authentication;
+                (OidcClientRegistrationAuthenticationToken) authentication;
 
         OidcClientRegistration clientRegistration = clientRegistrationAuthenticationToken.getClientRegistration();
 

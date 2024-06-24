@@ -1,12 +1,12 @@
 package com.gstdev.cloud.captcha.autoconfigure;
 
 
+import com.gstdev.cloud.base.definition.function.ErrorCodeMapperBuilderCustomizer;
 import com.gstdev.cloud.cache.jetcache.autoconfigure.CacheJetCacheAutoConfiguration;
 import com.gstdev.cloud.captcha.autoconfigure.customizer.CaptchaErrorCodeMapperBuilderCustomizer;
 import com.gstdev.cloud.captcha.core.processor.CaptchaRendererFactory;
 import com.gstdev.cloud.captcha.core.processor.properties.CaptchaProperties;
 import com.gstdev.cloud.captcha.core.provider.ResourceProvider;
-import com.gstdev.cloud.base.definition.function.ErrorCodeMapperBuilderCustomizer;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

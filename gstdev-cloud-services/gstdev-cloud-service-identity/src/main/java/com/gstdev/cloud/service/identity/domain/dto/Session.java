@@ -26,7 +26,7 @@ public class Session extends SessionExchange {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("state", state)
-            .toString();
+                .add("state", state)
+                .toString();
     }
 }

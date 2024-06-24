@@ -9,8 +9,8 @@
 package com.gstdev.cloud.oauth2.authorization.server.configurer;
 
 import com.gstdev.cloud.captcha.core.processor.CaptchaRendererFactory;
-import com.gstdev.cloud.oauth2.authorization.server.provider.OAuth2FormLoginAuthenticationProvider;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
+import com.gstdev.cloud.oauth2.authorization.server.provider.OAuth2FormLoginAuthenticationProvider;
 import com.gstdev.cloud.oauth2.authorization.server.response.OAuth2FormLoginAuthenticationFailureHandler;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
@@ -53,13 +53,13 @@ public class OAuth2FormLoginSecureConfigurer<H extends HttpSecurityBuilder<H>> e
         provider.setHideUserNotFoundExceptions(false);
 
         httpSecurity
-            .authenticationProvider(provider)
-            .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
+                .authenticationProvider(provider)
+                .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
     }
 
     private OAuth2FormLoginAuthenticationFilter getOAuth2FormLoginAuthenticationFilter(
-        AuthenticationManager authenticationManager,
-        SecurityContextRepository securityContextRepository) {
+            AuthenticationManager authenticationManager,
+            SecurityContextRepository securityContextRepository) {
         OAuth2FormLoginAuthenticationFilter filter = new OAuth2FormLoginAuthenticationFilter(authenticationManager);
         filter.setUsernameParameter(getFormLogin().getUsernameParameter());
         filter.setPasswordParameter(getFormLogin().getPasswordParameter());

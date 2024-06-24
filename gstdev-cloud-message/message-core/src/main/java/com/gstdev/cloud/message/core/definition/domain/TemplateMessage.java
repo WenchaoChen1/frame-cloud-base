@@ -33,8 +33,8 @@ public class TemplateMessage implements Message {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("destination", destination)
-            .add("payload", payload)
-            .toString();
+                .add("destination", destination)
+                .add("payload", payload)
+                .toString();
     }
 }

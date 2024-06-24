@@ -2,7 +2,6 @@ package com.gstdev.cloud.captcha.graphic.renderer;
 
 import com.gstdev.cloud.captcha.core.definition.enums.CaptchaCategory;
 import com.gstdev.cloud.captcha.graphic.definition.AbstractGifGraphicRenderer;
-import org.springframework.stereotype.Component;
 
 /**
  * <p>Description: Gif 类型验证码绘制器 </p>

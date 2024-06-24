@@ -68,15 +68,15 @@ public class WebSocketMessageBrokerConfiguration extends AbstractSessionWebSocke
          * 4. 添加自定义拦截器，这个拦截器是上一个demo自己定义的获取httpsession的拦截器
          */
         registry.addEndpoint(webSocketProperties.getEndpoint())
-            .setAllowedOrigins("*")
-            .addInterceptors(webSocketAuthenticationHandshakeInterceptor)
-            .setHandshakeHandler(webSocketPrincipalHandshakeHandler)
-            .withSockJS();
+                .setAllowedOrigins("*")
+                .addInterceptors(webSocketAuthenticationHandshakeInterceptor)
+                .setHandshakeHandler(webSocketPrincipalHandshakeHandler)
+                .withSockJS();
 
         registry.addEndpoint(webSocketProperties.getEndpoint())
-            .setAllowedOrigins("*")
-            .addInterceptors(webSocketAuthenticationHandshakeInterceptor)
-            .setHandshakeHandler(webSocketPrincipalHandshakeHandler);
+                .setAllowedOrigins("*")
+                .addInterceptors(webSocketAuthenticationHandshakeInterceptor)
+                .setHandshakeHandler(webSocketPrincipalHandshakeHandler);
     }
 
     /**
@@ -118,8 +118,8 @@ public class WebSocketMessageBrokerConfiguration extends AbstractSessionWebSocke
          *    调度器我们可以自己写一个，也可以自己使用默认的调度器 new DefaultManagedTaskScheduler()
          */
         registry.enableSimpleBroker(MessageConstants.WEBSOCKET_CHANNEL_PROXY_BROADCAST, MessageConstants.WEBSOCKET_CHANNEL_PROXY_PERSONAL)
-            .setHeartbeatValue(new long[]{10000, 10000})
-            .setTaskScheduler(taskScheduler);
+                .setHeartbeatValue(new long[]{10000, 10000})
+                .setTaskScheduler(taskScheduler);
 
         /*
          * 全局使用的消息前缀（客户端订阅路径上会体现出来）
@@ -165,8 +165,8 @@ public class WebSocketMessageBrokerConfiguration extends AbstractSessionWebSocke
          * 3. setSendTimeLimit 设置消息发送会话超时时间，毫秒
          */
         registration.setMessageSizeLimit(10240)
-            .setSendBufferSizeLimit(10240)
-            .setSendTimeLimit(10000);
+                .setSendBufferSizeLimit(10240)
+                .setSendTimeLimit(10000);
         super.configureWebSocketTransport(registration);
     }
 
@@ -185,9 +185,9 @@ public class WebSocketMessageBrokerConfiguration extends AbstractSessionWebSocke
          * 3. keepAliveSeconds 线程池维护线程所允许的空闲时间，单位秒
          */
         registration.taskExecutor()
-            .corePoolSize(10)
-            .maxPoolSize(20)
-            .keepAliveSeconds(60);
+                .corePoolSize(10)
+                .maxPoolSize(20)
+                .keepAliveSeconds(60);
 
         /*
          * 添加stomp自定义拦截器，可以根据业务做一些处理
@@ -205,7 +205,7 @@ public class WebSocketMessageBrokerConfiguration extends AbstractSessionWebSocke
     @Override
     public void configureClientOutboundChannel(ChannelRegistration registration) {
         registration.taskExecutor().corePoolSize(10)
-            .maxPoolSize(20)
-            .keepAliveSeconds(60);
+                .maxPoolSize(20)
+                .keepAliveSeconds(60);
     }
 }

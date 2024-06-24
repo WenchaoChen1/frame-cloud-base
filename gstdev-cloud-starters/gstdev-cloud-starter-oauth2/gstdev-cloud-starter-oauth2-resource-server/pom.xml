@@ -16,10 +16,10 @@
     <description>${project.name}</description>
     <artifactId>gstdev-cloud-starter-oauth2-resource-server</artifactId>
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>com.gstdev.cloud</groupId>-->
-<!--            <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>-->
-<!--        </dependency> -->
+        <!--        <dependency>-->
+        <!--            <groupId>com.gstdev.cloud</groupId>-->
+        <!--            <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>-->
+        <!--        </dependency> -->
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-service-common</artifactId>

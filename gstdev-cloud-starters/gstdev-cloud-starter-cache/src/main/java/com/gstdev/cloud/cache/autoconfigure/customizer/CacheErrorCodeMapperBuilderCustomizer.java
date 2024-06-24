@@ -17,10 +17,10 @@ public class CacheErrorCodeMapperBuilderCustomizer implements ErrorCodeMapperBui
     @Override
     public void customize(ErrorCodeMapperBuilder builder) {
         builder.notAcceptable(
-            CacheErrorCodes.STAMP_DELETE_FAILED,
-            CacheErrorCodes.STAMP_HAS_EXPIRED,
-            CacheErrorCodes.STAMP_MISMATCH,
-            CacheErrorCodes.STAMP_PARAMETER_ILLEGAL
+                CacheErrorCodes.STAMP_DELETE_FAILED,
+                CacheErrorCodes.STAMP_HAS_EXPIRED,
+                CacheErrorCodes.STAMP_MISMATCH,
+                CacheErrorCodes.STAMP_PARAMETER_ILLEGAL
         );
     }
 

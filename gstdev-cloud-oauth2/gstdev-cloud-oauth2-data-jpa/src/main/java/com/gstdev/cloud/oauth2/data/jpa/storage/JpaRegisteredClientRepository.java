@@ -111,17 +111,17 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
 //     .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
 //     .build();
         RegisteredClient oidcClient = RegisteredClient.withId(UUID.randomUUID().toString())
-            .clientId("oidc-client")
-            .clientSecret("{noop}secret")
-            .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-            .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-            .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-            .redirectUri("http://127.0.0.1:8080/login/oauth2/code/oidc-client")
-            .postLogoutRedirectUri("http://127.0.0.1:8080/")
-            .scope(OidcScopes.OPENID)
-            .scope(OidcScopes.PROFILE)
-            .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
-            .build();
+                .clientId("oidc-client")
+                .clientSecret("{noop}secret")
+                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+                .redirectUri("http://127.0.0.1:8080/login/oauth2/code/oidc-client")
+                .postLogoutRedirectUri("http://127.0.0.1:8080/")
+                .scope(OidcScopes.OPENID)
+                .scope(OidcScopes.PROFILE)
+                .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
+                .build();
         /*
           如果使用明文，客户端认证时会自动升级加密方式，换句话说直接修改客户端密码，所以直接使用 bcrypt 加密避免不必要的麻烦
           官方ISSUE： https://github.com/spring-projects/spring-authorization-server/issues/1099

@@ -19,16 +19,18 @@ import java.util.Optional;
  * @date : 2022/2/25 21:06
  */
 @Service
-public class FrameRegisteredClientService extends BaseServiceImpl<FrameRegisteredClient, String,FrameRegisteredClientRepository> {
+public class FrameRegisteredClientService extends BaseServiceImpl<FrameRegisteredClient, String, FrameRegisteredClientRepository> {
 
     private static final Logger log = LoggerFactory.getLogger(FrameRegisteredClientService.class);
 
     private FrameRegisteredClientRepository registeredClientRepository;
+
     @Autowired
     public FrameRegisteredClientService(FrameRegisteredClientRepository registeredClientRepository) {
         super(registeredClientRepository);
-        this.registeredClientRepository=registeredClientRepository;
+        this.registeredClientRepository = registeredClientRepository;
     }
+
     @Override
     public FrameRegisteredClientRepository getRepository() {
         return this.registeredClientRepository;

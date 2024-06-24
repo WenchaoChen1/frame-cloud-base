@@ -1,10 +1,10 @@
 package com.gstdev.cloud.captcha.core.definition;
 
+import com.alicp.jetcache.anno.CacheType;
 import com.gstdev.cloud.cache.jetcache.stamp.AbstractStampManager;
 import com.gstdev.cloud.captcha.core.processor.properties.CaptchaProperties;
 import com.gstdev.cloud.captcha.core.provider.ResourceProvider;
 import org.dromara.hutool.swing.img.ImgUtil;
-import com.alicp.jetcache.anno.CacheType;
 
 import java.awt.image.BufferedImage;
 import java.time.Duration;

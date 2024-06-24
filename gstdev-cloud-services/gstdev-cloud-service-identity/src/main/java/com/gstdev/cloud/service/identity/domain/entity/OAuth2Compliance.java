@@ -1,9 +1,9 @@
 package com.gstdev.cloud.service.identity.domain.entity;
 
-import com.gstdev.cloud.data.core.entity.BaseEntity;
-import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
+import com.gstdev.cloud.data.core.entity.BaseEntity;
+import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.UuidGenerator;
@@ -16,7 +16,7 @@ import org.hibernate.annotations.UuidGenerator;
  */
 @Entity
 @Table(name = "oauth2_compliance", indexes = {
-    @Index(name = "oauth2_compliance_id_idx", columnList = "compliance_id")})
+        @Index(name = "oauth2_compliance_id_idx", columnList = "compliance_id")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_COMPLIANCE)
 public class OAuth2Compliance extends BaseEntity {
@@ -207,21 +207,21 @@ public class OAuth2Compliance extends BaseEntity {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("complianceId", complianceId)
-            .add("principalName", principalName)
-            .add("clientId", clientId)
-            .add("ip", ip)
-            .add("mobile", mobile)
-            .add("osName", osName)
-            .add("browserName", browserName)
-            .add("mobileBrowser", mobileBrowser)
-            .add("engineName", engineName)
-            .add("mobilePlatform", mobilePlatform)
-            .add("iphoneOrIpod", iphoneOrIpod)
-            .add("ipad", ipad)
-            .add("ios", ios)
-            .add("android", android)
-            .add("operation", operation)
-            .toString();
+                .add("complianceId", complianceId)
+                .add("principalName", principalName)
+                .add("clientId", clientId)
+                .add("ip", ip)
+                .add("mobile", mobile)
+                .add("osName", osName)
+                .add("browserName", browserName)
+                .add("mobileBrowser", mobileBrowser)
+                .add("engineName", engineName)
+                .add("mobilePlatform", mobilePlatform)
+                .add("iphoneOrIpod", iphoneOrIpod)
+                .add("ipad", ipad)
+                .add("ios", ios)
+                .add("android", android)
+                .add("operation", operation)
+                .toString();
     }
 }

@@ -1,15 +1,15 @@
 package com.gstdev.cloud.cache.jetcache.autoconfigure;
 
+import com.alicp.jetcache.CacheManager;
 import com.alicp.jetcache.SimpleCacheManager;
 import com.alicp.jetcache.anno.support.SpringConfigProvider;
+import com.alicp.jetcache.autoconfigure.JetCacheAutoConfiguration;
 import com.gstdev.cloud.cache.caffeine.configuration.CacheCaffeineConfiguration;
 import com.gstdev.cloud.cache.core.properties.CacheProperties;
 import com.gstdev.cloud.cache.jetcache.enhance.FrameCacheManager;
 import com.gstdev.cloud.cache.jetcache.enhance.JetCacheCreateCacheFactory;
 import com.gstdev.cloud.cache.jetcache.utils.JetCacheUtils;
 import com.gstdev.cloud.cache.redis.configuration.CacheRedisConfiguration;
-import com.alicp.jetcache.CacheManager;
-import com.alicp.jetcache.autoconfigure.JetCacheAutoConfiguration;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,8 +49,8 @@ public class CacheJetCacheAutoConfiguration {
     }
 
     @Bean(
-        name = {"jcCacheManager"},
-        destroyMethod = "close"
+            name = {"jcCacheManager"},
+            destroyMethod = "close"
     )
     @ConditionalOnMissingBean
     public SimpleCacheManager cacheManager(@Autowired SpringConfigProvider springConfigProvider) {

@@ -2,7 +2,6 @@ package com.gstdev.cloud.base.definition.domain.base.pojo;
 
 import com.gstdev.cloud.base.definition.domain.base.Entity;
 
-import java.io.Serializable;
 import java.util.List;
 
 public interface BaseTreeDtoInterface<D, ID> extends Entity {

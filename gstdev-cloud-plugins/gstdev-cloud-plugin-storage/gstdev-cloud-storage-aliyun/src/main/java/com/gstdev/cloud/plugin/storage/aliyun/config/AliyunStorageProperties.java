@@ -9,9 +9,8 @@
 
 package com.gstdev.cloud.plugin.storage.aliyun.config;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-
 import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
 @ConfigurationProperties(prefix = "gstdev.cloud.storage.aliyun", ignoreUnknownFields = true)

@@ -236,6 +236,7 @@ public interface BaseService<E extends Serializable, ID extends Serializable> {
     E update(E e);
 
     List<E> update(List<E> e);
+
     E insertAndUpdate(E e);
 
     List<E> insertAndUpdate(List<E> e);

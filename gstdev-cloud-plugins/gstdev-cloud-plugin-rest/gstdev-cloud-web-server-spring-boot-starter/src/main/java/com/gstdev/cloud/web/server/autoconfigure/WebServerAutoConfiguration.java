@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Import;
  */
 @AutoConfiguration
 @Import({
-    UndertowWebServerFactoryCustomizer.class,
+        UndertowWebServerFactoryCustomizer.class,
 })
 public class WebServerAutoConfiguration {
 

@@ -23,7 +23,7 @@ public class WebSocketMessage extends TemplateMessage {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("user", user)
-            .toString();
+                .add("user", user)
+                .toString();
     }
 }

@@ -35,13 +35,13 @@ public class JpaOAuth2AuthorizationConsentService implements OAuth2Authorization
     @Override
     public void remove(OAuth2AuthorizationConsent authorizationConsent) {
         this.authorizationConsentService.deleteByRegisteredClientIdAndPrincipalName(
-            authorizationConsent.getRegisteredClientId(), authorizationConsent.getPrincipalName());
+                authorizationConsent.getRegisteredClientId(), authorizationConsent.getPrincipalName());
     }
 
     @Override
     public OAuth2AuthorizationConsent findById(String registeredClientId, String principalName) {
         return this.authorizationConsentService.findByRegisteredClientIdAndPrincipalName(
-            registeredClientId, principalName).map(this::toObject).orElse(null);
+                registeredClientId, principalName).map(this::toObject).orElse(null);
     }
 
     private OAuth2AuthorizationConsent toObject(FrameAuthorizationConsent authorizationConsent) {

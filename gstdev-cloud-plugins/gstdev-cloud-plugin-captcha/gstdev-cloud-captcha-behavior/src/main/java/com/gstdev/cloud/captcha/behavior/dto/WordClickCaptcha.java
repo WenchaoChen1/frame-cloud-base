@@ -1,7 +1,7 @@
 package com.gstdev.cloud.captcha.behavior.dto;
 
-import com.gstdev.cloud.captcha.core.dto.Captcha;
 import com.google.common.base.MoreObjects;
+import com.gstdev.cloud.captcha.core.dto.Captcha;
 
 /**
  * <p>Description: 文字点选验证码返回前台信息 </p>
@@ -53,9 +53,9 @@ public class WordClickCaptcha extends Captcha {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("wordClickImageBase64", wordClickImageBase64)
-            .add("words", words)
-            .add("wordsCount", wordsCount)
-            .toString();
+                .add("wordClickImageBase64", wordClickImageBase64)
+                .add("words", words)
+                .add("wordsCount", wordsCount)
+                .toString();
     }
 }

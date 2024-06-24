@@ -26,6 +26,7 @@ public class ArrayOrStringToListDeserializer extends StdDeserializer<List<String
     public ArrayOrStringToListDeserializer() {
         super(List.class);
     }
+
     @Override
     public JavaType getValueType() {
         return TypeFactory.defaultInstance().constructType(String.class);

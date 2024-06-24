@@ -105,7 +105,7 @@ public class OAuth2FormLoginAuthenticationFailureHandler extends SimpleUrlAuthen
     @Override
     public void setDefaultFailureUrl(String defaultFailureUrl) {
         Assert.isTrue(UrlUtils.isValidRedirectUrl(defaultFailureUrl),
-            () -> "'" + defaultFailureUrl + "' is not a valid redirect URL");
+                () -> "'" + defaultFailureUrl + "' is not a valid redirect URL");
         this.defaultFailureUrl = defaultFailureUrl;
     }
 

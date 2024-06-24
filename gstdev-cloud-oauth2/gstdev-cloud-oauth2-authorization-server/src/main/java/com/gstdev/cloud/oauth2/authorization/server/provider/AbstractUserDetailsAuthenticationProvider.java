@@ -134,19 +134,19 @@ public abstract class AbstractUserDetailsAuthenticationProvider extends Abstract
             //covers expired, locked, disabled cases (mentioned in section 5.2, draft 31)
             String exceptionName = ase.getClass().getSimpleName();
             OAuth2EndpointUtils.throwError(
-                exceptionName,
-                ase.getMessage(),
-                OAuth2EndpointUtils.ACCESS_TOKEN_REQUEST_ERROR_URI);
+                    exceptionName,
+                    ase.getMessage(),
+                    OAuth2EndpointUtils.ACCESS_TOKEN_REQUEST_ERROR_URI);
         } catch (BadCredentialsException bce) {
             OAuth2EndpointUtils.throwError(
-                OAuth2ErrorKeys.BAD_CREDENTIALS,
-                bce.getMessage(),
-                OAuth2EndpointUtils.ACCESS_TOKEN_REQUEST_ERROR_URI);
+                    OAuth2ErrorKeys.BAD_CREDENTIALS,
+                    bce.getMessage(),
+                    OAuth2EndpointUtils.ACCESS_TOKEN_REQUEST_ERROR_URI);
         } catch (UsernameNotFoundException unfe) {
             OAuth2EndpointUtils.throwError(
-                OAuth2ErrorKeys.USERNAME_NOT_FOUND,
-                unfe.getMessage(),
-                OAuth2EndpointUtils.ACCESS_TOKEN_REQUEST_ERROR_URI);
+                    OAuth2ErrorKeys.USERNAME_NOT_FOUND,
+                    unfe.getMessage(),
+                    OAuth2EndpointUtils.ACCESS_TOKEN_REQUEST_ERROR_URI);
         }
 
         return authentication;

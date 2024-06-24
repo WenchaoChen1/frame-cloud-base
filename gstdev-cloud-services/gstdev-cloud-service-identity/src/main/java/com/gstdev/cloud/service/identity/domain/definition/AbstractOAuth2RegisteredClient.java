@@ -1,9 +1,9 @@
 package com.gstdev.cloud.service.identity.domain.definition;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.gstdev.cloud.oauth2.core.enums.AllJwsAlgorithm;
 import com.gstdev.cloud.oauth2.core.enums.SignatureJwsAlgorithm;
 import com.gstdev.cloud.oauth2.core.enums.TokenFormat;
-import com.gstdev.cloud.oauth2.core.enums.AllJwsAlgorithm;
 import com.gstdev.cloud.oauth2.data.jpa.definition.domain.AbstractRegisteredClient;
 import com.gstdev.cloud.service.identity.domain.entity.OAuth2Scope;
 import io.swagger.v3.oas.annotations.media.Schema;

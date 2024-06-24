@@ -29,11 +29,11 @@ public class OAuth2ToFrameRegisteredClientConverter extends AbstractOAuth2Entity
     public FrameRegisteredClient convert(RegisteredClient registeredClient) {
         List<String> clientAuthenticationMethods = new ArrayList<>(registeredClient.getClientAuthenticationMethods().size());
         registeredClient.getClientAuthenticationMethods().forEach(clientAuthenticationMethod ->
-            clientAuthenticationMethods.add(clientAuthenticationMethod.getValue()));
+                clientAuthenticationMethods.add(clientAuthenticationMethod.getValue()));
 
         List<String> authorizationGrantTypes = new ArrayList<>(registeredClient.getAuthorizationGrantTypes().size());
         registeredClient.getAuthorizationGrantTypes().forEach(authorizationGrantType ->
-            authorizationGrantTypes.add(authorizationGrantType.getValue()));
+                authorizationGrantTypes.add(authorizationGrantType.getValue()));
 
         FrameRegisteredClient entity = new FrameRegisteredClient();
         entity.setId(registeredClient.getId());

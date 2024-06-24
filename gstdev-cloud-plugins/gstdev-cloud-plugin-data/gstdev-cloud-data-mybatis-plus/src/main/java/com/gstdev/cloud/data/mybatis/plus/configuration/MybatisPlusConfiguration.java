@@ -1,12 +1,12 @@
 package com.gstdev.cloud.data.mybatis.plus.configuration;
 
-import com.gstdev.cloud.data.core.constants.DataConstants;
-import com.gstdev.cloud.data.mybatis.plus.enhance.FrameIdentifierGenerator;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.core.incrementer.IdentifierGenerator;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
+import com.gstdev.cloud.data.core.constants.DataConstants;
+import com.gstdev.cloud.data.mybatis.plus.enhance.FrameIdentifierGenerator;
 import jakarta.annotation.PostConstruct;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;

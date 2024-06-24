@@ -1,25 +1,11 @@
 package com.gstdev.cloud.data.core.service;
 
-import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.base.definition.domain.base.pojo.*;
-import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
+import com.gstdev.cloud.base.definition.domain.base.pojo.BaseDtoInterface;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntityINT;
 import com.gstdev.cloud.data.core.mapper.BaseDtoMapper;
-import com.gstdev.cloud.data.core.mapper.BasePOJOMapper;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
-import com.gstdev.cloud.data.core.utils.QueryUtils;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.ObjectUtils;
 
 import java.io.Serializable;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 /**
  * @param <R>   xxxRepository
@@ -32,15 +18,15 @@ import java.util.Optional;
  * @param <FQC> xxxFindAllByQueryCriteria
  */
 public class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
-    , ID extends Serializable
-    , R extends BaseRepository<E, ID>
-    , M extends BaseDtoMapper<E, D>
-    , D extends BaseDtoInterface<ID>
+        , ID extends Serializable
+        , R extends BaseRepository<E, ID>
+        , M extends BaseDtoMapper<E, D>
+        , D extends BaseDtoInterface<ID>
 //    , II extends BaseInsertInputInterface
 //    , UI extends BaseUpdateInputInterface
 //    , PQC extends BasePageQueryCriteriaInterface
 //    , FQC extends BaseFindAllByQueryCriteriaInterface> extends BaseDtoServiceImpl<E, ID, R, M, D> implements BasePOJOServiceDefault<E, ID, D, II, UI, PQC, FQC> {
-    > extends BaseDtoServiceImpl<E, ID, R, M, D> implements BasePOJOServiceDefault<E, ID, D> {
+        > extends BaseDtoServiceImpl<E, ID, R, M, D> implements BasePOJOServiceDefault<E, ID, D> {
 
     private M mapper;
 
@@ -48,6 +34,7 @@ public class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
         super(repository, mapper);
         this.mapper = mapper;
     }
+
     @Override
     public M getMapper() {
         return mapper;

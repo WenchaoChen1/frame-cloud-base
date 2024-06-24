@@ -10,7 +10,8 @@
 
 JetCache是一个基于Java的缓存系统封装，提供统一的API和注解来简化缓存的使用。
 JetCache提供了比SpringCache更加强大的注解，可以原生的支持TTL、两级缓存、分布式自动刷新，还提供了Cache接口用于手工缓存操作。
-当前有四个实现，RedisCache、TairCache（此部分未在github开源）、CaffeineCache(in memory)和一个简易的LinkedHashMapCache(in memory)，要添加新的实现也是非常简单的。
+当前有四个实现，RedisCache、TairCache（此部分未在github开源）、CaffeineCache(in memory)和一个简易的LinkedHashMapCache(in
+memory)，要添加新的实现也是非常简单的。
 
 [中文文档](https://github.com/alibaba/jetcache/tree/master/docs/CN)
 
@@ -84,11 +85,13 @@ jetcache:
 
 # 签章(stamp)的使用
 
-`StampManager` 接口用于定义在特定条件下生成后，在一定时间就会消除的标记性Stamp。 例如，幂等、短信验证码、Auth State等，用时生成，然后进行验证，之后再删除的标记Stamp。
+`StampManager` 接口用于定义在特定条件下生成后，在一定时间就会消除的标记性Stamp。 例如，幂等、短信验证码、Auth
+State等，用时生成，然后进行验证，之后再删除的标记Stamp。
 
 ## 计数器
 
-应用场景一般是一段时间内的操作次数，例如登录失败次数、接口请求次数…… 自定义一个计数器需要实现 `AbstractCountStampManager` 并注册为 bean 如下所示：
+应用场景一般是一段时间内的操作次数，例如登录失败次数、接口请求次数…… 自定义一个计数器需要实现 `AbstractCountStampManager`
+并注册为 bean 如下所示：
 
 ```java
 public class NumberCountStamp extends AbstractCountStampManager {

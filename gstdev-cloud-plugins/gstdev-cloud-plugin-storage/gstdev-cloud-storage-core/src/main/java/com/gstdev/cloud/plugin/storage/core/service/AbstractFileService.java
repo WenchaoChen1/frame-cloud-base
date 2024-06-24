@@ -1,12 +1,10 @@
 package com.gstdev.cloud.plugin.storage.core.service;
 
-import java.io.IOException;
-
-import jakarta.servlet.http.HttpServletResponse;
-
 import com.gstdev.cloud.plugin.storage.core.model.StoreConfig;
-//import org.apache.commons.io.IOUtils;
+import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
+
+import java.io.IOException;
 
 
 /**
@@ -49,8 +47,8 @@ public abstract class AbstractFileService {
      */
     protected String getRealBucketName(String bucketName) {
         return StringUtils.isNotBlank(config.getBucketPrefix())
-            ? String.format("%s-%s", config.getBucketPrefix(), bucketName)
-            : bucketName;
+                ? String.format("%s-%s", config.getBucketPrefix(), bucketName)
+                : bucketName;
     }
 
     /**

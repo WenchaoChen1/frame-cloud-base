@@ -5,8 +5,6 @@ import com.gstdev.cloud.base.definition.domain.base.pojo.*;
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntityINT;
 import com.gstdev.cloud.data.core.mapper.BasePOJOMapper;
-import com.gstdev.cloud.data.core.mapper.BaseVoMapper;
-import com.gstdev.cloud.data.core.service.BasePOJOService;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,13 +16,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface POJOController<E extends BasePOJOEntityINT<ID>
-    , ID extends Serializable
-    , V extends BaseVoInterface
-    , D extends BaseDtoInterface<ID>
-    , II extends BaseInsertInputInterface
-    , UI extends BaseUpdateInputInterface
-    , PQC extends BasePageQueryCriteriaInterface
-    , FQC extends BaseFindAllByQueryCriteriaInterface> extends VoController<E, ID, D, V> {
+        , ID extends Serializable
+        , V extends BaseVoInterface
+        , D extends BaseDtoInterface<ID>
+        , II extends BaseInsertInputInterface
+        , UI extends BaseUpdateInputInterface
+        , PQC extends BasePageQueryCriteriaInterface
+        , FQC extends BaseFindAllByQueryCriteriaInterface> extends VoController<E, ID, D, V> {
 
     @Override
     BasePOJOMapper<E, D, V, II, UI> getMapper();

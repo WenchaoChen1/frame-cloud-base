@@ -2,7 +2,6 @@ package com.gstdev.cloud.captcha.graphic.renderer;
 
 import com.gstdev.cloud.captcha.core.definition.enums.CaptchaCategory;
 import com.gstdev.cloud.captcha.graphic.definition.AbstractPngGraphicRenderer;
-import org.springframework.stereotype.Component;
 
 import java.awt.*;
 

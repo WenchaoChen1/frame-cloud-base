@@ -30,12 +30,12 @@ public class QueryKey implements Serializable {
     private transient int hashCode;
 
     public QueryKey(
-        String sql,
-        ParameterBindingsMemento parameterBindingsMemento,
-        Integer firstRow,
-        Integer maxRows,
-        String tenantIdentifier,
-        Set<String> enabledFilterNames) {
+            String sql,
+            ParameterBindingsMemento parameterBindingsMemento,
+            Integer firstRow,
+            Integer maxRows,
+            String tenantIdentifier,
+            Set<String> enabledFilterNames) {
         this.sqlQueryString = sql;
         this.parameterBindingsMemento = parameterBindingsMemento;
         this.firstRow = firstRow;
@@ -46,10 +46,10 @@ public class QueryKey implements Serializable {
     }
 
     public static QueryKey from(
-        String sqlQueryString,
-        Limit limit,
-        QueryParameterBindings parameterBindings,
-        SharedSessionContractImplementor persistenceContext) {
+            String sqlQueryString,
+            Limit limit,
+            QueryParameterBindings parameterBindings,
+            SharedSessionContractImplementor persistenceContext) {
         // todo (6.0) : here is where we should centralize cacheable-or-not
         //		if this method returns null, the query should be considered un-cacheable
         //
@@ -59,12 +59,12 @@ public class QueryKey implements Serializable {
         final Limit limitToUse = limit == null ? Limit.NONE : limit;
 
         return new QueryKey(
-            sqlQueryString,
-            parameterBindings.generateQueryKeyMemento(persistenceContext),
-            limitToUse.getFirstRow(),
-            limitToUse.getMaxRows(),
-            persistenceContext.getTenantIdentifier(),
-            persistenceContext.getLoadQueryInfluencers().getEnabledFilterNames()
+                sqlQueryString,
+                parameterBindings.generateQueryKeyMemento(persistenceContext),
+                limitToUse.getFirstRow(),
+                limitToUse.getMaxRows(),
+                persistenceContext.getTenantIdentifier(),
+                persistenceContext.getLoadQueryInfluencers().getEnabledFilterNames()
         );
     }
 
@@ -114,7 +114,7 @@ public class QueryKey implements Serializable {
         }
 
         if (!Objects.equals(firstRow, that.firstRow)
-            || !Objects.equals(maxRows, that.maxRows)) {
+                || !Objects.equals(maxRows, that.maxRows)) {
             return false;
         }
 

@@ -67,12 +67,12 @@ public enum SignatureJwsAlgorithm implements BaseUiEnum<Integer> {
         for (SignatureJwsAlgorithm signatureJwsAlgorithm : SignatureJwsAlgorithm.values()) {
             INDEX_MAP.put(signatureJwsAlgorithm.getValue(), signatureJwsAlgorithm);
             JSON_STRUCTURE.add(signatureJwsAlgorithm.getValue(),
-                ImmutableMap.<String, Object>builder()
-                    .put("value", signatureJwsAlgorithm.getValue())
-                    .put("key", signatureJwsAlgorithm.name())
-                    .put("text", signatureJwsAlgorithm.getDescription())
-                    .put("index", signatureJwsAlgorithm.getValue())
-                    .build());
+                    ImmutableMap.<String, Object>builder()
+                            .put("value", signatureJwsAlgorithm.getValue())
+                            .put("key", signatureJwsAlgorithm.name())
+                            .put("text", signatureJwsAlgorithm.getDescription())
+                            .put("index", signatureJwsAlgorithm.getValue())
+                            .build());
         }
     }
 

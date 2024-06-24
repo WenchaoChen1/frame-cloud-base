@@ -52,9 +52,9 @@ public class SessionCreate extends AbstractDto {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("clientId", clientId)
-            .add("clientSecret", clientSecret)
-            .add("sessionId", sessionId)
-            .toString();
+                .add("clientId", clientId)
+                .add("clientSecret", clientSecret)
+                .add("sessionId", sessionId)
+                .toString();
     }
 }

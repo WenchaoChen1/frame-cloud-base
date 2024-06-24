@@ -34,11 +34,11 @@ public class OAuth2FormLoginConfigurerCustomizer implements Customizer<FormLogin
     public void customize(FormLoginConfigurer<HttpSecurity> configurer) {
         // 设置登录页面 URL
         configurer
-            .loginPage(getFormLogin().getLoginPageUrl())
-            // 设置用户名参数名
-            .usernameParameter(getFormLogin().getUsernameParameter())
-            // 设置密码参数名
-            .passwordParameter(getFormLogin().getPasswordParameter());
+                .loginPage(getFormLogin().getLoginPageUrl())
+                // 设置用户名参数名
+                .usernameParameter(getFormLogin().getUsernameParameter())
+                // 设置密码参数名
+                .passwordParameter(getFormLogin().getPasswordParameter());
 
         // 如果设置了失败转发 URL，则进行配置
         if (StringUtils.isNotBlank(getFormLogin().getFailureForwardUrl())) {

@@ -3,9 +3,9 @@ package com.gstdev.cloud.openapi.springdoc;
 import com.google.common.collect.ImmutableList;
 import com.gstdev.cloud.base.core.context.ServiceContextHolder;
 import io.swagger.v3.oas.models.ExternalDocumentation;
+import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
-import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.servers.Server;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
@@ -66,13 +66,13 @@ public class SpringDocConfiguration {
     @ConditionalOnMissingBean
     public OpenAPI createOpenApi(OpenApiServerResolver openApiServerResolver) {
         return new OpenAPI()
-            .servers(openApiServerResolver.getServers())
-            .info(new Info().title("GstDev Cloud")
-                .description("GstDev Cloud Microservices Architecture")
-                .version("Swagger V3")
-                .license(new License().name("Apache 2.0").url("http://www.apache.org/licenses/")))
-            .externalDocs(new ExternalDocumentation()
-                .description("GstDev Cloud Documentation")
-                .url(" https://www.gstdev.com"));
+                .servers(openApiServerResolver.getServers())
+                .info(new Info().title("GstDev Cloud")
+                        .description("GstDev Cloud Microservices Architecture")
+                        .version("Swagger V3")
+                        .license(new License().name("Apache 2.0").url("http://www.apache.org/licenses/")))
+                .externalDocs(new ExternalDocumentation()
+                        .description("GstDev Cloud Documentation")
+                        .url(" https://www.gstdev.com"));
     }
 }

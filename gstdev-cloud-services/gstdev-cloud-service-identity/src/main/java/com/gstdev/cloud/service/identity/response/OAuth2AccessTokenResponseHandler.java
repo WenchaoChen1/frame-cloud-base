@@ -40,7 +40,7 @@ public class OAuth2AccessTokenResponseHandler implements AuthenticationSuccessHa
     private static final Logger log = LoggerFactory.getLogger(OAuth2AccessTokenResponseHandler.class);
 
     private final HttpMessageConverter<OAuth2AccessTokenResponse> accessTokenHttpResponseConverter =
-        new OAuth2AccessTokenResponseHttpMessageConverter();
+            new OAuth2AccessTokenResponseHttpMessageConverter();
 
     private final HttpCryptoProcessor httpCryptoProcessor;
 
@@ -54,16 +54,16 @@ public class OAuth2AccessTokenResponseHandler implements AuthenticationSuccessHa
         log.debug("[GstDev Cloud] |- OAuth2 authentication success for [{}]", request.getRequestURI());
 
         OAuth2AccessTokenAuthenticationToken accessTokenAuthentication =
-            (OAuth2AccessTokenAuthenticationToken) authentication;
+                (OAuth2AccessTokenAuthenticationToken) authentication;
 
         OAuth2AccessToken accessToken = accessTokenAuthentication.getAccessToken();
         OAuth2RefreshToken refreshToken = accessTokenAuthentication.getRefreshToken();
         Map<String, Object> additionalParameters = accessTokenAuthentication.getAdditionalParameters();
 
         OAuth2AccessTokenResponse.Builder builder =
-            OAuth2AccessTokenResponse.withToken(accessToken.getTokenValue())
-                .tokenType(accessToken.getTokenType())
-                .scopes(accessToken.getScopes());
+                OAuth2AccessTokenResponse.withToken(accessToken.getTokenValue())
+                        .tokenType(accessToken.getTokenType())
+                        .scopes(accessToken.getScopes());
         if (accessToken.getIssuedAt() != null && accessToken.getExpiresAt() != null) {
             builder.expiresIn(ChronoUnit.SECONDS.between(accessToken.getIssuedAt(), accessToken.getExpiresAt()));
         }

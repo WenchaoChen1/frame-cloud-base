@@ -58,8 +58,8 @@ public class PasswordAuthenticationProvider implements AuthenticationProvider {
      */
     public PasswordAuthenticationProvider(
 //    AuthenticationManager authenticationManager,
-        OAuth2AuthorizationService oAuth2AuthorizationService,
-        OAuth2TokenGenerator<? extends OAuth2Token> oAuth2TokenGenerator) {
+            OAuth2AuthorizationService oAuth2AuthorizationService,
+            OAuth2TokenGenerator<? extends OAuth2Token> oAuth2TokenGenerator) {
 //    Assert.notNull(authorizationService, "authorizationService cannot be null");
 //    Assert.notNull(tokenGenerator, "tokenGenerator cannot be null");
 //    this.authenticationManager = authenticationManager;
@@ -131,9 +131,9 @@ public class PasswordAuthenticationProvider implements AuthenticationProvider {
         OAuth2AccessToken accessToken = new OAuth2AccessToken(OAuth2AccessToken.TokenType.BEARER, generatedAccessToken.getTokenValue(), generatedAccessToken.getIssuedAt(), generatedAccessToken.getExpiresAt(), tokenContext.getAuthorizedScopes());
 
         OAuth2Authorization.Builder authorizationBuilder = OAuth2Authorization.withRegisteredClient(registeredClient)
-            .principalName(usernamePasswordAuthentication.getName())
-            .authorizationGrantType(AuthorizationGrantType.PASSWORD)
-            .attribute(Principal.class.getName(), usernamePasswordAuthentication);
+                .principalName(usernamePasswordAuthentication.getName())
+                .authorizationGrantType(AuthorizationGrantType.PASSWORD)
+                .attribute(Principal.class.getName(), usernamePasswordAuthentication);
         if (generatedAccessToken instanceof ClaimAccessor) {
             authorizationBuilder.token(accessToken, (metadata) -> metadata.put(OAuth2Authorization.Token.CLAIMS_METADATA_NAME, ((ClaimAccessor) generatedAccessToken).getClaims()));
         } else {
@@ -143,8 +143,8 @@ public class PasswordAuthenticationProvider implements AuthenticationProvider {
         // 生成刷新令牌(Refresh Token)
         OAuth2RefreshToken refreshToken = null;
         if (registeredClient.getAuthorizationGrantTypes().contains(AuthorizationGrantType.REFRESH_TOKEN) &&
-            // Do not issue refresh token to public client
-            !clientPrincipal.getClientAuthenticationMethod().equals(ClientAuthenticationMethod.NONE)) {
+                // Do not issue refresh token to public client
+                !clientPrincipal.getClientAuthenticationMethod().equals(ClientAuthenticationMethod.NONE)) {
 
             tokenContext = tokenContextBuilder.tokenType(OAuth2TokenType.REFRESH_TOKEN).build();
             OAuth2Token generatedRefreshToken = oAuth2TokenGenerator.generate(tokenContext);

@@ -41,8 +41,8 @@ public abstract class AbstractTokenCustomizer {
 
         if (CollectionUtils.isNotEmpty(authentication.getAuthorities())) {
             Set<String> authorities = authentication.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.toSet());
+                    .map(GrantedAuthority::getAuthority)
+                    .collect(Collectors.toSet());
             attributes.put(BaseConstants.AUTHORITIES, authorities);
         }
     }

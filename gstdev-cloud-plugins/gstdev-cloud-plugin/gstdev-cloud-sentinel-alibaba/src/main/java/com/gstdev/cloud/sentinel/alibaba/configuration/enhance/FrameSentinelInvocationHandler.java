@@ -62,8 +62,8 @@ public class FrameSentinelInvocationHandler implements InvocationHandler {
             case "equals" -> {
                 try {
                     Object otherHandler = args.length > 0 && args[0] != null
-                        ? Proxy.getInvocationHandler(args[0])
-                        : null;
+                            ? Proxy.getInvocationHandler(args[0])
+                            : null;
                     return equals(otherHandler);
                 } catch (IllegalArgumentException e) {
                     return false;
@@ -82,14 +82,14 @@ public class FrameSentinelInvocationHandler implements InvocationHandler {
         // only handle by HardCodedTarget
         if (target instanceof Target.HardCodedTarget<?> hardCodedTarget) {
             MethodMetadata methodMetadata = SentinelContractHolder.METADATA_MAP
-                .get(hardCodedTarget.type().getName()
-                    + Feign.configKey(hardCodedTarget.type(), method));
+                    .get(hardCodedTarget.type().getName()
+                            + Feign.configKey(hardCodedTarget.type(), method));
             // resource default is HttpMethod:protocol://url
             if (methodMetadata == null) {
                 result = methodHandler.invoke(args);
             } else {
                 String resourceName = methodMetadata.template().method().toUpperCase()
-                    + ":" + hardCodedTarget.url() + methodMetadata.template().path();
+                        + ":" + hardCodedTarget.url() + methodMetadata.template().path();
                 Entry entry = null;
                 try {
                     ContextUtil.enter(resourceName);

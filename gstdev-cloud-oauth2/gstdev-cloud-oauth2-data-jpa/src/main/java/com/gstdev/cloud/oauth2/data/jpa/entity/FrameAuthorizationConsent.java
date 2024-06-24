@@ -16,8 +16,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
  */
 @Entity
 @Table(name = "oauth2_authorization_consent", indexes = {
-    @Index(name = "oauth2_authorization_consent_rcid_idx", columnList = "registered_client_id"),
-    @Index(name = "oauth2_authorization_consent_pn_idx", columnList = "principal_name")})
+        @Index(name = "oauth2_authorization_consent_rcid_idx", columnList = "registered_client_id"),
+        @Index(name = "oauth2_authorization_consent_pn_idx", columnList = "principal_name")})
 @IdClass(FrameAuthorizationConsentId.class)
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_AUTHORIZATION_CONSENT)
@@ -78,9 +78,9 @@ public class FrameAuthorizationConsent extends AbstractEntity {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("registeredClientId", registeredClientId)
-            .add("principalName", principalName)
-            .add("authorities", authorities)
-            .toString();
+                .add("registeredClientId", registeredClientId)
+                .add("principalName", principalName)
+                .add("authorities", authorities)
+                .toString();
     }
 }

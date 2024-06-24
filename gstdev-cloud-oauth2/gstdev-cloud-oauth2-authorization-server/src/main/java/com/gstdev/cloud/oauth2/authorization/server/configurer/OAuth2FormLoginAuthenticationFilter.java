@@ -58,7 +58,7 @@ public class OAuth2FormLoginAuthenticationFilter extends UsernamePasswordAuthent
     }
 
     private OAuth2FormLoginAuthenticationToken getAuthenticationToken(
-        HttpServletRequest request) {
+            HttpServletRequest request) {
 
         String username = obtainUsername(request);
         String password = obtainPassword(request);

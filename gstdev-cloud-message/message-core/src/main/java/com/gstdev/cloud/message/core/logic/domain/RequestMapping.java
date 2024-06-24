@@ -115,14 +115,14 @@ public class RequestMapping extends AbstractEntity {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("mappingId", mappingId)
-            .add("mappingCode", mappingCode)
-            .add("requestMethod", requestMethod)
-            .add("serviceId", serviceId)
-            .add("className", className)
-            .add("methodName", methodName)
-            .add("url", url)
-            .add("description", description)
-            .toString();
+                .add("mappingId", mappingId)
+                .add("mappingCode", mappingCode)
+                .add("requestMethod", requestMethod)
+                .add("serviceId", serviceId)
+                .add("className", className)
+                .add("methodName", methodName)
+                .add("url", url)
+                .add("description", description)
+                .toString();
     }
 }

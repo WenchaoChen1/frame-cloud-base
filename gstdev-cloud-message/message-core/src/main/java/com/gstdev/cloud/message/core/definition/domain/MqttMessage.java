@@ -59,11 +59,11 @@ public class MqttMessage implements Message {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("topic", topic)
-            .add("responseTopic", responseTopic)
-            .add("correlationData", correlationData)
-            .add("qos", qos)
-            .add("payload", payload)
-            .toString();
+                .add("topic", topic)
+                .add("responseTopic", responseTopic)
+                .add("correlationData", correlationData)
+                .add("qos", qos)
+                .add("payload", payload)
+                .toString();
     }
 }

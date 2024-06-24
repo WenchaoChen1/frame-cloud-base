@@ -2,8 +2,8 @@ package com.gstdev.cloud.service.common.autoconfigure.metadata;
 
 import com.gstdev.cloud.base.core.json.jackson2.utils.Jackson2Utils;
 import com.gstdev.cloud.oauth2.core.definition.domain.SecurityAttribute;
-import com.gstdev.cloud.service.common.autoconfigure.bus.RemoteSecurityMetadataSyncEvent;
 import com.gstdev.cloud.oauth2.resource.server.processor.SecurityMetadataSourceAnalyzer;
+import com.gstdev.cloud.service.common.autoconfigure.bus.RemoteSecurityMetadataSyncEvent;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -15,7 +15,6 @@ import java.util.List;
 
 /**
  * <p>Description: Security Metadata 数据同步监听 </p>
- *
  */
 public class RemoteSecurityMetadataSyncListener implements ApplicationListener<RemoteSecurityMetadataSyncEvent> {
 

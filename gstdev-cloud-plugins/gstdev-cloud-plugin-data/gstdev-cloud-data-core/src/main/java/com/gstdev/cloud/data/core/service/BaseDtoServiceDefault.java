@@ -15,9 +15,9 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface BaseDtoServiceDefault<E extends Entity
-    , ID extends Serializable
-    , D
-    > extends BaseDtoService<E, ID, D>, BaseServiceDefault<E, ID> {
+        , ID extends Serializable
+        , D
+        > extends BaseDtoService<E, ID, D>, BaseServiceDefault<E, ID> {
 
     BaseRepository<E, ID> getRepository();
 

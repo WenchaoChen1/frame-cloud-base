@@ -107,8 +107,8 @@ public final class FrameRequest implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("pattern", pattern)
-            .add("httpMethod", httpMethod)
-            .toString();
+                .add("pattern", pattern)
+                .add("httpMethod", httpMethod)
+                .toString();
     }
 }

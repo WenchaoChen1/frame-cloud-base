@@ -1,9 +1,9 @@
 package com.gstdev.cloud.service.identity.domain.entity;
 
+import com.google.common.base.MoreObjects;
 import com.gstdev.cloud.data.core.entity.BaseSysEntity;
 import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
 import com.gstdev.cloud.service.identity.domain.generator.OAuth2PermissionUuidGenerator;
-import com.google.common.base.MoreObjects;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -59,10 +59,10 @@ public class OAuth2Permission extends BaseSysEntity {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("permissionId", permissionId)
-            .add("permissionCode", permissionCode)
-            .add("permissionName", permissionName)
-            .toString();
+                .add("permissionId", permissionId)
+                .add("permissionCode", permissionCode)
+                .add("permissionName", permissionName)
+                .toString();
     }
 
     @Override

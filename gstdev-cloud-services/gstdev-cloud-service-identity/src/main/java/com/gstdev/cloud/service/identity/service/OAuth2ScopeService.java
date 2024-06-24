@@ -17,7 +17,7 @@ import java.util.Set;
  * @date : 2020/3/19 17:00
  */
 @Service
-public class OAuth2ScopeService extends BaseServiceImpl<OAuth2Scope, String, OAuth2ScopeRepository>   implements BaseService<OAuth2Scope, String> {
+public class OAuth2ScopeService extends BaseServiceImpl<OAuth2Scope, String, OAuth2ScopeRepository> implements BaseService<OAuth2Scope, String> {
 
     private OAuth2ScopeRepository oauthScopesRepository;
 
@@ -42,7 +42,7 @@ public class OAuth2ScopeService extends BaseServiceImpl<OAuth2Scope, String, OAu
         return oauthScopesRepository.findByScopeCodeIn(scopeCodes);
     }
 
-    public Set<String>  getScopePermissionIdByScopeId(String id) {
+    public Set<String> getScopePermissionIdByScopeId(String id) {
         return findById(id).getPermissions().stream().map(OAuth2Permission::getPermissionId).collect(java.util.stream.Collectors.toSet());
     }
 }

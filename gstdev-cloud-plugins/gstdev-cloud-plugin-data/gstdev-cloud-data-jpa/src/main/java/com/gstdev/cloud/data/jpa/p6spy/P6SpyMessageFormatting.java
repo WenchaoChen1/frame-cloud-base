@@ -28,16 +28,16 @@ public class P6SpyMessageFormatting implements MessageFormattingStrategy {
          * 关注idea的“'StringBuilder builder' can be replaced with 'String'”提示
          */
         String builder = this.format.format(new Date()) + " | took " +
-            elapsed +
-            "ms | " +
-            category +
-            " | connection " +
-            connectionId +
-            " | url " +
-            url +
-            "\n------------------------| " +
-            sql +
-            ";";
+                elapsed +
+                "ms | " +
+                category +
+                " | connection " +
+                connectionId +
+                " | url " +
+                url +
+                "\n------------------------| " +
+                sql +
+                ";";
         return StringUtils.isNotEmpty(sql.trim()) ? String.valueOf(builder) : "";
     }
 }

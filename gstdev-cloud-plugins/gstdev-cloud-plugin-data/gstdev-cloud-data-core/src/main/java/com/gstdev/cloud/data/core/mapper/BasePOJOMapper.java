@@ -1,12 +1,6 @@
 package com.gstdev.cloud.data.core.mapper;
 
-import com.gstdev.cloud.base.definition.domain.Result;
 import org.mapstruct.MappingTarget;
-import org.mapstruct.Named;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-
-import java.util.List;
 
 public interface BasePOJOMapper<E, D, V, II, UI> extends BaseDtoMapper<E, D>, BaseVoMapper<D, V> {
     /**

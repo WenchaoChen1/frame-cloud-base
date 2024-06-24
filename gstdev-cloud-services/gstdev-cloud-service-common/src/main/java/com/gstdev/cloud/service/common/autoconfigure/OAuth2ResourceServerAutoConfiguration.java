@@ -2,12 +2,12 @@ package com.gstdev.cloud.service.common.autoconfigure;
 
 
 import com.gstdev.cloud.data.jpa.autoconfigure.DataJpaAutoConfiguration;
-import com.gstdev.cloud.service.common.autoconfigure.metadata.RemoteSecurityMetadataSyncListener;
-import com.gstdev.cloud.service.common.autoconfigure.scan.DefaultRequestMappingScanEventManager;
 import com.gstdev.cloud.message.core.logic.strategy.RequestMappingScanEventManager;
 import com.gstdev.cloud.oauth2.core.exception.SecurityGlobalExceptionHandler;
 import com.gstdev.cloud.oauth2.resource.server.configuration.OAuth2AuthorizationConfiguration;
 import com.gstdev.cloud.oauth2.resource.server.processor.SecurityMetadataSourceAnalyzer;
+import com.gstdev.cloud.service.common.autoconfigure.metadata.RemoteSecurityMetadataSyncListener;
+import com.gstdev.cloud.service.common.autoconfigure.scan.DefaultRequestMappingScanEventManager;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,7 +35,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @Import({OAuth2AuthorizationConfiguration.class, DataJpaAutoConfiguration.class})
 @ComponentScan(basePackageClasses = SecurityGlobalExceptionHandler.class)
 @RemoteApplicationEventScan({
-    "com.gstdev.cloud.service.common.autoconfigure.bus"
+        "com.gstdev.cloud.service.common.autoconfigure.bus"
 })
 public class OAuth2ResourceServerAutoConfiguration {
 

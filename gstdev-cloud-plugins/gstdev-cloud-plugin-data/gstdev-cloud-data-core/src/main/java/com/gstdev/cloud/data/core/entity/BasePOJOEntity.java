@@ -7,8 +7,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.io.Serializable;
-
 @EqualsAndHashCode(callSuper = false)
 @Data
 @AllArgsConstructor
@@ -20,6 +18,7 @@ public class BasePOJOEntity extends BaseEntity implements BasePOJOEntityINT<Stri
     @GeneratedValue(generator = "jpa-uuid")
     @Column(length = 36)
     private String id;
+
     @Override
     public String getId() {
         return id;

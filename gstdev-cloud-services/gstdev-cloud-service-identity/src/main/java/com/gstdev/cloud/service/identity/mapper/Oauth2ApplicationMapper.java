@@ -10,12 +10,12 @@
 package com.gstdev.cloud.service.identity.mapper;
 
 
+import com.gstdev.cloud.service.identity.domain.base.Oauth2ApplicationVo;
+import com.gstdev.cloud.service.identity.domain.entity.OAuth2Application;
 import com.gstdev.cloud.service.identity.domain.pojo.application.ApplicationManageDetailVO;
 import com.gstdev.cloud.service.identity.domain.pojo.application.ApplicationManagePageVO;
 import com.gstdev.cloud.service.identity.domain.pojo.application.InsertApplicationManageIO;
 import com.gstdev.cloud.service.identity.domain.pojo.application.UpdateApplicationManageIO;
-import com.gstdev.cloud.service.identity.domain.base.Oauth2ApplicationVo;
-import com.gstdev.cloud.service.identity.domain.entity.OAuth2Application;
 import org.mapstruct.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -24,9 +24,9 @@ import java.util.List;
 
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
-    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-    nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
-public interface Oauth2ApplicationMapper  {
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+        nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
+public interface Oauth2ApplicationMapper {
 
     List<ApplicationManagePageVO> toApplicationManagePageVO(List<OAuth2Application> oAuth2Application);
 
@@ -36,6 +36,7 @@ public interface Oauth2ApplicationMapper  {
     }
 
     Oauth2ApplicationVo toVo(OAuth2Application oAuth2Application);
+
     ApplicationManageDetailVO toApplicationManageDetailVO(OAuth2Application oAuth2Application);
 
     OAuth2Application toEntity(InsertApplicationManageIO insertApplicationManageIO);

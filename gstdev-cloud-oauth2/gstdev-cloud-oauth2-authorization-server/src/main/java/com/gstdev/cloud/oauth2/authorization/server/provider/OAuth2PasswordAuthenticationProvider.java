@@ -71,7 +71,7 @@ public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAut
             UserDetails userDetails = enhanceUserDetailsService.loadUserByUsername(username);
             if (userDetails == null) {
                 throw new InternalAuthenticationServiceException(
-                    "UserDetailsService returned null, which is an interface contract violation");
+                        "UserDetailsService returned null, which is an interface contract violation");
             }
             return userDetails;
         } catch (UsernameNotFoundException ex) {
@@ -124,7 +124,7 @@ public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAut
         OAuth2PasswordAuthenticationToken resourceOwnerPasswordAuthentication = (OAuth2PasswordAuthenticationToken) authentication;
 
         OAuth2ClientAuthenticationToken clientPrincipal =
-            OAuth2AuthenticationProviderUtils.getAuthenticatedClientElseThrowInvalidClient(resourceOwnerPasswordAuthentication);
+                OAuth2AuthenticationProviderUtils.getAuthenticatedClientElseThrowInvalidClient(resourceOwnerPasswordAuthentication);
         RegisteredClient registeredClient = clientPrincipal.getRegisteredClient();
 
         if (!registeredClient.getAuthorizationGrantTypes().contains(FrameGrantType.PASSWORD)) {
@@ -137,10 +137,10 @@ public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAut
         Set<String> authorizedScopes = validateScopes(resourceOwnerPasswordAuthentication.getScopes(), registeredClient);
 
         OAuth2Authorization.Builder authorizationBuilder = OAuth2Authorization.withRegisteredClient(registeredClient)
-            .principalName(principal.getName())
-            .authorizationGrantType(FrameGrantType.PASSWORD)
-            .authorizedScopes(authorizedScopes)
-            .attribute(Principal.class.getName(), principal);
+                .principalName(principal.getName())
+                .authorizationGrantType(FrameGrantType.PASSWORD)
+                .authorizedScopes(authorizedScopes)
+                .attribute(Principal.class.getName(), principal);
 
         // @formatter:off
     DefaultOAuth2TokenContext.Builder tokenContextBuilder = DefaultOAuth2TokenContext.builder()
@@ -172,7 +172,7 @@ public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAut
         Map<String, Object> additionalParameters = idTokenAdditionalParameters(idToken);
 
         OAuth2AccessTokenAuthenticationToken accessTokenAuthenticationToken = new OAuth2AccessTokenAuthenticationToken(
-            registeredClient, clientPrincipal, accessToken, refreshToken, additionalParameters);
+                registeredClient, clientPrincipal, accessToken, refreshToken, additionalParameters);
         return createOAuth2AccessTokenAuthenticationToken(principal, accessTokenAuthenticationToken);
     }
 

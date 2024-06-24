@@ -3,8 +3,8 @@ package com.gstdev.cloud.oauth2.data.jpa.jackson2;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.gstdev.cloud.base.core.json.jackson2.Jackson2Constants;
 import com.gstdev.cloud.oauth2.core.definition.details.FormLoginWebAuthenticationDetails;
-import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
+import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import org.springframework.security.jackson2.SecurityJackson2Modules;
 
 /**

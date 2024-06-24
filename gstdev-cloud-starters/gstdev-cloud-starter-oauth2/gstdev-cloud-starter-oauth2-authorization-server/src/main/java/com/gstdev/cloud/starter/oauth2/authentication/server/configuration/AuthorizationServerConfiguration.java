@@ -19,11 +19,11 @@ import com.gstdev.cloud.oauth2.authorization.server.customizer.OAuth2FormLoginCo
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.authorization.server.response.OAuth2AuthenticationFailureResponseHandler;
 import com.gstdev.cloud.oauth2.core.enums.Certificate;
-import com.gstdev.cloud.service.identity.response.OAuth2AccessTokenResponseHandler;
-import com.gstdev.cloud.service.identity.response.OAuth2DeviceVerificationResponseHandler;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.properties.OAuth2AuthorizationProperties;
 import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
+import com.gstdev.cloud.service.identity.response.OAuth2AccessTokenResponseHandler;
+import com.gstdev.cloud.service.identity.response.OAuth2DeviceVerificationResponseHandler;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;
@@ -83,17 +83,17 @@ public class AuthorizationServerConfiguration {
     @Order(Ordered.HIGHEST_PRECEDENCE)
     @SneakyThrows
     public SecurityFilterChain authorizationServerSecurityFilterChain(
-        HttpSecurity http,
-        PasswordEncoder passwordEncoder,
-        UserDetailsService userDetailsService,
+            HttpSecurity http,
+            PasswordEncoder passwordEncoder,
+            UserDetailsService userDetailsService,
 //    ClientDetailsService clientDetailsService,
-        HttpCryptoProcessor httpCryptoProcessor,
+            HttpCryptoProcessor httpCryptoProcessor,
 //    OidcClientRegistrationResponseHandler oidcClientRegistrationResponseHandler,
-        OAuth2AuthenticationProperties oauth2AuthenticationProperties,
-        OAuth2DeviceVerificationResponseHandler oauth2DeviceVerificationResponseHandler,
-        OAuth2FormLoginConfigurerCustomizer oauth2FormLoginConfigurerCustomizer,
+            OAuth2AuthenticationProperties oauth2AuthenticationProperties,
+            OAuth2DeviceVerificationResponseHandler oauth2DeviceVerificationResponseHandler,
+            OAuth2FormLoginConfigurerCustomizer oauth2FormLoginConfigurerCustomizer,
 //    OAuth2SessionManagementConfigurerCustomer oauth2sessionManagementConfigurerCustomer,
-        OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer
+            OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer
     ) {
         log.debug("[GstDev Cloud] |- Bean [Authorization Server Security Filter Chain] Auto Configure.");
 
@@ -130,13 +130,13 @@ public class AuthorizationServerConfiguration {
 
         authorizationServerConfigurer.tokenEndpoint(tokenEndpoint -> {
             AuthenticationConverter delegatingAuthenticationConverter = new DelegatingAuthenticationConverter(Arrays.asList(
-                new OAuth2AuthorizationCodeAuthenticationConverter()
-                , new OAuth2RefreshTokenAuthenticationConverter()
-                , new OAuth2ClientCredentialsAuthenticationConverter()
-                //TODO 多加的
-                , new OAuth2DeviceCodeAuthenticationConverter()
-                //自定义授权模式转换器(Converter)
-                , new OAuth2PasswordAuthenticationConverter(httpCryptoProcessor)
+                    new OAuth2AuthorizationCodeAuthenticationConverter()
+                    , new OAuth2RefreshTokenAuthenticationConverter()
+                    , new OAuth2ClientCredentialsAuthenticationConverter()
+                    //TODO 多加的
+                    , new OAuth2DeviceCodeAuthenticationConverter()
+                    //自定义授权模式转换器(Converter)
+                    , new OAuth2PasswordAuthenticationConverter(httpCryptoProcessor)
 //        new OAuth2SocialCredentialsAuthenticationConverter(httpCryptoProcessor))
             ));
             tokenEndpoint.accessTokenRequestConverter(delegatingAuthenticationConverter);
@@ -167,18 +167,18 @@ public class AuthorizationServerConfiguration {
         // 仅拦截 OAuth2 Authorization Server 的相关 endpoint
 //    http.securityMatcher(endpointsMatcher)
         http
-            // 开启请求认证
+                // 开启请求认证
 //      .authorizeHttpRequests(authorizeRequests -> authorizeRequests.anyRequest().authenticated())
-            // 禁用对 OAuth2 Authorization Server 相关 endpoint 的 CSRF 防御
+                // 禁用对 OAuth2 Authorization Server 相关 endpoint 的 CSRF 防御
 //      .csrf(csrf -> csrf.ignoringRequestMatchers(endpointsMatcher))
-            .formLogin(oauth2FormLoginConfigurerCustomizer)
+                .formLogin(oauth2FormLoginConfigurerCustomizer)
 //      .sessionManagement(oauth2sessionManagementConfigurerCustomer)
 //      .addFilterBefore(new MultiTenantFilter(), AuthorizationFilter.class)
-            // 接受用户信息和/或客户端注册的访问令牌
-            .oauth2ResourceServer(oauth2ResourceServerConfigurerCustomer)
+                // 接受用户信息和/或客户端注册的访问令牌
+                .oauth2ResourceServer(oauth2ResourceServerConfigurerCustomer)
 //      .with(new OAuth2AuthenticationProviderConfigurer(sessionRegistry, passwordEncoder, userDetailsService, oauth2AuthenticationProperties), (configurer) -> {});
-            .with(new OAuth2AuthenticationProviderConfigurer(passwordEncoder, userDetailsService, oauth2AuthenticationProperties), (configurer) -> {
-            });
+                .with(new OAuth2AuthenticationProviderConfigurer(passwordEncoder, userDetailsService, oauth2AuthenticationProperties), (configurer) -> {
+                });
 
         return http.build();
     }
@@ -290,9 +290,9 @@ public class AuthorizationServerConfiguration {
         RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
         RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
         RSAKey rsaKey = new RSAKey.Builder(publicKey)
-            .privateKey(privateKey)
-            .keyID(UUID.randomUUID().toString())
-            .build();
+                .privateKey(privateKey)
+                .keyID(UUID.randomUUID().toString())
+                .build();
         JWKSet jwkSet = new JWKSet(rsaKey);
         return (jwkSelector, securityContext) -> jwkSelector.select(jwkSet);
     }

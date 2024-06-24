@@ -1,8 +1,8 @@
 package com.gstdev.cloud.message.core.logic.domain;
 
-import com.gstdev.cloud.base.definition.domain.base.AbstractEntity;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
+import com.gstdev.cloud.base.definition.domain.base.AbstractEntity;
 
 /**
  * <p>Description: 用户状态变更实体 </p>
@@ -61,8 +61,8 @@ public class UserStatus extends AbstractEntity {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("userId", userId)
-            .add("status", status)
-            .toString();
+                .add("userId", userId)
+                .add("status", status)
+                .toString();
     }
 }

@@ -13,9 +13,9 @@ import java.util.List;
 
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
-    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-    nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
-public interface Oauth2AuthorizationMapper  {
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+        nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
+public interface Oauth2AuthorizationMapper {
 
     List<AuthorizationManagePageVO> toAuthorizationManagePageVO(List<FrameAuthorization> oAuth2Authorization);
 

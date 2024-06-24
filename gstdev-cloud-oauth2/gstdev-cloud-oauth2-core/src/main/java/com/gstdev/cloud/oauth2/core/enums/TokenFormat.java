@@ -34,15 +34,15 @@ public enum TokenFormat implements BaseUiEnum<Integer> {
         for (TokenFormat tokenFormat : TokenFormat.values()) {
             INDEX_MAP.put(tokenFormat.getFormat(), tokenFormat);
             JSON_STRUCTURE.add(tokenFormat.getValue(),
-                ImmutableMap.<String, Object>builder()
-                    // 使用数字作为 value, 适用于单选，同时数据库只存 value值即可
-                    // 使用具体的字符串值作为value, 适用于多选，同时数据库存储以逗号分隔拼接的字符串
-                    .put("value", tokenFormat.getValue())
-                    .put("key", tokenFormat.name())
-                    .put("text", tokenFormat.getDescription())
-                    .put("format", tokenFormat.getFormat())
-                    .put("index", tokenFormat.ordinal())
-                    .build());
+                    ImmutableMap.<String, Object>builder()
+                            // 使用数字作为 value, 适用于单选，同时数据库只存 value值即可
+                            // 使用具体的字符串值作为value, 适用于多选，同时数据库存储以逗号分隔拼接的字符串
+                            .put("value", tokenFormat.getValue())
+                            .put("key", tokenFormat.name())
+                            .put("text", tokenFormat.getDescription())
+                            .put("format", tokenFormat.getFormat())
+                            .put("index", tokenFormat.ordinal())
+                            .build());
         }
     }
 

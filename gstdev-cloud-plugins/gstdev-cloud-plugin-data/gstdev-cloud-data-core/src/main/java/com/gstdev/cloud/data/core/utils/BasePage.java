@@ -45,8 +45,8 @@ public class BasePage extends BaseSort {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("pageNumber", pageNumber)
-            .add("pageSize", pageSize)
-            .toString();
+                .add("pageNumber", pageNumber)
+                .add("pageSize", pageSize)
+                .toString();
     }
 }

@@ -35,9 +35,9 @@ public class OAuth2DeviceService extends BaseServiceImpl<OAuth2Device, String, O
 
     private final RegisteredClientRepository registeredClientRepository;
     private final FrameRegisteredClientRepository frameRegisteredClientRepository;
-    private OAuth2DeviceRepository deviceRepository;
     private final Converter<OAuth2Device, RegisteredClient> oauth2DeviceToRegisteredClientConverter;
     private final Converter<RegisteredClient, OAuth2Device> registeredClientToOAuth2DeviceConverter;
+    private OAuth2DeviceRepository deviceRepository;
 
     public OAuth2DeviceService(RegisteredClientRepository registeredClientRepository, FrameRegisteredClientRepository frameRegisteredClientRepository, OAuth2DeviceRepository deviceRepository, OAuth2ScopeService scopeService) {
         super(deviceRepository);

@@ -1,8 +1,8 @@
 package com.gstdev.cloud.message.websocket.domain;
 
-import com.gstdev.cloud.base.definition.domain.oauth2.PrincipalDetails;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
+import com.gstdev.cloud.base.definition.domain.oauth2.PrincipalDetails;
 
 import java.security.Principal;
 import java.util.Set;
@@ -110,10 +110,10 @@ public class WebSocketPrincipal implements Principal {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("userId", userId)
-            .add("username", username)
-            .add("employeeId", employeeId)
-            .add("avatar", avatar)
-            .toString();
+                .add("userId", userId)
+                .add("username", username)
+                .add("employeeId", employeeId)
+                .add("avatar", avatar)
+                .toString();
     }
 }

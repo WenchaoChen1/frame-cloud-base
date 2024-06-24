@@ -72,8 +72,8 @@ public class FrameAuthorizationConsentId implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("registeredClientId", registeredClientId)
-            .add("principalName", principalName)
-            .toString();
+                .add("registeredClientId", registeredClientId)
+                .add("principalName", principalName)
+                .toString();
     }
 }

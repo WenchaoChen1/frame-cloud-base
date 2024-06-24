@@ -1,7 +1,7 @@
 package com.gstdev.cloud.message.mqtt.properties;
 
-import com.gstdev.cloud.message.core.constants.MessageConstants;
 import com.google.common.base.MoreObjects;
+import com.gstdev.cloud.message.core.constants.MessageConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.time.Duration;
@@ -197,16 +197,16 @@ public class MqttProperties {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("username", username)
-            .add("password", password)
-            .add("clientId", clientId)
-            .add("keepAliveInterval", keepAliveInterval)
-            .add("automaticReconnect", automaticReconnect)
-            .add("automaticReconnectMinDelay", automaticReconnectMinDelay)
-            .add("automaticReconnectMaxDelay", automaticReconnectMaxDelay)
-            .add("cleanStart", cleanStart)
-            .add("defaultTopic", defaultTopic)
-            .add("defaultQos", defaultQos)
-            .toString();
+                .add("username", username)
+                .add("password", password)
+                .add("clientId", clientId)
+                .add("keepAliveInterval", keepAliveInterval)
+                .add("automaticReconnect", automaticReconnect)
+                .add("automaticReconnectMinDelay", automaticReconnectMinDelay)
+                .add("automaticReconnectMaxDelay", automaticReconnectMaxDelay)
+                .add("cleanStart", cleanStart)
+                .add("defaultTopic", defaultTopic)
+                .add("defaultQos", defaultQos)
+                .toString();
     }
 }

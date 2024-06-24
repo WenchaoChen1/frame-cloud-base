@@ -13,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -22,17 +21,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 @Slf4j
 public class RedisUtils {
-    @Autowired
-    @Qualifier(value = "redisTemplate")
-    public void setRedisTemplate(RedisTemplate redisTemplate) {
-        RedisUtils.redisTemplate = redisTemplate;
-    }
-
     private static RedisTemplate<Object, Object> redisTemplate;
-
-//   public static RedisUtils(RedisTemplate<Object, Object> redisTemplate) {
-//    this.redisTemplate = redisTemplate;
-//  }
 
     /**
      * 指定缓存失效时间
@@ -52,6 +41,10 @@ public class RedisUtils {
 
         return true;
     }
+
+//   public static RedisUtils(RedisTemplate<Object, Object> redisTemplate) {
+//    this.redisTemplate = redisTemplate;
+//  }
 
     /**
      * 指定缓存失效时间
@@ -81,6 +74,21 @@ public class RedisUtils {
      */
     public static long getExpire(Object key) {
         return redisTemplate.getExpire(key, TimeUnit.SECONDS);
+    }
+
+    /**
+     * 判断key是否存在
+     *
+     * @param key 键
+     * @return true 存在 false不存在
+     */
+    public static boolean hasKey(String key) {
+        try {
+            return redisTemplate.hasKey(key);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return false;
+        }
     }
 
 //  /**
@@ -153,21 +161,6 @@ public class RedisUtils {
 //  }
 
     /**
-     * 判断key是否存在
-     *
-     * @param key 键
-     * @return true 存在 false不存在
-     */
-    public static boolean hasKey(String key) {
-        try {
-            return redisTemplate.hasKey(key);
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-            return false;
-        }
-    }
-
-    /**
      * 删除缓存
      *
      * @param keys 可以传一个值 或多个
@@ -194,8 +187,6 @@ public class RedisUtils {
         }
     }
 
-    // ============================String=============================
-
     /**
      * 普通缓存获取
      *
@@ -205,6 +196,8 @@ public class RedisUtils {
     public static Object get(String key) {
         return key == null ? null : redisTemplate.opsForValue().get(key);
     }
+
+    // ============================String=============================
 
     /**
      * 批量获取
@@ -278,8 +271,6 @@ public class RedisUtils {
         }
     }
 
-    // ================================Map=================================
-
     /**
      * HashGet
      *
@@ -290,6 +281,8 @@ public class RedisUtils {
     public static Object hget(String key, String item) {
         return redisTemplate.opsForHash().get(key, item);
     }
+
+    // ================================Map=================================
 
     /**
      * 获取hashKey对应的所有键值
@@ -427,8 +420,6 @@ public class RedisUtils {
         return redisTemplate.opsForHash().increment(key, item, -by);
     }
 
-    // ============================set=============================
-
     /**
      * 根据key获取Set中的所有值
      *
@@ -443,6 +434,8 @@ public class RedisUtils {
             return null;
         }
     }
+
+    // ============================set=============================
 
     /**
      * 根据value从一个set中查询,是否存在
@@ -530,8 +523,6 @@ public class RedisUtils {
         }
     }
 
-    // ===============================list=================================
-
     /**
      * 获取list缓存的内容
      *
@@ -548,6 +539,8 @@ public class RedisUtils {
             return null;
         }
     }
+
+    // ===============================list=================================
 
     /**
      * 获取list缓存的长度
@@ -710,5 +703,11 @@ public class RedisUtils {
         log.info("成功删除缓存：" + keys.toString());
         log.info("缓存删除数量：" + count + "个");
         log.info("--------------------------------------------");
+    }
+
+    @Autowired
+    @Qualifier(value = "redisTemplate")
+    public void setRedisTemplate(RedisTemplate redisTemplate) {
+        RedisUtils.redisTemplate = redisTemplate;
     }
 }

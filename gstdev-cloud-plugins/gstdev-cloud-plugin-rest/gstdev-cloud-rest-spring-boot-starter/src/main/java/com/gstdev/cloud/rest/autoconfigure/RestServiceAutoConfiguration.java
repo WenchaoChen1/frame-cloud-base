@@ -16,8 +16,8 @@ import org.springframework.context.annotation.Import;
  */
 @AutoConfiguration
 @Import({
-    FeignConfiguration.class,
-    RestScanConfiguration.class
+        FeignConfiguration.class,
+        RestScanConfiguration.class
 //        SpringdocConfiguration.class
 })
 public class RestServiceAutoConfiguration {

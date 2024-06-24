@@ -1,9 +1,9 @@
 package com.gstdev.cloud.rest.condition.properties;
 
-import com.gstdev.cloud.base.definition.constants.DefaultConstants;
-import com.gstdev.cloud.base.core.utils.WellFormedUtils;
-import com.gstdev.cloud.rest.condition.constants.RestConstants;
 import com.google.common.base.MoreObjects;
+import com.gstdev.cloud.base.core.utils.WellFormedUtils;
+import com.gstdev.cloud.base.definition.constants.DefaultConstants;
+import com.gstdev.cloud.rest.condition.constants.RestConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -424,30 +424,30 @@ public class EndpointProperties {
         return MoreObjects.toStringHelper(this)
 //            .add("uaaServiceName", uaaServiceName)
 //            .add("upmsServiceName", upmsServiceName)
-            .add("gatewayServiceUri", gatewayServiceUri)
+                .add("gatewayServiceUri", gatewayServiceUri)
 //            .add("uaaServiceUri", uaaServiceUri)
 //            .add("upmsServiceUri", upmsServiceUri)
-            .add("authorizationUri", authorizationUri)
-            .add("authorizationEndpoint", authorizationEndpoint)
-            .add("accessTokenUri", accessTokenUri)
-            .add("accessTokenEndpoint", accessTokenEndpoint)
-            .add("jwkSetUri", jwkSetUri)
-            .add("jwkSetEndpoint", jwkSetEndpoint)
-            .add("tokenRevocationUri", tokenRevocationUri)
-            .add("tokenRevocationEndpoint", tokenRevocationEndpoint)
-            .add("tokenIntrospectionUri", tokenIntrospectionUri)
-            .add("tokenIntrospectionEndpoint", tokenIntrospectionEndpoint)
-            .add("deviceAuthorizationUri", deviceAuthorizationUri)
-            .add("deviceAuthorizationEndpoint", deviceAuthorizationEndpoint)
-            .add("deviceVerificationUri", deviceVerificationUri)
-            .add("deviceVerificationEndpoint", deviceVerificationEndpoint)
-            .add("oidcClientRegistrationUri", oidcClientRegistrationUri)
-            .add("oidcClientRegistrationEndpoint", oidcClientRegistrationEndpoint)
-            .add("oidcLogoutUri", oidcLogoutUri)
-            .add("oidcLogoutEndpoint", oidcLogoutEndpoint)
-            .add("oidcUserInfoUri", oidcUserInfoUri)
-            .add("oidcUserInfoEndpoint", oidcUserInfoEndpoint)
-            .add("issuerUri", issuerUri)
-            .toString();
+                .add("authorizationUri", authorizationUri)
+                .add("authorizationEndpoint", authorizationEndpoint)
+                .add("accessTokenUri", accessTokenUri)
+                .add("accessTokenEndpoint", accessTokenEndpoint)
+                .add("jwkSetUri", jwkSetUri)
+                .add("jwkSetEndpoint", jwkSetEndpoint)
+                .add("tokenRevocationUri", tokenRevocationUri)
+                .add("tokenRevocationEndpoint", tokenRevocationEndpoint)
+                .add("tokenIntrospectionUri", tokenIntrospectionUri)
+                .add("tokenIntrospectionEndpoint", tokenIntrospectionEndpoint)
+                .add("deviceAuthorizationUri", deviceAuthorizationUri)
+                .add("deviceAuthorizationEndpoint", deviceAuthorizationEndpoint)
+                .add("deviceVerificationUri", deviceVerificationUri)
+                .add("deviceVerificationEndpoint", deviceVerificationEndpoint)
+                .add("oidcClientRegistrationUri", oidcClientRegistrationUri)
+                .add("oidcClientRegistrationEndpoint", oidcClientRegistrationEndpoint)
+                .add("oidcLogoutUri", oidcLogoutUri)
+                .add("oidcLogoutEndpoint", oidcLogoutEndpoint)
+                .add("oidcUserInfoUri", oidcUserInfoUri)
+                .add("oidcUserInfoEndpoint", oidcUserInfoEndpoint)
+                .add("issuerUri", issuerUri)
+                .toString();
     }
 }

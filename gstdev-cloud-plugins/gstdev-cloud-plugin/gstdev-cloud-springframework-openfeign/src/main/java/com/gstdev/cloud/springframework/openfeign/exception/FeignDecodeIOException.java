@@ -6,7 +6,6 @@ import com.gstdev.cloud.springframework.openfeign.constants.OpenFeignErrorCodes;
 
 /**
  * <p>Description: Feign 解码 IO 错误 </p>
- *
  */
 public class FeignDecodeIOException extends PlatformRuntimeException {
 

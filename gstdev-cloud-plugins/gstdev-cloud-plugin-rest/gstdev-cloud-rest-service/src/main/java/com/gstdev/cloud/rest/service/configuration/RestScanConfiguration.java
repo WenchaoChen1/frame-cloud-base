@@ -2,8 +2,8 @@ package com.gstdev.cloud.rest.service.configuration;
 
 import com.gstdev.cloud.message.core.logic.strategy.RequestMappingScanEventManager;
 import com.gstdev.cloud.rest.condition.annotation.ConditionalOnScanEnabled;
-import com.gstdev.cloud.rest.service.processor.RequestMappingScanner;
 import com.gstdev.cloud.rest.condition.properties.ScanProperties;
+import com.gstdev.cloud.rest.service.processor.RequestMappingScanner;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

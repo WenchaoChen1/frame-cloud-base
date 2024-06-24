@@ -1,14 +1,12 @@
 package com.gstdev.cloud.base.core.context;
 
 
-import com.gstdev.cloud.base.definition.constants.DefaultConstants;
-import com.gstdev.cloud.base.definition.constants.SymbolConstants;
 import com.gstdev.cloud.base.core.enums.Architecture;
 import com.gstdev.cloud.base.core.enums.Protocol;
 import com.gstdev.cloud.base.core.enums.Target;
 import com.gstdev.cloud.base.core.utils.WellFormedUtils;
-import lombok.Getter;
-import lombok.Setter;
+import com.gstdev.cloud.base.definition.constants.DefaultConstants;
+import com.gstdev.cloud.base.definition.constants.SymbolConstants;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationContext;

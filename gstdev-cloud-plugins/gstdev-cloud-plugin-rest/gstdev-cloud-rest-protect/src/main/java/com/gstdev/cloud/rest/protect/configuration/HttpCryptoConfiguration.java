@@ -28,7 +28,7 @@ import org.springframework.context.annotation.Import;
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(CryptoProperties.class)
 @Import({
-    CryptoStrategyConfiguration.class,
+        CryptoStrategyConfiguration.class,
 })
 public class HttpCryptoConfiguration {
 

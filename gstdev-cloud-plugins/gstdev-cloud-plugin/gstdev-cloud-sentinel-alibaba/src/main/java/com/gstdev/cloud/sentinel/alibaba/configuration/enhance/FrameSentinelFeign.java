@@ -108,8 +108,8 @@ public final class FrameSentinelFeign {
                     Object fallbackInstance = feignClientFactory.getInstance(name, fallbackType);
                     if (fallbackInstance == null) {
                         throw new IllegalStateException(String.format(
-                            "No %s instance of type %s found for feign client %s",
-                            type, fallbackType, name));
+                                "No %s instance of type %s found for feign client %s",
+                                type, fallbackType, name));
                     }
                     // when fallback is a FactoryBean, should determine the type of instance
                     if (fallbackInstance instanceof FactoryBean<?> factoryBean) {
@@ -123,8 +123,8 @@ public final class FrameSentinelFeign {
 
                     if (!targetType.isAssignableFrom(fallbackType)) {
                         throw new IllegalStateException(String.format(
-                            "Incompatible %s instance. Fallback/fallbackFactory of type %s is not assignable to %s for feign client %s",
-                            type, fallbackType, targetType, name));
+                                "Incompatible %s instance. Fallback/fallbackFactory of type %s is not assignable to %s for feign client %s",
+                                type, fallbackType, targetType, name));
                     }
                     return fallbackInstance;
                 }
@@ -147,7 +147,7 @@ public final class FrameSentinelFeign {
 
         @Override
         public void setApplicationContext(ApplicationContext applicationContext)
-            throws BeansException {
+                throws BeansException {
             this.applicationContext = applicationContext;
             feignClientFactory = this.applicationContext.getBean(FeignClientFactory.class);
         }

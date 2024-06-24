@@ -88,13 +88,13 @@ public class DataTableResult implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("pageNumber", pageNumber)
-            .add("pageSize", pageSize)
-            .add("sEcho", sEcho)
-            .add("iDisplayStart", iDisplayStart)
-            .add("iDisplayLength", iDisplayLength)
-            .add("jsonString", jsonString)
-            .add("total", total)
-            .toString();
+                .add("pageNumber", pageNumber)
+                .add("pageSize", pageSize)
+                .add("sEcho", sEcho)
+                .add("iDisplayStart", iDisplayStart)
+                .add("iDisplayLength", iDisplayLength)
+                .add("jsonString", jsonString)
+                .add("total", total)
+                .toString();
     }
 }

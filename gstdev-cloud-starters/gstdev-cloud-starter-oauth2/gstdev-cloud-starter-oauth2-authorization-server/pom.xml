@@ -18,14 +18,14 @@
 
     <dependencies>
         <!-- GstDevCloud related dependencies -->
-<!--        <dependency>-->
-<!--            <groupId>com.gstdev.cloud</groupId>-->
-<!--            <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.gstdev.cloud</groupId>-->
-<!--            <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.gstdev.cloud</groupId>-->
+        <!--            <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.gstdev.cloud</groupId>-->
+        <!--            <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-service-identity</artifactId>

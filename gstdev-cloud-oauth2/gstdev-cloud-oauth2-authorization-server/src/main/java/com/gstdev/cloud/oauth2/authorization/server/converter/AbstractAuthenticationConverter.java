@@ -7,20 +7,14 @@ import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2EndpointUtils;
 import com.gstdev.cloud.rest.core.exception.SessionInvalidException;
 import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
 import jakarta.servlet.http.HttpServletRequest;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.AuthenticationConverter;
 import org.springframework.util.MultiValueMap;
+
+import java.util.*;
 
 public abstract class AbstractAuthenticationConverter implements AuthenticationConverter {
     private final HttpCryptoProcessor httpCryptoProcessor;

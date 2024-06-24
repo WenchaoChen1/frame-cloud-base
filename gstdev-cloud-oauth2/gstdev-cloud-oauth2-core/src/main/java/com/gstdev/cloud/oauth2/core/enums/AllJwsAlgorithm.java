@@ -79,12 +79,12 @@ public enum AllJwsAlgorithm implements BaseUiEnum<Integer> {
         for (AllJwsAlgorithm allJwsAlgorithm : AllJwsAlgorithm.values()) {
             INDEX_MAP.put(allJwsAlgorithm.getValue(), allJwsAlgorithm);
             JSON_STRUCTURE.add(allJwsAlgorithm.getValue(),
-                ImmutableMap.<String, Object>builder()
-                    .put("value", allJwsAlgorithm.getValue())
-                    .put("key", allJwsAlgorithm.name())
-                    .put("text", allJwsAlgorithm.getDescription())
-                    .put("index", allJwsAlgorithm.getValue())
-                    .build());
+                    ImmutableMap.<String, Object>builder()
+                            .put("value", allJwsAlgorithm.getValue())
+                            .put("key", allJwsAlgorithm.name())
+                            .put("text", allJwsAlgorithm.getDescription())
+                            .put("index", allJwsAlgorithm.getValue())
+                            .build());
         }
     }
 

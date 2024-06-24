@@ -23,9 +23,9 @@ import java.util.Map;
  * @date : 2020/4/29 18:56
  */
 public interface VoController<E extends Entity
-    , ID extends Serializable
-    , D, V
-    > extends DtoController<E, ID, D> {
+        , ID extends Serializable
+        , D, V
+        > extends DtoController<E, ID, D> {
 
     /**
      * 获取Service

@@ -101,11 +101,11 @@ public class PrincipalDetails {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("userId", openId)
-            .add("username", username)
-            .add("roles", roles)
-            .add("employeeId", employeeId)
-            .add("avatar", avatar)
-            .toString();
+                .add("userId", openId)
+                .add("username", username)
+                .add("roles", roles)
+                .add("employeeId", employeeId)
+                .add("avatar", avatar)
+                .toString();
     }
 }

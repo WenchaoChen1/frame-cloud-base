@@ -1,9 +1,9 @@
 package com.gstdev.cloud.oauth2.data.jpa.entity;
 
+import com.google.common.base.MoreObjects;
 import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
 import com.gstdev.cloud.oauth2.data.jpa.definition.domain.AbstractRegisteredClient;
 import com.gstdev.cloud.oauth2.data.jpa.generator.FrameRegisteredClientUuidGenerator;
-import com.google.common.base.MoreObjects;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -18,8 +18,8 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "oauth2_registered_client", indexes = {
-    @Index(name = "oauth2_registered_client_id_idx", columnList = "id"),
-    @Index(name = "oauth2_registered_client_cid_idx", columnList = "client_id")})
+        @Index(name = "oauth2_registered_client_id_idx", columnList = "id"),
+        @Index(name = "oauth2_registered_client_cid_idx", columnList = "client_id")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_REGISTERED_CLIENT)
 public class FrameRegisteredClient extends AbstractRegisteredClient {
@@ -126,13 +126,13 @@ public class FrameRegisteredClient extends AbstractRegisteredClient {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("id", id)
-            .add("clientId", clientId)
-            .add("clientSecret", clientSecret)
-            .add("clientName", clientName)
-            .add("scopes", scopes)
-            .add("clientSettings", clientSettings)
-            .add("tokenSettings", tokenSettings)
-            .toString();
+                .add("id", id)
+                .add("clientId", clientId)
+                .add("clientSecret", clientSecret)
+                .add("clientName", clientName)
+                .add("scopes", scopes)
+                .add("clientSettings", clientSettings)
+                .add("tokenSettings", tokenSettings)
+                .toString();
     }
 }

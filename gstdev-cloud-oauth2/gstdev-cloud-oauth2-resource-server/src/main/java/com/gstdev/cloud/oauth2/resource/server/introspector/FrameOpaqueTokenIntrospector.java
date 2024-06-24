@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.resource.server.introspector;
 
-import com.gstdev.cloud.base.definition.constants.BaseConstants;
 import com.gstdev.cloud.base.core.context.ServiceContextHolder;
+import com.gstdev.cloud.base.definition.constants.BaseConstants;
 import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
@@ -49,8 +49,8 @@ public class FrameOpaqueTokenIntrospector implements OpaqueTokenIntrospector {
 
     public FrameOpaqueTokenIntrospector(OAuth2ResourceServerProperties resourceServerProperties) {
         this(getIntrospectionUri(resourceServerProperties),
-            resourceServerProperties.getOpaquetoken().getClientId(),
-            resourceServerProperties.getOpaquetoken().getClientSecret());
+                resourceServerProperties.getOpaquetoken().getClientId(),
+                resourceServerProperties.getOpaquetoken().getClientSecret());
     }
 
     /**
@@ -149,7 +149,7 @@ public class FrameOpaqueTokenIntrospector implements OpaqueTokenIntrospector {
     private Map<String, Object> adaptToNimbusResponse(ResponseEntity<Map<String, Object>> responseEntity) {
         if (responseEntity.getStatusCode() != HttpStatus.OK) {
             throw new OAuth2IntrospectionException(
-                "Introspection endpoint responded with " + responseEntity.getStatusCode());
+                    "Introspection endpoint responded with " + responseEntity.getStatusCode());
         }
         Map<String, Object> claims = responseEntity.getBody();
         // relying solely on the authorization server to validate this token (not checking
@@ -183,9 +183,9 @@ public class FrameOpaqueTokenIntrospector implements OpaqueTokenIntrospector {
         });
         claims.computeIfPresent(OAuth2TokenIntrospectionClaimNames.CLIENT_ID, (k, v) -> v.toString());
         claims.computeIfPresent(OAuth2TokenIntrospectionClaimNames.EXP,
-            (k, v) -> Instant.ofEpochSecond(((Number) v).longValue()));
+                (k, v) -> Instant.ofEpochSecond(((Number) v).longValue()));
         claims.computeIfPresent(OAuth2TokenIntrospectionClaimNames.IAT,
-            (k, v) -> Instant.ofEpochSecond(((Number) v).longValue()));
+                (k, v) -> Instant.ofEpochSecond(((Number) v).longValue()));
         // RFC-7662 page 7 directs users to RFC-7519 for defining the values of these
         // issuer fields.
         // https://datatracker.ietf.org/doc/html/rfc7662#page-7
@@ -206,7 +206,7 @@ public class FrameOpaqueTokenIntrospector implements OpaqueTokenIntrospector {
         // would *only* allow valid URLs, which is not what we wish to achieve here.
         claims.computeIfPresent(OAuth2TokenIntrospectionClaimNames.ISS, (k, v) -> v.toString());
         claims.computeIfPresent(OAuth2TokenIntrospectionClaimNames.NBF,
-            (k, v) -> Instant.ofEpochSecond(((Number) v).longValue()));
+                (k, v) -> Instant.ofEpochSecond(((Number) v).longValue()));
         Collection<GrantedAuthority> authorities = new ArrayList<>();
         claims.computeIfPresent(OAuth2TokenIntrospectionClaimNames.SCOPE, (k, v) -> v.toString());
         claims.computeIfPresent(BaseConstants.AUTHORITIES, (k, v) -> {

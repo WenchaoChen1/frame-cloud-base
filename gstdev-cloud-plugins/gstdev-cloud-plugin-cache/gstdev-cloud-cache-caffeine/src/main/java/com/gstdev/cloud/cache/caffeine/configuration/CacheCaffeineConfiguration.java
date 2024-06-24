@@ -1,8 +1,8 @@
 package com.gstdev.cloud.cache.caffeine.configuration;
 
+import com.github.benmanes.caffeine.cache.Caffeine;
 import com.gstdev.cloud.cache.caffeine.enhance.FrameCaffeineCacheManager;
 import com.gstdev.cloud.cache.core.properties.CacheProperties;
-import com.github.benmanes.caffeine.cache.Caffeine;
 import jakarta.annotation.PostConstruct;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
@@ -37,8 +37,8 @@ public class CacheCaffeineConfiguration {
     @Bean
     public Caffeine<Object, Object> caffeine() {
         Caffeine<Object, Object> caffeine = Caffeine
-            .newBuilder()
-            .expireAfterWrite(ObjectUtils.isNotEmpty(cacheProperties.getLocalExpire()) ? cacheProperties.getLocalExpire() : cacheProperties.getExpire());
+                .newBuilder()
+                .expireAfterWrite(ObjectUtils.isNotEmpty(cacheProperties.getLocalExpire()) ? cacheProperties.getLocalExpire() : cacheProperties.getExpire());
 
         log.trace("[GstDev Cloud] |- Bean [Caffeine] Auto Configure.");
 

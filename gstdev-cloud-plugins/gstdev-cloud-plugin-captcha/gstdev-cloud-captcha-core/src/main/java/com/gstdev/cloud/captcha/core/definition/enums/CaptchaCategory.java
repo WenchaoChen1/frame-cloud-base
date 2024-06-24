@@ -53,11 +53,11 @@ public enum CaptchaCategory {
         for (CaptchaCategory captchaCategory : CaptchaCategory.values()) {
             INDEX_MAP.put(captchaCategory.getConstant(), captchaCategory);
             JSON_STRUCT.add(captchaCategory.ordinal(),
-                ImmutableMap.<String, Object>builder()
-                    .put("value", captchaCategory.ordinal())
-                    .put("key", captchaCategory.name())
-                    .put("text", captchaCategory.getDescription())
-                    .build());
+                    ImmutableMap.<String, Object>builder()
+                            .put("value", captchaCategory.ordinal())
+                            .put("key", captchaCategory.name())
+                            .put("text", captchaCategory.getDescription())
+                            .build());
         }
     }
 

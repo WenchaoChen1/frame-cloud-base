@@ -99,13 +99,13 @@ public class OAuth2EndpointUtils {
 
     public static boolean matchesAuthorizationCodeGrantRequest(HttpServletRequest request) {
         return AuthorizationGrantType.AUTHORIZATION_CODE.getValue().equals(
-            request.getParameter(OAuth2ParameterNames.GRANT_TYPE)) &&
-            request.getParameter(OAuth2ParameterNames.CODE) != null;
+                request.getParameter(OAuth2ParameterNames.GRANT_TYPE)) &&
+                request.getParameter(OAuth2ParameterNames.CODE) != null;
     }
 
     public static boolean matchesPkceTokenRequest(HttpServletRequest request) {
         return matchesAuthorizationCodeGrantRequest(request) &&
-            request.getParameter(PkceParameterNames.CODE_VERIFIER) != null;
+                request.getParameter(PkceParameterNames.CODE_VERIFIER) != null;
     }
 
     // 以下两个方法用于抛出OAuth2身份验证异常

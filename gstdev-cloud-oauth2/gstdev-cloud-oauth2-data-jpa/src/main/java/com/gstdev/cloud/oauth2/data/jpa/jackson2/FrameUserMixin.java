@@ -1,10 +1,10 @@
 package com.gstdev.cloud.oauth2.data.jpa.jackson2;
 
-import com.gstdev.cloud.oauth2.core.jackson2.FrameUserDeserializer;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.gstdev.cloud.oauth2.core.jackson2.FrameUserDeserializer;
 
 /**
  * <p>Description: 自定义 UserDetails Mixin </p>
@@ -23,9 +23,9 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 @JsonDeserialize(using = FrameUserDeserializer.class)
 @JsonAutoDetect(
-    fieldVisibility = JsonAutoDetect.Visibility.ANY,
-    getterVisibility = JsonAutoDetect.Visibility.NONE,
-    isGetterVisibility = JsonAutoDetect.Visibility.NONE)
+        fieldVisibility = JsonAutoDetect.Visibility.ANY,
+        getterVisibility = JsonAutoDetect.Visibility.NONE,
+        isGetterVisibility = JsonAutoDetect.Visibility.NONE)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class FrameUserMixin {
 }

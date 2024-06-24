@@ -1,11 +1,7 @@
 package com.gstdev.cloud.service.identity.domain.pojo.scope;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.time.Duration;
 
 @Getter
 @Setter

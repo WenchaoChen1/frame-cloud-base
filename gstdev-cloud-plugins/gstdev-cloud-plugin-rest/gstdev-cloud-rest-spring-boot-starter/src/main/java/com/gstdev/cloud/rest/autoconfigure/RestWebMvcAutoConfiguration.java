@@ -24,7 +24,7 @@ import org.springframework.web.servlet.resource.WebJarsResourceResolver;
  */
 @AutoConfiguration
 @Import({
-    SecureConfiguration.class,
+        SecureConfiguration.class,
 //  TenantConfiguration.class
 })
 @EnableWebMvc
@@ -58,13 +58,13 @@ public class RestWebMvcAutoConfiguration implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
         registry.addResourceHandler("/webjars/**")
-            .addResourceLocations("classpath:/META-INF/resources/webjars/")
-            .resourceChain(false)
-            .addResolver(new WebJarsResourceResolver());
+                .addResourceLocations("classpath:/META-INF/resources/webjars/")
+                .resourceChain(false)
+                .addResolver(new WebJarsResourceResolver());
         registry.addResourceHandler("/plugins/**")
-            .addResourceLocations("classpath:/static/plugins/");
+                .addResourceLocations("classpath:/static/plugins/");
         registry.addResourceHandler("/frame/**")
-            .addResourceLocations("classpath:/static/frame/");
+                .addResourceLocations("classpath:/static/frame/");
     }
 
 }

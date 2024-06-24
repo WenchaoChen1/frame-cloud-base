@@ -40,12 +40,12 @@ public enum GrantType implements BaseUiEnum<String> {
         for (GrantType grantType : GrantType.values()) {
             INDEX_MAP.put(grantType.ordinal(), grantType);
             JSON_STRUCTURE.add(grantType.ordinal(),
-                ImmutableMap.<String, Object>builder()
-                    .put("value", grantType.getValue())
-                    .put("key", grantType.name())
-                    .put("text", grantType.getDescription())
-                    .put("index", grantType.ordinal())
-                    .build());
+                    ImmutableMap.<String, Object>builder()
+                            .put("value", grantType.getValue())
+                            .put("key", grantType.name())
+                            .put("text", grantType.getDescription())
+                            .put("index", grantType.ordinal())
+                            .build());
         }
     }
 

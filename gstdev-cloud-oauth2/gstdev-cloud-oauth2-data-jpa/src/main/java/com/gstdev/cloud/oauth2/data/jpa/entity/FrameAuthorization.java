@@ -17,9 +17,9 @@ import java.time.Instant;
  */
 @Entity
 @Table(name = "oauth2_authorization", indexes = {
-    @Index(name = "oauth2_authorization_id_idx", columnList = "id"),
-    @Index(name = "oauth2_authorization_rci_idx", columnList = "registered_client_id"),
-    @Index(name = "oauth2_authorization_pn_idx", columnList = "principal_name")}
+        @Index(name = "oauth2_authorization_id_idx", columnList = "id"),
+        @Index(name = "oauth2_authorization_rci_idx", columnList = "registered_client_id"),
+        @Index(name = "oauth2_authorization_pn_idx", columnList = "principal_name")}
 )
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_AUTHORIZATION)
@@ -404,11 +404,11 @@ public class FrameAuthorization extends AbstractEntity {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("id", id)
-            .add("registeredClientId", registeredClientId)
-            .add("principalName", principalName)
-            .add("attributes", attributes)
-            .add("state", state)
-            .toString();
+                .add("id", id)
+                .add("registeredClientId", registeredClientId)
+                .add("principalName", principalName)
+                .add("attributes", attributes)
+                .add("state", state)
+                .toString();
     }
 }

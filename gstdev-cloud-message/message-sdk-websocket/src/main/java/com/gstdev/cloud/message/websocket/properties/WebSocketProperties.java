@@ -1,7 +1,7 @@
 package com.gstdev.cloud.message.websocket.properties;
 
-import com.gstdev.cloud.base.definition.constants.SymbolConstants;
 import com.gstdev.cloud.base.core.utils.http.HeaderUtils;
+import com.gstdev.cloud.base.definition.constants.SymbolConstants;
 import com.gstdev.cloud.message.core.constants.MessageConstants;
 import com.gstdev.cloud.message.websocket.enums.InstanceMode;
 import org.apache.commons.collections4.CollectionUtils;

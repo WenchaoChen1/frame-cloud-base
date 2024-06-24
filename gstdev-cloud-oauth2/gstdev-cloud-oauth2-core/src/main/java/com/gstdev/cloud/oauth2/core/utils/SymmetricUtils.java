@@ -45,8 +45,8 @@ public class SymmetricUtils {
         log.trace("[GstDev Cloud] |- Generate Symmetric Key is : [{}]", realSecretKey);
 
         return symmetricKey +
-            SymbolConstants.FORWARD_SLASH +
-            realSecretKey;
+                SymbolConstants.FORWARD_SLASH +
+                realSecretKey;
     }
 
     public static byte[] getDecryptedSymmetricKey(String key) {

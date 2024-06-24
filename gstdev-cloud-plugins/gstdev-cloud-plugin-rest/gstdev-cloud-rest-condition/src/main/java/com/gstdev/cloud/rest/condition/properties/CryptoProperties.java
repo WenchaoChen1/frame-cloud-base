@@ -1,8 +1,8 @@
 package com.gstdev.cloud.rest.condition.properties;
 
+import com.google.common.base.MoreObjects;
 import com.gstdev.cloud.rest.condition.constants.RestConstants;
 import com.gstdev.cloud.rest.core.enums.CryptoStrategy;
-import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -30,7 +30,7 @@ public class CryptoProperties {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("strategy", cryptoStrategy)
-            .toString();
+                .add("strategy", cryptoStrategy)
+                .toString();
     }
 }

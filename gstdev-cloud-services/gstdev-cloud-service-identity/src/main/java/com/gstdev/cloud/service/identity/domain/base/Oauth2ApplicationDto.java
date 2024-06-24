@@ -15,9 +15,9 @@ import com.gstdev.cloud.oauth2.core.enums.TokenFormat;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.Instant;
-import java.io.Serializable;
 
 
 @Getter

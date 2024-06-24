@@ -40,10 +40,11 @@ public class Jackson2Utils {
             OBJECT_MAPPER = new ObjectMapper();
         }
     }
+
     public static ObjectMapper getObjectMapper() {
-        if(ObjectUtils.isNotEmpty(OBJECT_MAPPER)){
+        if (ObjectUtils.isNotEmpty(OBJECT_MAPPER)) {
             return OBJECT_MAPPER;
-        }else {
+        } else {
             OBJECT_MAPPER = new ObjectMapper();
         }
         return OBJECT_MAPPER;

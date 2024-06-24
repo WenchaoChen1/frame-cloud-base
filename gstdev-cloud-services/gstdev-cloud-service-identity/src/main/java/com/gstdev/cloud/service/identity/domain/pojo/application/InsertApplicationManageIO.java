@@ -1,10 +1,6 @@
 package com.gstdev.cloud.service.identity.domain.pojo.application;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.gstdev.cloud.base.core.json.jackson2.deserializer.CommaDelimitedStringToSetSerializer;
-import com.gstdev.cloud.base.core.json.jackson2.deserializer.SetToCommaDelimitedStringDeserializer;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.oauth2.core.enums.AllJwsAlgorithm;
 import com.gstdev.cloud.oauth2.core.enums.ApplicationType;

@@ -5,7 +5,6 @@ import com.gstdev.cloud.captcha.core.definition.domain.Metadata;
 import com.gstdev.cloud.captcha.core.definition.enums.CaptchaCategory;
 import org.dromara.hutool.swing.captcha.CaptchaUtil;
 import org.dromara.hutool.swing.captcha.LineCaptcha;
-import org.springframework.stereotype.Component;
 
 /**
  * <p>Description: Hutool Line Captcha </p>

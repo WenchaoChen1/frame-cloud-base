@@ -82,10 +82,10 @@ public class OAuth2AuthenticationProperties {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("signInEndpointLimited", signInEndpointLimited)
-            .add("signInFailureLimited", signInFailureLimited)
-            .add("signInKickOutLimited", signInKickOutLimited)
-            .toString();
+                .add("signInEndpointLimited", signInEndpointLimited)
+                .add("signInFailureLimited", signInFailureLimited)
+                .add("signInKickOutLimited", signInKickOutLimited)
+                .toString();
     }
 
     public static class SignInFailureLimited {
@@ -144,11 +144,11 @@ public class OAuth2AuthenticationProperties {
         @Override
         public String toString() {
             return MoreObjects.toStringHelper(this)
-                .add("enabled", enabled)
-                .add("maxTimes", maxTimes)
-                .add("autoUnlock", autoUnlock)
-                .add("expire", expire)
-                .toString();
+                    .add("enabled", enabled)
+                    .add("maxTimes", maxTimes)
+                    .add("autoUnlock", autoUnlock)
+                    .add("expire", expire)
+                    .toString();
         }
     }
 
@@ -182,9 +182,9 @@ public class OAuth2AuthenticationProperties {
         @Override
         public String toString() {
             return MoreObjects.toStringHelper(this)
-                .add("enabled", enabled)
-                .add("maximum", maximum)
-                .toString();
+                    .add("enabled", enabled)
+                    .add("maximum", maximum)
+                    .toString();
         }
     }
 
@@ -205,8 +205,8 @@ public class OAuth2AuthenticationProperties {
         @Override
         public String toString() {
             return MoreObjects.toStringHelper(this)
-                .add("enabled", enabled)
-                .toString();
+                    .add("enabled", enabled)
+                    .toString();
         }
     }
 
@@ -323,16 +323,16 @@ public class OAuth2AuthenticationProperties {
         @Override
         public String toString() {
             return MoreObjects.toStringHelper(this)
-                .add("usernameParameter", usernameParameter)
-                .add("passwordParameter", passwordParameter)
-                .add("rememberMeParameter", rememberMeParameter)
-                .add("captchaParameter", captchaParameter)
-                .add("loginPageUrl", loginPageUrl)
-                .add("failureForwardUrl", failureForwardUrl)
-                .add("successForwardUrl", successForwardUrl)
-                .add("closeCaptcha", closeCaptcha)
-                .add("category", category)
-                .toString();
+                    .add("usernameParameter", usernameParameter)
+                    .add("passwordParameter", passwordParameter)
+                    .add("rememberMeParameter", rememberMeParameter)
+                    .add("captchaParameter", captchaParameter)
+                    .add("loginPageUrl", loginPageUrl)
+                    .add("failureForwardUrl", failureForwardUrl)
+                    .add("successForwardUrl", successForwardUrl)
+                    .add("closeCaptcha", closeCaptcha)
+                    .add("category", category)
+                    .toString();
         }
     }
 

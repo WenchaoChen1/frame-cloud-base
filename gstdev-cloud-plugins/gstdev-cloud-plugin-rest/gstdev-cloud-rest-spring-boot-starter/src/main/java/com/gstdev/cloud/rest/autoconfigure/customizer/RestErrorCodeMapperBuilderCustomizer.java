@@ -16,10 +16,10 @@ public class RestErrorCodeMapperBuilderCustomizer implements ErrorCodeMapperBuil
     @Override
     public void customize(ErrorCodeMapperBuilder builder) {
         builder.notAcceptable(
-            RestErrorCodes.SESSION_INVALID,
-            RestErrorCodes.REPEAT_SUBMISSION,
-            RestErrorCodes.FREQUENT_REQUESTS,
-            RestErrorCodes.FEIGN_DECODER_IO_EXCEPTION
+                RestErrorCodes.SESSION_INVALID,
+                RestErrorCodes.REPEAT_SUBMISSION,
+                RestErrorCodes.FREQUENT_REQUESTS,
+                RestErrorCodes.FEIGN_DECODER_IO_EXCEPTION
         );
     }
 

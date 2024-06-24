@@ -1,8 +1,8 @@
 package com.gstdev.cloud.service.identity.domain.entity;
 
+import com.google.common.base.MoreObjects;
 import com.gstdev.cloud.data.core.entity.BaseSysEntity;
 import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
-import com.google.common.base.MoreObjects;
 import jakarta.persistence.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -22,8 +22,8 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "oauth2_scope", uniqueConstraints = {@UniqueConstraint(columnNames = {"scope_code"})}, indexes = {
-    @Index(name = "oauth2_scope_id_idx", columnList = "scope_id"),
-    @Index(name = "oauth2_scope_code_idx", columnList = "scope_code")})
+        @Index(name = "oauth2_scope_id_idx", columnList = "scope_id"),
+        @Index(name = "oauth2_scope_code_idx", columnList = "scope_code")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_SCOPE)
 public class OAuth2Scope extends BaseSysEntity {
@@ -43,10 +43,10 @@ public class OAuth2Scope extends BaseSysEntity {
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REMOVE, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "oauth2_scope_permission",
-        joinColumns = {@JoinColumn(name = "scope_id")},
-        inverseJoinColumns = {@JoinColumn(name = "permission_id")},
-        uniqueConstraints = {@UniqueConstraint(columnNames = {"scope_id", "permission_id"})},
-        indexes = {@Index(name = "oauth2_scope_permission_sid_idx", columnList = "scope_id"), @Index(name = "oauth2_scope_permission_pid_idx", columnList = "permission_id")})
+            joinColumns = {@JoinColumn(name = "scope_id")},
+            inverseJoinColumns = {@JoinColumn(name = "permission_id")},
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"scope_id", "permission_id"})},
+            indexes = {@Index(name = "oauth2_scope_permission_sid_idx", columnList = "scope_id"), @Index(name = "oauth2_scope_permission_pid_idx", columnList = "permission_id")})
     private Set<OAuth2Permission> permissions = new HashSet<>();
 
     public String getScopeId() {
@@ -94,23 +94,23 @@ public class OAuth2Scope extends BaseSysEntity {
         OAuth2Scope that = (OAuth2Scope) o;
 
         return new EqualsBuilder()
-            .append(getScopeId(), that.getScopeId())
-            .isEquals();
+                .append(getScopeId(), that.getScopeId())
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-            .append(getScopeId())
-            .toHashCode();
+                .append(getScopeId())
+                .toHashCode();
     }
 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("scopeId", scopeId)
-            .add("scopeCode", scopeCode)
-            .add("scopeName", scopeName)
-            .toString();
+                .add("scopeId", scopeId)
+                .add("scopeCode", scopeCode)
+                .add("scopeName", scopeName)
+                .toString();
     }
 }

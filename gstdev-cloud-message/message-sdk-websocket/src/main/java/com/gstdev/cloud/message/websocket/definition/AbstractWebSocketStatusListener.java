@@ -1,9 +1,9 @@
 package com.gstdev.cloud.message.websocket.definition;
 
+import com.gstdev.cloud.cache.redis.utils.RedisBitMapUtils;
 import com.gstdev.cloud.message.core.constants.MessageConstants;
 import com.gstdev.cloud.message.websocket.domain.WebSocketPrincipal;
 import com.gstdev.cloud.message.websocket.utils.WebSocketUtils;
-import com.gstdev.cloud.cache.redis.utils.RedisBitMapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

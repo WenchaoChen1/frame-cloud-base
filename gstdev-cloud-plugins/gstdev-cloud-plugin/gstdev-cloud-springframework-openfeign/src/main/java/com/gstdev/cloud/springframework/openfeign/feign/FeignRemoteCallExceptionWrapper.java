@@ -5,7 +5,6 @@ import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 
 /**
  * <p>Description: Feign Fallback 错误统一封装器 </p>
- *
  */
 public class FeignRemoteCallExceptionWrapper extends PlatformRuntimeException {
 

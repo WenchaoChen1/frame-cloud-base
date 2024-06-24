@@ -25,8 +25,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/message/websocket")
 @Tags({
-    @Tag(name = "消息接口"),
-    @Tag(name = "WebSocket消息接口")
+        @Tag(name = "消息接口"),
+        @Tag(name = "WebSocket消息接口")
 })
 public class WebSocketMessageController {
 
@@ -37,10 +37,10 @@ public class WebSocketMessageController {
     }
 
     @Operation(summary = "后端发送通知", description = "后端发送 WebSocket 广播通知接口",
-        requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
-        responses = {@ApiResponse(description = "是否成功", content = @Content(mediaType = "application/json"))})
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
+            responses = {@ApiResponse(description = "是否成功", content = @Content(mediaType = "application/json"))})
     @Parameters({
-        @Parameter(name = "message", required = true, description = "消息实体")
+            @Parameter(name = "message", required = true, description = "消息实体")
     })
     @PostMapping("/send/notice")
     public Result<String> sendNotice(@RequestBody String message) {

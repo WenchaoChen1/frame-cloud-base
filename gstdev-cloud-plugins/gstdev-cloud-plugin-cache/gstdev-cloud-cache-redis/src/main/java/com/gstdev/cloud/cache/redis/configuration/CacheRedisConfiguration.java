@@ -149,7 +149,7 @@ public class CacheRedisConfiguration {
 
     @Configuration(proxyBeanMethods = false)
     @ComponentScan({
-        "com.gstdev.cloud.cache.redis.utils"
+            "com.gstdev.cloud.cache.redis.utils"
     })
     static class RedisUtilsConfiguration {
 

@@ -49,22 +49,22 @@ public class MinioStorageService extends AbstractFileService implements StorageS
                 client.makeBucket(bucketName);
 
                 String bucketPolicy = "{\n" +
-                    "  \"Statement\": [\n" +
-                    "    {\n" +
-                    "      \"Action\": [\"s3:GetBucketLocation\", \"s3:ListBucket\"],\n" +
-                    "      \"Effect\": \"Allow\",\n" +
-                    "      \"Principal\": \"*\",\n" +
-                    "      \"Resource\": \"arn:aws:s3:::" + bucketName +
-                    "    },\n" +
-                    "    {\n" +
-                    "      \"Action\": \"s3:GetObject\",\n" +
-                    "      \"Effect\": \"Allow\",\n" +
-                    "      \"Principal\": \"*\",\n" +
-                    "      \"Resource\": \"arn:aws:s3:::" + bucketName + "/*\"\n" +
-                    "    }\n" +
-                    "  ],\n" +
-                    "  \"Version\": \"2012-10-17\"\n" +
-                    "}\n";
+                        "  \"Statement\": [\n" +
+                        "    {\n" +
+                        "      \"Action\": [\"s3:GetBucketLocation\", \"s3:ListBucket\"],\n" +
+                        "      \"Effect\": \"Allow\",\n" +
+                        "      \"Principal\": \"*\",\n" +
+                        "      \"Resource\": \"arn:aws:s3:::" + bucketName +
+                        "    },\n" +
+                        "    {\n" +
+                        "      \"Action\": \"s3:GetObject\",\n" +
+                        "      \"Effect\": \"Allow\",\n" +
+                        "      \"Principal\": \"*\",\n" +
+                        "      \"Resource\": \"arn:aws:s3:::" + bucketName + "/*\"\n" +
+                        "    }\n" +
+                        "  ],\n" +
+                        "  \"Version\": \"2012-10-17\"\n" +
+                        "}\n";
                 client.setBucketPolicy(bucketName, bucketPolicy);
             }
         } catch (Exception ex) {

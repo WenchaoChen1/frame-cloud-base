@@ -1,7 +1,7 @@
 package com.gstdev.cloud.cache.core.properties;
 
-import com.gstdev.cloud.cache.core.constants.CacheConstants;
 import com.google.common.base.MoreObjects;
+import com.gstdev.cloud.cache.core.constants.CacheConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.HashMap;
@@ -61,8 +61,8 @@ public class CacheProperties extends CacheSetting {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("allowNullValues", allowNullValues)
-            .add("separator", separator)
-            .toString();
+                .add("allowNullValues", allowNullValues)
+                .add("separator", separator)
+                .toString();
     }
 }

@@ -187,21 +187,21 @@ public class AccessPrincipal {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("code", code)
-            .add("appId", appId)
-            .add("encryptedData", encryptedData)
-            .add("iv", iv)
-            .add("openId", openId)
-            .add("sessionKey", sessionKey)
-            .add("unionId", unionId)
-            .add("rawData", rawData)
-            .add("signature", signature)
-            .add("auth_code", auth_code)
-            .add("state", state)
-            .add("authorization_code", authorization_code)
-            .add("oauth_token", oauth_token)
-            .add("oauth_verifier", oauth_verifier)
-            .add("mobile", mobile)
-            .toString();
+                .add("code", code)
+                .add("appId", appId)
+                .add("encryptedData", encryptedData)
+                .add("iv", iv)
+                .add("openId", openId)
+                .add("sessionKey", sessionKey)
+                .add("unionId", unionId)
+                .add("rawData", rawData)
+                .add("signature", signature)
+                .add("auth_code", auth_code)
+                .add("state", state)
+                .add("authorization_code", authorization_code)
+                .add("oauth_token", oauth_token)
+                .add("oauth_verifier", oauth_verifier)
+                .add("mobile", mobile)
+                .toString();
     }
 }

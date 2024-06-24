@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.identity.domain.dto;
 
-import com.gstdev.cloud.rest.core.definition.dto.BaseDto;
 import com.google.common.base.MoreObjects;
+import com.gstdev.cloud.rest.core.definition.dto.BaseDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 
@@ -53,9 +53,9 @@ public class OAuth2PermissionDto extends BaseDto {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("permissionId", permissionId)
-            .add("permissionCode", permissionCode)
-            .add("permissionName", permissionName)
-            .toString();
+                .add("permissionId", permissionId)
+                .add("permissionCode", permissionCode)
+                .add("permissionName", permissionName)
+                .toString();
     }
 }

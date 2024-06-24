@@ -171,12 +171,12 @@ public class AwsStorageService extends AbstractFileService implements StorageSer
     private AmazonS3 getClient() {
         if (ObjectUtils.isEmpty(accessKey) && ObjectUtils.isEmpty(secretKey)) {
             return AmazonS3ClientBuilder.standard()
-                .withRegion(Regions.US_EAST_1)
-                .build();
+                    .withRegion(Regions.US_EAST_1)
+                    .build();
         }
         return AmazonS3ClientBuilder.standard()
-            .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKey, secretKey)))
-            .withRegion(Regions.US_EAST_1)
-            .build();
+                .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKey, secretKey)))
+                .withRegion(Regions.US_EAST_1)
+                .build();
     }
 }

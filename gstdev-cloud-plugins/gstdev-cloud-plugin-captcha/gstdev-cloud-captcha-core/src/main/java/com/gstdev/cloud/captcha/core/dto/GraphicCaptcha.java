@@ -47,7 +47,7 @@ public class GraphicCaptcha extends Captcha {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("graphicImageBase64", graphicImageBase64)
-            .toString();
+                .add("graphicImageBase64", graphicImageBase64)
+                .toString();
     }
 }

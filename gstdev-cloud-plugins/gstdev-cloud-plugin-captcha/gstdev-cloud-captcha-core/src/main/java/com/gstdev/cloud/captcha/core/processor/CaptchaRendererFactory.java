@@ -8,7 +8,6 @@ import com.gstdev.cloud.captcha.core.exception.CaptchaCategoryIsIncorrectExcepti
 import com.gstdev.cloud.captcha.core.exception.CaptchaHandlerNotExistException;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

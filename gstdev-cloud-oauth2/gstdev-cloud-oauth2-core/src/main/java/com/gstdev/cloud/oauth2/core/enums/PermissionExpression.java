@@ -34,12 +34,12 @@ public enum PermissionExpression implements BaseUiEnum<String> {
         for (PermissionExpression permissionExpression : PermissionExpression.values()) {
             INDEX_MAP.put(permissionExpression.getValue(), permissionExpression);
             JSON_STRUCTURE.add(permissionExpression.ordinal(),
-                ImmutableMap.<String, Object>builder()
-                    .put("value", permissionExpression.getValue())
-                    .put("key", permissionExpression.name())
-                    .put("text", permissionExpression.getDescription())
-                    .put("index", permissionExpression.ordinal())
-                    .build());
+                    ImmutableMap.<String, Object>builder()
+                            .put("value", permissionExpression.getValue())
+                            .put("key", permissionExpression.name())
+                            .put("text", permissionExpression.getDescription())
+                            .put("index", permissionExpression.ordinal())
+                            .build());
         }
     }
 

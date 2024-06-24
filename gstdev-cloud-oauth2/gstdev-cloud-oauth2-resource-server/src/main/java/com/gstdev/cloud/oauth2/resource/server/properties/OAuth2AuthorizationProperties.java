@@ -140,12 +140,12 @@ public class OAuth2AuthorizationProperties {
         @Override
         public String toString() {
             return "Jwk{" +
-                "certificate=" + certificate +
-                ", jksKeyStore='" + jksKeyStore + '\'' +
-                ", jksKeyPassword='" + jksKeyPassword + '\'' +
-                ", jksStorePassword='" + jksStorePassword + '\'' +
-                ", jksKeyAlias='" + jksKeyAlias + '\'' +
-                '}';
+                    "certificate=" + certificate +
+                    ", jksKeyStore='" + jksKeyStore + '\'' +
+                    ", jksKeyPassword='" + jksKeyPassword + '\'' +
+                    ", jksStorePassword='" + jksStorePassword + '\'' +
+                    ", jksKeyAlias='" + jksKeyAlias + '\'' +
+                    '}';
         }
 
         private enum Strategy {

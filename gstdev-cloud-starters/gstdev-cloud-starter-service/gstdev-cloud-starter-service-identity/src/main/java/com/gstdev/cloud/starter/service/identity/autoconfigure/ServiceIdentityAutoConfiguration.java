@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Import;
 
 @AutoConfiguration
 @Import({
-    OAuth2AuthorizationServerAutoConfiguration.class
+        OAuth2AuthorizationServerAutoConfiguration.class
 })
 public class ServiceIdentityAutoConfiguration {
     private static final Logger log = LoggerFactory.getLogger(ServiceIdentityAutoConfiguration.class);

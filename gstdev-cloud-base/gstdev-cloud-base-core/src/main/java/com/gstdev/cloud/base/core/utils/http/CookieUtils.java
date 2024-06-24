@@ -34,8 +34,8 @@ public class CookieUtils {
     private static Map<String, String> rawCookieToMap(String cookie) {
         if (StringUtils.isNotBlank(cookie)) {
             return Stream.of(cookie.split(SymbolConstants.SEMICOLON_AND_SPACE))
-                .map(pair -> pair.split(SymbolConstants.EQUAL))
-                .collect(Collectors.toMap(kv -> kv[0], kv -> kv[1]));
+                    .map(pair -> pair.split(SymbolConstants.EQUAL))
+                    .collect(Collectors.toMap(kv -> kv[0], kv -> kv[1]));
         } else {
             return Collections.emptyMap();
         }

@@ -59,18 +59,18 @@ public class RegisteredClientDeserializer extends JsonDeserializer<RegisteredCli
         }, mapper);
 
         return RegisteredClient.withId(id)
-            .clientId(clientId)
-            .clientIdIssuedAt(clientIdIssuedAt)
-            .clientSecret(clientSecret)
-            .clientSecretExpiresAt(clientSecretExpiresAt)
-            .clientName(clientName)
-            .clientAuthenticationMethods(methods -> methods.addAll(clientAuthenticationMethods))
-            .authorizationGrantTypes(types -> types.addAll(authorizationGrantTypes))
-            .redirectUris(uris -> uris.addAll(redirectUris))
-            .postLogoutRedirectUris(uris -> uris.addAll(postLogoutRedirectUris))
-            .scopes(s -> s.addAll(scopes))
-            .clientSettings(clientSettings)
-            .tokenSettings(tokenSettings)
-            .build();
+                .clientId(clientId)
+                .clientIdIssuedAt(clientIdIssuedAt)
+                .clientSecret(clientSecret)
+                .clientSecretExpiresAt(clientSecretExpiresAt)
+                .clientName(clientName)
+                .clientAuthenticationMethods(methods -> methods.addAll(clientAuthenticationMethods))
+                .authorizationGrantTypes(types -> types.addAll(authorizationGrantTypes))
+                .redirectUris(uris -> uris.addAll(redirectUris))
+                .postLogoutRedirectUris(uris -> uris.addAll(postLogoutRedirectUris))
+                .scopes(s -> s.addAll(scopes))
+                .clientSettings(clientSettings)
+                .tokenSettings(tokenSettings)
+                .build();
     }
 }

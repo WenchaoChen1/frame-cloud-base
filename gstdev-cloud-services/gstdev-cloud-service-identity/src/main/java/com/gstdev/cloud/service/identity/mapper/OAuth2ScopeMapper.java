@@ -10,11 +10,11 @@
 package com.gstdev.cloud.service.identity.mapper;
 
 
+import com.gstdev.cloud.service.identity.domain.entity.OAuth2Scope;
+import com.gstdev.cloud.service.identity.domain.pojo.scope.InsertScopeManageIO;
 import com.gstdev.cloud.service.identity.domain.pojo.scope.ScopeManageDetailVO;
 import com.gstdev.cloud.service.identity.domain.pojo.scope.ScopeManagePageVO;
-import com.gstdev.cloud.service.identity.domain.pojo.scope.InsertScopeManageIO;
 import com.gstdev.cloud.service.identity.domain.pojo.scope.UpdateScopeManageIO;
-import com.gstdev.cloud.service.identity.domain.entity.OAuth2Scope;
 import org.mapstruct.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -23,8 +23,8 @@ import java.util.List;
 
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
-    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-    nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+        nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface OAuth2ScopeMapper {
 
     List<ScopeManagePageVO> toScopeManagePageVO(List<OAuth2Scope> oAuth2Scope);

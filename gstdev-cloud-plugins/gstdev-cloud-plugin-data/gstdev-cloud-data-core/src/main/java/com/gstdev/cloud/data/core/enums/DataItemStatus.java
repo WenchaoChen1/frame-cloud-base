@@ -2,7 +2,6 @@ package com.gstdev.cloud.data.core.enums;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.collect.ImmutableMap;
 import com.gstdev.cloud.base.definition.enums.BaseUiEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -44,11 +43,11 @@ public enum DataItemStatus implements BaseUiEnum<Integer> {
         for (DataItemStatus dataItemStatus : DataItemStatus.values()) {
             INDEX_MAP.put(dataItemStatus.getValue(), dataItemStatus);
             JSON_STRUCTURE.add(dataItemStatus.getValue(),
-                ImmutableMap.<String, Object>builder()
-                    .put("value", dataItemStatus.getValue())
-                    .put("key", dataItemStatus.name())
-                    .put("description", dataItemStatus.getDescription())
-                    .build());
+                    ImmutableMap.<String, Object>builder()
+                            .put("value", dataItemStatus.getValue())
+                            .put("key", dataItemStatus.name())
+                            .put("description", dataItemStatus.getDescription())
+                            .build());
         }
     }
 

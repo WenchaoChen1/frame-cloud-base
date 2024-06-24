@@ -116,12 +116,12 @@ public class SecretKey implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("identity", identity)
-            .add("symmetricKey", symmetricKey)
-            .add("publicKey", publicKey)
-            .add("privateKey", privateKey)
-            .add("state", state)
-            .add("timestamp", timestamp)
-            .toString();
+                .add("identity", identity)
+                .add("symmetricKey", symmetricKey)
+                .add("publicKey", publicKey)
+                .add("privateKey", privateKey)
+                .add("state", state)
+                .add("timestamp", timestamp)
+                .toString();
     }
 }

@@ -1,7 +1,7 @@
 package com.gstdev.cloud.cache.core.properties;
 
-import com.gstdev.cloud.cache.core.enums.CacheMethod;
 import com.google.common.base.MoreObjects;
+import com.gstdev.cloud.cache.core.enums.CacheMethod;
 
 import java.time.Duration;
 
@@ -124,14 +124,14 @@ public class CacheSetting {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("area", area)
-            .add("method", method)
-            .add("expire", expire)
-            .add("sync", sync)
-            .add("localExpire", localExpire)
-            .add("localLimit", localLimit)
-            .add("penetrationProtect", penetrationProtect)
-            .add("penetrationProtectTimeout", penetrationProtectTimeout)
-            .toString();
+                .add("area", area)
+                .add("method", method)
+                .add("expire", expire)
+                .add("sync", sync)
+                .add("localExpire", localExpire)
+                .add("localLimit", localLimit)
+                .add("penetrationProtect", penetrationProtect)
+                .add("penetrationProtectTimeout", penetrationProtectTimeout)
+                .toString();
     }
 }

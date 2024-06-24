@@ -50,7 +50,7 @@ public class FrameGrantedAuthority implements GrantedAuthority {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("authority", authority)
-            .toString();
+                .add("authority", authority)
+                .toString();
     }
 }

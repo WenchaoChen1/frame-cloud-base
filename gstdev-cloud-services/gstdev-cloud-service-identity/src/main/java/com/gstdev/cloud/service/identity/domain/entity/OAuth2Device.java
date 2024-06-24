@@ -1,8 +1,8 @@
 package com.gstdev.cloud.service.identity.domain.entity;
 
+import com.google.common.base.MoreObjects;
 import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
 import com.gstdev.cloud.service.identity.domain.definition.AbstractOAuth2RegisteredClient;
-import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -22,11 +22,11 @@ import java.util.Set;
 @Schema(title = "物联网设备")
 @Entity
 @Table(name = "oauth2_device",
-    uniqueConstraints = {@UniqueConstraint(columnNames = {"device_name"})},
-    indexes = {@Index(name = "oauth2_device_id_idx", columnList = "device_id"),
-        @Index(name = "oauth2_device_ipk_idx", columnList = "device_name"),
-        @Index(name = "oauth2_device_pid_idx", columnList = "product_id")
-    })
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"device_name"})},
+        indexes = {@Index(name = "oauth2_device_id_idx", columnList = "device_id"),
+                @Index(name = "oauth2_device_ipk_idx", columnList = "device_name"),
+                @Index(name = "oauth2_device_pid_idx", columnList = "product_id")
+        })
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_DEVICE)
 public class OAuth2Device extends AbstractOAuth2RegisteredClient {
@@ -54,10 +54,10 @@ public class OAuth2Device extends AbstractOAuth2RegisteredClient {
     @ManyToMany(fetch = FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "oauth2_device_scope",
-        joinColumns = {@JoinColumn(name = "device_id")},
-        inverseJoinColumns = {@JoinColumn(name = "scope_id")},
-        uniqueConstraints = {@UniqueConstraint(columnNames = {"device_id", "scope_id"})},
-        indexes = {@Index(name = "oauth2_device_scope_aid_idx", columnList = "device_id"), @Index(name = "oauth2_device_scope_sid_idx", columnList = "scope_id")})
+            joinColumns = {@JoinColumn(name = "device_id")},
+            inverseJoinColumns = {@JoinColumn(name = "scope_id")},
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"device_id", "scope_id"})},
+            indexes = {@Index(name = "oauth2_device_scope_aid_idx", columnList = "device_id"), @Index(name = "oauth2_device_scope_sid_idx", columnList = "scope_id")})
     private Set<OAuth2Scope> scopes = new HashSet<>();
 
     public String getDeviceId() {
@@ -109,10 +109,10 @@ public class OAuth2Device extends AbstractOAuth2RegisteredClient {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("deviceId", deviceId)
-            .add("deviceName", deviceName)
-            .add("productId", productId)
-            .add("activated", activated)
-            .toString();
+                .add("deviceId", deviceId)
+                .add("deviceName", deviceName)
+                .add("productId", productId)
+                .add("activated", activated)
+                .toString();
     }
 }

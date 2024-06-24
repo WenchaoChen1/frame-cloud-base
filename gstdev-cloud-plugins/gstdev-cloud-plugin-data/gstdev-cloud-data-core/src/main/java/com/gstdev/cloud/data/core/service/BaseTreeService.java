@@ -1,7 +1,8 @@
 package com.gstdev.cloud.data.core.service;
 
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.base.definition.domain.base.pojo.*;
+import com.gstdev.cloud.base.definition.domain.base.pojo.BaseDtoInterface;
+import com.gstdev.cloud.base.definition.domain.base.pojo.BaseTreeDtoInterface;
 import com.gstdev.cloud.data.core.entity.BaseTreeEntityINT;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -16,9 +17,9 @@ import java.util.List;
  * @param <FQC> xxxFindAllByQueryCriteria
  */
 public interface BaseTreeService<E extends BaseTreeEntityINT<ID>
-    , ID extends Serializable
-    , D extends BaseTreeDtoInterface<D, ID> & BaseDtoInterface<ID>
-    > extends BaseDtoServiceDefault<E, ID, D> {
+        , ID extends Serializable
+        , D extends BaseTreeDtoInterface<D, ID> & BaseDtoInterface<ID>
+        > extends BaseDtoServiceDefault<E, ID, D> {
 
     List<D> findItselfAndSubsetsToDto(ID id);
 

@@ -10,7 +10,6 @@
 package com.gstdev.cloud.plugin.storage.aliyun.config;
 
 import com.gstdev.cloud.plugin.storage.aliyun.service.AliyunStorageService;
-
 import com.gstdev.cloud.plugin.storage.core.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

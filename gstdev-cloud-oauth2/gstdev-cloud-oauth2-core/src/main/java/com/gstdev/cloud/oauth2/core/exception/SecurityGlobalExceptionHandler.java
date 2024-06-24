@@ -1,9 +1,9 @@
 package com.gstdev.cloud.oauth2.core.exception;
 
+import com.gstdev.cloud.base.core.exception.GlobalExceptionHandler;
 import com.gstdev.cloud.base.definition.constants.ErrorCodes;
 import com.gstdev.cloud.base.definition.domain.Feedback;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.base.core.exception.GlobalExceptionHandler;
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.oauth2.core.constants.OAuth2ErrorKeys;
 import jakarta.servlet.http.HttpServletRequest;

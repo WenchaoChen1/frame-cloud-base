@@ -8,10 +8,10 @@
 // ====================================================
 package com.gstdev.cloud.oauth2.core.definition.domain;
 
-import com.gstdev.cloud.oauth2.core.jackson2.FrameUserDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
+import com.gstdev.cloud.oauth2.core.jackson2.FrameUserDeserializer;
 import lombok.Setter;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.security.core.CredentialsContainer;
@@ -92,7 +92,7 @@ public class DefaultSecurityUser implements UserDetails, CredentialsContainer {
                                boolean credentialsNonExpired, boolean accountNonLocked,
                                Collection<? extends GrantedAuthority> authorities, Set<String> roles, String employeeId, String avatar) {
         Assert.isTrue(username != null && !"".equals(username) && password != null,
-            "Cannot pass null or empty values to constructor");
+                "Cannot pass null or empty values to constructor");
         this.userId = userId;
         this.username = username;
         this.password = password;
@@ -205,16 +205,16 @@ public class DefaultSecurityUser implements UserDetails, CredentialsContainer {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("userId", userId)
-            .add("password", "[PROTECTED]")
-            .add("username", username)
-            .add("accountNonExpired", accountNonExpired)
-            .add("accountNonLocked", accountNonLocked)
-            .add("credentialsNonExpired", credentialsNonExpired)
-            .add("enabled", enabled)
-            .add("employeeId", employeeId)
-            .add("avatar", avatar)
-            .toString();
+                .add("userId", userId)
+                .add("password", "[PROTECTED]")
+                .add("username", username)
+                .add("accountNonExpired", accountNonExpired)
+                .add("accountNonLocked", accountNonLocked)
+                .add("credentialsNonExpired", credentialsNonExpired)
+                .add("enabled", enabled)
+                .add("employeeId", employeeId)
+                .add("avatar", avatar)
+                .toString();
     }
 
     private static class AuthorityComparator implements Comparator<GrantedAuthority>, Serializable {

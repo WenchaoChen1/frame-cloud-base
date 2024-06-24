@@ -27,11 +27,11 @@ public enum WebSocketChannel {
         for (WebSocketChannel webSocketChannel : WebSocketChannel.values()) {
             INDEX_MAP.put(webSocketChannel.name(), webSocketChannel);
             JSON_STRUCT.add(webSocketChannel.ordinal(),
-                ImmutableMap.<String, Object>builder()
-                    .put("value", webSocketChannel.ordinal())
-                    .put("key", webSocketChannel.name())
-                    .put("text", webSocketChannel.getDescription())
-                    .build());
+                    ImmutableMap.<String, Object>builder()
+                            .put("value", webSocketChannel.ordinal())
+                            .put("key", webSocketChannel.name())
+                            .put("text", webSocketChannel.getDescription())
+                            .build());
         }
     }
 

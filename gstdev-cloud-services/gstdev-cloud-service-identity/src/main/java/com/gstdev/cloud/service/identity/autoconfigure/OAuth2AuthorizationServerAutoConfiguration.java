@@ -25,7 +25,7 @@ import org.springframework.context.annotation.Import;
 //})
 @AutoConfiguration
 @Import({
-    OAuth2ManagementConfiguration.class
+        OAuth2ManagementConfiguration.class
 })
 public class OAuth2AuthorizationServerAutoConfiguration {
 

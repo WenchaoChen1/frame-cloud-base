@@ -53,7 +53,7 @@ public abstract class AbstractAuthenticationProvider implements AuthenticationPr
         OAuth2Token generatedAccessToken = tokenGenerator.generate(tokenContext);
         if (generatedAccessToken == null) {
             OAuth2Error error = new OAuth2Error(OAuth2ErrorCodes.SERVER_ERROR,
-                "The token generator failed to generate the access token.", errorUri);
+                    "The token generator failed to generate the access token.", errorUri);
             throw new OAuth2AuthenticationException(error);
         }
 
@@ -62,12 +62,12 @@ public abstract class AbstractAuthenticationProvider implements AuthenticationPr
         }
 
         OAuth2AccessToken accessToken = new OAuth2AccessToken(OAuth2AccessToken.TokenType.BEARER,
-            generatedAccessToken.getTokenValue(), generatedAccessToken.getIssuedAt(),
-            generatedAccessToken.getExpiresAt(), tokenContext.getAuthorizedScopes());
+                generatedAccessToken.getTokenValue(), generatedAccessToken.getIssuedAt(),
+                generatedAccessToken.getExpiresAt(), tokenContext.getAuthorizedScopes());
 
         if (generatedAccessToken instanceof ClaimAccessor) {
             authorizationBuilder.token(accessToken, (metadata) ->
-                metadata.put(OAuth2Authorization.Token.CLAIMS_METADATA_NAME, ((ClaimAccessor) generatedAccessToken).getClaims()));
+                    metadata.put(OAuth2Authorization.Token.CLAIMS_METADATA_NAME, ((ClaimAccessor) generatedAccessToken).getClaims()));
         } else {
             authorizationBuilder.accessToken(accessToken);
         }
@@ -82,7 +82,7 @@ public abstract class AbstractAuthenticationProvider implements AuthenticationPr
             OAuth2Token generatedRefreshToken = tokenGenerator.generate(tokenContext);
             if (!(generatedRefreshToken instanceof OAuth2RefreshToken)) {
                 OAuth2Error error = new OAuth2Error(OAuth2ErrorCodes.SERVER_ERROR,
-                    "The token generator failed to generate the refresh token.", errorUri);
+                        "The token generator failed to generate the refresh token.", errorUri);
                 throw new OAuth2AuthenticationException(error);
             }
 
@@ -105,24 +105,24 @@ public abstract class AbstractAuthenticationProvider implements AuthenticationPr
                 try {
                     // Compute (and use) hash for Session ID
                     sessionInformation = new SessionInformation(sessionInformation.getPrincipal(),
-                        createHash(sessionInformation.getSessionId()), sessionInformation.getLastRequest());
+                            createHash(sessionInformation.getSessionId()), sessionInformation.getLastRequest());
                 } catch (NoSuchAlgorithmException ex) {
                     OAuth2Error error = new OAuth2Error(OAuth2ErrorCodes.SERVER_ERROR,
-                        "Failed to compute hash for Session ID.", errorUri);
+                            "Failed to compute hash for Session ID.", errorUri);
                     throw new OAuth2AuthenticationException(error);
                 }
                 tokenContextBuilder.put(SessionInformation.class, sessionInformation);
             }
 
             OAuth2TokenContext tokenContext = tokenContextBuilder
-                .tokenType(ID_TOKEN_TOKEN_TYPE)
-                .authorization(authorizationBuilder.build())    // ID token customizer may need access to the access token and/or refresh token
-                .build();
+                    .tokenType(ID_TOKEN_TOKEN_TYPE)
+                    .authorization(authorizationBuilder.build())    // ID token customizer may need access to the access token and/or refresh token
+                    .build();
 
             OAuth2Token generatedIdToken = tokenGenerator.generate(tokenContext);
             if (!(generatedIdToken instanceof Jwt)) {
                 OAuth2Error error = new OAuth2Error(OAuth2ErrorCodes.SERVER_ERROR,
-                    "The token generator failed to generate the ID token.", errorUri);
+                        "The token generator failed to generate the ID token.", errorUri);
                 throw new OAuth2AuthenticationException(error);
             }
 
@@ -131,9 +131,9 @@ public abstract class AbstractAuthenticationProvider implements AuthenticationPr
             }
 
             idToken = new OidcIdToken(generatedIdToken.getTokenValue(), generatedIdToken.getIssuedAt(),
-                generatedIdToken.getExpiresAt(), ((Jwt) generatedIdToken).getClaims());
+                    generatedIdToken.getExpiresAt(), ((Jwt) generatedIdToken).getClaims());
             authorizationBuilder.token(idToken, (metadata) ->
-                metadata.put(OAuth2Authorization.Token.CLAIMS_METADATA_NAME, idToken.getClaims()));
+                    metadata.put(OAuth2Authorization.Token.CLAIMS_METADATA_NAME, idToken.getClaims()));
         } else {
             idToken = null;
         }

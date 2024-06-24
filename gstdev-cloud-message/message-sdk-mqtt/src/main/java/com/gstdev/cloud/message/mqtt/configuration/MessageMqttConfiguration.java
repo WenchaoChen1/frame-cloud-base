@@ -47,10 +47,10 @@ import java.nio.charset.StandardCharsets;
 @ConditionalOnMqttEnabled
 @EnableConfigurationProperties(MqttProperties.class)
 @IntegrationComponentScan(basePackages = {
-    "com.gstdev.cloud.message.mqtt.gateway",
+        "com.gstdev.cloud.message.mqtt.gateway",
 })
 @ComponentScan(basePackages = {
-    "com.gstdev.cloud.message.mqtt.messaging",
+        "com.gstdev.cloud.message.mqtt.messaging",
 })
 public class MessageMqttConfiguration {
 
@@ -81,8 +81,8 @@ public class MessageMqttConfiguration {
         options.setServerURIs(ListUtils.toStringArray(mqttProperties.getServerUrls()));
         options.setAutomaticReconnect(mqttProperties.getAutomaticReconnect());
         options.setAutomaticReconnectDelay(
-            NumberUtils.longToInt(mqttProperties.getAutomaticReconnectMinDelay().getSeconds()),
-            NumberUtils.longToInt(mqttProperties.getAutomaticReconnectMaxDelay().getSeconds()));
+                NumberUtils.longToInt(mqttProperties.getAutomaticReconnectMinDelay().getSeconds()),
+                NumberUtils.longToInt(mqttProperties.getAutomaticReconnectMaxDelay().getSeconds()));
         Mqttv5ClientManager clientManager = new Mqttv5ClientManager(options, mqttProperties.getClientId());
         clientManager.setPersistence(new MqttDefaultFilePersistence());
 

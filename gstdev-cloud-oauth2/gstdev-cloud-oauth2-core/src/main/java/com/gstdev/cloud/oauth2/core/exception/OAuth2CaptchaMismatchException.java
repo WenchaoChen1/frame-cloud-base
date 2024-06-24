@@ -1,7 +1,7 @@
 package com.gstdev.cloud.oauth2.core.exception;
 
-import com.gstdev.cloud.captcha.core.constants.CaptchaErrorCodes;
 import com.gstdev.cloud.base.definition.domain.Feedback;
+import com.gstdev.cloud.captcha.core.constants.CaptchaErrorCodes;
 
 /**
  * <p>Description: Oauth2 使用的验证码不匹配错误 </p>

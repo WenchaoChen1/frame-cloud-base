@@ -11,9 +11,9 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface BaseDtoService<E extends Entity
-    , ID extends Serializable
-    , D
-    > extends BaseService<E, ID> {
+        , ID extends Serializable
+        , D
+        > extends BaseService<E, ID> {
     /**
      * 根据ID查询数据
      *
@@ -118,6 +118,7 @@ public interface BaseDtoService<E extends Entity
      * @return 分页数据
      */
     Page<D> findByPageToDto(Specification<E> specification, Pageable pageable);
+
     Page<D> findByPageToDto(Specification<E> specification, BasePage pageable);
 //    Page<D> findByPageToDto(Specification<D> specification, Pageable pageable);
 

@@ -41,7 +41,7 @@ public class OAuth2AuthorizationCodeAuthenticationProviderConsumer implements Co
         OAuth2AuthorizationService authorizationService = OAuth2ConfigurerUtils.getAuthorizationService(this.httpSecurity);
         OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator = OAuth2ConfigurerUtils.getTokenGenerator(this.httpSecurity);
         com.gstdev.cloud.oauth2.authorization.server.provider.OAuth2AuthorizationCodeAuthenticationProvider provider
-            = new com.gstdev.cloud.oauth2.authorization.server.provider.OAuth2AuthorizationCodeAuthenticationProvider(authorizationService, tokenGenerator);
+                = new com.gstdev.cloud.oauth2.authorization.server.provider.OAuth2AuthorizationCodeAuthenticationProvider(authorizationService, tokenGenerator);
 //    provider.setSessionRegistry(this.sessionRegistry);
         log.debug("[GstDev Cloud] |- Custom OAuth2AuthorizationCodeAuthenticationProvider is in effect!");
         authenticationProviders.add(provider);

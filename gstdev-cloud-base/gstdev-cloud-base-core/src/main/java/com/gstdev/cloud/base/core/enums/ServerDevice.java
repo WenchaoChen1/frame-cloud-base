@@ -34,12 +34,12 @@ public enum ServerDevice implements BaseUiEnum<Integer> {
         for (ServerDevice serverDevice : ServerDevice.values()) {
             INDEX_MAP.put(serverDevice.getValue(), serverDevice);
             JSON_STRUCTURE.add(serverDevice.getValue(),
-                ImmutableMap.<String, Object>builder()
-                    .put("value", serverDevice.getValue())
-                    .put("key", serverDevice.name())
-                    .put("text", serverDevice.getDescription())
-                    .put("index", serverDevice.getValue())
-                    .build());
+                    ImmutableMap.<String, Object>builder()
+                            .put("value", serverDevice.getValue())
+                            .put("key", serverDevice.name())
+                            .put("text", serverDevice.getDescription())
+                            .put("index", serverDevice.getValue())
+                            .build());
         }
     }
 

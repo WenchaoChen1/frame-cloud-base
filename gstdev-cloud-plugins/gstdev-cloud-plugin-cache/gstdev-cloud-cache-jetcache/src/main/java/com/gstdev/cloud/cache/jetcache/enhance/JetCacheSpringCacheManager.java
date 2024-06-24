@@ -1,7 +1,7 @@
 package com.gstdev.cloud.cache.jetcache.enhance;
 
-import com.gstdev.cloud.cache.core.properties.CacheSetting;
 import com.gstdev.cloud.base.definition.constants.SymbolConstants;
+import com.gstdev.cloud.cache.core.properties.CacheSetting;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,7 +71,7 @@ public class JetCacheSpringCacheManager implements CacheManager {
     public Cache getCache(String name) {
         String usedName = availableCacheName(name);
         return this.cacheMap.computeIfAbsent(usedName, cacheName ->
-            this.dynamic ? createJetCache(cacheName) : null);
+                this.dynamic ? createJetCache(cacheName) : null);
     }
 
     @Override

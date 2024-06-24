@@ -114,15 +114,15 @@ public class DialogueMessage extends BaseEntity {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("detailId", detailId)
-            .add("receiverId", receiverId)
-            .add("receiverName", receiverName)
-            .add("receiverAvatar", receiverAvatar)
-            .add("content", content)
-            .add("dialogueId", dialogueId)
-            .add("senderId", senderId)
-            .add("senderName", senderName)
-            .add("senderAvatar", senderAvatar)
-            .toString();
+                .add("detailId", detailId)
+                .add("receiverId", receiverId)
+                .add("receiverName", receiverName)
+                .add("receiverAvatar", receiverAvatar)
+                .add("content", content)
+                .add("dialogueId", dialogueId)
+                .add("senderId", senderId)
+                .add("senderName", senderName)
+                .add("senderAvatar", senderAvatar)
+                .toString();
     }
 }

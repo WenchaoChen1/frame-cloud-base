@@ -1,8 +1,8 @@
 package com.gstdev.cloud.service.identity.domain.converter;
 
+import com.gstdev.cloud.oauth2.core.enums.AllJwsAlgorithm;
 import com.gstdev.cloud.oauth2.core.enums.SignatureJwsAlgorithm;
 import com.gstdev.cloud.oauth2.core.enums.TokenFormat;
-import com.gstdev.cloud.oauth2.core.enums.AllJwsAlgorithm;
 import com.gstdev.cloud.service.identity.domain.entity.OAuth2Device;
 import com.gstdev.cloud.service.identity.domain.entity.OAuth2Scope;
 import com.gstdev.cloud.service.identity.service.OAuth2ScopeService;

@@ -1,8 +1,8 @@
 package com.gstdev.cloud.captcha.core.dto;
 
-import com.gstdev.cloud.captcha.core.definition.domain.Coordinate;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
+import com.gstdev.cloud.captcha.core.definition.domain.Coordinate;
 
 import java.util.List;
 
@@ -74,7 +74,7 @@ public class Verification extends Captcha {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("characters", characters)
-            .toString();
+                .add("characters", characters)
+                .toString();
     }
 }

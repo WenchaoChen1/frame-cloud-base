@@ -16,7 +16,6 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * <p>Description: Feign 错误信息解码器 </p>
- *
  */
 public class FeignErrorDecoder implements ErrorDecoder {
 

@@ -45,12 +45,12 @@ public class MultiTenantDataSourceFactory {
             return new HikariDataSource(hikariConfig);
         } else {
             return DataSourceBuilder.create()
-                .type(HikariDataSource.class)
-                .url(sysTenantDataSource.getUrl())
-                .driverClassName(sysTenantDataSource.getDriverClassName())
-                .username(sysTenantDataSource.getUsername())
-                .password(sysTenantDataSource.getPassword())
-                .build();
+                    .type(HikariDataSource.class)
+                    .url(sysTenantDataSource.getUrl())
+                    .driverClassName(sysTenantDataSource.getDriverClassName())
+                    .username(sysTenantDataSource.getUsername())
+                    .password(sysTenantDataSource.getPassword())
+                    .build();
         }
     }
 

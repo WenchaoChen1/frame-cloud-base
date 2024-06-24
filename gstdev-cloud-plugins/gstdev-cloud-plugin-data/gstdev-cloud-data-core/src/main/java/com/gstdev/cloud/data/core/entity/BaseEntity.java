@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.InstantSerializer;
 import com.gstdev.cloud.base.definition.domain.base.AbstractEntity;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.MappedSuperclass;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -42,7 +44,7 @@ public abstract class BaseEntity extends AbstractEntity {
 //    @Column(name = "z_created_user", length = 64, updatable = false)
     @Column(name = "z_created_user", length = 64)
     private String createdUser;
-//    @CreatedBy
+    //    @CreatedBy
     @JsonIgnore
     @Column(name = "z_created_account", length = 64)
     private String createdAccount;
@@ -56,7 +58,7 @@ public abstract class BaseEntity extends AbstractEntity {
     @JsonIgnore
     @Column(name = "z_updated_user", length = 64)
     private String updatedUser;
-//    @LastModifiedBy
+    //    @LastModifiedBy
     @JsonIgnore
     @Column(name = "z_updated_account", length = 64)
     private String updatedAccount;

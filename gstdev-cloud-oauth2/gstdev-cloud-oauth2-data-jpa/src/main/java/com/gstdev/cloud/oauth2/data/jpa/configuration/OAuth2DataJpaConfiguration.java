@@ -28,13 +28,13 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
  */
 @Configuration(proxyBeanMethods = false)
 @EntityScan(basePackages = {
-    "com.gstdev.cloud.oauth2.data.jpa.entity"
+        "com.gstdev.cloud.oauth2.data.jpa.entity"
 })
 @EnableJpaRepositories(basePackages = {
-    "com.gstdev.cloud.oauth2.data.jpa.repository",
+        "com.gstdev.cloud.oauth2.data.jpa.repository",
 })
 @ComponentScan(basePackages = {
-    "com.gstdev.cloud.oauth2.data.jpa.service",
+        "com.gstdev.cloud.oauth2.data.jpa.service",
 })
 public class OAuth2DataJpaConfiguration {
 

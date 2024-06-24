@@ -30,8 +30,8 @@ public class OAuth2FormLoginWebAuthenticationDetailSource implements Authenticat
     @Override
     public FormLoginWebAuthenticationDetails buildDetails(HttpServletRequest context) {
         return new FormLoginWebAuthenticationDetails(context
-            , authenticationProperties.getFormLogin().getCloseCaptcha()
-            , authenticationProperties.getFormLogin().getCaptchaParameter()
-            , authenticationProperties.getFormLogin().getCategory());
+                , authenticationProperties.getFormLogin().getCloseCaptcha()
+                , authenticationProperties.getFormLogin().getCaptchaParameter()
+                , authenticationProperties.getFormLogin().getCategory());
     }
 }

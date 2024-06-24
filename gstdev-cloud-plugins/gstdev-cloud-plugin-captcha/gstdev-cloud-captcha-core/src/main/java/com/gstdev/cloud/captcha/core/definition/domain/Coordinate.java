@@ -61,8 +61,8 @@ public class Coordinate implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("x", x)
-            .add("y", y)
-            .toString();
+                .add("x", x)
+                .add("y", y)
+                .toString();
     }
 }

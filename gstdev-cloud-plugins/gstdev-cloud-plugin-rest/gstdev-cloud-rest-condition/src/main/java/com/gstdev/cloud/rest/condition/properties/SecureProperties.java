@@ -1,7 +1,7 @@
 package com.gstdev.cloud.rest.condition.properties;
 
-import com.gstdev.cloud.rest.condition.constants.RestConstants;
 import com.google.common.base.MoreObjects;
+import com.gstdev.cloud.rest.condition.constants.RestConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.io.Serializable;
@@ -53,8 +53,8 @@ public class SecureProperties {
         @Override
         public String toString() {
             return MoreObjects.toStringHelper(this)
-                .add("expire", expire)
-                .toString();
+                    .add("expire", expire)
+                    .toString();
         }
     }
 
@@ -89,9 +89,9 @@ public class SecureProperties {
         @Override
         public String toString() {
             return MoreObjects.toStringHelper(this)
-                .add("maxTimes", maxTimes)
-                .add("expire", expire)
-                .toString();
+                    .add("maxTimes", maxTimes)
+                    .add("expire", expire)
+                    .toString();
         }
     }
 }

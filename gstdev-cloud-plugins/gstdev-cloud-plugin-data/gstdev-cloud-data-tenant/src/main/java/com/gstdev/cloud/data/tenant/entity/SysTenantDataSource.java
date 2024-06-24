@@ -1,8 +1,8 @@
 package com.gstdev.cloud.data.tenant.entity;
 
+import com.google.common.base.MoreObjects;
 import com.gstdev.cloud.data.core.constants.DataConstants;
 import com.gstdev.cloud.data.core.entity.BaseSysEntity;
-import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -17,8 +17,8 @@ import org.hibernate.annotations.UuidGenerator;
 @Schema(title = "多租户数据源管理")
 @Entity
 @Table(name = "sys_tenant_datasource",
-    uniqueConstraints = {@UniqueConstraint(columnNames = {"tenant_id"})},
-    indexes = {@Index(name = "sys_tenant_datasource_id_idx", columnList = "datasource_id")})
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"tenant_id"})},
+        indexes = {@Index(name = "sys_tenant_datasource_id_idx", columnList = "datasource_id")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = DataConstants.REGION_SYS_TENANT_DATASOURCE)
 public class SysTenantDataSource extends BaseSysEntity {
@@ -111,13 +111,13 @@ public class SysTenantDataSource extends BaseSysEntity {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("datasourceId", datasourceId)
-            .add("tenantId", tenantId)
-            .add("username", username)
-            .add("password", password)
-            .add("driverClassName", driverClassName)
-            .add("url", url)
-            .add("initialize", initialize)
-            .toString();
+                .add("datasourceId", datasourceId)
+                .add("tenantId", tenantId)
+                .add("username", username)
+                .add("password", password)
+                .add("driverClassName", driverClassName)
+                .add("url", url)
+                .add("initialize", initialize)
+                .toString();
     }
 }

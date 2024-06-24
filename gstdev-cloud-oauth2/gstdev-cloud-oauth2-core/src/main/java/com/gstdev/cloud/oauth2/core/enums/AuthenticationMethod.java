@@ -38,12 +38,12 @@ public enum AuthenticationMethod implements EnumValue<String>, EnumDescription {
         for (AuthenticationMethod authenticationMethod : AuthenticationMethod.values()) {
             INDEX_MAP.put(authenticationMethod.ordinal(), authenticationMethod);
             JSON_STRUCTURE.add(authenticationMethod.ordinal(),
-                ImmutableMap.<String, Object>builder()
-                    .put("value", authenticationMethod.getValue())
-                    .put("key", authenticationMethod.name())
-                    .put("text", authenticationMethod.getDescription())
-                    .put("index", authenticationMethod.ordinal())
-                    .build());
+                    ImmutableMap.<String, Object>builder()
+                            .put("value", authenticationMethod.getValue())
+                            .put("key", authenticationMethod.name())
+                            .put("text", authenticationMethod.getDescription())
+                            .put("index", authenticationMethod.ordinal())
+                            .build());
         }
     }
 

@@ -52,27 +52,27 @@ public class OAuth2AuthenticationProviderUtils {
 
         // 创建授权构建器
         OAuth2Authorization.Builder authorizationBuilder = OAuth2Authorization.from(authorization)
-            // 标记令牌为无效
-            .token(token,
-                (metadata) ->
-                    metadata.put(OAuth2Authorization.Token.INVALIDATED_METADATA_NAME, true));
+                // 标记令牌为无效
+                .token(token,
+                        (metadata) ->
+                                metadata.put(OAuth2Authorization.Token.INVALIDATED_METADATA_NAME, true));
 
         if (OAuth2RefreshToken.class.isAssignableFrom(token.getClass())) {
             // 如果是刷新令牌，则同时标记关联的访问令牌和授权码为无效
             authorizationBuilder.token(
-                authorization.getAccessToken().getToken(),
-                (metadata) ->
-                    metadata.put(OAuth2Authorization.Token.INVALIDATED_METADATA_NAME, true));
+                    authorization.getAccessToken().getToken(),
+                    (metadata) ->
+                            metadata.put(OAuth2Authorization.Token.INVALIDATED_METADATA_NAME, true));
             // 获取授权中的授权码令牌
             OAuth2Authorization.Token<OAuth2AuthorizationCode> authorizationCode =
-                authorization.getToken(OAuth2AuthorizationCode.class);
+                    authorization.getToken(OAuth2AuthorizationCode.class);
             // 如果授权码令牌存在且未被标记为无效
             if (authorizationCode != null && !authorizationCode.isInvalidated()) {
                 // 标记授权码令牌为无效，并将此操作添加到授权构建器中
                 authorizationBuilder.token(
-                    authorizationCode.getToken(),
-                    (metadata) ->
-                        metadata.put(OAuth2Authorization.Token.INVALIDATED_METADATA_NAME, true));
+                        authorizationCode.getToken(),
+                        (metadata) ->
+                                metadata.put(OAuth2Authorization.Token.INVALIDATED_METADATA_NAME, true));
             }
         }
         // @formatter:on

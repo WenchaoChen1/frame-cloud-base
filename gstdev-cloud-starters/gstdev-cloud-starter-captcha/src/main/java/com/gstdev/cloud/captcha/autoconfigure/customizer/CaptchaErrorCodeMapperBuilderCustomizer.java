@@ -1,9 +1,9 @@
 package com.gstdev.cloud.captcha.autoconfigure.customizer;
 
-import com.gstdev.cloud.captcha.core.constants.CaptchaErrorCodes;
 import com.gstdev.cloud.base.definition.constants.ErrorCodeMapperBuilderOrdered;
 import com.gstdev.cloud.base.definition.function.ErrorCodeMapperBuilderCustomizer;
 import com.gstdev.cloud.base.definition.support.ErrorCodeMapperBuilder;
+import com.gstdev.cloud.captcha.core.constants.CaptchaErrorCodes;
 import org.springframework.core.Ordered;
 
 /**
@@ -16,12 +16,12 @@ public class CaptchaErrorCodeMapperBuilderCustomizer implements ErrorCodeMapperB
     @Override
     public void customize(ErrorCodeMapperBuilder builder) {
         builder.notAcceptable(
-            CaptchaErrorCodes.CAPTCHA_CATEGORY_IS_INCORRECT,
-            CaptchaErrorCodes.CAPTCHA_HANDLER_NOT_EXIST,
-            CaptchaErrorCodes.CAPTCHA_HAS_EXPIRED,
-            CaptchaErrorCodes.CAPTCHA_IS_EMPTY,
-            CaptchaErrorCodes.CAPTCHA_MISMATCH,
-            CaptchaErrorCodes.CAPTCHA_PARAMETER_ILLEGAL
+                CaptchaErrorCodes.CAPTCHA_CATEGORY_IS_INCORRECT,
+                CaptchaErrorCodes.CAPTCHA_HANDLER_NOT_EXIST,
+                CaptchaErrorCodes.CAPTCHA_HAS_EXPIRED,
+                CaptchaErrorCodes.CAPTCHA_IS_EMPTY,
+                CaptchaErrorCodes.CAPTCHA_MISMATCH,
+                CaptchaErrorCodes.CAPTCHA_PARAMETER_ILLEGAL
         );
     }
 

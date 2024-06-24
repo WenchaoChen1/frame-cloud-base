@@ -6,7 +6,6 @@ import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointR
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
-import org.springframework.stereotype.Component;
 
 /**
  * @program: frame-cloud-base
@@ -28,10 +27,10 @@ public class OAuth2AuthorizeHttpRequestsConfigurerCustomer implements Customizer
     public void customize(AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry configurer) {
 
         configurer
-            .requestMatchers(securityMatcherConfigurer.getStaticRequestMatchers()).permitAll()
-            .requestMatchers(securityMatcherConfigurer.getPermitAllRequestMatchers()).permitAll()
-            .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
-            .anyRequest().access(securityAuthorizationManager);
+                .requestMatchers(securityMatcherConfigurer.getStaticRequestMatchers()).permitAll()
+                .requestMatchers(securityMatcherConfigurer.getPermitAllRequestMatchers()).permitAll()
+                .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
+                .anyRequest().access(securityAuthorizationManager);
 
     }
 }

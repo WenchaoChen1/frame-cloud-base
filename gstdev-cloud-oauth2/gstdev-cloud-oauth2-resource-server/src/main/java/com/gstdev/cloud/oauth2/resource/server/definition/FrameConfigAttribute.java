@@ -69,7 +69,7 @@ public class FrameConfigAttribute implements ConfigAttribute {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("attrib", attribute)
-            .toString();
+                .add("attrib", attribute)
+                .toString();
     }
 }

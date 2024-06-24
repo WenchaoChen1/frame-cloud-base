@@ -4,10 +4,9 @@ import com.gstdev.cloud.base.core.context.ServiceContextHolder;
 import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
 import com.gstdev.cloud.message.core.logic.event.RequestMappingGatherEvent;
 import com.gstdev.cloud.message.core.logic.strategy.RequestMappingScanEventManager;
-import com.gstdev.cloud.service.common.autoconfigure.bus.RemoteRequestMappingGatherEvent;
 import com.gstdev.cloud.oauth2.resource.server.processor.SecurityMetadataSourceAnalyzer;
+import com.gstdev.cloud.service.common.autoconfigure.bus.RemoteRequestMappingGatherEvent;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.stereotype.Component;
 
 import java.lang.annotation.Annotation;
 import java.util.List;

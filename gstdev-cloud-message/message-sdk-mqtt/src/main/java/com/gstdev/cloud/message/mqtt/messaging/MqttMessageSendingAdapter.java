@@ -29,10 +29,10 @@ public class MqttMessageSendingAdapter implements MessageSendingAdapter<MqttMess
         if (StringUtils.isNotBlank(mqttMessage.getTopic()) && ObjectUtils.isNotEmpty(mqttMessage.getQos())) {
             if (StringUtils.isNotBlank(mqttMessage.getResponseTopic()) && StringUtils.isNotBlank(mqttMessage.getCorrelationData())) {
                 mqttMessagingTemplate.publish(mqttMessage.getTopic(),
-                    mqttMessage.getResponseTopic(),
-                    mqttMessage.getCorrelationData(),
-                    mqttMessage.getQos(),
-                    mqttMessage.getPayload());
+                        mqttMessage.getResponseTopic(),
+                        mqttMessage.getCorrelationData(),
+                        mqttMessage.getQos(),
+                        mqttMessage.getPayload());
             } else {
                 mqttMessagingTemplate.publish(mqttMessage.getTopic(), mqttMessage.getQos(), mqttMessage.getPayload());
             }

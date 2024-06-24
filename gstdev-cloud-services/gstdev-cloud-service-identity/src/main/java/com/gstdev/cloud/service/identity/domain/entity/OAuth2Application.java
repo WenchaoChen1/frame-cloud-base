@@ -27,8 +27,8 @@ import java.util.Set;
 @Schema(title = "OAuth2应用实体")
 @Entity
 @Table(name = "oauth2_application", indexes = {
-    @Index(name = "oauth2_application_id_idx", columnList = "application_id"),
-    @Index(name = "oauth2_application_cid_idx", columnList = "client_id")})
+        @Index(name = "oauth2_application_id_idx", columnList = "application_id"),
+        @Index(name = "oauth2_application_cid_idx", columnList = "client_id")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_APPLICATION)
 public class OAuth2Application extends AbstractOAuth2RegisteredClient {
@@ -66,10 +66,10 @@ public class OAuth2Application extends AbstractOAuth2RegisteredClient {
     @ManyToMany(fetch = FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "oauth2_application_scope",
-        joinColumns = {@JoinColumn(name = "application_id")},
-        inverseJoinColumns = {@JoinColumn(name = "scope_id")},
-        uniqueConstraints = {@UniqueConstraint(columnNames = {"application_id", "scope_id"})},
-        indexes = {@Index(name = "oauth2_application_scope_aid_idx", columnList = "application_id"), @Index(name = "oauth2_application_scope_sid_idx", columnList = "scope_id")})
+            joinColumns = {@JoinColumn(name = "application_id")},
+            inverseJoinColumns = {@JoinColumn(name = "scope_id")},
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"application_id", "scope_id"})},
+            indexes = {@Index(name = "oauth2_application_scope_aid_idx", columnList = "application_id"), @Index(name = "oauth2_application_scope_sid_idx", columnList = "scope_id")})
     private Set<OAuth2Scope> scopes = new HashSet<>();
 
     public String getApplicationId() {
@@ -154,12 +154,12 @@ public class OAuth2Application extends AbstractOAuth2RegisteredClient {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("applicationId", applicationId)
-            .add("applicationName", applicationName)
-            .add("abbreviation", abbreviation)
-            .add("logo", logo)
-            .add("homepage", homepage)
-            .add("applicationType", applicationType)
-            .toString();
+                .add("applicationId", applicationId)
+                .add("applicationName", applicationName)
+                .add("abbreviation", abbreviation)
+                .add("logo", logo)
+                .add("homepage", homepage)
+                .add("applicationType", applicationType)
+                .toString();
     }
 }

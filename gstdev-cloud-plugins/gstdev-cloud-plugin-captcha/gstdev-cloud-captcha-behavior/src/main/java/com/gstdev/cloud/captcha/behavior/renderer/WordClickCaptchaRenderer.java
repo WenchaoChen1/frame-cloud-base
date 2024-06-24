@@ -17,7 +17,6 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.hutool.core.data.id.IdUtil;
-import org.springframework.stereotype.Component;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -118,7 +117,7 @@ public class WordClickCaptchaRenderer extends AbstractBehaviorRenderer<String, L
         int backgroundImageHeight = backgroundImage.getHeight();
 
         List<Coordinate> coordinates = IntStream.range(0, words.size())
-            .mapToObj(index -> drawWord(backgroundGraphics, backgroundImageWidth, backgroundImageHeight, index, wordCount, words.get(index))).collect(Collectors.toList());
+                .mapToObj(index -> drawWord(backgroundGraphics, backgroundImageWidth, backgroundImageHeight, index, wordCount, words.get(index))).collect(Collectors.toList());
 
         addWatermark(backgroundGraphics, backgroundImageWidth, backgroundImageHeight);
 

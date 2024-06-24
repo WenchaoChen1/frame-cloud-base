@@ -41,12 +41,12 @@ public enum Database implements BaseUiEnum<Integer> {
         for (Database database : Database.values()) {
             INDEX_MAP.put(database.getValue(), database);
             JSON_STRUCTURE.add(database.getValue(),
-                ImmutableMap.<String, Object>builder()
-                    .put("value", database.getValue())
-                    .put("key", database.name())
-                    .put("text", database.getDescription())
-                    .put("index", database.getValue())
-                    .build());
+                    ImmutableMap.<String, Object>builder()
+                            .put("value", database.getValue())
+                            .put("key", database.name())
+                            .put("text", database.getDescription())
+                            .put("index", database.getValue())
+                            .build());
         }
     }
 

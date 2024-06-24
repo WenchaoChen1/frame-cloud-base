@@ -1,15 +1,11 @@
 package com.gstdev.cloud.oauth2.resource.server.converter;
 
 import com.gstdev.cloud.base.definition.constants.BaseConstants;
-import com.gstdev.cloud.base.definition.domain.oauth2.PrincipalDetails;
-import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.oauth2.core.utils.PrincipalUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.jwt.Jwt;
-import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
-import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.util.Assert;
 
@@ -40,6 +36,7 @@ public class CustomizeJwtAuthenticationConverter implements Converter<Jwt, Abstr
 
         this.setJwtGrantedAuthoritiesConverter(grantedAuthoritiesConverter);
     }
+
     @Override
     public final AbstractAuthenticationToken convert(Jwt jwt) {
         Collection<GrantedAuthority> authorities = this.jwtGrantedAuthoritiesConverter.convert(jwt);

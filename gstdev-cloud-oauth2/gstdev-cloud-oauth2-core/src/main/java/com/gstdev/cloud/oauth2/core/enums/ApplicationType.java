@@ -38,12 +38,12 @@ public enum ApplicationType implements BaseUiEnum<Integer> {
         for (ApplicationType applicationType : ApplicationType.values()) {
             INDEX_MAP.put(applicationType.getValue(), applicationType);
             JSON_STRUCT.add(applicationType.getValue(),
-                ImmutableMap.<String, Object>builder()
-                    .put("value", applicationType.getValue())
-                    .put("key", applicationType.name())
-                    .put("text", applicationType.getDescription())
-                    .put("index", applicationType.getValue())
-                    .build());
+                    ImmutableMap.<String, Object>builder()
+                            .put("value", applicationType.getValue())
+                            .put("key", applicationType.name())
+                            .put("text", applicationType.getDescription())
+                            .put("index", applicationType.getValue())
+                            .build());
         }
     }
 

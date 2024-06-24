@@ -43,7 +43,7 @@ public class OAuth2ScopeIO {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("scopeId", scopeId)
-            .toString();
+                .add("scopeId", scopeId)
+                .toString();
     }
 }

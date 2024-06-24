@@ -19,7 +19,6 @@ import org.dromara.hutool.core.data.id.IdUtil;
 import org.dromara.hutool.swing.img.ImgUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

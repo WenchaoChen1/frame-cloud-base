@@ -103,8 +103,8 @@ public final class FrameRequestMatcher implements RequestMatcher, Serializable {
             // If the pattern ends with {@code /**} and has no other wildcards or path
             // variables, then optimize to a sub-path match
             if (pattern.endsWith(MATCH_ALL)
-                && (pattern.indexOf('?') == -1 && pattern.indexOf('{') == -1 && pattern.indexOf('}') == -1)
-                && pattern.indexOf("*") == pattern.length() - 2) {
+                    && (pattern.indexOf('?') == -1 && pattern.indexOf('{') == -1 && pattern.indexOf('}') == -1)
+                    && pattern.indexOf("*") == pattern.length() - 2) {
                 this.matcher = new SubPathMatcher(pattern.substring(0, pattern.length() - 3), caseSensitive);
             } else {
                 this.matcher = new SpringAntMatcher(pattern, caseSensitive);
@@ -142,7 +142,7 @@ public final class FrameRequestMatcher implements RequestMatcher, Serializable {
     @Override
     public boolean matches(HttpServletRequest request) {
         if (StringUtils.isNotBlank(this.httpMethod) && StringUtils.isNotBlank(request.getMethod())
-            && !StringUtils.equalsIgnoreCase(this.httpMethod, request.getMethod())) {
+                && !StringUtils.equalsIgnoreCase(this.httpMethod, request.getMethod())) {
             return false;
         }
         if (this.pattern.equals(MATCH_ALL)) {
@@ -155,7 +155,7 @@ public final class FrameRequestMatcher implements RequestMatcher, Serializable {
     public boolean matches(FrameRequest request) {
 
         if (StringUtils.isNotBlank(this.httpMethod) && StringUtils.isNotBlank(request.getHttpMethod())
-            && !StringUtils.equalsIgnoreCase(this.httpMethod, request.getHttpMethod())) {
+                && !StringUtils.equalsIgnoreCase(this.httpMethod, request.getHttpMethod())) {
             return false;
         }
 
@@ -232,9 +232,9 @@ public final class FrameRequestMatcher implements RequestMatcher, Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("pattern", pattern)
-            .add("httpMethod", httpMethod)
-            .toString();
+                .add("pattern", pattern)
+                .add("httpMethod", httpMethod)
+                .toString();
     }
 
     private interface Matcher extends Serializable {

@@ -2,10 +2,10 @@ package com.gstdev.cloud.oauth2.resource.server.customizer;
 
 import com.gstdev.cloud.base.core.enums.Target;
 import com.gstdev.cloud.base.core.support.BearerTokenResolver;
-import com.gstdev.cloud.oauth2.resource.server.converter.CustomizeJwtAuthenticationConverter;
-import com.gstdev.cloud.oauth2.resource.server.properties.OAuth2AuthorizationProperties;
 import com.gstdev.cloud.oauth2.core.response.FrameAccessDeniedHandler;
 import com.gstdev.cloud.oauth2.core.response.FrameAuthenticationEntryPoint;
+import com.gstdev.cloud.oauth2.resource.server.converter.CustomizeJwtAuthenticationConverter;
+import com.gstdev.cloud.oauth2.resource.server.properties.OAuth2AuthorizationProperties;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -41,14 +41,14 @@ public class OAuth2ResourceServerConfigurerCustomer implements Customizer<OAuth2
 //        .opaqueToken(opaque -> opaque.introspector(opaqueTokenIntrospector));
 //    } else {
         configurer
-            .bearerTokenResolver(new DefaultBearerTokenResolver())
-            .jwt(jwt -> jwt.decoder(this.jwtDecoder)
-                .jwtAuthenticationConverter(new CustomizeJwtAuthenticationConverter()));
+                .bearerTokenResolver(new DefaultBearerTokenResolver())
+                .jwt(jwt -> jwt.decoder(this.jwtDecoder)
+                        .jwtAuthenticationConverter(new CustomizeJwtAuthenticationConverter()));
 //    }
 
         configurer
-            .accessDeniedHandler(new FrameAccessDeniedHandler())
-            .authenticationEntryPoint(new FrameAuthenticationEntryPoint());
+                .accessDeniedHandler(new FrameAccessDeniedHandler())
+                .authenticationEntryPoint(new FrameAuthenticationEntryPoint());
     }
 
     public BearerTokenResolver createBearerTokenResolver() {

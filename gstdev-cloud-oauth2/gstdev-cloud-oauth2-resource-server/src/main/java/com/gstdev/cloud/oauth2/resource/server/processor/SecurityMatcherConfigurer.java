@@ -2,12 +2,12 @@ package com.gstdev.cloud.oauth2.resource.server.processor;
 
 
 import com.gstdev.cloud.base.core.utils.type.ListUtils;
-import com.gstdev.cloud.oauth2.resource.server.definition.FrameConfigAttribute;
-import com.gstdev.cloud.oauth2.resource.server.definition.FrameRequest;
-import com.gstdev.cloud.oauth2.resource.server.properties.OAuth2AuthorizationProperties;
 import com.gstdev.cloud.oauth2.core.constants.SecurityResources;
 import com.gstdev.cloud.oauth2.core.enums.PermissionExpression;
 import com.gstdev.cloud.oauth2.core.utils.WebUtils;
+import com.gstdev.cloud.oauth2.resource.server.definition.FrameConfigAttribute;
+import com.gstdev.cloud.oauth2.resource.server.definition.FrameRequest;
+import com.gstdev.cloud.oauth2.resource.server.properties.OAuth2AuthorizationProperties;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;

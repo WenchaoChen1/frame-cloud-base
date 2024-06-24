@@ -29,11 +29,11 @@ public class FrameToOAuth2AuthorizationConsentConverter implements Converter<Fra
         RegisteredClient registeredClient = this.registeredClientRepository.findById(registeredClientId);
         if (registeredClient == null) {
             throw new DataRetrievalFailureException(
-                "The RegisteredClient with id '" + registeredClientId + "' was not found in the RegisteredClientRepository.");
+                    "The RegisteredClient with id '" + registeredClientId + "' was not found in the RegisteredClientRepository.");
         }
 
         OAuth2AuthorizationConsent.Builder builder = OAuth2AuthorizationConsent.withId(
-            registeredClientId, authorizationConsent.getPrincipalName());
+                registeredClientId, authorizationConsent.getPrincipalName());
         if (authorizationConsent.getAuthorities() != null) {
             for (String authority : StringUtils.commaDelimitedListToSet(authorizationConsent.getAuthorities())) {
                 builder.authority(new FrameGrantedAuthority(authority));
