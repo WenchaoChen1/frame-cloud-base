@@ -20,6 +20,7 @@ import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.validation.annotation.Validated;
@@ -102,14 +103,10 @@ public class OAuth2ScopeController implements Controller<OAuth2Scope, String> {
 
     /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
 
-    @Operation(summary = "给Scope分配权限", description = "给Scope分配权限",
-        responses = {
-            @ApiResponse(description = "查询到的角色", content = @Content(mediaType = "application/json", schema = @Schema(implementation = OAuth2ScopeIO.class))),
-        })
-    @Parameters({
-        @Parameter(name = "scope", required = true, description = "范围请求参数"),
-    })
+
+    @Tag(name = "Scope Manage")
     @PostMapping("/scope-manage-assigned-permission")
+    @Operation(summary = "scope-manage-assigned-permission")
     public Result<OAuth2Scope> scopeManageAssignedPermission(@RequestBody OAuth2ScopeIO scope) {
 
         Set<OAuth2Permission> permissions = new HashSet<>();
@@ -119,6 +116,12 @@ public class OAuth2ScopeController implements Controller<OAuth2Scope, String> {
 
         OAuth2Scope result = getService().assigned(scope.getScopeId(), permissions);
         return result(result);
+    }
+    @Tag(name = "Scope Manage")
+    @GetMapping("/get-scope-permission-id-by-scope-id/{id}")
+    @Operation(summary = "get-scope-permission-id-by-scope-id")
+    public Result<Set<String>> getScopePermissionIdByScopeId(@PathVariable String id) {
+        return result(this.getService().getScopePermissionIdByScopeId(id));
     }
 //
 //    @AccessLimited

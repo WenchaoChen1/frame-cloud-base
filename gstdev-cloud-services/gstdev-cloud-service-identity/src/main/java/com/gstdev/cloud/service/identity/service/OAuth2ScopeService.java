@@ -41,4 +41,8 @@ public class OAuth2ScopeService extends BaseServiceImpl<OAuth2Scope, String, OAu
     public List<OAuth2Scope> findByScopeCodeIn(List<String> scopeCodes) {
         return oauthScopesRepository.findByScopeCodeIn(scopeCodes);
     }
+
+    public Set<String>  getScopePermissionIdByScopeId(String id) {
+        return findById(id).getPermissions().stream().map(OAuth2Permission::getPermissionId).collect(java.util.stream.Collectors.toSet());
+    }
 }
