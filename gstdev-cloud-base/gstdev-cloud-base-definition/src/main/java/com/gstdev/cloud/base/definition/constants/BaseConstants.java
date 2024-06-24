@@ -91,6 +91,8 @@ public interface BaseConstants {
     String AUTHORITIES = "authorities";
     String AVATAR = "avatar";
     String EMPLOYEE_ID = "employeeId";
+    String ACCOUNT_ID = "accountId";
+    String ACCOUNT_NAME = "accountName";
     String LICENSE = "license";
     String OPEN_ID = "openid";
     String PRINCIPAL = "principal";

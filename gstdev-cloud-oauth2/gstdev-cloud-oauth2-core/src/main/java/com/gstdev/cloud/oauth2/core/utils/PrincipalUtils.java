@@ -35,6 +35,8 @@ public class PrincipalUtils {
         details.setRoles(defaultSecurityUser.getRoles());
         details.setAvatar(defaultSecurityUser.getAvatar());
         details.setEmployeeId(defaultSecurityUser.getEmployeeId());
+        details.setAccountId(defaultSecurityUser.getAccountId());
+        details.setAccountName(defaultSecurityUser.getAccountName());
         return details;
     }
 
@@ -49,6 +51,8 @@ public class PrincipalUtils {
         }
         details.setAvatar(authenticatedPrincipal.getAttribute(BaseConstants.AVATAR));
         details.setEmployeeId(authenticatedPrincipal.getAttribute(BaseConstants.EMPLOYEE_ID));
+        details.setAccountId(authenticatedPrincipal.getAttribute(BaseConstants.ACCOUNT_ID));
+        details.setAccountName(authenticatedPrincipal.getAttribute(BaseConstants.ACCOUNT_NAME));
         return details;
     }
 
@@ -60,6 +64,8 @@ public class PrincipalUtils {
         details.setRoles(new HashSet<>(jwt.getClaimAsStringList(BaseConstants.ROLES)));
         details.setAvatar(jwt.getClaimAsString(BaseConstants.AVATAR));
         details.setEmployeeId(jwt.getClaimAsString(BaseConstants.EMPLOYEE_ID));
+        details.setAccountId(jwt.getClaimAsString(BaseConstants.ACCOUNT_ID));
+        details.setAccountName(jwt.getClaimAsString(BaseConstants.ACCOUNT_NAME));
         return details;
     }
 }
