@@ -2,15 +2,17 @@ package com.gstdev.cloud.service.identity.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.BasePage;
+import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.Controller;
 import com.gstdev.cloud.service.identity.domain.entity.OAuth2Compliance;
+import com.gstdev.cloud.service.identity.domain.pojo.compliance.ComplianceManagePageQO;
+import com.gstdev.cloud.service.identity.mapper.Oauth2ComplianceMapper;
 import com.gstdev.cloud.service.identity.service.OAuth2ComplianceService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
@@ -32,38 +34,26 @@ public class OAuth2ComplianceController implements Controller<OAuth2Compliance, 
 
     @Resource
     private OAuth2ComplianceService service;
+    @Resource
+    private Oauth2ComplianceMapper mapper;
 
     @Override
     public OAuth2ComplianceService getService() {
         return this.service;
     }
 
+    public Oauth2ComplianceMapper getMapper() {
+        return this.mapper;
+    }
+
 
     // ********************************* application Manage *****************************************
 
 
-//    @Operation(summary = "模糊条件查询合规信息", description = "根据动态输入的字段模糊查询合规信息",
-//        responses = {@ApiResponse(description = "人员分页列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))})
-//    @Parameters({
-//        @Parameter(name = "pageNumber", required = true, description = "当前页码"),
-//        @Parameter(name = "pageSize", required = true, description = "每页显示数量"),
-//        @Parameter(name = "principalName", description = "用户账号"),
-//        @Parameter(name = "clientId", description = "客户端ID"),
-//        @Parameter(name = "ip", description = "IP地址"),
-//    })
-//    @GetMapping("/condition")
-
+    @Tag(name = "Compliance Manage")
     @GetMapping("/get-compliance-manage-page")
     @Operation(summary = "get-compliance-manage-page")
-//    public Result<Map<String, Object>> getApplicationManagePage(ApplicationManageQO applicationManageQO, BasePage basePage) {
-//        return result(applicationMapper.toApplicationManagePageVO(getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, applicationManageQO, criteriaBuilder), basePage)));
-//    }
-    public Result<Map<String, Object>> getApplicationManagePage(@RequestParam(value = "principalName", required = false) String principalName,
-                                                                @RequestParam(value = "clientId", required = false) String clientId,
-                                                                @RequestParam(value = "ip", required = false) String ip, BasePage basePage) {
-        Integer pageNumber = basePage.getPageNumber();
-        Integer pageSize = basePage.getPageSize();
-        Page<OAuth2Compliance> pages = getService().findByCondition(pageNumber, pageSize, principalName, clientId, ip);
-        return result(pages);
+    public Result<Map<String, Object>> getApplicationManagePage(ComplianceManagePageQO complianceManagePageQO, BasePage basePage) {
+        return result(getMapper().toComplianceManagePageVO(getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, complianceManagePageQO, criteriaBuilder), basePage)));
     }
 }

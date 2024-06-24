@@ -10,6 +10,7 @@ import com.gstdev.cloud.service.identity.mapper.OAuth2ScopeMapper;
 import com.gstdev.cloud.service.identity.service.OAuth2ScopeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.annotation.Resource;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -42,18 +43,24 @@ public class OAuth2ScopeController implements Controller<OAuth2Scope, String> {
         return scopeMapper;
     }
 
+    @Tags({
+            @Tag(name = "Scope Manage"),
+            @Tag(name = "Application Manage")
+    })
     @GetMapping("/get-scope-manage-page")
     @Operation(summary = "get-scope-manage-page")
     public Result<Map<String, Object>> getScopeManagePage(ScopeManageQO scopeManageQO, BasePage basePage) {
         return result(getMapper().toScopeManagePageVO(getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, scopeManageQO, criteriaBuilder), basePage)));
     }
 
+    @Tag(name = "Scope Manage")
     @GetMapping("/get-scope-manage-detail/{id}")
     @Operation(summary = "get-scope-manage-detail")
     public Result<ScopeManageDetailVO> getScopeManageDetail(@PathVariable String id) {
         return result(getMapper().toScopeManageDetailVO(getService().findById(id)));
     }
 
+    @Tag(name = "Scope Manage")
     @PostMapping("/insert-scope-manage")
     @Operation(summary = "insert-scope-manage")
     public Result insertScopeManage(@RequestBody @Validated InsertScopeManageIO insertScopeManageIO) {
@@ -61,6 +68,7 @@ public class OAuth2ScopeController implements Controller<OAuth2Scope, String> {
         return result();
     }
 
+    @Tag(name = "Scope Manage")
     @PutMapping("/update-scope-manage")
     @Operation(summary = "update-scope-manage")
     public Result updateScopeManage(@RequestBody @Validated UpdateScopeManageIO updateScopeManageIO) {
@@ -70,7 +78,7 @@ public class OAuth2ScopeController implements Controller<OAuth2Scope, String> {
         return result();
     }
 
-
+    @Tag(name = "Scope Manage")
     @Operation(summary = "删除一条数据")
     @DeleteMapping("/delete-scope-manage/{id}")
     public Result deleteScopeManage(@PathVariable String id) {
@@ -79,6 +87,7 @@ public class OAuth2ScopeController implements Controller<OAuth2Scope, String> {
         return result;
     }
 
+    @Tag(name = "Scope Manage")
     @Operation(summary = "删除多条数据")
     @DeleteMapping("/delete-all-scope-manage")
     public Result deleteAllScopeManage(List<String> id) {
