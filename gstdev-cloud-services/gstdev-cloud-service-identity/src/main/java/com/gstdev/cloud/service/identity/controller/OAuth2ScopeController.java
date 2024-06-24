@@ -4,8 +4,6 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.Controller;
-import com.gstdev.cloud.service.identity.domain.dto.OAuth2PermissionDto;
-import com.gstdev.cloud.service.identity.domain.entity.OAuth2Permission;
 import com.gstdev.cloud.service.identity.domain.entity.OAuth2Scope;
 import com.gstdev.cloud.service.identity.domain.pojo.scope.*;
 import com.gstdev.cloud.service.identity.mapper.OAuth2ScopeMapper;
@@ -96,14 +94,6 @@ public class OAuth2ScopeController implements Controller<OAuth2Scope, String> {
     @PostMapping("/update-scope-manage-assigned-permission")
     @Operation(summary = "update-scope-manage-assigned-permission")
     public Result<OAuth2Scope> updateScopeManageAssignedPermission(@RequestBody ScopeManageAssignedPermissionIO scopeManageAssignedPermissionIO) {
-
-//        Set<OAuth2Permission> permissions = new HashSet<>();
-//        if (CollectionUtils.isNotEmpty(scope.getPermissions())) {
-//            permissions = scope.getPermissions().stream().map(this::toEntity).collect(Collectors.toSet());
-//        }
-//
-//        OAuth2Scope result = getService().assigned(scope.getScopeId(), permissions);
-//        return result(result);
         this.getService().updateScopeManageAssignedPermission(scopeManageAssignedPermissionIO);
         return result();
     }
@@ -155,12 +145,6 @@ public class OAuth2ScopeController implements Controller<OAuth2Scope, String> {
 //        OAuth2Scope scope = getService().findById(id);
 //        return result(scope);
 //    }
-    private OAuth2Permission toEntity(OAuth2PermissionDto dto) {
-        OAuth2Permission entity = new OAuth2Permission();
-        entity.setPermissionId(dto.getPermissionId());
-        entity.setPermissionCode(dto.getPermissionCode());
-        entity.setPermissionName(dto.getPermissionName());
-        return entity;
-    }
+
 
 }

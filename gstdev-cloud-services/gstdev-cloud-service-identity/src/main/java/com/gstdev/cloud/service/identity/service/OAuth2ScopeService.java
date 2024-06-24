@@ -5,12 +5,13 @@ import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.service.identity.domain.entity.OAuth2Permission;
 import com.gstdev.cloud.service.identity.domain.entity.OAuth2Scope;
 import com.gstdev.cloud.service.identity.domain.pojo.scope.ScopeManageAssignedPermissionIO;
+import com.gstdev.cloud.service.identity.mapper.OAuth2ScopeMapper;
 import com.gstdev.cloud.service.identity.repository.OAuth2PermissionRepository;
 import com.gstdev.cloud.service.identity.repository.OAuth2ScopeRepository;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -25,7 +26,8 @@ public class OAuth2ScopeService extends BaseServiceImpl<OAuth2Scope, String, OAu
 
     private OAuth2ScopeRepository oauthScopesRepository;
     private OAuth2PermissionRepository oAuth2PermissionRepository;
-
+    @Resource
+    private OAuth2ScopeMapper scopeMapper;
     public OAuth2ScopeService(OAuth2ScopeRepository oauthScopesRepository, OAuth2PermissionRepository oAuth2PermissionRepository) {
         super(oauthScopesRepository);
         this.oAuth2PermissionRepository = oAuth2PermissionRepository;
@@ -55,14 +57,9 @@ public class OAuth2ScopeService extends BaseServiceImpl<OAuth2Scope, String, OAu
     @Transactional
     public void updateScopeManageAssignedPermission(ScopeManageAssignedPermissionIO scopeManageAssignedPermissionIO) {
         OAuth2Scope scope = findById(scopeManageAssignedPermissionIO.getScopeId());
-        Set<OAuth2Permission> permissions = new HashSet<>();
-        scopeManageAssignedPermissionIO.getPermissions().forEach(permissionDto -> {
-            OAuth2Permission permission = oAuth2PermissionRepository.findById(permissionDto.getPermissionId()).orElse(null);
-            if (permission != null) {
-                permissions.add(permission);
-            }
-        });
-        scope.setPermissions(permissions);
+        scopeMapper.copy(scopeManageAssignedPermissionIO, scope);
         saveAndFlush(scope);
     }
+
+
 }

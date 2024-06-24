@@ -9,5 +9,5 @@ import java.util.Set;
 @Setter
 public class ApplicationManageAssignedScopeIO {
     private String applicationId;
-    private Set<String> scopeId;
+    private Set<String> scopeIds;
 }

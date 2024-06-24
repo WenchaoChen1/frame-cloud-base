@@ -11,10 +11,7 @@ package com.gstdev.cloud.service.identity.mapper;
 
 
 import com.gstdev.cloud.service.identity.domain.entity.OAuth2Scope;
-import com.gstdev.cloud.service.identity.domain.pojo.scope.InsertScopeManageIO;
-import com.gstdev.cloud.service.identity.domain.pojo.scope.ScopeManageDetailVO;
-import com.gstdev.cloud.service.identity.domain.pojo.scope.ScopeManagePageVO;
-import com.gstdev.cloud.service.identity.domain.pojo.scope.UpdateScopeManageIO;
+import com.gstdev.cloud.service.identity.domain.pojo.scope.*;
 import org.mapstruct.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -39,5 +36,6 @@ public interface OAuth2ScopeMapper {
     OAuth2Scope toEntity(InsertScopeManageIO insertScopeManageIO);
 
     void copy(UpdateScopeManageIO updateUserManageIO, @MappingTarget OAuth2Scope sysUser);
+    void copy(ScopeManageAssignedPermissionIO scopeManageAssignedPermissionIO, @MappingTarget OAuth2Scope sysUser);
 }
 

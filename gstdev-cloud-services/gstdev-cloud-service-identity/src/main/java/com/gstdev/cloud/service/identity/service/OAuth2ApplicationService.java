@@ -99,7 +99,7 @@ public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application,
     public void updateApplicationManageAssignedScope(ApplicationManageAssignedScopeIO applicationManageAssignedScopeIO) {
         OAuth2Application application = findById(applicationManageAssignedScopeIO.getApplicationId());
         Set<OAuth2Scope> scopes = new HashSet<>();
-        for (String scopeId : applicationManageAssignedScopeIO.getScopeId()) {
+        for (String scopeId : applicationManageAssignedScopeIO.getScopeIds()) {
             Optional<OAuth2Scope> scope = oAuth2ScopeRepository.findById(scopeId);
             scope.ifPresent(scopes::add);
         }
