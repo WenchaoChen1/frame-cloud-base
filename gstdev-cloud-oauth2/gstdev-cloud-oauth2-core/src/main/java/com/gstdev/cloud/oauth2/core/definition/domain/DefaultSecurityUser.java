@@ -35,7 +35,8 @@ public class DefaultSecurityUser implements UserDetails, CredentialsContainer {
     private String password;
 
     private String username;
-
+    private String accountId;
+    private String accountName;
     private Set<GrantedAuthority> authorities;
 
     private boolean accountNonExpired;
@@ -174,6 +175,14 @@ public class DefaultSecurityUser implements UserDetails, CredentialsContainer {
         return avatar;
     }
 
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public String getAccountName() {
+        return accountName;
+    }
+
     /**
      * Returns {@code true} if the supplied object is a {@code User} instance with the
      * same {@code username} value.
@@ -213,6 +222,8 @@ public class DefaultSecurityUser implements UserDetails, CredentialsContainer {
                 .add("credentialsNonExpired", credentialsNonExpired)
                 .add("enabled", enabled)
                 .add("employeeId", employeeId)
+                .add("accountId", accountId)
+                .add("accountName", accountName)
                 .add("avatar", avatar)
                 .toString();
     }
