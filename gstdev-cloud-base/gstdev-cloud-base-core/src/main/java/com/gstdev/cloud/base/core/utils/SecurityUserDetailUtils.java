@@ -88,7 +88,7 @@ public class SecurityUserDetailUtils {
     public static String getAccountId() {
         PrincipalDetails details = getPrincipal();
         if (ObjectUtils.isNotEmpty(details)) {
-            return details.getUserId();
+            return details.getAccountId();
         }
         return null;
     }
