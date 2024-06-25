@@ -56,6 +56,19 @@ public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application,
     }
 
     @Override
+    public OAuth2Application save(OAuth2Application entity) {
+        OAuth2Application application = super.save(entity);
+        if (ObjectUtils.isNotEmpty(application)) {
+            registeredClientRepository.save(objectConverter.convert(application));
+            log.debug("[GstDev Cloud] |- OAuth2ApplicationService saveOrUpdate.");
+            return application;
+        } else {
+            log.error("[GstDev Cloud] |- OAuth2ApplicationService saveOrUpdate error, rollback data!");
+            throw new NullPointerException("save or update OAuth2Application failed");
+        }
+    }
+
+    @Override
     public OAuth2Application saveAndFlush(OAuth2Application entity) {
         OAuth2Application application = super.saveAndFlush(entity);
         if (ObjectUtils.isNotEmpty(application)) {
