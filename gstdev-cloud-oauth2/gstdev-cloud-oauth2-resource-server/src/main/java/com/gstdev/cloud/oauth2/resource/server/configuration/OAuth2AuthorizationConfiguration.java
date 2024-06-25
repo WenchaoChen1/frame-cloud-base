@@ -3,7 +3,6 @@ package com.gstdev.cloud.oauth2.resource.server.configuration;
 import com.gstdev.cloud.base.core.support.BearerTokenResolver;
 import com.gstdev.cloud.cache.jetcache.autoconfigure.CacheJetCacheAutoConfiguration;
 import com.gstdev.cloud.oauth2.core.exception.SecurityGlobalExceptionHandler;
-import com.gstdev.cloud.oauth2.resource.server.auditing.SecurityAuditorAware;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.processor.SecurityAuthorizationManager;
@@ -108,10 +107,10 @@ public class OAuth2AuthorizationConfiguration {
         return bearerTokenResolver;
     }
 
-    @Bean
-    public AuditorAware<String> auditorAware() {
-        SecurityAuditorAware securityAuditorAware = new SecurityAuditorAware();
-        log.debug("[GstDev Cloud] |- Bean [Security Auditor Aware] Auto Configure.");
-        return securityAuditorAware;
-    }
+//    @Bean
+//    public AuditorAware<String> auditorAware() {
+//        SecurityAuditorAware securityAuditorAware = new SecurityAuditorAware();
+//        log.debug("[GstDev Cloud] |- Bean [Security Auditor Aware] Auto Configure.");
+//        return securityAuditorAware;
+//    }
 }
