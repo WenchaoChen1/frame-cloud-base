@@ -73,6 +73,8 @@ public abstract class AbstractTokenCustomizer {
             attributes.put(BaseConstants.ROLES, principal.getRoles());
             attributes.put(BaseConstants.AVATAR, principal.getAvatar());
             attributes.put(BaseConstants.EMPLOYEE_ID, principal.getEmployeeId());
+            attributes.put(BaseConstants.ACCOUNT_NAME, principal.getAccountName());
+            attributes.put(BaseConstants.ACCOUNT_ID, principal.getAccountId());
         }
     }
 }

@@ -79,6 +79,8 @@ public class PrincipalDetails {
         map.put(BaseConstants.USERNAME, this.username);
         map.put(BaseConstants.ROLES, this.roles);
         map.put(BaseConstants.EMPLOYEE_ID, this.employeeId);
+        map.put(BaseConstants.ACCOUNT_ID, this.accountId);
+        map.put(BaseConstants.ACCOUNT_NAME, this.accountName);
         map.put(BaseConstants.AVATAR, this.avatar);
         return map;
     }
