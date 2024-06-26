@@ -31,5 +31,8 @@ public class BasePOJOServiceImpl<E extends BasePOJOEntityINT<ID>
     public M getMapper() {
         return mapper;
     }
-
+    @Override
+    public BasePOJOServiceDefault<E, ID, D> getService() {
+        return this;
+    }
 }

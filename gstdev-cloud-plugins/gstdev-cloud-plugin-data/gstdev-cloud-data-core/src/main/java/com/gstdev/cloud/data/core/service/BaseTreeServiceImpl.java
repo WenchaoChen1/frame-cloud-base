@@ -29,4 +29,9 @@ public abstract class BaseTreeServiceImpl<E extends BaseTreeEntityINT<ID>
     public R getRepository() {
         return super.getRepository();
     }
+    @Override
+    public BaseTreeServiceDefault<E, ID, D> getService(){
+        return this;
+    }
+
 }
