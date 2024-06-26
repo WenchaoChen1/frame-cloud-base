@@ -30,4 +30,9 @@ public class BaseServiceImpl<SE extends Entity, ID extends Serializable, S exten
     public S getRepository() {
         return baseRepository;
     }
+
+    @Override
+    public BaseServiceDefault<SE, ID> getService() {
+        return this;
+    }
 }

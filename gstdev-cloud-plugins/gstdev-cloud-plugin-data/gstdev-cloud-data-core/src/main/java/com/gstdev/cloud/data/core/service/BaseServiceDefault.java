@@ -28,6 +28,8 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
      */
     BaseRepository<SE, ID> getRepository();
 
+    BaseServiceDefault<SE, ID> getService();
+
     default SE toServiceEntity(SE entity) {
         return entity;
     }
@@ -70,16 +72,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     @Override
     @Transactional(readOnly = true)
     default SE findById(ID id) {
-        //    default E findById(ID id) {
-//        Optional<SE> byId = getRepository().findById(id);
-//        SE e = null;
-//        if (byId.isPresent()) {
-//            e = byId.get();
-//        }
-////        return e;
-////    }
         return toServiceEntity(getRepository().findById(id).orElse(null));
-//        return toServiceEntity(e);
     }
 
     /**
@@ -188,9 +181,9 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     default Page<SE> findByPage(BasePage page) {
         if (ArrayUtils.isNotEmpty(page.getProperties())) {
             Sort.Direction direction = Sort.Direction.valueOf(page.getDirection());
-            return findByPage(page.getPageNumber(), page.getPageSize(), direction, page.getProperties());
+            return getService().findByPage(page.getPageNumber(), page.getPageSize(), direction, page.getProperties());
         } else {
-            return findByPage(page.getPageNumber(), page.getPageSize());
+            return getService().findByPage(page.getPageNumber(), page.getPageSize());
         }
     }
 
@@ -204,7 +197,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     @Override
     @Transactional(readOnly = true)
     default Page<SE> findByPage(int pageNumber, int pageSize) {
-        return findByPage(PageRequest.of(pageNumber, pageSize));
+        return getService().findByPage(PageRequest.of(pageNumber, pageSize));
     }
 
     /**
@@ -218,7 +211,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     @Override
     @Transactional(readOnly = true)
     default Page<SE> findByPage(int pageNumber, int pageSize, Sort sort) {
-        return findByPage(PageRequest.of(pageNumber, pageSize, sort));
+        return getService().findByPage(PageRequest.of(pageNumber, pageSize, sort));
     }
 
     /**
@@ -233,7 +226,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     @Override
     @Transactional(readOnly = true)
     default Page<SE> findByPage(int pageNumber, int pageSize, Sort.Direction direction, String... properties) {
-        return findByPage(PageRequest.of(pageNumber, pageSize, direction, properties));
+        return getService().findByPage(PageRequest.of(pageNumber, pageSize, direction, properties));
     }
 
     /**
@@ -295,7 +288,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     @Override
     @Transactional(readOnly = true)
     default Page<SE> findByPage(int pageNumber, int pageSize, Sort.Direction direction) {
-        return findByPage(PageRequest.of(pageNumber, pageSize, direction));
+        return getService().findByPage(PageRequest.of(pageNumber, pageSize, direction));
     }
 
 
@@ -371,7 +364,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     @Transactional
     default SE save(SE domain) {
         SE entity = toEntity(domain);
-        return toServiceEntity((SE) getRepository().save(entity));
+        return toServiceEntity(getRepository().save(entity));
     }
 
     /**
@@ -414,7 +407,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     @Override
     @Transactional
     default SE insert(SE var) {
-        return toServiceEntity(save(toEntity(var)));
+        return toServiceEntity(getService().save(toEntity(var)));
     }
 
     @Override
@@ -422,7 +415,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     default List<SE> insert(List<SE> e) {
         List<SE> es = new ArrayList<>();
         for (SE e1 : e) {
-            es.add(insert(e1));
+            es.add(getService().insert(e1));
         }
         return es;
     }
@@ -430,7 +423,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     @Override
     @Transactional
     default SE update(SE e) {
-        return toServiceEntity(save(toEntity(e)));
+        return toServiceEntity(getService().save(toEntity(e)));
     }
 
     @Override
@@ -438,7 +431,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     default List<SE> update(List<SE> e) {
         List<SE> es = new ArrayList<>();
         for (SE e1 : e) {
-            es.add(update(e1));
+            es.add(getService().update(e1));
         }
         return es;
     }
@@ -446,7 +439,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     @Override
     @Transactional
     default SE insertAndUpdate(SE e) {
-        return toServiceEntity(save(toEntity(e)));
+        return toServiceEntity(getService().save(toEntity(e)));
     }
 
     @Override
@@ -454,7 +447,7 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     default List<SE> insertAndUpdate(List<SE> e) {
         List<SE> es = new ArrayList<>();
         for (SE e1 : e) {
-            es.add(insertAndUpdate(e1));
+            es.add(getService().insertAndUpdate(e1));
         }
         return es;
     }

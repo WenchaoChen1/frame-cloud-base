@@ -19,9 +19,13 @@ public interface BaseDtoServiceDefault<E extends Entity
         , D
         > extends BaseDtoService<E, ID, D>, BaseServiceDefault<E, ID> {
 
+    @Override
     BaseRepository<E, ID> getRepository();
 
     BaseDtoMapper<E, D> getMapper();
+
+    @Override
+    BaseDtoServiceDefault<E, ID, D> getService();
 
     /**
      * 根据ID查询数据
@@ -32,7 +36,7 @@ public interface BaseDtoServiceDefault<E extends Entity
     @Transactional(readOnly = true)
     @Override
     default D findByIdToDto(ID id) {
-        return getMapper().toDto(findById(id));
+        return getMapper().toDto(getService().findById(id));
     }
 
     /**
@@ -43,7 +47,7 @@ public interface BaseDtoServiceDefault<E extends Entity
     @Transactional(readOnly = true)
     @Override
     default List<D> findAllToDto() {
-        return getMapper().toDto(findAll());
+        return getMapper().toDto(getService().findAll());
     }
 
     /**
@@ -55,7 +59,7 @@ public interface BaseDtoServiceDefault<E extends Entity
     @Transactional(readOnly = true)
     @Override
     default List<D> findAllToDto(Sort sort) {
-        return getMapper().toDto(findAll(sort));
+        return getMapper().toDto(getService().findAll(sort));
     }
 
     /**
@@ -67,7 +71,7 @@ public interface BaseDtoServiceDefault<E extends Entity
     @Transactional(readOnly = true)
     @Override
     default List<D> findAllToDto(Specification<E> specification) {
-        return getMapper().toDto(findAll(specification));
+        return getMapper().toDto(getService().findAll(specification));
     }
 
     /**
@@ -80,7 +84,7 @@ public interface BaseDtoServiceDefault<E extends Entity
     @Transactional(readOnly = true)
     @Override
     default List<D> findAllToDto(Specification<E> specification, Sort sort) {
-        return getMapper().toDto(findAll(specification, sort));
+        return getMapper().toDto(getService().findAll(specification, sort));
     }
 
     /**
@@ -92,7 +96,7 @@ public interface BaseDtoServiceDefault<E extends Entity
     @Transactional(readOnly = true)
     @Override
     default Page<D> findByPageToDto(Pageable pageable) {
-        return getMapper().toDto(findByPage(pageable));
+        return getMapper().toDto(getService().findByPage(pageable));
     }
 
     /**
@@ -104,7 +108,7 @@ public interface BaseDtoServiceDefault<E extends Entity
     @Transactional(readOnly = true)
     @Override
     default Page<D> findByPageToDto(BasePage page) {
-        return getMapper().toDto(findByPage(page));
+        return getMapper().toDto(getService().findByPage(page));
     }
 
     /**
@@ -117,7 +121,7 @@ public interface BaseDtoServiceDefault<E extends Entity
     @Transactional(readOnly = true)
     @Override
     default Page<D> findByPageToDto(int pageNumber, int pageSize) {
-        return getMapper().toDto(findByPage(pageNumber, pageSize));
+        return getMapper().toDto(getService().findByPage(pageNumber, pageSize));
     }
 
     /**
@@ -131,7 +135,7 @@ public interface BaseDtoServiceDefault<E extends Entity
     @Transactional(readOnly = true)
     @Override
     default Page<D> findByPageToDto(int pageNumber, int pageSize, Sort sort) {
-        return getMapper().toDto(findByPage(pageNumber, pageSize, sort));
+        return getMapper().toDto(getService().findByPage(pageNumber, pageSize, sort));
     }
 
     /**
@@ -146,7 +150,7 @@ public interface BaseDtoServiceDefault<E extends Entity
     @Transactional(readOnly = true)
     @Override
     default Page<D> findByPageToDto(int pageNumber, int pageSize, Sort.Direction direction, String... properties) {
-        return getMapper().toDto(findByPage(pageNumber, pageSize, direction, properties));
+        return getMapper().toDto(getService().findByPage(pageNumber, pageSize, direction, properties));
     }
 
     /**
@@ -159,7 +163,7 @@ public interface BaseDtoServiceDefault<E extends Entity
     @Transactional(readOnly = true)
     @Override
     default Page<D> findByPageToDto(Specification<E> specification, Pageable pageable) {
-        return getMapper().toDto(findByPage(specification, pageable));
+        return getMapper().toDto(getService().findByPage(specification, pageable));
     }
 
     /**
@@ -172,7 +176,7 @@ public interface BaseDtoServiceDefault<E extends Entity
     @Transactional(readOnly = true)
     @Override
     default Page<D> findByPageToDto(Specification<E> specification, BasePage pageable) {
-        return getMapper().toDto(findByPage(specification, pageable));
+        return getMapper().toDto(getService().findByPage(specification, pageable));
     }
 
     /**
@@ -186,7 +190,7 @@ public interface BaseDtoServiceDefault<E extends Entity
     @Transactional(readOnly = true)
     @Override
     default Page<D> findByPageToDto(Specification<E> specification, int pageNumber, int pageSize) {
-        return getMapper().toDto(findByPage(specification, PageRequest.of(pageNumber, pageSize)));
+        return getMapper().toDto(getService().findByPage(specification, PageRequest.of(pageNumber, pageSize)));
     }
 
     /**
@@ -200,7 +204,7 @@ public interface BaseDtoServiceDefault<E extends Entity
     @Transactional(readOnly = true)
     @Override
     default Page<D> findByPageToDto(int pageNumber, int pageSize, Sort.Direction direction) {
-        return getMapper().toDto(findByPage(pageNumber, pageSize, direction));
+        return getMapper().toDto(getService().findByPage(pageNumber, pageSize, direction));
     }
 
 
@@ -213,13 +217,13 @@ public interface BaseDtoServiceDefault<E extends Entity
     @Transactional
     @Override
     default D saveToDto(E domain) {
-        return getMapper().toDto(save(domain));
+        return getMapper().toDto(getService().save(domain));
     }
 
     @Transactional
     @Override
     default D saveToDto(D domain) {
-        return saveToDto(getMapper().toEntity(domain));
+        return getService().saveToDto(getMapper().toEntity(domain));
     }
 
     //    /**
@@ -243,13 +247,13 @@ public interface BaseDtoServiceDefault<E extends Entity
     @Transactional
     @Override
     default D saveAndFlushToDto(E entity) {
-        return getMapper().toDto(saveAndFlush(entity));
+        return getMapper().toDto(getService().saveAndFlush(entity));
     }
 
     @Transactional
     @Override
     default D saveAndFlushToDto(D entity) {
-        return saveAndFlushToDto(getMapper().toEntity(entity));
+        return getService().saveAndFlushToDto(getMapper().toEntity(entity));
     }
 
     /**
@@ -261,85 +265,85 @@ public interface BaseDtoServiceDefault<E extends Entity
     @Transactional
     @Override
     default List<D> saveAllAndFlushToDto(List<E> entities) {
-        return getMapper().toDto(saveAllAndFlush(entities));
+        return getMapper().toDto(getService().saveAllAndFlush(entities));
     }
 
     @Transactional
     @Override
     default List<D> saveAllAndFlushDtoToDto(List<D> entities) {
-        return saveAllAndFlushToDto(getMapper().toEntity(entities));
+        return getService().saveAllAndFlushToDto(getMapper().toEntity(entities));
     }
 
 
     @Transactional
     @Override
     default D insertToDto(E e) {
-        return getMapper().toDto(insert(e));
+        return getMapper().toDto(getService().insert(e));
     }
 
     @Transactional
     @Override
     default D insertToDto(D e) {
-        return insertToDto(getMapper().toEntity(e));
+        return getService().insertToDto(getMapper().toEntity(e));
     }
 
     @Transactional
     @Override
     default List<D> insertToDto(List<E> e) {
-        return getMapper().toDto(insert(e));
+        return getMapper().toDto(getService().insert(e));
     }
 
     @Transactional
     @Override
     default List<D> insertDtoToDto(List<D> e) {
-        return insertToDto(getMapper().toEntity(e));
+        return getService().insertToDto(getMapper().toEntity(e));
     }
 
     @Transactional
     @Override
     default D updateToDto(E e) {
-        return getMapper().toDto(update(e));
+        return getMapper().toDto(getService().update(e));
     }
 
     @Transactional
     @Override
     default D updateToDto(D e) {
-        return updateToDto(getMapper().toEntity(e));
+        return getService().updateToDto(getMapper().toEntity(e));
     }
 
     @Transactional
     @Override
     default List<D> updateToDto(List<E> e) {
-        return getMapper().toDto(update(e));
+        return getMapper().toDto(getService().update(e));
     }
 
     @Transactional
     @Override
     default List<D> updateDtoToDto(List<D> e) {
-        return getMapper().toDto(update(getMapper().toEntity(e)));
+        return getMapper().toDto(getService().update(getMapper().toEntity(e)));
     }
 
     @Transactional
     @Override
     default D insertAndUpdateToDto(E e) {
-        return getMapper().toDto(insertAndUpdate(e));
+        return getMapper().toDto(getService().insertAndUpdate(e));
     }
 
     @Transactional
     @Override
     default D insertAndUpdateToDto(D e) {
-        return insertAndUpdateToDto(getMapper().toEntity(e));
+        return getService().insertAndUpdateToDto(getMapper().toEntity(e));
     }
 
     @Transactional
     @Override
     default List<D> insertAndUpdateToDto(List<E> e) {
-        return getMapper().toDto(insertAndUpdate(e));
+        return getMapper().toDto(getService().insertAndUpdate(e));
     }
 
     @Transactional
     @Override
     default List<D> insertAndUpdateDtoToDto(List<D> e) {
-        return getMapper().toDto(insertAndUpdate(getMapper().toEntity(e)));
+        return getMapper().toDto(getService().insertAndUpdate(getMapper().toEntity(e)));
     }
 }

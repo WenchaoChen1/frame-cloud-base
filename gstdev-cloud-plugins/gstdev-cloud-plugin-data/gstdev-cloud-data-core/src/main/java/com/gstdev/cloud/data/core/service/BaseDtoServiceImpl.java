@@ -33,9 +33,14 @@ public class BaseDtoServiceImpl<E extends Entity
         return mapper;
     }
 
+
     public void setMapper(M mapper) {
         this.mapper = mapper;
     }
 
+    @Override
+    public BaseDtoServiceDefault<E, ID, D> getService(){
+        return this;
+    }
 
 }
