@@ -17,12 +17,12 @@ import com.gstdev.cloud.oauth2.authorization.server.consumer.OAuth2Authorization
 import com.gstdev.cloud.oauth2.authorization.server.converter.OAuth2PasswordAuthenticationConverter;
 import com.gstdev.cloud.oauth2.authorization.server.customizer.OAuth2FormLoginConfigurerCustomizer;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
+import com.gstdev.cloud.oauth2.authorization.server.response.OAuth2AccessTokenResponseHandler;
 import com.gstdev.cloud.oauth2.authorization.server.response.OAuth2AuthenticationFailureResponseHandler;
 import com.gstdev.cloud.oauth2.core.enums.Certificate;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.properties.OAuth2AuthorizationProperties;
 import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
-import com.gstdev.cloud.service.identity.response.OAuth2AccessTokenResponseHandler;
 import com.gstdev.cloud.service.identity.response.OAuth2DeviceVerificationResponseHandler;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;

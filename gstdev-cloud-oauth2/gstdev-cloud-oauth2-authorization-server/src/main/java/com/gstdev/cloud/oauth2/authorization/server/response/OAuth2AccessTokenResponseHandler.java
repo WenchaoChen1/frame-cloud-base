@@ -1,4 +1,4 @@
-package com.gstdev.cloud.service.identity.response;
+package com.gstdev.cloud.oauth2.authorization.server.response;
 
 import com.gstdev.cloud.base.core.json.jackson2.utils.Jackson2Utils;
 import com.gstdev.cloud.base.core.utils.http.SessionUtils;

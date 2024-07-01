@@ -15,7 +15,7 @@ import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2Authenticat
 import com.gstdev.cloud.oauth2.core.definition.strategy.StrategyUserDetailsService;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
-import com.gstdev.cloud.service.identity.processor.DefaultSecurityUserDetailsService;
+import com.gstdev.cloud.oauth2.authorization.server.processor.DefaultSecurityUserDetailsService;
 import lombok.SneakyThrows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

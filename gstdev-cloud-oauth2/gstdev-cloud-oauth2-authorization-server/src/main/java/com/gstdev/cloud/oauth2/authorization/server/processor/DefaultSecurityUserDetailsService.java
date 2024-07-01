@@ -1,4 +1,4 @@
-package com.gstdev.cloud.service.identity.processor;
+package com.gstdev.cloud.oauth2.authorization.server.processor;
 
 import com.gstdev.cloud.base.definition.domain.oauth2.AccessPrincipal;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
