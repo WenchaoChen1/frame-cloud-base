@@ -22,19 +22,19 @@ public enum DataItemStatus implements BaseUiEnum<Integer> {
     /**
      * 数据条目已启用
      */
-    ENABLE(0, "启用"),
+    ENABLE(0, "enable", 0, "启用"),
     /**
      * 数据条目被启用
      */
-    FORBIDDEN(1, "禁用"),
+    FORBIDDEN(1, "forbidden", 1, "禁用"),
     /**
      * 数据条目被锁定
      */
-    LOCKING(2, "锁定"),
+    LOCKING(2,"locking",2, "锁定"),
     /**
      * 数据条目已过期
      */
-    EXPIRED(3, "过期");
+    EXPIRED(3, "expired", 3, "过期");
 
     private static final Map<Integer, DataItemStatus> INDEX_MAP = new HashMap<>();
     private static final List<Map<String, Object>> JSON_STRUCTURE = new ArrayList<>();
@@ -42,9 +42,11 @@ public enum DataItemStatus implements BaseUiEnum<Integer> {
     static {
         for (DataItemStatus dataItemStatus : DataItemStatus.values()) {
             INDEX_MAP.put(dataItemStatus.getValue(), dataItemStatus);
-            JSON_STRUCTURE.add(dataItemStatus.getValue(),
+            JSON_STRUCTURE.add(dataItemStatus.getSort(),
                     ImmutableMap.<String, Object>builder()
                             .put("value", dataItemStatus.getValue())
+                            .put("name", dataItemStatus.getName())
+                            .put("sort", dataItemStatus.getSort())
                             .put("key", dataItemStatus.name())
                             .put("description", dataItemStatus.getDescription())
                             .build());
@@ -53,11 +55,17 @@ public enum DataItemStatus implements BaseUiEnum<Integer> {
 
     @Schema(title = "枚举值")
     private final Integer value;
+    @Schema(title = "name")
+    private final String name;
+    @Schema(title = "顺序")
+    private final Integer sort;
     @Schema(title = "文字")
     private final String description;
 
-    DataItemStatus(Integer value, String description) {
+    DataItemStatus(Integer value, String name, Integer sort,String description) {
         this.value = value;
+        this.name = name;
+        this.sort = sort;
         this.description = description;
     }
 
@@ -86,5 +94,11 @@ public enum DataItemStatus implements BaseUiEnum<Integer> {
     @Override
     public String getDescription() {
         return this.description;
+    }
+    public Integer getSort() {
+        return sort;
+    }
+    public String getName() {
+        return name;
     }
 }
