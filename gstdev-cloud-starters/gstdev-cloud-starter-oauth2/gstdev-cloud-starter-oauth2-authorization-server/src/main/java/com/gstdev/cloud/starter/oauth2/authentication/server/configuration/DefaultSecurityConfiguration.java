@@ -10,11 +10,12 @@
 package com.gstdev.cloud.starter.oauth2.authentication.server.configuration;
 
 import com.gstdev.cloud.captcha.core.processor.CaptchaRendererFactory;
-import com.gstdev.cloud.oauth2.authorization.server.configurer.OAuth2FormLoginSecureConfigurer;
 import com.gstdev.cloud.oauth2.authorization.server.customizer.OAuth2FormLoginConfigurerCustomizer;
 import com.gstdev.cloud.oauth2.authorization.server.processor.DefaultSecurityUserDetailsService;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.core.definition.strategy.StrategyUserDetailsService;
+import com.gstdev.cloud.oauth2.core.response.FrameAccessDeniedHandler;
+import com.gstdev.cloud.oauth2.core.response.FrameAuthenticationEntryPoint;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
 import lombok.SneakyThrows;
@@ -93,13 +94,13 @@ public class DefaultSecurityConfiguration {
       .authorizeHttpRequests(oauth2AuthorizeHttpRequestsConfigurerCustomer)
             .formLogin(oauth2FormLoginConfigurerCustomizer)
 //      .sessionManagement(oauth2SessionManagementConfigurerCustomer)
-//      .exceptionHandling(exceptions -> {
-//        exceptions.authenticationEntryPoint(new HerodotusAuthenticationEntryPoint());
-//        exceptions.accessDeniedHandler(new HerodotusAccessDeniedHandler());
-//      })
-      .oauth2ResourceServer(oauth2ResourceServerConfigurerCustomer)
-      .with(new OAuth2FormLoginSecureConfigurer<>(userDetailsService, authenticationProperties, captchaRendererFactory), (configurer) -> {
-      });
+      .exceptionHandling(exceptions -> {
+        exceptions.authenticationEntryPoint(new FrameAuthenticationEntryPoint());
+        exceptions.accessDeniedHandler(new FrameAccessDeniedHandler());
+      })
+      .oauth2ResourceServer(oauth2ResourceServerConfigurerCustomer);
+//      .with(new OAuth2FormLoginSecureConfigurer<>(userDetailsService, authenticationProperties, captchaRendererFactory), (configurer) -> {
+//      });
 
 
     return http.build();
