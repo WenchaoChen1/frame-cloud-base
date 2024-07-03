@@ -11,11 +11,12 @@ package com.gstdev.cloud.starter.oauth2.authentication.server.configuration;
 
 import com.gstdev.cloud.captcha.core.processor.CaptchaRendererFactory;
 import com.gstdev.cloud.oauth2.authorization.server.configurer.OAuth2FormLoginSecureConfigurer;
+import com.gstdev.cloud.oauth2.authorization.server.customizer.OAuth2FormLoginConfigurerCustomizer;
+import com.gstdev.cloud.oauth2.authorization.server.processor.DefaultSecurityUserDetailsService;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.core.definition.strategy.StrategyUserDetailsService;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
-import com.gstdev.cloud.oauth2.authorization.server.processor.DefaultSecurityUserDetailsService;
 import lombok.SneakyThrows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -76,6 +77,7 @@ public class DefaultSecurityConfiguration {
                                                           CaptchaRendererFactory captchaRendererFactory,
 //                                                        OAuth2SessionManagementConfigurerCustomer oauth2SessionManagementConfigurerCustomer,
                                                           OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer,
+                                                          OAuth2FormLoginConfigurerCustomizer oauth2FormLoginConfigurerCustomizer,
                                                           OAuth2AuthorizeHttpRequestsConfigurerCustomer oauth2AuthorizeHttpRequestsConfigurerCustomer,
                                                           UrlBasedCorsConfigurationSource configurationSource) {
 //    http
@@ -89,6 +91,7 @@ public class DefaultSecurityConfiguration {
         // @formatter:off
     http
       .authorizeHttpRequests(oauth2AuthorizeHttpRequestsConfigurerCustomer)
+            .formLogin(oauth2FormLoginConfigurerCustomizer)
 //      .sessionManagement(oauth2SessionManagementConfigurerCustomer)
 //      .exceptionHandling(exceptions -> {
 //        exceptions.authenticationEntryPoint(new HerodotusAuthenticationEntryPoint());

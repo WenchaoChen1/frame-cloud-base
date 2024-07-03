@@ -4,6 +4,7 @@ import com.google.common.base.MoreObjects;
 import com.gstdev.cloud.base.definition.constants.DefaultConstants;
 import com.gstdev.cloud.base.definition.constants.SymbolConstants;
 import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
+import com.gstdev.cloud.oauth2.core.enums.FrameLoginType;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.AbstractRememberMeServices;
@@ -239,6 +240,12 @@ public class OAuth2AuthenticationProperties {
          * 登录成功重定向地址
          */
         private String successForwardUrl;
+
+        /**
+         * 本地java html 使用local,远程 前后端分离项目使用 remote
+         * 登录页面的方式，默认为 REMOTE
+         */
+        private FrameLoginType frameLoginType = FrameLoginType.REMOTE;
         /**
          * 关闭验证码显示，默认 false，显示
          */
@@ -320,6 +327,14 @@ public class OAuth2AuthenticationProperties {
             this.category = category;
         }
 
+        public FrameLoginType getFrameLoginType() {
+            return frameLoginType;
+        }
+
+        public void setFrameLoginType(FrameLoginType frameLoginType) {
+            this.frameLoginType = frameLoginType;
+        }
+
         @Override
         public String toString() {
             return MoreObjects.toStringHelper(this)
@@ -332,6 +347,7 @@ public class OAuth2AuthenticationProperties {
                     .add("successForwardUrl", successForwardUrl)
                     .add("closeCaptcha", closeCaptcha)
                     .add("category", category)
+                    .add("frameLoginType", frameLoginType)
                     .toString();
         }
     }
