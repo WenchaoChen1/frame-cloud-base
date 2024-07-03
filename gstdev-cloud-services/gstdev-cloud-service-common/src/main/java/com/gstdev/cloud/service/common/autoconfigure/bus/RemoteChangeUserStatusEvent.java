@@ -10,7 +10,6 @@ import org.springframework.cloud.bus.event.RemoteApplicationEvent;
  * @date : 2022/7/10 16:13
  */
 public class RemoteChangeUserStatusEvent extends RemoteApplicationEvent {
-//public class RemoteChangeUserStatusEvent {
 
     private String data;
 

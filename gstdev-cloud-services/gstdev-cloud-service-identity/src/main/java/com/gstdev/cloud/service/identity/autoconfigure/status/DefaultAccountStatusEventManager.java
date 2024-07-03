@@ -5,6 +5,7 @@ import com.gstdev.cloud.base.core.context.ServiceContextHolder;
 import com.gstdev.cloud.message.core.logic.domain.UserStatus;
 import com.gstdev.cloud.message.core.logic.event.ChangeUserStatusEvent;
 import com.gstdev.cloud.message.core.logic.strategy.AccountStatusEventManager;
+import com.gstdev.cloud.service.common.autoconfigure.bus.RemoteChangeUserStatusEvent;
 
 /**
  * <p>Description: 用户状态变更处理器 </p>
@@ -25,6 +26,6 @@ public class DefaultAccountStatusEventManager implements AccountStatusEventManag
 
     @Override
     public void postRemoteProcess(String data, String originService, String destinationService) {
-//        publishEvent(new RemoteChangeUserStatusEvent(data, originService, destinationService));
+        publishEvent(new RemoteChangeUserStatusEvent(data, originService, destinationService));
     }
 }
