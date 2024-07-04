@@ -21,6 +21,7 @@ import java.util.Collection;
  * @see UsernamePasswordAuthenticationToken
  */
 public class OAuth2FormLoginAuthenticationToken extends UsernamePasswordAuthenticationToken {
+//    private final OAuth2AccessToken accessToken;
 
     public OAuth2FormLoginAuthenticationToken(Object principal, Object credentials) {
         super(principal, credentials);

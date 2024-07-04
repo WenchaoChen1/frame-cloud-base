@@ -26,6 +26,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
+import org.springframework.security.core.authority.mapping.NullAuthoritiesMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /**
@@ -42,7 +44,7 @@ public class OAuth2FormLoginAuthenticationProvider extends DaoAuthenticationProv
     private static final Logger log = LoggerFactory.getLogger(OAuth2FormLoginAuthenticationProvider.class);
 
     private final CaptchaRendererFactory captchaRendererFactory;
-
+    private GrantedAuthoritiesMapper authoritiesMapper = new NullAuthoritiesMapper();
     public OAuth2FormLoginAuthenticationProvider(CaptchaRendererFactory captchaRendererFactory) {
         super();
         this.captchaRendererFactory = captchaRendererFactory;
@@ -84,6 +86,14 @@ public class OAuth2FormLoginAuthenticationProvider extends DaoAuthenticationProv
 
         super.additionalAuthenticationChecks(userDetails, authentication);
     }
+//    @Override
+//    protected Authentication createSuccessAuthentication(Object principal, Authentication authentication, UserDetails user) {
+//
+//        OAuth2FormLoginAuthenticationToken result = new OAuth2FormLoginAuthenticationToken(principal, authentication.getCredentials(),authoritiesMapper.mapAuthorities(user.getAuthorities()), null);
+//        result.setDetails(authentication.getDetails());
+//        this.logger.debug("Authenticated user");
+//        return result;
+//    }
 
     @Override
     public boolean supports(Class<?> authentication) {
@@ -92,4 +102,10 @@ public class OAuth2FormLoginAuthenticationProvider extends DaoAuthenticationProv
         log.trace("[GstDev Cloud] |- Form Login Authentication is supports! [{}]", supports);
         return supports;
     }
+
+//    @Override
+//    public void setAuthoritiesMapper(GrantedAuthoritiesMapper authoritiesMapper) {
+//        this.authoritiesMapper = authoritiesMapper;
+//        super.setAuthoritiesMapper(authoritiesMapper);
+//    }
 }

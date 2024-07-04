@@ -10,6 +10,7 @@
 package com.gstdev.cloud.starter.oauth2.authentication.server.configuration;
 
 import com.gstdev.cloud.captcha.core.processor.CaptchaRendererFactory;
+import com.gstdev.cloud.oauth2.authorization.server.configurer.OAuth2FormLoginSecureConfigurer;
 import com.gstdev.cloud.oauth2.authorization.server.customizer.OAuth2FormLoginConfigurerCustomizer;
 import com.gstdev.cloud.oauth2.authorization.server.processor.DefaultSecurityUserDetailsService;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
@@ -98,9 +99,9 @@ public class DefaultSecurityConfiguration {
         exceptions.authenticationEntryPoint(new FrameAuthenticationEntryPoint());
         exceptions.accessDeniedHandler(new FrameAccessDeniedHandler());
       })
-      .oauth2ResourceServer(oauth2ResourceServerConfigurerCustomer);
-//      .with(new OAuth2FormLoginSecureConfigurer<>(userDetailsService, authenticationProperties, captchaRendererFactory), (configurer) -> {
-//      });
+      .oauth2ResourceServer(oauth2ResourceServerConfigurerCustomer)
+      .with(new OAuth2FormLoginSecureConfigurer<>(userDetailsService, authenticationProperties, captchaRendererFactory), (configurer) -> {
+      });
 
 
     return http.build();
