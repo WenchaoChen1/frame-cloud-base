@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.Instant;
 import java.util.Date;
 
 @Getter
@@ -13,10 +12,14 @@ public class AuthorizationManagePageVO {
     private String id;
     private String principalName;
     private String authorizationGrantType;
-    private Instant accessTokenIssuedAt;
-    private Instant accessTokenExpiresAt;
-    private Instant refreshTokenIssuedAt;
-    private Instant refreshTokenExpiresAt;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date accessTokenIssuedAt;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date accessTokenExpiresAt;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date refreshTokenIssuedAt;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date refreshTokenExpiresAt;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdDate;
     private String createdUser;

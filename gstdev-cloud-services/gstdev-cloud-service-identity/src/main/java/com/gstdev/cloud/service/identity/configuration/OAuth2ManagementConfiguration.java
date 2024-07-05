@@ -39,6 +39,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
         "com.gstdev.cloud.service.identity.mapper",
         "com.gstdev.cloud.service.identity.service",
         "com.gstdev.cloud.service.identity.controller",
+        "com.gstdev.cloud.service.identity.processor",
 })
 public class OAuth2ManagementConfiguration {
 

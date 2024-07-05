@@ -8,6 +8,7 @@ import com.gstdev.cloud.service.identity.domain.entity.OAuth2Scope;
 import com.gstdev.cloud.service.identity.service.OAuth2ApplicationService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,6 +20,8 @@ import java.util.stream.Collectors;
  * @author : cc
  * @date : 2022/4/1 15:21
  */
+
+@Service
 public class FrameClientDetailsService implements EnhanceClientDetailsService {
 
     private final OAuth2ApplicationService applicationService;
