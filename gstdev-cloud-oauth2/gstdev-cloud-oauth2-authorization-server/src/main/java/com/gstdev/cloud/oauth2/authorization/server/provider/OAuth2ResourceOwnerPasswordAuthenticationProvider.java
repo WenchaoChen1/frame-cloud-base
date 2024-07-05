@@ -32,7 +32,12 @@ import java.security.Principal;
 import java.util.Map;
 import java.util.Set;
 
-
+/**
+ * <p>Description: 自定义 OAuth2 密码模式认证 Provider </p>
+ *
+ * @author : gengwei.zheng
+ * @date : 2022/2/22 16:02
+ */
 public class OAuth2ResourceOwnerPasswordAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
     private static final Logger log = LoggerFactory.getLogger(OAuth2ResourceOwnerPasswordAuthenticationProvider.class);
     private static final String ERROR_URI = "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2";
@@ -83,44 +88,10 @@ public class OAuth2ResourceOwnerPasswordAuthenticationProvider extends AbstractU
         }
     }
 
-//  public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-//    OAuth2PasswordAuthenticationToken resourceOwnerPasswordAuthentication = (OAuth2PasswordAuthenticationToken) authentication;
-//    OAuth2ClientAuthenticationToken clientPrincipal = OAuth2AuthenticationProviderUtils.getAuthenticatedClientElseThrowInvalidClient(resourceOwnerPasswordAuthentication);
-//    RegisteredClient registeredClient = clientPrincipal.getRegisteredClient();
-//    if (!registeredClient.getAuthorizationGrantTypes().contains(AuthorizationGrantType.PASSWORD)) {
-//      throw new OAuth2AuthenticationException("unauthorized_client");
-//    } else {
-//      Authentication principal = this.getUsernamePasswordAuthentication(resourceOwnerPasswordAuthentication.getAdditionalParameters(), registeredClient.getId());
-//      Set<String> authorizedScopes = this.validateScopes(resourceOwnerPasswordAuthentication.getScopes(), registeredClient);
-//
-//      OAuth2Authorization.Builder authorizationBuilder = OAuth2Authorization.withRegisteredClient(registeredClient)
-//        .principalName(principal.getName())
-//        .authorizationGrantType(AuthorizationGrantType.PASSWORD)
-//        .authorizedScopes(authorizedScopes).attribute(Principal.class.getName(), principal);
-//
-//      DefaultOAuth2TokenContext.Builder tokenContextBuilder =  DefaultOAuth2TokenContext.builder().registeredClient(registeredClient)
-//        .principal(principal)
-//        .authorizationServerContext(AuthorizationServerContextHolder.getContext())
-//        .authorizedScopes(authorizedScopes).tokenType(OAuth2TokenType.ACCESS_TOKEN)
-//        .authorizationGrantType(AuthorizationGrantType.PASSWORD).authorizationGrant(resourceOwnerPasswordAuthentication);
-//
-//      OAuth2AccessToken accessToken = this.createOAuth2AccessToken(tokenContextBuilder, authorizationBuilder, this.tokenGenerator, "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2");
-//      OAuth2RefreshToken refreshToken = this.creatOAuth2RefreshToken(tokenContextBuilder, authorizationBuilder, this.tokenGenerator, "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2", clientPrincipal, registeredClient);
-////      OidcIdToken idToken = this.createOidcIdToken(principal, this.sessionRegistry, tokenContextBuilder, authorizationBuilder, this.tokenGenerator, "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2", resourceOwnerPasswordAuthentication.getScopes());
-//      OidcIdToken idToken = this.createOidcIdToken(principal, null, tokenContextBuilder, authorizationBuilder, this.tokenGenerator, "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2", resourceOwnerPasswordAuthentication.getScopes());
-//      OAuth2Authorization authorization = authorizationBuilder.build();
-//      this.authorizationService.save(authorization);
-//      log.debug("[GstDev Cloud] |- Resource Owner Password returning OAuth2AccessTokenAuthenticationToken.");
-//      Map<String, Object> additionalParameters = this.idTokenAdditionalParameters(idToken);
-//      OAuth2AccessTokenAuthenticationToken accessTokenAuthenticationToken = new OAuth2AccessTokenAuthenticationToken(registeredClient, clientPrincipal, accessToken, refreshToken, additionalParameters);
-//      return this.createOAuth2AccessTokenAuthenticationToken(principal, accessTokenAuthenticationToken);
-//    }
-//  }
-
-
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        OAuth2ResourceOwnerPasswordAuthenticationToken resourceOwnerPasswordAuthentication = (OAuth2ResourceOwnerPasswordAuthenticationToken) authentication;
+        OAuth2ResourceOwnerPasswordAuthenticationToken resourceOwnerPasswordAuthentication =
+                (OAuth2ResourceOwnerPasswordAuthenticationToken) authentication;
 
         OAuth2ClientAuthenticationToken clientPrincipal =
                 OAuth2AuthenticationProviderUtils.getAuthenticatedClientElseThrowInvalidClient(resourceOwnerPasswordAuthentication);
@@ -142,15 +113,15 @@ public class OAuth2ResourceOwnerPasswordAuthenticationProvider extends AbstractU
                 .attribute(Principal.class.getName(), principal);
 
         // @formatter:off
-    DefaultOAuth2TokenContext.Builder tokenContextBuilder = DefaultOAuth2TokenContext.builder()
-      .registeredClient(registeredClient)
-      .principal(principal)
-      .authorizationServerContext(AuthorizationServerContextHolder.getContext())
-      .authorizedScopes(authorizedScopes)
-      .tokenType(OAuth2TokenType.ACCESS_TOKEN)
-      .authorizationGrantType(FrameGrantType.PASSWORD)
-      .authorizationGrant(resourceOwnerPasswordAuthentication);
-    // @formatter:on
+        DefaultOAuth2TokenContext.Builder tokenContextBuilder = DefaultOAuth2TokenContext.builder()
+          .registeredClient(registeredClient)
+          .principal(principal)
+          .authorizationServerContext(AuthorizationServerContextHolder.getContext())
+          .authorizedScopes(authorizedScopes)
+          .tokenType(OAuth2TokenType.ACCESS_TOKEN)
+          .authorizationGrantType(FrameGrantType.PASSWORD)
+          .authorizationGrant(resourceOwnerPasswordAuthentication);
+        // @formatter:on
 
         // ----- Access token -----
         OAuth2AccessToken accessToken = createOAuth2AccessToken(tokenContextBuilder, authorizationBuilder, this.tokenGenerator, ERROR_URI);
@@ -159,8 +130,7 @@ public class OAuth2ResourceOwnerPasswordAuthenticationProvider extends AbstractU
         OAuth2RefreshToken refreshToken = creatOAuth2RefreshToken(tokenContextBuilder, authorizationBuilder, this.tokenGenerator, ERROR_URI, clientPrincipal, registeredClient);
 
         // ----- ID token -----
-//    OidcIdToken idToken = createOidcIdToken(principal, sessionRegistry, tokenContextBuilder, authorizationBuilder, this.tokenGenerator, ERROR_URI, resourceOwnerPasswordAuthentication.getScopes());
-        OidcIdToken idToken = createOidcIdToken(principal, null, tokenContextBuilder, authorizationBuilder, this.tokenGenerator, ERROR_URI, resourceOwnerPasswordAuthentication.getScopes());
+        OidcIdToken idToken = createOidcIdToken(principal, sessionRegistry, tokenContextBuilder, authorizationBuilder, this.tokenGenerator, ERROR_URI, resourceOwnerPasswordAuthentication.getScopes());
 
         OAuth2Authorization authorization = authorizationBuilder.build();
 

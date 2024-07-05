@@ -6,12 +6,11 @@
 //// Copyright (c) 2020-2025 gstdev.com
 ////
 //// ====================================================
-//package com.gstdev.cloud.oauth2.authentication.provider;
+//package com.gstdev.cloud.oauth2.authorization.server.provider;
 //
-//import com.gstdev.cloud.commons.ass.core.enums.AccountType;
-//import com.gstdev.cloud.commons.ass.definition.constants.BaseConstants;
-//com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2EndpointUtils;
-//import com.gstdev.cloud.oauth2.core.definition.HerodotusGrantType;
+//import com.gstdev.cloud.base.definition.constants.BaseConstants;
+//import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2EndpointUtils;
+//import com.gstdev.cloud.oauth2.core.definition.FrameGrantType;
 //import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
 //import jakarta.servlet.http.HttpServletRequest;
 //import org.apache.commons.lang3.ObjectUtils;
@@ -36,7 +35,7 @@
 //    public Authentication convert(HttpServletRequest request) {
 //        // grant_type (REQUIRED)
 //        String grantType = request.getParameter(OAuth2ParameterNames.GRANT_TYPE);
-//        if (!HerodotusGrantType.SOCIAL.getValue().equals(grantType)) {
+//        if (!FrameGrantType.SOCIAL.getValue().equals(grantType)) {
 //            return null;
 //        }
 //
