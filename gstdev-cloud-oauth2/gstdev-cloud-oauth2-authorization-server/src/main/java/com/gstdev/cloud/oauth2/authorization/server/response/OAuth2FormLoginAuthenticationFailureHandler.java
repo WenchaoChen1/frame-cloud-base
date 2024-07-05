@@ -29,7 +29,6 @@ import org.springframework.security.web.util.UrlUtils;
 import org.springframework.util.Assert;
 
 import java.io.IOException;
-
 /**
  * <p> Description : 表单登录失败处理器 </p>
  *
@@ -55,7 +54,12 @@ public class OAuth2FormLoginAuthenticationFailureHandler extends SimpleUrlAuthen
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) throws IOException, ServletException {
-
+//        // 创建一个新的 Cookie
+//        Cookie cookie = new Cookie("paramName", "paramValue");
+//        cookie.setPath("/");
+//        cookie.setMaxAge(3600); // 设置 cookie 的过期时间，单位为秒
+//        // 添加 Cookie 到响应
+//        response.addCookie(cookie);
         if (this.defaultFailureUrl == null) {
             if (this.logger.isTraceEnabled()) {
                 this.logger.trace("Sending 401 Unauthorized error since no failure URL is set");

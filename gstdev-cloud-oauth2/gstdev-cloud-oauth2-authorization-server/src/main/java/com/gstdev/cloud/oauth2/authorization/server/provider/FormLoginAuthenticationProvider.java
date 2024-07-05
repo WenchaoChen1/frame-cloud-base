@@ -45,7 +45,7 @@
 //    /**
 //     * Constructs an {@code OAuth2ClientCredentialsAuthenticationProvider} using the provided parameters.
 //     *
-//     * @param authorizationService the authorization service
+//     * @param authorizationService the authorizaticon service
 //     * @param tokenGenerator       – the token generator
 //     */
 //    public FormLoginAuthenticationProvider(OAuth2AuthorizationService authorizationService
@@ -170,7 +170,7 @@
 //
 //    @Override
 //    public boolean supports(Class<?> authentication) {
-//        boolean supports = OAuth2PasswordAuthenticationToken.class.isAssignableFrom(authentication);
+//        boolean supports = FormLoginAuthenticationProvider.class.isAssignableFrom(authentication);
 //        log.trace("[GstDev Cloud] |- Resource Owner Password Authentication is supports! [{}]", supports);
 //        return supports;
 //    }
