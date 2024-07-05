@@ -11,11 +11,15 @@ package com.gstdev.cloud.oauth2.authorization.server.configurer;
 import com.gstdev.cloud.captcha.core.processor.CaptchaRendererFactory;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.authorization.server.provider.OAuth2FormLoginAuthenticationProvider;
+import com.gstdev.cloud.oauth2.authorization.server.response.OAuth2AccessLoginTokenResponseHandler;
 import com.gstdev.cloud.oauth2.authorization.server.response.OAuth2FormLoginAuthenticationFailureHandler;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.oauth2.core.OAuth2Token;
+import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
+import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenGenerator;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.context.SecurityContextRepository;
 
@@ -33,12 +37,19 @@ public class OAuth2FormLoginSecureConfigurer<H extends HttpSecurityBuilder<H>> e
     private final UserDetailsService userDetailsService;
     private final OAuth2AuthenticationProperties authenticationProperties;
     private final CaptchaRendererFactory captchaRendererFactory;
-
-    public OAuth2FormLoginSecureConfigurer(UserDetailsService userDetailsService, OAuth2AuthenticationProperties authenticationProperties, CaptchaRendererFactory captchaRendererFactory) {
+    private OAuth2AuthorizationService authorizationService;
+    private OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator;
+    public OAuth2FormLoginSecureConfigurer(
+            OAuth2AuthorizationService authorizationService,
+            OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator,
+            UserDetailsService userDetailsService, OAuth2AuthenticationProperties authenticationProperties, CaptchaRendererFactory captchaRendererFactory) {
         this.userDetailsService = userDetailsService;
         this.authenticationProperties = authenticationProperties;
         this.captchaRendererFactory = captchaRendererFactory;
+        this.authorizationService = authorizationService;
+        this.tokenGenerator = tokenGenerator;
     }
+
 
     @Override
     public void configure(H httpSecurity) throws Exception {
@@ -51,7 +62,7 @@ public class OAuth2FormLoginSecureConfigurer<H extends HttpSecurityBuilder<H>> e
         OAuth2FormLoginAuthenticationProvider provider = new OAuth2FormLoginAuthenticationProvider(captchaRendererFactory);
         provider.setUserDetailsService(userDetailsService);
         provider.setHideUserNotFoundExceptions(false);
-
+//        FormLoginAuthenticationProvider formLoginAuthenticationProvider = new FormLoginAuthenticationProvider(authorizationService, tokenGenerator, userDetailsService, authenticationProperties);
         httpSecurity
                 .authenticationProvider(provider)
                 .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
@@ -64,7 +75,7 @@ public class OAuth2FormLoginSecureConfigurer<H extends HttpSecurityBuilder<H>> e
         filter.setUsernameParameter(getFormLogin().getUsernameParameter());
         filter.setPasswordParameter(getFormLogin().getPasswordParameter());
         filter.setAuthenticationDetailsSource(new OAuth2FormLoginWebAuthenticationDetailSource(authenticationProperties));
-
+        filter.setAuthenticationSuccessHandler(new OAuth2AccessLoginTokenResponseHandler());
         filter.setAuthenticationFailureHandler(new OAuth2FormLoginAuthenticationFailureHandler(getFormLogin().getFailureForwardUrl()));
         filter.setSecurityContextRepository(securityContextRepository);
         return filter;
@@ -73,4 +84,7 @@ public class OAuth2FormLoginSecureConfigurer<H extends HttpSecurityBuilder<H>> e
     private OAuth2AuthenticationProperties.FormLogin getFormLogin() {
         return authenticationProperties.getFormLogin();
     }
+
+
+
 }

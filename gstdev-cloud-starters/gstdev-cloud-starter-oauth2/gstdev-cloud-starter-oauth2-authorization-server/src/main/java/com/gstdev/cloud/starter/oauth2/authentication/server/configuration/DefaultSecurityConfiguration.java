@@ -14,6 +14,7 @@ import com.gstdev.cloud.oauth2.authorization.server.configurer.OAuth2FormLoginSe
 import com.gstdev.cloud.oauth2.authorization.server.customizer.OAuth2FormLoginConfigurerCustomizer;
 import com.gstdev.cloud.oauth2.authorization.server.processor.DefaultSecurityUserDetailsService;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
+import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2ConfigurerUtils;
 import com.gstdev.cloud.oauth2.core.definition.strategy.StrategyUserDetailsService;
 import com.gstdev.cloud.oauth2.core.response.FrameAccessDeniedHandler;
 import com.gstdev.cloud.oauth2.core.response.FrameAuthenticationEntryPoint;
@@ -31,6 +32,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.core.OAuth2Token;
+import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
+import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenGenerator;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -91,6 +95,9 @@ public class DefaultSecurityConfiguration {
         // TODO 不知道做什么的
         http.csrf(c -> c.disable()).cors(cors -> cors.configurationSource(configurationSource));
         // @formatter:off
+        OAuth2AuthorizationService authorizationService = OAuth2ConfigurerUtils.getAuthorizationService(http);
+        OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator = OAuth2ConfigurerUtils.getTokenGenerator(http);
+        ;
     http
       .authorizeHttpRequests(oauth2AuthorizeHttpRequestsConfigurerCustomer)
             .formLogin(oauth2FormLoginConfigurerCustomizer)
@@ -100,7 +107,7 @@ public class DefaultSecurityConfiguration {
         exceptions.accessDeniedHandler(new FrameAccessDeniedHandler());
       })
       .oauth2ResourceServer(oauth2ResourceServerConfigurerCustomer)
-      .with(new OAuth2FormLoginSecureConfigurer<>(userDetailsService, authenticationProperties, captchaRendererFactory), (configurer) -> {
+      .with(new OAuth2FormLoginSecureConfigurer<>(authorizationService,tokenGenerator,userDetailsService, authenticationProperties, captchaRendererFactory), (configurer) -> {
       });
 
 

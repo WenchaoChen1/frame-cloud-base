@@ -9,6 +9,7 @@
 package com.gstdev.cloud.oauth2.authorization.server.configurer;
 
 import com.gstdev.cloud.oauth2.authorization.server.provider.OAuth2FormLoginAuthenticationToken;
+import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2EndpointUtils;
 import com.gstdev.cloud.oauth2.core.utils.SymmetricUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,9 +22,13 @@ import org.springframework.security.authentication.AuthenticationServiceExceptio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.util.MultiValueMap;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>Description: OAuth2 表单登录过滤器 </p>
@@ -59,6 +64,13 @@ public class OAuth2FormLoginAuthenticationFilter extends UsernamePasswordAuthent
 
     private OAuth2FormLoginAuthenticationToken getAuthenticationToken(
             HttpServletRequest request) {
+        // 参数提取验证
+        MultiValueMap<String, String> parameters = OAuth2EndpointUtils.getParameters(request);
+        // username (REQUIRED) 用户名验证
+        OAuth2EndpointUtils.checkRequiredParameter(parameters, OAuth2ParameterNames.USERNAME);
+
+        // password (REQUIRED) 密码验证
+        OAuth2EndpointUtils.checkRequiredParameter(parameters, OAuth2ParameterNames.PASSWORD);
 
         String username = obtainUsername(request);
         String password = obtainPassword(request);
@@ -79,8 +91,18 @@ public class OAuth2FormLoginAuthenticationFilter extends UsernamePasswordAuthent
             log.debug("[GstDev Cloud] |- Decrypt Username is : [{}], Password is : [{}]", username, password);
         }
 
-        return new OAuth2FormLoginAuthenticationToken(username, password);
+        OAuth2FormLoginAuthenticationToken oAuth2FormLoginAuthenticationToken = new OAuth2FormLoginAuthenticationToken(username, password);
+        Map<String, String> singleValueMap = parameters.toSingleValueMap();
+        Map<String, Object> map = new HashMap<>();
+//        singleValueMap.forEach((key1,value)->{
+//            map.put(key1,value);
+//        });
+        map.put(OAuth2ParameterNames.USERNAME, username);
+        map.put(OAuth2ParameterNames.PASSWORD, password);
+        oAuth2FormLoginAuthenticationToken.setAdditionalParameters(map);
+        return oAuth2FormLoginAuthenticationToken;
     }
+
 
     @Override
     public void setPostOnly(boolean postOnly) {
