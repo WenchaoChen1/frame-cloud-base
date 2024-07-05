@@ -2,6 +2,7 @@ package com.gstdev.cloud.oauth2.authorization.server.configurer;
 
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.authorization.server.provider.OAuth2ResourceOwnerPasswordAuthenticationProvider;
+import com.gstdev.cloud.oauth2.authorization.server.provider.OAuth2SocialCredentialsAuthenticationProvider;
 import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2ConfigurerUtils;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -37,9 +38,9 @@ public class OAuth2AuthenticationProviderConfigurer extends AbstractHttpConfigur
 //    resourceOwnerPasswordAuthenticationProvider.setSessionRegistry(this.sessionRegistry);
 
         httpSecurity.authenticationProvider(resourceOwnerPasswordAuthenticationProvider);
-//    OAuth2SocialCredentialsAuthenticationProvider socialCredentialsAuthenticationProvider =
-//        new OAuth2SocialCredentialsAuthenticationProvider(authorizationService, tokenGenerator, this.userDetailsService, this.authenticationProperties);
+    OAuth2SocialCredentialsAuthenticationProvider socialCredentialsAuthenticationProvider =
+        new OAuth2SocialCredentialsAuthenticationProvider(authorizationService, tokenGenerator, this.userDetailsService, this.authenticationProperties);
 //    socialCredentialsAuthenticationProvider.setSessionRegistry(this.sessionRegistry);
-//    httpSecurity.authenticationProvider(socialCredentialsAuthenticationProvider);
+    httpSecurity.authenticationProvider(socialCredentialsAuthenticationProvider);
     }
 }
