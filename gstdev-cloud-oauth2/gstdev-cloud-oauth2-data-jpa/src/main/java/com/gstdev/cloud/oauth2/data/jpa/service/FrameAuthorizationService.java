@@ -2,6 +2,7 @@ package com.gstdev.cloud.oauth2.data.jpa.service;
 
 import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
+import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.oauth2.data.jpa.entity.FrameAuthorization;
 import com.gstdev.cloud.oauth2.data.jpa.repository.FrameAuthorizationRepository;
 import jakarta.persistence.criteria.Predicate;
@@ -127,5 +128,14 @@ public class FrameAuthorizationService extends BaseServiceImpl<FrameAuthorizatio
         }
         log.debug("[GstDev Cloud] |- FrameAuthorization Service current authorization count is [{}].", count);
         return count;
+    }
+
+    /**
+     * 获取当前用户的在线授权信息
+     * @return
+     */
+    public List<FrameAuthorization> getUserOnlineAuthorization() {
+        List<FrameAuthorization> authorizations = getRepository().findAllByUserId(SecurityUtils.getUserId());
+        return authorizations;
     }
 }

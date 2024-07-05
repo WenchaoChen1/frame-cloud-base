@@ -109,4 +109,6 @@ public interface FrameAuthorizationRepository extends BaseRepository<FrameAuthor
     @Modifying
     @Transactional
     void deleteByRefreshTokenExpiresAtBefore(Instant instant);
+
+    List<FrameAuthorization> findAllByUserId(String userId);
 }

@@ -3,6 +3,7 @@ package com.gstdev.cloud.oauth2.authorization.server.provider;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2AuthenticationProviderUtils;
 import com.gstdev.cloud.oauth2.core.definition.FrameGrantType;
+import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.oauth2.core.definition.service.EnhanceUserDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -131,7 +132,8 @@ public class OAuth2ResourceOwnerPasswordAuthenticationProvider extends AbstractU
 
         // ----- ID token -----
         OidcIdToken idToken = createOidcIdToken(principal, sessionRegistry, tokenContextBuilder, authorizationBuilder, this.tokenGenerator, ERROR_URI, resourceOwnerPasswordAuthentication.getScopes());
-
+        DefaultSecurityUser defaultSecurityUser = (DefaultSecurityUser) principal.getPrincipal();
+        authorizationBuilder.attribute("userId", defaultSecurityUser.getUserId());
         OAuth2Authorization authorization = authorizationBuilder.build();
 
         this.authorizationService.save(authorization);

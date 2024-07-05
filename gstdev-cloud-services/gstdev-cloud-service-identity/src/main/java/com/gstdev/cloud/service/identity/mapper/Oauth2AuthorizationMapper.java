@@ -2,6 +2,7 @@ package com.gstdev.cloud.service.identity.mapper;
 
 import com.gstdev.cloud.oauth2.data.jpa.entity.FrameAuthorization;
 import com.gstdev.cloud.service.identity.domain.pojo.authorization.AuthorizationManagePageVO;
+import com.gstdev.cloud.service.identity.domain.pojo.authorization.UserOnlineAuthorizationVO;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
@@ -19,10 +20,11 @@ public interface Oauth2AuthorizationMapper {
 
     List<AuthorizationManagePageVO> toAuthorizationManagePageVO(List<FrameAuthorization> oAuth2Authorization);
 
+
     default Page<AuthorizationManagePageVO> toAuthorizationManagePageVO(Page<FrameAuthorization> page) {
         List<AuthorizationManagePageVO> responses = this.toAuthorizationManagePageVO(page.getContent());
         return new PageImpl(responses, page.getPageable(), page.getTotalElements());
     }
-
+    List<UserOnlineAuthorizationVO> toUserOnlineAuthorizationVO(List<FrameAuthorization> oAuth2Authorization);
 }
 

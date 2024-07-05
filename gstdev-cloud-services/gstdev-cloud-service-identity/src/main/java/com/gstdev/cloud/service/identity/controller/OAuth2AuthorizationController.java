@@ -7,8 +7,10 @@ import com.gstdev.cloud.oauth2.data.jpa.entity.FrameAuthorization;
 import com.gstdev.cloud.oauth2.data.jpa.service.FrameAuthorizationService;
 import com.gstdev.cloud.rest.core.controller.Controller;
 import com.gstdev.cloud.service.identity.domain.pojo.authorization.AuthorizationManageQO;
+import com.gstdev.cloud.service.identity.domain.pojo.authorization.UserOnlineAuthorizationVO;
 import com.gstdev.cloud.service.identity.mapper.Oauth2AuthorizationMapper;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
@@ -67,6 +69,15 @@ public class OAuth2AuthorizationController implements Controller<FrameAuthorizat
         getService().deleteAllById(id);
         return result;
     }
+
+
+    @Tag(name = "User Settings")
+    @GetMapping("/get-user-online-authorization")
+    @Operation(summary = "Obtain the online authorization information of the current user")
+    public Result<List<UserOnlineAuthorizationVO>> getUserOnlineAuthorization() {
+        return result(oauth2AuthorizationMapper.toUserOnlineAuthorizationVO(getService().getUserOnlineAuthorization()));
+    }
+
 //    @AccessLimited
 //    @Operation(summary = "分页查询数据", description = "通过pageNumber和pageSize获取分页数据",
 //        responses = {

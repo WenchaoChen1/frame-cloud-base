@@ -31,6 +31,7 @@ public class OAuth2ToFrameAuthorizationConverter extends AbstractOAuth2EntityCon
         FrameAuthorization entity = new FrameAuthorization();
         entity.setId(authorization.getId());
         entity.setRegisteredClientId(authorization.getRegisteredClientId());
+        entity.setUserId(authorization.getAttribute("userId"));
         entity.setPrincipalName(authorization.getPrincipalName());
         entity.setAuthorizationGrantType(authorization.getAuthorizationGrantType().getValue());
         entity.setAuthorizedScopes(StringUtils.collectionToDelimitedString(authorization.getAuthorizedScopes(), SymbolConstants.COMMA));

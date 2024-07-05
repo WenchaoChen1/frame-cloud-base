@@ -33,6 +33,9 @@ public class FrameAuthorization extends AbstractEntity {
     @Column(name = "registered_client_id", nullable = false, length = 100)
     private String registeredClientId;
 
+    @Column(name = "user_id", nullable = false, length = 200)
+    private String userId;
+
     @Column(name = "principal_name", nullable = false, length = 200)
     private String principalName;
 
@@ -399,6 +402,14 @@ public class FrameAuthorization extends AbstractEntity {
 
     public void setDeviceCodeMetadata(String deviceCodeMetadata) {
         this.deviceCodeMetadata = deviceCodeMetadata;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     @Override
