@@ -1,8 +1,10 @@
 package com.gstdev.cloud.oauth2.authorization.server.configuration;
 
+import com.gstdev.cloud.base.definition.function.ErrorCodeMapperBuilderCustomizer;
 import com.gstdev.cloud.cache.jetcache.autoconfigure.CacheJetCacheAutoConfiguration;
 import com.gstdev.cloud.oauth2.authorization.server.customizer.BaseJwtTokenCustomizer;
 import com.gstdev.cloud.oauth2.authorization.server.customizer.BaseOpaqueTokenCustomizer;
+import com.gstdev.cloud.oauth2.authorization.server.customizer.OAuth2ErrorCodeMapperBuilderCustomizer;
 import com.gstdev.cloud.oauth2.authorization.server.customizer.OAuth2FormLoginConfigurerCustomizer;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.authorization.server.stamp.LockedUserDetailsStampManager;
@@ -104,11 +106,11 @@ public class OAuth2AuthenticationConfiguration {
         log.trace("[GstDev Cloud] |- Bean [OAuth2 Opaque Token Customizer] Auto Configure.");
         return customizer;
     }
-//
-//  @Bean
-//  public ErrorCodeMapperBuilderCustomizer oauth2ErrorCodeMapperBuilderCustomizer() {
-//    OAuth2ErrorCodeMapperBuilderCustomizer customizer = new OAuth2ErrorCodeMapperBuilderCustomizer();
-//    log.debug("[GstDev Cloud] |- Strategy [OAuth2 ErrorCodeMapper Builder Customizer] Auto Configure.");
-//    return customizer;
-//  }
+
+    @Bean
+    public ErrorCodeMapperBuilderCustomizer oauth2ErrorCodeMapperBuilderCustomizer() {
+        OAuth2ErrorCodeMapperBuilderCustomizer customizer = new OAuth2ErrorCodeMapperBuilderCustomizer();
+        log.debug("[GstDev Cloud] |- Strategy [OAuth2 ErrorCodeMapper Builder Customizer] Auto Configure.");
+        return customizer;
+    }
 }
