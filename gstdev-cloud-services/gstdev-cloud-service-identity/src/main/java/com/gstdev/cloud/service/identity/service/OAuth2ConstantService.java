@@ -2,6 +2,7 @@ package com.gstdev.cloud.service.identity.service;
 
 import com.gstdev.cloud.base.core.enums.Database;
 import com.gstdev.cloud.base.core.enums.ServerDevice;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.oauth2.core.enums.*;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ import java.util.Map;
  */
 @Service
 public class OAuth2ConstantService {
-
+    private static final List<Map<String, Object>> SYS_DATA_ITEM_STATUS = DataItemStatus.getPreprocessedJsonStructure();
     private static final List<Map<String, Object>> APPLICATION_TYPE_ENUM = ApplicationType.getPreprocessedJsonStructure();
     private static final List<Map<String, Object>> GRANT_TYPE_ENUM = GrantType.getPreprocessedJsonStructure();
     private static final List<Map<String, Object>> SIGNATURE_JWS_ALGORITHM_ENUM = SignatureJwsAlgorithm.getPreprocessedJsonStructure();
@@ -30,6 +31,7 @@ public class OAuth2ConstantService {
 
     public Map<String, Object> getAllEnums() {
         Map<String, Object> map = new HashMap<>(8);
+        map.put("sysDataItemStatus", SYS_DATA_ITEM_STATUS);
         map.put("applicationType", APPLICATION_TYPE_ENUM);
         map.put("grantType", GRANT_TYPE_ENUM);
         map.put("signatureJwsAlgorithm", SIGNATURE_JWS_ALGORITHM_ENUM);
