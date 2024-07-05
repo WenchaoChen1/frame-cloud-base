@@ -26,6 +26,7 @@ public class OAuth2ConstantService {
     private static final List<Map<String, Object>> PERMISSION_EXPRESSION_ENUM = PermissionExpression.getPreprocessedJsonStructure();
     private static final List<Map<String, Object>> DATABASE_ENUM = Database.getPreprocessedJsonStructure();
     private static final List<Map<String, Object>> SERVER_DEVICE_ENUM = ServerDevice.getPreprocessedJsonStructure();
+    private static final List<Map<String, Object>> TOKEN_FORMAT = TokenFormat.getPreprocessedJsonStructure();
 
     public Map<String, Object> getAllEnums() {
         Map<String, Object> map = new HashMap<>(8);
@@ -37,6 +38,7 @@ public class OAuth2ConstantService {
         map.put("authenticationMethod", AUTHENTICATION_METHOD_ENUM);
         map.put("database", DATABASE_ENUM);
         map.put("serverDevice", SERVER_DEVICE_ENUM);
+        map.put("tokenFormat", TOKEN_FORMAT);
         return map;
     }
 }

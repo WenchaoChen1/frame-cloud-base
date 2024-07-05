@@ -5,6 +5,7 @@ import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.oauth2.core.enums.AllJwsAlgorithm;
 import com.gstdev.cloud.oauth2.core.enums.ApplicationType;
 import com.gstdev.cloud.oauth2.core.enums.SignatureJwsAlgorithm;
+import com.gstdev.cloud.oauth2.core.enums.TokenFormat;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,6 +22,7 @@ public class ApplicationManageDetailVO {
     private String logo;
     private String homepage;
     private ApplicationType applicationType;
+    private TokenFormat accessTokenFormat;
     private String authorizationGrantTypes;
     private String clientAuthenticationMethods;
     private Instant clientSecretExpiresAt;
