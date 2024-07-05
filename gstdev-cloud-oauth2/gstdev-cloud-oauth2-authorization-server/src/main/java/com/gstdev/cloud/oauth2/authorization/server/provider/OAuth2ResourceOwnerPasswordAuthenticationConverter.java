@@ -1,10 +1,9 @@
-package com.gstdev.cloud.oauth2.authorization.server.converter;
+package com.gstdev.cloud.oauth2.authorization.server.provider;
 
 //com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2EndpointUtils;
 //import com.gstdev.cloud.oauth2.core.definition.HerodotusGrantType;
 //import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
 
-import com.gstdev.cloud.oauth2.authorization.server.token.OAuth2PasswordAuthenticationToken;
 import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2EndpointUtils;
 import com.gstdev.cloud.oauth2.core.definition.FrameGrantType;
 import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
@@ -24,9 +23,9 @@ import org.springframework.util.MultiValueMap;
  * @date : 2022/2/22 17:03
  */
 //public class OAuth2PasswordAuthenticationConverter implements AuthenticationConverter {
-public final class OAuth2PasswordAuthenticationConverter extends AbstractAuthenticationConverter {
+public final class OAuth2ResourceOwnerPasswordAuthenticationConverter extends AbstractAuthenticationConverter {
     //public class OAuth2PasswordAuthenticationConverter implements AuthenticationConverter {
-    public OAuth2PasswordAuthenticationConverter(HttpCryptoProcessor httpCryptoProcessor) {
+    public OAuth2ResourceOwnerPasswordAuthenticationConverter(HttpCryptoProcessor httpCryptoProcessor) {
         super(httpCryptoProcessor);
     }
 
@@ -50,7 +49,7 @@ public final class OAuth2PasswordAuthenticationConverter extends AbstractAuthent
         // password (REQUIRED) 密码验证
         OAuth2EndpointUtils.checkRequiredParameter(parameters, OAuth2ParameterNames.PASSWORD);
 
-        return new OAuth2PasswordAuthenticationToken(getClientPrincipal(), getRequestedScopes(scope), getAdditionalParameters(request, parameters));
+        return new OAuth2ResourceOwnerPasswordAuthenticationToken(getClientPrincipal(), getRequestedScopes(scope), getAdditionalParameters(request, parameters));
     }
 
 

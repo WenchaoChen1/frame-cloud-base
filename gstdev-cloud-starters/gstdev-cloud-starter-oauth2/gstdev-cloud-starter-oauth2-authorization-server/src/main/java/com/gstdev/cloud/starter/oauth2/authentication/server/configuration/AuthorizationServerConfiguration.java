@@ -14,11 +14,13 @@ import com.gstdev.cloud.base.core.utils.ResourceUtils;
 import com.gstdev.cloud.base.definition.constants.DefaultConstants;
 import com.gstdev.cloud.oauth2.authorization.server.configurer.OAuth2AuthenticationProviderConfigurer;
 import com.gstdev.cloud.oauth2.authorization.server.consumer.OAuth2AuthorizationCodeAuthenticationProviderConsumer;
-import com.gstdev.cloud.oauth2.authorization.server.converter.OAuth2PasswordAuthenticationConverter;
+import com.gstdev.cloud.oauth2.authorization.server.consumer.OAuth2ClientCredentialsAuthenticationProviderConsumer;
 import com.gstdev.cloud.oauth2.authorization.server.customizer.OAuth2FormLoginConfigurerCustomizer;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
+import com.gstdev.cloud.oauth2.authorization.server.provider.OAuth2ResourceOwnerPasswordAuthenticationConverter;
 import com.gstdev.cloud.oauth2.authorization.server.response.OAuth2AccessTokenResponseHandler;
 import com.gstdev.cloud.oauth2.authorization.server.response.OAuth2AuthenticationFailureResponseHandler;
+import com.gstdev.cloud.oauth2.core.definition.service.ClientDetailsService;
 import com.gstdev.cloud.oauth2.core.enums.Certificate;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.properties.OAuth2AuthorizationProperties;
@@ -86,7 +88,7 @@ public class AuthorizationServerConfiguration {
             HttpSecurity http,
             PasswordEncoder passwordEncoder,
             UserDetailsService userDetailsService,
-//    ClientDetailsService clientDetailsService,
+            ClientDetailsService clientDetailsService,
             HttpCryptoProcessor httpCryptoProcessor,
 //    OidcClientRegistrationResponseHandler oidcClientRegistrationResponseHandler,
             OAuth2AuthenticationProperties oauth2AuthenticationProperties,
@@ -111,7 +113,7 @@ public class AuthorizationServerConfiguration {
 //    authorizationServerConfigurer.tokenGenerator(tokenGenerator);
         authorizationServerConfigurer.clientAuthentication(clientAuthentication -> {
             clientAuthentication.errorResponseHandler(errorResponseHandler);//（AuthenticationFailureHandler后处理器）用于处理失败的客户端身份验证并返回OAuth2Error响应。
-//        clientAuthentication.authenticationProviders(new OAuth2ClientCredentialsAuthenticationProviderConsumer(httpSecurity, clientDetailsService));
+        clientAuthentication.authenticationProviders(new OAuth2ClientCredentialsAuthenticationProviderConsumer(http, clientDetailsService));
         });
         authorizationServerConfigurer.authorizationEndpoint(authorizationEndpoint -> {
             authorizationEndpoint.errorResponseHandler(errorResponseHandler);
@@ -136,7 +138,7 @@ public class AuthorizationServerConfiguration {
                     //TODO 多加的
                     , new OAuth2DeviceCodeAuthenticationConverter()
                     //自定义授权模式转换器(Converter)
-                    , new OAuth2PasswordAuthenticationConverter(httpCryptoProcessor)
+                    , new OAuth2ResourceOwnerPasswordAuthenticationConverter(httpCryptoProcessor)
 //        new OAuth2SocialCredentialsAuthenticationConverter(httpCryptoProcessor))
             ));
             tokenEndpoint.accessTokenRequestConverter(delegatingAuthenticationConverter);

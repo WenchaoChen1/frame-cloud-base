@@ -5,6 +5,7 @@ import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2AuthenticationPr
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.core.log.LogMessage;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.session.SessionRegistry;
@@ -18,6 +19,7 @@ import org.springframework.security.oauth2.server.authorization.OAuth2Authorizat
 import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AccessTokenAuthenticationToken;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeAuthenticationToken;
+import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeRequestAuthenticationProvider;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2ClientAuthenticationToken;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.context.AuthorizationServerContextHolder;
@@ -29,6 +31,17 @@ import org.springframework.util.StringUtils;
 import java.security.Principal;
 import java.util.Map;
 
+/**
+ * An {@link AuthenticationProvider} implementation for the OAuth 2.0 Authorization Code Grant.
+ *
+ * @author Joe Grandja
+ * @author Daniel Garnier-Moiroux
+ * @see OAuth2AuthorizationCodeAuthenticationToken
+ * @see OAuth2AccessTokenAuthenticationToken
+ * @see OAuth2AuthorizationCodeRequestAuthenticationProvider
+ * @see OAuth2AuthorizationService
+ * @see OAuth2TokenGenerator
+ */
 public final class OAuth2AuthorizationCodeAuthenticationProvider extends AbstractAuthenticationProvider {
     private static final String ERROR_URI = "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2";
     private static final OAuth2TokenType AUTHORIZATION_CODE_TOKEN_TYPE = new OAuth2TokenType(OAuth2ParameterNames.CODE);
@@ -37,6 +50,14 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
     private final OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator;
     private SessionRegistry sessionRegistry;
 
+
+    /**
+     * Constructs an {@code OAuth2AuthorizationCodeAuthenticationProvider} using the provided parameters.
+     *
+     * @param authorizationService the authorization service
+     * @param tokenGenerator       the token generator
+     * @since 0.2.3
+     */
     public OAuth2AuthorizationCodeAuthenticationProvider(OAuth2AuthorizationService authorizationService, OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator) {
         Assert.notNull(authorizationService, "authorizationService cannot be null");
         Assert.notNull(tokenGenerator, "tokenGenerator cannot be null");
@@ -46,8 +67,11 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        OAuth2AuthorizationCodeAuthenticationToken authorizationCodeAuthentication = (OAuth2AuthorizationCodeAuthenticationToken) authentication;
-        OAuth2ClientAuthenticationToken clientPrincipal = OAuth2AuthenticationProviderUtils.getAuthenticatedClientElseThrowInvalidClient(authorizationCodeAuthentication);
+        OAuth2AuthorizationCodeAuthenticationToken authorizationCodeAuthentication =
+                (OAuth2AuthorizationCodeAuthenticationToken) authentication;
+
+        OAuth2ClientAuthenticationToken clientPrincipal =
+                OAuth2AuthenticationProviderUtils.getAuthenticatedClientElseThrowInvalidClient(authorizationCodeAuthentication);
         RegisteredClient registeredClient = clientPrincipal.getRegisteredClient();
 
         if (this.logger.isTraceEnabled()) {
@@ -69,48 +93,6 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
 
         OAuth2AuthorizationRequest authorizationRequest = authorization.getAttribute(
                 OAuth2AuthorizationRequest.class.getName());
-
-//      if (!registeredClient.getClientId().equals(authorizationRequest.getClientId())) {
-//        if (!authorizationCode.isInvalidated()) {
-//          // Invalidate the authorization code given that a different client is attempting to use it
-//          authorization = OAuth2AuthenticationProviderUtils.invalidate(authorization, authorizationCode.getToken());
-//          this.authorizationService.save(authorization);
-//          if (this.logger.isWarnEnabled()) {
-//            this.logger.warn(LogMessage.format("Invalidated authorization code used by registered client '%s'", registeredClient.getId()));
-//          }
-//        }
-//
-//        throw new OAuth2AuthenticationException(OAuth2ErrorCodes.INVALID_GRANT);
-//      } else if (StringUtils.hasText(authorizationRequest.getRedirectUri()) && !authorizationRequest.getRedirectUri().equals(authorizationCodeAuthentication.getRedirectUri())) {
-//        throw new OAuth2AuthenticationException(OAuth2ErrorCodes.INVALID_GRANT);
-//      } else if (!authorizationCode.isActive()) {
-//        if (authorizationCode.isInvalidated()) {
-//          OAuth2Authorization.Token<? extends OAuth2Token> token = authorization.getRefreshToken() != null ? authorization.getRefreshToken() : authorization.getAccessToken();
-//          if (token != null) {
-//            authorization = OAuth2AuthenticationProviderUtils.invalidate(authorization, token.getToken());
-//            this.authorizationService.save(authorization);
-//            if (this.logger.isWarnEnabled()) {
-//              this.logger.warn(LogMessage.format("Invalidated authorization token(s) previously issued to registered client '%s'", registeredClient.getId()));
-//            }
-//          }
-//        }
-//
-//        throw new OAuth2AuthenticationException(OAuth2ErrorCodes.INVALID_GRANT);
-//      } else {
-//        if (this.logger.isTraceEnabled()) {
-//          this.logger.trace("Validated token request parameters");
-//        }
-//
-//
-//        Authentication principal = (Authentication)authorization.getAttribute(Principal.class.getName());
-//        DefaultOAuth2TokenContext.Builder tokenContextBuilder = (DefaultOAuth2TokenContext.Builder)((DefaultOAuth2TokenContext.Builder)((DefaultOAuth2TokenContext.Builder)((DefaultOAuth2TokenContext.Builder)((DefaultOAuth2TokenContext.Builder)((DefaultOAuth2TokenContext.Builder)((DefaultOAuth2TokenContext.Builder)DefaultOAuth2TokenContext.builder().registeredClient(registeredClient)).principal(principal)).authorizationServerContext(AuthorizationServerContextHolder.getContext())).authorization(authorization)).authorizedScopes(authorization.getAuthorizedScopes())).authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)).authorizationGrant(authorizationCodeAuthentication);
-//        OAuth2Authorization.Builder authorizationBuilder = OAuth2Authorization.from(authorization);
-//        OAuth2AccessToken accessToken = this.createOAuth2AccessToken(tokenContextBuilder, authorizationBuilder, this.tokenGenerator, "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2");
-//        OAuth2RefreshToken refreshToken = this.creatOAuth2RefreshToken(tokenContextBuilder, authorizationBuilder, this.tokenGenerator, "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2", clientPrincipal, registeredClient);
-//        OidcIdToken idToken = this.createOidcIdToken(principal, this.sessionRegistry, tokenContextBuilder, authorizationBuilder, this.tokenGenerator, "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2", authorizationRequest.getScopes());
-////        OidcIdToken idToken = this.createOidcIdToken(principal, null, tokenContextBuilder, authorizationBuilder, this.tokenGenerator, "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2", authorizationRequest.getScopes());
-//
-
 
         if (!registeredClient.getClientId().equals(authorizationRequest.getClientId())) {
             if (!authorizationCode.isInvalidated()) {
@@ -153,15 +135,15 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
         Authentication principal = authorization.getAttribute(Principal.class.getName());
 
         // @formatter:off
-    DefaultOAuth2TokenContext.Builder tokenContextBuilder = DefaultOAuth2TokenContext.builder()
-      .registeredClient(registeredClient)
-      .principal(principal)
-      .authorizationServerContext(AuthorizationServerContextHolder.getContext())
-      .authorization(authorization)
-      .authorizedScopes(authorization.getAuthorizedScopes())
-      .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-      .authorizationGrant(authorizationCodeAuthentication);
-    // @formatter:on
+        DefaultOAuth2TokenContext.Builder tokenContextBuilder = DefaultOAuth2TokenContext.builder()
+          .registeredClient(registeredClient)
+          .principal(principal)
+          .authorizationServerContext(AuthorizationServerContextHolder.getContext())
+          .authorization(authorization)
+          .authorizedScopes(authorization.getAuthorizedScopes())
+          .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+          .authorizationGrant(authorizationCodeAuthentication);
+        // @formatter:on
 
         OAuth2Authorization.Builder authorizationBuilder = OAuth2Authorization.from(authorization);
 
@@ -189,7 +171,6 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
         OAuth2AccessTokenAuthenticationToken accessTokenAuthenticationToken = new OAuth2AccessTokenAuthenticationToken(
                 registeredClient, clientPrincipal, accessToken, refreshToken, additionalParameters);
         accessTokenAuthenticationToken.setDetails(principal);
-//       return accessTokenAuthenticationToken;
         return this.createOAuth2AccessTokenAuthenticationToken(principal, accessTokenAuthenticationToken);
     }
 

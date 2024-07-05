@@ -23,7 +23,9 @@ import java.util.function.Consumer;
  **/
 
 public class OAuth2AuthorizationCodeAuthenticationProviderConsumer implements Consumer<List<AuthenticationProvider>> {
+
     private static final Logger log = LoggerFactory.getLogger(OAuth2AuthorizationCodeAuthenticationProviderConsumer.class);
+
     private final HttpSecurity httpSecurity;
 //  private final SessionRegistry sessionRegistry;
 

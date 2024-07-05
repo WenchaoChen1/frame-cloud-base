@@ -1,7 +1,6 @@
 package com.gstdev.cloud.oauth2.authorization.server.provider;
 
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
-import com.gstdev.cloud.oauth2.authorization.server.token.OAuth2PasswordAuthenticationToken;
 import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2AuthenticationProviderUtils;
 import com.gstdev.cloud.oauth2.core.definition.FrameGrantType;
 import com.gstdev.cloud.oauth2.core.definition.service.EnhanceUserDetailsService;
@@ -34,8 +33,8 @@ import java.util.Map;
 import java.util.Set;
 
 
-public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
-    private static final Logger log = LoggerFactory.getLogger(OAuth2PasswordAuthenticationProvider.class);
+public class OAuth2ResourceOwnerPasswordAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
+    private static final Logger log = LoggerFactory.getLogger(OAuth2ResourceOwnerPasswordAuthenticationProvider.class);
     private static final String ERROR_URI = "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2";
     private final OAuth2AuthorizationService authorizationService;
     private final OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator;
@@ -47,7 +46,7 @@ public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAut
      * @param authorizationService the authorization service
      * @param tokenGenerator       – the token generator
      */
-    public OAuth2PasswordAuthenticationProvider(OAuth2AuthorizationService authorizationService, OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator, UserDetailsService userDetailsService, OAuth2AuthenticationProperties complianceProperties) {
+    public OAuth2ResourceOwnerPasswordAuthenticationProvider(OAuth2AuthorizationService authorizationService, OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator, UserDetailsService userDetailsService, OAuth2AuthenticationProperties complianceProperties) {
         super(authorizationService, userDetailsService, complianceProperties);
         Assert.notNull(tokenGenerator, "tokenGenerator cannot be null");
         this.authorizationService = authorizationService;
@@ -121,7 +120,7 @@ public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAut
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        OAuth2PasswordAuthenticationToken resourceOwnerPasswordAuthentication = (OAuth2PasswordAuthenticationToken) authentication;
+        OAuth2ResourceOwnerPasswordAuthenticationToken resourceOwnerPasswordAuthentication = (OAuth2ResourceOwnerPasswordAuthenticationToken) authentication;
 
         OAuth2ClientAuthenticationToken clientPrincipal =
                 OAuth2AuthenticationProviderUtils.getAuthenticatedClientElseThrowInvalidClient(resourceOwnerPasswordAuthentication);
@@ -189,7 +188,7 @@ public class OAuth2PasswordAuthenticationProvider extends AbstractUserDetailsAut
 
     @Override
     public boolean supports(Class<?> authentication) {
-        boolean supports = OAuth2PasswordAuthenticationToken.class.isAssignableFrom(authentication);
+        boolean supports = OAuth2ResourceOwnerPasswordAuthenticationToken.class.isAssignableFrom(authentication);
         log.trace("[GstDev Cloud] |- Resource Owner Password Authentication is supports! [{}]", supports);
         return supports;
     }
