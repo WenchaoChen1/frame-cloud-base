@@ -2,6 +2,7 @@ package com.gstdev.cloud.starter.ouath2.resource.server.configuration;
 
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
+import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2SessionManagementConfigurerCustomer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
@@ -26,7 +27,7 @@ public class ResourceServerAutoConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(
             HttpSecurity httpSecurity,
-//            OAuth2SessionManagementConfigurerCustomer oauth2SessionManagementConfigurerCustomer,
+            OAuth2SessionManagementConfigurerCustomer oauth2SessionManagementConfigurerCustomer,
             OAuth2AuthorizeHttpRequestsConfigurerCustomer oauth2AuthorizeHttpRequestsConfigurerCustomer,
             OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer
     ) throws Exception {
@@ -35,7 +36,7 @@ public class ResourceServerAutoConfiguration {
         httpSecurity.csrf(AbstractHttpConfigurer::disable).cors(AbstractHttpConfigurer::disable);
         httpSecurity
                 .authorizeHttpRequests(oauth2AuthorizeHttpRequestsConfigurerCustomer)
-//                .sessionManagement(oauth2SessionManagementConfigurerCustomer)
+                .sessionManagement(oauth2SessionManagementConfigurerCustomer)
                 .oauth2ResourceServer(oauth2ResourceServerConfigurerCustomer);
 
         return httpSecurity.build();

@@ -6,6 +6,7 @@ import com.gstdev.cloud.oauth2.authorization.server.provider.OAuth2SocialCredent
 import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2ConfigurerUtils;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.OAuth2Token;
@@ -13,16 +14,20 @@ import org.springframework.security.oauth2.server.authorization.OAuth2Authorizat
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenGenerator;
 
 public class OAuth2AuthenticationProviderConfigurer extends AbstractHttpConfigurer<OAuth2AuthenticationProviderConfigurer, HttpSecurity> {
-    //  private final SessionRegistry sessionRegistry;
+    private final SessionRegistry sessionRegistry;
     private final PasswordEncoder passwordEncoder;
     private final UserDetailsService userDetailsService;
     private final OAuth2AuthenticationProperties authenticationProperties;
 
-    public OAuth2AuthenticationProviderConfigurer(PasswordEncoder passwordEncoder
+    //    public OAuth2AuthenticationProviderConfigurer(PasswordEncoder passwordEncoder
+//            , UserDetailsService userDetailsService
+//            , OAuth2AuthenticationProperties authenticationProperties) {
+    public OAuth2AuthenticationProviderConfigurer(
+            SessionRegistry sessionRegistry
+            , PasswordEncoder passwordEncoder
             , UserDetailsService userDetailsService
             , OAuth2AuthenticationProperties authenticationProperties) {
-//  public OAuth2AuthenticationProviderConfigurer(SessionRegistry sessionRegistry, PasswordEncoder passwordEncoder, UserDetailsService userDetailsService, OAuth2AuthenticationProperties authenticationProperties) {
-//    this.sessionRegistry = sessionRegistry;
+        this.sessionRegistry = sessionRegistry;
         this.passwordEncoder = passwordEncoder;
         this.userDetailsService = userDetailsService;
         this.authenticationProperties = authenticationProperties;
@@ -35,12 +40,12 @@ public class OAuth2AuthenticationProviderConfigurer extends AbstractHttpConfigur
         OAuth2ResourceOwnerPasswordAuthenticationProvider resourceOwnerPasswordAuthenticationProvider =
                 new OAuth2ResourceOwnerPasswordAuthenticationProvider(authorizationService, tokenGenerator, this.userDetailsService, this.authenticationProperties);
         resourceOwnerPasswordAuthenticationProvider.setPasswordEncoder(this.passwordEncoder);
-//    resourceOwnerPasswordAuthenticationProvider.setSessionRegistry(this.sessionRegistry);
+        resourceOwnerPasswordAuthenticationProvider.setSessionRegistry(this.sessionRegistry);
 
         httpSecurity.authenticationProvider(resourceOwnerPasswordAuthenticationProvider);
     OAuth2SocialCredentialsAuthenticationProvider socialCredentialsAuthenticationProvider =
         new OAuth2SocialCredentialsAuthenticationProvider(authorizationService, tokenGenerator, this.userDetailsService, this.authenticationProperties);
-//    socialCredentialsAuthenticationProvider.setSessionRegistry(this.sessionRegistry);
+        socialCredentialsAuthenticationProvider.setSessionRegistry(this.sessionRegistry);
     httpSecurity.authenticationProvider(socialCredentialsAuthenticationProvider);
     }
 }

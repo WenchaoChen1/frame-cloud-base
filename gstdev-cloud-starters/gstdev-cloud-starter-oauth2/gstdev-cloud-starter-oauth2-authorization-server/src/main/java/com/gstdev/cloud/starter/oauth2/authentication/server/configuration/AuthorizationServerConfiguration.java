@@ -18,11 +18,14 @@ import com.gstdev.cloud.oauth2.authorization.server.consumer.OAuth2ClientCredent
 import com.gstdev.cloud.oauth2.authorization.server.customizer.OAuth2FormLoginConfigurerCustomizer;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.authorization.server.provider.OAuth2ResourceOwnerPasswordAuthenticationConverter;
+import com.gstdev.cloud.oauth2.authorization.server.provider.OAuth2SocialCredentialsAuthenticationConverter;
 import com.gstdev.cloud.oauth2.authorization.server.response.OAuth2AccessTokenResponseHandler;
 import com.gstdev.cloud.oauth2.authorization.server.response.OAuth2AuthenticationFailureResponseHandler;
+import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2ConfigurerUtils;
 import com.gstdev.cloud.oauth2.core.definition.service.ClientDetailsService;
 import com.gstdev.cloud.oauth2.core.enums.Certificate;
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerConfigurerCustomer;
+import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2SessionManagementConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.properties.OAuth2AuthorizationProperties;
 import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
 import com.gstdev.cloud.service.identity.response.OAuth2DeviceVerificationResponseHandler;
@@ -43,6 +46,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.core.io.Resource;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
@@ -77,7 +81,7 @@ public class AuthorizationServerConfiguration {
      * 授权配置
      * // @Order 表示加载优先级；HIGHEST_PRECEDENCE为最高优先级
      *
-     * @param http
+     * @param httpSecurity
      * @return
      * @throws Exception
      */
@@ -85,7 +89,7 @@ public class AuthorizationServerConfiguration {
     @Order(Ordered.HIGHEST_PRECEDENCE)
     @SneakyThrows
     public SecurityFilterChain authorizationServerSecurityFilterChain(
-            HttpSecurity http,
+            HttpSecurity httpSecurity,
             PasswordEncoder passwordEncoder,
             UserDetailsService userDetailsService,
             ClientDetailsService clientDetailsService,
@@ -94,18 +98,18 @@ public class AuthorizationServerConfiguration {
             OAuth2AuthenticationProperties oauth2AuthenticationProperties,
             OAuth2DeviceVerificationResponseHandler oauth2DeviceVerificationResponseHandler,
             OAuth2FormLoginConfigurerCustomizer oauth2FormLoginConfigurerCustomizer,
-//    OAuth2SessionManagementConfigurerCustomer oauth2sessionManagementConfigurerCustomer,
+            OAuth2SessionManagementConfigurerCustomer oauth2sessionManagementConfigurerCustomer,
             OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer
     ) {
         log.debug("[GstDev Cloud] |- Bean [Authorization Server Security Filter Chain] Auto Configure.");
 
         //是一个便利 ( static) 实用程序方法，它将默认的 OAuth2 安全配置应用于HttpSecurity.
-        OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
+        OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(httpSecurity);
 
-//    SessionRegistry sessionRegistry = OAuth2ConfigurerUtils.getOptionalBean(http, SessionRegistry.class);
+        SessionRegistry sessionRegistry = OAuth2ConfigurerUtils.getOptionalBean(httpSecurity, SessionRegistry.class);
 
         OAuth2AuthenticationFailureResponseHandler errorResponseHandler = new OAuth2AuthenticationFailureResponseHandler();
-        OAuth2AuthorizationServerConfigurer authorizationServerConfigurer = http.getConfigurer(OAuth2AuthorizationServerConfigurer.class);
+        OAuth2AuthorizationServerConfigurer authorizationServerConfigurer = httpSecurity.getConfigurer(OAuth2AuthorizationServerConfigurer.class);
 //    authorizationServerConfigurer.registeredClientRepository(registeredClientRepository);
 //    authorizationServerConfigurer.authorizationService(authorizationService);
 //    authorizationServerConfigurer.authorizationConsentService(authorizationConsentService);
@@ -113,7 +117,7 @@ public class AuthorizationServerConfiguration {
 //    authorizationServerConfigurer.tokenGenerator(tokenGenerator);
         authorizationServerConfigurer.clientAuthentication(clientAuthentication -> {
             clientAuthentication.errorResponseHandler(errorResponseHandler);//（AuthenticationFailureHandler后处理器）用于处理失败的客户端身份验证并返回OAuth2Error响应。
-        clientAuthentication.authenticationProviders(new OAuth2ClientCredentialsAuthenticationProviderConsumer(http, clientDetailsService));
+            clientAuthentication.authenticationProviders(new OAuth2ClientCredentialsAuthenticationProviderConsumer(httpSecurity, clientDetailsService));
         });
         authorizationServerConfigurer.authorizationEndpoint(authorizationEndpoint -> {
             authorizationEndpoint.errorResponseHandler(errorResponseHandler);
@@ -135,32 +139,46 @@ public class AuthorizationServerConfiguration {
                     new OAuth2AuthorizationCodeAuthenticationConverter()
                     , new OAuth2RefreshTokenAuthenticationConverter()
                     , new OAuth2ClientCredentialsAuthenticationConverter()
-                    //TODO 多加的
                     , new OAuth2DeviceCodeAuthenticationConverter()
+                    //TODO 多加的
                     //自定义授权模式转换器(Converter)
                     , new OAuth2ResourceOwnerPasswordAuthenticationConverter(httpCryptoProcessor)
-//        new OAuth2SocialCredentialsAuthenticationConverter(httpCryptoProcessor))
+                    , new OAuth2SocialCredentialsAuthenticationConverter(httpCryptoProcessor)
             ));
             tokenEndpoint.accessTokenRequestConverter(delegatingAuthenticationConverter);
             tokenEndpoint.accessTokenResponseHandler(new OAuth2AccessTokenResponseHandler(httpCryptoProcessor));
-//      tokenEndpoint.authenticationProviders(new OAuth2AuthorizationCodeAuthenticationProviderConsumer(http, sessionRegistry));
-            tokenEndpoint.authenticationProviders(new OAuth2AuthorizationCodeAuthenticationProviderConsumer(http));
             tokenEndpoint.errorResponseHandler(errorResponseHandler);// 自定义失败响应
+            tokenEndpoint.authenticationProviders(new OAuth2AuthorizationCodeAuthenticationProviderConsumer(httpSecurity, sessionRegistry));
+//            tokenEndpoint.authenticationProviders(new OAuth2AuthorizationCodeAuthenticationProviderConsumer(httpSecurity));
         });
-        authorizationServerConfigurer.tokenIntrospectionEndpoint(tokenIntrospectionEndpoint -> tokenIntrospectionEndpoint.errorResponseHandler(errorResponseHandler));
-        authorizationServerConfigurer.tokenRevocationEndpoint(tokenRevocationEndpoint -> tokenRevocationEndpoint.errorResponseHandler(errorResponseHandler));
+        authorizationServerConfigurer.tokenIntrospectionEndpoint(tokenIntrospectionEndpoint -> {
+            tokenIntrospectionEndpoint.errorResponseHandler(errorResponseHandler);
+        });
+        authorizationServerConfigurer.tokenRevocationEndpoint(tokenRevocationEndpoint -> {
+            tokenRevocationEndpoint.errorResponseHandler(errorResponseHandler);
+        });
 //    authorizationServerConfigurer.authorizationServerMetadataEndpoint(authorizationServerMetadataEndpoint -> {
 //    });
-//    authorizationServerConfigurer.oidc(oidc -> oidc
-//      .providerConfigurationEndpoint(providerConfigurationEndpoint -> {
-//      })
-//      .logoutEndpoint(logoutEndpoint -> {
-//      })
-//      .userInfoEndpoint(userInfoEndpoint -> {
-//      })
-//      .clientRegistrationEndpoint(clientRegistrationEndpoint -> {
-//      })
-//    );
+        authorizationServerConfigurer.oidc(oidc -> {
+//                    oidc.providerConfigurationEndpoint(providerConfigurationEndpoint -> {
+//                            })
+//                            .logoutEndpoint(logoutEndpoint -> {
+//                            })
+//                            .userInfoEndpoint(userInfoEndpoint -> {
+//                            })
+//                            .clientRegistrationEndpoint(clientRegistrationEndpoint -> {
+//                            });
+//                    oidc.logoutEndpoint(logoutEndpoint -> {
+//                    });
+//                    oidc.userInfoEndpoint(userInfoEndpoint -> {
+//                        userInfoEndpoint.errorResponseHandler(errorResponseHandler);
+//                        userInfoEndpoint.userInfoMapper(new HerodotusOidcUserInfoMapper())
+//                    });
+//                    oidc.clientRegistrationEndpoint(clientRegistrationEndpoint -> {
+//                        clientRegistrationEndpoint.errorResponseHandler(errorResponseHandler);
+//                        clientRegistrationEndpoint.clientRegistrationResponseHandler(oidcClientRegistrationResponseHandler);
+//                    });
+        });
         // Enable OpenID Connect 1.0
         authorizationServerConfigurer.oidc(Customizer.withDefaults());
 
@@ -168,21 +186,21 @@ public class AuthorizationServerConfiguration {
 //    RequestMatcher endpointsMatcher = authorizationServerConfigurer.getEndpointsMatcher();
         // 仅拦截 OAuth2 Authorization Server 的相关 endpoint
 //    http.securityMatcher(endpointsMatcher)
-        http
+        httpSecurity
                 // 开启请求认证
 //      .authorizeHttpRequests(authorizeRequests -> authorizeRequests.anyRequest().authenticated())
                 // 禁用对 OAuth2 Authorization Server 相关 endpoint 的 CSRF 防御
 //      .csrf(csrf -> csrf.ignoringRequestMatchers(endpointsMatcher))
                 .formLogin(oauth2FormLoginConfigurerCustomizer)
-//      .sessionManagement(oauth2sessionManagementConfigurerCustomer)
+                .sessionManagement(oauth2sessionManagementConfigurerCustomer)
 //      .addFilterBefore(new MultiTenantFilter(), AuthorizationFilter.class)
                 // 接受用户信息和/或客户端注册的访问令牌
                 .oauth2ResourceServer(oauth2ResourceServerConfigurerCustomer)
-//      .with(new OAuth2AuthenticationProviderConfigurer(sessionRegistry, passwordEncoder, userDetailsService, oauth2AuthenticationProperties), (configurer) -> {});
-                .with(new OAuth2AuthenticationProviderConfigurer(passwordEncoder, userDetailsService, oauth2AuthenticationProperties), (configurer) -> {
+                .with(new OAuth2AuthenticationProviderConfigurer(sessionRegistry, passwordEncoder, userDetailsService, oauth2AuthenticationProperties), (configurer) -> {
                 });
+//                .with(new OAuth2AuthenticationProviderConfigurer(passwordEncoder, userDetailsService, oauth2AuthenticationProperties), (configurer) -> {});
 
-        return http.build();
+        return httpSecurity.build();
     }
 
     /**

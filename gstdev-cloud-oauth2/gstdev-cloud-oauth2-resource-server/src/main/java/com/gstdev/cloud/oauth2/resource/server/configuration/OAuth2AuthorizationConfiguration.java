@@ -21,7 +21,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Import;
-import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.web.servlet.resource.ResourceUrlProvider;
@@ -37,7 +36,7 @@ import org.springframework.web.servlet.resource.ResourceUrlProvider;
 @EnableMethodSecurity(proxyTargetClass = true)
 @Import({
         SecurityGlobalExceptionHandler.class,
-//  OAuth2SessionConfiguration.class,
+        OAuth2SessionConfiguration.class,
 })
 public class OAuth2AuthorizationConfiguration {
 

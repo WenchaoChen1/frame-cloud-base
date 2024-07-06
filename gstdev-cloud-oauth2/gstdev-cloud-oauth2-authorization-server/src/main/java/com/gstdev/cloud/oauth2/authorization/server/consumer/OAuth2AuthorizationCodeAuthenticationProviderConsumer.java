@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.oauth2.core.OAuth2Token;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeAuthenticationProvider;
@@ -27,12 +28,11 @@ public class OAuth2AuthorizationCodeAuthenticationProviderConsumer implements Co
     private static final Logger log = LoggerFactory.getLogger(OAuth2AuthorizationCodeAuthenticationProviderConsumer.class);
 
     private final HttpSecurity httpSecurity;
-//  private final SessionRegistry sessionRegistry;
+    private final SessionRegistry sessionRegistry;
 
-    //  public OAuth2AuthorizationCodeAuthenticationProviderConsumer(HttpSecurity httpSecurity, SessionRegistry sessionRegistry) {
-    public OAuth2AuthorizationCodeAuthenticationProviderConsumer(HttpSecurity httpSecurity) {
+    public OAuth2AuthorizationCodeAuthenticationProviderConsumer(HttpSecurity httpSecurity, SessionRegistry sessionRegistry) {
         this.httpSecurity = httpSecurity;
-//    this.sessionRegistry = sessionRegistry;
+        this.sessionRegistry = sessionRegistry;
     }
 
     @Override
@@ -44,7 +44,7 @@ public class OAuth2AuthorizationCodeAuthenticationProviderConsumer implements Co
         OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator = OAuth2ConfigurerUtils.getTokenGenerator(this.httpSecurity);
         com.gstdev.cloud.oauth2.authorization.server.provider.OAuth2AuthorizationCodeAuthenticationProvider provider
                 = new com.gstdev.cloud.oauth2.authorization.server.provider.OAuth2AuthorizationCodeAuthenticationProvider(authorizationService, tokenGenerator);
-//    provider.setSessionRegistry(this.sessionRegistry);
+        provider.setSessionRegistry(this.sessionRegistry);
         log.debug("[GstDev Cloud] |- Custom OAuth2AuthorizationCodeAuthenticationProvider is in effect!");
         authenticationProviders.add(provider);
     }
