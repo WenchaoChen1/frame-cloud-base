@@ -72,22 +72,27 @@ public class OAuth2AccessTokenResponseHandler implements AuthenticationSuccessHa
             builder.refreshToken(refreshToken.getTokenValue());
         }
 
-        if (isOidcUserInfoPattern(additionalParameters)) {
-            builder.additionalParameters(additionalParameters);
-        } else {
-            String sessionId = SessionUtils.analyseSessionId(request);
-            Object details = authentication.getDetails();
-            if (isHerodotusUserInfoPattern(sessionId, details)) {
-                PrincipalDetails authenticationDetails = (PrincipalDetails) details;
-                String data = Jackson2Utils.toJson(authenticationDetails);
-                String encryptData = httpCryptoProcessor.encrypt(sessionId, data);
-                Map<String, Object> parameters = new HashMap<>(additionalParameters);
-                parameters.put(BaseConstants.OPEN_ID, encryptData);
-                builder.additionalParameters(parameters);
+        try {
+            if (isOidcUserInfoPattern(additionalParameters)) {
+                builder.additionalParameters(additionalParameters);
             } else {
-                log.warn("[GstDev Cloud] |- OAuth2 authentication can not get use info.");
+                String sessionId = SessionUtils.analyseSessionId(request);
+                Object details = authentication.getDetails();
+                if (isHerodotusUserInfoPattern(sessionId, details)) {
+                    PrincipalDetails authenticationDetails = (PrincipalDetails) details;
+                    String data = Jackson2Utils.toJson(authenticationDetails);
+                    String encryptData = httpCryptoProcessor.encrypt(sessionId, data);
+                    Map<String, Object> parameters = new HashMap<>(additionalParameters);
+                    parameters.put(BaseConstants.OPEN_ID, encryptData);
+                    builder.additionalParameters(parameters);
+                } else {
+                    log.warn("[GstDev Cloud] |- OAuth2 authentication can not get use info.");
+                }
             }
+        }catch (Exception e) {
+            log.error("[GstDev Cloud] |- OAuth2 authentication success for [{}] error.", request.getRequestURI(), e);
         }
+
 
         OAuth2AccessTokenResponse accessTokenResponse = builder.build();
         ServletServerHttpResponse httpResponse = new ServletServerHttpResponse(response);
