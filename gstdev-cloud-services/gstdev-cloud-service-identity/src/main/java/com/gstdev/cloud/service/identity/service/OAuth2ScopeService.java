@@ -24,10 +24,13 @@ import java.util.Set;
 @Service
 public class OAuth2ScopeService extends BaseServiceImpl<OAuth2Scope, String, OAuth2ScopeRepository> implements BaseService<OAuth2Scope, String> {
 
+    @Resource
     private OAuth2ScopeRepository oauthScopesRepository;
+    @Resource
     private OAuth2PermissionRepository oAuth2PermissionRepository;
     @Resource
     private OAuth2ScopeMapper scopeMapper;
+
     public OAuth2ScopeService(OAuth2ScopeRepository oauthScopesRepository, OAuth2PermissionRepository oAuth2PermissionRepository) {
         super(oauthScopesRepository);
         this.oAuth2PermissionRepository = oAuth2PermissionRepository;
