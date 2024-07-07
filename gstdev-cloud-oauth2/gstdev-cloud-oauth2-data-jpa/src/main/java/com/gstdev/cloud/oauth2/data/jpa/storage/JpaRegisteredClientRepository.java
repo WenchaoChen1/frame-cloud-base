@@ -16,6 +16,7 @@ import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
+import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 
 import java.time.Duration;
@@ -199,6 +200,7 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
         .refreshTokenTimeToLive(Duration.ofHours(720))
         .idTokenSignatureAlgorithm(SignatureAlgorithm.ES256)
         .reuseRefreshTokens(true)
+          .accessTokenFormat(OAuth2TokenFormat.SELF_CONTAINED)
         .build()
       )
       .build();
