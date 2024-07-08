@@ -5,7 +5,6 @@ import com.gstdev.cloud.oauth2.data.jpa.converter.OAuth2ToFrameRegisteredClientC
 import com.gstdev.cloud.oauth2.data.jpa.entity.FrameRegisteredClient;
 import com.gstdev.cloud.oauth2.data.jpa.jackson2.OAuth2JacksonProcessor;
 import com.gstdev.cloud.oauth2.data.jpa.service.FrameRegisteredClientService;
-import jakarta.annotation.PostConstruct;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -43,16 +42,16 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
         this.oauth2ToHerodotusConverter = new OAuth2ToFrameRegisteredClientConverter(jacksonProcessor, passwordEncoder);
     }
 
-    @PostConstruct
-    public void init() {
-        List<RegisteredClient> registeredClients = this.registryCloents();
-        for (RegisteredClient registeredClient : registeredClients) {
-            RegisteredClient registeredClientId = this.findByClientId(registeredClient.getClientId());
-            if (registeredClientId == null) {
-                this.save(registeredClient);
-            }
-        }
-    }
+//    @PostConstruct
+//    public void init() {
+//        List<RegisteredClient> registeredClients = this.registryCloents();
+//        for (RegisteredClient registeredClient : registeredClients) {
+//            RegisteredClient registeredClientId = this.findByClientId(registeredClient.getClientId());
+//            if (registeredClientId == null) {
+//                this.save(registeredClient);
+//            }
+//        }
+//    }
 
     @Override
     public void save(RegisteredClient registeredClient) {
