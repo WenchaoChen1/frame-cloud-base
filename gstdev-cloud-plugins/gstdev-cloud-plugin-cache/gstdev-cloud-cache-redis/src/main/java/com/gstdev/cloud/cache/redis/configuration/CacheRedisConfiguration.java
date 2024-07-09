@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
 import com.gstdev.cloud.cache.core.properties.CacheProperties;
 import com.gstdev.cloud.cache.redis.enhance.FrameRedisCacheManager;
-import com.gstdev.cloud.cache.redis.utils.JacksonObjectMapper;
+import com.gstdev.cloud.base.core.json.jackson2.utils.JacksonObjectMapper;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

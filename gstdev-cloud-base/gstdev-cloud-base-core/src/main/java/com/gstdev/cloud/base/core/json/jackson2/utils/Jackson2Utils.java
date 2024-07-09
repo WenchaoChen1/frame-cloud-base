@@ -37,7 +37,7 @@ public class Jackson2Utils {
         if (ObjectUtils.isNotEmpty(objectMapper)) {
             OBJECT_MAPPER = objectMapper;
         } else {
-            OBJECT_MAPPER = new ObjectMapper();
+            OBJECT_MAPPER = new JacksonObjectMapper();
         }
     }
 
@@ -45,7 +45,7 @@ public class Jackson2Utils {
         if (ObjectUtils.isNotEmpty(OBJECT_MAPPER)) {
             return OBJECT_MAPPER;
         } else {
-            OBJECT_MAPPER = new ObjectMapper();
+            OBJECT_MAPPER = new JacksonObjectMapper();
         }
         return OBJECT_MAPPER;
     }
