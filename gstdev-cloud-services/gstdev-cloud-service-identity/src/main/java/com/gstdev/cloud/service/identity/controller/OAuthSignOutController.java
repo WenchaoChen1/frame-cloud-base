@@ -53,7 +53,6 @@ public class OAuthSignOutController {
             @Parameter(name = "Authorization", in = ParameterIn.HEADER, required = true, description = "Basic Token"),
     })
     @PostMapping("/sign-out")
-//    @RequestParam(name = "accessToken") @NotBlank
     public Result<String> signOut(@RequestBody SignOut signOut, HttpServletRequest request) {
         if (ObjectUtils.isEmpty(signOut.getAccessToken())) {
             return Result.failure("access token is empty");

@@ -3,6 +3,7 @@ package com.gstdev.cloud.service.identity.controller;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
+import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.oauth2.data.jpa.entity.FrameAuthorization;
 import com.gstdev.cloud.oauth2.data.jpa.service.FrameAuthorizationService;
 import com.gstdev.cloud.rest.core.controller.Controller;
@@ -12,6 +13,8 @@ import com.gstdev.cloud.service.identity.mapper.Oauth2AuthorizationMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -54,9 +57,10 @@ public class OAuth2AuthorizationController implements Controller<FrameAuthorizat
         return result(oauth2AuthorizationMapper.toAuthorizationManagePageVO(getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, authorizationManageQO, criteriaBuilder), basePage)));
     }
 
+    @Tag(name = "User Settings")
     @Operation(summary = "删除一条数据")
     @DeleteMapping("/delete-authorization-manage/{id}")
-    public Result deleteAuthorizationManage(@PathVariable String id) {
+    public Result deleteAuthorizationManage(@PathVariable String id, HttpServletRequest request) {
         Result<String> result = result(String.valueOf(id));
         getService().deleteById(id);
         return result;
@@ -70,6 +74,23 @@ public class OAuth2AuthorizationController implements Controller<FrameAuthorizat
         return result;
     }
 
+
+    @Tag(name = "User Settings")
+    @Operation(summary = "Clear online users and force out")
+    @DeleteMapping("/delete-authorization-force-out/{id}")
+    public Result deleteAuthorizationForceOut(@PathVariable String id, HttpServletRequest request) {
+        FrameAuthorization byId = getService().findById(id);
+
+        if(ObjectUtils.isEmpty(byId) ){
+            return Result.failure("The user is not online");
+        }
+        if(byId.getUserId().equals(SecurityUtils.getUserId())){
+            return Result.failure("You can only log out of your account");
+        }
+
+        getService().deleteById(id);
+        return Result.success();
+    }
 
     @Tag(name = "User Settings")
     @GetMapping("/get-user-online-authorization")
