@@ -58,6 +58,8 @@ public interface BaseConstants {
     String PROPERTY_PREFIX_SWAGGER = PROPERTY_PREFIX_BASE + ".swagger";
     String ITEM_SWAGGER_ENABLED = PROPERTY_PREFIX_SWAGGER + PROPERTY_ENABLED;
     String PROPERTY_PREFIX_TSDB = PROPERTY_PREFIX_BASE + ".tsdb";
+    String PROPERTY_PREFIX_SERVICE = PROPERTY_PREFIX_BASE + ".service";
+    String PROPERTY_PREFIX_SERVICE_COMMON = PROPERTY_PREFIX_SERVICE + ".common";
 
     /* ---------- Spring 家族配置属性 ---------- */
     String PROPERTY_PREFIX_IOT = PROPERTY_PREFIX_BASE + ".iot";

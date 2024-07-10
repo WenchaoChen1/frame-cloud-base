@@ -7,12 +7,14 @@ import com.gstdev.cloud.oauth2.core.exception.SecurityGlobalExceptionHandler;
 import com.gstdev.cloud.oauth2.resource.server.configuration.OAuth2AuthorizationConfiguration;
 import com.gstdev.cloud.oauth2.resource.server.processor.SecurityMetadataSourceAnalyzer;
 import com.gstdev.cloud.service.common.autoconfigure.metadata.RemoteSecurityMetadataSyncListener;
+import com.gstdev.cloud.service.common.autoconfigure.properties.ServiceCommonProperties;
 import com.gstdev.cloud.service.common.autoconfigure.scan.DefaultRequestMappingScanEventManager;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.bus.ServiceMatcher;
 import org.springframework.cloud.bus.jackson.RemoteApplicationEventScan;
 import org.springframework.context.annotation.Bean;
@@ -32,10 +34,14 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @AutoConfiguration
 @EnableAsync
 @EnableAspectJAutoProxy(exposeProxy = true, proxyTargetClass = true)
+@EnableConfigurationProperties({ServiceCommonProperties.class})
 @Import({OAuth2AuthorizationConfiguration.class, DataJpaAutoConfiguration.class})
 @ComponentScan(basePackageClasses = SecurityGlobalExceptionHandler.class)
 @RemoteApplicationEventScan({
         "com.gstdev.cloud.service.common.autoconfigure.bus"
+})
+@ComponentScan(basePackages = {
+        "com.gstdev.cloud.service.common.autoconfigure.currentLoginInformation"
 })
 public class OAuth2ResourceServerAutoConfiguration {
 
