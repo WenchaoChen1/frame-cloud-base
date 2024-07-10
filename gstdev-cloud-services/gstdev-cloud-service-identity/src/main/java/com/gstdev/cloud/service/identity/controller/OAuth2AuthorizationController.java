@@ -84,7 +84,7 @@ public class OAuth2AuthorizationController implements Controller<FrameAuthorizat
         if(ObjectUtils.isEmpty(byId) ){
             return Result.failure("The user is not online");
         }
-        if(byId.getUserId().equals(SecurityUtils.getUserId())){
+        if(!byId.getUserId().equals(SecurityUtils.getUserId())){
             return Result.failure("You can only log out of your account");
         }
 
