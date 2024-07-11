@@ -3,6 +3,7 @@ package com.gstdev.cloud.oauth2.authorization.server.properties;
 import com.google.common.base.MoreObjects;
 import com.gstdev.cloud.base.definition.constants.DefaultConstants;
 import com.gstdev.cloud.base.definition.constants.SymbolConstants;
+import com.gstdev.cloud.base.definition.properties.BaseProperties;
 import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
 import com.gstdev.cloud.oauth2.core.enums.FrameLoginType;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -20,7 +21,7 @@ import java.time.Duration;
  **/
 
 @ConfigurationProperties(prefix = OAuth2Constants.PROPERTY_OAUTH2_AUTHENTICATION)
-public class OAuth2AuthenticationProperties {
+public class OAuth2AuthenticationProperties extends BaseProperties {
     /**
      * 开启登录失败限制
      */

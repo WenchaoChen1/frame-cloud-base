@@ -1,6 +1,7 @@
 package com.gstdev.cloud.message.mqtt.properties;
 
 import com.google.common.base.MoreObjects;
+import com.gstdev.cloud.base.definition.properties.BaseProperties;
 import com.gstdev.cloud.message.core.constants.MessageConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -14,7 +15,7 @@ import java.util.List;
  * @date : 2023/9/10 17:16
  */
 @ConfigurationProperties(prefix = MessageConstants.PROPERTY_PREFIX_MQTT)
-public class MqttProperties {
+public class MqttProperties extends BaseProperties {
 
     /**
      * Mqtt 服务器地址，支持多个

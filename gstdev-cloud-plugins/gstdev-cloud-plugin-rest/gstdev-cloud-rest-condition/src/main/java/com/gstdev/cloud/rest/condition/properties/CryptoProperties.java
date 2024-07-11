@@ -1,6 +1,7 @@
 package com.gstdev.cloud.rest.condition.properties;
 
 import com.google.common.base.MoreObjects;
+import com.gstdev.cloud.base.definition.properties.BaseProperties;
 import com.gstdev.cloud.rest.condition.constants.RestConstants;
 import com.gstdev.cloud.rest.core.enums.CryptoStrategy;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -12,7 +13,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date : 2022/5/1 21:13
  */
 @ConfigurationProperties(prefix = RestConstants.PROPERTY_PREFIX_CRYPTO)
-public class CryptoProperties {
+public class CryptoProperties extends BaseProperties {
 
     /**
      * 加密算法策略，默认：国密算法

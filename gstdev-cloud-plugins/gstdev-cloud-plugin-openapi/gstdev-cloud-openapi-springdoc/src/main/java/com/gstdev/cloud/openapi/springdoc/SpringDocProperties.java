@@ -1,12 +1,13 @@
 package com.gstdev.cloud.openapi.springdoc;
 
 
+import com.gstdev.cloud.base.definition.properties.BaseProperties;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
 @ConfigurationProperties(prefix = "gstdev.cloud.swagger")
-public class SpringDocProperties {
+public class SpringDocProperties extends BaseProperties {
 
     private String title = SpringDocDefaults.TITLE;
 

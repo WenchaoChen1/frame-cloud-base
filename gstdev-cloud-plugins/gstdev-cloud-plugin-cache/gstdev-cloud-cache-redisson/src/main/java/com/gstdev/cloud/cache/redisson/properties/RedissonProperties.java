@@ -3,6 +3,7 @@ package com.gstdev.cloud.cache.redisson.properties;
 import com.google.common.base.MoreObjects;
 import com.gstdev.cloud.base.core.enums.Protocol;
 import com.gstdev.cloud.base.definition.constants.SymbolConstants;
+import com.gstdev.cloud.base.definition.properties.BaseProperties;
 import com.gstdev.cloud.cache.core.constants.CacheConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.config.ClusterServersConfig;
@@ -17,7 +18,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date : 2021/10/22 14:02
  */
 @ConfigurationProperties(prefix = CacheConstants.PROPERTY_REDIS_REDISSON)
-public class RedissonProperties {
+public class RedissonProperties extends BaseProperties {
 
     /**
      * 是否开启 Redisson

@@ -1,5 +1,6 @@
 package com.gstdev.cloud.captcha.core.processor.properties;
 
+import com.gstdev.cloud.base.definition.properties.BaseProperties;
 import com.gstdev.cloud.captcha.core.constants.CaptchaConstants;
 import com.gstdev.cloud.captcha.core.definition.enums.CaptchaCharacter;
 import com.gstdev.cloud.captcha.core.definition.enums.CaptchaFont;
@@ -13,7 +14,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date : 2024/12/11 12:25
  */
 @ConfigurationProperties(prefix = CaptchaConstants.PROPERTY_PREFIX_CAPTCHA)
-public class CaptchaProperties {
+public class CaptchaProperties extends BaseProperties {
 
     private Graphics graphics = new Graphics();
     /**

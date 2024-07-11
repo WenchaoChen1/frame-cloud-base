@@ -2,6 +2,7 @@ package com.gstdev.cloud.message.websocket.properties;
 
 import com.gstdev.cloud.base.core.utils.http.HeaderUtils;
 import com.gstdev.cloud.base.definition.constants.SymbolConstants;
+import com.gstdev.cloud.base.definition.properties.BaseProperties;
 import com.gstdev.cloud.message.core.constants.MessageConstants;
 import com.gstdev.cloud.message.websocket.enums.InstanceMode;
 import org.apache.commons.collections4.CollectionUtils;
@@ -18,7 +19,7 @@ import java.util.List;
  * @date : 2021/10/24 18:38
  */
 @ConfigurationProperties(prefix = MessageConstants.PROPERTY_PREFIX_WEBSOCKET)
-public class WebSocketProperties {
+public class WebSocketProperties extends BaseProperties {
 
     /**
      * WebSocket 实例模式，单实例还是多实例。默认为单实例

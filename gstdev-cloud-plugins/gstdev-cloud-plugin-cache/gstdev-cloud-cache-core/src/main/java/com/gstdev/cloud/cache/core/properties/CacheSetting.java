@@ -1,6 +1,7 @@
 package com.gstdev.cloud.cache.core.properties;
 
 import com.google.common.base.MoreObjects;
+import com.gstdev.cloud.base.definition.properties.BaseProperties;
 import com.gstdev.cloud.cache.core.enums.CacheMethod;
 
 import java.time.Duration;
@@ -11,7 +12,7 @@ import java.time.Duration;
  * @author : cc
  * @date : 2021/10/25 17:41
  */
-public class CacheSetting {
+public class CacheSetting extends BaseProperties {
 
     /**
      * 指定缓存区域，与 JetCache Area 配置对应。

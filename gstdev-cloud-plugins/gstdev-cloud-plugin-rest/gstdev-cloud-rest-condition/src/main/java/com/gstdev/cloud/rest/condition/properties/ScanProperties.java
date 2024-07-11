@@ -1,5 +1,6 @@
 package com.gstdev.cloud.rest.condition.properties;
 
+import com.gstdev.cloud.base.definition.properties.BaseProperties;
 import com.gstdev.cloud.rest.condition.constants.RestConstants;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -16,7 +17,7 @@ import java.util.stream.Stream;
  * @date : 2022/1/16 18:58
  */
 @ConfigurationProperties(prefix = RestConstants.PROPERTY_REST_SCAN)
-public class ScanProperties {
+public class ScanProperties extends BaseProperties {
 
     /**
      * 是否开启注解扫描

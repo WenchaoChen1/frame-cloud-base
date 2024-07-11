@@ -1,5 +1,6 @@
 package com.gstdev.cloud.data.core.properties;
 
+import com.gstdev.cloud.base.definition.properties.BaseProperties;
 import com.gstdev.cloud.data.core.constants.DataConstants;
 import com.gstdev.cloud.data.core.enums.DataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -11,7 +12,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date : 2023/10/4 12:02
  */
 @ConfigurationProperties(DataConstants.PROPERTY_PREFIX_DATA)
-public class DataProperties {
+public class DataProperties extends BaseProperties {
 
     /**
      * 基础数据源切换。用于某些基础核心应用底层存储切换的配置。默认，JPA

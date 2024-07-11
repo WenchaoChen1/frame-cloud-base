@@ -3,12 +3,13 @@ package com.gstdev.cloud.swagger;
 
 //import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import com.gstdev.cloud.base.definition.properties.BaseProperties;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
 @ConfigurationProperties(prefix = "gstdev.cloud.swagger")
-public class SwaggerProperties {
+public class SwaggerProperties extends BaseProperties {
 
     private String title = SwaggerDefaults.TITLE;
 

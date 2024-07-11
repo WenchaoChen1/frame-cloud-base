@@ -9,12 +9,13 @@
 
 package com.gstdev.cloud.plugin.storage.aliyun.config;
 
+import com.gstdev.cloud.base.definition.properties.BaseProperties;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
 @ConfigurationProperties(prefix = "gstdev.cloud.storage.aliyun", ignoreUnknownFields = true)
-public class AliyunStorageProperties {
+public class AliyunStorageProperties extends BaseProperties {
 
     private String endpoint;
 

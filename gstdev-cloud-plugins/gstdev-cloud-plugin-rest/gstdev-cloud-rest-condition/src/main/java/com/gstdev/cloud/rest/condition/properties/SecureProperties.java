@@ -1,6 +1,7 @@
 package com.gstdev.cloud.rest.condition.properties;
 
 import com.google.common.base.MoreObjects;
+import com.gstdev.cloud.base.definition.properties.BaseProperties;
 import com.gstdev.cloud.rest.condition.constants.RestConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -14,7 +15,7 @@ import java.time.Duration;
  * @date : 2021/8/24 15:53
  */
 @ConfigurationProperties(prefix = RestConstants.PROPERTY_PREFIX_SECURE)
-public class SecureProperties {
+public class SecureProperties extends BaseProperties {
 
     private Idempotent idempotent = new Idempotent();
     private AccessLimited accessLimited = new AccessLimited();

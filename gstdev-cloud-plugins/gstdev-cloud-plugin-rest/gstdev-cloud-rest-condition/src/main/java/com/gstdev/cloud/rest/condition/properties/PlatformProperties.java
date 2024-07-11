@@ -3,6 +3,7 @@ package com.gstdev.cloud.rest.condition.properties;
 import com.gstdev.cloud.base.core.enums.Architecture;
 import com.gstdev.cloud.base.core.enums.Protocol;
 import com.gstdev.cloud.base.core.enums.Target;
+import com.gstdev.cloud.base.definition.properties.BaseProperties;
 import com.gstdev.cloud.rest.condition.constants.RestConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -13,7 +14,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date : 2019/11/17 15:22
  */
 @ConfigurationProperties(prefix = RestConstants.PROPERTY_PREFIX_PLATFORM)
-public class PlatformProperties {
+public class PlatformProperties extends BaseProperties {
 
     /**
      * 平台架构类型，默认：DISTRIBUTED（分布式架构）

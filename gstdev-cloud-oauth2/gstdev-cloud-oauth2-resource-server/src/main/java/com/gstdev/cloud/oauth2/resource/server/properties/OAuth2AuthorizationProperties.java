@@ -1,6 +1,7 @@
 package com.gstdev.cloud.oauth2.resource.server.properties;
 
 import com.gstdev.cloud.base.core.enums.Target;
+import com.gstdev.cloud.base.definition.properties.BaseProperties;
 import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
 import com.gstdev.cloud.oauth2.core.enums.Certificate;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -15,7 +16,7 @@ import java.util.List;
  * @create: 2024/03/25 15:04
  **/
 @ConfigurationProperties(prefix = OAuth2Constants.PROPERTY_OAUTH2_AUTHORIZATION)
-public class OAuth2AuthorizationProperties {
+public class OAuth2AuthorizationProperties extends BaseProperties {
 
     /**
      * Token 校验是采用远程方式还是本地方式。

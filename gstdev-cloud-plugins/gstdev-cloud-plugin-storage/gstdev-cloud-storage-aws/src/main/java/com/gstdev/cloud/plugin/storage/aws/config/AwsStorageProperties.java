@@ -9,12 +9,13 @@
 
 package com.gstdev.cloud.plugin.storage.aws.config;
 
+import com.gstdev.cloud.base.definition.properties.BaseProperties;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
 @ConfigurationProperties(prefix = "gstdev.cloud.storage.aws", ignoreUnknownFields = true)
-public class AwsStorageProperties {
+public class AwsStorageProperties extends BaseProperties {
 
     private String endpoint;
 

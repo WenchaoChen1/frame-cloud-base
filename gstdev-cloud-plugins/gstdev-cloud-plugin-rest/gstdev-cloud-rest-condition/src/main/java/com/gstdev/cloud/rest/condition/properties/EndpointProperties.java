@@ -3,6 +3,7 @@ package com.gstdev.cloud.rest.condition.properties;
 import com.google.common.base.MoreObjects;
 import com.gstdev.cloud.base.core.utils.WellFormedUtils;
 import com.gstdev.cloud.base.definition.constants.DefaultConstants;
+import com.gstdev.cloud.base.definition.properties.BaseProperties;
 import com.gstdev.cloud.rest.condition.constants.RestConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -13,7 +14,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date : 2022/3/6 12:00
  */
 @ConfigurationProperties(prefix = RestConstants.PROPERTY_PREFIX_ENDPOINT)
-public class EndpointProperties {
+public class EndpointProperties extends BaseProperties {
 
     /**
      * 认证中心服务名称

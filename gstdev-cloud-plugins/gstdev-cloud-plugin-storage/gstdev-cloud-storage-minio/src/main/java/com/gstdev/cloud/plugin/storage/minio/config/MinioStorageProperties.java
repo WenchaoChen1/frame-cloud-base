@@ -9,12 +9,13 @@
 
 package com.gstdev.cloud.plugin.storage.minio.config;
 
+import com.gstdev.cloud.base.definition.properties.BaseProperties;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
 @ConfigurationProperties(prefix = "gstdev.cloud.storage.minio", ignoreUnknownFields = true)
-public class MinioStorageProperties {
+public class MinioStorageProperties extends BaseProperties {
 
     private String endpoint;
 
