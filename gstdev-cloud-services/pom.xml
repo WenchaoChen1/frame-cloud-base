@@ -18,6 +18,7 @@
     <modules>
         <module>gstdev-cloud-service-common</module>
         <module>gstdev-cloud-service-identity</module>
+        <module>gstdev-cloud-service-system</module>
 
         <!--    <module>gstdev-cloud-service-notification</module>-->
         <!--    <module>gstdev-cloud-service-oauth2</module>-->

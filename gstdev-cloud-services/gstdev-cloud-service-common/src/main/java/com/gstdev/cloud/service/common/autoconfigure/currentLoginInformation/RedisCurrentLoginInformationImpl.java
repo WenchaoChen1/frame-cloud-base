@@ -21,20 +21,20 @@ public class RedisCurrentLoginInformationImpl implements RedisCurrentLoginInform
 //    private RedisUtils redisUtils;
     @Override
     public Result<Object> addByTokenCurrentLoginInformation(Object currentLoginInformation) {
-        RedisUtils.set(buildKey(KET_CURRENT_LOGIN_ACCOUNT_ID, SecurityUtils.getUserId()), currentLoginInformation, TIMEOUT, TimeUnit.HOURS);
+        RedisUtils.set(buildKey(KET_CURRENT_LOGIN_ACCOUNT_ID, SecurityUtils.getTokenValue()), currentLoginInformation, TIMEOUT, TimeUnit.HOURS);
         return Result.success();
     }
 
     @Override
     //add和update一样的功能
     public Result<Object> updateByTokenCurrentLoginInformation(Object currentLoginInformation) {
-        RedisUtils.set(buildKey(KET_CURRENT_LOGIN_ACCOUNT_ID, SecurityUtils.getUserId()), currentLoginInformation, TIMEOUT, TimeUnit.HOURS);
+        RedisUtils.set(buildKey(KET_CURRENT_LOGIN_ACCOUNT_ID, SecurityUtils.getTokenValue()), currentLoginInformation, TIMEOUT, TimeUnit.HOURS);
         return Result.success();
     }
 
     @Override
     public Result<Object> deleteByTokenCurrentLoginInformation() {
-        RedisUtils.del(buildKey(KET_CURRENT_LOGIN_ACCOUNT_ID,SecurityUtils.getUserId()));
+        RedisUtils.del(buildKey(KET_CURRENT_LOGIN_ACCOUNT_ID,SecurityUtils.getTokenValue()));
         return Result.success();
     }
 
@@ -42,7 +42,7 @@ public class RedisCurrentLoginInformationImpl implements RedisCurrentLoginInform
     public CurrentLoginInformation getCurrentLoginInformation() {
         CurrentLoginInformation currentLogininformation = null;
         try {
-            currentLogininformation = (CurrentLoginInformation) RedisUtils.get(buildKey(KET_CURRENT_LOGIN_ACCOUNT_ID, SecurityUtils.getUserId()));
+            currentLogininformation = (CurrentLoginInformation) RedisUtils.get(buildKey(KET_CURRENT_LOGIN_ACCOUNT_ID, SecurityUtils.getTokenValue()));
         } catch (Exception e) {
             return null;
         }
