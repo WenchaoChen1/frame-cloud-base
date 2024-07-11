@@ -18,7 +18,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
-import org.springframework.security.oauth2.core.oidc.OidcScopes;
 import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
@@ -172,74 +171,74 @@ public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application,
 //     .scope("message.write")
 //     .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
 //     .build();
-        RegisteredClient oidcClient = RegisteredClient.withId(UUID.randomUUID().toString())
-            .clientId("oidc-client")
-            .clientSecret("{noop}secret")
-            .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-            .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-            .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-            .redirectUri("http://127.0.0.1:8080/login/oauth2/code/oidc-client")
-            .postLogoutRedirectUri("http://127.0.0.1:8080/")
-            .scope(OidcScopes.OPENID)
-            .scope(OidcScopes.PROFILE)
-            .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
-            .build();
+//        RegisteredClient oidcClient = RegisteredClient.withId(UUID.randomUUID().toString())
+//            .clientId("oidc-client")
+//            .clientSecret("{noop}secret")
+//            .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+//            .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+//            .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+//            .redirectUri("http://127.0.0.1:8080/login/oauth2/code/oidc-client")
+//            .postLogoutRedirectUri("http://127.0.0.1:8080/")
+//            .scope(OidcScopes.OPENID)
+//            .scope(OidcScopes.PROFILE)
+//            .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
+//            .build();
         /*
           如果使用明文，客户端认证时会自动升级加密方式，换句话说直接修改客户端密码，所以直接使用 bcrypt 加密避免不必要的麻烦
           官方ISSUE： https://github.com/spring-projects/spring-authorization-server/issues/1099
          */
 //      String encodeSecret = passwordEncoder().encode(clientSecret);
 //     @formatter:off
-        RegisteredClient codeRegisteredClient = RegisteredClient
-            .withId(UUID.randomUUID().toString())
-            .clientId("code-client")
-            .clientName("Code Client")
-//      .clientSecret(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("123456"))
-            .clientSecret("123456")
-            .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-            .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-            .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-            .redirectUri("http://127.0.0.1:8080/authorized")
-            .redirectUri("http://www.baidu.com")
-            .scope("project:read")
-            .scope("project:write")
-            .clientSettings(ClientSettings.builder()
-                .requireAuthorizationConsent(false)
-                .requireProofKey(false)
-                .build()
-            )
-
-            .tokenSettings(TokenSettings.builder()
-                .accessTokenTimeToLive(Duration.ofHours(1))
-                .refreshTokenTimeToLive(Duration.ofHours(3))
-                .idTokenSignatureAlgorithm(SignatureAlgorithm.ES256)
-                .reuseRefreshTokens(true)
-                .build()
-            )
-            .build();
-
-        RegisteredClient credentialsRegisteredClient = RegisteredClient
-            .withId(UUID.randomUUID().toString())
-            .clientId("credentials-client")
-            .clientName("Credentials Client")
-//      .clientSecret(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("123456"))
-            .clientSecret("123456")
-            .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-            .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-            .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-            .clientSettings(ClientSettings.builder()
-                .requireAuthorizationConsent(false)
-                .requireProofKey(false)
-                .build()
-            )
-            .tokenSettings(TokenSettings.builder()
-                .accessTokenTimeToLive(Duration.ofHours(720))
-                .refreshTokenTimeToLive(Duration.ofHours(720))
-                .idTokenSignatureAlgorithm(SignatureAlgorithm.ES256)
-                .reuseRefreshTokens(true)
-                .build()
-            )
-            .build();
+//        RegisteredClient codeRegisteredClient = RegisteredClient
+//            .withId(UUID.randomUUID().toString())
+//            .clientId("code-client")
+//            .clientName("Code Client")
+////      .clientSecret(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("123456"))
+//            .clientSecret("123456")
+//            .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+//            .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+//            .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+//            .redirectUri("http://127.0.0.1:8080/authorized")
+//            .redirectUri("http://www.baidu.com")
+//            .scope("project:read")
+//            .scope("project:write")
+//            .clientSettings(ClientSettings.builder()
+//                .requireAuthorizationConsent(false)
+//                .requireProofKey(false)
+//                .build()
+//            )
+//
+//            .tokenSettings(TokenSettings.builder()
+//                .accessTokenTimeToLive(Duration.ofHours(1))
+//                .refreshTokenTimeToLive(Duration.ofHours(3))
+//                .idTokenSignatureAlgorithm(SignatureAlgorithm.ES256)
+//                .reuseRefreshTokens(true)
+//                .build()
+//            )
+//            .build();
+//
+//        RegisteredClient credentialsRegisteredClient = RegisteredClient
+//            .withId(UUID.randomUUID().toString())
+//            .clientId("credentials-client")
+//            .clientName("Credentials Client")
+////      .clientSecret(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("123456"))
+//            .clientSecret("123456")
+//            .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+//            .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+//            .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+//            .clientSettings(ClientSettings.builder()
+//                .requireAuthorizationConsent(false)
+//                .requireProofKey(false)
+//                .build()
+//            )
+//            .tokenSettings(TokenSettings.builder()
+//                .accessTokenTimeToLive(Duration.ofHours(720))
+//                .refreshTokenTimeToLive(Duration.ofHours(720))
+//                .idTokenSignatureAlgorithm(SignatureAlgorithm.ES256)
+//                .reuseRefreshTokens(true)
+//                .build()
+//            )
+//            .build();
 
         RegisteredClient passwordRegisteredClient = RegisteredClient
             .withId(UUID.randomUUID().toString())
@@ -257,8 +256,8 @@ public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application,
             )
 
             .tokenSettings(TokenSettings.builder()
-                .accessTokenTimeToLive(Duration.ofHours(720))
-                .refreshTokenTimeToLive(Duration.ofHours(720))
+                .accessTokenTimeToLive(Duration.ofHours(6))
+                .refreshTokenTimeToLive(Duration.ofHours(12))
                 .idTokenSignatureAlgorithm(SignatureAlgorithm.ES256)
                 .reuseRefreshTokens(true)
                 .accessTokenFormat(OAuth2TokenFormat.SELF_CONTAINED)
@@ -267,39 +266,39 @@ public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application,
             .build();
 
 
-        RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
-            .clientId("oauth2-client")
-//      .clientSecret(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("123456"))
-            .clientSecret("123456")
-            // 客户端认证基于请求头
-            .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-            // 配置授权的支持方式
-            .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-            .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-            .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-            .redirectUri("https://www.baidu.com")
-            .scope("user")
-            .scope("admin")
-            // 客户端设置，设置用户需要确认授权
-            .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
-            // 添加tokenSettings，将accessTokenFormat改为REFERENCE即可获取Opaque Token
-            .tokenSettings(TokenSettings.builder()
-//        .accessTokenFormat(OAuth2TokenFormat.REFERENCE)
-                // 令牌存活时间：2小时
-                .accessTokenTimeToLive(Duration.ofHours(2))
-                // 令牌可以刷新，重新获取
-                .reuseRefreshTokens(true)
-                // 刷新时间：30天（30天内当令牌过期时，可以用刷新令牌重新申请新令牌，不需要再认证）
-                .refreshTokenTimeToLive(Duration.ofDays(30)).build())
-            .build();
+//        RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
+//            .clientId("oauth2-client")
+////      .clientSecret(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("123456"))
+//            .clientSecret("123456")
+//            // 客户端认证基于请求头
+//            .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+//            // 配置授权的支持方式
+//            .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+//            .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+//            .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+//            .redirectUri("https://www.baidu.com")
+//            .scope("user")
+//            .scope("admin")
+//            // 客户端设置，设置用户需要确认授权
+//            .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
+//            // 添加tokenSettings，将accessTokenFormat改为REFERENCE即可获取Opaque Token
+//            .tokenSettings(TokenSettings.builder()
+////        .accessTokenFormat(OAuth2TokenFormat.REFERENCE)
+//                // 令牌存活时间：2小时
+//                .accessTokenTimeToLive(Duration.ofHours(2))
+//                // 令牌可以刷新，重新获取
+//                .reuseRefreshTokens(true)
+//                // 刷新时间：30天（30天内当令牌过期时，可以用刷新令牌重新申请新令牌，不需要再认证）
+//                .refreshTokenTimeToLive(Duration.ofDays(30)).build())
+//            .build();
         List<RegisteredClient> registryCloents = new ArrayList<>();
-        registryCloents.add(createRegisteredClientAuthorizationCode("my_client"));
-        registryCloents.add(createRegisteredClient("micro_service"));
-        registryCloents.add(oidcClient);
-        registryCloents.add(codeRegisteredClient);
-        registryCloents.add(credentialsRegisteredClient);
+//        registryCloents.add(createRegisteredClientAuthorizationCode("my_client"));
+//        registryCloents.add(createRegisteredClient("micro_service"));
+//        registryCloents.add(oidcClient);
+//        registryCloents.add(codeRegisteredClient);
+//        registryCloents.add(credentialsRegisteredClient);
         registryCloents.add(passwordRegisteredClient);
-        registryCloents.add(registeredClient);
+//        registryCloents.add(registeredClient);
 
         return registryCloents;
     }
