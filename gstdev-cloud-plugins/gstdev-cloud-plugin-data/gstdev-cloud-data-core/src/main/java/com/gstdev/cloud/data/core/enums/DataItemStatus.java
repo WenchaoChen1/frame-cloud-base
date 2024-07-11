@@ -22,19 +22,19 @@ public enum DataItemStatus implements BaseUiEnum<Integer> {
     /**
      * 数据条目已启用
      */
-    ENABLE(0, "enable", 0, "启用"),
+    ENABLE(0, "Enable", 0, "启用"),
     /**
      * 数据条目被启用
      */
-    FORBIDDEN(1, "forbidden", 1, "禁用"),
+    FORBIDDEN(1, "Forbidden", 1, "禁用"),
     /**
      * 数据条目被锁定
      */
-    LOCKING(2,"locking",2, "锁定"),
+    LOCKING(2,"Locking",2, "锁定"),
     /**
      * 数据条目已过期
      */
-    EXPIRED(3, "expired", 3, "过期");
+    EXPIRED(3, "Expired", 3, "过期");
 
     private static final Map<Integer, DataItemStatus> INDEX_MAP = new HashMap<>();
     private static final List<Map<String, Object>> JSON_STRUCTURE = new ArrayList<>();
