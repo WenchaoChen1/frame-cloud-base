@@ -1,10 +1,8 @@
 package com.gstdev.cloud.rest.autoconfigure;
 
 import com.gstdev.cloud.rest.protect.configuration.SecureConfiguration;
-//import com.gstdev.cloud.rest.protect.configuration.TenantConfiguration;
-//import com.gstdev.cloud.rest.protect.secure.interceptor.AccessLimitedInterceptor;
-//import com.gstdev.cloud.rest.protect.secure.interceptor.IdempotentInterceptor;
-//import com.gstdev.cloud.rest.protect.tenant.MultiTenantInterceptor;
+import com.gstdev.cloud.rest.protect.secure.interceptor.AccessLimitedInterceptor;
+import com.gstdev.cloud.rest.protect.secure.interceptor.IdempotentInterceptor;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,15 +30,16 @@ public class RestWebMvcAutoConfiguration implements WebMvcConfigurer {
 
     private static final Logger log = LoggerFactory.getLogger(RestWebMvcAutoConfiguration.class);
 
-//  private final IdempotentInterceptor idempotentInterceptor;
-//  private final AccessLimitedInterceptor accessLimitedInterceptor;
+  private final IdempotentInterceptor idempotentInterceptor;
+  private final AccessLimitedInterceptor accessLimitedInterceptor;
 //  private final MultiTenantInterceptor multiTenantInterceptor;
-//
+
 //  public RestWebMvcAutoConfiguration(IdempotentInterceptor idempotentInterceptor, AccessLimitedInterceptor accessLimitedInterceptor, MultiTenantInterceptor multiTenantInterceptor) {
-//    this.idempotentInterceptor = idempotentInterceptor;
-//    this.accessLimitedInterceptor = accessLimitedInterceptor;
+  public RestWebMvcAutoConfiguration(IdempotentInterceptor idempotentInterceptor, AccessLimitedInterceptor accessLimitedInterceptor) {
+    this.idempotentInterceptor = idempotentInterceptor;
+    this.accessLimitedInterceptor = accessLimitedInterceptor;
 //    this.multiTenantInterceptor = multiTenantInterceptor;
-//  }
+  }
 
     @PostConstruct
     public void postConstruct() {
@@ -49,8 +48,8 @@ public class RestWebMvcAutoConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-//    registry.addInterceptor(accessLimitedInterceptor);
-//    registry.addInterceptor(idempotentInterceptor);
+    registry.addInterceptor(accessLimitedInterceptor);
+    registry.addInterceptor(idempotentInterceptor);
 //    registry.addInterceptor(multiTenantInterceptor);
     }
 
