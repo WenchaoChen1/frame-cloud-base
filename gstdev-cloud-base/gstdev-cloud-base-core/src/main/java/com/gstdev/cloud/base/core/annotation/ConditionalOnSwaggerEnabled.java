@@ -1,6 +1,7 @@
 package com.gstdev.cloud.base.core.annotation;
 
-//import com.gstdev.cloud.commons.ass.core.conditon.SwaggerEnabledCondition;
+import com.gstdev.cloud.base.core.conditon.SwaggerEnabledCondition;
+import org.springframework.context.annotation.Conditional;
 
 import java.lang.annotation.*;
 
@@ -13,6 +14,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Documented
-//@Conditional(SwaggerEnabledCondition.class)
+@Conditional(SwaggerEnabledCondition.class)
 public @interface ConditionalOnSwaggerEnabled {
 }

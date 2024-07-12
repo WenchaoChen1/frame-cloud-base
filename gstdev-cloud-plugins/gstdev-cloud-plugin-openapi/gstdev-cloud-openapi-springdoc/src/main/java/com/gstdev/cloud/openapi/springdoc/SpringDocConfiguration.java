@@ -1,6 +1,7 @@
 package com.gstdev.cloud.openapi.springdoc;
 
 import com.google.common.collect.ImmutableList;
+import com.gstdev.cloud.base.core.annotation.ConditionalOnSwaggerEnabled;
 import com.gstdev.cloud.base.core.context.ServiceContextHolder;
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -22,7 +23,7 @@ import org.springframework.context.annotation.Configuration;
  * @date : 2021/6/13 13:40
  */
 @Configuration(proxyBeanMethods = false)
-//@ConditionalOnSwaggerEnabled
+@ConditionalOnSwaggerEnabled
 @EnableConfigurationProperties(SpringDocProperties.class)
 //@SecuritySchemes({
 //  @SecurityScheme(name = BaseConstants.OPEN_API_SECURITY_SCHEME_BEARER_NAME, type = SecuritySchemeType.OAUTH2, bearerFormat = "JWT", scheme = "bearer",
