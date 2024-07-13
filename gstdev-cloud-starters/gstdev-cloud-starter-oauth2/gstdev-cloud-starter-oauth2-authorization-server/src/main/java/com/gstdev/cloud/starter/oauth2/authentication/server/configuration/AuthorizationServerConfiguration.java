@@ -39,6 +39,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
@@ -73,6 +74,7 @@ import java.util.UUID;
 @Slf4j
 @Configuration(proxyBeanMethods = false)
 @AutoConfigureAfter({RedisAutoConfiguration.class})
+@EnableConfigurationProperties({OAuth2AuthenticationProperties.class})
 //@EnableConfigurationProperties(AuthorizationServerProperties.class)
 //@Import({OAuth2AuthorizationConfiguration.class, OAuth2AuthenticationConfiguration.class})
 public class AuthorizationServerConfiguration {
