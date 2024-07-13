@@ -20,5 +20,6 @@
     <modules>
         <module>gstdev-cloud-starter-service-common</module>
         <module>gstdev-cloud-starter-service-identity</module>
+        <module>gstdev-cloud-starter-service-system</module>
     </modules>
 </project>

@@ -180,6 +180,11 @@
             </dependency>
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-service-system</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
                 <artifactId>gstdev-cloud-service-common</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
@@ -410,6 +415,11 @@
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
                 <artifactId>gstdev-cloud-starter-service-identity</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-service-system</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
 
