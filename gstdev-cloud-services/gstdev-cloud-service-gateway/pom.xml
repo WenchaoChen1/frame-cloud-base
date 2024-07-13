@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-services</artifactId>
+        <version>2024.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>gstdev-cloud-service-gateway</artifactId>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <description>Dante Cloud 在 Alibaba 环境下 Sentinel Gateway 配置模块</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webflux</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.herodotus.engine</groupId>
+            <artifactId>cache-spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
+</project>
