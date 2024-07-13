@@ -26,5 +26,10 @@
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-starter-oauth2-authorization-server</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-springframework-openfeign</artifactId>
+        </dependency>
     </dependencies>
 </project>
