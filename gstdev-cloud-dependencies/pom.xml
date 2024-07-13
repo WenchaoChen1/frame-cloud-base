@@ -188,6 +188,11 @@
                 <artifactId>gstdev-cloud-service-common</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-service-gateway</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
             <!--=========================================== oauth2 ===========================================-->
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
