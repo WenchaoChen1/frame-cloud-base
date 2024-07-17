@@ -1,6 +1,6 @@
 package com.gstdev.cloud.rest.autoconfigure;
 
-import com.gstdev.cloud.rest.service.configuration.RestScanConfiguration;
+import com.gstdev.cloud.rest.service.scan.configration.RestScanConfiguration;
 import com.gstdev.cloud.springframework.openfeign.configration.FeignConfiguration;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;

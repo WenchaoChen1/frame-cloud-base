@@ -1,10 +1,10 @@
-package com.gstdev.cloud.rest.service.processor;
+package com.gstdev.cloud.rest.service.scan.processor;
 
 import com.gstdev.cloud.base.definition.constants.SymbolConstants;
-import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
-import com.gstdev.cloud.message.core.logic.strategy.RequestMappingScanEventManager;
 import com.gstdev.cloud.rest.condition.constants.RestPropertyFinder;
 import com.gstdev.cloud.rest.condition.properties.ScanProperties;
+import com.gstdev.cloud.rest.service.scan.RequestMapping;
+import com.gstdev.cloud.rest.service.scan.RequestMappingScanEventManager;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import org.apache.commons.collections4.CollectionUtils;

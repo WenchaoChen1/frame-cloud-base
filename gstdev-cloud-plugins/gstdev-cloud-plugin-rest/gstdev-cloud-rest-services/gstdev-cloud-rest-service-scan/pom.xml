@@ -4,7 +4,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-
     <parent>
         <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-rest-services</artifactId>
@@ -15,7 +14,20 @@
 
     <artifactId>gstdev-cloud-rest-service-scan</artifactId>
 
-
     <description>Gtsdev Cloud 基于 REST 的服务基础内容配置代码模块</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>message-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-rest-condition</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+        </dependency>
+    </dependencies>
 </project>

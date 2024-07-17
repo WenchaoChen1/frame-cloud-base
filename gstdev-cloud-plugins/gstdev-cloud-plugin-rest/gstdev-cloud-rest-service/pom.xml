@@ -24,10 +24,10 @@
             <artifactId>gstdev-cloud-rest-condition</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springdoc</groupId>-->
+<!--            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>-->
+<!--        </dependency>-->
 
         <!--        &lt;!&ndash; Openfeign 中 包含loadbalancer，所以直接引用该包 &ndash;&gt;-->
         <!--        <dependency>-->

@@ -1,6 +1,6 @@
 package com.gstdev.cloud.service.system.domain.converter;
 
-import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
+import com.gstdev.cloud.rest.service.scan.RequestMapping;
 import com.gstdev.cloud.service.system.domain.entity.SysInterface;
 import org.springframework.core.convert.converter.Converter;
 

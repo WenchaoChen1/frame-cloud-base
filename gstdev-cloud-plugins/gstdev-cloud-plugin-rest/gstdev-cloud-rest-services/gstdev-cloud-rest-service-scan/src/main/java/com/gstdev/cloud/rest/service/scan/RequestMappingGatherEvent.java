@@ -1,7 +1,6 @@
-package com.gstdev.cloud.message.core.logic.event;
+package com.gstdev.cloud.rest.service.scan;
 
 import com.gstdev.cloud.message.core.definition.event.AbstractApplicationEvent;
-import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
 
 import java.time.Clock;
 import java.util.List;

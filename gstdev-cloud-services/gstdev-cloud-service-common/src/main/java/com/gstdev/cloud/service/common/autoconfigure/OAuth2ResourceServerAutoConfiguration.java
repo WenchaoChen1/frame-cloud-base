@@ -2,10 +2,10 @@ package com.gstdev.cloud.service.common.autoconfigure;
 
 
 import com.gstdev.cloud.data.jpa.autoconfigure.DataJpaAutoConfiguration;
-import com.gstdev.cloud.message.core.logic.strategy.RequestMappingScanEventManager;
 import com.gstdev.cloud.oauth2.core.exception.SecurityGlobalExceptionHandler;
 import com.gstdev.cloud.oauth2.resource.server.configuration.OAuth2AuthorizationConfiguration;
 import com.gstdev.cloud.oauth2.resource.server.processor.SecurityMetadataSourceAnalyzer;
+import com.gstdev.cloud.rest.service.scan.RequestMappingScanEventManager;
 import com.gstdev.cloud.service.common.autoconfigure.metadata.RemoteSecurityMetadataSyncListener;
 import com.gstdev.cloud.service.common.autoconfigure.properties.ServiceCommonProperties;
 import com.gstdev.cloud.service.common.autoconfigure.scan.DefaultRequestMappingScanEventManager;

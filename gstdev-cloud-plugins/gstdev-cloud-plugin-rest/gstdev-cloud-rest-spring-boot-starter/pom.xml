@@ -22,6 +22,10 @@
 
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-rest-service-scan</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-rest-service</artifactId>
         </dependency>
 

@@ -1,8 +1,7 @@
-package com.gstdev.cloud.message.core.logic.strategy;
+package com.gstdev.cloud.rest.service.scan;
 
 import com.gstdev.cloud.base.core.context.ServiceContextHolder;
 import com.gstdev.cloud.message.core.definition.strategy.ApplicationStrategyEventManager;
-import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 

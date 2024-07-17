@@ -1,4 +1,4 @@
-package com.gstdev.cloud.message.core.logic.domain;
+package com.gstdev.cloud.rest.service.scan;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
