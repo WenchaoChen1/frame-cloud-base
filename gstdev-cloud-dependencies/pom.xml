@@ -276,6 +276,18 @@
                 <artifactId>gstdev-cloud-web-server-spring-boot-starter</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-web-server-spring-boot-starter</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+
+            <!--=========================================== plugins-rest-services ===========================================-->
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-rest-service-scan</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
 
 
             <!--=========================================== plugins-cache ===================================-->

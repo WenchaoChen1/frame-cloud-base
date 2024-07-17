@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <parent>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-rest-services</artifactId>
+        <version>2024.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <packaging>jar</packaging>
+
+    <artifactId>gstdev-cloud-rest-service-scan</artifactId>
+
+
+    <description>Gtsdev Cloud 基于 REST 的服务基础内容配置代码模块</description>
+
+</project>

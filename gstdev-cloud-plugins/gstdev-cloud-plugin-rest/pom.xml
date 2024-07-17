@@ -22,6 +22,7 @@
         <module>gstdev-cloud-rest-spring-boot-starter</module>
         <module>gstdev-cloud-web-server-spring-boot-starter</module>
         <module>gstdev-cloud-rest-condition</module>
+        <module>gstdev-cloud-rest-services</module>
     </modules>
 
     <dependencies>
