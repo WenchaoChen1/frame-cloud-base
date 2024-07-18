@@ -301,16 +301,28 @@ public class SysSecurityServiceImpl implements SysSecurityService {
 //                .collect(Collectors.toList());
 
         // 处理菜单的属性并进行分组
-        menus.forEach(sysMenu ->
-            sysMenu.getAttributes().stream()
-                .collect(Collectors.groupingBy(SysAttribute::getServiceId))
-                .forEach((serviceId, attributes) -> {
-                    Set<String> sysAttributes = attributeMaps.getOrDefault(serviceId, new HashSet<>());
-                    sysAttributes.addAll(attributes.stream().map(SysAttribute::getAttributeCode).collect(Collectors.toSet()));
-                    sysAttributes.addAll(attributeMaps.get(serviceId));
-                    attributeMaps.put(serviceId, sysAttributes);
-                })
-        );
+//        menus.forEach(sysMenu ->
+//            sysMenu.getAttributes().stream()
+//                .collect(Collectors.groupingBy(SysAttribute::getServiceId))
+//                .forEach((serviceId, attributes) -> {
+//                    Set<String> sysAttributes = attributeMaps.getOrDefault(serviceId, new HashSet<>());
+//                    sysAttributes.addAll(attributes.stream().map(SysAttribute::getAttributeCode).collect(Collectors.toSet()));
+//                    sysAttributes.addAll(attributeMaps.get(serviceId));
+//                    attributeMaps.put(serviceId, sysAttributes);
+//                })
+//        );
+
+        menus.forEach((sysMenu) -> {
+            sysMenu.getAttributes().stream().collect(Collectors.groupingBy(SysAttribute::getServiceId)).forEach((serviceId, attributes) -> {
+                Set<String> sysAttributes = attributeMaps.getOrDefault(serviceId, new HashSet<>());
+                sysAttributes.addAll(attributes.stream().map(SysAttribute::getAttributeCode).collect(Collectors.toSet()));
+                Set<String> existingAttributes = attributeMaps.get(serviceId);
+                if (existingAttributes != null) {
+                    sysAttributes.addAll(existingAttributes);
+                }
+                attributeMaps.put(serviceId, sysAttributes);
+            });
+        });
         List<String> collect = new ArrayList<>();
         // 将分组后的属性ID集合生成权限并添加到权限集合中
         for (Map.Entry<String, Set<String>> stringSetEntry : attributeMaps.entrySet()) {
