@@ -43,6 +43,7 @@
 
         <!-- 开源通用工具包 -->
         <commons-collections4.version>4.4</commons-collections4.version>
+        <httpclient.version>4.5.13</httpclient.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.5</antisamy.version>
         <guava.version>33.1.0-jre</guava.version>
@@ -421,6 +422,12 @@
                 <artifactId>gstdev-cloud-springframework-openfeign</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
+            <!--=========================================== plugins-authenticator-qr-google ===================================-->
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-authenticator-qr-google</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
             <!--=========================================== starters ===================================-->
 
             <!--=========================================== starter - service ===================================-->
@@ -515,6 +522,11 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
                 <version>${commons-collections4.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.madgag</groupId>
