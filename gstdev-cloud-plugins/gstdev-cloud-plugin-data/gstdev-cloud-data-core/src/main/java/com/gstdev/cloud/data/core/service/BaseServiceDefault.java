@@ -4,7 +4,6 @@ import com.gstdev.cloud.base.definition.constants.SymbolConstants;
 import com.gstdev.cloud.base.definition.domain.base.Entity;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
 import com.gstdev.cloud.data.core.utils.BasePage;
-import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -179,12 +178,12 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     @Override
     @Transactional(readOnly = true)
     default Page<SE> findByPage(BasePage page) {
-        if (ArrayUtils.isNotEmpty(page.getProperties())) {
-            Sort.Direction direction = Sort.Direction.valueOf(page.getDirection());
-            return getService().findByPage(page.getPageNumber(), page.getPageSize(), direction, page.getProperties());
-        } else {
+        if (page.getSort().isEmpty()) {
             return getService().findByPage(page.getPageNumber(), page.getPageSize());
+        } else {
+            return getService().findByPage(page.getPageNumber(), page.getPageSize(), page.getSort());
         }
+
     }
 
     /**
@@ -252,14 +251,15 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     @Override
     @Transactional(readOnly = true)
     default Page<SE> findByPage(Specification<SE> specification, BasePage pageable) {
-        PageRequest pageRequest = null;
-        if (ArrayUtils.isNotEmpty(pageable.getProperties())) {
-            Sort.Direction direction = Sort.Direction.valueOf(pageable.getDirection());
-            pageRequest = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), direction, pageable.getProperties());
-        } else {
-            pageRequest = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());
+        Sort sort = pageable.getSort();
 
+        PageRequest pageRequest = null;
+        if (pageable.getSort().isEmpty()) {
+            pageRequest = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());
+        } else {
+            pageRequest = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), pageable.getSort());
         }
+
         return toServiceEntity(getRepository().findAll(toEntity(specification), pageRequest));
     }
 
