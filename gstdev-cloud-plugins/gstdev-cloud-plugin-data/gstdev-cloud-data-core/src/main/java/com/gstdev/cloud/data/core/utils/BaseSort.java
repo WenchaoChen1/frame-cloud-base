@@ -30,8 +30,6 @@ public class BaseSort extends AbstractDto {
 
     private List<Order> order;
 
-
-
     public Sort getSort() {
         Sort by = Sort.by(getSortOrder());
         return by;
@@ -42,7 +40,6 @@ public class BaseSort extends AbstractDto {
         if(properties.size()!=directions.size()){
             throw new IllegalArgumentException("The number of sort attributes and sort directions does not agree");
         }
-
 
         if(!ObjectUtils.isEmpty(order)){
             for (Order order1 : order) {

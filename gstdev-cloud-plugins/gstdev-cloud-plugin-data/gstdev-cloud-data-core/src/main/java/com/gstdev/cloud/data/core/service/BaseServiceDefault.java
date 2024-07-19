@@ -251,8 +251,6 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     @Override
     @Transactional(readOnly = true)
     default Page<SE> findByPage(Specification<SE> specification, BasePage pageable) {
-        Sort sort = pageable.getSort();
-
         PageRequest pageRequest = null;
         if (pageable.getSort().isEmpty()) {
             pageRequest = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());
