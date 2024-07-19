@@ -25,7 +25,7 @@
         </dependency>
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
-            <artifactId>message-core</artifactId>
+            <artifactId>gstdev-cloud-message-core</artifactId>
         </dependency>
 
         <dependency>

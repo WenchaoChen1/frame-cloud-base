@@ -216,38 +216,7 @@
                 <version>${gstdev-cloud.version}</version>
             </dependency>
 
-            <!--=========================================== message ===========================================-->
 
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>message-core</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>message-sdk-websocket</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>message-spring-boot-starter</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>message-kafka-spring-boot-starter</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>message-rabbitmq-spring-boot-starter</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>message-sdk-mqtt</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
 
 
             <!--=========================================== plugins ===========================================-->
@@ -396,7 +365,38 @@
                 <artifactId>gstdev-cloud-storage-aws</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
+            <!--=========================================== plugins-message ===========================================-->
 
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-message-core</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>message-sdk-websocket</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>message-spring-boot-starter</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-message-kafka</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-message-rabbitmq</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>message-sdk-mqtt</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
             <!--=========================================== plugins-openapi ===================================-->
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>

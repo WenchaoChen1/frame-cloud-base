@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-message</artifactId>
+        <artifactId>gstdev-cloud-plugin-message</artifactId>
         <version>2024.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>

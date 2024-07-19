@@ -27,7 +27,7 @@
         </dependency>
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
-            <artifactId>message-kafka-spring-boot-starter</artifactId>
+            <artifactId>gstdev-cloud-message-kafka</artifactId>
         </dependency>
         <dependency>
             <groupId>com.gstdev.cloud</groupId>

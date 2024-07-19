@@ -3,23 +3,24 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
-        <artifactId>gstdev-cloud-message</artifactId>
         <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-plugin-message</artifactId>
         <version>2024.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <packaging>jar</packaging>
-    <artifactId>message-core</artifactId>
+    <artifactId>gstdev-cloud-message-kafka</artifactId>
 
-
-    <description>基于 Spring Authorization Server 的 Dante Cloud 基础核心组件模块</description>
 
     <dependencies>
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
-            <artifactId>gstdev-cloud-data-core</artifactId>
+            <artifactId>gstdev-cloud-message-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bus-kafka</artifactId>
         </dependency>
     </dependencies>
 

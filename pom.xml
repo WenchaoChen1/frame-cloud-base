@@ -64,7 +64,6 @@
         <module>gstdev-cloud-services</module>
         <module>gstdev-cloud-starters</module>
         <module>gstdev-cloud-plugins</module>
-        <module>gstdev-cloud-message</module>
         <module>gstdev-cloud-base</module>
     </modules>
 
