@@ -374,7 +374,7 @@
             </dependency>
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
-                <artifactId>message-sdk-websocket</artifactId>
+                <artifactId>gstdev-cloud-message-websocket</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
             <dependency>
@@ -394,7 +394,7 @@
             </dependency>
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
-                <artifactId>message-sdk-mqtt</artifactId>
+                <artifactId>gstdev-cloud-message-mqtt</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
             <!--=========================================== plugins-openapi ===================================-->

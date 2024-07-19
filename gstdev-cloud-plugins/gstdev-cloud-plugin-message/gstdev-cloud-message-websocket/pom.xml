@@ -11,7 +11,7 @@
     </parent>
     <packaging>jar</packaging>
 
-    <artifactId>message-sdk-websocket</artifactId>
+    <artifactId>gstdev-cloud-message-websocket</artifactId>
 
 
     <dependencies>

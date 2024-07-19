@@ -11,7 +11,7 @@
     </parent>
     <packaging>jar</packaging>
 
-    <artifactId>message-sdk-mqtt</artifactId>
+    <artifactId>gstdev-cloud-message-mqtt</artifactId>
 
     <dependencies>
         <dependency>

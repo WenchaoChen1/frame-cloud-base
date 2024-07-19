@@ -20,11 +20,11 @@
     <dependencies>
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
-            <artifactId>message-sdk-websocket</artifactId>
+            <artifactId>gstdev-cloud-message-websocket</artifactId>
         </dependency>
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
-            <artifactId>message-sdk-mqtt</artifactId>
+            <artifactId>gstdev-cloud-message-mqtt</artifactId>
         </dependency>
     </dependencies>
 

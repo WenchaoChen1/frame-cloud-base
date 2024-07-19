@@ -17,11 +17,11 @@
 
     <modules>
         <module>gstdev-cloud-message-core</module>
-        <module>message-sdk-websocket</module>
+        <module>gstdev-cloud-message-websocket</module>
         <module>message-spring-boot-starter</module>
         <module>gstdev-cloud-message-kafka</module>
         <module>gstdev-cloud-message-rabbitmq</module>
-        <module>message-sdk-mqtt</module>
+        <module>gstdev-cloud-message-mqtt</module>
     </modules>
 
 </project>
