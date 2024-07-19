@@ -1,1 +1,1 @@
-com.gstdev.cloud.starter.message.kafka.autoconfiguration.MessageRabbitmqAutoConfiguration
+com.gstdev.cloud.starter.message.rabbitmq.autoconfiguration.MessageRabbitmqAutoConfiguration
