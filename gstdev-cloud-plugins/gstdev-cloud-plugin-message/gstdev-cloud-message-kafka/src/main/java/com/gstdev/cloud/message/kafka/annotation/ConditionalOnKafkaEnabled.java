@@ -1,4 +1,4 @@
-package com.gstdev.cloud.message.kafka.autoconfigure.annotation;
+package com.gstdev.cloud.message.kafka.annotation;
 
 import com.gstdev.cloud.message.core.constants.MessageConstants;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

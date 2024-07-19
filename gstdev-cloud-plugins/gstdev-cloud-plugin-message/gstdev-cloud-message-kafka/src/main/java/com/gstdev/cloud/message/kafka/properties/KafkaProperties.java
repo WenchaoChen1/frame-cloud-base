@@ -1,4 +1,4 @@
-package com.gstdev.cloud.message.kafka.autoconfigure.properties;
+package com.gstdev.cloud.message.kafka.properties;
 
 import com.gstdev.cloud.base.definition.properties.BaseProperties;
 import com.gstdev.cloud.message.core.constants.MessageConstants;

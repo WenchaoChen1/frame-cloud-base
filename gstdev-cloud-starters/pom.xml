@@ -17,13 +17,14 @@
 
     <modules>
         <module>gstdev-cloud-starter</module>
-        <module>gstdev-cloud-starter-service</module>
+        <module>gstdev-cloud-starter-cache</module>
+        <module>gstdev-cloud-starter-captcha</module>
+        <module>gstdev-cloud-starter-message</module>
         <module>gstdev-cloud-starter-web</module>
         <module>gstdev-cloud-starter-swagger</module>
         <module>gstdev-cloud-starter-storage</module>
         <module>gstdev-cloud-starter-openapi</module>
         <module>gstdev-cloud-starter-oauth2</module>
-        <module>gstdev-cloud-starter-captcha</module>
-        <module>gstdev-cloud-starter-cache</module>
+        <module>gstdev-cloud-starter-service</module>
     </modules>
 </project>

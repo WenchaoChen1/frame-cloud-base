@@ -430,6 +430,17 @@
             </dependency>
             <!--=========================================== starters ===================================-->
 
+            <!--=========================================== starter - message ===================================-->
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-message-kafka</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-message-rabbitmq</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
             <!--=========================================== starter - service ===================================-->
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>

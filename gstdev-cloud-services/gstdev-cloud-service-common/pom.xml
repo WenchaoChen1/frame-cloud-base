@@ -27,7 +27,7 @@
         </dependency>
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
-            <artifactId>gstdev-cloud-message-kafka</artifactId>
+            <artifactId>gstdev-cloud-starter-message-kafka</artifactId>
         </dependency>
         <dependency>
             <groupId>com.gstdev.cloud</groupId>

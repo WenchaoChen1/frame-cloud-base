@@ -1,7 +1,7 @@
-package com.gstdev.cloud.message.kafka.autoconfigure.configuration;
+package com.gstdev.cloud.message.kafka.configuration;
 
-import com.gstdev.cloud.message.kafka.autoconfigure.annotation.ConditionalOnKafkaEnabled;
-import com.gstdev.cloud.message.kafka.autoconfigure.properties.KafkaProperties;
+import com.gstdev.cloud.message.kafka.annotation.ConditionalOnKafkaEnabled;
+import com.gstdev.cloud.message.kafka.properties.KafkaProperties;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +31,7 @@ public class KafkaConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[GstDev Cloud] |- SDK [Event Message Kafka] Auto Configure.");
+        log.debug("[GstDev Cloud] |- [Message Kafka] Auto Configuration.");
     }
 
     @Bean

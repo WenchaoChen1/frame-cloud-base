@@ -1,6 +1,7 @@
-package com.gstdev.cloud.message.kafka.autoconfigure;
+package com.gstdev.cloud.starter.message.kafka.autoconfiguration;
 
-import com.gstdev.cloud.message.kafka.autoconfigure.configuration.KafkaConfiguration;
+
+import com.gstdev.cloud.message.kafka.configuration.KafkaConfiguration;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
