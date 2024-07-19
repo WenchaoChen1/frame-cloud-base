@@ -23,6 +23,6 @@ public class PermissionManageQO implements Serializable {
     @Query(type = Query.Type.IN)
     private Set<String> permissionType;
 
-    private BasePage page;
+    private BasePage page=new BasePage();
 
 }
