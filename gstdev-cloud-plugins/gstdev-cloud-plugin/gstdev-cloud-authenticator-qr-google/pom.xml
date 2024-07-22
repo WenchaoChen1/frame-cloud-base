@@ -19,6 +19,8 @@
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-base-core</artifactId>
         </dependency>
+
+
     </dependencies>
 
 </project>

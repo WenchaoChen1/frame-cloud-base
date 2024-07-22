@@ -31,10 +31,22 @@
 package com.gstdev.cloud.authenticator.qr.google;
 
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import jakarta.xml.bind.DatatypeConverter;
 import org.apache.http.client.utils.URIBuilder;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This class provides helper methods to create a QR code containing the
@@ -190,6 +202,28 @@ public final class GoogleAuthenticatorQRGenerator
         return uri.toString();
     }
 
+    public static String getOtpAuthTotpURLBase64(String totpUri, int width, int height) throws WriterException, IOException {
+        try {
+            QRCodeWriter qrCodeWriter = new QRCodeWriter();
+            BitMatrix bitMatrix = qrCodeWriter.encode(totpUri, BarcodeFormat.QR_CODE, width, height, getEncodeHintType());
+
+            ByteArrayOutputStream pngOutputStream = new ByteArrayOutputStream();
+            MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOutputStream);
+            byte[] pngData = pngOutputStream.toByteArray();
+
+            return DatatypeConverter.printBase64Binary(pngData);
+        } catch (WriterException | IOException e) {
+            throw new IllegalArgumentException("Unable to generate verification code.");
+        }
+    }
+
+    private static Map<EncodeHintType, Object> getEncodeHintType() {
+        Map<EncodeHintType, Object> hintMap = new HashMap<>();
+        hintMap.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+        hintMap.put(EncodeHintType.MARGIN, 10); // 边距
+        hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M); // 容错等级
+        return hintMap;
+    }
     private static String getAlgorithmName(HmacHashFunction hashFunction)
     {
         switch (hashFunction)

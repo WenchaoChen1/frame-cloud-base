@@ -44,6 +44,7 @@
         <!-- 开源通用工具包 -->
         <commons-collections4.version>4.4</commons-collections4.version>
         <httpclient.version>4.5.13</httpclient.version>
+        <zxing.version>3.5.3</zxing.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.5</antisamy.version>
         <guava.version>33.1.0-jre</guava.version>
@@ -533,6 +534,16 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
                 <version>${commons-collections4.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>core</artifactId>
+                <version>${zxing.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>javase</artifactId>
+                <version>${zxing.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
