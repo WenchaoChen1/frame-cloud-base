@@ -1,4 +1,4 @@
-package com.gstdev.cloud.service.system.converter;
+package com.gstdev.cloud.service.system.domain.converter;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.oauth2.core.definition.domain.SecurityAttribute;

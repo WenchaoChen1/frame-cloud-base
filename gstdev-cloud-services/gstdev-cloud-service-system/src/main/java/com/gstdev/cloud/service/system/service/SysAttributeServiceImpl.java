@@ -2,7 +2,7 @@ package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
-import com.gstdev.cloud.service.system.converter.SysInterfacesToSysAttributesConverter;
+import com.gstdev.cloud.service.system.domain.converter.SysInterfacesToSysAttributesConverter;
 import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import com.gstdev.cloud.service.system.domain.entity.SysInterface;
 import com.gstdev.cloud.service.system.domain.entity.SysPermission;

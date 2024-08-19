@@ -1,4 +1,4 @@
-package com.gstdev.cloud.service.system.enums;//package com.gstdev.cloud.service.system.enums;
+package com.gstdev.cloud.service.system.domain.enums;//package com.gstdev.cloud.service.system.enums;
 //
 //public enum EmailTypeEnum {
 //    UnKnow("UnKnow", 0),

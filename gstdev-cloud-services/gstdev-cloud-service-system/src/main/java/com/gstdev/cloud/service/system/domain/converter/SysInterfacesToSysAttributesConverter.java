@@ -1,4 +1,4 @@
-package com.gstdev.cloud.service.system.converter;
+package com.gstdev.cloud.service.system.domain.converter;
 
 import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import com.gstdev.cloud.service.system.domain.entity.SysInterface;
