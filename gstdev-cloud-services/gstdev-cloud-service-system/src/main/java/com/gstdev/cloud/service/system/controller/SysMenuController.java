@@ -18,6 +18,7 @@ import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
+import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysRAttributeMenu;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.*;
@@ -195,12 +196,14 @@ public class SysMenuController implements ResultController {
         });
 
         List<SysRAttributeMenu> sysRAttributeMenuList = sysRAttributeMenuService.findAll();
-        List<String> sysMenuIdList = sysRAttributeMenuList.stream().map(SysRAttributeMenu::getMenuId).toList();
-        List<String> sysAttributeIdList = sysRAttributeMenuList.stream().map(SysRAttributeMenu::getAttributeId).toList();
+        List<String> sysMenuIdList = sysMenuService.findAll().stream().map(SysMenu::getId).toList();
+        List<String> sysAttributeIdList = sysAttributeService.findAll().stream().map(SysAttribute::getAttributeId).toList();
         List<SysRAttributeMenu> sysRAttributeMenuLists = new ArrayList<>();
         for (SysRAttributeMenu sysRAttributeMenu : sysRAttributeMenus) {
+            //如果是代码初始化可以直接注了异常跳过，可以保证所有已有的menu 和 attribute 能关联
             if (!sysMenuIdList.contains(sysRAttributeMenu.getMenuId()) || !sysAttributeIdList.contains(sysRAttributeMenu.getAttributeId())) {
-                throw new PlatformRuntimeException("Menu data already exists, please delete the data first");
+                throw new PlatformRuntimeException("The menu data or attribute data does not exist. Please create the data or delete the data.MenuId:"+sysRAttributeMenu.getMenuId()+"**AttributeId:"+sysRAttributeMenu.getAttributeId());
+//                continue;
             }
             sysRAttributeMenuLists.add(sysRAttributeMenu);
         }
