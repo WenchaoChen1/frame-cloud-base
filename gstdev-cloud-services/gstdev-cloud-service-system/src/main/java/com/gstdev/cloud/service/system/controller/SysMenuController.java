@@ -18,7 +18,6 @@ import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
-import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysRAttributeMenu;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.*;
@@ -195,9 +194,9 @@ public class SysMenuController implements ResultController {
         List<SysRAttributeMenu> sysRAttributeMenus = Jackson2Utils.getObjectMapper().readValue(file.getInputStream(), new TypeReference<List<SysRAttributeMenu>>() {
         });
 
-//        List<SysRAttributeMenu> sysRAttributeMenuList = sysRAttributeMenuService.findAll();
-        List<String> sysMenuIdList = sysMenuService.findAll().stream().map(SysMenu::getId).toList();
-        List<String> sysAttributeIdList = sysAttributeService.findAll().stream().map(SysAttribute::getAttributeId).toList();
+        List<SysRAttributeMenu> sysRAttributeMenuList = sysRAttributeMenuService.findAll();
+        List<String> sysMenuIdList = sysRAttributeMenuList.stream().map(SysRAttributeMenu::getMenuId).toList();
+        List<String> sysAttributeIdList = sysRAttributeMenuList.stream().map(SysRAttributeMenu::getAttributeId).toList();
         List<SysRAttributeMenu> sysRAttributeMenuLists = new ArrayList<>();
         for (SysRAttributeMenu sysRAttributeMenu : sysRAttributeMenus) {
             if (!sysMenuIdList.contains(sysRAttributeMenu.getMenuId()) || !sysAttributeIdList.contains(sysRAttributeMenu.getAttributeId())) {
