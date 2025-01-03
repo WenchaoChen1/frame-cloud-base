@@ -38,6 +38,10 @@ public class SysPermission extends BaseEntity {
     @Schema(title = "权限代码")
     @Column(name = "permission_code", length = 128)
     private String permissionCode;
+    @Schema(title = "权限代码")
+
+    @Column(name = "permission_code_text", columnDefinition = "text")
+    private String permissionCodeText;
 
     @Schema(title = "权限名称")
     @Column(name = "permission_name", length = 1024)

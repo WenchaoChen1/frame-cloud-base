@@ -94,6 +94,13 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission, Str
             SysPermission sysPermission = new SysPermission();
             sysPermission.setPermissionId(key1);
             sysPermission.setPermissionCode(key1);
+            System.out.println("aaaaaaaaaaaaaaa" + key);
+            List<String> strings = Collections.singletonList(key);
+            // 对字符串列表进行排序
+            Collections.sort(strings);
+            // 连接排序后的字符串
+            String combinedInput = String.join("", strings);
+            sysPermission.setPermissionCodeText(combinedInput);
             sysPermission.setPermissionType("service");
             sysPermission.setPermissionName(key);
             value.forEach(attribute -> attribute.addPermissions(sysPermission));
@@ -111,33 +118,110 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission, Str
     }
 
     public static Map<String, Set<SysPermission>> generateCorrelatedKeys(List<SysAttribute> sysAttributes) {
+        List<SysPermission> strings = printCombinations("a", sysAttributes, 0, new ArrayList<>());
         Map<String, Set<SysPermission>> permissionMap = new HashMap<>();
-        for (int i = 0; i < sysAttributes.size(); i++) {
-            SysAttribute attribute1 = sysAttributes.get(i);
-            String attributeId = attribute1.getAttributeId();
-
-            Set<SysPermission> sysPermissions = new HashSet<>();
-            List<String> combinedCodes = new ArrayList<>();
-
-            for (int j = i; j < sysAttributes.size(); j++) {
-                SysAttribute attribute2 = sysAttributes.get(j);
-                combinedCodes.add(attribute2.getServiceId() + attribute2.getAttributeCode());
-                String key2 = generateKey(combinedCodes);
-                SysPermission sysPermission1 = new SysPermission();
-                sysPermission1.setPermissionId(key2);
-                sysPermission1.setPermissionCode(key2);
-                sysPermission1.setPermissionType(attribute2.getServiceId() + ":generateCorrelatedKeysService");
-                sysPermission1.setPermissionName(attribute2.getServiceId() + ":" + combinedCodes.size() + ":" + attribute1.getClassName() + j);
-                sysPermissions.add(sysPermission1);
+        for (SysPermission string : strings) {
+            for (SysAttribute sysAttribute : string.getSysAttributes()) {
+                Set<SysPermission> sysPermissions = permissionMap.get(sysAttribute.getAttributeId());
+                sysPermissions.addAll(sysPermissions);
+                permissionMap.put(sysAttribute.getAttributeId(),sysPermissions);
             }
-
-            permissionMap.put(attributeId, sysPermissions);
         }
         return permissionMap;
+//        Map<String, Set<SysPermission>> permissionMap = new HashMap<>();
+//        for (int i = 0; i < sysAttributes.size(); i++) {
+//            SysAttribute attribute1 = sysAttributes.get(i);
+//            String attributeId = attribute1.getAttributeId();
+//
+//            Set<SysPermission> sysPermissions = new HashSet<>();
+//            List<String> combinedCodes = new ArrayList<>();
+//
+//            for (int j = i; j < sysAttributes.size(); j++) {
+//
+//                SysAttribute attribute2 = sysAttributes.get(j);
+//                combinedCodes.add(attribute2.getServiceId() + attribute2.getAttributeCode());
+//                String key2 = generateKey(combinedCodes);
+//                SysPermission sysPermission1 = new SysPermission();
+//                // 对字符串列表进行排序
+//                Collections.sort(combinedCodes);
+//                // 连接排序后的字符串
+//                String combinedInput = String.join("", combinedCodes);
+//                sysPermission1.setPermissionCodeText(combinedInput);
+//                sysPermission1.setPermissionId(key2);
+//                sysPermission1.setPermissionCode(key2);
+//                sysPermission1.setPermissionType(attribute2.getServiceId() + ":generateCorrelatedKeysService");
+//                sysPermission1.setPermissionName(attribute2.getServiceId() + ":" + combinedCodes.size() + ":" + attribute1.getClassName() + j);
+//                sysPermissions.add(sysPermission1);
+//                if(sysAttributes.get(i).getAttributeCode().equals("gstdev-systemget:v1:account:get-account-settings-detailgstdev-systemget:v1:system:constant:enumsgstdev-systemget:v1:user:get-user-settings-detailgstdev-systempost:v1:account:update-account-settings-detailgstdev-systemput:v1:security:reset-password:originalPassword:newPasswordgstdev-systemput:v1:security:update-account-current-login-information")){
+//
+//                    System.out.println("aaaaaaaaaaaaaa"+combinedInput+combinedCodes.size());
+//                    if(combinedCodes.size()==6){
+//                        System.out.println("ccccccc"+combinedCodes);
+//                    }
+//                }
+//            }
+//
+//            permissionMap.put(attributeId, sysPermissions);
+//        }
+//        return permissionMap;
     }
 
     public void updateStatusByPermissionType(DataItemStatus status, String permissionType) {
         getRepository().updateStatusByPermissionType(status, permissionType);
+    }
+
+    /**
+     *     public static List<String> printCombinations(List<String> array, int start, ArrayList<String> prefix) {
+     *         ArrayList<String> objects = new ArrayList<>();
+     *         objects.add(generateKey(prefix));
+     *         String s = generateKey(prefix);
+     *         System.out.println("aaaaaaaaaaaa"+prefix);
+     *         for (int i = start; i < array.size(); i++) {
+     *             ArrayList<String> newPrefix = new ArrayList<>(prefix);
+     *             newPrefix.add(array.get(i));
+     *             objects.addAll(printCombinations(array, i + 1, newPrefix));
+     *         }
+     *         return objects;
+     *     }
+     *
+     *
+     *     public static void main(String[] args) throws StripeException {
+     * //            int[] array = {0, 1, 2, 3};
+     *         List<String> combinedCodes = new ArrayList<>();
+     *         combinedCodes.add("0");
+     *         combinedCodes.add("1");
+     *         combinedCodes.add("2");
+     *         combinedCodes.add("3");
+     *         List<String> strings = printCombinations(combinedCodes, 0, new ArrayList<>());
+     *         System.out.println(strings);
+     *
+     * @param serviceId
+     * @param array
+     * @param start
+     * @param prefix
+     * @return
+     */
+    public static List<SysPermission> printCombinations(String serviceId, List<SysAttribute> array, int start, ArrayList<SysAttribute> prefix) {
+        List<SysPermission> sysPermissions = new ArrayList<>();
+        List<String> collect = prefix.stream().map(SysAttribute::getAttributeCode).collect(Collectors.toList());
+        String key = generateKey(collect);
+        Collections.sort(collect);
+        // 连接排序后的字符串
+        String combinedInput = String.join("", collect);
+        SysPermission sysPermission = new SysPermission();
+        sysPermission.setPermissionCodeText(combinedInput);
+        sysPermission.setPermissionId(key);
+        sysPermission.setPermissionCode(key);
+        sysPermission.setPermissionType(serviceId + ":generateCorrelatedKeysService");
+        sysPermission.setPermissionName(serviceId + ":" + collect.size() + ":");
+        sysPermission.setSysAttributes(array);
+        sysPermissions.add(sysPermission);
+        for (int i = start; i < array.size(); i++) {
+            ArrayList<SysAttribute> newPrefix = new ArrayList<>(prefix);
+            newPrefix.add(array.get(i));
+            sysPermissions.addAll(printCombinations(serviceId, array, i + 1, newPrefix));
+        }
+        return sysPermissions;
     }
 }
 
