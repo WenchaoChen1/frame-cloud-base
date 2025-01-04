@@ -62,7 +62,7 @@ public class SysPermission extends BaseEntity {
 
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "permissions")
+    @ManyToMany(mappedBy = "permissions", fetch = FetchType.LAZY)
     private List<SysAttribute> sysAttributes;
 
     @Override
