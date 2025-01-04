@@ -3,6 +3,7 @@ package com.gstdev.cloud.service.system.domain.listener;
 import com.gstdev.cloud.rest.core.definition.context.AbstractApplicationContextAware;
 import com.gstdev.cloud.service.system.domain.entity.SysPermission;
 import com.gstdev.cloud.service.system.domain.event.SysPermissionChangeEvent;
+import jakarta.persistence.PostPersist;
 import jakarta.persistence.PostUpdate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,11 @@ public class SysPermissionEntityListener extends AbstractApplicationContextAware
     @PostUpdate
     protected void postUpdate(SysPermission entity) {
         log.debug("[GstDev Cloud] |- [1] SysPermission entity @PostUpdate activated, value is : [{}]. Trigger Permission change event.", entity.toString());
+        publishEvent(new SysPermissionChangeEvent(entity));
+    }
+    @PostPersist
+    protected void postPersist(SysPermission entity) {
+        log.debug("[GstDev Cloud] |- [1] SysPermission entity @PostPersist activated, value is : [{}]. Trigger Permission change event.", entity.toString());
         publishEvent(new SysPermissionChangeEvent(entity));
     }
 }
