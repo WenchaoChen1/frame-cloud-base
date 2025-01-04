@@ -339,13 +339,13 @@ public class SysSecurityServiceImpl implements SysSecurityService {
                 System.out.println(key + s);
                 objects.add(key + s);
             }
-            String s = generateKey(new ArrayList<>(objects));
-
+            String generateKey = generateKey(new ArrayList<>(objects));
             //判断权限是否提前创建完毕，如果没有提前创建完毕去创建，注意需要重启项目存入缓存，未来需要实施把数据添加到缓存中
-            if (!sysPermissionService.existsById(s)) {
-                sysPermissionService.save(key, s, value.stream().toList());
+            if (!sysPermissionService.existsById(generateKey)) {
+                System.out.println("权限不存在"+generateKey);
+                sysPermissionService.save(key, generateKey, value.stream().toList());
             }
-            collect.add(generateKey(new ArrayList<>(objects)));
+            collect.add(generateKey);
         }
 
         return collect;

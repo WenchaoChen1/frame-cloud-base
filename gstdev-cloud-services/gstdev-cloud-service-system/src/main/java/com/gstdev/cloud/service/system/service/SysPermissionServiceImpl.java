@@ -79,7 +79,7 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission, Str
         sysPermission.setPermissionName(serviceId+":"+permissionId);
         List<SysAttribute> allById = sysAttributeService.findByAttributeCodeIn(arrtibuteCodes);
         allById.forEach(sysAttribute -> sysAttribute.addPermissions(sysPermission));
-        getRepository().saveAndFlush(sysPermission);
+        this.saveAndFlush(sysPermission);
         sysAttributeService.saveAllAndFlush(allById);
     }
 

@@ -8,6 +8,7 @@ import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.constants.SystemConstants;
 import com.gstdev.cloud.service.system.domain.generator.SysPermissionUuidGenerator;
+import com.gstdev.cloud.service.system.domain.listener.SysPermissionEntityListener;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -26,6 +27,7 @@ import java.util.List;
 @Table(name = "sys_permission", indexes = {@Index(name = "sys_permission_id_idx", columnList = "permission_id")})
 @Cacheable
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler", "permissions"})
+@EntityListeners(value = {SysPermissionEntityListener.class})
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = SystemConstants.REGION_SYS_PERMISSION)
 public class SysPermission extends BaseEntity {
 
