@@ -10,7 +10,10 @@ import com.gstdev.cloud.service.system.domain.pojo.sysAttribute.AttributeManageA
 import com.gstdev.cloud.service.system.repository.SysAttributeRepository;
 import com.gstdev.cloud.service.system.repository.SysPermissionRepository;
 import jakarta.annotation.Resource;
+import jakarta.persistence.QueryHint;
+import org.hibernate.jpa.AvailableHints;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
@@ -103,5 +106,10 @@ public class SysAttributeServiceImpl extends BaseServiceImpl<SysAttribute, Strin
     @Override
     public Set<String> getAttributePermissionIdByAttributeId(String id) {
         return findById(id).getPermissions().stream().map(SysPermission::getPermissionId).collect(Collectors.toSet());
+    }
+
+    @Override
+    public List<SysAttribute> findByAttributeCodeIn(List<String> arrtibuteCodes) {
+        return getRepository().findByAttributeCodeIn(arrtibuteCodes);
     }
 }

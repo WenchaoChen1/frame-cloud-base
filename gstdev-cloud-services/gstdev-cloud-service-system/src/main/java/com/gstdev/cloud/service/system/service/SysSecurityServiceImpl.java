@@ -48,6 +48,8 @@ public class SysSecurityServiceImpl implements SysSecurityService {
     @Resource
     private SysBusinessPermissionService sysBusinessPermissionService;
     @Resource
+    private SysPermissionService sysPermissionService;
+    @Resource
     private SysRTenantMenuBusinessPermissionService sysRTenantMenuBusinessPermissionService;
 
     @Resource
@@ -64,6 +66,7 @@ public class SysSecurityServiceImpl implements SysSecurityService {
      * @return
      */
     @Override
+    @Transactional
     public Set<FrameGrantedAuthority> getUserAuthoritiesPermissions(SysUser user) {
         // 初始化权限集合
         Set<FrameGrantedAuthority> authorities = new HashSet<>();
@@ -85,6 +88,7 @@ public class SysSecurityServiceImpl implements SysSecurityService {
      * @param sysAccounts
      * @return
      */
+    @Transactional
     public Set<FrameGrantedAuthority> getAccountAuthoritiesPermissions(List<SysAccount> sysAccounts) {
         Set<FrameGrantedAuthority> authorities = new HashSet<>();
         // 获取用户的账号列表
@@ -193,6 +197,7 @@ public class SysSecurityServiceImpl implements SysSecurityService {
         CurrentLoginInformation currentLoginInformation = redisCurrentLoginInformation.getCurrentLoginInformation();
         return currentLoginInformation == null ? updateAccountCurrentLoginInformation(accountId) : currentLoginInformation;
     }
+
     /**
      * 更新当前登录信息
      *
@@ -285,6 +290,7 @@ public class SysSecurityServiceImpl implements SysSecurityService {
      * @param menus
      * @return
      */
+    @Transactional
     public List<String> getPermissionsByMenus(List<SysMenu> menus) {
         Map<String, Set<String>> attributeMaps = new HashMap<>();
         // 处理菜单根据menuId去重
@@ -330,10 +336,15 @@ public class SysSecurityServiceImpl implements SysSecurityService {
             String key = stringSetEntry.getKey();
             List<String> objects = new ArrayList<>();
             for (String s : value) {
-                System.out.println(key+s);
-                objects.add(key+s);
+                System.out.println(key + s);
+                objects.add(key + s);
             }
+            String s = generateKey(new ArrayList<>(objects));
 
+            //判断权限是否提前创建完毕，如果没有提前创建完毕去创建，注意需要重启项目存入缓存，未来需要实施把数据添加到缓存中
+            if (!sysPermissionService.existsById(s)) {
+                sysPermissionService.save(key, s, value.stream().toList());
+            }
             collect.add(generateKey(new ArrayList<>(objects)));
         }
 
@@ -352,22 +363,6 @@ public class SysSecurityServiceImpl implements SysSecurityService {
         // 连接排序后的字符串
         String combinedInput = String.join("", input);
         return SecureUtil.md5(combinedInput);
-//        try {
-//            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-//            byte[] hash = digest.digest(combinedInput.getBytes());
-//            StringBuilder hexString = new StringBuilder();
-//            for (byte b : hash) {
-//                String hex = Integer.toHexString(0xff & b);
-//                if (hex.length() == 1) {
-//                    hexString.append('0');
-//                }
-//                hexString.append(hex);
-//            }
-//            return hexString.toString();
-//        } catch (NoSuchAlgorithmException e) {
-//            e.printStackTrace();
-//            return null;
-//        }
     }
 
 

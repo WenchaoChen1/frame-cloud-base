@@ -130,8 +130,9 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
     }
 
     @Override
+    @Transactional
     public DefaultSecurityUser signInFindByUsername(String username) {
-        
+
         // 根据用户名查找用户
         SysUser user = getRepository().findByUsername(username);
         if (user == null) {

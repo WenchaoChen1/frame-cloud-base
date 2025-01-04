@@ -75,6 +75,18 @@ public interface BaseServiceDefault<SE extends Entity, ID extends Serializable> 
     }
 
     /**
+     * 根据ID查询数据
+     *
+     * @param id 数据ID
+     * @return 与ID对应的数据，如果不存在则返回空
+     */
+    @Override
+    @Transactional(readOnly = true)
+    default List<SE> findAllById(Iterable<ID> id) {
+        return toServiceEntity(getRepository().findAllById(id));
+    }
+
+    /**
      * 数据是否存在
      *
      * @param id 数据ID

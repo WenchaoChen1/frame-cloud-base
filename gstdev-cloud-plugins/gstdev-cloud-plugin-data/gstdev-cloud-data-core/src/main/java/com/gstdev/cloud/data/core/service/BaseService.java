@@ -17,7 +17,13 @@ public interface BaseService<E extends Serializable, ID extends Serializable> {
      * @return 与ID对应的数据，如果不存在则返回空
      */
     E findById(ID id);
-
+    /**
+     * 根据ID查询数据
+     *
+     * @param id 数据ID
+     * @return 与ID对应的数据，如果不存在则返回空
+     */
+    List<E> findAllById(Iterable<ID> id);
     /**
      * 数据是否存在
      *

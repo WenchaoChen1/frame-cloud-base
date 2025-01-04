@@ -8,6 +8,7 @@ import org.hibernate.jpa.AvailableHints;
 import org.springframework.data.jpa.repository.QueryHints;
 
 import java.util.List;
+import java.util.Set;
 
 public interface SysAttributeRepository extends BaseRepository<SysAttribute, String> {
 
@@ -16,4 +17,7 @@ public interface SysAttributeRepository extends BaseRepository<SysAttribute, Str
 
     @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
     List<SysAttribute> findAllByServiceId(String serviceId);
+
+    @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
+    List<SysAttribute> findByAttributeCodeIn(List<String> arrtibuteCodes);
 }
