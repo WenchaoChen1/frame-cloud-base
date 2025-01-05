@@ -73,7 +73,7 @@ public class DefaultSecurityMetadataDistributeProcessor implements SecurityMetad
 
             List<SysInterface> sysInterfaces = sysInterfaceService.findAllocatable();
             sysAttributeService.updateAttributeInterFace();
-//            if (CollectionUtils.isNotEmpty(sysInterfaces)) {
+            if (CollectionUtils.isNotEmpty(sysInterfaces)) {
                 List<SysAttribute> elements = toSysAttributes.convert(sysInterfaces);
                 List<SysAttribute> result = sysAttributeService.saveAllAndFlush(elements);
 
@@ -83,9 +83,9 @@ public class DefaultSecurityMetadataDistributeProcessor implements SecurityMetad
                 } else {
                     log.error("[Gstdev Cloud] |- Merge Security attribute failed!, Please Check!");
                 }
-//            } else {
-//                log.debug("[Gstdev Cloud] |- No security attribute requires merge, SKIP!");
-//            }
+            } else {
+                log.debug("[Gstdev Cloud] |- No security attribute requires merge, SKIP!");
+            }
 
             distributeServiceSecurityAttributes(storedInterfaces);
         }
