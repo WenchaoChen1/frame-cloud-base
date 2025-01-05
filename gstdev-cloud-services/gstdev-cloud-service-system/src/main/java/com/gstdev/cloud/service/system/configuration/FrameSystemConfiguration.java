@@ -24,7 +24,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
     "com.gstdev.cloud.service.system.bus",
 //    "com.gstdev.cloud.service.system.controller",
 })
-@Import({FrameSystemServiceConfiguration.class, FrameSystemControllerConfiguration.class})
+@Import({FrameSystemServiceConfiguration.class, FrameSystemControllerConfiguration.class,FrameSystemBusConfiguration.class})
 public class FrameSystemConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(FrameSystemConfiguration.class);

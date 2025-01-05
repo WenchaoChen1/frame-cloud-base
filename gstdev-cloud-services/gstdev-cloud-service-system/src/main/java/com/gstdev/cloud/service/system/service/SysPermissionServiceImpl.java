@@ -3,7 +3,7 @@ package com.gstdev.cloud.service.system.service;
 import com.gstdev.cloud.base.core.utils.SecureUtil;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
-import com.gstdev.cloud.service.system.bus.processor.SecurityMetadataDistributeProcessora;
+import com.gstdev.cloud.service.system.bus.processor.SecurityMetadataDistributeProcessor;
 import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import com.gstdev.cloud.service.system.domain.entity.SysPermission;
 import com.gstdev.cloud.service.system.mapper.SysPermissionMapper;
@@ -26,7 +26,7 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission, Str
     private  SysPermissionMapper sysPermissionMapper;
     @Lazy
     @Resource
-    private SecurityMetadataDistributeProcessora securityMetadataDistributeProcessor;
+    private SecurityMetadataDistributeProcessor securityMetadataDistributeProcessor;
     public SysPermissionServiceImpl(SysPermissionRepository sysPermissionRepository, SysPermissionMapper sysPermissionMapper) {
         super(sysPermissionRepository);
         this.sysPermissionMapper=sysPermissionMapper;
