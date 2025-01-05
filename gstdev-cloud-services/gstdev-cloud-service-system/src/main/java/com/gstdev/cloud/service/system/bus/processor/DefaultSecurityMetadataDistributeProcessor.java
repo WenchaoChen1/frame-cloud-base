@@ -27,7 +27,6 @@ import java.util.List;
 /**
  * <p>Description: SecurityMetadata数据处理器 </p>
  */
-//@Component
 public class DefaultSecurityMetadataDistributeProcessor implements SecurityMetadataDistributeProcessor {
 
     private static final Logger log = LoggerFactory.getLogger(DefaultSecurityMetadataDistributeProcessor.class);

@@ -12,7 +12,6 @@ import java.util.List;
 /**
  * <p>Description: RequestMapping存储服务 </p>
  */
-@Component
 public class RequestMappingStoreProcessor {
 
     private static final Logger log = LoggerFactory.getLogger(RequestMappingStoreProcessor.class);

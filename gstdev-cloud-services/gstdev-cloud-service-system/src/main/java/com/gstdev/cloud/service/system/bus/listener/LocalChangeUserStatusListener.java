@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 /**
  * <p>Description: 本地用户状态变更监听 </p>
  */
-@Component
 public class LocalChangeUserStatusListener implements ApplicationListener<ChangeUserStatusEvent> {
 
     private static final Logger log = LoggerFactory.getLogger(LocalChangeUserStatusListener.class);

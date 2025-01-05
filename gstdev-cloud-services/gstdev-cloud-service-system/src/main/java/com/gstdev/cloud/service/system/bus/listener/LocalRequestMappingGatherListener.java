@@ -17,7 +17,6 @@ import java.util.List;
  * <p>
  * 主要在单体式架构，以及 UUA 服务自身使用
  */
-@Component
 public class LocalRequestMappingGatherListener implements ApplicationListener<RequestMappingGatherEvent> {
 
     private static final Logger log = LoggerFactory.getLogger(LocalRequestMappingGatherListener.class);

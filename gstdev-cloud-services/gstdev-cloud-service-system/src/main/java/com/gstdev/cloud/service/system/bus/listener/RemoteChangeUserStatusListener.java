@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component;
  * <p>Description: 远程用户状态变更监听 </p>
  *
  */
-@Component
 public class RemoteChangeUserStatusListener implements ApplicationListener<RemoteChangeUserStatusEvent> {
 
     private static final Logger log = LoggerFactory.getLogger(RemoteChangeUserStatusListener.class);
