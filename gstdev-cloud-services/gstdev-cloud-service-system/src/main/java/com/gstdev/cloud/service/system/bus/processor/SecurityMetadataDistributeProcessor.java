@@ -28,7 +28,7 @@ import java.util.List;
  * <p>Description: SecurityMetadata数据处理器 </p>
  */
 @Component
-public class SecurityMetadataDistributeProcessor implements StrategyEventManager<List<SecurityAttribute>> {
+public class SecurityMetadataDistributeProcessor implements StrategyEventManager<List<SecurityAttribute>>,SecurityMetadataDistributeProcessora {
 
     private static final Logger log = LoggerFactory.getLogger(SecurityMetadataDistributeProcessor.class);
 
@@ -103,6 +103,18 @@ public class SecurityMetadataDistributeProcessor implements StrategyEventManager
     public void distributeChangedSecurityAttribute(SysAttribute sysAttribute) {
         SecurityAttribute securityAttribute = toSecurityAttribute.convert(sysAttribute);
         postProcess(securityAttribute.getServiceId(), ImmutableList.of(securityAttribute));
+    }
+
+    public void distributeChangedSecurityAttribute(List<SysAttribute> sysAttributeList) {
+        sysAttributeList.stream().findAny().ifPresent(item -> {
+            String serviceId = item.getServiceId();
+            List<SysAttribute> sysAttributes = sysAttributeService.findAllByServiceId(item.getServiceId());
+            if (CollectionUtils.isNotEmpty(sysAttributes)) {
+                List<SecurityAttribute> securityAttributes = sysAttributes.stream().map(toSecurityAttribute::convert).toList();
+//                log.debug("[Gstdev Cloud] |- [6] Synchronization permissions to service [{}]", serviceId);
+                this.postProcess(serviceId, securityAttributes);
+            }
+        });
     }
 //    public void distributeChangedSecurityAttribute(SysPermission sysPermission) {
 //        SysPermission byId = sysPermissionService.findById(sysPermission.getPermissionId());

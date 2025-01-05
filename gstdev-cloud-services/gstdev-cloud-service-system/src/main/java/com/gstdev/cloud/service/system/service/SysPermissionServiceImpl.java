@@ -3,11 +3,13 @@ package com.gstdev.cloud.service.system.service;
 import com.gstdev.cloud.base.core.utils.SecureUtil;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
+import com.gstdev.cloud.service.system.bus.processor.SecurityMetadataDistributeProcessora;
 import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import com.gstdev.cloud.service.system.domain.entity.SysPermission;
 import com.gstdev.cloud.service.system.mapper.SysPermissionMapper;
 import com.gstdev.cloud.service.system.repository.SysPermissionRepository;
 import jakarta.annotation.Resource;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
@@ -22,7 +24,9 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission, Str
     private SysPermissionRepository sysPermissionRepository;
     @Resource
     private  SysPermissionMapper sysPermissionMapper;
-
+    @Lazy
+    @Resource
+    private SecurityMetadataDistributeProcessora securityMetadataDistributeProcessor;
     public SysPermissionServiceImpl(SysPermissionRepository sysPermissionRepository, SysPermissionMapper sysPermissionMapper) {
         super(sysPermissionRepository);
         this.sysPermissionMapper=sysPermissionMapper;
@@ -34,23 +38,6 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission, Str
         // 连接排序后的字符串
         String combinedInput = String.join("", input);
         return SecureUtil.md5(combinedInput);
-//        try {
-//            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-//            byte[] hash = digest.digest(combinedInput.getBytes());
-//            StringBuilder hexString = new StringBuilder();
-//            for (byte b : hash) {
-//                String hex = Integer.toHexString(0xff & b);
-//                if (hex.length() == 1) {
-//                    hexString.append('0');
-//                }
-//                hexString.append(hex);
-//            }
-//            return hexString.toString();
-//        } catch (NoSuchAlgorithmException e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-
     }
 
     @Override
@@ -81,6 +68,7 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission, Str
         allById.forEach(sysAttribute -> sysAttribute.addPermissions(sysPermission));
         this.saveAndFlush(sysPermission);
         sysAttributeService.saveAllAndFlush(allById);
+        securityMetadataDistributeProcessor.distributeChangedSecurityAttribute(allById);
     }
 
     @Transactional
