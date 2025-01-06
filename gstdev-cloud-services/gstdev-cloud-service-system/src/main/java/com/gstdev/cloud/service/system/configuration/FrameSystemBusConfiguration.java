@@ -1,6 +1,7 @@
 package com.gstdev.cloud.service.system.configuration;
 
 import com.gstdev.cloud.service.system.bus.listener.*;
+import com.gstdev.cloud.service.system.bus.processor.DefaultRequestMappingStoreProcessor;
 import com.gstdev.cloud.service.system.bus.processor.DefaultSecurityMetadataDistributeProcessor;
 import com.gstdev.cloud.service.system.bus.processor.RequestMappingStoreProcessor;
 import com.gstdev.cloud.service.system.bus.processor.SecurityMetadataDistributeProcessor;
@@ -33,39 +34,39 @@ public class FrameSystemBusConfiguration {
     @ConditionalOnMissingBean
     public RequestMappingStoreProcessor requestMappingStoreProcessor(SecurityMetadataDistributeProcessor securityMetadataDistributeProcessor) {
         log.debug("[GstDev Cloud] |- Frame Configure Request Mapping Store Processor");
-        return new RequestMappingStoreProcessor(securityMetadataDistributeProcessor);
+        return new DefaultRequestMappingStoreProcessor(securityMetadataDistributeProcessor);
     }
 
     @Bean
     @ConditionalOnMissingBean
     public LocalChangeUserStatusListener localChangeUserStatusListener(SysUserService sysUserService) {
         log.debug("[GstDev Cloud] |- Frame Configure Local Change User Status Listener");
-        return new LocalChangeUserStatusListener(sysUserService);
+        return new DefaultLocalChangeUserStatusListener(sysUserService);
     }
     @Bean
     @ConditionalOnMissingBean
     public LocalRequestMappingGatherListener localRequestMappingGatherListener(RequestMappingStoreProcessor requestMappingStoreProcessor) {
         log.debug("[GstDev Cloud] |- Frame Configure Local Request Mapping Gather Listener");
-        return new LocalRequestMappingGatherListener(requestMappingStoreProcessor);
+        return new DefaultLocalRequestMappingGatherListener(requestMappingStoreProcessor);
     }
     @Bean
     @ConditionalOnMissingBean
     public RemoteChangeUserStatusListener remoteChangeUserStatusListener(SysUserService sysUserService) {
         log.debug("[GstDev Cloud] |- Frame Configure Remote Change User Status Listener");
-        return new RemoteChangeUserStatusListener(sysUserService);
+        return new DefaultRemoteChangeUserStatusListener(sysUserService);
     }
     @Bean
     @ConditionalOnMissingBean
     public RemoteRequestMappingGatherListener remoteRequestMappingGatherListener(RequestMappingStoreProcessor requestMappingStoreProcessor) {
         log.debug("[GstDev Cloud] |- Frame Configure Remote Request Mapping Gather Listener");
-        return new RemoteRequestMappingGatherListener(requestMappingStoreProcessor);
+        return new DefaultRemoteRequestMappingGatherListener(requestMappingStoreProcessor);
     }
 
     @Bean
     @ConditionalOnMissingBean
     public SysAttributeChangeListener sysAttributeChangeListener(SecurityMetadataDistributeProcessor securityMetadataDistributeProcessor) {
         log.debug("[GstDev Cloud] |- Frame Configure Sys Attribute Change Listener");
-        return new SysAttributeChangeListener(securityMetadataDistributeProcessor);
+        return new DefaultSysAttributeChangeListener(securityMetadataDistributeProcessor);
     }
 
 }
