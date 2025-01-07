@@ -46,6 +46,13 @@ public class FrameSystemServiceConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
+    public SysSocialUserService sysSocialUserService(SysSocialUserRepository socialUserRepository, SysSocialUserMapper socialUserMapper) {
+        log.debug("[GstDev Cloud] |- Frame Configure Social User Service");
+        return new SysSocialUserServiceImpl(socialUserRepository, socialUserMapper);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
     public SysRoleService sysRoleService(SysRoleRepository roleRepository, SysRoleMapper roleMapper) {
         log.debug("[GstDev Cloud] |- Frame Configure Role Service");
         return new SysRoleServiceImpl(roleRepository, roleMapper);
