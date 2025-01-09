@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>gstdev-cloud-plugins</artifactId>
+        <groupId>com.gstdev.cloud</groupId>
+        <version>2024.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>gstdev-cloud-plugin-access</artifactId>
+    <name>GstDev Cloud :: Plugin :: Access</name>
+    <description>手机短信、小程序、公众号、JustAuth等外部登录处理逻辑集成模块</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>gstdev-cloud-access-core</module>
+        <module>gstdev-cloud-access-justauth</module>
+        <module>gstdev-cloud-access-wxapp</module>
+        <module>gstdev-cloud-access-wxmpp</module>
+        <module>gstdev-cloud-access-all</module>
+        <module>gstdev-cloud-access-spring-boot-starter</module>
+        <module>gstdev-cloud-access-sms</module>
+    </modules>
+
+</project>
