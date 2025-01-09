@@ -1,4 +1,4 @@
-//package cn.herodotus.engine.rest.autoconfigure.customizer;
+//packagecom.gstdev.cloud.rest.autoconfigure.customizer;
 //
 //import com.gstdev.cloud.commons.ass.core.json.jackson2.Jackson2CustomizerOrder;
 //import com.fasterxml.jackson.databind.Module;

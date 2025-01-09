@@ -12,7 +12,7 @@ package com.gstdev.cloud.service.system.domain.enums;//package com.gstdev.cloud.
 //import java.util.Map;
 //
 ///**
-// * @author gengwei.zheng
+// * @author cc
 // */
 //@Schema(title = "数据状态")
 //@JsonFormat(shape = JsonFormat.Shape.OBJECT)

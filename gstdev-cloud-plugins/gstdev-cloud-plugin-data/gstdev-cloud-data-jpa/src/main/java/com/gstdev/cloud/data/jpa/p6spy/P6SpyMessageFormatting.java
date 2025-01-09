@@ -10,7 +10,7 @@ import java.util.Date;
 /**
  * <p>Description: P6Spy自定义格式化</p>
  *
- * @author gengwei.zheng
+ * @author cc
  * @date 2019/1/20
  */
 public class P6SpyMessageFormatting implements MessageFormattingStrategy {

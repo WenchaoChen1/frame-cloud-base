@@ -76,7 +76,7 @@ import com.gstdev.cloud.base.definition.feedback.*;
  * <p>
  * 其它内容逐步补充
  *
- * @author gengwei.zheng
+ * @author cc
  */
 public interface ErrorCodes {
 

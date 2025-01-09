@@ -1,8 +1,8 @@
 //package com.gstdev.cloud.oauth2.resource.server.autoconfigure.stream;
 //
-//import cn.herodotus.engine.message.core.definition.MessageSendingAdapter;
-//import cn.herodotus.engine.message.core.definition.domain.StreamMessage;
-//import cn.herodotus.engine.message.core.definition.event.StreamMessageSendingEvent;
+//import com.gstdev.cloud.message.core.definition.MessageSendingAdapter;
+//import com.gstdev.cloud.message.core.definition.domain.StreamMessage;
+//import com.gstdev.cloud.message.core.definition.event.StreamMessageSendingEvent;
 //import org.apache.commons.lang3.ObjectUtils;
 //import org.springframework.cloud.stream.function.StreamBridge;
 //

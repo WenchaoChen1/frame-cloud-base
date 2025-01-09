@@ -58,9 +58,11 @@
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
         <!-- 国内开源通用组件 -->
         <dromara-hutool.version>6.0.0-M11</dromara-hutool.version>
-
+        <weixin-java-sdk.version>4.6.0</weixin-java-sdk.version>
+        <just-auth.verison>1.16.6</just-auth.verison>
 
         <!--第三方starter-->
+        <sms4j-spring-boot-starter.version>3.2.1</sms4j-spring-boot-starter.version>
         <mybatis-plus-boot-starter.version>3.5.5</mybatis-plus-boot-starter.version>
         <mybatis-plus-generator.version>3.5.5</mybatis-plus-generator.version>
         <mybatis.version>3.5.15</mybatis.version>
@@ -314,6 +316,43 @@
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>
                 <artifactId>gstdev-cloud-captcha-hutool</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+
+            <!--=========================================== plugins-access ===================================-->
+              <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-access-core</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+              <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-access-justauth</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+              <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-access-wxapp</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+              <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-access-wxmpp</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+              <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-access-all</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+              <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-access-spring-boot-starter</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
+              <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-access-sms</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
 
@@ -627,8 +666,32 @@
                 <artifactId>hutool-all</artifactId>
                 <version>${dromara-hutool.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.github.binarywang</groupId>
+                <artifactId>weixin-java-miniapp</artifactId>
+                <version>${weixin-java-sdk.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.binarywang</groupId>
+                <artifactId>weixin-java-mp</artifactId>
+                <version>${weixin-java-sdk.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.binarywang</groupId>
+                <artifactId>weixin-java-pay</artifactId>
+                <version>${weixin-java-sdk.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>me.zhyd.oauth</groupId>
+                <artifactId>JustAuth</artifactId>
+                <version>${just-auth.verison}</version>
+            </dependency>
             <!--=============================== 第三方starter =======================-->
+            <dependency>
+                <groupId>org.dromara.sms4j</groupId>
+                <artifactId>sms4j-spring-boot-starter</artifactId>
+                <version>${sms4j-spring-boot-starter.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-core</artifactId>

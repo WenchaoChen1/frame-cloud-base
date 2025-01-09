@@ -16,11 +16,11 @@
 //
 //package com.gstdev.cloud.oauth2.authorization.server.autoconfigure.tenant;
 //
-//import cn.herodotus.engine.assistant.definition.domain.Result;
-//import cn.herodotus.engine.data.core.service.WriteableService;
-//import cn.herodotus.engine.data.tenant.entity.SysTenantDataSource;
-//import cn.herodotus.engine.rest.core.annotation.AccessLimited;
-//import cn.herodotus.engine.rest.core.controller.BaseWriteableRestController;
+//import com.gstdev.cloud.assistant.definition.domain.Result;
+//import com.gstdev.cloud.data.core.service.WriteableService;
+//import com.gstdev.cloud.data.tenant.entity.SysTenantDataSource;
+//import com.gstdev.cloud.rest.core.annotation.AccessLimited;
+//import com.gstdev.cloud.rest.core.controller.BaseWriteableRestController;
 //import io.swagger.v3.oas.annotations.Operation;
 //import io.swagger.v3.oas.annotations.Parameter;
 //import io.swagger.v3.oas.annotations.Parameters;
@@ -38,7 +38,7 @@
 ///**
 // * <p>Description: 多租户数据源接口 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2023/3/29 21:23
 // */
 //@RestController

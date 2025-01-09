@@ -18,6 +18,7 @@
     </parent>
     <modules>
         <module>gstdev-cloud-plugin</module>
+        <module>gstdev-cloud-plugin-access</module>
         <module>gstdev-cloud-plugin-data</module>
         <module>gstdev-cloud-plugin-swagger</module>
         <module>gstdev-cloud-plugin-storage</module>

@@ -24,7 +24,7 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * @author gengwei.zheng
+ * @author cc
  */
 @JsonDeserialize(using = FrameUserDeserializer.class)
 @Setter

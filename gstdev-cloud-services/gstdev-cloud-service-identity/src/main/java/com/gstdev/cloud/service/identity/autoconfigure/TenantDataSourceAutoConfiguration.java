@@ -16,7 +16,7 @@
 //
 //package com.gstdev.cloud.oauth2.authorization.server.autoconfigure;
 //
-//import cn.herodotus.engine.data.tenant.annotation.ConditionalOnDatabaseApproach;
+//import com.gstdev.cloud.data.tenant.annotation.ConditionalOnDatabaseApproach;
 //import jakarta.annotation.PostConstruct;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
@@ -26,7 +26,7 @@
 ///**
 // * <p>Description: 多租户 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2023/3/29 21:18
 // */
 //@AutoConfiguration

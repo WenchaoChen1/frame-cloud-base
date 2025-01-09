@@ -16,10 +16,10 @@
 //
 //package com.gstdev.cloud.oauth2.authorization.server.autoconfigure.tenant;
 //
-//import cn.herodotus.engine.data.core.repository.BaseRepository;
-//import cn.herodotus.engine.data.core.service.BaseService;
-//import cn.herodotus.engine.data.tenant.entity.SysTenantDataSource;
-//import cn.herodotus.engine.data.tenant.repository.SysTenantDataSourceRepository;
+//import com.gstdev.cloud.data.core.repository.BaseRepository;
+//import com.gstdev.cloud.data.core.service.BaseService;
+//import com.gstdev.cloud.data.tenant.entity.SysTenantDataSource;
+//import com.gstdev.cloud.data.tenant.repository.SysTenantDataSourceRepository;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 //import org.springframework.stereotype.Service;
@@ -27,7 +27,7 @@
 ///**
 // * <p>Description: 多租户数据源 </p>
 // *
-// * @author : gengwei.zheng
+// * @author : cc
 // * @date : 2023/3/29 21:20
 // */
 //@Service
