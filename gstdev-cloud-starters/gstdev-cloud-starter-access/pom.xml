@@ -5,19 +5,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>gstdev-cloud-access-spring-boot-starter</artifactId>
+    <artifactId>gstdev-cloud-starter-access</artifactId>
 
-    <name>GstDev Cloud :: Cache :: Access :: starter</name>
+    <name>GstDev Cloud :: Starter :: Access</name>
     <description>${project.name}微信小程序外部接入基础核心组件模块</description>
     <parent>
-        <artifactId>gstdev-cloud-plugin-access</artifactId>
         <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-starters</artifactId>
         <version>2024.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
-             <groupId>com.gstdev.cloud</groupId>
+            <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-access-all</artifactId>
         </dependency>
     </dependencies>

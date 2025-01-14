@@ -23,7 +23,6 @@
         <module>gstdev-cloud-access-wxapp</module>
         <module>gstdev-cloud-access-wxmpp</module>
         <module>gstdev-cloud-access-all</module>
-        <module>gstdev-cloud-access-spring-boot-starter</module>
         <module>gstdev-cloud-access-sms</module>
     </modules>
 

@@ -34,7 +34,7 @@ public class AccessHandlerStrategyFactory {
 
     private static final Logger log = LoggerFactory.getLogger(AccessHandlerStrategyFactory.class);
 
-    @Autowired
+    @Autowired(required = false)
     private final Map<String, AccessHandler> handlers = new ConcurrentHashMap<>();
 
     public AccessResponse preProcess(String source, String core, String... params) {

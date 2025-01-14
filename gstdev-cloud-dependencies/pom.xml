@@ -345,11 +345,7 @@
                 <artifactId>gstdev-cloud-access-all</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
-              <dependency>
-                <groupId>com.gstdev.cloud</groupId>
-                <artifactId>gstdev-cloud-access-spring-boot-starter</artifactId>
-                <version>${gstdev-cloud.version}</version>
-            </dependency>
+
               <dependency>
                 <groupId>com.gstdev.cloud</groupId>
                 <artifactId>gstdev-cloud-access-sms</artifactId>
@@ -506,6 +502,11 @@
                 <version>${gstdev-cloud.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.gstdev.cloud</groupId>
+                <artifactId>gstdev-cloud-starter-access</artifactId>
+                <version>${gstdev-cloud.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.gstdev.cloud</groupId>

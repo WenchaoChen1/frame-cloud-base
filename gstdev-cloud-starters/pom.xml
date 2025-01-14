@@ -17,6 +17,7 @@
 
     <modules>
         <module>gstdev-cloud-starter</module>
+        <module>gstdev-cloud-starter-access</module>
         <module>gstdev-cloud-starter-cache</module>
         <module>gstdev-cloud-starter-captcha</module>
         <module>gstdev-cloud-starter-message</module>
