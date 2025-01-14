@@ -277,7 +277,12 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
     @Override
     public DefaultSecurityUser registerUserDetails(SocialUserDetails socialUserDetails) {
         SysUser newSysUser = this.register(socialUserDetails);
-        return this.toUser.convert(newSysUser);
+        // 获取用户的权限
+        Set<FrameGrantedAuthority> authorities = sysSecurityService.getUserAuthoritiesPermissions(newSysUser);
+
+        // 将SysUser对象转换为DefaultSecurityUser对象
+        SysUserToSecurityUserConverter sysUserToSecurityUserConverter = new SysUserToSecurityUserConverter();
+        return sysUserToSecurityUserConverter.convert(newSysUser,authorities);
     }
 
     public SysUser register(SocialUserDetails socialUserDetails) {

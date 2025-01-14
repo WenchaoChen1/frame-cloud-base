@@ -13,6 +13,7 @@ import com.gstdev.cloud.base.definition.domain.oauth2.AccessPrincipal;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2AuthenticationProviderUtils;
 import com.gstdev.cloud.oauth2.core.definition.FrameGrantType;
+import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.oauth2.core.definition.service.EnhanceUserDetailsService;
 import com.gstdev.cloud.oauth2.core.exception.SocialCredentialsParameterBindingFailedException;
 import org.dromara.hutool.core.bean.BeanUtil;
@@ -136,7 +137,8 @@ public class OAuth2SocialCredentialsAuthenticationProvider extends AbstractUserD
 
         // ----- ID token -----
         OidcIdToken idToken = createOidcIdToken(principal, sessionRegistry, tokenContextBuilder, authorizationBuilder, this.tokenGenerator, ERROR_URI, socialCredentialsAuthentication.getScopes());
-
+        DefaultSecurityUser defaultSecurityUser = (DefaultSecurityUser) principal.getPrincipal();
+        authorizationBuilder.attribute("userId", defaultSecurityUser.getUserId());
         OAuth2Authorization authorization = authorizationBuilder.build();
 
         this.authorizationService.save(authorization);
