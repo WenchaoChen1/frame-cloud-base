@@ -28,7 +28,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Schema(title = "社会化登录用户")
-@Table(name = "sys_social_user", indexes = {@Index(name = "sys_social_user_id_idx", columnList = "social_id")})
+@Table(name = "sys_social_user", indexes = {@Index(name = "sys_social_user_id_idx", columnList = "social_user_id")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = SystemConstants.REGION_SYS_SOCIAL_USER)
 public class SysSocialUser extends BaseEntity implements SocialUserDetails {

@@ -37,4 +37,6 @@ public interface SocialUserDetails {
     String getUsername();
 
     String getNickname();
+
+    String getEmail();
 }

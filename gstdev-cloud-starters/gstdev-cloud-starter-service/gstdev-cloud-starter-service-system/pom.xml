@@ -30,6 +30,9 @@
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-service-system</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-starter-access</artifactId>
+        </dependency>
     </dependencies>
 </project>

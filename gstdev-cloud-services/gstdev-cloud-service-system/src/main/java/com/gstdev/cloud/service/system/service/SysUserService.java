@@ -3,6 +3,7 @@ package com.gstdev.cloud.service.system.service;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
+import com.gstdev.cloud.oauth2.core.definition.domain.SocialUserDetails;
 import com.gstdev.cloud.service.system.domain.entity.SysUser;
 import com.gstdev.cloud.service.system.domain.pojo.sysUser.InsertUserManageInitializationIO;
 import com.gstdev.cloud.service.system.domain.pojo.sysUser.UpdateUserSettingsDetailIO;
@@ -41,6 +42,8 @@ public interface SysUserService extends BaseService<SysUser, String> {
     UserSettingsDetailVO getUserSettingsDetail();
 
     void updateUserSettingsDetail(UpdateUserSettingsDetailIO updateUserSettingsDetailIO);
+
+    DefaultSecurityUser registerUserDetails(SocialUserDetails socialUserDetails);
 }
 
 

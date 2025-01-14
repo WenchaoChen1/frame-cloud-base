@@ -5,12 +5,14 @@ import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
+import com.gstdev.cloud.oauth2.core.definition.domain.SocialUserDetails;
 import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.service.system.domain.base.user.UserDto;
 import com.gstdev.cloud.service.system.domain.converter.SysUserToSecurityUserConverter;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.service.system.domain.entity.SysTenant;
 import com.gstdev.cloud.service.system.domain.entity.SysUser;
+import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageInitializationIO;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.UpdateAccountSettingsDetailIO;
 import com.gstdev.cloud.service.system.domain.pojo.sysUser.InsertUserManageInitializationIO;
@@ -18,12 +20,14 @@ import com.gstdev.cloud.service.system.domain.pojo.sysUser.UpdateUserSettingsDet
 import com.gstdev.cloud.service.system.domain.pojo.sysUser.UserSettingsDetailVO;
 import com.gstdev.cloud.service.system.domain.vo.user.AccountListDto;
 import com.gstdev.cloud.service.system.feign.service.IdentityFeignService;
-import com.gstdev.cloud.service.system.feign.vo.IdentitySaveDto;
 import com.gstdev.cloud.service.system.mapper.SysUserMapper;
 import com.gstdev.cloud.service.system.repository.SysUserRepository;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.dromara.hutool.core.data.id.IdUtil;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
@@ -50,6 +54,8 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
     private IdentityFeignService identityFeignService;
     @Resource
     private SysUserRepository userRepository;
+    private final Converter<SysUser, DefaultSecurityUser> toUser;
+
 
     //    @Resource
     private SysUserMapper userMapper;
@@ -57,6 +63,7 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
     public SysUserServiceImpl(SysUserRepository userRepository, SysUserMapper userMapper) {
         super(userRepository);
         this.userMapper = userMapper;
+        this.toUser = new SysUserToSecurityUserConverter();
     }
 
     private static char nextChar(Random rnd) {
@@ -98,20 +105,44 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
     @Override
     @Transactional
     public SysUser insertUserManageInitialization(InsertUserManageInitializationIO userInsertInput) {
+        if (ObjectUtils.isEmpty(userInsertInput.getUsername())) {
+            String enhance = this.enhance(userInsertInput.getUsername());
+            userInsertInput.setUsername(enhance);
+        }
+        if (ObjectUtils.isEmpty(userInsertInput.getEmail())) {
+            userInsertInput.setEmail(userInsertInput.getUsername() + "@frame.com");
+        }
+        SysUser byEmail = findByEmail(userInsertInput.getEmail());
+        if (!ObjectUtils.isEmpty(byEmail)) {
+            throw new PlatformRuntimeException("邮箱已经存在");
+        }
+
+        if (ObjectUtils.isEmpty(userInsertInput.getTenantId())) {
+            userInsertInput.setTenantId("0");
+        }
+
+        if (ObjectUtils.isEmpty(userInsertInput.getStatus())) {
+            userInsertInput.setStatus(DataItemStatus.ENABLE);
+        }
         SysUser user = userMapper.toEntity(userInsertInput);
+
+
         SysUser insert = insert(user);
         InsertAccountManageInitializationIO accountInsertInput = new InsertAccountManageInitializationIO();
         accountInsertInput.setTenantId(userInsertInput.getTenantId());
         accountInsertInput.setUserId(insert.getUserId());
+        accountInsertInput.setName(insert.getUsername());
+        accountInsertInput.setType(SysAccountType.USER);
 //        accountInsertInput.setType(userInsertInput.getType());
-        accountService.insertAccountManageInitialization(accountInsertInput);
+        SysAccount sysAccount = accountService.insertAccountManageInitialization(accountInsertInput);
+        insert.setAccount(List.of(sysAccount));
         // 同步到identity模块
-        IdentitySaveDto identitySaveDto = new IdentitySaveDto();
-        identitySaveDto.setUserId(insert.getUserId());
-        identitySaveDto.setEmail(insert.getEmail());
-        identitySaveDto.setUsername(insert.getUsername());
-        identitySaveDto.setPassword(insert.getPassword());
-        identityFeignService.save(identitySaveDto);
+//        IdentitySaveDto identitySaveDto = new IdentitySaveDto();
+//        identitySaveDto.setUserId(insert.getUserId());
+//        identitySaveDto.setEmail(insert.getEmail());
+//        identitySaveDto.setUsername(insert.getUsername());
+//        identitySaveDto.setPassword(insert.getPassword());
+//        identityFeignService.save(identitySaveDto);
         return insert;
     }
 
@@ -154,6 +185,14 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
     public List<AccountListDto> getByIdToAccount(String id) {
         SysUser user = getRepository().findById(id).orElseGet(SysUser::new);
         return userMapper.accountListToDto(user.getAccount());
+    }
+
+    public SysUser findByUsername(String username) {
+        return getRepository().findByUsername(username);
+    }
+
+    public SysUser findByEmail(String email) {
+        return getRepository().findByEmail(email);
     }
 
     @Override
@@ -234,4 +273,54 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
         }
         getService().save(sysUser);
     }
+
+    @Override
+    public DefaultSecurityUser registerUserDetails(SocialUserDetails socialUserDetails) {
+        SysUser newSysUser = this.register(socialUserDetails);
+        return this.toUser.convert(newSysUser);
+    }
+
+    public SysUser register(SocialUserDetails socialUserDetails) {
+        InsertUserManageInitializationIO insertUserManageInitialization = new InsertUserManageInitializationIO();
+
+        insertUserManageInitialization.setUsername(socialUserDetails.getUsername());
+
+        String nickname = socialUserDetails.getNickname();
+        if (StringUtils.isNotBlank(nickname)) {
+            insertUserManageInitialization.setNickname(nickname);
+        }
+
+        String phoneNumber = socialUserDetails.getPhoneNumber();
+        if (StringUtils.isNotBlank(phoneNumber)) {
+            insertUserManageInitialization.setPhoneNumber(SecurityUtils.encrypt(phoneNumber));
+        }
+
+        String email = socialUserDetails.getEmail();
+        if (StringUtils.isNotBlank(email)) {
+            insertUserManageInitialization.setEmail(email);
+        }
+
+        String avatar = socialUserDetails.getAvatar();
+        if (StringUtils.isNotBlank(avatar)) {
+            insertUserManageInitialization.setAvatar(avatar);
+        }
+
+        return insertUserManageInitialization(insertUserManageInitialization);
+    }
+
+    private String enhance(String username) {
+        if (StringUtils.isNotBlank(username)) {
+            SysUser checkedSysUser = this.findByUsername(username);
+            if (org.apache.commons.lang3.ObjectUtils.isNotEmpty(checkedSysUser)) {
+                String var10000 = checkedSysUser.getUsername();
+                return var10000 + IdUtil.nanoId(12);
+            } else {
+                return username;
+            }
+        } else {
+            return "User" + IdUtil.nanoId(12);
+        }
+    }
+
+
 }

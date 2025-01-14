@@ -57,7 +57,7 @@ public class SysUser extends BaseEntity {
     private String nickname;
 
     @Schema(title = "头像")
-    @Column(name = "avatar", length = 36)
+    @Column(name = "avatar", length = 256)
     private String avatar;
 
     @Schema(title = "性别")
