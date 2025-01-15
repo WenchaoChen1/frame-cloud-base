@@ -8,7 +8,7 @@
 //// ====================================================
 //package com.gstdev.cloud.oauth2.core.definition.strategy;
 //
-//import com.gstdev.cloud.oauth2.core.definition.domain.HerodotusPermission;
+//import com.gstdev.cloud.oauth2.core.definition.domain.FramePermission;
 //
 //import java.util.List;
 //
@@ -25,5 +25,5 @@
 //     *
 //     * @return 权限集合
 //     */
-//    List<HerodotusPermission> findAll();
+//    List<FramePermission> findAll();
 //}

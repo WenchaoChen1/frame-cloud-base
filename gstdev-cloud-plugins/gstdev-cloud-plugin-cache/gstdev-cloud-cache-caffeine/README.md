@@ -38,22 +38,23 @@ public class MyCacheConfiguration {
 ## 3. 一些可选配置项
 
 ```yaml
-herodotus:
-  cache:
-    # 是否允许存储空值
-    allowNullValues: true
-    # 缓存名称转换分割符
-    separator: '-'
-    # 全局的过期时间
-    expire: 2h
-    # 本地缓存过期时间
-    localExpire: 2h
-    # 针对不同实体单独设置的过期时间，如果不设置，则统一使用默认时间
-    instances: 
-      # 缓存的键
-      "sys:cache:user":
-        # 缓存失效时间
+gstdev:
+    cloud:
+      cache:
+        # 是否允许存储空值
+        allowNullValues: true
+        # 缓存名称转换分割符
+        separator: '-'
+        # 全局的过期时间
         expire: 2h
+        # 本地缓存过期时间
+        localExpire: 2h
+        # 针对不同实体单独设置的过期时间，如果不设置，则统一使用默认时间
+        instances: 
+          # 缓存的键
+          "sys:cache:user":
+            # 缓存失效时间
+            expire: 2h
 ```
 
 ## 4. 可使用spring-cache注解

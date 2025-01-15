@@ -16,7 +16,7 @@
 // * @author : cc
 // * @date : 2022/4/1 18:26
 // */
-//public class HerodotusPermission {
+//public class FramePermission {
 //
 //    private String permissionId;
 //

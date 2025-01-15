@@ -35,14 +35,6 @@ public class DefaultSecurityUserDetailsService implements EnhanceUserDetailsServ
         this.strategyUserDetailsService = strategyUserDetailsService;
     }
 
-
-//    @Override
-//    public HerodotusUser loadUserByUsername(String username) throws UsernameNotFoundException {
-//        HerodotusUser HerodotusUser = strategyUserDetailsService.findUserDetailsByUsername(username);
-//        log.debug("[GstDev Cloud] |- UserDetailsService loaded user : [{}]", username);
-//        return HerodotusUser;
-//    }
-
     @Override
     public UserDetails loadUserBySocial(String source, AccessPrincipal accessPrincipal) throws UsernameNotFoundException {
         DefaultSecurityUser user = strategyUserDetailsService.findUserDetailsBySocial(StringUtils.toRootUpperCase(source), accessPrincipal);

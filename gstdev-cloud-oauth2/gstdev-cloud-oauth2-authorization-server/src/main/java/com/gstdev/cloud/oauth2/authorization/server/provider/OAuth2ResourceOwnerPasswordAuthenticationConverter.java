@@ -1,9 +1,5 @@
 package com.gstdev.cloud.oauth2.authorization.server.provider;
 
-//com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2EndpointUtils;
-//import com.gstdev.cloud.oauth2.core.definition.HerodotusGrantType;
-//import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
-
 import com.gstdev.cloud.oauth2.authorization.server.utils.OAuth2EndpointUtils;
 import com.gstdev.cloud.oauth2.core.definition.FrameGrantType;
 import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
@@ -22,9 +18,7 @@ import org.springframework.util.MultiValueMap;
  * @author : cc
  * @date : 2022/2/22 17:03
  */
-//public class OAuth2PasswordAuthenticationConverter implements AuthenticationConverter {
 public final class OAuth2ResourceOwnerPasswordAuthenticationConverter extends AbstractAuthenticationConverter {
-    //public class OAuth2PasswordAuthenticationConverter implements AuthenticationConverter {
     public OAuth2ResourceOwnerPasswordAuthenticationConverter(HttpCryptoProcessor httpCryptoProcessor) {
         super(httpCryptoProcessor);
     }

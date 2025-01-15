@@ -16,7 +16,7 @@
 //    /**
 //     * 多租户数据源扫描包
 //     */
-//    private String[] packageToScan = new String[]{"com.gstdev.cloud", "cn.herodotus.professional"};
+//    private String[] packageToScan = new String[]{"com.gstdev.cloud", "cn.frame.professional"};
 //
 //    /**
 //     * 多租户模式，默认：discriminator

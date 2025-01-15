@@ -142,8 +142,8 @@ public class DefaultSecurityConfiguration {
 //  @Bean
 //  @ConditionalOnMissingBean
 //  public ClientDetailsService clientDetailsService(OAuth2ApplicationService applicationService) {
-//    HerodotusClientDetailsService herodotusClientDetailsService = new HerodotusClientDetailsService(applicationService);
+//    FrameClientDetailsService frameClientDetailsService = new FrameClientDetailsService(applicationService);
 //    log.debug("[GstDev Cloud] |- Bean [GstDev Cloud Client Details Service] Auto Configure.");
-//    return herodotusClientDetailsService;
+//    return frameClientDetailsService;
 //  }
 }

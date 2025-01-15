@@ -12,15 +12,15 @@
 // * @author : cc
 // * @date : 2021/10/26 17:02
 // */
-//public class HerodotusMybatisCache implements Cache {
+//public class FrameMybatisCache implements Cache {
 //
-//    private static final Logger log = LoggerFactory.getLogger(HerodotusMybatisCache.class);
+//    private static final Logger log = LoggerFactory.getLogger(FrameMybatisCache.class);
 //
 //    private final String id;
 //    private final com.alicp.jetcache.Cache<Object, Object> cache;
 //    private final AtomicInteger counter = new AtomicInteger(0);
 //
-//    public HerodotusMybatisCache(String id) {
+//    public Frame(String id) {
 //        this.id = id;
 //        JetCacheCreateCacheFactory jetCacheCreateCacheFactory = SpringUtil.getBean("jetCacheCreateCacheFactory");
 //        this.cache = jetCacheCreateCacheFactory.create(this.id);

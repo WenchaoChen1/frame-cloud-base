@@ -174,7 +174,7 @@ public class AuthorizationServerConfiguration {
 //                    });
 //                    oidc.userInfoEndpoint(userInfoEndpoint -> {
 //                        userInfoEndpoint.errorResponseHandler(errorResponseHandler);
-//                        userInfoEndpoint.userInfoMapper(new HerodotusOidcUserInfoMapper())
+//                        userInfoEndpoint.userInfoMapper(new FrameOidcUserInfoMapper())
 //                    });
 //                    oidc.clientRegistrationEndpoint(clientRegistrationEndpoint -> {
 //                        clientRegistrationEndpoint.errorResponseHandler(errorResponseHandler);

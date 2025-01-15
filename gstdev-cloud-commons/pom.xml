@@ -158,10 +158,6 @@
         <!--            <artifactId>jakarta.annotation-api</artifactId>-->
         <!--        </dependency>-->
         <!--        &lt;!&ndash;========================================= core ===============================================&ndash;&gt;-->
-        <!--        &lt;!&ndash;    <dependency>&ndash;&gt;-->
-        <!--        &lt;!&ndash;      <groupId>cn.herodotus.engine</groupId>&ndash;&gt;-->
-        <!--        &lt;!&ndash;      <artifactId>assistant-definition</artifactId>&ndash;&gt;-->
-        <!--        &lt;!&ndash;    </dependency>&ndash;&gt;-->
         <!--        <dependency>-->
         <!--            <groupId>org.apache.commons</groupId>-->
         <!--            <artifactId>commons-text</artifactId>-->

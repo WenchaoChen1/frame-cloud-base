@@ -38,7 +38,7 @@ public class ResourceProvider implements InitializingBean {
     private static final Logger log = LoggerFactory.getLogger(ResourceProvider.class);
 
     private static final String FONT_RESOURCE = "classpath*:/fonts/*.ttf";
-    private static final String FONT_FOLDER = "/usr/share/fonts/herodotus/";
+    private static final String FONT_FOLDER = "/usr/share/fonts/frame/";
 
     private final Map<String, String[]> imageIndexes = new ConcurrentHashMap<>();
     private final Map<String, String> jigsawOriginalImages = new ConcurrentHashMap<>();

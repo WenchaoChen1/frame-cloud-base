@@ -33,10 +33,10 @@
 //
 //    String path = request.getRequestURI();
 //    String sessionId = SessionUtils.getSessionId(request);
-//    String herodotusSessionId = HeaderUtils.getFrameSessionId(request);
+//    String frameSessionId = HeaderUtils.getFrameSessionId(request);
 //
 //    log.debug("[GstDev Cloud] |- SESSION ID for [{}] is : [{}].", path, sessionId);
-//    log.debug("[GstDev Cloud] |- SESSION ID of Frame for [{}] is : [{}].", path, herodotusSessionId);
+//    log.debug("[GstDev Cloud] |- SESSION ID of Frame for [{}] is : [{}].", path, frameSessionId);
 //
 //    return true;
 //  }

@@ -56,9 +56,9 @@
 //
 //    @Bean
 //    public MultiTenantConnectionProvider multiTenantConnectionProvider(DataSource dataSource) {
-//        DatabaseMultiTenantConnectionProvider herodotusTenantConnectionProvider = new DatabaseMultiTenantConnectionProvider(dataSource);
+//        DatabaseMultiTenantConnectionProvider frameTenantConnectionProvider = new DatabaseMultiTenantConnectionProvider(dataSource);
 //        log.debug("[GstDev Cloud] |- Bean [Multi Tenant Connection Provider] Auto Configure.");
-//        return herodotusTenantConnectionProvider;
+//        return frameTenantConnectionProvider;
 //    }
 //
 //    @Primary

@@ -32,7 +32,7 @@ public class MqttProperties extends BaseProperties {
     /**
      * Mqtt 客户端ID
      */
-    private String clientId = "herodotus-client-manager-client-id-v5";
+    private String clientId = "frame-client-manager-client-id-v5";
     /**
      * 设置“保持活动”间隔。此值以秒为单位，定义发送或接收消息之间的最大时间间隔。
      * <p>
@@ -89,7 +89,7 @@ public class MqttProperties extends BaseProperties {
     /**
      * 默认的主题，
      */
-    private String defaultTopic = "herodotus.mqtt.default";
+    private String defaultTopic = "frame.mqtt.default";
     /**
      * 默认的 Qos 级别，默认值为：1
      */

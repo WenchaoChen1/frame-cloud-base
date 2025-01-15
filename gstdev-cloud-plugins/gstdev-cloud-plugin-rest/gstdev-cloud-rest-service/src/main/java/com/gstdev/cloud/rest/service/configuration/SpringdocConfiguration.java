@@ -35,9 +35,9 @@
 //                flows = @OAuthFlows(
 //                        password = @OAuthFlow(authorizationUrl = "http://localhost:8101/oauth2/authorize", tokenUrl = "http://localhost:8101/oauth2/token"
 //                          , refreshUrl = "http://localhost:8101/oauth2/token", scopes = @OAuthScope(name = "all"))
-////                        password = @OAuthFlow(authorizationUrl = "${herodotus.endpoint.authorization-uri}", tokenUrl = "${herodotus.endpoint.access-token-uri}", refreshUrl = "${herodotus.endpoint.access-token-uri}", scopes = @OAuthScope(name = "all")),
-////                        clientCredentials = @OAuthFlow(authorizationUrl = "${herodotus.endpoint.authorization-uri}", tokenUrl = "${herodotus.endpoint.access-token-uri}", refreshUrl = "${herodotus.endpoint.access-token-uri}", scopes = @OAuthScope(name = "all"))
-////                        authorizationCode = @OAuthFlow(authorizationUrl = "${herodotus.platform.endpoint.user-authorization-uri}", tokenUrl = "${herodotus.platform.endpoint.access-token-uri}", refreshUrl = "${herodotus.platform.endpoint.access-token-uri}", scopes = @OAuthScope(name = "all"))
+////                        password = @OAuthFlow(authorizationUrl = "${frame.endpoint.authorization-uri}", tokenUrl = "${frame.endpoint.access-token-uri}", refreshUrl = "${frame.endpoint.access-token-uri}", scopes = @OAuthScope(name = "all")),
+////                        clientCredentials = @OAuthFlow(authorizationUrl = "${frame.endpoint.authorization-uri}", tokenUrl = "${frame.endpoint.access-token-uri}", refreshUrl = "${frame.endpoint.access-token-uri}", scopes = @OAuthScope(name = "all"))
+////                        authorizationCode = @OAuthFlow(authorizationUrl = "${frame.platform.endpoint.user-authorization-uri}", tokenUrl = "${frame.platform.endpoint.access-token-uri}", refreshUrl = "${frame.platform.endpoint.access-token-uri}", scopes = @OAuthScope(name = "all"))
 //                )),
 //})
 //public class SpringdocConfiguration {
@@ -66,12 +66,12 @@
 //    public OpenAPI createOpenApi(OpenApiServerResolver openApiServerResolver) {
 //        return new OpenAPI()
 //                .servers(openApiServerResolver.getServers())
-//                .info(new Info().title("Herodotus Cloud")
-//                        .description("Herodotus Cloud Microservices Architecture")
+//                .info(new Info().title("Gstdev Cloud")
+//                        .description("Gstdev Cloud Microservices Architecture")
 //                        .version("Swagger V3")
 //                        .license(new License().name("Apache 2.0").url("http://www.apache.org/licenses/")))
 //                .externalDocs(new ExternalDocumentation()
-//                        .description("Herodotus Cloud Documentation")
-//                        .url(" https://www.herodotus.cn"));
+//                        .description("Gstdev Cloud Documentation")
+//                        .url(" https://www.frame.cn"));
 //    }
 //}

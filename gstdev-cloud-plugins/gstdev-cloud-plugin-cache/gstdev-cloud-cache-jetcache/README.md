@@ -32,7 +32,7 @@ jetcache:
       # jetcahe2.7的两级缓存支持更新以后失效其他JVM中的local cache，
       # 但多个服务共用redis同一个channel可能会造成广播风暴，需要在这里指定channel，
       # 你可以决定多个不同的服务是否共用同一个channel。如果没有指定则不开启。
-      broadcastChannel: herodotus
+      broadcastChannel: frame
       # 单机模式
       uri: redis://${spring.data.redis.password}@${spring.data.redis.host}:${spring.data.redis.port}/${spring.data.redis.database}
       # 哨兵模式
