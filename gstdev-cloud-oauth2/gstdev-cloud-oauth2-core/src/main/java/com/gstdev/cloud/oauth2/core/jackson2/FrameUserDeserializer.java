@@ -34,7 +34,7 @@ public class FrameUserDeserializer extends JsonDeserializer<DefaultSecurityUser>
 
     private static final TypeReference<Set<FrameGrantedAuthority>> FRAME_GRANTED_AUTHORITY_SET = new TypeReference<Set<FrameGrantedAuthority>>() {
     };
-    private static final TypeReference<Set<String>> HERODOTUS_ROLE_SET = new TypeReference<Set<String>>() {
+    private static final TypeReference<Set<String>> FRAME_ROLE_SET = new TypeReference<Set<String>>() {
     };
 
     /**
@@ -54,7 +54,7 @@ public class FrameUserDeserializer extends JsonDeserializer<DefaultSecurityUser>
         ObjectMapper mapper = (ObjectMapper) jp.getCodec();
         JsonNode jsonNode = mapper.readTree(jp);
         Set<? extends GrantedAuthority> authorities = mapper.convertValue(jsonNode.get("authorities"), FRAME_GRANTED_AUTHORITY_SET);
-        Set<String> roles = mapper.convertValue(jsonNode.get("roles"), HERODOTUS_ROLE_SET);
+        Set<String> roles = mapper.convertValue(jsonNode.get("roles"), FRAME_ROLE_SET);
         JsonNode passwordNode = JsonNodeUtils.readJsonNode(jsonNode, "password");
         String userId = JsonNodeUtils.findStringValue(jsonNode, "userId");
         String username = JsonNodeUtils.findStringValue(jsonNode, "username");

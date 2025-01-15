@@ -24,7 +24,7 @@ public class SmsEnabledCondition implements Condition {
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata metadata) {
         boolean result = PropertyResolver.getBoolean(conditionContext, AccessConstants.ITEM_SMS_ENABLED);
-        log.debug("[Herodotus] |- Condition [Sms Enabled] value is [{}]", result);
+        log.debug("[GstDev Cloud] |- Condition [Sms Enabled] value is [{}]", result);
         return result;
     }
 }

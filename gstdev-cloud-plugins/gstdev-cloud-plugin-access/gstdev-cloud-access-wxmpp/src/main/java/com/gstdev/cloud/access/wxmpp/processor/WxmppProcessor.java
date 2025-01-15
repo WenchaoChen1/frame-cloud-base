@@ -72,7 +72,7 @@ public class WxmppProcessor implements InitializingBean {
                     return configStorage;
                 }).collect(Collectors.toMap(WxMpDefaultConfigImpl::getAppId, a -> a, (o, n) -> o)));
 
-        log.info("[Herodotus] |- Bean [Herodotus Weixin Micro Message Public Platform] Auto Configure.");
+        log.info("[GstDev Cloud] |- Bean [Frame Weixin Micro Message Public Platform] Auto Configure.");
 
         this.wxMpService = wxMpService;
     }

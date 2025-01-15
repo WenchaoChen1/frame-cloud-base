@@ -30,7 +30,7 @@ public class AccessSmsConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Access SMS] Auto Configure.");
+        log.debug("[GstDev Cloud] |- SDK [Access SMS] Auto Configure.");
     }
 
     @Bean
@@ -38,14 +38,14 @@ public class AccessSmsConfiguration {
     public VerificationCodeStampManager verificationCodeStampManager(SmsProperties smsProperties) {
         VerificationCodeStampManager verificationCodeStampManager = new VerificationCodeStampManager();
         verificationCodeStampManager.setSmsProperties(smsProperties);
-        log.trace("[Herodotus] |- Bean [Verification Code Stamp Manager] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Verification Code Stamp Manager] Auto Configure.");
         return verificationCodeStampManager;
     }
 
     @Bean(AccountType.PHONE_NUMBER_HANDLER)
     public PhoneNumberAccessHandler phoneNumberAccessHandler(VerificationCodeStampManager verificationCodeStampManager) {
         PhoneNumberAccessHandler phoneNumberAuthenticationHandler = new PhoneNumberAccessHandler(verificationCodeStampManager);
-        log.trace("[Herodotus] |- Bean [Phone Number SignIn Handler] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Phone Number SignIn Handler] Auto Configure.");
         return phoneNumberAuthenticationHandler;
     }
 }

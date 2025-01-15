@@ -133,12 +133,10 @@ public class DefaultSecurityConfiguration {
    */
   @Bean
   @ConditionalOnMissingBean
-//  public UserDetailsService userDetailsService() {
   public UserDetailsService userDetailsService(StrategyUserDetailsService strategyUserDetailsService) {
-    DefaultSecurityUserDetailsService herodotusUserDetailsService = new DefaultSecurityUserDetailsService(strategyUserDetailsService);
+    DefaultSecurityUserDetailsService defaultSecurityUserDetailsService = new DefaultSecurityUserDetailsService(strategyUserDetailsService);
     log.debug("[GstDev Cloud] |- Bean [GstDev Cloud User Details Service] Auto Configure.");
-//    return new DefaultUserDetailsService();
-    return herodotusUserDetailsService;
+    return defaultSecurityUserDetailsService;
   }
 
 //  @Bean

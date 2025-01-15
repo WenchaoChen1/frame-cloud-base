@@ -24,7 +24,7 @@ public class WxappEnabledCondition implements Condition {
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata metadata) {
         boolean result = PropertyResolver.getBoolean(conditionContext, AccessConstants.ITEM_WXAPP_ENABLED);
-        log.debug("[Herodotus] |- Condition [Wxapp Enabled] value is [{}]", result);
+        log.debug("[GstDev Cloud] |- Condition [Wxapp Enabled] value is [{}]", result);
         return result;
     }
 }

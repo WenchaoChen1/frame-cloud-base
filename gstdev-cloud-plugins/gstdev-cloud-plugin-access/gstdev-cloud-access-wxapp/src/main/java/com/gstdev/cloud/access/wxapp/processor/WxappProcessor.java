@@ -70,7 +70,7 @@ public class WxappProcessor implements InitializingBean {
                     return service;
                 }).collect(Collectors.toMap(s -> s.getWxMaConfig().getAppid(), a -> a));
 
-        log.info("[Herodotus] |- Bean [herodotus Weixin Mini App] Auto Configure.");
+        log.info("[GstDev Cloud] |- Bean [frame Weixin Mini App] Auto Configure.");
     }
 
     private WxMaMessageRouter newRouter(WxMaService wxMaService) {
@@ -95,8 +95,8 @@ public class WxappProcessor implements InitializingBean {
     public WxMaService getWxMaService() {
         String appId = wxappProperties.getDefaultAppId();
         if (StringUtils.isBlank(appId)) {
-            log.error("[Herodotus] |- Must set [herodotus.platform.social.wxapp.default-app-id] property, or use getWxMaService(String appid)!");
-            throw new IllegalArgumentException("Must set [herodotus.platform.social.wxapp.default-app-id] property");
+            log.error("[GstDev Cloud] |- Must set [gstdev.cloud.platform.social.wxapp.default-app-id] property, or use getWxMaService(String appid)!");
+            throw new IllegalArgumentException("Must set [gstdev.cloud.platform.social.wxapp.default-app-id] property");
         }
         return this.getWxMaService(appId);
     }
@@ -111,10 +111,10 @@ public class WxappProcessor implements InitializingBean {
     private WxMaJscode2SessionResult getSessionInfo(String code, WxMaService wxMaService) {
         try {
             WxMaJscode2SessionResult sessionResult = wxMaService.getUserService().getSessionInfo(code);
-            log.debug("[Herodotus] |- Weixin Mini App login successfully!");
+            log.debug("[GstDev Cloud] |- Weixin Mini App login successfully!");
             return sessionResult;
         } catch (WxErrorException e) {
-            log.error("[Herodotus] |- Weixin Mini App login failed! For reason: {}", e.getMessage());
+            log.error("[GstDev Cloud] |- Weixin Mini App login failed! For reason: {}", e.getMessage());
             return null;
         }
     }
@@ -130,10 +130,10 @@ public class WxappProcessor implements InitializingBean {
      */
     private boolean checkUserInfo(String sessionKey, String rawData, String signature, WxMaService wxMaService) {
         if (wxMaService.getUserService().checkUserInfo(sessionKey, rawData, signature)) {
-            log.debug("[Herodotus] |- Weixin Mini App user info is valid!");
+            log.debug("[GstDev Cloud] |- Weixin Mini App user info is valid!");
             return true;
         } else {
-            log.warn("[Herodotus] |- Weixin Mini App user check failed!");
+            log.warn("[GstDev Cloud] |- Weixin Mini App user check failed!");
             return false;
         }
     }
@@ -149,7 +149,7 @@ public class WxappProcessor implements InitializingBean {
      */
     private WxMaUserInfo getUserInfo(String sessionKey, String encryptedData, String iv, WxMaService wxMaService) {
         WxMaUserInfo wxMaUserInfo = wxMaService.getUserService().getUserInfo(sessionKey, encryptedData, iv);
-        log.debug("[Herodotus] |- Weixin Mini App get user info successfully!");
+        log.debug("[GstDev Cloud] |- Weixin Mini App get user info successfully!");
         return wxMaUserInfo;
     }
 
@@ -167,16 +167,16 @@ public class WxappProcessor implements InitializingBean {
      * @return {@link WxMaPhoneNumberInfo}
      */
     private WxMaPhoneNumberInfo getPhoneNumberInfo(String sessionKey, String encryptedData, String iv, WxMaService wxMaService) {
-        log.info("[Herodotus] |- Weixin Mini App get encryptedData： {}", encryptedData);
+        log.info("[GstDev Cloud] |- Weixin Mini App get encryptedData： {}", encryptedData);
 
         WxMaPhoneNumberInfo wxMaPhoneNumberInfo;
         try {
             wxMaPhoneNumberInfo = wxMaService.getUserService().getPhoneNoInfo(sessionKey, encryptedData, iv);
-            log.debug("[Herodotus] |- Weixin Mini App get phone number successfully!");
-            log.debug("[Herodotus] |- WxMaPhoneNumberInfo : {}", wxMaPhoneNumberInfo.toString());
+            log.debug("[GstDev Cloud] |- Weixin Mini App get phone number successfully!");
+            log.debug("[GstDev Cloud] |- WxMaPhoneNumberInfo : {}", wxMaPhoneNumberInfo.toString());
             return wxMaPhoneNumberInfo;
         } catch (Exception e) {
-            log.error("[Herodotus] |- Weixin Mini App get phone number failed!");
+            log.error("[GstDev Cloud] |- Weixin Mini App get phone number failed!");
             return null;
         }
     }
@@ -190,7 +190,7 @@ public class WxappProcessor implements InitializingBean {
         if (StringUtils.isNotBlank(code) && ObjectUtils.isNotEmpty(wxMaService)) {
             return this.getSessionInfo(code, wxMaService);
         } else {
-            log.error("[Herodotus] |- Weixin Mini App login failed, please check code param!");
+            log.error("[GstDev Cloud] |- Weixin Mini App login failed, please check code param!");
             return null;
         }
     }
@@ -213,7 +213,7 @@ public class WxappProcessor implements InitializingBean {
 
             return this.getUserInfo(sessionKey, encryptedData, iv, wxMaService);
         } else {
-            log.error("[Herodotus] |- Weixin Mini App get user info failed!");
+            log.error("[GstDev Cloud] |- Weixin Mini App get user info failed!");
             return null;
         }
     }
@@ -236,7 +236,7 @@ public class WxappProcessor implements InitializingBean {
 
             return this.getPhoneNumberInfo(sessionKey, encryptedData, iv, wxMaService);
         } else {
-            log.error("[Herodotus] |- Weixin Mini App get phone number info failed!");
+            log.error("[GstDev Cloud] |- Weixin Mini App get phone number info failed!");
             return null;
         }
     }
@@ -251,10 +251,10 @@ public class WxappProcessor implements InitializingBean {
     public boolean sendSubscribeMessage(String appId, WxMaSubscribeMessage subscribeMessage) {
         try {
             this.getWxMaService(appId).getMsgService().sendSubscribeMsg(subscribeMessage);
-            log.debug("[Herodotus] |- Send Subscribe Message Successfully!");
+            log.debug("[GstDev Cloud] |- Send Subscribe Message Successfully!");
             return true;
         } catch (WxErrorException e) {
-            log.debug("[Herodotus] |- Send Subscribe Message Failed!", e);
+            log.debug("[GstDev Cloud] |- Send Subscribe Message Failed!", e);
             return false;
         }
     }
@@ -274,10 +274,10 @@ public class WxappProcessor implements InitializingBean {
     public boolean checkMessage(String appId, String message) {
         try {
             this.getWxMaService(appId).getSecCheckService().checkMessage(message);
-            log.debug("[Herodotus] |- Check Message Successfully!");
+            log.debug("[GstDev Cloud] |- Check Message Successfully!");
             return true;
         } catch (WxErrorException e) {
-            log.debug("[Herodotus] |- Check Message Failed!", e);
+            log.debug("[GstDev Cloud] |- Check Message Failed!", e);
             return false;
         }
     }
@@ -292,10 +292,10 @@ public class WxappProcessor implements InitializingBean {
     public boolean checkImage(String appId, String fileUrl) {
         try {
             this.getWxMaService(appId).getSecCheckService().checkImage(fileUrl);
-            log.debug("[Herodotus] |- Check Image Successfully!");
+            log.debug("[GstDev Cloud] |- Check Image Successfully!");
             return true;
         } catch (WxErrorException e) {
-            log.debug("[Herodotus] |- Check Image Failed! Detail is ：{}", e.getMessage());
+            log.debug("[GstDev Cloud] |- Check Image Failed! Detail is ：{}", e.getMessage());
             return false;
         }
     }
@@ -315,10 +315,10 @@ public class WxappProcessor implements InitializingBean {
     public boolean checkImage(String appId, File file) {
         try {
             this.getWxMaService(appId).getSecCheckService().checkImage(file);
-            log.debug("[Herodotus] |- Check Image Successfully!");
+            log.debug("[GstDev Cloud] |- Check Image Successfully!");
             return true;
         } catch (WxErrorException e) {
-            log.debug("[Herodotus] |- Check Image Failed! Detail is ：{}", e.getMessage());
+            log.debug("[GstDev Cloud] |- Check Image Failed! Detail is ：{}", e.getMessage());
             return false;
         }
     }
@@ -343,9 +343,9 @@ public class WxappProcessor implements InitializingBean {
         WxMaMediaAsyncCheckResult wxMaMediaAsyncCheckResult = null;
         try {
             wxMaMediaAsyncCheckResult = this.getWxMaService(appId).getSecCheckService().mediaCheckAsync(mediaUrl, mediaType);
-            log.debug("[Herodotus] |- Media Async Check Successfully!");
+            log.debug("[GstDev Cloud] |- Media Async Check Successfully!");
         } catch (WxErrorException e) {
-            log.debug("[Herodotus] |- Media Async Check Failed! Detail is ：{}", e.getMessage());
+            log.debug("[GstDev Cloud] |- Media Async Check Failed! Detail is ：{}", e.getMessage());
         }
 
         return wxMaMediaAsyncCheckResult;

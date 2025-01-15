@@ -36,14 +36,14 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
 
     private final FrameAuthorizationService frameAuthorizationService;
     private final Converter<FrameAuthorization, OAuth2Authorization> frameToOAuth2Converter;
-    private final Converter<OAuth2Authorization, FrameAuthorization> oauth2ToHerodotusConverter;
+    private final Converter<OAuth2Authorization, FrameAuthorization> oauth2ToFrameAuthorizationConverter;
 
     public JpaOAuth2AuthorizationService(FrameAuthorizationService frameAuthorizationService, RegisteredClientRepository registeredClientRepository) {
         this.frameAuthorizationService = frameAuthorizationService;
 
         OAuth2JacksonProcessor jacksonProcessor = new OAuth2JacksonProcessor();
         this.frameToOAuth2Converter = new FrameToOAuth2AuthorizationConverter(jacksonProcessor, registeredClientRepository);
-        this.oauth2ToHerodotusConverter = new OAuth2ToFrameAuthorizationConverter(jacksonProcessor);
+        this.oauth2ToFrameAuthorizationConverter = new OAuth2ToFrameAuthorizationConverter(jacksonProcessor);
 
     }
 
@@ -65,9 +65,9 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
 
     @Override
     public OAuth2Authorization findById(String id) {
-        FrameAuthorization herodotusAuthorization = this.frameAuthorizationService.findById(id);
-        if (ObjectUtils.isNotEmpty(herodotusAuthorization)) {
-            return toObject(herodotusAuthorization);
+        FrameAuthorization frameAuthorization = this.frameAuthorizationService.findById(id);
+        if (ObjectUtils.isNotEmpty(frameAuthorization)) {
+            return toObject(frameAuthorization);
         } else {
             return null;
         }
@@ -121,6 +121,6 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
     }
 
     private FrameAuthorization toEntity(OAuth2Authorization authorization) {
-        return oauth2ToHerodotusConverter.convert(authorization);
+        return oauth2ToFrameAuthorizationConverter.convert(authorization);
     }
 }

@@ -19,13 +19,13 @@
 //
 //    @PostConstruct
 //    public void postConstruct() {
-//        log.info("[Herodotus] |- Module [Stream Adapter] Auto Configure.");
+//        log.info("[GstDev Cloud] |- Module [Stream Adapter] Auto Configure.");
 //    }
 //
 //    @Bean
 //    public StreamMessageSendingAdapter streamMessageSendingAdapter(StreamBridge streamBridge) {
 //        StreamMessageSendingAdapter adapter = new StreamMessageSendingAdapter(streamBridge);
-//        log.trace("[Herodotus] |- Bean [Stream Message Sending Adapter] Auto Configure.");
+//        log.trace("[GstDev Cloud] |- Bean [Stream Message Sending Adapter] Auto Configure.");
 //        return adapter;
 //    }
 //}

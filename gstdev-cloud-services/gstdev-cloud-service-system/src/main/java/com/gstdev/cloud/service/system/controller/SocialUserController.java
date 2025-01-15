@@ -42,9 +42,9 @@ public class SocialUserController implements ResultController {
     })
     @RequestMapping("/sign-in/{source}")
     public Result<DefaultSecurityUser> findUserDetailsBySocial(@PathVariable("source") String source, AccessPrincipal accessPrincipal) {
-        DefaultSecurityUser herodotusUser = this.socialAuthenticationHandler.authentication(source, accessPrincipal);
-        if (ObjectUtils.isNotEmpty(herodotusUser)) {
-            return Result.success("社交登录成功", herodotusUser);
+        DefaultSecurityUser defaultSecurityUser = this.socialAuthenticationHandler.authentication(source, accessPrincipal);
+        if (ObjectUtils.isNotEmpty(defaultSecurityUser)) {
+            return Result.success("社交登录成功", defaultSecurityUser);
         } else {
             return Result.failure("社交登录失败，未能查到用户数据");
         }

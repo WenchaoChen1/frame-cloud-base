@@ -30,7 +30,7 @@ public class AccessWxmppConfiguration {
 
     @PostConstruct
     public void init() {
-        log.debug("[Herodotus] |- SDK [Access Wxmpp] Auto Configure.");
+        log.debug("[GstDev Cloud] |- SDK [Access Wxmpp] Auto Configure.");
     }
 
     @Bean
@@ -40,7 +40,7 @@ public class AccessWxmppConfiguration {
         wxmppProcessor.setWxmppProperties(wxmppProperties);
         wxmppProcessor.setWxmppLogHandler(new WxmppLogHandler());
         wxmppProcessor.setStringRedisTemplate(stringRedisTemplate);
-        log.trace("[Herodotus] |- Bean [Wxmpp Processor] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Wxmpp Processor] Auto Configure.");
         return wxmppProcessor;
     }
 }

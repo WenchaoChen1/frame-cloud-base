@@ -155,11 +155,11 @@ public class SecurityMetadataSourceStorage {
      * 如果缓存中不存在以{@link FrameRequest}为Key的数据，那么添加数据
      * 如果缓存中存在以{@link FrameRequest}为Key的数据，那么合并数据
      *
-     * @param herodotusRequest 请求匹配对象 {@link FrameRequest}
+     * @param frameRequest 请求匹配对象 {@link FrameRequest}
      * @param configAttributes 权限配置 {@link FrameConfigAttribute}
      */
-    private void appendToIndexable(FrameRequest herodotusRequest, List<FrameConfigAttribute> configAttributes) {
-        writeToIndexable(herodotusRequest, configAttributes);
+    private void appendToIndexable(FrameRequest frameRequest, List<FrameConfigAttribute> configAttributes) {
+        writeToIndexable(frameRequest, configAttributes);
     }
 
     /**

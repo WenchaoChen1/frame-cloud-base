@@ -29,13 +29,13 @@ public class AccessAutoConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Module [Access Starter] Auto Configure.");
+        log.info("[GstDev Cloud] |- Module [Access Starter] Auto Configure.");
     }
 
     @Bean
     public ErrorCodeMapperBuilderCustomizer accessErrorCodeMapperBuilderCustomizer() {
         AccessErrorCodeMapperBuilderCustomizer customizer = new AccessErrorCodeMapperBuilderCustomizer();
-        log.debug("[Herodotus] |- Strategy [Access ErrorCodeMapper Builder Customizer] Auto Configure.");
+        log.debug("[GstDev Cloud] |- Strategy [Access ErrorCodeMapper Builder Customizer] Auto Configure.");
         return customizer;
     }
 }

@@ -68,8 +68,8 @@ public class MybatisPlusConfiguration {
 
     @Bean
     public IdentifierGenerator identifierGenerator() {
-        FrameIdentifierGenerator herodotusIdentifierGenerator = new FrameIdentifierGenerator();
+        FrameIdentifierGenerator frameIdentifierGenerator = new FrameIdentifierGenerator();
         log.trace("[GstDev Cloud] |- Bean [GstDev Cloud Identifier Generator] Auto Configure.");
-        return herodotusIdentifierGenerator;
+        return frameIdentifierGenerator;
     }
 }

@@ -140,11 +140,11 @@ public class CacheRedisConfiguration {
             redisCacheConfiguration = redisCacheConfiguration.disableCachingNullValues();
         }
 
-        FrameRedisCacheManager herodotusRedisCacheManager = new FrameRedisCacheManager(redisCacheWriter, redisCacheConfiguration, cacheProperties);
-        herodotusRedisCacheManager.setTransactionAware(false);
-        herodotusRedisCacheManager.afterPropertiesSet();
+        FrameRedisCacheManager frameRedisCacheManager = new FrameRedisCacheManager(redisCacheWriter, redisCacheConfiguration, cacheProperties);
+        frameRedisCacheManager.setTransactionAware(false);
+        frameRedisCacheManager.afterPropertiesSet();
         log.trace("[GstDev Cloud] |- Bean [Redis Cache Manager] Auto Configure.");
-        return herodotusRedisCacheManager;
+        return frameRedisCacheManager;
     }
 
     @Configuration(proxyBeanMethods = false)

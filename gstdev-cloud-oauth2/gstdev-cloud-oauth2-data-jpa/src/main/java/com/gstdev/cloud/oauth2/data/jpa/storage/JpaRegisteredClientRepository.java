@@ -33,13 +33,13 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
 
     private final FrameRegisteredClientService frameRegisteredClientService;
     private final Converter<FrameRegisteredClient, RegisteredClient> frameToOAuth2Converter;
-    private final Converter<RegisteredClient, FrameRegisteredClient> oauth2ToHerodotusConverter;
+    private final Converter<RegisteredClient, FrameRegisteredClient> oauth2ToFrameRegisteredClientConverter;
 
-    public JpaRegisteredClientRepository(FrameRegisteredClientService herodotusRegisteredClientService, PasswordEncoder passwordEncoder) {
-        this.frameRegisteredClientService = herodotusRegisteredClientService;
+    public JpaRegisteredClientRepository(FrameRegisteredClientService frameRegisteredClientService, PasswordEncoder passwordEncoder) {
+        this.frameRegisteredClientService = frameRegisteredClientService;
         OAuth2JacksonProcessor jacksonProcessor = new OAuth2JacksonProcessor();
         this.frameToOAuth2Converter = new FrameToOAuth2RegisteredClientConverter(jacksonProcessor);
-        this.oauth2ToHerodotusConverter = new OAuth2ToFrameRegisteredClientConverter(jacksonProcessor, passwordEncoder);
+        this.oauth2ToFrameRegisteredClientConverter = new OAuth2ToFrameRegisteredClientConverter(jacksonProcessor, passwordEncoder);
     }
 
 //    @PostConstruct
@@ -81,7 +81,7 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
     }
 
     private FrameRegisteredClient toEntity(RegisteredClient registeredClient) {
-        return oauth2ToHerodotusConverter.convert(registeredClient);
+        return oauth2ToFrameRegisteredClientConverter.convert(registeredClient);
     }
 
 

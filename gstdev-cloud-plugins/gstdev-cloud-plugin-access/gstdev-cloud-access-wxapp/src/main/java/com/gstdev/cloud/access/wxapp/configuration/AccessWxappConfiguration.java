@@ -32,7 +32,7 @@ public class AccessWxappConfiguration {
 
     @PostConstruct
     public void init() {
-        log.debug("[Herodotus] |- SDK [Access Wxapp] Auto Configure.");
+        log.debug("[GstDev Cloud] |- SDK [Access Wxapp] Auto Configure.");
     }
 
     @Bean
@@ -41,7 +41,7 @@ public class AccessWxappConfiguration {
         WxappProcessor wxappProcessor = new WxappProcessor();
         wxappProcessor.setWxappProperties(wxappProperties);
         wxappProcessor.setWxappLogHandler(new WxappLogHandler());
-        log.trace("[Herodotus] |- Bean [Wxapp Processor] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Wxapp Processor] Auto Configure.");
         return wxappProcessor;
     }
 
@@ -50,7 +50,7 @@ public class AccessWxappConfiguration {
     @ConditionalOnMissingBean
     public WxappAccessHandler wxappAccessHandler(WxappProcessor wxappProcessor) {
         WxappAccessHandler wxappAccessHandler = new WxappAccessHandler(wxappProcessor);
-        log.debug("[Herodotus] |- Bean [Wxapp Access Handler] Auto Configure.");
+        log.debug("[GstDev Cloud] |- Bean [Wxapp Access Handler] Auto Configure.");
         return wxappAccessHandler;
     }
 }

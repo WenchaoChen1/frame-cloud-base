@@ -51,7 +51,7 @@ public class AccessHandlerStrategyFactory {
         AccessHandler socialAuthenticationHandler = this.getAccessHandler(source);
         AccessUserDetails accessUserDetails = socialAuthenticationHandler.loadUserDetails(source, accessPrincipal);
 
-        log.debug("[Herodotus] |- AccessHandlerFactory findAccessUserDetails.");
+        log.debug("[GstDev Cloud] |- AccessHandlerFactory findAccessUserDetails.");
         return accessUserDetails;
     }
 

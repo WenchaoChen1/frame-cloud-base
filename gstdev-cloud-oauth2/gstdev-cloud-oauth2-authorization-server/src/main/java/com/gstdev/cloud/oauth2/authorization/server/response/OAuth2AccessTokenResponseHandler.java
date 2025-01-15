@@ -78,7 +78,7 @@ public class OAuth2AccessTokenResponseHandler implements AuthenticationSuccessHa
             } else {
                 String sessionId = SessionUtils.analyseSessionId(request);
                 Object details = authentication.getDetails();
-                if (isHerodotusUserInfoPattern(sessionId, details)) {
+                if (isFrameUserInfoPattern(sessionId, details)) {
                     PrincipalDetails authenticationDetails = (PrincipalDetails) details;
                     String data = Jackson2Utils.toJson(authenticationDetails);
                     String encryptData = httpCryptoProcessor.encrypt(sessionId, data);
@@ -99,7 +99,7 @@ public class OAuth2AccessTokenResponseHandler implements AuthenticationSuccessHa
         this.accessTokenHttpResponseConverter.write(accessTokenResponse, null, httpResponse);
     }
 
-    private boolean isHerodotusUserInfoPattern(String sessionId, Object details) {
+    private boolean isFrameUserInfoPattern(String sessionId, Object details) {
         return StringUtils.isNotBlank(sessionId) && ObjectUtils.isNotEmpty(details) && details instanceof PrincipalDetails;
     }
 

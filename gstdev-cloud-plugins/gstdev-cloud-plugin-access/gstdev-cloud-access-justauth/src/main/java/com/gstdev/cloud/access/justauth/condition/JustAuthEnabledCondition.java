@@ -24,7 +24,7 @@ public class JustAuthEnabledCondition implements Condition {
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata metadata) {
         boolean result = PropertyResolver.getBoolean(conditionContext, AccessConstants.ITEM_JUSTAUTH_ENABLED, false);
-        log.debug("[Herodotus] |- Condition [JustAuth Enabled] value is [{}]", result);
+        log.debug("[GstDev Cloud] |- Condition [JustAuth Enabled] value is [{}]", result);
         return result;
     }
 }

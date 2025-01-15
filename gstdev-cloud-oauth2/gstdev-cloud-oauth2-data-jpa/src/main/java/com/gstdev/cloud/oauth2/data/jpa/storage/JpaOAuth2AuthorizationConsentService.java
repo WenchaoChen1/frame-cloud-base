@@ -19,12 +19,12 @@ public class JpaOAuth2AuthorizationConsentService implements OAuth2Authorization
 
     private final FrameAuthorizationConsentService authorizationConsentService;
     private final Converter<FrameAuthorizationConsent, OAuth2AuthorizationConsent> frameToOAuth2Converter;
-    private final Converter<OAuth2AuthorizationConsent, FrameAuthorizationConsent> oauth2ToherodotusConverter;
+    private final Converter<OAuth2AuthorizationConsent, FrameAuthorizationConsent> oauth2ToFrameFrameAuthorizationConsentConverter;
 
     public JpaOAuth2AuthorizationConsentService(FrameAuthorizationConsentService authorizationConsentService, RegisteredClientRepository registeredClientRepository) {
         this.authorizationConsentService = authorizationConsentService;
         this.frameToOAuth2Converter = new FrameToOAuth2AuthorizationConsentConverter(registeredClientRepository);
-        this.oauth2ToherodotusConverter = new OAuth2ToFrameAuthorizationConsentConverter();
+        this.oauth2ToFrameFrameAuthorizationConsentConverter = new OAuth2ToFrameAuthorizationConsentConverter();
     }
 
     @Override
@@ -49,6 +49,6 @@ public class JpaOAuth2AuthorizationConsentService implements OAuth2Authorization
     }
 
     private FrameAuthorizationConsent toEntity(OAuth2AuthorizationConsent authorizationConsent) {
-        return oauth2ToherodotusConverter.convert(authorizationConsent);
+        return oauth2ToFrameFrameAuthorizationConsentConverter.convert(authorizationConsent);
     }
 }

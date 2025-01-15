@@ -44,7 +44,7 @@ public class JetCacheSpringCache extends AbstractValueAdaptingCache {
     protected Object lookup(Object key) {
         Object value = cache.get(key);
         if (ObjectUtils.isNotEmpty(value)) {
-            log.trace("[GstDev Cloud] |- CACHE - Lookup data in herodotus cache, value is : [{}]", Jackson2Utils.toJson(value));
+            log.trace("[GstDev Cloud] |- CACHE - Lookup data in frame cache, value is : [{}]", Jackson2Utils.toJson(value));
             return value;
         }
 
@@ -56,7 +56,7 @@ public class JetCacheSpringCache extends AbstractValueAdaptingCache {
     @Nullable
     public <T> T get(Object key, Callable<T> valueLoader) {
 
-        log.trace("[GstDev Cloud] |- CACHE - Get data in herodotus cache, key: {}", key);
+        log.trace("[GstDev Cloud] |- CACHE - Get data in frame cache, key: {}", key);
 
         return (T) fromStoreValue(cache.computeIfAbsent(key, k -> {
             try {
@@ -70,7 +70,7 @@ public class JetCacheSpringCache extends AbstractValueAdaptingCache {
     @Override
     @Nullable
     public void put(Object key, @Nullable Object value) {
-        log.trace("[GstDev Cloud] |- CACHE - Put data in herodotus cache, key: {}", key);
+        log.trace("[GstDev Cloud] |- CACHE - Put data in frame cache, key: {}", key);
         cache.put(key, this.toStoreValue(value));
     }
 
@@ -78,26 +78,26 @@ public class JetCacheSpringCache extends AbstractValueAdaptingCache {
     @Override
     @Nullable
     public ValueWrapper putIfAbsent(Object key, @Nullable Object value) {
-        log.trace("[GstDev Cloud] |- CACHE - PutIfPresent data in herodotus cache, key: {}", key);
+        log.trace("[GstDev Cloud] |- CACHE - PutIfPresent data in frame cache, key: {}", key);
         Object existing = cache.putIfAbsent(key, toStoreValue(value));
         return toValueWrapper(existing);
     }
 
     @Override
     public void evict(Object key) {
-        log.trace("[GstDev Cloud] |- CACHE - Evict data in herodotus cache, key: {}", key);
+        log.trace("[GstDev Cloud] |- CACHE - Evict data in frame cache, key: {}", key);
         cache.remove(key);
     }
 
     @Override
     public boolean evictIfPresent(Object key) {
-        log.trace("[GstDev Cloud] |- CACHE - EvictIfPresent data in herodotus cache, key: {}", key);
+        log.trace("[GstDev Cloud] |- CACHE - EvictIfPresent data in frame cache, key: {}", key);
         return cache.remove(key);
     }
 
     @Override
     public void clear() {
-        log.trace("[GstDev Cloud] |- CACHE - Clear data in herodotus cache.");
+        log.trace("[GstDev Cloud] |- CACHE - Clear data in frame cache.");
         cache.close();
     }
 }

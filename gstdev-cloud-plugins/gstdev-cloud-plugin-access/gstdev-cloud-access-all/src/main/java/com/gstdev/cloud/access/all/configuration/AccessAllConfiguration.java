@@ -40,14 +40,14 @@ public class AccessAllConfiguration {
 
     @PostConstruct
     public void init() {
-        log.debug("[Herodotus] |- SDK [Access All] Auto Configure.");
+        log.debug("[GstDev Cloud] |- SDK [Access All] Auto Configure.");
     }
 
     @Bean
     @ConditionalOnMissingBean(AccessHandlerStrategyFactory.class)
     public AccessHandlerStrategyFactory accessHandlerStrategyFactory() {
         AccessHandlerStrategyFactory accessHandlerStrategyFactory = new AccessHandlerStrategyFactory();
-        log.trace("[Herodotus] |- Bean [Access Handler Strategy Factory] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Access Handler Strategy Factory] Auto Configure.");
         return accessHandlerStrategyFactory;
     }
 
@@ -56,7 +56,7 @@ public class AccessAllConfiguration {
 
         @PostConstruct
         public void init() {
-            log.debug("[Herodotus] |- SDK [Access All Controller] Auto Configure.");
+            log.debug("[GstDev Cloud] |- SDK [Access All Controller] Auto Configure.");
         }
 
         @Bean
@@ -64,7 +64,7 @@ public class AccessAllConfiguration {
         @ConditionalOnMissingBean
         public PhoneNumberAccessController phoneNumberAccessController() {
             PhoneNumberAccessController phoneNumberAuthenticationController = new PhoneNumberAccessController();
-            log.trace("[Herodotus] |- Bean [Phone Number Access Controller] Auto Configure.");
+            log.trace("[GstDev Cloud] |- Bean [Phone Number Access Controller] Auto Configure.");
             return phoneNumberAuthenticationController;
         }
 
@@ -73,7 +73,7 @@ public class AccessAllConfiguration {
         @ConditionalOnMissingBean
         public JustAuthAccessController justAuthSignInController() {
             JustAuthAccessController justAuthAuthenticationController = new JustAuthAccessController();
-            log.trace("[Herodotus] |- Bean [Just Auth Access Controller] Auto Configure.");
+            log.trace("[GstDev Cloud] |- Bean [Just Auth Access Controller] Auto Configure.");
             return justAuthAuthenticationController;
         }
 
@@ -82,7 +82,7 @@ public class AccessAllConfiguration {
         @ConditionalOnMissingBean
         public WxappAccessController wxappAccessController() {
             WxappAccessController wxappAccessController = new WxappAccessController();
-            log.trace("[Herodotus] |- Bean [Wxapp Access Controller] Auto Configure.");
+            log.trace("[GstDev Cloud] |- Bean [Wxapp Access Controller] Auto Configure.");
             return wxappAccessController;
         }
     }

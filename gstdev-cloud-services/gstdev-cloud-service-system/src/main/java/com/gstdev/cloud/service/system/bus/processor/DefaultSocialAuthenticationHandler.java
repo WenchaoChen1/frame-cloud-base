@@ -81,7 +81,7 @@ public class DefaultSocialAuthenticationHandler extends AbstractSocialAuthentica
     }
 
     @Override
-    public void additionalRegisterOperation(DefaultSecurityUser herodotusUserDetails, SocialUserDetails socialUserDetails) {
+    public void additionalRegisterOperation(DefaultSecurityUser defaultSecurityUser, SocialUserDetails socialUserDetails) {
 
     }
 
@@ -103,7 +103,7 @@ public class DefaultSocialAuthenticationHandler extends AbstractSocialAuthentica
     }
 
     @Override
-    public void additionalSignInOperation(DefaultSecurityUser herodotusUserDetails, SocialUserDetails newSocialUserDetails, SocialUserDetails oldSocialUserDetails) {
+    public void additionalSignInOperation(DefaultSecurityUser defaultSecurityUser, SocialUserDetails newSocialUserDetails, SocialUserDetails oldSocialUserDetails) {
         if (newSocialUserDetails instanceof SysSocialUser newSysSocialUser && oldSocialUserDetails instanceof SysSocialUser oldSysSocialUser) {
             setSocialUserInfo(oldSysSocialUser, newSysSocialUser.getAccessToken(), newSysSocialUser.getExpireIn(), newSysSocialUser.getRefreshToken(), newSysSocialUser.getRefreshTokenExpireIn(), newSysSocialUser.getScope(), newSysSocialUser.getTokenType(), newSysSocialUser.getUid(), newSysSocialUser.getOpenId(), newSysSocialUser.getAccessCode(), newSysSocialUser.getUnionId());
             sysSocialUserService.saveAndFlush(oldSysSocialUser);

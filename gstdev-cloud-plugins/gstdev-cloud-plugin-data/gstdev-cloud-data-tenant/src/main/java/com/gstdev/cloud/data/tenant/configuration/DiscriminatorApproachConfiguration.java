@@ -26,8 +26,8 @@ public class DiscriminatorApproachConfiguration {
 
     @Bean
     public CurrentTenantIdentifierResolver currentTenantIdentifierResolver() {
-        FrameTenantIdentifierResolver herodotusTenantIdentifierResolver = new FrameTenantIdentifierResolver();
+        FrameTenantIdentifierResolver frameTenantIdentifierResolver = new FrameTenantIdentifierResolver();
         log.debug("[GstDev Cloud] |- Bean [Current Tenant Identifier Resolver] Auto Configure.");
-        return herodotusTenantIdentifierResolver;
+        return frameTenantIdentifierResolver;
     }
 }

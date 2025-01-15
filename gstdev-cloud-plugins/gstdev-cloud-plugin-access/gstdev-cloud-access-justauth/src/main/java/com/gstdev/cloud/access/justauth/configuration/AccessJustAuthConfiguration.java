@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * <p>Description: JustAuth配置 </p>
  * <p>
- * 仅在存在herodotus.platform.social.justauth.configs配置的情况下才注入
+ * 仅在存在gstdev.cloud.platform.social.justauth.configs配置的情况下才注入
  *
  * @author : cc
  * @date : 2021/5/22 11:25
@@ -34,7 +34,7 @@ public class AccessJustAuthConfiguration {
 
     @PostConstruct
     public void init() {
-        log.debug("[Herodotus] |- SDK [Access Just Auth] Auto Configure.");
+        log.debug("[GstDev Cloud] |- SDK [Access Just Auth] Auto Configure.");
     }
 
     @Bean
@@ -42,7 +42,7 @@ public class AccessJustAuthConfiguration {
     public JustAuthStateStampManager justAuthStateStampManager(JustAuthProperties justAuthProperties) {
         JustAuthStateStampManager justAuthStateStampManager = new JustAuthStateStampManager();
         justAuthStateStampManager.setJustAuthProperties(justAuthProperties);
-        log.trace("[Herodotus] |- Bean [Just Auth State Redis Cache] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Just Auth State Redis Cache] Auto Configure.");
         return justAuthStateStampManager;
     }
 
@@ -53,7 +53,7 @@ public class AccessJustAuthConfiguration {
         JustAuthProcessor justAuthProcessor = new JustAuthProcessor();
         justAuthProcessor.setJustAuthStateRedisCache(justAuthStateStampManager);
         justAuthProcessor.setJustAuthProperties(justAuthProperties);
-        log.trace("[Herodotus] |- Bean [Just Auth Request Generator] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Just Auth Request Generator] Auto Configure.");
         return justAuthProcessor;
     }
 
@@ -62,7 +62,7 @@ public class AccessJustAuthConfiguration {
     @ConditionalOnMissingBean
     public JustAuthAccessHandler justAuthAccessHandler(JustAuthProcessor justAuthProcessor) {
         JustAuthAccessHandler justAuthAccessHandler = new JustAuthAccessHandler(justAuthProcessor);
-        log.debug("[Herodotus] |- Bean [Just Auth Access Handler] Auto Configure.");
+        log.debug("[GstDev Cloud] |- Bean [Just Auth Access Handler] Auto Configure.");
         return justAuthAccessHandler;
     }
 }

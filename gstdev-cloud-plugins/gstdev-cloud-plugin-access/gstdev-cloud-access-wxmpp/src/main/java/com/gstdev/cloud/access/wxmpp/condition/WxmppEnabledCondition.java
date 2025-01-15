@@ -24,7 +24,7 @@ public class WxmppEnabledCondition implements Condition {
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata metadata) {
         boolean result = PropertyResolver.getBoolean(conditionContext, AccessConstants.ITEM_WXMPP_ENABLED);
-        log.debug("[Herodotus] |- Condition [Wxmpp Enabled] value is [{}]", result);
+        log.debug("[GstDev Cloud] |- Condition [Wxmpp Enabled] value is [{}]", result);
         return result;
     }
 }

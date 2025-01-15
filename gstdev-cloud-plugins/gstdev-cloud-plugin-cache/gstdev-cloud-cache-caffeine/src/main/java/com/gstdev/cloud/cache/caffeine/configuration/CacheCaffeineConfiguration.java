@@ -48,9 +48,9 @@ public class CacheCaffeineConfiguration {
     @Bean
     @ConditionalOnMissingBean(CaffeineCacheManager.class)
     public CaffeineCacheManager caffeineCacheManager(Caffeine<Object, Object> caffeine) {
-        FrameCaffeineCacheManager herodotusCaffeineCacheManager = new FrameCaffeineCacheManager(cacheProperties);
-        herodotusCaffeineCacheManager.setCaffeine(caffeine);
+        FrameCaffeineCacheManager frameCaffeineCacheManager = new FrameCaffeineCacheManager(cacheProperties);
+        frameCaffeineCacheManager.setCaffeine(caffeine);
         log.trace("[GstDev Cloud] |- Bean [Caffeine Cache Manager] Auto Configure.");
-        return herodotusCaffeineCacheManager;
+        return frameCaffeineCacheManager;
     }
 }
