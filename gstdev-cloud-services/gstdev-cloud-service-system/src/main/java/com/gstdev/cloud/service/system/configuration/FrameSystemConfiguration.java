@@ -21,8 +21,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 })
 @ComponentScan(basePackages = {
         "com.gstdev.cloud.service.system.mapper",
-        "com.gstdev.cloud.service.system.other",
-//    "com.gstdev.cloud.service.system.controller",
 })
 @Import({FrameSystemServiceConfiguration.class, FrameSystemControllerConfiguration.class, FrameSystemOtherConfiguration.class})
 public class FrameSystemConfiguration {
