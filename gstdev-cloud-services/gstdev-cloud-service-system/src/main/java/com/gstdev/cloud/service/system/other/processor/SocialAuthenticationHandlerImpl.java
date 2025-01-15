@@ -1,4 +1,4 @@
-package com.gstdev.cloud.service.system.bus.processor;
+package com.gstdev.cloud.service.system.other.processor;
 
 import com.google.common.collect.ImmutableSet;
 import com.gstdev.cloud.access.all.processor.AccessHandlerStrategyFactory;
@@ -27,10 +27,10 @@ import java.util.Set;
 /**
  * <p>Description: 社交登录默认处理器。 </p>
  *
- * @author : cc
- * @date : 2022/1/26 23:44
+ * @author WenchaoChen
+ * @data 2025/1/15 10:00
  */
-public class DefaultSocialAuthenticationHandler extends AbstractSocialAuthenticationHandler {
+public class SocialAuthenticationHandlerImpl extends AbstractSocialAuthenticationHandler {
 
     @Resource
     private SysUserService sysUserService;

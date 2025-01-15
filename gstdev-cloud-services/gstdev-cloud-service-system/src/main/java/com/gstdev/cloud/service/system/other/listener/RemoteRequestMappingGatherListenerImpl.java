@@ -1,29 +1,31 @@
-package com.gstdev.cloud.service.system.bus.listener;
+package com.gstdev.cloud.service.system.other.listener;
 
 import com.gstdev.cloud.base.core.json.jackson2.utils.Jackson2Utils;
 import com.gstdev.cloud.rest.service.scan.RequestMapping;
 import com.gstdev.cloud.service.common.autoconfigure.bus.RemoteRequestMappingGatherEvent;
-import com.gstdev.cloud.service.system.bus.processor.RequestMappingStoreProcessor;
+import com.gstdev.cloud.service.system.other.processor.RequestMappingStoreProcessor;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationListener;
 
 import java.util.List;
 
 /**
- * <p>Description: SecurityMetadata远程变更事件监听 </p>
+ *  <p>Description: SecurityMetadata远程变更事件监听 </p>
+ *
+ * @author WenchaoChen
+ * @data 2025/1/15 10:00
  */
-public class DefaultRemoteRequestMappingGatherListener implements RemoteRequestMappingGatherListener {
+public class RemoteRequestMappingGatherListenerImpl implements RemoteRequestMappingGatherListener {
 
-    private static final Logger log = LoggerFactory.getLogger(DefaultRemoteRequestMappingGatherListener.class);
+    private static final Logger log = LoggerFactory.getLogger(RemoteRequestMappingGatherListenerImpl.class);
 
     private final RequestMappingStoreProcessor requestMappingStoreProcessor;
 
     @Autowired
-    public DefaultRemoteRequestMappingGatherListener(RequestMappingStoreProcessor requestMappingStoreProcessor) {
+    public RemoteRequestMappingGatherListenerImpl(RequestMappingStoreProcessor requestMappingStoreProcessor) {
         this.requestMappingStoreProcessor = requestMappingStoreProcessor;
     }
 

@@ -1,4 +1,4 @@
-package com.gstdev.cloud.service.system.bus.listener;
+package com.gstdev.cloud.service.system.other.listener;
 
 import com.gstdev.cloud.base.core.json.jackson2.utils.Jackson2Utils;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
@@ -9,20 +9,21 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationListener;
 
 /**
- * <p>Description: 远程用户状态变更监听 </p>
+ *  <p>Description: 远程用户状态变更监听 </p>
  *
+ * @author WenchaoChen
+ * @data 2025/1/15 10:00
  */
-public class DefaultRemoteChangeUserStatusListener implements RemoteChangeUserStatusListener {
+public class RemoteChangeUserStatusListenerImpl implements RemoteChangeUserStatusListener {
 
-    private static final Logger log = LoggerFactory.getLogger(DefaultRemoteChangeUserStatusListener.class);
+    private static final Logger log = LoggerFactory.getLogger(RemoteChangeUserStatusListenerImpl.class);
 
     private final SysUserService sysUserService;
 
     @Autowired
-    public DefaultRemoteChangeUserStatusListener(SysUserService sysUserService) {
+    public RemoteChangeUserStatusListenerImpl(SysUserService sysUserService) {
         this.sysUserService = sysUserService;
     }
 

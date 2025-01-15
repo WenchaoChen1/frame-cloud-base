@@ -1,4 +1,4 @@
-package com.gstdev.cloud.service.system.bus.processor;
+package com.gstdev.cloud.service.system.other.processor;
 
 
 import com.google.common.collect.ImmutableList;
@@ -19,17 +19,19 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * <p>Description: SecurityMetadata数据处理器 </p>
+ *
+ * @author WenchaoChen
+ * @data 2025/1/15 10:00
  */
-public class DefaultSecurityMetadataDistributeProcessor implements SecurityMetadataDistributeProcessor {
+public class SecurityMetadataDistributeProcessorImpl implements SecurityMetadataDistributeProcessor {
 
-    private static final Logger log = LoggerFactory.getLogger(DefaultSecurityMetadataDistributeProcessor.class);
+    private static final Logger log = LoggerFactory.getLogger(SecurityMetadataDistributeProcessorImpl.class);
 
     private final Converter<List<SysInterface>, List<SysAttribute>> toSysAttributes= new SysInterfacesToSysAttributesConverter();
     private final Converter<SysAttribute, SecurityAttribute> toSecurityAttribute= new SysAttributeToSecurityAttributeConverter();
@@ -65,6 +67,7 @@ public class DefaultSecurityMetadataDistributeProcessor implements SecurityMetad
     /**
      * 将SysAuthority表中存在，但是SysSecurityAttribute中不存在的数据同步至SysSecurityAttribute，保证两侧数据一致
      */
+    @Override
     @Transactional(rollbackFor = TransactionalRollbackException.class)
     public void postRequestMappings(List<RequestMapping> requestMappings) {
         List<SysInterface> storedInterfaces = sysInterfaceService.storeRequestMappings(requestMappings);
@@ -103,11 +106,13 @@ public class DefaultSecurityMetadataDistributeProcessor implements SecurityMetad
         });
     }
 
+    @Override
     public void distributeChangedSecurityAttribute(SysAttribute sysAttribute) {
         SecurityAttribute securityAttribute = toSecurityAttribute.convert(sysAttribute);
         postProcess(securityAttribute.getServiceId(), ImmutableList.of(securityAttribute));
     }
 
+    @Override
     public void distributeChangedSecurityAttribute(List<SysAttribute> sysAttributeList) {
         sysAttributeList.stream().findAny().ifPresent(item -> {
             String serviceId = item.getServiceId();
@@ -119,14 +124,5 @@ public class DefaultSecurityMetadataDistributeProcessor implements SecurityMetad
             }
         });
     }
-//    public void distributeChangedSecurityAttribute(SysPermission sysPermission) {
-//        SysPermission byId = sysPermissionService.findById(sysPermission.getPermissionId());
-//        if (CollectionUtils.isNotEmpty(byId.getSysAttributes())) {
-//            log.debug("[Gstdev Cloud] |-  Distribute changed security attribute, start to process!");
-//            List<SecurityAttribute> securityAttributes = byId.getSysAttributes().stream().map(toSecurityAttribute::convert).toList();
-//            Map<String, List<SecurityAttribute>> collect = securityAttributes.stream().collect(Collectors.groupingBy(SecurityAttribute::getServiceId));
-//            collect.forEach(this::postProcess);
-//        }
-//    }
 
 }
