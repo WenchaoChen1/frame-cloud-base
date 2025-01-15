@@ -1,4 +1,4 @@
-package com.gstdev.cloud.service.identity.autoconfigure.status;
+package com.gstdev.cloud.service.identity.compliance.event;
 
 
 import com.gstdev.cloud.base.core.context.ServiceContextHolder;
@@ -13,7 +13,7 @@ import com.gstdev.cloud.service.common.autoconfigure.bus.RemoteChangeUserStatusE
  * @author : cc
  * @date : 2022/7/10 17:25
  */
-public class DefaultAccountStatusEventManager implements AccountStatusEventManager {
+public class AccountStatusEventManagerImpl implements AccountStatusEventManager {
     @Override
     public String getDestinationServiceName() {
         return ServiceContextHolder.getInstance().getSystemServiceName();

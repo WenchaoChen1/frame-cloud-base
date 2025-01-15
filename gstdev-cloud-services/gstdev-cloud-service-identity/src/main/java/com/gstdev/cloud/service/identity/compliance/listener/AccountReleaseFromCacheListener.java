@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.identity.compliance.listener;
 
 import com.gstdev.cloud.message.core.logic.event.AccountReleaseFromCacheEvent;
-import com.gstdev.cloud.service.identity.compliance.OAuth2AccountStatusManager;
+import com.gstdev.cloud.service.identity.compliance.processor.OAuth2AccountStatusManager;
 import org.springframework.context.ApplicationListener;
 
 /**

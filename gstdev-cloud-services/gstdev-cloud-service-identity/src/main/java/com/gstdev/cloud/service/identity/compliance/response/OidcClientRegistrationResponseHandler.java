@@ -1,4 +1,4 @@
-package com.gstdev.cloud.service.identity.response;
+package com.gstdev.cloud.service.identity.compliance.response;
 
 import com.gstdev.cloud.service.identity.service.OAuth2DeviceService;
 import jakarta.servlet.ServletException;

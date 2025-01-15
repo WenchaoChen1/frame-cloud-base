@@ -2,7 +2,7 @@ package com.gstdev.cloud.service.identity.compliance.listener;
 
 import com.gstdev.cloud.base.definition.constants.SymbolConstants;
 import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
-import com.gstdev.cloud.service.identity.compliance.OAuth2AccountStatusManager;
+import com.gstdev.cloud.service.identity.compliance.processor.OAuth2AccountStatusManager;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

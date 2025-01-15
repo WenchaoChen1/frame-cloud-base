@@ -28,7 +28,7 @@ import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2ResourceServerCo
 import com.gstdev.cloud.oauth2.resource.server.customizer.OAuth2SessionManagementConfigurerCustomer;
 import com.gstdev.cloud.oauth2.resource.server.properties.OAuth2AuthorizationProperties;
 import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
-import com.gstdev.cloud.service.identity.response.OAuth2DeviceVerificationResponseHandler;
+import com.gstdev.cloud.service.identity.compliance.response.OAuth2DeviceVerificationResponseHandler;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;

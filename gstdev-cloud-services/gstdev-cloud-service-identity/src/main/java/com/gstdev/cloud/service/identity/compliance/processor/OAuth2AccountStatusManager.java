@@ -1,4 +1,4 @@
-package com.gstdev.cloud.service.identity.compliance;
+package com.gstdev.cloud.service.identity.compliance.processor;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.message.core.logic.domain.UserStatus;

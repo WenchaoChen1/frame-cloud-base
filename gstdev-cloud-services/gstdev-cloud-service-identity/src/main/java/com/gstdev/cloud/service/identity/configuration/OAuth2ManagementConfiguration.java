@@ -4,20 +4,17 @@ import com.gstdev.cloud.oauth2.authorization.server.configuration.OAuth2Authenti
 import com.gstdev.cloud.oauth2.authorization.server.stamp.SignInFailureLimitedStampManager;
 import com.gstdev.cloud.oauth2.data.jpa.configuration.OAuth2DataJpaConfiguration;
 import com.gstdev.cloud.service.identity.compliance.listener.AuthenticationSuccessListener;
-import com.gstdev.cloud.service.identity.response.OAuth2DeviceVerificationResponseHandler;
-import com.gstdev.cloud.service.identity.response.OidcClientRegistrationResponseHandler;
+import com.gstdev.cloud.service.identity.compliance.response.OAuth2DeviceVerificationResponseHandler;
+import com.gstdev.cloud.service.identity.compliance.response.OidcClientRegistrationResponseHandler;
 import com.gstdev.cloud.service.identity.service.OAuth2ComplianceService;
 import com.gstdev.cloud.service.identity.service.OAuth2DeviceService;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
  * <p>Description: OAuth2 Manager 模块配置 </p>
@@ -29,18 +26,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  */
 @Configuration(proxyBeanMethods = false)
 @Import({OAuth2DataJpaConfiguration.class, OAuth2AuthenticationConfiguration.class, OAuth2ComplianceConfiguration.class})
-@EntityScan(basePackages = {
-        "com.gstdev.cloud.service.identity.domain.entity"
-})
-@EnableJpaRepositories(basePackages = {
-        "com.gstdev.cloud.service.identity.repository",
-})
-@ComponentScan(basePackages = {
-        "com.gstdev.cloud.service.identity.mapper",
-        "com.gstdev.cloud.service.identity.service",
-        "com.gstdev.cloud.service.identity.controller",
-        "com.gstdev.cloud.service.identity.processor",
-})
+
 public class OAuth2ManagementConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2ManagementConfiguration.class);

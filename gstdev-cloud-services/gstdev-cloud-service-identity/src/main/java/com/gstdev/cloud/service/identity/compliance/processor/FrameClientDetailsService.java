@@ -1,4 +1,4 @@
-package com.gstdev.cloud.service.identity.processor;
+package com.gstdev.cloud.service.identity.compliance.processor;
 
 import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import com.gstdev.cloud.oauth2.core.definition.service.EnhanceClientDetailsService;
