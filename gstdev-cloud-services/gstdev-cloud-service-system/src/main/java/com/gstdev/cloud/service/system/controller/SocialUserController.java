@@ -5,7 +5,7 @@ package com.gstdev.cloud.service.system.controller;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.base.definition.domain.oauth2.AccessPrincipal;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
-import com.gstdev.cloud.oauth2.core.definition.handler.AbstractSocialAuthenticationHandler;
+import com.gstdev.cloud.oauth2.core.definition.handler.SocialAuthenticationHandler;
 import com.gstdev.cloud.rest.core.controller.ResultController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -29,10 +29,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "社交用户登录接口")
 public class SocialUserController implements ResultController {
 
-    private final AbstractSocialAuthenticationHandler socialAuthenticationHandler;
+    private final SocialAuthenticationHandler socialAuthenticationHandler;
 
     @Autowired
-    public SocialUserController(AbstractSocialAuthenticationHandler socialAuthenticationHandler) {
+    public SocialUserController(SocialAuthenticationHandler socialAuthenticationHandler) {
         this.socialAuthenticationHandler = socialAuthenticationHandler;
     }
 

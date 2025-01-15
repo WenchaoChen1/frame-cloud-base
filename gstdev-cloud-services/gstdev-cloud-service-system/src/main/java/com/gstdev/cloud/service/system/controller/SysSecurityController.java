@@ -3,7 +3,7 @@ package com.gstdev.cloud.service.system.controller;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.base.definition.domain.oauth2.AccessPrincipal;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
-import com.gstdev.cloud.oauth2.core.definition.handler.AbstractSocialAuthenticationHandler;
+import com.gstdev.cloud.oauth2.core.definition.handler.SocialAuthenticationHandler;
 import com.gstdev.cloud.service.common.autoconfigure.currentLoginInformation.CurrentLoginInformation;
 import com.gstdev.cloud.service.system.service.SysSecurityService;
 import com.gstdev.cloud.service.system.service.SysUserService;
@@ -31,7 +31,7 @@ public class SysSecurityController {
     @Lazy
     private SysSecurityService sysSecurityService;
     @Resource
-    private AbstractSocialAuthenticationHandler socialAuthenticationHandler;
+    private SocialAuthenticationHandler socialAuthenticationHandler;
 
     @Tag(name = "Login")
     @Operation(summary = "get-account-current-login-information")
