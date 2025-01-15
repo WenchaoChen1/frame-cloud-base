@@ -1,10 +1,8 @@
 package com.gstdev.cloud.service.system.configuration;
 
+import com.gstdev.cloud.oauth2.core.definition.handler.SocialAuthenticationHandler;
 import com.gstdev.cloud.service.system.bus.listener.*;
-import com.gstdev.cloud.service.system.bus.processor.DefaultRequestMappingStoreProcessor;
-import com.gstdev.cloud.service.system.bus.processor.DefaultSecurityMetadataDistributeProcessor;
-import com.gstdev.cloud.service.system.bus.processor.RequestMappingStoreProcessor;
-import com.gstdev.cloud.service.system.bus.processor.SecurityMetadataDistributeProcessor;
+import com.gstdev.cloud.service.system.bus.processor.*;
 import com.gstdev.cloud.service.system.service.SysUserService;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
@@ -36,7 +34,13 @@ public class FrameSystemBusConfiguration {
         log.debug("[GstDev Cloud] |- Frame Configure Request Mapping Store Processor");
         return new DefaultRequestMappingStoreProcessor(securityMetadataDistributeProcessor);
     }
-
+    @Bean
+    @ConditionalOnMissingBean
+    public SocialAuthenticationHandler defaultSocialAuthenticationHandler() {
+        DefaultSocialAuthenticationHandler defaultSocialAuthenticationHandler = new DefaultSocialAuthenticationHandler();
+        log.info("[GstDev Cloud] |- Bean [Default Social Authentication Handler] Auto Configure.");
+        return defaultSocialAuthenticationHandler;
+    }
     @Bean
     @ConditionalOnMissingBean
     public LocalChangeUserStatusListener localChangeUserStatusListener(SysUserService sysUserService) {

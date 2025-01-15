@@ -32,5 +32,9 @@
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-service-common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-access-all</artifactId>
+        </dependency>
     </dependencies>
 </project>
