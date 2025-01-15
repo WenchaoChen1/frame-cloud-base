@@ -2,6 +2,8 @@ package com.gstdev.cloud.base.definition.domain.oauth2;
 
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * <p>Description: 外部程序接入必要参数 </p>
@@ -9,6 +11,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * @author : cc
  * @date : 2022/1/25 16:53
  */
+@Getter
+@Setter
 public class AccessPrincipal {
 
     /* ---------- 共性参数 ---------- */
@@ -63,126 +67,6 @@ public class AccessPrincipal {
 
     @Schema(title = "手机号码", description = "手机短信登录唯一标识")
     private String mobile;
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getAppId() {
-        return appId;
-    }
-
-    public void setAppId(String appId) {
-        this.appId = appId;
-    }
-
-    public String getEncryptedData() {
-        return encryptedData;
-    }
-
-    public void setEncryptedData(String encryptedData) {
-        this.encryptedData = encryptedData;
-    }
-
-    public String getIv() {
-        return iv;
-    }
-
-    public void setIv(String iv) {
-        this.iv = iv;
-    }
-
-    public String getOpenId() {
-        return openId;
-    }
-
-    public void setOpenId(String openId) {
-        this.openId = openId;
-    }
-
-    public String getSessionKey() {
-        return sessionKey;
-    }
-
-    public void setSessionKey(String sessionKey) {
-        this.sessionKey = sessionKey;
-    }
-
-    public String getUnionId() {
-        return unionId;
-    }
-
-    public void setUnionId(String unionId) {
-        this.unionId = unionId;
-    }
-
-    public String getRawData() {
-        return rawData;
-    }
-
-    public void setRawData(String rawData) {
-        this.rawData = rawData;
-    }
-
-    public String getSignature() {
-        return signature;
-    }
-
-    public void setSignature(String signature) {
-        this.signature = signature;
-    }
-
-    public String getAuth_code() {
-        return auth_code;
-    }
-
-    public void setAuth_code(String auth_code) {
-        this.auth_code = auth_code;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getAuthorization_code() {
-        return authorization_code;
-    }
-
-    public void setAuthorization_code(String authorization_code) {
-        this.authorization_code = authorization_code;
-    }
-
-    public String getOauth_token() {
-        return oauth_token;
-    }
-
-    public void setOauth_token(String oauth_token) {
-        this.oauth_token = oauth_token;
-    }
-
-    public String getOauth_verifier() {
-        return oauth_verifier;
-    }
-
-    public void setOauth_verifier(String oauth_verifier) {
-        this.oauth_verifier = oauth_verifier;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
 
     @Override
     public String toString() {

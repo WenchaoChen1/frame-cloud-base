@@ -17,15 +17,15 @@ import java.time.Duration;
  */
 public abstract class AbstractBehaviorRenderer<K, V> extends AbstractRenderer<K, V> {
 
-    public AbstractBehaviorRenderer(String cacheName) {
+    protected AbstractBehaviorRenderer(String cacheName) {
         super(cacheName);
     }
 
-    public AbstractBehaviorRenderer(String cacheName, CacheType cacheType) {
+    protected AbstractBehaviorRenderer(String cacheName, CacheType cacheType) {
         super(cacheName, cacheType);
     }
 
-    public AbstractBehaviorRenderer(String cacheName, CacheType cacheType, Duration expire) {
+    protected AbstractBehaviorRenderer(String cacheName, CacheType cacheType, Duration expire) {
         super(cacheName, cacheType, expire);
     }
 

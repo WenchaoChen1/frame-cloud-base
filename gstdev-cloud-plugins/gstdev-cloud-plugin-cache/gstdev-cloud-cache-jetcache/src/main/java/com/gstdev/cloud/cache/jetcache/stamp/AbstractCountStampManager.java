@@ -25,15 +25,15 @@ public abstract class AbstractCountStampManager extends AbstractStampManager<Str
      */
     private int maxTimes = 1;
 
-    public AbstractCountStampManager(String cacheName) {
+    protected AbstractCountStampManager(String cacheName) {
         super(cacheName);
     }
 
-    public AbstractCountStampManager(String cacheName, CacheType cacheType) {
+    protected AbstractCountStampManager(String cacheName, CacheType cacheType) {
         super(cacheName, cacheType);
     }
 
-    public AbstractCountStampManager(String cacheName, CacheType cacheType, Duration expire) {
+    protected AbstractCountStampManager(String cacheName, CacheType cacheType, Duration expire) {
         super(cacheName, cacheType, expire);
     }
 

@@ -7,6 +7,8 @@ import com.gstdev.cloud.base.core.enums.Target;
 import com.gstdev.cloud.base.core.utils.WellFormedUtils;
 import com.gstdev.cloud.base.definition.constants.DefaultConstants;
 import com.gstdev.cloud.base.definition.constants.SymbolConstants;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationContext;
@@ -19,6 +21,8 @@ import org.springframework.context.ApplicationEvent;
  * @date : 2022/1/14 17:28
  */
 
+@Getter
+@Setter
 public class ServiceContextHolder {
 
     private static volatile ServiceContextHolder instance;
@@ -63,14 +67,12 @@ public class ServiceContextHolder {
 
 
     /**
-     * 认证中心服务名称
+     * identity中心服务名称
      */
-//    private String uaaServiceName;
     private String identityServiceName;
     /**
-     * 用户中心服务名称
+     * system中心服务名称
      */
-//    private String upmsServiceName;
     private String systemServiceName;
     /**
      * 消息服务名称
@@ -206,46 +208,6 @@ public class ServiceContextHolder {
         return instance;
     }
 
-    public Architecture getArchitecture() {
-        return architecture;
-    }
-
-    public void setArchitecture(Architecture architecture) {
-        this.architecture = architecture;
-    }
-
-    public Target getDataAccessStrategy() {
-        return dataAccessStrategy;
-    }
-
-    public void setDataAccessStrategy(Target dataAccessStrategy) {
-        this.dataAccessStrategy = dataAccessStrategy;
-    }
-
-    public Protocol getProtocol() {
-        return protocol;
-    }
-
-    public void setProtocol(Protocol protocol) {
-        this.protocol = protocol;
-    }
-
-    public String getPort() {
-        return port;
-    }
-
-    public void setPort(String port) {
-        this.port = port;
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
-
     public String getAddress() {
         if (isDistributedArchitecture()) {
             this.address = this.getGatewayServiceUri() + SymbolConstants.FORWARD_SLASH + this.getApplicationName();
@@ -257,310 +219,14 @@ public class ServiceContextHolder {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getUrl() {
         if (StringUtils.isBlank(this.url)) {
-            String address = this.getAddress();
-            if (StringUtils.isNotBlank(address)) {
-                return WellFormedUtils.addressToUri(address, getProtocol(), false);
+            String address1 = this.getAddress();
+            if (StringUtils.isNotBlank(address1)) {
+                return WellFormedUtils.addressToUri(address1, getProtocol(), false);
             }
         }
         return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getApplicationName() {
-        return applicationName;
-    }
-
-    public void setApplicationName(String applicationName) {
-        this.applicationName = applicationName;
-    }
-
-    public ApplicationContext getApplicationContext() {
-        return applicationContext;
-    }
-
-    public void setApplicationContext(ApplicationContext applicationContext) {
-        this.applicationContext = applicationContext;
-    }
-
-    public String getIdentityServiceName() {
-        return identityServiceName;
-    }
-
-    public void setIdentityServiceName(String identityServiceName) {
-        this.identityServiceName = identityServiceName;
-    }
-
-    public String getSystemServiceName() {
-        return systemServiceName;
-    }
-
-    public void setSystemServiceName(String systemServiceName) {
-        this.systemServiceName = systemServiceName;
-    }
-
-//    public String getUaaServiceName() {
-//        return uaaServiceName;
-//    }
-//
-//    public void setUaaServiceName(String uaaServiceName) {
-//        this.uaaServiceName = uaaServiceName;
-//    }
-//
-//    public String getUpmsServiceName() {
-//        return upmsServiceName;
-//    }
-//
-//    public void setUpmsServiceName(String upmsServiceName) {
-//        this.upmsServiceName = upmsServiceName;
-//    }
-
-    public String getMessageServiceName() {
-        return messageServiceName;
-    }
-
-    public void setMessageServiceName(String messageServiceName) {
-        this.messageServiceName = messageServiceName;
-    }
-
-    public String getOssServiceName() {
-        return ossServiceName;
-    }
-
-    public void setOssServiceName(String ossServiceName) {
-        this.ossServiceName = ossServiceName;
-    }
-
-    public String getGatewayServiceUri() {
-        return gatewayServiceUri;
-    }
-
-    public void setGatewayServiceUri(String gatewayServiceUri) {
-        this.gatewayServiceUri = gatewayServiceUri;
-    }
-
-    public String getIdentityServiceUri() {
-        return identityServiceUri;
-    }
-
-    public void setIdentityServiceUri(String identityServiceUri) {
-        this.identityServiceUri = identityServiceUri;
-    }
-
-    public String getSystemServiceUri() {
-        return systemServiceUri;
-    }
-
-    public void setSystemServiceUri(String systemServiceUri) {
-        this.systemServiceUri = systemServiceUri;
-    }
-
-    //    public String getUaaServiceUri() {
-//        return uaaServiceUri;
-//    }
-//
-//    public void setUaaServiceUri(String uaaServiceUri) {
-//        this.uaaServiceUri = uaaServiceUri;
-//    }
-
-//    public String getUpmsServiceUri() {
-//        return upmsServiceUri;
-//    }
-//
-//    public void setUpmsServiceUri(String upmsServiceUri) {
-//        this.upmsServiceUri = upmsServiceUri;
-//    }
-
-    public String getMessageServiceUri() {
-        return messageServiceUri;
-    }
-
-    public void setMessageServiceUri(String messageServiceUri) {
-        this.messageServiceUri = messageServiceUri;
-    }
-
-    public String getOssServiceUri() {
-        return ossServiceUri;
-    }
-
-    public void setOssServiceUri(String ossServiceUri) {
-        this.ossServiceUri = ossServiceUri;
-    }
-
-    public String getAuthorizationUri() {
-        return authorizationUri;
-    }
-
-    public void setAuthorizationUri(String authorizationUri) {
-        this.authorizationUri = authorizationUri;
-    }
-
-    public String getAuthorizationEndpoint() {
-        return authorizationEndpoint;
-    }
-
-    public void setAuthorizationEndpoint(String authorizationEndpoint) {
-        this.authorizationEndpoint = authorizationEndpoint;
-    }
-
-    public String getAccessTokenUri() {
-        return accessTokenUri;
-    }
-
-    public void setAccessTokenUri(String accessTokenUri) {
-        this.accessTokenUri = accessTokenUri;
-    }
-
-    public String getAccessTokenEndpoint() {
-        return accessTokenEndpoint;
-    }
-
-    public void setAccessTokenEndpoint(String accessTokenEndpoint) {
-        this.accessTokenEndpoint = accessTokenEndpoint;
-    }
-
-    public String getJwkSetUri() {
-        return jwkSetUri;
-    }
-
-    public void setJwkSetUri(String jwkSetUri) {
-        this.jwkSetUri = jwkSetUri;
-    }
-
-    public String getJwkSetEndpoint() {
-        return jwkSetEndpoint;
-    }
-
-    public void setJwkSetEndpoint(String jwkSetEndpoint) {
-        this.jwkSetEndpoint = jwkSetEndpoint;
-    }
-
-    public String getTokenRevocationUri() {
-        return tokenRevocationUri;
-    }
-
-    public void setTokenRevocationUri(String tokenRevocationUri) {
-        this.tokenRevocationUri = tokenRevocationUri;
-    }
-
-    public String getTokenRevocationEndpoint() {
-        return tokenRevocationEndpoint;
-    }
-
-    public void setTokenRevocationEndpoint(String tokenRevocationEndpoint) {
-        this.tokenRevocationEndpoint = tokenRevocationEndpoint;
-    }
-
-    public String getTokenIntrospectionUri() {
-        return tokenIntrospectionUri;
-    }
-
-    public void setTokenIntrospectionUri(String tokenIntrospectionUri) {
-        this.tokenIntrospectionUri = tokenIntrospectionUri;
-    }
-
-    public String getTokenIntrospectionEndpoint() {
-        return tokenIntrospectionEndpoint;
-    }
-
-    public void setTokenIntrospectionEndpoint(String tokenIntrospectionEndpoint) {
-        this.tokenIntrospectionEndpoint = tokenIntrospectionEndpoint;
-    }
-
-    public String getDeviceAuthorizationUri() {
-        return deviceAuthorizationUri;
-    }
-
-    public void setDeviceAuthorizationUri(String deviceAuthorizationUri) {
-        this.deviceAuthorizationUri = deviceAuthorizationUri;
-    }
-
-    public String getDeviceAuthorizationEndpoint() {
-        return deviceAuthorizationEndpoint;
-    }
-
-    public void setDeviceAuthorizationEndpoint(String deviceAuthorizationEndpoint) {
-        this.deviceAuthorizationEndpoint = deviceAuthorizationEndpoint;
-    }
-
-    public String getDeviceVerificationUri() {
-        return deviceVerificationUri;
-    }
-
-    public void setDeviceVerificationUri(String deviceVerificationUri) {
-        this.deviceVerificationUri = deviceVerificationUri;
-    }
-
-    public String getDeviceVerificationEndpoint() {
-        return deviceVerificationEndpoint;
-    }
-
-    public void setDeviceVerificationEndpoint(String deviceVerificationEndpoint) {
-        this.deviceVerificationEndpoint = deviceVerificationEndpoint;
-    }
-
-    public String getOidcClientRegistrationUri() {
-        return oidcClientRegistrationUri;
-    }
-
-    public void setOidcClientRegistrationUri(String oidcClientRegistrationUri) {
-        this.oidcClientRegistrationUri = oidcClientRegistrationUri;
-    }
-
-    public String getOidcClientRegistrationEndpoint() {
-        return oidcClientRegistrationEndpoint;
-    }
-
-    public void setOidcClientRegistrationEndpoint(String oidcClientRegistrationEndpoint) {
-        this.oidcClientRegistrationEndpoint = oidcClientRegistrationEndpoint;
-    }
-
-    public String getOidcLogoutUri() {
-        return oidcLogoutUri;
-    }
-
-    public void setOidcLogoutUri(String oidcLogoutUri) {
-        this.oidcLogoutUri = oidcLogoutUri;
-    }
-
-    public String getOidcLogoutEndpoint() {
-        return oidcLogoutEndpoint;
-    }
-
-    public void setOidcLogoutEndpoint(String oidcLogoutEndpoint) {
-        this.oidcLogoutEndpoint = oidcLogoutEndpoint;
-    }
-
-    public String getOidcUserInfoUri() {
-        return oidcUserInfoUri;
-    }
-
-    public void setOidcUserInfoUri(String oidcUserInfoUri) {
-        this.oidcUserInfoUri = oidcUserInfoUri;
-    }
-
-    public String getOidcUserInfoEndpoint() {
-        return oidcUserInfoEndpoint;
-    }
-
-    public void setOidcUserInfoEndpoint(String oidcUserInfoEndpoint) {
-        this.oidcUserInfoEndpoint = oidcUserInfoEndpoint;
-    }
-
-    public String getIssuerUri() {
-        return issuerUri;
-    }
-
-    public void setIssuerUri(String issuerUri) {
-        this.issuerUri = issuerUri;
     }
 
     public boolean isDistributedArchitecture() {

@@ -4,6 +4,9 @@ import com.gstdev.cloud.base.definition.domain.base.Entity;
 
 import java.util.List;
 
+/**
+ * @author WenchaoChen
+ */
 public interface BaseTreeDtoInterface<D, ID> extends Entity {
 
 

@@ -11,19 +11,19 @@ import com.gstdev.cloud.base.definition.domain.Result;
  */
 public abstract class AbstractRuntimeException extends RuntimeException implements FrameException {
 
-    public AbstractRuntimeException() {
+    protected AbstractRuntimeException() {
         super();
     }
 
-    public AbstractRuntimeException(String message) {
+    protected AbstractRuntimeException(String message) {
         super(message);
     }
 
-    public AbstractRuntimeException(String message, Throwable cause) {
+    protected AbstractRuntimeException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public AbstractRuntimeException(Throwable cause) {
+    protected AbstractRuntimeException(Throwable cause) {
         super(cause);
     }
 

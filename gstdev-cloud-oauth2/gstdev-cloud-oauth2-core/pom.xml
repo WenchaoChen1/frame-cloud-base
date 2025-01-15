@@ -26,20 +26,15 @@
         </dependency>
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-access-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-rest-core</artifactId>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>com.gstdev.cloud</groupId>-->
-        <!--            <artifactId>gstdev-cloud-base-core</artifactId>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>com.gstdev.cloud</groupId>-->
-        <!--            <artifactId>gstdev-cloud-captcha-core</artifactId>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>com.gstdev.cloud</groupId>-->
-        <!--            <artifactId>gstdev-cloud-cache-jetcache</artifactId>-->
-        <!--        </dependency>-->
+
+
         <!-- TODO-->
         <dependency>
             <groupId>org.springframework.security</groupId>

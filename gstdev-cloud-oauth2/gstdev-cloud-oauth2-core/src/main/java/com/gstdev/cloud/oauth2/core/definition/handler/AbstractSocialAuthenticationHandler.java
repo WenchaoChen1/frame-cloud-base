@@ -8,6 +8,7 @@
 // ====================================================
 package com.gstdev.cloud.oauth2.core.definition.handler;
 
+import com.gstdev.cloud.access.core.exception.AccessIdentityVerificationFailedException;
 import com.gstdev.cloud.base.definition.domain.oauth2.AccessPrincipal;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.oauth2.core.definition.domain.SocialUserDetails;
@@ -32,10 +33,9 @@ public abstract class AbstractSocialAuthenticationHandler implements SocialAuthe
      * @param source          社交登录提供者分类
      * @param accessPrincipal 社交登录所需要的参数信息
      * @return 认证成功后返回的信息 {@link SocialUserDetails}
-//     * @throws AccessIdentityVerificationFailedException 社交登录认证出错
+     * @throws AccessIdentityVerificationFailedException 社交登录认证出错
      */
-//    public abstract SocialUserDetails identity(String source, AccessPrincipal accessPrincipal) throws AccessIdentityVerificationFailedException;
-    public abstract SocialUserDetails identity(String source, AccessPrincipal accessPrincipal) ;
+    public abstract SocialUserDetails identity(String source, AccessPrincipal accessPrincipal) throws AccessIdentityVerificationFailedException;
 
     /**
      * 根据社交登录返回的用户信息，查询系统中是否有响应的信息

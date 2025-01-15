@@ -35,7 +35,7 @@ public abstract class AbstractAuthenticationConverter implements AuthenticationC
 
     private final HttpCryptoProcessor httpCryptoProcessor;
 
-    public AbstractAuthenticationConverter(HttpCryptoProcessor httpCryptoProcessor) {
+    protected AbstractAuthenticationConverter(HttpCryptoProcessor httpCryptoProcessor) {
         this.httpCryptoProcessor = httpCryptoProcessor;
     }
 
