@@ -31,9 +31,8 @@ public class OAuth2ScopeService extends BaseServiceImpl<OAuth2Scope, String, OAu
     @Resource
     private OAuth2ScopeMapper scopeMapper;
 
-    public OAuth2ScopeService(OAuth2ScopeRepository oauthScopesRepository, OAuth2PermissionRepository oAuth2PermissionRepository) {
+    public OAuth2ScopeService(OAuth2ScopeRepository oauthScopesRepository) {
         super(oauthScopesRepository);
-        this.oAuth2PermissionRepository = oAuth2PermissionRepository;
     }
 
 

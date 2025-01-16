@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
  * @author : cc
  * @date : 2022/3/1 18:05
  */
-@Repository
+//@Repository
 public interface OAuth2ApplicationRepository extends BaseRepository<OAuth2Application, String> {
 
     /**

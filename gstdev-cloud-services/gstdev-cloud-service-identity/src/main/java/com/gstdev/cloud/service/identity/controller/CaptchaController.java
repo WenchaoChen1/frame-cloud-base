@@ -15,10 +15,10 @@ import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import org.apache.commons.lang3.ObjectUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,13 +40,13 @@ import java.util.Map;
 //})
 public class CaptchaController {
 
+    @Resource
+    private CaptchaRendererFactory captchaRendererFactory;
 
-    private final CaptchaRendererFactory captchaRendererFactory;
-
-    @Autowired
-    public CaptchaController(CaptchaRendererFactory captchaRendererFactory) {
-        this.captchaRendererFactory = captchaRendererFactory;
-    }
+//    @Autowired
+//    public CaptchaController(CaptchaRendererFactory captchaRendererFactory) {
+//        this.captchaRendererFactory = captchaRendererFactory;
+//    }
 
     @AccessLimited
     @Operation(summary = "获取验证码", description = "通过传递身份信息（类似于Session标识）",

@@ -6,7 +6,6 @@ import com.gstdev.cloud.oauth2.data.jpa.generator.FrameAuthorizationConsentId;
 import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
 import org.springframework.data.jpa.repository.QueryHints;
-import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
@@ -16,7 +15,7 @@ import java.util.Optional;
  * @author : cc
  * @date : 2022/2/25 20:54
  */
-@Repository
+//@Repository
 public interface FrameAuthorizationConsentRepository extends BaseRepository<FrameAuthorizationConsent, FrameAuthorizationConsentId> {
 
     /**

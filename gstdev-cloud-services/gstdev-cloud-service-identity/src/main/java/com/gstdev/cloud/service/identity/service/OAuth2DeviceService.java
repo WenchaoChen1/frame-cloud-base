@@ -16,7 +16,6 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.oidc.OidcClientRegistration;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
@@ -28,7 +27,7 @@ import java.util.Set;
  * @author : cc
  * @date : 2023/5/15 16:36
  */
-@Service
+//@Service
 public class OAuth2DeviceService extends BaseServiceImpl<OAuth2Device, String, OAuth2DeviceRepository> implements BaseService<OAuth2Device, String> {
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2ApplicationService.class);

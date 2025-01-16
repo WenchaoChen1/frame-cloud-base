@@ -44,9 +44,9 @@ import java.util.stream.Collectors;
 @Controller
 public class ConsentController {
 
-  private final OAuth2ApplicationService applicationService;
-  private final OAuth2AuthorizationConsentService authorizationConsentService;
-  private final OAuth2ScopeService scopeService;
+  private OAuth2ApplicationService applicationService;
+  private OAuth2AuthorizationConsentService authorizationConsentService;
+  private OAuth2ScopeService scopeService;
 
   private Map<String, OAuth2Scope> dictionaries;
 

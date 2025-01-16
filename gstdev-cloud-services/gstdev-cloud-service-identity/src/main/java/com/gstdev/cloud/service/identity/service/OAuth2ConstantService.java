@@ -4,7 +4,6 @@ import com.gstdev.cloud.base.core.enums.Database;
 import com.gstdev.cloud.base.core.enums.ServerDevice;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.oauth2.core.enums.*;
-import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.Map;
  * @author : cc
  * @date : 2022/3/17 14:36
  */
-@Service
+//@Service
 public class OAuth2ConstantService {
     private static final List<Map<String, Object>> SYS_DATA_ITEM_STATUS = DataItemStatus.getPreprocessedJsonStructure();
     private static final List<Map<String, Object>> APPLICATION_TYPE_ENUM = ApplicationType.getPreprocessedJsonStructure();

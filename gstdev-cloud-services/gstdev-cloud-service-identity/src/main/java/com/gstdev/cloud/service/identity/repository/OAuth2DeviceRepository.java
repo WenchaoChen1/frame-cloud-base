@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
  * @author : cc
  * @date : 2023/5/15 16:14
  */
-@Repository
+//@Repository
 public interface OAuth2DeviceRepository extends BaseRepository<OAuth2Device, String> {
 
     /**

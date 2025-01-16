@@ -3,8 +3,8 @@ package com.gstdev.cloud.service.identity.controller;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.service.identity.service.OAuth2ConstantService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.annotation.Resource;
 import org.apache.commons.collections4.MapUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,12 +25,8 @@ import java.util.Map;
 //})
 public class OAuth2ConstantController {
 
-    private final OAuth2ConstantService constantService;
-
-    @Autowired
-    public OAuth2ConstantController(OAuth2ConstantService constantService) {
-        this.constantService = constantService;
-    }
+    @Resource
+    private OAuth2ConstantService constantService;
 
     @Operation(summary = "获取服务常量", description = "获取服务涉及的常量以及信息")
     @GetMapping(value = "/enums")

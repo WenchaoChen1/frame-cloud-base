@@ -19,7 +19,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +29,7 @@ import java.util.List;
  * @author : cc
  * @date : 2022/7/7 20:37
  */
-@Service
+//@Service
 public class OAuth2ComplianceService extends BaseServiceImpl<OAuth2Compliance, String, OAuth2ComplianceRepository> implements BaseService<OAuth2Compliance, String> {
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2ComplianceService.class);

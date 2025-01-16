@@ -15,7 +15,7 @@ import java.util.Optional;
  * @author : cc
  * @date : 2022/2/25 21:05
  */
-@Repository
+//@Repository
 public interface FrameRegisteredClientRepository extends BaseRepository<FrameRegisteredClient, String> {
 
     /**

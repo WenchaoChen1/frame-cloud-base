@@ -3,12 +3,12 @@ package com.gstdev.cloud.service.identity.service;
 import com.gstdev.cloud.base.definition.domain.oauth2.SecretKey;
 import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
+import jakarta.annotation.Resource;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.OAuth2ErrorCodes;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
-import org.springframework.stereotype.Service;
 
 /**
  * <p>Description: 请求加密服务 </p>
@@ -16,16 +16,18 @@ import org.springframework.stereotype.Service;
  * @author : cc
  * @date : 2021/9/30 18:08
  */
-@Service
+//@Service
 public class InterfaceSecurityService {
 
-    private final HttpCryptoProcessor httpCryptoProcessor;
-    private final RegisteredClientRepository registeredClientRepository;
+    @Resource
+    private HttpCryptoProcessor httpCryptoProcessor;
+    @Resource
+    private RegisteredClientRepository registeredClientRepository;
 
-    public InterfaceSecurityService(HttpCryptoProcessor httpCryptoProcessor, RegisteredClientRepository registeredClientRepository) {
-        this.httpCryptoProcessor = httpCryptoProcessor;
-        this.registeredClientRepository = registeredClientRepository;
-    }
+//    public InterfaceSecurityService(HttpCryptoProcessor httpCryptoProcessor, RegisteredClientRepository registeredClientRepository) {
+//        this.httpCryptoProcessor = httpCryptoProcessor;
+//        this.registeredClientRepository = registeredClientRepository;
+//    }
 
     /**
      * 检查终端是否是合法终端

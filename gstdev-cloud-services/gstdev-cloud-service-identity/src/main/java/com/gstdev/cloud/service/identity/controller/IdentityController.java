@@ -16,6 +16,7 @@ import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.apache.commons.lang3.ObjectUtils;
@@ -37,13 +38,15 @@ import org.springframework.web.bind.annotation.RestController;
 //})
 public class IdentityController {
 
-    private final InterfaceSecurityService interfaceSecurityService;
-    private final SignInFailureLimitedStampManager signInFailureLimitedStampManager;
+    @Resource
+    private InterfaceSecurityService interfaceSecurityService;
+    @Resource
+    private SignInFailureLimitedStampManager signInFailureLimitedStampManager;
 
-    public IdentityController(InterfaceSecurityService interfaceSecurityService, SignInFailureLimitedStampManager signInFailureLimitedStampManager) {
-        this.interfaceSecurityService = interfaceSecurityService;
-        this.signInFailureLimitedStampManager = signInFailureLimitedStampManager;
-    }
+//    public IdentityController(InterfaceSecurityService interfaceSecurityService, SignInFailureLimitedStampManager signInFailureLimitedStampManager) {
+//        this.interfaceSecurityService = interfaceSecurityService;
+//        this.signInFailureLimitedStampManager = signInFailureLimitedStampManager;
+//    }
 
     @Operation(summary = "获取后台加密公钥", description = "根据未登录时的身份标识，在后台创建RSA/SM2公钥和私钥。身份标识为前端的唯一标识，如果为空，则在后台创建一个",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),

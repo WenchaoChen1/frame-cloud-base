@@ -2,7 +2,6 @@ package com.gstdev.cloud.service.identity.repository;
 
 import com.gstdev.cloud.data.core.repository.BaseRepository;
 import com.gstdev.cloud.service.identity.domain.entity.OAuth2Scope;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ import java.util.List;
  * @author : cc
  * @date : 2020/3/19 16:57
  */
-@Repository
+//@Repository
 public interface OAuth2ScopeRepository extends BaseRepository<OAuth2Scope, String> {
 
     /**

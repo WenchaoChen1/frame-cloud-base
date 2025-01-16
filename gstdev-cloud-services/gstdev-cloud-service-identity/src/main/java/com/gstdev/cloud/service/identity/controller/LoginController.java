@@ -3,11 +3,11 @@ package com.gstdev.cloud.service.identity.controller;
 import com.gstdev.cloud.base.core.utils.http.SessionUtils;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
 import com.gstdev.cloud.oauth2.core.utils.SymmetricUtils;
+import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.csrf.CsrfToken;
@@ -34,12 +34,9 @@ public class LoginController {
     private static final String DEFAULT_LOGIN_PAGE_VIEW = "login";
     private static final String DEFAULT_ERROR_PAGE_VIEW = "error";
 
-    private final OAuth2AuthenticationProperties authenticationProperties;
+    @Resource
+    private OAuth2AuthenticationProperties authenticationProperties;
 
-    @Autowired
-    public LoginController(OAuth2AuthenticationProperties authenticationProperties) {
-        this.authenticationProperties = authenticationProperties;
-    }
 
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)

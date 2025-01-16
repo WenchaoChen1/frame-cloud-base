@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 //})
 public class OAuth2ProductController extends BaseController<OAuth2Product, String, OAuth2ProductService> {
 
-
     public OAuth2ProductController(OAuth2ProductService service) {
         super(service);
     }

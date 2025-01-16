@@ -24,7 +24,6 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Duration;
@@ -37,7 +36,7 @@ import java.util.stream.Collectors;
  * @author : cc
  * @date : 2022/3/1 18:06
  */
-@Service
+//@Service
 public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application, String, OAuth2ApplicationRepository> implements BaseService<OAuth2Application, String> {
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2ApplicationService.class);

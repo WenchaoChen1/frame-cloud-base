@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
  * @date : 2023/5/15 16:29
  */
 
-@Repository
+//@Repository
 public interface OAuth2ProductRepository extends BaseRepository<OAuth2Product, String> {
 }
