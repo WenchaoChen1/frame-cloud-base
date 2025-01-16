@@ -234,50 +234,6 @@ public class AuthorizationServerConfiguration {
     // @formatter:on
     }
 
-//  @Bean
-//  public RegisteredClientRepository registeredClientRepository(JdbcTemplate jdbcTemplate,PasswordEncoder passwordEncoder) {
-//    // 操作数据库对象
-////        JdbcRegisteredClientRepository registeredClientRepository = new JdbcRegisteredClientRepository(jdbcTemplate);
-//    List<RegisteredClient> registeredClients = this.registryCloents(passwordEncoder);
-//    registeredClients.forEach(registeredClient -> {
-////      // ---------- 1、检查当前客户端是否已注册
-////      if (registeredClientRepository.findByClientId(registeredClient.getClientId()) == null) {
-////        // 2、数据库中没有 添加客户端
-////        registeredClientRepository.save(registeredClient);
-////        log.info("Add client");
-////      }
-//    });
-////        // ---------- 3、返回客户端仓库
-////        return registeredClientRepository;
-//    return new InMemoryRegisteredClientRepository(registeredClients);
-//  }
-
-//  /**
-//   * 令牌的发放记录
-//   *
-//   * @param jdbcTemplate               操作数据库
-//   * @param registeredClientRepository 客户端仓库
-//   * @return 授权服务
-//   */
-//  @Bean
-//  public OAuth2AuthorizationService auth2AuthorizationService(JdbcTemplate jdbcTemplate,RegisteredClientRepository registeredClientRepository) {
-////        return new JdbcOAuth2AuthorizationService(jdbcTemplate, registeredClientRepository);
-//    return new InMemoryOAuth2AuthorizationService();
-//  }
-
-//  /**
-//   * 把资源拥有者授权确认操作保存到数据库
-//   * 资源拥有者（Resource Owner）对客户端的授权记录
-//   *
-//   * @param jdbcTemplate               操作数据库
-//   * @param registeredClientRepository 客户端仓库
-//   * @return
-//   */
-//  @Bean
-//  public OAuth2AuthorizationConsentService auth2AuthorizationConsentService(JdbcTemplate jdbcTemplate,RegisteredClientRepository registeredClientRepository) {
-////   return new JdbcOAuth2AuthorizationConsentService(jdbcTemplate, registeredClientRepository);
-//    return new InMemoryOAuth2AuthorizationConsentService();
-//  }
 
     /**
      * 加载jwk资源
