@@ -10,9 +10,6 @@ package com.gstdev.cloud.oauth2.authorization.server.customizer;
 
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.gstdev.cloud.oauth2.authorization.server.properties.OAuth2AuthenticationProperties;
-import com.gstdev.cloud.oauth2.authorization.server.response.OAuth2AccessTokenResponseHandler;
-import com.gstdev.cloud.oauth2.authorization.server.response.OAuth2AuthenticationFailureResponseHandler;
-import com.gstdev.cloud.oauth2.core.enums.FrameLoginType;
 import com.gstdev.cloud.rest.protect.crypto.processor.HttpCryptoProcessor;
 import jakarta.annotation.Resource;
 import org.springframework.security.config.Customizer;
@@ -41,7 +38,7 @@ public class OAuth2FormLoginConfigurerCustomizer implements Customizer<FormLogin
     // 实现 Customizer 接口的方法，用于定制化 FormLoginConfigurer
     @Override
     public void customize(FormLoginConfigurer<HttpSecurity> configurer) {
-        if (getFormLogin().getFrameLoginType().equals(FrameLoginType.LOCAL)) {
+//        if (getFormLogin().getFrameLoginType().equals(FrameLoginType.LOCAL)) {
             // 设置登录页面 URL
             configurer
                     .loginPage(getFormLogin().getLoginPageUrl())
@@ -59,21 +56,21 @@ public class OAuth2FormLoginConfigurerCustomizer implements Customizer<FormLogin
             if (StringUtils.isNotBlank(getFormLogin().getSuccessForwardUrl())) {
                 configurer.successForwardUrl(getFormLogin().getSuccessForwardUrl());
             }
-        }
+//        }
 
-        if (getFormLogin().getFrameLoginType().equals(FrameLoginType.REMOTE)) {
-            // 设置登录页面 URL
-            configurer
-                    .loginPage(getFormLogin().getLoginPageUrl())
-                    // 设置用户名参数名
-                    .usernameParameter(getFormLogin().getUsernameParameter())
-                    // 设置密码参数名
-                    .passwordParameter(getFormLogin().getPasswordParameter());
-//        configurer.successHandler(new LoginSuccessHandler());
-//        configurer.failureHandler(new LoginFailureHandler());
-            configurer.successHandler(new OAuth2AccessTokenResponseHandler(httpCryptoProcessor));
-            configurer.failureHandler(new OAuth2AuthenticationFailureResponseHandler());
-        }
+//        if (getFormLogin().getFrameLoginType().equals(FrameLoginType.REMOTE)) {
+//            // 设置登录页面 URL
+//            configurer
+//                    .loginPage(getFormLogin().getLoginPageUrl())
+//                    // 设置用户名参数名
+//                    .usernameParameter(getFormLogin().getUsernameParameter())
+//                    // 设置密码参数名
+//                    .passwordParameter(getFormLogin().getPasswordParameter());
+////        configurer.successHandler(new LoginSuccessHandler());
+////        configurer.failureHandler(new LoginFailureHandler());
+//            configurer.successHandler(new OAuth2AccessTokenResponseHandler(httpCryptoProcessor));
+//            configurer.failureHandler(new OAuth2AuthenticationFailureResponseHandler());
+//        }
 
     }
 
