@@ -16,6 +16,7 @@ import com.gstdev.cloud.plugin.storage.core.service.AbstractFileService;
 import com.gstdev.cloud.plugin.storage.core.service.StorageService;
 import io.minio.*;
 import io.minio.http.Method;
+import io.minio.messages.Bucket;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -91,7 +92,15 @@ public class MinioStorageService extends AbstractFileService implements StorageS
 
     @Override
     public List<FileBucket> listBuckets() {
-        return null;
+        try {
+            List<Bucket> buckets = getClient().listBuckets();
+            return buckets.stream()
+                .map(bucket -> FileBucket.builder().name(bucket.name()).build())
+                .toList();
+        } catch (Exception ex) {
+            log.error("获取Bucket失败", ex);
+            throw new PlatformRuntimeException(ex);
+        }
     }
 
     @Override
@@ -105,15 +114,14 @@ public class MinioStorageService extends AbstractFileService implements StorageS
         Map<String, String> reqParams = new HashMap<String, String>();
         reqParams.put("response-content-type", "application/json");
         try {
-            url =
-                    getClient().getPresignedObjectUrl(
-                            GetPresignedObjectUrlArgs.builder()
-                                    .method(Method.GET)
-                                    .bucket(bucketName)
-                                    .object(objectName)
-                                    .expiry(2, TimeUnit.HOURS)
-                                    .extraQueryParams(reqParams)
-                                    .build());
+            url = getClient().getPresignedObjectUrl(
+                    GetPresignedObjectUrlArgs.builder()
+                        .method(Method.GET)
+                        .bucket(bucketName)
+                        .object(objectName)
+                        .expiry(2, TimeUnit.HOURS)
+                        .extraQueryParams(reqParams)
+                        .build());
 //            url = getClient().presignedGetObject(bucketName, objectName);
         } catch (Exception ex) {
             log.info("获得FileObject失败");
@@ -155,7 +163,6 @@ public class MinioStorageService extends AbstractFileService implements StorageS
         } catch (Exception ex) {
             log.info("删除FileObject失败");
         }
-
         return null;
     }
 
@@ -164,9 +171,9 @@ public class MinioStorageService extends AbstractFileService implements StorageS
         if (client == null) {
             try {
                 client = MinioClient.builder()
-                        .endpoint(endpoint)
-                        .credentials(accessKey, secretKey)
-                        .build();
+                    .endpoint(endpoint)
+                    .credentials(accessKey, secretKey)
+                    .build();
             } catch (Exception e) {
                 throw new PlatformRuntimeException(e);
             }
