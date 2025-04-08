@@ -220,8 +220,6 @@
             </dependency>
 
 
-
-
             <!--=========================================== plugins ===========================================-->
             <!--=========================================== plugins-rest ===========================================-->
             <dependency>
@@ -320,33 +318,33 @@
             </dependency>
 
             <!--=========================================== plugins-access ===================================-->
-              <dependency>
+            <dependency>
                 <groupId>com.gstdev.cloud</groupId>
                 <artifactId>gstdev-cloud-access-core</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
-              <dependency>
+            <dependency>
                 <groupId>com.gstdev.cloud</groupId>
                 <artifactId>gstdev-cloud-access-justauth</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
-              <dependency>
+            <dependency>
                 <groupId>com.gstdev.cloud</groupId>
                 <artifactId>gstdev-cloud-access-wxapp</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
-              <dependency>
+            <dependency>
                 <groupId>com.gstdev.cloud</groupId>
                 <artifactId>gstdev-cloud-access-wxmpp</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
-              <dependency>
+            <dependency>
                 <groupId>com.gstdev.cloud</groupId>
                 <artifactId>gstdev-cloud-access-all</artifactId>
                 <version>${gstdev-cloud.version}</version>
             </dependency>
 
-              <dependency>
+            <dependency>
                 <groupId>com.gstdev.cloud</groupId>
                 <artifactId>gstdev-cloud-access-sms</artifactId>
                 <version>${gstdev-cloud.version}</version>
@@ -869,6 +867,11 @@
             <dependency>
                 <groupId>io.minio</groupId>
                 <artifactId>minio</artifactId>
+                <version>${minio.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.minio</groupId>
+                <artifactId>minio-admin</artifactId>
                 <version>${minio.version}</version>
             </dependency>
             <!-- Aliyun related dependencies -->

@@ -20,6 +20,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableConfigurationProperties(MinioStorageProperties.class)
+//@ConditionalOnProperty(prefix = "gstdev.cloud.storage.minio", name = {"endpoint", "accessKey", "secretKey"})
 @ConditionalOnProperty(prefix = "gstdev.cloud.storage.minio", name = {"endpoint", "accessKey", "secretKey"})
 public class MinioStorageAutoConfiguration {
 

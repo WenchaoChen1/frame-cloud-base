@@ -21,6 +21,11 @@
         <!--      <artifactId>gstdev-cloud-starter-data-commons</artifactId>-->
         <!--    </dependency>-->
         <!--    &lt;!&ndash; Lombok related dependencies &ndash;&gt;-->
+
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-base-core</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -29,6 +34,13 @@
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-data-core</artifactId>
         </dependency>
     </dependencies>
 
