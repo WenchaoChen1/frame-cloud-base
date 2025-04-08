@@ -93,7 +93,7 @@
         <shardingsphere.version>5.1.2</shardingsphere.version>
         <gstdev-cloud.version>${project.version}</gstdev-cloud.version>
         <swagger.version>3.0.0</swagger.version>
-        <minio.version>7.0.2</minio.version>
+        <minio.version>8.5.17</minio.version>
         <awss3.version>1.11.233</awss3.version>
         <aliyun-sdk-oss.version>3.9.1</aliyun-sdk-oss.version>
         <huawei-sdk-obs.version>[3.21.11,)</huawei-sdk-obs.version>

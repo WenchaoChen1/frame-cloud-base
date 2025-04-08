@@ -14,15 +14,18 @@ import com.gstdev.cloud.plugin.storage.core.model.FileBucket;
 import com.gstdev.cloud.plugin.storage.core.model.FileObject;
 import com.gstdev.cloud.plugin.storage.core.service.AbstractFileService;
 import com.gstdev.cloud.plugin.storage.core.service.StorageService;
-import io.minio.MinioClient;
-import io.minio.PutObjectOptions;
+import io.minio.*;
+import io.minio.http.Method;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Getter
@@ -45,27 +48,27 @@ public class MinioStorageService extends AbstractFileService implements StorageS
         try {
             client = getClient();
 
-            if (!client.bucketExists(bucketName)) {
-                client.makeBucket(bucketName);
+            if (!client.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build())) {
+                client.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
 
-                String bucketPolicy = "{\n" +
-                        "  \"Statement\": [\n" +
-                        "    {\n" +
-                        "      \"Action\": [\"s3:GetBucketLocation\", \"s3:ListBucket\"],\n" +
-                        "      \"Effect\": \"Allow\",\n" +
-                        "      \"Principal\": \"*\",\n" +
-                        "      \"Resource\": \"arn:aws:s3:::" + bucketName +
-                        "    },\n" +
-                        "    {\n" +
-                        "      \"Action\": \"s3:GetObject\",\n" +
-                        "      \"Effect\": \"Allow\",\n" +
-                        "      \"Principal\": \"*\",\n" +
-                        "      \"Resource\": \"arn:aws:s3:::" + bucketName + "/*\"\n" +
-                        "    }\n" +
-                        "  ],\n" +
-                        "  \"Version\": \"2012-10-17\"\n" +
-                        "}\n";
-                client.setBucketPolicy(bucketName, bucketPolicy);
+//                String bucketPolicy = "{\n" +
+//                        "  \"Statement\": [\n" +
+//                        "    {\n" +
+//                        "      \"Action\": [\"s3:GetBucketLocation\", \"s3:ListBucket\"],\n" +
+//                        "      \"Effect\": \"Allow\",\n" +
+//                        "      \"Principal\": \"*\",\n" +
+//                        "      \"Resource\": \"arn:aws:s3:::" + bucketName +
+//                        "    },\n" +
+//                        "    {\n" +
+//                        "      \"Action\": \"s3:GetObject\",\n" +
+//                        "      \"Effect\": \"Allow\",\n" +
+//                        "      \"Principal\": \"*\",\n" +
+//                        "      \"Resource\": \"arn:aws:s3:::" + bucketName + "/*\"\n" +
+//                        "    }\n" +
+//                        "  ],\n" +
+//                        "  \"Version\": \"2012-10-17\"\n" +
+//                        "}\n";
+//                client.setBucketPolicy(bucketName, bucketPolicy);
             }
         } catch (Exception ex) {
             log.info("创建Bucket失败");
@@ -75,7 +78,7 @@ public class MinioStorageService extends AbstractFileService implements StorageS
     @Override
     public void removeBucket(String bucketName) {
         try {
-            getClient().removeBucket(bucketName);
+            getClient().removeBucket(RemoveBucketArgs.builder().bucket(bucketName).build());
         } catch (Exception ex) {
             log.info("删除Bucket失败");
         }
@@ -99,9 +102,19 @@ public class MinioStorageService extends AbstractFileService implements StorageS
         }
 
         String url = null;
-
+        Map<String, String> reqParams = new HashMap<String, String>();
+        reqParams.put("response-content-type", "application/json");
         try {
-            url = getClient().presignedGetObject(bucketName, objectName);
+            url =
+                    getClient().getPresignedObjectUrl(
+                            GetPresignedObjectUrlArgs.builder()
+                                    .method(Method.GET)
+                                    .bucket(bucketName)
+                                    .object(objectName)
+                                    .expiry(2, TimeUnit.HOURS)
+                                    .extraQueryParams(reqParams)
+                                    .build());
+//            url = getClient().presignedGetObject(bucketName, objectName);
         } catch (Exception ex) {
             log.info("获得FileObject失败");
         }
@@ -117,10 +130,10 @@ public class MinioStorageService extends AbstractFileService implements StorageS
     @Override
     public void putObject(String bucketName, String objectName, InputStream stream, long size, String contentType) {
         try {
-            PutObjectOptions options = new PutObjectOptions(size, -1);
-            options.setContentType(contentType);
+//            PutObjectOptions options = new PutObjectOptions(size, -1);
+//            options.setContentType(contentType);
 
-            getClient().putObject(bucketName, objectName, stream, options);
+            getClient().putObject(PutObjectArgs.builder().bucket(bucketName).object(objectName).stream(stream, size, -1).build());
         } catch (Exception ex) {
             log.info("创建FileObject失败", ex);
         }
@@ -129,7 +142,7 @@ public class MinioStorageService extends AbstractFileService implements StorageS
     @Override
     public void removeObject(String bucketName, String objectName) {
         try {
-            getClient().removeObject(bucketName, objectName);
+            getClient().removeObject(RemoveObjectArgs.builder().bucket(bucketName).object(objectName).build());
         } catch (Exception ex) {
             log.info("删除FileObject失败");
         }
@@ -138,7 +151,7 @@ public class MinioStorageService extends AbstractFileService implements StorageS
     @Override
     public InputStream getObject(String bucketName, String objectName) {
         try {
-            return getClient().getObject(bucketName, objectName);
+            return getClient().getObject(GetObjectArgs.builder().bucket(bucketName).object(objectName).build());
         } catch (Exception ex) {
             log.info("删除FileObject失败");
         }
@@ -150,7 +163,10 @@ public class MinioStorageService extends AbstractFileService implements StorageS
 
         if (client == null) {
             try {
-                client = new MinioClient(endpoint, accessKey, secretKey);
+                client = MinioClient.builder()
+                        .endpoint(endpoint)
+                        .credentials(accessKey, secretKey)
+                        .build();
             } catch (Exception e) {
                 throw new PlatformRuntimeException(e);
             }
