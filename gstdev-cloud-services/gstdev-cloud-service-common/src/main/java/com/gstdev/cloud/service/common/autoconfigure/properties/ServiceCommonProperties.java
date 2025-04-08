@@ -1,8 +1,8 @@
 package com.gstdev.cloud.service.common.autoconfigure.properties;
 
 import com.google.common.base.MoreObjects;
+import com.gstdev.cloud.base.definition.constants.BaseConstants;
 import com.gstdev.cloud.base.definition.properties.BaseProperties;
-import com.gstdev.cloud.oauth2.core.constants.OAuth2Constants;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -15,7 +15,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  **/
 @Getter
 @Setter
-@ConfigurationProperties(prefix = OAuth2Constants.PROPERTY_PREFIX_SERVICE_COMMON)
+@ConfigurationProperties(prefix = BaseConstants.PROPERTY_PREFIX_SERVICE_COMMON)
 public class ServiceCommonProperties extends BaseProperties {
 
     /**
