@@ -13,9 +13,9 @@ import com.gstdev.cloud.plugin.storage.minio.properties.MinioProperties;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 /**
@@ -24,7 +24,7 @@ import org.springframework.context.annotation.Import;
  * @author : cc
  * @date : 2023/6/5 15:04
  */
-@AutoConfiguration
+@Configuration
 @EnableConfigurationProperties(MinioProperties.class)
 @Import({
         MinioClientConfiguration.class
