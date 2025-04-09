@@ -34,7 +34,7 @@ public class MinioAdminClientPooledObjectFactory extends AbstractOssClientPooled
 
     @Override
     public MinioAdminClient create() throws Exception {
-        log.debug("[Herodotus] |- Minio admin client factory create object.");
+        log.debug("[GstDev Cloud] |- Minio admin client factory create object.");
         return MinioAdminClient.builder()
                 .endpoint(minioProperties.getEndpoint())
                 .credentials(minioProperties.getAccessKey(), minioProperties.getSecretKey())

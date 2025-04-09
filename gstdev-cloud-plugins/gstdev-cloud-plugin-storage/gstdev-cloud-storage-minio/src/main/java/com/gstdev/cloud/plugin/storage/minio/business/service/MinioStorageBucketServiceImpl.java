@@ -7,7 +7,7 @@
 //
 // ====================================================
 
-package com.gstdev.cloud.plugin.storage.minio.repository;
+package com.gstdev.cloud.plugin.storage.minio.business.service;
 
 import com.gstdev.cloud.base.definition.support.AbstractObjectPool;
 import com.gstdev.cloud.plugin.storage.minio.converter.arguments.ArgumentsToMakeBucketArgsConverter;
@@ -18,7 +18,7 @@ import com.gstdev.cloud.plugin.storage.minio.service.MinioBucketService;
 import com.gstdev.cloud.plugin.storage.minio.utils.ConverterUtils;
 import com.gstdev.cloud.plugin.storage.specification.arguments.bucket.CreateBucketArguments;
 import com.gstdev.cloud.plugin.storage.specification.arguments.bucket.DeleteBucketArguments;
-import com.gstdev.cloud.plugin.storage.specification.core.repository.OssBucketRepository;
+import com.gstdev.cloud.plugin.storage.specification.core.business.service.StorageBucketService;
 import com.gstdev.cloud.plugin.storage.specification.domain.bucket.BucketDomain;
 import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;
@@ -37,13 +37,13 @@ import java.util.List;
  * @date : 2023/7/24 19:13
  */
 @Service
-public class MinioBucketRepository extends BaseMinioService implements OssBucketRepository {
+public class MinioStorageBucketServiceImpl extends BaseMinioService implements StorageBucketService {
 
-    private static final Logger log = LoggerFactory.getLogger(MinioBucketRepository.class);
+    private static final Logger log = LoggerFactory.getLogger(MinioStorageBucketServiceImpl.class);
 
     private final MinioBucketService minioBucketService;
 
-    public MinioBucketRepository(AbstractObjectPool<MinioClient> ossClientObjectPool, MinioBucketService minioBucketService) {
+    public MinioStorageBucketServiceImpl(AbstractObjectPool<MinioClient> ossClientObjectPool, MinioBucketService minioBucketService) {
         super(ossClientObjectPool);
         this.minioBucketService = minioBucketService;
     }

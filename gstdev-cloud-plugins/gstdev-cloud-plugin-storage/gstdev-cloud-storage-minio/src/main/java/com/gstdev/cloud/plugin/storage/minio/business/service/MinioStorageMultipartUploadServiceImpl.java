@@ -7,12 +7,12 @@
 //
 // ====================================================
 
-package com.gstdev.cloud.plugin.storage.minio.repository;
+package com.gstdev.cloud.plugin.storage.minio.business.service;
 
 import com.gstdev.cloud.plugin.storage.minio.converter.domain.*;
 import com.gstdev.cloud.plugin.storage.minio.service.MinioMultipartUploadService;
 import com.gstdev.cloud.plugin.storage.specification.arguments.multipart.*;
-import com.gstdev.cloud.plugin.storage.specification.core.repository.OssMultipartUploadRepository;
+import com.gstdev.cloud.plugin.storage.specification.core.business.service.StorageMultipartUploadService;
 import com.gstdev.cloud.plugin.storage.specification.domain.multipart.*;
 import io.minio.*;
 import io.minio.messages.InitiateMultipartUploadResult;
@@ -31,11 +31,11 @@ import java.util.List;
  * @date : 2023/8/13 21:11
  */
 @Service
-public class MinioMultipartUploadRepository implements OssMultipartUploadRepository {
+public class MinioStorageMultipartUploadServiceImpl implements StorageMultipartUploadService {
 
     private final MinioMultipartUploadService minioMultipartUploadService;
 
-    public MinioMultipartUploadRepository(MinioMultipartUploadService minioMultipartUploadService) {
+    public MinioStorageMultipartUploadServiceImpl(MinioMultipartUploadService minioMultipartUploadService) {
         this.minioMultipartUploadService = minioMultipartUploadService;
     }
 

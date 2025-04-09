@@ -20,9 +20,9 @@ import com.gstdev.cloud.base.definition.constants.BaseConstants;
  */
 public interface OssConstants extends BaseConstants {
 
-    String PROPERTY_OSS_MINIO = PROPERTY_PREFIX_OSS + ".minio";
-    String PROPERTY_OSS_S3 = PROPERTY_PREFIX_OSS + ".s3";
-    String PROPERTY_OSS_ALIYUN = PROPERTY_PREFIX_OSS + ".aliyun";
+    String PROPERTY_OSS_MINIO = PROPERTY_PREFIX_STORAGE + ".minio";
+    String PROPERTY_OSS_S3 = PROPERTY_PREFIX_STORAGE + ".s3";
+    String PROPERTY_OSS_ALIYUN = PROPERTY_PREFIX_STORAGE + ".aliyun";
 
-    String ITEM_OSS_DIALECT = PROPERTY_PREFIX_OSS + ".dialect";
+    String ITEM_OSS_DIALECT = PROPERTY_PREFIX_STORAGE + ".dialect";
 }

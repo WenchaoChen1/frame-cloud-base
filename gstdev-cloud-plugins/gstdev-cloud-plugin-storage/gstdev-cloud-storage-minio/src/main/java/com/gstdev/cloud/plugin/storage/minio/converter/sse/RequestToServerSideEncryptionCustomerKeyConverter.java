@@ -41,10 +41,10 @@ public class RequestToServerSideEncryptionCustomerKeyConverter implements Conver
             try {
                 return new ServerSideEncryptionCustomerKey(secretKey);
             } catch (InvalidKeyException e) {
-                log.error("[Herodotus] |- Minio catch InvalidKeyException in ObjectReadRequest prepare.", e);
+                log.error("[GstDev Cloud] |- Minio catch InvalidKeyException in ObjectReadRequest prepare.", e);
                 throw new OssInvalidKeyException(e.getMessage());
             } catch (NoSuchAlgorithmException e) {
-                log.error("[Herodotus] |- Minio catch NoSuchAlgorithmException in ObjectReadRequest prepare.", e);
+                log.error("[GstDev Cloud] |- Minio catch NoSuchAlgorithmException in ObjectReadRequest prepare.", e);
                 throw new OssNoSuchAlgorithmException(e.getMessage());
             }
         }

@@ -56,20 +56,20 @@ public class MinioAdminUserService extends BaseMinioAdminService {
         try {
             return minioAdminClient.listUsers();
         } catch (NoSuchAlgorithmException e) {
-            log.error("[Herodotus] |- Minio catch NoSuchAlgorithmException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch NoSuchAlgorithmException in [{}].", function, e);
             throw new OssNoSuchAlgorithmException(e.getMessage());
         } catch (InvalidKeyException e) {
-            log.error("[Herodotus] |- Minio catch InvalidKeyException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InvalidKeyException in [{}].", function, e);
             throw new OssInvalidKeyException(e.getMessage());
         } catch (IOException e) {
-            log.error("[Herodotus] |- Minio catch IOException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch IOException in [{}].", function, e);
             if (e instanceof ConnectException) {
                 throw new OssConnectException(e.getMessage());
             } else {
                 throw new OssIOException(e.getMessage());
             }
         } catch (InvalidCipherTextException e) {
-            log.error("[Herodotus] |- Minio catch InvalidCipherTextException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InvalidCipherTextException in [{}].", function, e);
             throw new OssInvalidCipherTextException(e.getMessage());
         } finally {
             close(minioAdminClient);
@@ -90,13 +90,13 @@ public class MinioAdminUserService extends BaseMinioAdminService {
         try {
             return minioAdminClient.getUserInfo(accessKey);
         } catch (NoSuchAlgorithmException e) {
-            log.error("[Herodotus] |- Minio catch NoSuchAlgorithmException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch NoSuchAlgorithmException in [{}].", function, e);
             throw new OssNoSuchAlgorithmException(e.getMessage());
         } catch (InvalidKeyException e) {
-            log.error("[Herodotus] |- Minio catch InvalidKeyException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InvalidKeyException in [{}].", function, e);
             throw new OssInvalidKeyException(e.getMessage());
         } catch (IOException e) {
-            log.error("[Herodotus] |- Minio catch IOException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch IOException in [{}].", function, e);
             if (e instanceof ConnectException) {
                 throw new OssConnectException(e.getMessage());
             } else {
@@ -115,20 +115,20 @@ public class MinioAdminUserService extends BaseMinioAdminService {
         try {
             minioAdminClient.addUser(accessKey, status, secretKey, policyName, memberOf);
         } catch (NoSuchAlgorithmException e) {
-            log.error("[Herodotus] |- Minio catch NoSuchAlgorithmException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch NoSuchAlgorithmException in [{}].", function, e);
             throw new OssNoSuchAlgorithmException(e.getMessage());
         } catch (InvalidKeyException e) {
-            log.error("[Herodotus] |- Minio catch InvalidKeyException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InvalidKeyException in [{}].", function, e);
             throw new OssInvalidKeyException(e.getMessage());
         } catch (IOException e) {
-            log.error("[Herodotus] |- Minio catch IOException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch IOException in [{}].", function, e);
             if (e instanceof ConnectException) {
                 throw new OssConnectException(e.getMessage());
             } else {
                 throw new OssIOException(e.getMessage());
             }
         } catch (InvalidCipherTextException e) {
-            log.error("[Herodotus] |- Minio catch InvalidCipherTextException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InvalidCipherTextException in [{}].", function, e);
             throw new OssInvalidCipherTextException(e.getMessage());
         } finally {
             close(minioAdminClient);
@@ -148,13 +148,13 @@ public class MinioAdminUserService extends BaseMinioAdminService {
         try {
             minioAdminClient.deleteUser(accessKey);
         } catch (NoSuchAlgorithmException e) {
-            log.error("[Herodotus] |- Minio catch NoSuchAlgorithmException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch NoSuchAlgorithmException in [{}].", function, e);
             throw new OssNoSuchAlgorithmException(e.getMessage());
         } catch (InvalidKeyException e) {
-            log.error("[Herodotus] |- Minio catch InvalidKeyException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InvalidKeyException in [{}].", function, e);
             throw new OssInvalidKeyException(e.getMessage());
         } catch (IOException e) {
-            log.error("[Herodotus] |- Minio catch IOException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch IOException in [{}].", function, e);
             if (e instanceof ConnectException) {
                 throw new OssConnectException(e.getMessage());
             } else {

@@ -77,35 +77,35 @@ public class MinioBucketTagsService extends BaseMinioService {
         try {
             return minioClient.getBucketTags(getBucketTagsArgs);
         } catch (ErrorResponseException e) {
-            log.error("[Herodotus] |- Minio catch ErrorResponseException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch ErrorResponseException in [{}].", function, e);
             throw new OssErrorResponseException(e.getMessage());
         } catch (InsufficientDataException e) {
-            log.error("[Herodotus] |- Minio catch InsufficientDataException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InsufficientDataException in [{}].", function, e);
             throw new OssInsufficientDataException(e.getMessage());
         } catch (InternalException e) {
-            log.error("[Herodotus] |- Minio catch InternalException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InternalException in [{}].", function, e);
             throw new OssInternalException(e.getMessage());
         } catch (InvalidKeyException e) {
-            log.error("[Herodotus] |- Minio catch InvalidKeyException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InvalidKeyException in [{}].", function, e);
             throw new OssInvalidKeyException(e.getMessage());
         } catch (InvalidResponseException e) {
-            log.error("[Herodotus] |- Minio catch InvalidResponseException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InvalidResponseException in [{}].", function, e);
             throw new OssInvalidResponseException(e.getMessage());
         } catch (IOException e) {
-            log.error("[Herodotus] |- Minio catch IOException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch IOException in [{}].", function, e);
             if (e instanceof ConnectException) {
                 throw new OssConnectException(e.getMessage());
             } else {
                 throw new OssIOException(e.getMessage());
             }
         } catch (NoSuchAlgorithmException e) {
-            log.error("[Herodotus] |- Minio catch NoSuchAlgorithmException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch NoSuchAlgorithmException in [{}].", function, e);
             throw new OssNoSuchAlgorithmException(e.getMessage());
         } catch (ServerException e) {
-            log.error("[Herodotus] |- Minio catch ServerException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch ServerException in [{}].", function, e);
             throw new OssServerException(e.getMessage());
         } catch (XmlParserException e) {
-            log.error("[Herodotus] |- Minio catch XmlParserException in createBucket.", e);
+            log.error("[GstDev Cloud] |- Minio catch XmlParserException in createBucket.", e);
             throw new OssXmlParserException(e.getMessage());
         } finally {
             close(minioClient);
@@ -145,35 +145,35 @@ public class MinioBucketTagsService extends BaseMinioService {
         try {
             minioClient.setBucketTags(setBucketTagsArgs);
         } catch (ErrorResponseException e) {
-            log.error("[Herodotus] |- Minio catch ErrorResponseException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch ErrorResponseException in [{}].", function, e);
             throw new OssErrorResponseException(e.getMessage());
         } catch (InsufficientDataException e) {
-            log.error("[Herodotus] |- Minio catch InsufficientDataException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InsufficientDataException in [{}].", function, e);
             throw new OssInsufficientDataException(e.getMessage());
         } catch (InternalException e) {
-            log.error("[Herodotus] |- Minio catch InternalException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InternalException in [{}].", function, e);
             throw new OssInternalException(e.getMessage());
         } catch (InvalidKeyException e) {
-            log.error("[Herodotus] |- Minio catch InvalidKeyException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InvalidKeyException in [{}].", function, e);
             throw new OssInvalidKeyException(e.getMessage());
         } catch (InvalidResponseException e) {
-            log.error("[Herodotus] |- Minio catch InvalidResponseException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InvalidResponseException in [{}].", function, e);
             throw new OssInvalidResponseException(e.getMessage());
         } catch (IOException e) {
-            log.error("[Herodotus] |- Minio catch IOException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch IOException in [{}].", function, e);
             if (e instanceof ConnectException) {
                 throw new OssConnectException(e.getMessage());
             } else {
                 throw new OssIOException(e.getMessage());
             }
         } catch (NoSuchAlgorithmException e) {
-            log.error("[Herodotus] |- Minio catch NoSuchAlgorithmException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch NoSuchAlgorithmException in [{}].", function, e);
             throw new OssNoSuchAlgorithmException(e.getMessage());
         } catch (ServerException e) {
-            log.error("[Herodotus] |- Minio catch ServerException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch ServerException in [{}].", function, e);
             throw new OssServerException(e.getMessage());
         } catch (XmlParserException e) {
-            log.error("[Herodotus] |- Minio catch XmlParserException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch XmlParserException in [{}].", function, e);
             throw new OssXmlParserException(e.getMessage());
         } finally {
             close(minioClient);
@@ -211,35 +211,35 @@ public class MinioBucketTagsService extends BaseMinioService {
         try {
             minioClient.deleteBucketTags(deleteBucketTagsArgs);
         } catch (ErrorResponseException e) {
-            log.error("[Herodotus] |- Minio catch ErrorResponseException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch ErrorResponseException in [{}].", function, e);
             throw new OssErrorResponseException(e.getMessage());
         } catch (InsufficientDataException e) {
-            log.error("[Herodotus] |- Minio catch InsufficientDataException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InsufficientDataException in [{}].", function, e);
             throw new OssInsufficientDataException(e.getMessage());
         } catch (InternalException e) {
-            log.error("[Herodotus] |- Minio catch InternalException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InternalException in [{}].", function, e);
             throw new OssInternalException(e.getMessage());
         } catch (InvalidKeyException e) {
-            log.error("[Herodotus] |- Minio catch InvalidKeyException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InvalidKeyException in [{}].", function, e);
             throw new OssInvalidKeyException(e.getMessage());
         } catch (InvalidResponseException e) {
-            log.error("[Herodotus] |- Minio catch InvalidResponseException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InvalidResponseException in [{}].", function, e);
             throw new OssInvalidResponseException(e.getMessage());
         } catch (IOException e) {
-            log.error("[Herodotus] |- Minio catch IOException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch IOException in [{}].", function, e);
             if (e instanceof ConnectException) {
                 throw new OssConnectException(e.getMessage());
             } else {
                 throw new OssIOException(e.getMessage());
             }
         } catch (NoSuchAlgorithmException e) {
-            log.error("[Herodotus] |- Minio catch NoSuchAlgorithmException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch NoSuchAlgorithmException in [{}].", function, e);
             throw new OssNoSuchAlgorithmException(e.getMessage());
         } catch (ServerException e) {
-            log.error("[Herodotus] |- Minio catch ServerException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch ServerException in [{}].", function, e);
             throw new OssServerException(e.getMessage());
         } catch (XmlParserException e) {
-            log.error("[Herodotus] |- Minio catch XmlParserException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch XmlParserException in [{}].", function, e);
             throw new OssXmlParserException(e.getMessage());
         } finally {
             close(minioClient);

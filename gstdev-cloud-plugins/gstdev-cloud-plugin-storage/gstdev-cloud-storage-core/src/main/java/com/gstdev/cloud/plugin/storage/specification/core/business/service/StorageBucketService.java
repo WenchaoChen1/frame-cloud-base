@@ -7,7 +7,7 @@
 //
 // ====================================================
 
-package com.gstdev.cloud.plugin.storage.specification.core.repository;
+package com.gstdev.cloud.plugin.storage.specification.core.business.service;
 
 
 import com.gstdev.cloud.plugin.storage.specification.arguments.bucket.CreateBucketArguments;
@@ -22,7 +22,7 @@ import java.util.List;
  * @author : cc
  * @date : 2023/7/24 18:29
  */
-public interface OssBucketRepository {
+public interface StorageBucketService {
 
     /**
      * 检查指定的存储桶是否存在。使用此方法可以确定指定的存储桶名称是否已经存在，因此不能用于创建新的存储桶

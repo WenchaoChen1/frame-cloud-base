@@ -56,13 +56,13 @@ public class MinioBucketQuotaService extends BaseMinioAdminService {
         try {
             minioAdminClient.setBucketQuota(bucketName, size, unit);
         } catch (NoSuchAlgorithmException e) {
-            log.error("[Herodotus] |- Minio catch NoSuchAlgorithmException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch NoSuchAlgorithmException in [{}].", function, e);
             throw new OssNoSuchAlgorithmException(e.getMessage());
         } catch (InvalidKeyException e) {
-            log.error("[Herodotus] |- Minio catch InvalidKeyException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InvalidKeyException in [{}].", function, e);
             throw new OssInvalidKeyException(e.getMessage());
         } catch (IOException e) {
-            log.error("[Herodotus] |- Minio catch IOException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch IOException in [{}].", function, e);
             if (e instanceof ConnectException) {
                 throw new OssConnectException(e.getMessage());
             } else {
@@ -96,13 +96,13 @@ public class MinioBucketQuotaService extends BaseMinioAdminService {
         try {
             return minioAdminClient.getBucketQuota(bucketName);
         } catch (NoSuchAlgorithmException e) {
-            log.error("[Herodotus] |- Minio catch NoSuchAlgorithmException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch NoSuchAlgorithmException in [{}].", function, e);
             throw new OssNoSuchAlgorithmException(e.getMessage());
         } catch (InvalidKeyException e) {
-            log.error("[Herodotus] |- Minio catch InvalidKeyException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch InvalidKeyException in [{}].", function, e);
             throw new OssInvalidKeyException(e.getMessage());
         } catch (IOException e) {
-            log.error("[Herodotus] |- Minio catch IOException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch IOException in [{}].", function, e);
             if (e instanceof ConnectException) {
                 throw new OssConnectException(e.getMessage());
             } else {

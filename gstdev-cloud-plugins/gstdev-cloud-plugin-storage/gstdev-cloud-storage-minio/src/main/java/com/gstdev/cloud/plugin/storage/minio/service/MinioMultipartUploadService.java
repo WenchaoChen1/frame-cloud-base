@@ -96,32 +96,32 @@ public class MinioMultipartUploadService extends BaseMinioAsyncService {
         try {
             return client.createMultipartUploadAsync(bucketName, region, objectName, toMultimap(extraHeaders), toMultimap(extraQueryParams)).get();
         } catch (InsufficientDataException e) {
-            log.error("[Herodotus] |- Minio async catch InsufficientDataException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InsufficientDataException in [{}].", function, e);
             throw new OssInsufficientDataException("Minio async insufficient data error.");
         } catch (InternalException e) {
-            log.error("[Herodotus] |- Minio async catch InternalException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InternalException in [{}].", function, e);
             throw new OssInternalException("Minio async internal error.");
         } catch (InvalidKeyException e) {
-            log.error("[Herodotus] |- Minio async catch InvalidKeyException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InvalidKeyException in [{}].", function, e);
             throw new OssInvalidKeyException("Minio async key invalid.");
         } catch (IOException e) {
-            log.error("[Herodotus] |- Minio catch IOException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch IOException in [{}].", function, e);
             if (e instanceof ConnectException) {
                 throw new OssConnectException(e.getMessage());
             } else {
                 throw new OssIOException(e.getMessage());
             }
         } catch (NoSuchAlgorithmException e) {
-            log.error("[Herodotus] |- Minio async catch NoSuchAlgorithmException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch NoSuchAlgorithmException in [{}].", function, e);
             throw new OssNoSuchAlgorithmException("Minio async no such algorithm.");
         } catch (XmlParserException e) {
-            log.error("[Herodotus] |- Minio async catch XmlParserException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch XmlParserException in [{}].", function, e);
             throw new OssXmlParserException("Minio async xml parser error.");
         } catch (ExecutionException e) {
-            log.error("[Herodotus] |- Minio async catch ExecutionException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch ExecutionException in [{}].", function, e);
             throw new OssExecutionException("Minio async execution error.");
         } catch (InterruptedException e) {
-            log.error("[Herodotus] |- Minio async catch InterruptedException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InterruptedException in [{}].", function, e);
             throw new OssInterruptedException("Minio async interrupted error.");
         } finally {
             close(client);
@@ -181,32 +181,32 @@ public class MinioMultipartUploadService extends BaseMinioAsyncService {
         try {
             return client.uploadPartAsync(bucketName, region, objectName, data, length, uploadId, partNumber, toMultimap(extraHeaders), toMultimap(extraQueryParams)).get();
         } catch (InsufficientDataException e) {
-            log.error("[Herodotus] |- Minio async catch InsufficientDataException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InsufficientDataException in [{}].", function, e);
             throw new OssInsufficientDataException("Minio async insufficient data error.");
         } catch (InternalException e) {
-            log.error("[Herodotus] |- Minio async catch InternalException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InternalException in [{}].", function, e);
             throw new OssInternalException("Minio async internal error.");
         } catch (InvalidKeyException e) {
-            log.error("[Herodotus] |- Minio async catch InvalidKeyException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InvalidKeyException in [{}].", function, e);
             throw new OssInvalidKeyException("Minio async key invalid.");
         } catch (IOException e) {
-            log.error("[Herodotus] |- Minio catch IOException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch IOException in [{}].", function, e);
             if (e instanceof ConnectException) {
                 throw new OssConnectException(e.getMessage());
             } else {
                 throw new OssIOException(e.getMessage());
             }
         } catch (NoSuchAlgorithmException e) {
-            log.error("[Herodotus] |- Minio async catch NoSuchAlgorithmException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch NoSuchAlgorithmException in [{}].", function, e);
             throw new OssNoSuchAlgorithmException("Minio async no such algorithm.");
         } catch (XmlParserException e) {
-            log.error("[Herodotus] |- Minio async catch XmlParserException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch XmlParserException in [{}].", function, e);
             throw new OssXmlParserException("Minio async xml parser error.");
         } catch (ExecutionException e) {
-            log.error("[Herodotus] |- Minio async catch ExecutionException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch ExecutionException in [{}].", function, e);
             throw new OssExecutionException("Minio async execution error.");
         } catch (InterruptedException e) {
-            log.error("[Herodotus] |- Minio async catch InterruptedException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InterruptedException in [{}].", function, e);
             throw new OssInterruptedException("Minio async interrupted error.");
         } finally {
             close(client);
@@ -259,32 +259,32 @@ public class MinioMultipartUploadService extends BaseMinioAsyncService {
         try {
             return client.uploadPartCopyAsync(bucketName, region, objectName, uploadId, partNumber, toMultimap(extraHeaders), toMultimap(extraQueryParams)).get();
         } catch (InsufficientDataException e) {
-            log.error("[Herodotus] |- Minio async catch InsufficientDataException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InsufficientDataException in [{}].", function, e);
             throw new OssInsufficientDataException("Minio async insufficient data error.");
         } catch (InternalException e) {
-            log.error("[Herodotus] |- Minio async catch InternalException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InternalException in [{}].", function, e);
             throw new OssInternalException("Minio async internal error.");
         } catch (InvalidKeyException e) {
-            log.error("[Herodotus] |- Minio async catch InvalidKeyException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InvalidKeyException in [{}].", function, e);
             throw new OssInvalidKeyException("Minio async key invalid.");
         } catch (IOException e) {
-            log.error("[Herodotus] |- Minio catch IOException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch IOException in [{}].", function, e);
             if (e instanceof ConnectException) {
                 throw new OssConnectException(e.getMessage());
             } else {
                 throw new OssIOException(e.getMessage());
             }
         } catch (NoSuchAlgorithmException e) {
-            log.error("[Herodotus] |- Minio async catch NoSuchAlgorithmException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch NoSuchAlgorithmException in [{}].", function, e);
             throw new OssNoSuchAlgorithmException("Minio async no such algorithm.");
         } catch (XmlParserException e) {
-            log.error("[Herodotus] |- Minio async catch XmlParserException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch XmlParserException in [{}].", function, e);
             throw new OssXmlParserException("Minio async xml parser error.");
         } catch (ExecutionException e) {
-            log.error("[Herodotus] |- Minio async catch ExecutionException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch ExecutionException in [{}].", function, e);
             throw new OssExecutionException("Minio async execution error.");
         } catch (InterruptedException e) {
-            log.error("[Herodotus] |- Minio async catch InterruptedException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InterruptedException in [{}].", function, e);
             throw new OssInterruptedException("Minio async interrupted error.");
         } finally {
             close(client);
@@ -334,32 +334,32 @@ public class MinioMultipartUploadService extends BaseMinioAsyncService {
         try {
             return client.abortMultipartUploadAsync(bucketName, region, objectName, uploadId, toMultimap(extraHeaders), toMultimap(extraQueryParams)).get();
         } catch (InsufficientDataException e) {
-            log.error("[Herodotus] |- Minio async catch InsufficientDataException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InsufficientDataException in [{}].", function, e);
             throw new OssInsufficientDataException("Minio async insufficient data error.");
         } catch (InternalException e) {
-            log.error("[Herodotus] |- Minio async catch InternalException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InternalException in [{}].", function, e);
             throw new OssInternalException("Minio async internal error.");
         } catch (InvalidKeyException e) {
-            log.error("[Herodotus] |- Minio async catch InvalidKeyException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InvalidKeyException in [{}].", function, e);
             throw new OssInvalidKeyException("Minio async key invalid.");
         } catch (IOException e) {
-            log.error("[Herodotus] |- Minio catch IOException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch IOException in [{}].", function, e);
             if (e instanceof ConnectException) {
                 throw new OssConnectException(e.getMessage());
             } else {
                 throw new OssIOException(e.getMessage());
             }
         } catch (NoSuchAlgorithmException e) {
-            log.error("[Herodotus] |- Minio async catch NoSuchAlgorithmException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch NoSuchAlgorithmException in [{}].", function, e);
             throw new OssNoSuchAlgorithmException("Minio async no such algorithm.");
         } catch (XmlParserException e) {
-            log.error("[Herodotus] |- Minio async catch XmlParserException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch XmlParserException in [{}].", function, e);
             throw new OssXmlParserException("Minio async xml parser error.");
         } catch (ExecutionException e) {
-            log.error("[Herodotus] |- Minio async catch ExecutionException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch ExecutionException in [{}].", function, e);
             throw new OssExecutionException("Minio async execution error.");
         } catch (InterruptedException e) {
-            log.error("[Herodotus] |- Minio async catch InterruptedException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InterruptedException in [{}].", function, e);
             throw new OssInterruptedException("Minio async interrupted error.");
         } finally {
             close(client);
@@ -412,32 +412,32 @@ public class MinioMultipartUploadService extends BaseMinioAsyncService {
         try {
             return client.completeMultipartUploadAsync(bucketName, region, objectName, uploadId, parts, toMultimap(extraHeaders), toMultimap(extraQueryParams)).get();
         } catch (InsufficientDataException e) {
-            log.error("[Herodotus] |- Minio async catch InsufficientDataException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InsufficientDataException in [{}].", function, e);
             throw new OssInsufficientDataException("Minio async insufficient data error.");
         } catch (InternalException e) {
-            log.error("[Herodotus] |- Minio async catch InternalException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InternalException in [{}].", function, e);
             throw new OssInternalException("Minio async internal error.");
         } catch (InvalidKeyException e) {
-            log.error("[Herodotus] |- Minio async catch InvalidKeyException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InvalidKeyException in [{}].", function, e);
             throw new OssInvalidKeyException("Minio async key invalid.");
         } catch (IOException e) {
-            log.error("[Herodotus] |- Minio catch IOException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch IOException in [{}].", function, e);
             if (e instanceof ConnectException) {
                 throw new OssConnectException(e.getMessage());
             } else {
                 throw new OssIOException(e.getMessage());
             }
         } catch (NoSuchAlgorithmException e) {
-            log.error("[Herodotus] |- Minio async catch NoSuchAlgorithmException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch NoSuchAlgorithmException in [{}].", function, e);
             throw new OssNoSuchAlgorithmException("Minio async no such algorithm.");
         } catch (XmlParserException e) {
-            log.error("[Herodotus] |- Minio async catch XmlParserException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch XmlParserException in [{}].", function, e);
             throw new OssXmlParserException("Minio async xml parser error.");
         } catch (ExecutionException e) {
-            log.error("[Herodotus] |- Minio async catch ExecutionException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch ExecutionException in [{}].", function, e);
             throw new OssExecutionException("Minio async execution error.");
         } catch (InterruptedException e) {
-            log.error("[Herodotus] |- Minio async catch InterruptedException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InterruptedException in [{}].", function, e);
             throw new OssInterruptedException("Minio async interrupted error.");
         } finally {
             close(client);
@@ -518,32 +518,32 @@ public class MinioMultipartUploadService extends BaseMinioAsyncService {
         try {
             return client.listPartsAsync(bucketName, region, objectName, maxParts, partNumberMarker, uploadId, toMultimap(extraHeaders), toMultimap(extraQueryParams)).get();
         } catch (InsufficientDataException e) {
-            log.error("[Herodotus] |- Minio async catch InsufficientDataException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InsufficientDataException in [{}].", function, e);
             throw new OssInsufficientDataException("Minio async insufficient data error.");
         } catch (InternalException e) {
-            log.error("[Herodotus] |- Minio async catch InternalException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InternalException in [{}].", function, e);
             throw new OssInternalException("Minio async internal error.");
         } catch (InvalidKeyException e) {
-            log.error("[Herodotus] |- Minio async catch InvalidKeyException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InvalidKeyException in [{}].", function, e);
             throw new OssInvalidKeyException("Minio async key invalid.");
         } catch (IOException e) {
-            log.error("[Herodotus] |- Minio catch IOException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch IOException in [{}].", function, e);
             if (e instanceof ConnectException) {
                 throw new OssConnectException(e.getMessage());
             } else {
                 throw new OssIOException(e.getMessage());
             }
         } catch (NoSuchAlgorithmException e) {
-            log.error("[Herodotus] |- Minio async catch NoSuchAlgorithmException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch NoSuchAlgorithmException in [{}].", function, e);
             throw new OssNoSuchAlgorithmException("Minio async no such algorithm.");
         } catch (XmlParserException e) {
-            log.error("[Herodotus] |- Minio async catch XmlParserException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch XmlParserException in [{}].", function, e);
             throw new OssXmlParserException("Minio async xml parser error.");
         } catch (ExecutionException e) {
-            log.error("[Herodotus] |- Minio async catch ExecutionException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch ExecutionException in [{}].", function, e);
             throw new OssExecutionException("Minio async execution error.");
         } catch (InterruptedException e) {
-            log.error("[Herodotus] |- Minio async catch InterruptedException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InterruptedException in [{}].", function, e);
             throw new OssInterruptedException("Minio async interrupted error.");
         } finally {
             close(client);
@@ -666,32 +666,32 @@ public class MinioMultipartUploadService extends BaseMinioAsyncService {
         try {
             return client.listMultipartUploadsAsync(bucketName, region, delimiter, encodingType, keyMarker, maxUploads, prefix, uploadIdMarker, toMultimap(extraHeaders), toMultimap(extraQueryParams)).get();
         } catch (InsufficientDataException e) {
-            log.error("[Herodotus] |- Minio async catch InsufficientDataException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InsufficientDataException in [{}].", function, e);
             throw new OssInsufficientDataException("Minio async insufficient data error.");
         } catch (InternalException e) {
-            log.error("[Herodotus] |- Minio async catch InternalException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InternalException in [{}].", function, e);
             throw new OssInternalException("Minio async internal error.");
         } catch (InvalidKeyException e) {
-            log.error("[Herodotus] |- Minio async catch InvalidKeyException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InvalidKeyException in [{}].", function, e);
             throw new OssInvalidKeyException("Minio async key invalid.");
         } catch (IOException e) {
-            log.error("[Herodotus] |- Minio catch IOException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio catch IOException in [{}].", function, e);
             if (e instanceof ConnectException) {
                 throw new OssConnectException(e.getMessage());
             } else {
                 throw new OssIOException(e.getMessage());
             }
         } catch (NoSuchAlgorithmException e) {
-            log.error("[Herodotus] |- Minio async catch NoSuchAlgorithmException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch NoSuchAlgorithmException in [{}].", function, e);
             throw new OssNoSuchAlgorithmException("Minio async no such algorithm.");
         } catch (XmlParserException e) {
-            log.error("[Herodotus] |- Minio async catch XmlParserException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch XmlParserException in [{}].", function, e);
             throw new OssXmlParserException("Minio async xml parser error.");
         } catch (ExecutionException e) {
-            log.error("[Herodotus] |- Minio async catch ExecutionException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch ExecutionException in [{}].", function, e);
             throw new OssExecutionException("Minio async execution error.");
         } catch (InterruptedException e) {
-            log.error("[Herodotus] |- Minio async catch InterruptedException in [{}].", function, e);
+            log.error("[GstDev Cloud] |- Minio async catch InterruptedException in [{}].", function, e);
             throw new OssInterruptedException("Minio async interrupted error.");
         } finally {
             close(client);

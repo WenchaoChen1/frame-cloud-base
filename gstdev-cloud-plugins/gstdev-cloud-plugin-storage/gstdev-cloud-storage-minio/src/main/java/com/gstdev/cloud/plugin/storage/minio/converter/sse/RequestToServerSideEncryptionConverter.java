@@ -51,7 +51,7 @@ public class RequestToServerSideEncryptionConverter implements Converter<ServerS
                         try {
                             return new ServerSideEncryptionKms(source.getKeyId(), source.getContext());
                         } catch (JsonProcessingException e) {
-                            log.error("[Herodotus] |- Minio catch JsonProcessingException in RequestToServerSideEncryptionConverter.", e);
+                            log.error("[GstDev Cloud] |- Minio catch JsonProcessingException in RequestToServerSideEncryptionConverter.", e);
                             return null;
                         }
                     }

@@ -7,7 +7,7 @@
 //
 // ====================================================
 
-package com.gstdev.cloud.plugin.storage.specification.core.repository;
+package com.gstdev.cloud.plugin.storage.specification.core.business.service;
 
 
 import com.gstdev.cloud.plugin.storage.specification.arguments.multipart.*;
@@ -21,7 +21,7 @@ import java.util.List;
  * @author : cc
  * @date : 2023/8/12 21:56
  */
-public interface OssMultipartUploadRepository {
+public interface StorageMultipartUploadService {
 
     /**
      * 创建分片上传请求, 返回 UploadId

@@ -7,7 +7,7 @@
 //
 // ====================================================
 
-package com.gstdev.cloud.plugin.storage.specification.core.repository;
+package com.gstdev.cloud.plugin.storage.specification.core.business.service;
 
 import com.gstdev.cloud.plugin.storage.specification.arguments.object.*;
 import com.gstdev.cloud.plugin.storage.specification.domain.base.ObjectWriteDomain;
@@ -24,7 +24,7 @@ import java.util.List;
  * @author : cc
  * @date : 2023/7/24 16:39
  */
-public interface OssObjectRepository {
+public interface StorageObjectService {
 
     /**
      * 根据存储桶名称获取对象列表

@@ -31,7 +31,7 @@ public class MinioClientConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Minio Client] Auto Configure.");
+        log.debug("[GstDev Cloud] |- SDK [Minio Client] Auto Configure.");
     }
 
     @Bean
@@ -39,7 +39,7 @@ public class MinioClientConfiguration {
     public MinioClientObjectPool minioClientPool(MinioProperties minioProperties) {
         MinioClientPooledObjectFactory factory = new MinioClientPooledObjectFactory(minioProperties);
         MinioClientObjectPool pool = new MinioClientObjectPool(factory);
-        log.trace("[Herodotus] |- Bean [Minio Client Pool] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Minio Client Pool] Auto Configure.");
         return pool;
     }
 
@@ -48,7 +48,7 @@ public class MinioClientConfiguration {
     public MinioAsyncClientObjectPool minioAsyncClientPool(MinioProperties minioProperties) {
         MinioAsyncClientPooledObjectFactory factory = new MinioAsyncClientPooledObjectFactory(minioProperties);
         MinioAsyncClientObjectPool pool = new MinioAsyncClientObjectPool(factory);
-        log.trace("[Herodotus] |- Bean [Minio Async Client Pool] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Minio Async Client Pool] Auto Configure.");
         return pool;
     }
 
@@ -57,7 +57,7 @@ public class MinioClientConfiguration {
     public MinioAdminClientObjectPool minioAdminClientPool(MinioProperties minioProperties) {
         MinioAdminClientPooledObjectFactory factory = new MinioAdminClientPooledObjectFactory(minioProperties);
         MinioAdminClientObjectPool pool = new MinioAdminClientObjectPool(factory);
-        log.trace("[Herodotus] |- Bean [Minio Admin Client Pool] Auto Configure.");
+        log.trace("[GstDev Cloud] |- Bean [Minio Admin Client Pool] Auto Configure.");
         return pool;
     }
 }

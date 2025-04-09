@@ -7,14 +7,14 @@
 //
 // ====================================================
 
-package com.gstdev.cloud.plugin.storage.minio.repository;
+package com.gstdev.cloud.plugin.storage.minio.business.service;
 
 import com.gstdev.cloud.plugin.storage.minio.converter.arguments.*;
 import com.gstdev.cloud.plugin.storage.minio.converter.domain.*;
 import com.gstdev.cloud.plugin.storage.minio.service.MinioObjectService;
 import com.gstdev.cloud.plugin.storage.minio.utils.ConverterUtils;
 import com.gstdev.cloud.plugin.storage.specification.arguments.object.*;
-import com.gstdev.cloud.plugin.storage.specification.core.repository.OssObjectRepository;
+import com.gstdev.cloud.plugin.storage.specification.core.business.service.StorageObjectService;
 import com.gstdev.cloud.plugin.storage.specification.domain.base.ObjectWriteDomain;
 import com.gstdev.cloud.plugin.storage.specification.domain.object.*;
 import io.minio.*;
@@ -34,13 +34,13 @@ import java.util.List;
  * @date : 2023/8/9 16:50
  */
 @Service
-public class MinioObjectRepository implements OssObjectRepository {
+public class MinioStorageObjectServiceImpl implements StorageObjectService {
 
-    private static final Logger log = LoggerFactory.getLogger(MinioObjectRepository.class);
+    private static final Logger log = LoggerFactory.getLogger(MinioStorageObjectServiceImpl.class);
 
     private final MinioObjectService minioObjectService;
 
-    public MinioObjectRepository(MinioObjectService minioObjectService) {
+    public MinioStorageObjectServiceImpl(MinioObjectService minioObjectService) {
         this.minioObjectService = minioObjectService;
     }
 

@@ -30,8 +30,8 @@ import org.springframework.context.annotation.Import;
         MinioClientConfiguration.class
 })
 @ComponentScan(basePackages = {
-//        "com.gstdev.cloud.plugin.storage.minio.service",
-//        "com.gstdev.cloud.plugin.storage.minio.repository",
+        "com.gstdev.cloud.plugin.storage.minio.service",
+        "com.gstdev.cloud.plugin.storage.minio.business.service",
 })
 public class OssDialectMinioConfiguration {
 
@@ -39,6 +39,6 @@ public class OssDialectMinioConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Oss Dialect Minio] Auto Configure.");
+        log.debug("[GstDev Cloud] |- SDK [Oss Dialect Minio] Auto Configure.");
     }
 }
