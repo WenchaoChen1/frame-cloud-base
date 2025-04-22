@@ -13,16 +13,15 @@ import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import me.zhyd.oauth.model.AuthCallback;
 import org.apache.commons.collections4.MapUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.hutool.core.bean.BeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -54,10 +53,21 @@ public class JustAuthAccessController {
 
     @Operation(summary = "获取社交登录列表", description = "根据后台已配置社交登录信息，返回可用的社交登录控制列表")
     @GetMapping("/open/identity/sources")
-    public Result<Map<String, String>> list() {
-        Map<String, String> list = justAuthProcessor.getAuthorizeUrls();
-        if (MapUtils.isNotEmpty(list)) {
-            return Result.success("获取社交登录列表成功", list);
+    public Result<Map<String, String>> list(@RequestParam(required = false) List<String> source) {
+        Map<String, String> authorizeUrls = justAuthProcessor.getAuthorizeUrls();
+        Map<String, String> filteredUrls = new HashMap<>();
+
+        if (ObjectUtils.isEmpty(source)) {
+            filteredUrls.putAll(authorizeUrls);
+        } else {
+            for (String s : source) {
+                if (authorizeUrls.containsKey(s)) {
+                    filteredUrls.put(s, authorizeUrls.get(s));
+                }
+            }
+        }
+        if (MapUtils.isNotEmpty(authorizeUrls)) {
+            return Result.success("获取社交登录列表成功", authorizeUrls);
         } else {
             return Result.success("社交登录没有配置", new HashMap<>());
         }

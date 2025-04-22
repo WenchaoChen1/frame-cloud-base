@@ -8,11 +8,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.Import;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.WebJarsResourceResolver;
+
+import java.util.List;
 
 /**
  * <p>Description: WebMvcAutoConfiguration </p>
@@ -52,7 +55,11 @@ public class RestWebMvcAutoConfiguration implements WebMvcConfigurer {
     registry.addInterceptor(idempotentInterceptor);
 //    registry.addInterceptor(multiTenantInterceptor);
     }
-
+//    @Override
+//    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+//        // 添加自定义的消息转换器
+//        converters.add(new CustomEventStreamMessageConverter());
+//    }
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
