@@ -3,6 +3,9 @@
 package com.gstdev.cloud.access.justauth.properties;
 
 import com.gstdev.cloud.access.core.constants.AccessConstants;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import me.zhyd.oauth.config.AuthConfig;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -15,6 +18,7 @@ import java.util.Map;
  * @author : cc
  * @date : 2021/5/16 10:24
  */
+@Data
 @ConfigurationProperties(prefix = AccessConstants.PROPERTY_ACCESS_JUSTAUTH)
 public class JustAuthProperties {
 
@@ -30,6 +34,8 @@ public class JustAuthProperties {
      * 第三方系统登录配置信息
      */
     private Map<String, AuthConfig> configs;
+
+    private HttpConfig httpConfig;
 
     public Boolean getEnabled() {
         return enabled;
@@ -54,4 +60,32 @@ public class JustAuthProperties {
     public void setConfigs(Map<String, AuthConfig> configs) {
         this.configs = configs;
     }
+    @Getter
+    @Setter
+    public static class HttpConfig{
+        /**
+         * 是否开启
+         */
+        private Boolean enabled;
+        private int timeout = 3000;
+        private String hostName="127.0.0.1";
+        private int port=7890;
+        private Type type=Type.HTTP;
+
+        public enum Type {
+            /**
+             * Represents a direct connection, or the absence of a proxy.
+             */
+            DIRECT,
+            /**
+             * Represents proxy for high level protocols such as HTTP or FTP.
+             */
+            HTTP,
+            /**
+             * Represents a SOCKS (V4 or V5) proxy.
+             */
+            SOCKS
+        };
+    }
+
 }

@@ -118,7 +118,7 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
         }
 
         if (ObjectUtils.isEmpty(userInsertInput.getTenantId())) {
-            userInsertInput.setTenantId("0");
+            userInsertInput.setTenantId("d578b961-3e25-429e-805e-0b8a2e34122d");
         }
 
         if (ObjectUtils.isEmpty(userInsertInput.getStatus())) {

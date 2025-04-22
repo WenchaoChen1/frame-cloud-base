@@ -6,6 +6,7 @@ import com.gstdev.cloud.access.core.exception.AccessConfigErrorException;
 import com.gstdev.cloud.access.core.exception.IllegalAccessSourceException;
 import com.gstdev.cloud.access.justauth.properties.JustAuthProperties;
 import com.gstdev.cloud.access.justauth.stamp.JustAuthStateStampManager;
+import com.xkcoding.http.config.HttpConfig;
 import me.zhyd.oauth.config.AuthConfig;
 import me.zhyd.oauth.config.AuthDefaultSource;
 import me.zhyd.oauth.request.*;
@@ -14,6 +15,8 @@ import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.hutool.core.util.EnumUtil;
 
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.util.Map;
 import java.util.stream.Collectors;
 //import org.jetbrains.annotations.NotNull;
@@ -107,6 +110,22 @@ public class JustAuthProcessor {
     }
 
     private AuthRequest getAuthRequest(AuthDefaultSource authDefaultSource, AuthConfig authConfig) {
+        JustAuthProperties.HttpConfig httpConfig = justAuthProperties.getHttpConfig();
+        if(httpConfig.getEnabled()){
+            Proxy.Type proxyType = Proxy.Type.HTTP;
+            if(httpConfig.getType().equals(JustAuthProperties.HttpConfig.Type.DIRECT)){
+                proxyType = Proxy.Type.DIRECT;
+            }
+            if(httpConfig.getType().equals(JustAuthProperties.HttpConfig.Type.SOCKS)){
+                proxyType = Proxy.Type.SOCKS;
+            }
+            authConfig.setHttpConfig(HttpConfig.builder()
+                    .timeout(httpConfig.getTimeout())
+                    // host 和 port 请修改为开发环境的参数
+                    .proxy(new Proxy(proxyType, new InetSocketAddress(httpConfig.getHostName(), httpConfig.getPort())))
+                    .build());
+        }
+
         switch (authDefaultSource) {
             case GITHUB:
                 return new AuthGithubRequest(authConfig, this.getJustAuthStateRedisCache());
