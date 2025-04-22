@@ -66,8 +66,8 @@ public class JustAuthAccessController {
                 }
             }
         }
-        if (MapUtils.isNotEmpty(authorizeUrls)) {
-            return Result.success("获取社交登录列表成功", authorizeUrls);
+        if (MapUtils.isNotEmpty(filteredUrls)) {
+            return Result.success("获取社交登录列表成功", filteredUrls);
         } else {
             return Result.success("社交登录没有配置", new HashMap<>());
         }
