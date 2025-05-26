@@ -74,6 +74,7 @@ public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application,
     }
 
     @Override
+    @Transactional
     public OAuth2Application save(OAuth2Application entity) {
         OAuth2Application application = super.save(entity);
         if (ObjectUtils.isNotEmpty(application)) {
@@ -87,6 +88,7 @@ public class OAuth2ApplicationService extends BaseServiceImpl<OAuth2Application,
     }
 
     @Override
+    @Transactional
     public OAuth2Application saveAndFlush(OAuth2Application entity) {
         OAuth2Application application = super.saveAndFlush(entity);
         if (ObjectUtils.isNotEmpty(application)) {

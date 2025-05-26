@@ -19,6 +19,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +74,7 @@ public class OAuth2ComplianceService extends BaseServiceImpl<OAuth2Compliance, S
 
         return this.findByPage(specification, pageable);
     }
-
+    @Transactional
     public OAuth2Compliance save(String principalName, String clientId, String operation, HttpServletRequest request) {
         OAuth2Compliance compliance = toEntity(principalName, clientId, operation, request);
         log.debug("[GstDev Cloud] |- Sign in user is [{}]", compliance);

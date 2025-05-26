@@ -17,6 +17,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,6 +58,7 @@ public class OAuthSignOutController {
             @Parameter(name = "Authorization", in = ParameterIn.HEADER, required = true, description = "Basic Token"),
     })
     @PostMapping("/sign-out")
+    @Transactional
     public Result<String> signOut(@RequestBody SignOut signOut, HttpServletRequest request) {
         if (ObjectUtils.isEmpty(signOut.getAccessToken())) {
             return Result.failure("access token is empty");

@@ -9,6 +9,7 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.OAuth2ErrorCodes;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>Description: 请求加密服务 </p>
@@ -35,6 +36,7 @@ public class InterfaceSecurityService {
      * @param clientId     OAuth2 终端ID
      * @param clientSecret OAuth2 终端密码
      */
+    @Transactional
     private RegisteredClient validateClient(String clientId, String clientSecret) {
         RegisteredClient registeredClient = registeredClientRepository.findByClientId(clientId);
 
@@ -49,7 +51,7 @@ public class InterfaceSecurityService {
 
         return registeredClient;
     }
-
+    @Transactional
     public SecretKey createSecretKey(String clientId, String clientSecret, String sessionId) {
         // 检测终端是否是有效终端
         RegisteredClient registeredClient = this.validateClient(clientId, clientSecret);
@@ -63,6 +65,7 @@ public class InterfaceSecurityService {
      * @param confidentialBase64 前端用后端PublicKey加密前端PublicKey。前端使用node-rsa加密后的数据是base64编码
      * @return 前端RSA PublicKey 加密后的 AES Key
      */
+    @Transactional
     public String exchange(String sessionId, String confidentialBase64) {
         return httpCryptoProcessor.exchange(sessionId, confidentialBase64);
     }
